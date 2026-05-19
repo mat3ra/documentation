@@ -5,12 +5,16 @@ application to the Mat3ra platform so that it becomes a first-class option in
 both the web-interface and the [Command Line Interface (CLI)](
 ../../cli/overview.md).
 
+![Application Selection in Web-Interface](../../../../images/tutorials/new-application/application-selection-web-ui.webp "Application Selection in Web-Interface")
+
 The task involves adding necessary configurations to two repositories via pull
 requests. A basic understanding of container technologies (Apptainer,
 Singularity, or Docker), a GitHub account, Node.js installed locally, and a
 working Apptainer `.def` file are required before proceeding. If you need help
 with preparing Apptainer definition, please consult the [Add Software](
 ../../cli/actions/add-software.md) page first.
+
+![Load application with modulefile](../../../../images/tutorials/new-application/application-modules-cli.webp "Load application with modulefile")
 
 ## 1. Overview
 

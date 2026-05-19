@@ -73,7 +73,7 @@ markdown_extensions:
         linenums: true
     - pymdownx.snippets
     - pymdownx.striphtml            # Strip html comments before processing
-    - pymdownx.superfences:          # Allow for code blocks "fencing"
+    - pymdownx.superfences:         # Allow for code blocks "fencing"
         custom_fences:
             - name: mermaid
               class: mermaid
