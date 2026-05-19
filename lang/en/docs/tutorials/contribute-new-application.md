@@ -1,4 +1,4 @@
-# Bring Your Application to Mat3ra Platform
+# Contribute New Application to Mat3ra Platform
 
 This page explains how developers and advanced users can contribute a new
 application to the Mat3ra platform so that it becomes a first-class option in
@@ -132,9 +132,9 @@ Open `manifest.yml` at the repository root and add an entry:
 
 The three fields are:
 
-- `name` — the image name in the registry.
-- `path` — location of the `.def` file relative to the repository root.
-- `tag` — follows the convention `<version>-<toolchain>-<N>` where `N` is a
+- `name` → the image name in the registry.
+- `path` → location of the `.def` file relative to the repository root.
+- `tag` → follows the convention `<version>-<toolchain>-<N>` where `N` is a
   build iteration starting from `0`. Bump `N` whenever the recipe changes
   without a version change; the CI treats tags as immutable and skips a build
   if the tag already exists.
