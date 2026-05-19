@@ -34,20 +34,27 @@ provided to `standata` must exactly match the value registered in
 be merged and the image published before the `standata` pull request can be
 merged.
 
-```
-Developer machine
-  │
-  ├─ PR: .def + manifest.yml → application-containers-public
-  │                                      │
-  │                               GitHub Actions
-  │                                      │
-  │                               oras push → GHCR images
-  │
-  └─ PR: applications YAML → standata
-                                      │
-                               imageName + imageTag ← GHCR
-                                      │
-                               Mat3ra platform
+```mermaid
+flowchart TB
+    Dev[Developer machine]
+
+    subgraph containers["application-containers-public"]
+        AppRepo[manifest.yml + .def files]
+        GHA[GitHub Actions]
+        GHCR[GHCR images]
+        AppRepo --> GHA --> GHCR
+    end
+
+    subgraph standata["standata"]
+        Meta[applications YAML\n+ executables + templates]
+    end
+
+    Platform[Mat3ra platform]
+
+    Dev -->|"PR: .def + manifest.yml"| AppRepo
+    Dev -->|"PR: apps YAML + executables + templates"| Meta
+    GHCR -->|"imageName + imageTag"| Meta
+    Meta --> Platform
 ```
 
 
