@@ -358,7 +358,7 @@ that the image tag referenced in `standata` is valid when that PR is reviewed.
   ✅ `executables/myapp/myapp.yml` with at least one flavor <br/>
   ✅ `myapp` entry added to `executables/tree.yml` <br/>
   ✅ `input_files_templates/myapp/flavor.in` created <br/>
-  ✅ `templates/myapp/flavor.yml` created <br/>`
+  ✅ `templates/myapp/flavor.yml` created <br/>
   ✅ `!include` added to `templates/templates.yml` <br/>
   ✅  `npm run build` outputs committed <br/>
   ✅ Merged after the container PR is merged
