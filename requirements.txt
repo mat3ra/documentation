@@ -21,7 +21,7 @@ googleapis-common-protos==1.74.0
 grpcio==1.80.0
 grpcio-status==1.80.0
 httplib2==0.22.0
-idna==3.11
+idna==3.15
 importlib_metadata==8.5.0
 Jinja2==3.1.6
 latexcodec==3.0.1
