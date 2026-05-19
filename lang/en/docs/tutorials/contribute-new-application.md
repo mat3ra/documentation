@@ -346,24 +346,22 @@ under `data/` and `dist/` produced by the build step above.
 Merge order is mandatory: the container pull request must be merged first so
 that the image tag referenced in `standata` is valid when that PR is reviewed.
 
-```
-1. application-containers-public PR
-   ✓ .def file added under the correct application directory
-   ✓ manifest.yml entry with correct name, path, and tag
-   ✓ CI passes (dry-run build succeeds)
-   ✓ Merged first
+### 4.1. application-containers-public PR Checklist
+  ✅ .def file added under the correct application directory <br/>
+  ✅ manifest.yml entry with correct name, path, and tag <br/>
+  ✅ CI passes (dry-run build succeeds) <br/>
+  ✅ Merged first
 
-2. standata PR
-   ✓ applications/myapp.yml with matching imageName and imageTag
-   ✓ !include added to application_data.yml
-   ✓ executables/myapp/myapp.yml with at least one flavor
-   ✓ myapp entry added to executables/tree.yml
-   ✓ input_files_templates/myapp/flavor.in created
-   ✓ templates/myapp/flavor.yml created
-   ✓ !include added to templates/templates.yml
-   ✓ npm run build outputs committed
-   ✓ Opened after the container PR is merged
-```
+### 4.2. standata PR Checklist
+  ✅ applications/myapp.yml with matching imageName and imageTag <br/>
+  ✅ !include added to application_data.yml <br/>
+  ✅ executables/myapp/myapp.yml with at least one flavor <br/>
+  ✅ myapp entry added to executables/tree.yml <br/>
+  ✅ input_files_templates/myapp/flavor.in created <br/>
+  ✅ templates/myapp/flavor.yml created <br/>
+  ✅ !include added to templates/templates.yml <br/>
+  ✅ npm run build outputs committed <br/>
+  ✅ Opened after the container PR is merged
 
 Once both PRs are merged and the next platform release ships, the application
 appears in the application dropdown for every user. The container image is
