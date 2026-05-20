@@ -8,4 +8,11 @@ git lfs pull
 
 # pip packages are automatically installed by netlify
 # if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+# Legacy full site (root)
 python -m mkdocs build
+
+# Split sites into subfolders
+python -m mkdocs build -f mkdocs-guide.yml    -d site/guide
+python -m mkdocs build -f mkdocs-concepts.yml -d site/reference
+python -m mkdocs build -f mkdocs-dev.yml      -d site/dev
