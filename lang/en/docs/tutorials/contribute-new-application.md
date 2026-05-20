@@ -1,36 +1,38 @@
 # Contribute New Application to Mat3ra Platform
 
-This page explains how developers and advanced users can contribute a new
+This page explains how developers and advanced users can contribute new
 application to the Mat3ra platform so that it becomes a first-class option in
 both the web-interface and the [Command Line Interface (CLI)](
 ../../cli/overview.md).
 
-![Application Selection in Web-Interface](../../../../images/tutorials/new-application/application-selection-web-ui.webp "Application Selection in Web-Interface")
-
-The task involves adding necessary configurations to two repositories via pull
+This task involves adding necessary configurations to two repositories via pull
 requests. A basic understanding of container technologies (Apptainer,
 Singularity, or Docker), a GitHub account, Node.js installed locally, and a
 working Apptainer `.def` file are required before proceeding. If you need help
 with preparing Apptainer definition, please consult the [Add Software](
 ../../cli/actions/add-software.md) page first.
 
-![Load application with modulefile](../../../../images/tutorials/new-application/application-modules-cli.webp "Load application with modulefile")
+![Application Selection in Web-Interface](../../../../images/tutorials/new-application/application-selection-web-ui.webp "Application Selection in Web-Interface")
+
 
 ## 1. Overview
 
 ### 1.1. Understand the two-repository architecture
 
-Contributing a new application involves two repositories.
+Contributing a new application involves creating Pull Requests (PRs) to two
+repositories:
 
-[**application-containers-public**](https://github.com/Exabyte-io/application-containers-public) holds the Apptainer definition files and a
-`manifest.yml` that drives a GitHub Actions (GHA) workflow. On merge, GHA
-builds each image and pushes it to the GitHub Container Registry (GHCR).
+[**application-containers-public**](
+https://github.com/Exabyte-io/application-containers-public) holds the Apptainer
+definition files and a `manifest.yml` that drives a GitHub Actions (GHA)
+workflow. On merge, GHA builds each image and pushes it to the GitHub Container
+Registry (GHCR).
 
 [**standata**](https://github.com/Exabyte-io/standata) holds the platform
 metadata, including application name, version, build flavor, the GHCR image tag
 to pull, and the runtime environment variables. The platform reads this
 repository to populate the application dropdown in the web-interface. Necessary
-modulefiles are also generated based this repository for use from the CLI.
+modulefiles are also generated based on these metadata for CLI use.
 
 The two repositories are coupled by `imageName` and `imageTag`: the value
 provided to `standata` must exactly match the value registered in
@@ -62,7 +64,7 @@ flowchart TB
 ```
 
 
-## 2. Container repository (`application-containers-public`)
+## 2. application-containers-public repository
 
 ### 2.1. Fork and clone the repository
 
@@ -80,17 +82,17 @@ application-containers-public/
 └── .github/workflows/cicd.yml
 ```
 
-Under `base/` are foundational images: an AlmaLinux base, a GNU toolchain
-variant, an Intel OneAPI variant, and an NVIDIA HPC SDK variant. Each
-application has its own subdirectory containing one `.def` file per build
-flavor.
+Under `base/` are foundational images: AlmaLinux base, GNU toolchain variant,
+Intel OneAPI variant, NVIDIA HPC SDK variant, and so on. Each application has
+its own subdirectory containing one `.def` file per build variant.
 
 ### 2.2. Add the `.def` file
 
 Add the Apptainer definition file under the appropriate application directory,
 e.g. `espresso/espresso-7.5-gnu.def`. Two conventions must be followed.
 
-First, bootstrap from an existing base image using `Bootstrap: oras`:
+First, bootstrap from an existing base image using `Bootstrap: oras` wherever
+possible:
 
 ```singularity
 Bootstrap: oras
@@ -116,7 +118,7 @@ the `%environment` section.
     In order to keep image size small, use a first stage that compiles against
     the large toolchain, then copy only the compiled executables into a
     lightweight final stage. The Mat3ra platform bind-mounts the required
-    runtime libraries from the host compute node at job submission time.
+    runtime libraries from the host compute node at job execution time.
 
 !!!warning "Do not bake large toolchains into the image"
     Libraries such as NVIDIA HPC SDK and Intel OneAPI are pre-installed on the
@@ -126,7 +128,8 @@ the `%environment` section.
 
 ### 2.3. Register the image in `manifest.yml`
 
-Open `manifest.yml` at the repository root and add an entry:
+Open `manifest.yml` at the repository root and add an entry for the new
+application:
 
 ```yaml
 - name: espresso
@@ -157,15 +160,19 @@ After merge, the image is available at:
 apptainer pull oras://ghcr.io/exabyte-io/application-containers-public/espresso:7.5-gnu-1
 ```
 
-The exact `ghcr.io` URL, image name, and tag are needed in the next section.
+The image name, and tag are needed in the next section.
+
+### 2.5. Example Pull Request
+- [GNU build of Quantum ESPRESSO 7.5](https://github.com/Exabyte-io/application-containers-public/pull/7/files)
+- [Intel build of LAMMPS](https://github.com/Exabyte-io/application-containers-public/pull/9/changes)
 
 
-## 3. Metadata repository (`standata`)
+## 3. standata repository
 
 ### 3.1. Fork and clone the repository
 
-Fork `github.com/Exabyte-io/standata` and clone locally. The relevant
-subtree is:
+Fork `github.com/Exabyte-io/standata` and clone locally. The relevant subtree
+is:
 
 ```
 assets/applications/
@@ -181,9 +188,9 @@ assets/applications/
 Each application has its own YAML file under `applications/`, and
 `application_data.yml` is the index that the build process reads.
 
-### 3.2. Add the application version block
+### 3.2. Add application version block
 
-Create or extend the YAML file for the application, e.g.
+Create or extend the YAML file for the new application, e.g.
 `assets/applications/applications/espresso.yml`. Each version block follows
 this structure:
 
@@ -206,7 +213,7 @@ The `imageName` and `imageTag` fields must exactly match what was registered in
 `manifest.yml` in the container repository. This is the link between the two
 repositories.
 
-For applications that require large host-side toolchains (e.g. NVIDIA HPC SDK
+For applications that require mapping host-side toolchains (e.g. NVIDIA HPC SDK
 or Intel OneAPI), declare the Apptainer environment forwarding variables under
 `environmentVariables`. The prefix `APPTAINERENV_` instructs Apptainer to
 inject the variable into the container at runtime:
@@ -241,8 +248,7 @@ espresso: !include 'applications/espresso.yml'
 
 In order to expose executables in the UI or provide starter input templates,
 also populate `assets/applications/executables/<app>/` and
-`assets/applications/templates/<app>/` respectively. These are optional for a
-minimal first contribution.
+`assets/applications/templates/<app>/` respectively.
 
 ### 3.4. Add an executable
 
@@ -315,8 +321,8 @@ template.
 - !include 'templates/myapp/flavor.yml'
 ```
 
-After these three steps, the `flavor` flavor appears in the unit editor when a
-user selects `myapp` as the application and `myexec` as the executable.
+After these three steps, the `flavor` appears in the unit editor when a user
+selects `myapp` as the application and `myexec` as the executable.
 
 ### 3.6. Build and validate locally
 
@@ -327,6 +333,7 @@ parses correctly and the generated data looks as expected:
 npm install
 npm run build:applications
 npm run build  # to build all assets
+npm run test # to run the tests
 ```
 
 `build:applications` generates per-application JSON under `data/applications/`.
@@ -339,6 +346,13 @@ template content renders correctly.
 Open a pull request against `standata` only after the container pull request
 has been merged and the image is live in GHCR. Commit the generated files
 under `data/` and `dist/` produced by the build step above.
+
+### 3.8. Example Pull Request
+- [Quantum ESPRESSO 7.5](https://github.com/Exabyte-io/standata/pull/109/changes)
+- [LAMMPS](https://github.com/Exabyte-io/standata/pull/91/changes)
+
+One may ignore the auto-generated files under `data/`, `dist/`, and `src/`
+directories while reviewing the PR changes.
 
 
 ## 4. Merge order and checklist
@@ -366,7 +380,10 @@ that the image tag referenced in `standata` is valid when that PR is reviewed.
 Once both PRs are merged and the next platform release ships, the application
 appears in the application dropdown for every user. The container image is
 pulled from GHCR on first use, the version block drives the runtime environment,
-and the flavor/template pair appears in the workflow designer unit editor.
+and the flavor/template pair appears in the workflow designer unit editor. The
+application is also available via modulefile for CLI use.
+
+![Load application with modulefile](../../../../images/tutorials/new-application/application-modules-cli.webp "Load application with modulefile")
 
 
 ## 5. References
