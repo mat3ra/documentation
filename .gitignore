@@ -18,3 +18,5 @@ scripts/*.mp4
 
 # Pyenv
 .python-version
+# Agents workdir
+tmp

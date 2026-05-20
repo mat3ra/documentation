@@ -1,0 +1,357 @@
+# Concepts & Reference — explanatory documentation for understanding the platform.
+# Covers data models, entity concepts, software/method/model references, properties.
+# Deploy to: docs.mat3ra.com/reference/
+
+docs_dir: !!python/object/apply:os.getenv ["DOCS_DIR", "lang/en/docs"]
+
+site_name: "Concepts & Reference — Mat3ra Documentation"
+site_url: https://docs.mat3ra.com/reference
+site_description: "Explanatory reference for Mat3ra platform concepts, data models, and scientific methods."
+dev_addr: "localhost:8002"
+
+repo_name: 'exabyte-io/documentation'
+repo_url: 'https://github.com/exabyte-io/documentation'
+edit_uri: 'edit/main/lang/en/docs/'
+extra_css:
+    - https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css
+    - extra/css/general.css
+    - extra/css/tables.css
+    - extra/css/images.css
+    - extra/css/super-fences.css
+    - extra/css/properties.css
+    - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css
+
+extra_javascript:
+    - extra/js/giffer.js
+    - extra/js/ga.js
+    - extra/js/url_parameters.js
+    - extra/js/katex.js
+    - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js
+    - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js
+    - 'https://www.googletagmanager.com/gtag/js?id=UA-69270713-5'
+
+copyright: <a target="_blank" href="https://mat3ra.com">Exabyte Inc</a>. All rights reserved. | <a target="_blank" href="https://platform.mat3ra.com">Back to platform</a>
+
+extra:
+    version: "2026.4.23"
+    preload_javascript:
+        - /extra/js/preload_hotjar.js
+        - /extra/js/preload.js
+    social:
+        - icon: fontawesome/brands/github
+          link: https://github.com/exabyte-io
+        - icon: fontawesome/brands/youtube
+          link: https://www.youtube.com/c/Mat3ra/videos
+        - icon: fontawesome/brands/linkedin
+          link: https://www.linkedin.com/company/mat3ra/
+        - icon: fontawesome/brands/x-twitter
+          link: https://x.com/mat3ra_com
+    analytics:
+        provider: google
+        property: UA-69270713-5
+    jupyterlite:
+        origin_url: https://jupyterlite.mat3ra.com/retro/notebooks
+        origin_url_lab: https://jupyterlite.mat3ra.com/lab/tree
+        notebooks_path_root: made
+
+markdown_extensions:
+    - admonition
+    - attr_list
+    - def_list
+    - footnotes:
+        PLACE_MARKER: "///FOOTNOTES GO HERE///"
+    - markdown.extensions.def_list
+    - md_in_html
+    - toc:
+        permalink: true
+    - pymdownx.arithmatex:
+        generic: true
+    - pymdownx.betterem
+    - pymdownx.details
+    - pymdownx.highlight:
+        pygments_lang_class: true
+        linenums: true
+    - pymdownx.snippets
+    - pymdownx.striphtml
+    - pymdownx.superfences
+    - pymdownx.tabbed:
+        alternate_style: true
+
+theme:
+    name: material
+    custom_dir: theme
+    palette:
+        primary: deep purple
+        accent: deep purple
+    logo: "images/logo/logo-white.png"
+    favicon: "images/logo/favicon.svg"
+    icon:
+        edit: material/pencil
+        repo: fontawesome/brands/github
+    font:
+        text: Roboto
+        code: Roboto Mono
+    features:
+        - announce.dismiss
+        - content.action.edit
+        - content.code.annotate
+        - content.code.copy
+        - content.tooltips
+        - navigation.footer
+        - navigation.top
+        - search.highlight
+        - search.suggest
+
+plugins:
+    - git-revision-date-localized:
+        type: date
+        enable_creation_date: false
+    - search
+    - tags
+    - macros:
+        include_dir: "lang/en/docs/includes/"
+        render_by_default: false
+    - bibtex:
+        bib_file: "lang/en/docs/includes/references.bib"
+        citation_template: "{{author}} ({{year}})"
+        bibliography_template: "{{author}} ({{year}}). {{title}}. {{journal}}. {{volume}}. {{pages}}."
+
+nav:
+    - Home:                                              index-concepts.md
+
+# ENTITIES — Concepts
+    - Entities & Common Aspects:
+        - Overview:                                     entities-general/overview.md
+        - Lifecycle:                                    entities-general/lifecycle.md
+        - Ownership:                                    entities-general/ownership.md
+        - Permissions:                                  entities-general/permissions.md
+        - Data:                                         entities-general/data.md
+        - Sets:                                         entities-general/sets.md
+        - Bank:                                         entities-general/bank.md
+        - Default:                                      entities-general/default.md
+
+# ACCOUNTS — Concepts
+    - Accounts:
+        - Overview:                                      accounts/overview.md
+        - Users:                                         accounts/users.md
+        - Balance:                                       accounts/balance.md
+        - Service Levels:                                accounts/service-levels.md
+        - Quota:                                         accounts/quota.md
+        - Payments and Charges:                          accounts/payments-charges.md
+        - Collections:                                   accounts/collections.md
+
+# COLLABORATION — Concepts
+    - Collaboration:
+        - Organizations:
+            - Overview:                                  collaboration/organizations/overview.md
+            - Roles:                                     collaboration/organizations/roles.md
+            - Teams:                                     collaboration/organizations/teams.md
+        - Entity Sharing:
+            - Account Access Levels:                     collaboration/sharing/access-levels.md
+
+# MATERIALS — Concepts
+    - Materials:
+        - Overview:                                     materials/overview.md
+        - Data:                                         materials/data.md
+        - Bank:                                         materials/bank.md
+        - Default:                                      materials/default.md
+        - Classification:
+            - Crystalline:                              materials/classification/crystalline.md
+            - Non-Periodic:                             materials/classification/non-periodic.md
+
+# WORKFLOWS — Concepts
+    - Workflows:
+        - Overview:                                     workflows/overview.md
+        - Bank:                                         workflows/bank.md
+        - Default:                                      workflows/default.md
+        - Components:
+            - Overview:                                 workflows/components/overview.md
+            - Subworkflows:                             workflows/components/subworkflows.md
+            - Units:                                    workflows/components/units.md
+            - Maps:                                     workflows/components/maps.md
+        - Data:
+            - Overview:                                 workflows/data/overview.md
+            - Workflows:                                workflows/data/workflows.md
+            - Subworkflows:                             workflows/data/subworkflows.md
+            - Units:                                    workflows/data/units.md
+        - Templating:
+            - Overview:                                 workflows/templating/overview.md
+            - Concept:                                  workflows/templating/concept.md
+            - Jinja:                                    workflows/templating/jinja.md
+            - Swig:                                     workflows/templating/swig.md
+            - Exabyte Convention:                       workflows/templating/exabyte-convention.md
+            - Examples:                                 workflows/templating/examples.md
+            - UI Implementation:                        workflows/templating/ui.md
+        - Add-ons:
+            - Overview:                                 workflows/addons/overview.md
+            - Convergence:                              workflows/addons/convergence-algorithms.md
+            - Structural Relaxation:                    workflows/addons/structural-relaxation.md
+
+# JOBS — Concepts
+    - Jobs:
+        - Overview:                                     jobs/overview.md
+        - Projects:                                     jobs/projects.md
+        - Data:                                         jobs/data.md
+        - Status:                                       jobs/status.md
+
+# MODELS
+    - Models:
+        - Overview:                                     models/overview.md
+        - Accuracy:                                     models/accuracy.md
+        - Data:                                         models/data.md
+        - Parameters:                                   models/parameters.md
+        - Auxiliary Concepts:
+            - Nudged Elastic Band:                       models/auxiliary-concepts/nudged-elastic-band.md
+            - Effective Screening Medium:                models/auxiliary-concepts/esm.md
+            - Reciprocal space:                          models/auxiliary-concepts/reciprocal-space.md
+            - Reciprocal space > sampling:               models/auxiliary-concepts/reciprocal-space/sampling.md
+            - Reciprocal space > paths:                  models/auxiliary-concepts/reciprocal-space/paths.md
+            - Reciprocal space > convergence:            models/auxiliary-concepts/reciprocal-space/convergence.md
+            - Reciprocal space > electronic occupations: models/auxiliary-concepts/reciprocal-space/electronic-occupations.md
+
+    - Models Directory:
+        - Overview:                                     models-directory/overview.md
+        - Density Functional Theory:
+            - Overview:                                 models-directory/dft/overview.md
+            - Data:                                     models-directory/dft/data.md
+            - Parameters:                               models-directory/dft/parameters.md
+            - Accuracy:                                 models-directory/dft/accuracy.md
+            - Special Notes:                            models-directory/dft/notes.md
+            - References:                               models-directory/dft/references.md
+        - Machine Learning:
+            - Overview:                                 models-directory/machine-learning/overview.md
+            - Parameters:                               models-directory/machine-learning/parameters.md
+            - Units:                                    models-directory/machine-learning/units.md
+            - Data:                                     models-directory/machine-learning/data.md
+            - Example Workflow:                         models-directory/machine-learning/example-workflow.md
+            - Accuracy:                                 models-directory/machine-learning/accuracy.md
+
+# METHODS
+    - Methods:
+        - Overview:                                     methods/overview.md
+        - Data:                                         methods/data.md
+        - Parameters:                                   methods/parameters.md
+        - Precision:                                    methods/precision.md
+        - Auxiliary Concepts:
+            - Optimization Algorithms:                  methods/auxiliary-concepts/optimization-algorithms.md
+
+    - Methods Directory:
+        - Overview:                                     methods-directory/overview.md
+        - Plane-waves and Pseudopotentials:
+            - Overview:                                 methods-directory/pseudopotential/overview.md
+            - Default:                                  methods-directory/pseudopotential/default.md
+            - Data:                                     methods-directory/pseudopotential/data.md
+            - Parameters:                               methods-directory/pseudopotential/parameters.md
+            - Precision:                                methods-directory/pseudopotential/precision.md
+            - Important Settings:                       methods-directory/pseudopotential/important-settings.md
+            - Actions:                                  methods-directory/pseudopotential/actions.md
+        - Linear Regression:
+            - Overview:                                 methods-directory/linear-regression/overview.md
+            - Parameters:                               methods-directory/linear-regression/parameters.md
+            - Data:                                     methods-directory/linear-regression/data.md
+
+# SOFTWARE
+    - Software:
+        - Overview:                                     software/overview.md
+        - Components:                                   software/components.md
+        - Data:                                         software/data.md
+        - Classification:
+            - Overview:                                 software/classification/overview.md
+            - Analysis:                                 software/classification/analysis.md
+            - Development:                              software/classification/development.md
+            - Machine Learning:                         software/classification/machine-learning.md
+            - Modeling:                                 software/classification/modeling.md
+            - Scripting:                                software/classification/scripting.md
+
+# PROPERTIES
+    - Properties:
+        - Overview:                                     properties/overview.md
+        - Lifecycle:
+            - Overview:                                 properties/lifecycle/overview.md
+            - Extractors:                               properties/lifecycle/extractor.md
+            - Refinement:                               properties/lifecycle/refinement.md
+            - Retrieval:                                properties/lifecycle/retrieval.md
+        - Data:
+            - Overview:                                 properties/data/overview.md
+            - Core:                                     properties/data/core.md
+            - List of Schemas:                          properties/data/list.md
+            - Periodic Table:                           properties/data/periodic-table.md
+        - Classification:
+            - Overview:                                 properties/classification/overview.md
+            - General:                                  properties/classification/general.md
+            - Machine Learning:                         properties/classification/machine-learning.md
+            - Materials:                                properties/classification/materials.md
+
+    - Properties Directory:
+        - Overview:                                     properties-directory/overview.md
+        - Scalar:
+            - Total Energy:                             properties-directory/scalar/total-energy.md
+            - Fermi Energy:                             properties-directory/scalar/fermi-energy.md
+            - Surface Energy:                           properties-directory/scalar/surface-energy.md
+            - Zero Point Energy:                        properties-directory/scalar/zero-point-energy.md
+            - Pressure:                                 properties-directory/scalar/pressure.md
+            - Total Force:                              properties-directory/scalar/total-force.md
+            - Reaction Energy Barrier:                  properties-directory/scalar/reaction-energy-barrier.md
+            - Valence Band Offset:                      properties-directory/scalar/valence-band-offset.md
+        - Non-scalar:
+            - Stress Tensor:                            properties-directory/non-scalar/stress-tensor.md
+            - Band Structure:                           properties-directory/non-scalar/bandstructure.md
+            - Electronic Density of States:             properties-directory/non-scalar/electronic-dos.md
+            - Band Gaps:                                properties-directory/non-scalar/band-gaps.md
+            - Phonon Dispersions:                       properties-directory/non-scalar/phonon-dispersions.md
+            - Phonon Density of States:                 properties-directory/non-scalar/phonon-dos.md
+            - Reaction Energy Profile:                  properties-directory/non-scalar/reaction-energy-profile.md
+            - File Content:                             properties-directory/non-scalar/file-content.md
+            - Workflow:                                 properties-directory/non-scalar/workflow.md
+        - Elemental:
+            - Atomic Radius:                            properties-directory/elemental/atomic-radius.md
+            - Electronegativity:                        properties-directory/elemental/electronegativity.md
+            - Ionization Potential:                     properties-directory/elemental/ionization-potential.md
+        - Structural:
+            - Basis:                                    properties-directory/structural/basis.md
+            - Atomic Forces:                            properties-directory/structural/atomic-forces.md
+            - Lattice:                                  properties-directory/structural/lattice.md
+            - Symmetry:                                 properties-directory/structural/symmetry.md
+            - Final Structure:                          properties-directory/structural/final-structure.md
+            - Magnetic Moment:                          properties-directory/structural/magnetic-moment.md
+            - Inchi:                                    properties-directory/structural/inchi.md
+            - Inchi Key:                                properties-directory/structural/inchi-key.md
+
+# DATA PRACTICES
+    - Data Practices:
+        - Overview:                                     data/overview.md
+        - Classification:                               data/classification.md
+        - Lifecycle:                                    data/lifecycle.md
+
+    - Data Structures:
+        - Overview:                                     data-structured/overview.md
+        - Convention:                                   data-structured/convention.md
+
+
+# SECURITY
+    - Security:
+        - Current State of Cloud Security:               security/current-state.md
+        - Overview:                                      security/overview.md
+        - Security Policies:                             security/security-policies.md
+        - Threats Analysis:                              security/threats-analysis.md
+
+# BENCHMARKS
+    - Benchmarks:
+        - Overview:                      benchmarks/overview.md
+        - High Throughput Screening:     benchmarks/high-throughput-screening.md
+        - Distributed Memory Runs:       benchmarks/distributed-memory.md
+        - Vendor Comparison:             benchmarks/vendor-comparison.md
+        - High-Performance Linpack:      benchmarks/hpl-benchmark.md
+        - 2018-11 HPL VASP GROMACS:      benchmarks/2018-11-12-comparison.md
+
+# LEGAL
+    - Site Policy:
+        - Privacy:                                      site-policy/privacy-statement.md
+        - Sharing:                                      site-policy/sharing-policy.md
+        - Terms of Service:                             site-policy/terms-of-service.md
+
+# OTHER
+    - Other:
+        - Publications:                                 other/publications.md
+        - Terms of Service:                             other/terms-of-service.md
+        - Restricted Content:                           other/restricted.md

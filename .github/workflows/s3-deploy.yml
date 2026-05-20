@@ -29,8 +29,15 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Build pages
+      - name: Build pages (legacy)
         uses: Exabyte-io/action-mkdocs-build@main
+
+      - name: Build split sites
+        run: |
+          source venv/bin/activate
+          mkdocs build -f mkdocs-guide.yml    -d site/guide
+          mkdocs build -f mkdocs-concepts.yml -d site/reference
+          mkdocs build -f mkdocs-dev.yml      -d site/dev
 
       - name: Deploy to Production (dev branch, old docs)
         if: github.ref == 'refs/heads/dev'
@@ -55,3 +62,4 @@ jobs:
           invalidation: /*
           no-cache: true
           private: true
+

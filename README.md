@@ -43,6 +43,45 @@ For a quick installation:
 
 You should have the documentation up and running at `http://localhost:8000`
 
+### Multi-Site Build (Guide / Concepts / Dev)
+
+The documentation is split into three focused sites, each with its own MkDocs
+configuration. The original `mkdocs.yml` remains available for the full
+monolithic build.
+
+| Config file | Site | URL | Dev port |
+|-------------|------|-----|----------|
+| `mkdocs.yml` | Full (legacy) | `docs.mat3ra.com` | 8000 |
+| `mkdocs-guide.yml` | Platform Guide | `docs.mat3ra.com/guide/` | 8001 |
+| `mkdocs-concepts.yml` | Concepts & Reference | `docs.mat3ra.com/reference/` | 8002 |
+| `mkdocs-dev.yml` | Developer Guide | `docs.mat3ra.com/dev/` | 8003 |
+
+To build or serve an individual site:
+
+```bash
+source .venv/bin/activate
+
+# Serve a specific site
+mkdocs serve -f mkdocs-guide.yml       # localhost:8001
+mkdocs serve -f mkdocs-concepts.yml    # localhost:8002
+mkdocs serve -f mkdocs-dev.yml         # localhost:8003
+
+# Build a specific site
+mkdocs build -f mkdocs-guide.yml
+mkdocs build -f mkdocs-concepts.yml
+mkdocs build -f mkdocs-dev.yml
+```
+
+To build all three sites into a combined output directory (as done in CI):
+
+```bash
+mkdocs build -f mkdocs.yml                                           # legacy at /
+mkdocs build -f mkdocs-guide.yml    -d site/guide                    # /guide/
+mkdocs build -f mkdocs-concepts.yml -d site/reference                # /reference/
+mkdocs build -f mkdocs-dev.yml      -d site/dev                      # /dev/
+```
+
+
 ## Development
 
 [MkDocs](http://www.mkdocs.org/#getting-started) is used to convert Markdown files (*.md) into static html and [is configured](mkdocs.yml) to use [Mkdocs-material](https://squidfunk.github.io/mkdocs-material/) theme.
