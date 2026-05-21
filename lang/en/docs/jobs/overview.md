@@ -38,7 +38,7 @@ Jobs can collectively be grouped together into [Sets](
 ### [Explorer]({{ guide_url }}/jobs/ui/explorer/)
 
 Jobs Explorer is another specific implementation of the [Explorer]({{ guide_url }}/entities-general/ui/explorer/) component and is explained [in this page](
-ui/explorer.md).
+{{ guide_url }}/jobs/ui/explorer/).
 
 ### [Designer]({{ guide_url }}/jobs-designer/overview/)
 
@@ -52,7 +52,7 @@ of Jobs.
 ## [Actions]({{ guide_url }}/jobs/actions/overview/)
 
 Some actions pertain specifically to Jobs, and are introduced [in this page](
-actions/overview.md).
+{{ guide_url }}/jobs/actions/overview/).
 
 ## Screenshare video
 

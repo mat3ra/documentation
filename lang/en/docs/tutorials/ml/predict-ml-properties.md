@@ -1,7 +1,7 @@
 [//]: # (This tutorial is deprecated)
 # Machine Learning: Predict New Properties
 
-In the present tutorial page, we will explore how the results of the [Train Model](train-ml-model.md) derived from [Machine Learning (ML)]({{ reference_url }}/models-directory/machine-learning/overview/) can be used to predict new material [properties]({{ reference_url }}/properties/overview/) by [linear regression]({{ reference_url }}/methods-directory/linear-regression/overview/), such as implemented by the [Exabyte Machine Learning Engine](../../software-directory/machine-learning/exabyte/overview.md).
+In the present tutorial page, we will explore how the results of the [Train Model](train-ml-model.md) derived from [Machine Learning (ML)]({{ reference_url }}/models-directory/machine-learning/overview/) can be used to predict new material [properties]({{ reference_url }}/properties/overview/) by [linear regression]({{ reference_url }}/methods-directory/linear-regression/overview/).
 
 In the present example, we consider the [Electronic Band Gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) calculated in the [previous tutorial](train-ml-model.md) for the case of Si/Ge-based materials, however the general approach exposed herein can work for many different **target properties**.
 

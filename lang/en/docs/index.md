@@ -52,10 +52,10 @@ New to Mat3ra.com? Start here:
 - **Data locations and quotas**: [Data on disk: directories](data-on-disk/directories.md) ·
   [Quotas](data-on-disk/quotas.md)
 - **Clusters**: [Overview](infrastructure/clusters/overview.md) ·
-  [Cluster-101 (free tier)](infrastructure/clusters/cluster-101.md) ·
+  [Cluster-101 (free tier)]({{ dev_url }}/infrastructure/clusters/cluster-101/) ·
   [AWS](infrastructure/clusters/aws.md) · [Azure](infrastructure/clusters/azure.md) ·
   [GCP](infrastructure/clusters/google.md)
-- **Materials**: [Overview](materials/overview.md) · [Import from files](materials/import-from-files.md)
+- **Materials**: [Overview](materials/overview.md) · [Import from files](materials/actions/import.md)
 - **Models**: [DFT overview](models-directory/dft/overview.md)
 - **Properties**: [Overview](properties/overview.md) · [Band structure](properties-directory/non-scalar/bandstructure.md)
 - **Workflows**: [Overview](workflows/overview.md) · [Designer](workflow-designer/overview.md)

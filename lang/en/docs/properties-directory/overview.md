@@ -6,7 +6,7 @@ In each case, we also explain how such results are presented to the user under t
 
 Illustrations of the [JSON schemas](../properties/data/overview.md) and associated examples for each property discussed in the present section are contained [in this page](../properties/data/list.md), and referenced at the end of each property's dedicated description.
 
-At the top of each property's page, we include colored badges referring to the [property classification](../properties/classification/overview.md), distinguishing between [scalar and non-scalar](../properties/classification#by-data-type) types and between the different types of [Materials Properties](../properties/classification/materials.md).
+At the top of each property's page, we include colored badges referring to the [property classification](../properties/classification/overview.md), distinguishing between [scalar and non-scalar](../properties/classification/general.md#by-data-type) types and between the different types of [Materials Properties](../properties/classification/materials.md).
 
 ## Materials Properties
 

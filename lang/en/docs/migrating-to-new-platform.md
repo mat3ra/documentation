@@ -17,7 +17,7 @@ through the end of 2025. See the timeline below.
 
 A new always-available free tier via `cluster-101`. Read
 more: [Free Tier and Community Access](other/community-programs.md)
-and [Cluster-101](infrastructure/clusters/cluster-101.md).
+and [Cluster-101]({{ dev_url }}/infrastructure/clusters/cluster-101/).
 
 ### New cloud infrastructure setup
 

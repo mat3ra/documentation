@@ -4,7 +4,7 @@ We apply **storage quotas** to both the [directories](directories.md) on cluster
 
 ## Conventions
 
-The quotas are set per [cluster](../infrastructure/clusters) and are always **hard-set** (as opposed to soft quotas) [^1]. Once the quota limit is attained on a certain [cluster](../infrastructure/clusters), the user will be prevented from saving and storing any additional data on it.
+The quotas are set per [cluster](../infrastructure/clusters/overview.md) and are always **hard-set** (as opposed to soft quotas) [^1]. Once the quota limit is attained on a certain [cluster](../infrastructure/clusters/overview.md), the user will be prevented from saving and storing any additional data on it.
 
 !!! note "Service levels contain *compound* quotas"
     The explanation of the service levels [in this page]({{ guide_url }}/pricing/service-levels/) contains compound values for the disk quota for all accessible clusters. Depending on user demands we can allocate more or less quota per cluster.

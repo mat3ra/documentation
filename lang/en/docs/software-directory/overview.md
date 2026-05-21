@@ -31,7 +31,7 @@ The platform currently offers the choice between the following software engines 
 
 ## Machine Learning
 
-We have a proof-of-concept support for [machine learning]({{ reference_url }}/models-directory/machine-learning/overview/) through [Exabyte-ML](machine-learning/exabyte/overview.md). This application is accessible via the [subworkflow editor interface](../workflow-designer/subworkflow-editor/overview.md) only.
+We have a proof-of-concept support for [machine learning]({{ reference_url }}/models-directory/machine-learning/overview/). This application is accessible via the [subworkflow editor interface](../workflow-designer/subworkflow-editor/overview.md) only.
 
 ## Analysis Tools
 

@@ -1,6 +1,6 @@
 # Machine Learning Tutorials
 
-In the present section, we introduce the basic functionality of the [Machine Learning (ML)]({{ reference_url }}/models-directory/machine-learning/overview/) operations supported on our platform, implemented through the [Exabyte Machine Learning Engine](../../software-directory/machine-learning/exabyte/overview.md) component of our [software]({{ reference_url }}/software/classification/machine-learning/).
+In the present section, we introduce the basic functionality of the [Machine Learning (ML)]({{ reference_url }}/models-directory/machine-learning/overview/) operations supported on our platform, as a component of our [software]({{ reference_url }}/software/classification/machine-learning/).
 
 ## Train ML Model
 
@@ -22,4 +22,4 @@ deepmd-mlff-with-espresso-cp-and-lammps.md).
 
 Run MatterSim and other Python-based Machine Learning Models for predicting
 various material properties -
-[Running MatterSim and other Python-based Machine Learning Models](mattersim.md).
+[Running MatterSim and other Python-based Machine Learning Models](run-mlff-python-workflows-mattersim.md).

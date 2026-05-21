@@ -52,7 +52,7 @@ Important [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/)
 Advanced users connecting to our CLI may [submit jobs directly through it](../jobs-cli/overview.md), through the use of [Batch Scripts](../jobs-cli/batch-scripts/overview.md). The user can read more in the following pages.
 
 - [job submission via cli: main explanation](../jobs-cli/overview.md)
-- [job submission via cli: tutorial](../tutorials/cli-job)
+- [job submission via cli: tutorial](../tutorials/jobs-cli/job-cli-example.md)
 - [batch script templates](../jobs-cli/batch-scripts/overview.md)
 - [modules environment](../cli/modules.md)
 

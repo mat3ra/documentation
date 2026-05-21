@@ -78,7 +78,7 @@ It is often convenient to pass the `-s` (start) and `-e` (end) flags to the `sta
 
 ## Detailed List of Jobs
 
-Information about all jobs submitted by the user to date can be retrieved as explained [here](../../jobs-cli/put-link).
+Information about all jobs submitted by the user to date can be retrieved as explained [here](../../jobs-cli/overview.md).
 
 ## Storage Quota
 

@@ -1,6 +1,6 @@
 # Create New Job
 
-Here, we explain how to assemble the necessary input files for [job submission via the CLI](../overview.md) using some pre-defined examples. The reader is referred to the [dedicated Tutorial](../../tutorials/) on this topic for a more comprehensive description and examples on how such input files can be customized by the user.
+Here, we explain how to assemble the necessary input files for [job submission via the CLI](../overview.md) using some pre-defined examples. The reader is referred to the [dedicated Tutorial](../../tutorials/overview.md) on this topic for a more comprehensive description and examples on how such input files can be customized by the user.
 
 ## General Procedure
 
