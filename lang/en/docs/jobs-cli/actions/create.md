@@ -4,14 +4,14 @@ Here, we explain how to assemble the necessary input files for [job submission v
 
 ## General Procedure
 
-A new [simulation Job](../../jobs/overview.md) can be created by assembling the necessary **simulation input files**, as well as the **[Batch Script](../batch-scripts/overview.md)** associated with the job, under the same [working folder](../batch-scripts/directories.md).
+A new [simulation Job]({{ reference_url }}/jobs/overview/) can be created by assembling the necessary **simulation input files**, as well as the **[Batch Script](../batch-scripts/overview.md)** associated with the job, under the same [working folder](../batch-scripts/directories.md).
  
-By our convention, this working folder must be located under the [cluster home directory](../../infrastructure/clusters/directories.md) of the [computing cluster](../../infrastructure/clusters/overview.md) being considered for job execution.
+By our convention, this working folder must be located under the [cluster home directory]({{ dev_url }}/infrastructure/clusters/directories/) of the [computing cluster]({{ dev_url }}/infrastructure/clusters/overview/) being considered for job execution.
 
 !!! note "Choose walltime carefully"
-    The [Walltime](../../infrastructure/compute/parameters.md#time-limit) of the simulation is defined in the [Batch Script](../batch-scripts/overview.md) through its corresponding [directive](../batch-scripts/directives.md), and should be chosen carefully for a number of reasons.
+    The [Walltime]({{ dev_url }}/infrastructure/compute/parameters/#time-limit) of the simulation is defined in the [Batch Script](../batch-scripts/overview.md) through its corresponding [directive](../batch-scripts/directives.md), and should be chosen carefully for a number of reasons.
     
-    1. Jobs that require long walltime will [reserve the corresponding balance](../../accounts/balance.md#reserved-balance), and thus prevent other jobs from starting.
+    1. Jobs that require long walltime will [reserve the corresponding balance]({{ reference_url }}/accounts/balance/#reserved-balance), and thus prevent other jobs from starting.
     2. When not enough walltime is allocated, the job may not finish on time, resulting in an erroneous output. 
     3. The user is advised to [submit a support ticket](../../ui/support.md) if a walltime adjustment is needed during the course of a long job execution. Our support staff will do their best to accommodate the necessary desired changes, depending on the current computing load and business hours.
 
@@ -30,4 +30,4 @@ cd job-examples/ && cp -r ~/job_script_templates/espresso .
 cd espresso && qsub job.pbs
 ```
 
-The above case [submits](submit.md) the sample Quantum ESPRESSO job into the [queue](../../infrastructure/resource/queues.md) of the [resource manager](../../infrastructure/resource/overview.md) for scheduling its execution. You can view its status with the `qstat` command described [here](check-status.md).
+The above case [submits](submit.md) the sample Quantum ESPRESSO job into the [queue]({{ dev_url }}/infrastructure/resource/queues/) of the [resource manager]({{ dev_url }}/infrastructure/resource/overview/) for scheduling its execution. You can view its status with the `qstat` command described [here](check-status.md).

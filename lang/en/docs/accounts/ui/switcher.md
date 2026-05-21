@@ -8,12 +8,11 @@ is offered at the top of the [right-hand menu sidebar](
 ## Currently Logged-in Account
 
 The name and type of the account that the user is currently logged into is
-displayed in [header](../../ui/header-footer.md).
+displayed in [header]({{ guide_url }}/ui/header-footer/).
 
 ## View My Accounts
 
-If the user is a member of, an [organization](
-../../collaboration/organizations/overview.md), the "My Accounts" list will
+If the user is a member of, an [organization]({{ reference_url }}/collaboration/organizations/overview/), the "My Accounts" list will
 contain other accounts, besides his/her personal one. This list is presented
 using an [Explorer-type interface](../../entities-general/ui/explorer.md), with
 its associated layout and features.

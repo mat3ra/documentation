@@ -4,15 +4,15 @@ The final structure represents the [crystal structure](../../materials/classific
 
 ## Relevance for Structural Relaxations
 
-The visualization of the final structure is especially resourceful in the context of simulation runs that include a preliminary [structural relaxation](../../workflows/addons/structural-relaxation.md) step. In this case, it becomes important to understand how the material [originally defined](../../jobs-designer/materials-tab.md) during [Job creation](../../jobs-designer/overview.md) was structurally altered by the relaxation algorithms.
+The visualization of the final structure is especially resourceful in the context of simulation runs that include a preliminary [structural relaxation](../../workflows/addons/structural-relaxation.md) step. In this case, it becomes important to understand how the material [originally defined]({{ guide_url }}/jobs-designer/materials-tab/) during [Job creation]({{ guide_url }}/jobs-designer/overview/) was structurally altered by the relaxation algorithms.
 
 ## Example
 
-The final structure can be inspected under an instance of the [Materials Viewer interface](../../materials/ui/viewer.md) within the [Results Tab](../../jobs/ui/results-tab.md) of the corresponding [Job Viewer](../../jobs/ui/viewer.md). 
+The final structure can be inspected under an instance of the [Materials Viewer interface]({{ guide_url }}/materials/ui/viewer/) within the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of the corresponding [Job Viewer]({{ guide_url }}/jobs/ui/viewer/). 
 
 We refer to this interface as the "Final Structure Viewer" in this particular context.
 
-Below we show an example of a material structure as it appears under the Final Structure Viewer (demarcated in red), following a relaxation run performed on it using [VASP](../../software-directory/modeling/vasp/overview.md). 
+Below we show an example of a material structure as it appears under the Final Structure Viewer (demarcated in red), following a relaxation run performed on it using [VASP]({{ guide_url }}/software-directory/modeling/vasp/overview/). 
 
 The viewer is shown in the general context of the other relevant computed material [properties](../overview.md), displayed together in their own panel.
 

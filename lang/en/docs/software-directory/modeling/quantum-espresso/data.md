@@ -1,6 +1,6 @@
 # Quantum ESPRESSO: Structured Data
 
-We present in this page the [structured representations](../../../data-structured/overview.md) for the [Quantum ESPRESSO modeling application](overview.md), and for its [specific compute parameters](compute-parameters.md).
+We present in this page the [structured representations]({{ reference_url }}/data-structured/overview/) for the [Quantum ESPRESSO modeling application](overview.md), and for its [specific compute parameters](compute-parameters.md).
 
 ## Application
 

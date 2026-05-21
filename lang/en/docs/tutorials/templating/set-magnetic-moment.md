@@ -1,3 +1,6 @@
+---
+render_macros: false
+---
 # Setting Magnetic Moment on Atoms by Specie
 
 ## Introduction
@@ -14,7 +17,8 @@ MAGMOM = {% spaceless %}
 {% set poscar_string = input.POSCAR|e("js") %}
 {% set coordinates = poscar_string.split('direct')[1] %}
 {% set sign = 1 %}
-{% for line in coordinates.split("\u000A") %}
+{% for line in coordinates.split("
+") %}
   {% if loop.index0 > 0 %}
     {% set trimmed_line =  line.trim() | replace(' +(?= )','','g') %}
     {% set element = trimmed_line.split(' ')[3] %}
@@ -25,7 +29,8 @@ MAGMOM = {% spaceless %}
     {% endif magnetic_elements.includes(element) %}
     {% if is_magnetic == 0 %}{{' '}}{{ 0 }}{% endif %}
   {% endif loop.index0 %}
-{% endfor line in coordinates.split("\u000A") %}
+{% endfor line in coordinates.split("
+") %}
 {% endspaceless %}
 ```
 
@@ -34,11 +39,11 @@ Each line number in the above block of statements is further explained in the en
 
 ### 1. Define MAGMOM Variable
 
-We begin by defining the "MAGMOM" variable [^1], which will be included in the input file for a [VASP](../../software-directory/modeling/vasp/overview.md) computation, within the "INCAR" input parameters file associated with this code. `{% spaceless %}` flag is explained [here](../../workflows/templating/swig.md#spaceless)
+We begin by defining the "MAGMOM" variable [^1], which will be included in the input file for a [VASP](../../software-directory/modeling/vasp/overview.md) computation, within the "INCAR" input parameters file associated with this code. `{% spaceless %}` flag is explained [here]({{ reference_url }}/workflows/templating/swig/#spaceless)
 
 ### 2. Define Ferromagnetic Elements
 
-In the second line, we [set](../../workflows/templating/jinja.md#variables-assignment) the ferromagnetic elements, that need to have magnetic moments attributed to them, to be constituted of the following list: Vanadium (V), Chromium (Cr), Manganese (Mn), Iron (Fe), Cobalt (Co), and Nickel (Ni).
+In the second line, we [set]({{ reference_url }}/workflows/templating/jinja/#variables-assignment) the ferromagnetic elements, that need to have magnetic moments attributed to them, to be constituted of the following list: Vanadium (V), Chromium (Cr), Manganese (Mn), Iron (Fe), Cobalt (Co), and Nickel (Ni).
 
 ### 3. Read POSCAR Content
 
@@ -50,9 +55,9 @@ The lines containing the atomic coordinates and element chemical symbols within 
 
 ### 5-17. Set Magnetic Moments
 
-The list of atomic coordinates defined previously is then looped over through the use of a [for loop](../../workflows/templating/jinja.md#for-loops).
+The list of atomic coordinates defined previously is then looped over through the use of a [for loop]({{ reference_url }}/workflows/templating/jinja/#for-loops).
 
-The element symbol indicated at the end of each coordinate line is isolated in turn (line 8) and assigned to the variable "element", which is checked against the aforementioned list of ferromagnetic elements (line 10) through a [conditional statement](../../workflows/templating/jinja.md#conditionals). If a positive match is detected, this element is assigned a magnetic moment value of +/- 5 in an alternating order (line 11). Otherwise, in case the element is found to be non-ferromagnetic, it is given a magnetic moment of zero (line 15).
+The element symbol indicated at the end of each coordinate line is isolated in turn (line 8) and assigned to the variable "element", which is checked against the aforementioned list of ferromagnetic elements (line 10) through a [conditional statement]({{ reference_url }}/workflows/templating/jinja/#conditionals). If a positive match is detected, this element is assigned a magnetic moment value of +/- 5 in an alternating order (line 11). Otherwise, in case the element is found to be non-ferromagnetic, it is given a magnetic moment of zero (line 15).
 
 ### 18. Return Final Output
 

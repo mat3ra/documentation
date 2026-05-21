@@ -7,7 +7,7 @@
 The purpose of this study was to estimate the extent to which a calculation for a single material can be efficiently scaled.
 
 !!! note "Hardware configuration"
-    Amazon Web Services with the hardware configuration explained [here](../infrastructure/clusters/aws.md) were used for benchmarking. Lowest latency Ethernet network interconnect option was chosen.
+    Amazon Web Services with the hardware configuration explained [here]({{ dev_url }}/infrastructure/clusters/aws/) were used for benchmarking. Lowest latency Ethernet network interconnect option was chosen.
 
 ## Model and Method
 

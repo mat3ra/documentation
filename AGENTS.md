@@ -22,6 +22,107 @@ prose style and formatting respectively.
   Prefer `.webp`, keep each file below 1 MB, and use natural-language
   hyphen-case names.
 
+## Multi-Site Architecture
+
+The documentation is split into four MkDocs sites, each with its own
+config file and URL prefix:
+
+| Site               | Config               | URL path      | Landing page            |
+| ------------------ | -------------------- | ------------- | ----------------------- |
+| Top-level (legacy) | `mkdocs.yml`         | `/`           | `index.md`              |
+| Tutorials / Guide  | `mkdocs-guide.yml`   | `/guide/`     | `index-guide.md`        |
+| Concepts/Reference | `mkdocs-concepts.yml`| `/reference/` | `index-concepts.md`     |
+| Developer Docs     | `mkdocs-dev.yml`     | `/dev/`       | `index-dev.md`          |
+
+Key points:
+
+- The top-level site (`mkdocs.yml`) contains the full navigation and
+  acts as a hub. Its `index.md` has clickable cards linking to the three
+  sub-sites.
+- Each sub-site config inherits common settings (theme, CSS, JS) but
+  defines its own `nav:`, `site_name`, and `site_url`.
+- Each sub-site has a `← All Docs` entry at the top of its `nav:` that
+  links back to the root (`/`). This is a hardcoded absolute path — Jinja2
+  macros do not render inside `nav:` definitions.
+
+### Cross-Site Links
+
+Links between sub-sites use Jinja2 macro variables defined in `extra:`
+of each config:
+
+```yaml
+extra:
+    guide_url: https://docs.mat3ra.com/guide
+    reference_url: https://docs.mat3ra.com/reference
+    dev_url: https://docs.mat3ra.com/dev
+```
+
+In Markdown, use `{{ guide_url }}`, `{{ reference_url }}`, or
+`{{ dev_url }}` to reference other sub-sites. The macros plugin
+(`render_by_default: true`) resolves these at build time.
+
+Helper scripts in `scripts/links/`:
+
+- `find-cross-site-links.py` — detect which pages contain cross-site refs.
+- `fix-broken-cross-links.py` — repair broken inter-site links.
+- `rewrite-cross-site-links.py` — convert hardcoded URLs to macros.
+- `urls-to-macros.py` — bulk convert `https://docs.mat3ra.com/guide/…`
+  to `{{ guide_url }}/…`.
+
+### Building and Serving Locally
+
+Use `scripts/serve-all.sh` to build and serve all four sites:
+
+```bash
+# Serve on default port 8000
+./scripts/serve-all.sh
+
+# Serve on a specific port
+PORT=8888 ./scripts/serve-all.sh
+
+# Build only (no server)
+./scripts/serve-all.sh --build
+```
+
+The script:
+1. Creates temporary local config overrides (`.local-mkdocs*.yml`) that
+   rewrite cross-site URLs to `localhost`.
+2. Builds all four sites into `site/`, `site/guide/`, `site/reference/`,
+   `site/dev/`.
+3. Fixes sub-site homepages (copies from `index-<site>/index.html` to
+   the root of each sub-site).
+4. Starts `python -m http.server` on the chosen port.
+5. Cleans up temp configs on exit.
+
+**Do not** use `mkdocs serve` for multi-site work — it only serves one
+site at a time.
+
+### Config Synchronization
+
+When adding a new CSS or JS file, plugin, or theme setting, it must be
+added to **all four** config files:
+
+- `mkdocs.yml`
+- `mkdocs-guide.yml`
+- `mkdocs-concepts.yml`
+- `mkdocs-dev.yml`
+
+## Homepage Cards (CSS)
+
+The top-level `index.md` uses HTML cards inside a `<div class="section-cards">`.
+Styles are in `lang/en/docs/extra/css/general.css`.
+
+Important CSS notes:
+
+- **Do not** use the class name `.grid` — MkDocs Material reserves it for
+  its own grid system and will override the styles.
+- MkDocs wraps inline `<a>` tags inside `<p>` elements. The CSS targets
+  `.section-cards > p` (margin: 0, display: flex) to make `<p>` a
+  transparent grid item, then styles `a.grid-card` with flexbox for
+  equal-height cards.
+- Cards use `display: flex; flex-direction: column; flex: 1` to stretch
+  to equal height within the CSS Grid row.
+
 ## Writing Style (from `WRITING-STYLE.md`)
 
 `WRITING-STYLE.md` is authoritative. Key rules:
@@ -136,6 +237,17 @@ Then, search for `MatterSim` and click **Copy** ...
   3. the entry in `mkdocs.yml`.
 - New images go under `images/<section>/` as `.webp`, hyphen-case, under
   1 MB.
+- Use `tmp/` for throwaway test scripts (Playwright, etc.). This
+  directory is git-ignored.
+
+## GitHub Source Stats
+
+The MkDocs Material theme shows repository stars, forks, and latest
+tag in the header via its built-in `source` component. This relies on
+client-side JavaScript that fetches from `api.github.com`. When
+rate-limited (common on localhost), the stats silently disappear. This
+is expected behavior — they work in production. Do **not** add custom
+JavaScript workarounds for this; the native mechanism is sufficient.
 
 ## Pre-Submit Checklist
 
@@ -147,4 +259,7 @@ Then, search for `MatterSim` and click **Copy** ...
 - [ ] Acronyms are introduced on first use.
 - [ ] All internal links and image paths are relative.
 - [ ] `mkdocs.yml` is updated if pages were added, renamed, or moved.
+- [ ] Changes to CSS/JS/plugins are reflected in **all four** config files.
+- [ ] Cross-site links use `{{ guide_url }}`, `{{ reference_url }}`, or
+      `{{ dev_url }}` macros — not hardcoded URLs.
 - [ ] Only the files the user asked about were modified.

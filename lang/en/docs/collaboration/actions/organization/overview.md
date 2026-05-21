@@ -1,12 +1,12 @@
 # Organizational Actions
     
-A  set of actions can be performed by the [Owner or Administrators](../../organizations/roles.md) to manage their [Organization](../../organizations/overview.md). They are listed below with links to their respective documentation pages:
+A  set of actions can be performed by the [Owner or Administrators]({{ reference_url }}/collaboration/organizations/roles/) to manage their [Organization]({{ reference_url }}/collaboration/organizations/overview/). They are listed below with links to their respective documentation pages:
 
 ## [Create Organization](create.md)
 
 The user with administrative rights can follow [these instructions](create.md) to create a new Organization. 
 
-Please [contact us](../../../ui/support.md) if you would like to delete an Organization that you own.
+Please [contact us]({{ guide_url }}/ui/support/) if you would like to delete an Organization that you own.
 
 ## [Add or Remove Members](add-remove-member.md)
 
@@ -18,9 +18,9 @@ New Administrators can be appointed or revoked through [this procedure](make-rev
 
 ## [Create or Delete Teams](create-delete-team.md)
 
-Finally, [Teams](../../organizations/teams.md) can be created or deleted [as follows](create-delete-team.md).
+Finally, [Teams]({{ reference_url }}/collaboration/organizations/teams/) can be created or deleted [as follows](create-delete-team.md).
 
 The following [Team-related actions](../team/overview.md) are also available.
 
 !!!warning "Warning: content with restricted access"
-    The information contained under the present page is relevant for [Owners or Administrators](../../organizations/roles.md), since only they have sufficient rights to make the appropriate changes.
+    The information contained under the present page is relevant for [Owners or Administrators]({{ reference_url }}/collaboration/organizations/roles/), since only they have sufficient rights to make the appropriate changes.

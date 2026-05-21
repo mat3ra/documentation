@@ -3,11 +3,11 @@
 The Login node constitutes the main **access point** to the our infrastructure, and is organized according to the directory structure introduced below.
 
 !!!warning "Transit via Login Node"
-    We can exceptionally concede the ability to connect directly to the [cluster](../clusters/overview.md) for advanced users. A special permission needs to be [requested](../../ui/support.md).
+    We can exceptionally concede the ability to connect directly to the [cluster](../clusters/overview.md) for advanced users. A special permission needs to be [requested]({{ guide_url }}/ui/support/).
     
-## [Connection Options](../../remote-connection/overview.md)
+## [Connection Options]({{ guide_url }}/remote-connection/overview/)
 
-We introduce the different remote connection options separately [here](../../remote-connection/overview.md).
+We introduce the different remote connection options separately [here]({{ guide_url }}/remote-connection/overview/).
 
 ## [Directory Structure](directories.md)
 

@@ -1,10 +1,10 @@
 # Service Levels
 
-The current data about the [Service Levels](../service-levels.md), can be reviewed for the present Account under the `Service Level` tab button  <i class="zmdi zmdi-layers zmdi-hc-border"></i> of the Account Profile page. 
+The current data about the [Service Levels]({{ reference_url }}/accounts/service-levels/), can be reviewed for the present Account under the `Service Level` tab button  <i class="zmdi zmdi-layers zmdi-hc-border"></i> of the Account Profile page. 
 
 ## Balance and Storage Quota Indicators
 
-General information about both the available (under "Current") and Reserved [Account Balance](../balance.md) on the left, and general information about the consumed (again under "Current") and the total limit for the [Storage Quota](../quota.md) on the right.
+General information about both the available (under "Current") and Reserved [Account Balance]({{ reference_url }}/accounts/balance/) on the left, and general information about the consumed (again under "Current") and the total limit for the [Storage Quota]({{ reference_url }}/accounts/quota/) on the right.
 
 > Note: under the present version of our platform, this latter storage quota information refers exclusively to the status of the supercomputing node currently set as the default one, and NOT to the combined storage quota from all available nodes.
 
@@ -20,7 +20,7 @@ The service level that has currently been opted-for is greyed-out and has the la
 
 ### Pricing and Service Features
 
-For more information about the services offered under each different level and the associated prices, please consult the [Service Levels Pricing page](../../pricing/service-levels.md). Further explanation about what the various services imply in terms of functionality can be retrieved [here](../service-levels.md). Higher pricing requisites naturally trigger greater levels of service and associated benefits.
+For more information about the services offered under each different level and the associated prices, please consult the [Service Levels Pricing page]({{ guide_url }}/pricing/service-levels/). Further explanation about what the various services imply in terms of functionality can be retrieved [here]({{ reference_url }}/accounts/service-levels/). Higher pricing requisites naturally trigger greater levels of service and associated benefits.
 
 ### Example Appearance
 

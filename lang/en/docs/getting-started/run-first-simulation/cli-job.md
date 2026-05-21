@@ -1,6 +1,6 @@
 # Jobs via Command-line Interface
 
-The user may want more control over the [workflow execution](../../workflows/overview.md), or run a type of calculation we have yet to implement. For that purpose, we provide access to our platform through [Command Line Interface (CLI)](../../cli/overview.md), were [simulation Jobs](../../jobs/overview.md) can be executed.
+The user may want more control over the [workflow execution]({{ reference_url }}/workflows/overview/), or run a type of calculation we have yet to implement. For that purpose, we provide access to our platform through [Command Line Interface (CLI)](../../cli/overview.md), were [simulation Jobs]({{ reference_url }}/jobs/overview/) can be executed.
 
 Complete instructions on how to operate job submission via CLI can be found [in this section](../../jobs-cli/overview.md). We also provide a [tutorial](../../tutorials/jobs-cli/job-cli-example.md) dedicated to this topic, including on how to [retrieve and inspect](../../tutorials/jobs-cli/job-cli-example.md) the final results of the simulation.
 
@@ -10,9 +10,9 @@ We provide an an incorporated [Web Terminal](../../remote-connection/web-termina
 
 To use the former Web Terminal interface, open the [Account Menu](../../ui/account-menu.md) and click `Terminal`.
 
-The simulations that have been submitted through the main [Web Interface](../../ui/overview.md) are under the `data/<username>` sub-directory under the main [Login Home directory](../../infrastructure/login/directories.md).
+The simulations that have been submitted through the main [Web Interface](../../ui/overview.md) are under the `data/<username>` sub-directory under the main [Login Home directory]({{ dev_url }}/infrastructure/login/directories/).
 
-Our [queuing system](../../infrastructure/resource/queues.md) is controlled through the use of [batch scripts](../../jobs-cli/batch-scripts/overview.md). The reader can find batch script templates under the [job templates directory](../../jobs-cli/batch-scripts/directories.md#job-templates).
+Our [queuing system]({{ dev_url }}/infrastructure/resource/queues/) is controlled through the use of [batch scripts](../../jobs-cli/batch-scripts/overview.md). The reader can find batch script templates under the [job templates directory](../../jobs-cli/batch-scripts/directories.md#job-templates).
 
 ## Create job
 
@@ -38,10 +38,10 @@ The user may need to edit the batch script if he/she wants to use a [simulation 
 
 In addition, if the user would like to alter runtime environment for the calculation, can may consult [modules environment](../../cli/environment.md) section of our documentation.
 
-Lastly, the options for choosing the queue to submit the job can be found [here](../../infrastructure/resource/queues.md).
+Lastly, the options for choosing the queue to submit the job can be found [here]({{ dev_url }}/infrastructure/resource/queues/).
 
 !!!tip "Accounting Project Parameter"
-    In order to specify a [project](../../jobs/projects.md) that the job should belong to and should be [charged upon](../../accounts/payments-charges.md), the instructions contained [in this page](../../jobs-cli/accounting.md) should be followed.
+    In order to specify a [project]({{ reference_url }}/jobs/projects/) that the job should belong to and should be [charged upon]({{ reference_url }}/accounts/payments-charges/), the instructions contained [in this page](../../jobs-cli/accounting.md) should be followed.
 
 In the present tutorial we will proceed with the default submission script template, without modification.
 

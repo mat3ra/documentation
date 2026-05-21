@@ -1,6 +1,6 @@
 # Common Components
 
-Some User Interface components are shared between entities of different [types](../overview.md): Entity Explorer, Designer and Viewer.
+Some User Interface components are shared between entities of different [types]({{ reference_url }}/entities-general/overview/): Entity Explorer, Designer and Viewer.
 
 ## [Access Points](../../accounts/ui/profile-page.md)
 
@@ -10,9 +10,9 @@ The image below highlights their **access points** (or click triggers), within t
 
 ## [1. Explorer](../../entities-general/ui/explorer.md)
 
-The "Explorer" affords for the visualization of the [Entity Collections](../../accounts/collections.md). It can also be used to perform [actions](../actions/overview.md) upon the items that they contain. This component is described in the [following page](../../entities-general/ui/explorer.md).
+The "Explorer" affords for the visualization of the [Entity Collections]({{ reference_url }}/accounts/collections/). It can also be used to perform [actions](../actions/overview.md) upon the items that they contain. This component is described in the [following page](../../entities-general/ui/explorer.md).
 
-Explorer for each entity type can be accessed through the corresponding [tab](../../ui/specific/tabs-navigator.md), as depicted in the image above.
+Explorer for each entity type can be accessed through the corresponding [tab]({{ guide_url }}/ui/specific/tabs-navigator/), as depicted in the image above.
 
 ## [2. Designer](../../entities-general/ui/designer.md)
 

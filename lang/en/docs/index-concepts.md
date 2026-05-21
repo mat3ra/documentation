@@ -3,8 +3,8 @@
 This site explains the concepts, data models, and scientific methods underlying the Mat3ra platform. It is organized around the platform's core abstractions — entities, models, methods, software, and properties.
 
 !!!tip "Other documentation sites"
-    For step-by-step tutorials and tool walkthroughs, see the [Platform Guide](https://docs.mat3ra.com/guide/).
-    For developer-focused content (REST API, CLI, infrastructure), see the [Developer Guide](https://docs.mat3ra.com/dev/).
+    For step-by-step tutorials and tool walkthroughs, see the [Platform Guide]({{ guide_url }}/).
+    For developer-focused content (REST API, CLI, infrastructure), see the [Developer Guide]({{ dev_url }}/).
 
 
 ## Core platform concepts
@@ -55,11 +55,11 @@ Physical models and computational methods used for simulations.
 Simulation engines and scripting environments available on the platform.
 
 - [Software overview](software/overview.md) — components, classification
-- [Quantum ESPRESSO](software-directory/modeling/quantum-espresso/overview.md)
-- [VASP](software-directory/modeling/vasp/overview.md)
-- [LAMMPS](software-directory/modeling/lammps.md), [CP2K](software-directory/modeling/cp2k.md), [Gromacs](software-directory/modeling/gromacs.md), [NWChem](software-directory/modeling/nwchem.md)
-- [Python](software-directory/scripting/python/overview.md), [Shell](software-directory/scripting/shell/overview.md), [Jupyter Lab](software-directory/scripting/jupyter-lab/overview.md)
-- [Python ML](software-directory/machine-learning/python-ml/overview.md), [TensorFlow](software-directory/machine-learning/tensorflow.md)
+- [Quantum ESPRESSO]({{ guide_url }}/software-directory/modeling/quantum-espresso/overview/)
+- [VASP]({{ guide_url }}/software-directory/modeling/vasp/overview/)
+- [LAMMPS]({{ guide_url }}/software-directory/modeling/lammps/), [CP2K]({{ guide_url }}/software-directory/modeling/cp2k/), [Gromacs]({{ guide_url }}/software-directory/modeling/gromacs/), [NWChem]({{ guide_url }}/software-directory/modeling/nwchem/)
+- [Python]({{ guide_url }}/software-directory/scripting/python/overview/), [Shell]({{ guide_url }}/software-directory/scripting/shell/overview/), [Jupyter Lab]({{ guide_url }}/software-directory/scripting/jupyter-lab/overview/)
+- [Python ML]({{ guide_url }}/software-directory/machine-learning/python-ml/overview/), [TensorFlow]({{ guide_url }}/software-directory/machine-learning/tensorflow/)
 
 
 ## Properties

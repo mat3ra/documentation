@@ -1,6 +1,6 @@
 # Machine Learning Tutorials
 
-In the present section, we introduce the basic functionality of the [Machine Learning (ML)](../../models-directory/machine-learning/overview.md) operations supported on our platform, implemented through the [Exabyte Machine Learning Engine](../../software-directory/machine-learning/exabyte/overview.md) component of our [software](../../software/classification/machine-learning.md).
+In the present section, we introduce the basic functionality of the [Machine Learning (ML)]({{ reference_url }}/models-directory/machine-learning/overview/) operations supported on our platform, implemented through the [Exabyte Machine Learning Engine](../../software-directory/machine-learning/exabyte/overview.md) component of our [software]({{ reference_url }}/software/classification/machine-learning/).
 
 ## Train ML Model
 

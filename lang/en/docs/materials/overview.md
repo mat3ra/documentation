@@ -4,21 +4,21 @@ This section contains information about how we define, organize, store and inter
 
 ## User Interface
 
-### [Materials Explorer](ui/explorer.md)
+### [Materials Explorer]({{ guide_url }}/materials/ui/explorer/)
 
-The implementation of the [Explorer Interface](../entities-general/ui/explorer.md) for Materials is explained [here](ui/explorer.md). 
+The implementation of the [Explorer Interface]({{ guide_url }}/entities-general/ui/explorer/) for Materials is explained [here]({{ guide_url }}/materials/ui/explorer/). 
 
-### [Materials Designer](../materials-designer/overview.md)
+### [Materials Designer]({{ guide_url }}/materials-designer/overview/)
 
-**Materials Designer** is introduced [here](../materials-designer/overview.md), 
+**Materials Designer** is introduced [here]({{ guide_url }}/materials-designer/overview/), 
 
-### [Materials Viewer](ui/viewer.md)
+### [Materials Viewer]({{ guide_url }}/materials/ui/viewer/)
 
-The **Viewer** interface and its differences from Designer are highlighted [separately](ui/viewer.md).
+The **Viewer** interface and its differences from Designer are highlighted [separately]({{ guide_url }}/materials/ui/viewer/).
 
-## [Actions](actions/overview.md)
+## [Actions]({{ guide_url }}/materials/actions/overview/)
 
-The Actions section explains and provides visual examples of actions that users can perform on materials. These actions are introduced [in the following page](actions/overview.md).
+The Actions section explains and provides visual examples of actions that users can perform on materials. These actions are introduced [in the following page]({{ guide_url }}/materials/actions/overview/).
 
 ## [Data](data.md)
 

@@ -1,6 +1,6 @@
 # Materials Operations Tutorials
 
-In the present section, we introduce the most common operations supported on our platform for investigating and/or designing new [material structures](../../materials/overview.md).
+In the present section, we introduce the most common operations supported on our platform for investigating and/or designing new [material structures]({{ reference_url }}/materials/overview/).
 
 ## [Create Materials With VESTA under Remote Desktop](vesta-remote-desktop.md)
 

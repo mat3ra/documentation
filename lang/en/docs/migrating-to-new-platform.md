@@ -23,9 +23,9 @@ and [Cluster-101](infrastructure/clusters/cluster-101.md).
 
 As below:
 
-- Google Cloud Platform via `cluster-001` — see [GCP clusters](infrastructure/clusters/google.md)
-- Amazon Web Services via `cluster-002` — see [AWS clusters](infrastructure/clusters/aws.md)
-- Microsoft Azure via `cluster-003` — see [Azure clusters](infrastructure/clusters/azure.md)
+- Google Cloud Platform via `cluster-001` — see [GCP clusters]({{ dev_url }}/infrastructure/clusters/google/)
+- Amazon Web Services via `cluster-002` — see [AWS clusters]({{ dev_url }}/infrastructure/clusters/aws/)
+- Microsoft Azure via `cluster-003` — see [Azure clusters]({{ dev_url }}/infrastructure/clusters/azure/)
 - Updated set of instance types across providers, including larger CPU and GPU options
 
 ### Operating system upgrade
@@ -77,8 +77,8 @@ Application data stored in the platform database (entities, metadata, workflows,
 Runtime files and bulk data stored on disk do not migrate automatically. Due to updated infrastructure libraries and
 layout in the new environment, data migration from legacy cluster homes and shares is handled on a case-by-case basis.
 
-> Tip: Review data locations under [Data on Disk > Directory Structure](data-on-disk/directories.md)
-> and [Infrastructure > Login Node Directories](infrastructure/login/directories.md) to plan your migration.
+> Tip: Review data locations under [Data on Disk > Directory Structure]({{ dev_url }}/data-on-disk/directories/)
+> and [Infrastructure > Login Node Directories]({{ dev_url }}/infrastructure/login/directories/) to plan your migration.
 
 ---
 

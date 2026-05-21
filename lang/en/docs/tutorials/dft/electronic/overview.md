@@ -1,18 +1,18 @@
 # Electronic Properties Tutorials
 
-In the present section, we introduce the most common operations supported on our platform for performing **electronic structure** computations on materials, implemented through the [Density Functional Theory model](../../../models-directory/dft/overview.md).
+In the present section, we introduce the most common operations supported on our platform for performing **electronic structure** computations on materials, implemented through the [Density Functional Theory model]({{ reference_url }}/models-directory/dft/overview/).
 
 ## [Band Structure](band-structure.md)
 
-We review the procedure for computing the [electronic band structure](../../../properties-directory/non-scalar/bandstructure.md) of crystalline samples [in this tutorial](band-structure.md).
+We review the procedure for computing the [electronic band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) of crystalline samples [in this tutorial](band-structure.md).
 
 ## [Band Gap](band-gap.md)
 
-The calculation of the [band gap](../../../properties-directory/non-scalar/band-gaps.md) is explained [here](band-gap.md).
+The calculation of the [band gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) is explained [here](band-gap.md).
 
 ## [Density of States](density-of-states.md)
 
-We also offer instructions on how to evaluate the [electronic Density of States](../../../properties-directory/non-scalar/electronic-dos.md) under [this other tutorial page](density-of-states.md).
+We also offer instructions on how to evaluate the [electronic Density of States]({{ reference_url }}/properties-directory/non-scalar/electronic-dos/) under [this other tutorial page](density-of-states.md).
 
 ## [Charge Density Mesh](electronic-density-mesh.md)
 
@@ -20,7 +20,7 @@ Finally, we conclude our review of the electronic properties of materials by cov
 
 ## [Fermi Surface](fermi-surface.md)
 
-We review the steps involved in the calculation and visualization of the [Fermi Surface](../../../properties-directory/scalar/fermi-energy.md) of metallic crystalline samples such as copper [under this page](fermi-surface.md).
+We review the steps involved in the calculation and visualization of the [Fermi Surface]({{ reference_url }}/properties-directory/scalar/fermi-energy/) of metallic crystalline samples such as copper [under this page](fermi-surface.md).
 
 ## [HSE Calculations](hse-vasp-bg.md)
 
@@ -30,11 +30,11 @@ A similar Band Gap calculation with Quantum ESPRESSO is [available here](hse-qe-
 
 ## GW Calculations
 
-This [tutorial](gw-vasp-bg.md) illustrates how the results for the Band Gap can be more accurate through the use of the [GW Approximation](../../../models-directory/dft/notes.md#the-gw-approximation).
+This [tutorial](gw-vasp-bg.md) illustrates how the results for the Band Gap can be more accurate through the use of the [GW Approximation]({{ reference_url }}/models-directory/dft/notes/#the-gw-approximation).
 
 ## Valence Band Offset
 
-We show how to calculate the [valence band offset](../../../properties-directory/scalar/valence-band-offset.md) for a
+We show how to calculate the [valence band offset]({{ reference_url }}/properties-directory/scalar/valence-band-offset/) for a
 heterostructure using the potential lineup method in [this tutorial](valence-band-offset.md).
 
 ## DFT+U calculation and Hubbard Parameters

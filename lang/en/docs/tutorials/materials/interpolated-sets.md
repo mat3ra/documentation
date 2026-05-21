@@ -56,7 +56,7 @@ In the resulting "Generate Interpolated Set" dialog, the user is able to select 
 
 ### Adding Atomic Constraints
 
-**Atomic Constraints**, specifying the constraints on the movement of atoms, can be also be defined as explained [in this page](../../properties-directory/structural/basis.md#atomic-constraints). 
+**Atomic Constraints**, specifying the constraints on the movement of atoms, can be also be defined as explained [in this page]({{ reference_url }}/properties-directory/structural/basis/#atomic-constraints). 
 
 These constraints need only be added to the initial image before the creation of the interpolated set, under the [basis panel](../../materials-designer/source-editor/basis.md) of the [source editor](../../materials-designer/source-editor.md) in [Materials Designer](../../materials-designer/overview.md). Later, once the interpolated set is generated, the same constraints will be applied automatically to all other intermediate images.
 
@@ -74,7 +74,7 @@ Finally, **all** generated images should now be [saved](../../materials-designer
 
 ### Create an Ordered SET
 
-[These instructions](../../entities-general/actions/create-sets.md) demonstrate how to create a [Set](../../entities-general/sets.md) within the account-owned [collection](../../accounts/collections.md) of materials, which we shall name and refer to as "NEB SET". Following its creation, the type of this set should then be [changed](../../entities-general/actions/change-set-type.md) to **ordered**.
+[These instructions](../../entities-general/actions/create-sets.md) demonstrate how to create a [Set]({{ reference_url }}/entities-general/sets/) within the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials, which we shall name and refer to as "NEB SET". Following its creation, the type of this set should then be [changed](../../entities-general/actions/change-set-type.md) to **ordered**.
 
 ## Animations
 

@@ -56,23 +56,39 @@ monolithic build.
 | `mkdocs-concepts.yml` | Concepts & Reference | `docs.mat3ra.com/reference/` | 8002 |
 | `mkdocs-dev.yml` | Developer Guide | `docs.mat3ra.com/dev/` | 8003 |
 
-To build or serve an individual site:
+#### Serve a single site (quick editing)
 
 ```bash
 source .venv/bin/activate
-
-# Serve a specific site
 mkdocs serve -f mkdocs-guide.yml       # localhost:8001
 mkdocs serve -f mkdocs-concepts.yml    # localhost:8002
 mkdocs serve -f mkdocs-dev.yml         # localhost:8003
-
-# Build a specific site
-mkdocs build -f mkdocs-guide.yml
-mkdocs build -f mkdocs-concepts.yml
-mkdocs build -f mkdocs-dev.yml
 ```
 
-To build all three sites into a combined output directory (as done in CI):
+Pages within the site work normally with live reload.
+Cross-site links navigate to `docs.mat3ra.com` (production).
+
+#### Build & serve all sites locally (full testing)
+
+```bash
+./scripts/serve-all.sh
+```
+
+This builds the legacy site plus all three subsites into `site/` and starts a
+local server on `http://localhost:8000`:
+
+- `http://localhost:8000/`           — legacy full site
+- `http://localhost:8000/guide/`     — Platform Guide
+- `http://localhost:8000/reference/` — Concepts & Reference
+- `http://localhost:8000/dev/`       — Developer Guide
+
+Cross-site links in Markdown use `{{ guide_url }}`, `{{ reference_url }}`, and
+`{{ dev_url }}` variables (resolved by the macros plugin at build time).
+The `serve-all.sh` script automatically overrides these to point to
+`http://localhost:8000/…`, so cross-site navigation works locally without any
+extra setup.
+
+#### Build only (CI / deploy)
 
 ```bash
 mkdocs build -f mkdocs.yml                                           # legacy at /
@@ -80,6 +96,7 @@ mkdocs build -f mkdocs-guide.yml    -d site/guide                    # /guide/
 mkdocs build -f mkdocs-concepts.yml -d site/reference                # /reference/
 mkdocs build -f mkdocs-dev.yml      -d site/dev                      # /dev/
 ```
+
 
 
 ## Development

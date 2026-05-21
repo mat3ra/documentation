@@ -8,8 +8,8 @@ Some common types of calculations routinely encountered have already been assemb
 
 ## Mapping Function
 
-Workflows [Mapping Function](../entities-general/bank.md#bank-mapping-function) consists in an assessment of the sequence of logical operations and [application](../software-directory/overview.md) input files employed in the workflow and subsequent calculation of the [hash string](../entities-general/bank.md#hash-strings). The hash is then compared against those of existing Bank entries in the [same manner](../entities-general/bank.md) as for other bank entries. 
+Workflows [Mapping Function](../entities-general/bank.md#bank-mapping-function) consists in an assessment of the sequence of logical operations and [application]({{ guide_url }}/software-directory/overview/) input files employed in the workflow and subsequent calculation of the [hash string](../entities-general/bank.md#hash-strings). The hash is then compared against those of existing Bank entries in the [same manner](../entities-general/bank.md) as for other bank entries. 
 
 ## Copy from Bank
 
-The procedure of copying (or importing) Bank Workflows into Account-owned Workflows collection is described [here](actions/copy-bank.md).
+The procedure of copying (or importing) Bank Workflows into Account-owned Workflows collection is described [here]({{ guide_url }}/workflows/actions/copy-bank/).

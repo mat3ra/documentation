@@ -19,15 +19,15 @@ We review the security policies affecting object storage [in this page](security
 
 The Dropbox utility for sharing files and data across the entire [infrastructure](../infrastructure/overview.md) of our platform is the object of a [separate discussion](dropbox.md).
         
-## [User Interface](ui/explorer.md)
+## [User Interface]({{ guide_url }}/data-in-objectstorage/ui/explorer/)
 
-The Files Explorer for navigating the files objects from within the Web interface is described [here](ui/explorer.md). 
+The Files Explorer for navigating the files objects from within the Web interface is described [here]({{ guide_url }}/data-in-objectstorage/ui/explorer/). 
 
-Instances of this explorer interface can be found both under the [Dropbox page](ui/dropbox-page.md), and under the [Files Tab](../jobs/ui/files-tab.md) of [Job Viewer](../jobs/ui/viewer.md).
+Instances of this explorer interface can be found both under the [Dropbox page]({{ guide_url }}/data-in-objectstorage/ui/dropbox-page/), and under the [Files Tab]({{ guide_url }}/jobs/ui/files-tab/) of [Job Viewer]({{ guide_url }}/jobs/ui/viewer/).
 
-## [Actions](actions/overview.md)
+## [Actions]({{ guide_url }}/data-in-objectstorage/actions/overview/)
 
-We introduce the actions available under the above-mentioned Files Explorer [in this section](actions/overview.md) of the documentation.
+We introduce the actions available under the above-mentioned Files Explorer [in this section]({{ guide_url }}/data-in-objectstorage/actions/overview/) of the documentation.
 
 ## Links
 

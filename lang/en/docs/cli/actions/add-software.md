@@ -241,7 +241,7 @@ To understand the details about library paths, one may inspect modulefiles (e.g.
 available in our clusters and [job scripts](
 https://github.com/Exabyte-io/cli-job-examples/blob/main/espresso/gpu/job.gpu.pbs)
 to see how it is implemented. Do not forget to use a GPU-enabled queue,
-such as [GOF](../../infrastructure/clusters/google.md) to submit your GPU jobs.
+such as [GOF]({{ dev_url }}/infrastructure/clusters/google/) to submit your GPU jobs.
 
 
 ## Run jobs using Apptainer

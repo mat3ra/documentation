@@ -1,10 +1,14 @@
+---
+render_macros: false
+---
+
 # Template Examples
 
-The present page contains example(s) of [unit](../components/units.md) input [templates](overview.md), implemented using the [templating engine](jinja.md), in order to generate the input files for the [simulation engines](../../software/overview.md) supported on our platform.
+The present page contains example(s) of [unit](../components/units.md) input [templates](overview.md), implemented using the [templating engine](jinja.md), in order to generate the input files for the [simulation engines]({{ reference_url }}/software/overview/) supported on our platform.
 
 ## Quantum ESPRESSO Example
 
-For example, the input file template shown in the expandable section below, for a sample [Quantum ESPRESSO](../../software-directory/modeling/quantum-espresso/overview.md) calculation.
+For example, the input file template shown in the expandable section below, for a sample [Quantum ESPRESSO]({{ guide_url }}/software-directory/modeling/quantum-espresso/overview/) calculation.
 
 ### Template
 

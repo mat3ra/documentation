@@ -1,6 +1,6 @@
 # Structured Representation for VASP
 
-We present below the [structured data](../../../data-structured/overview.md) for the [VASP](overview.md) modeling application.
+We present below the [structured data]({{ reference_url }}/data-structured/overview/) for the [VASP](overview.md) modeling application.
 
 === "Schema"
     ```json

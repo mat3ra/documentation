@@ -8,7 +8,7 @@ The image below shows how Jobs Explorer appears under typical circumstances. The
 
 ## Status Indicators
 
-An important property present in the items list is the [Status indicator](../status.md) of each listed Job, under the "Status" column highlighted in the above image. 
+An important property present in the items list is the [Status indicator]({{ reference_url }}/jobs/status/) of each listed Job, under the "Status" column highlighted in the above image. 
 
 ## Other Specific Properties
 
@@ -18,16 +18,16 @@ Additional Job-specific columns that can be listed in Explorer include those tic
 
 ### Application
 
-This option displays the [applications](../../software-directory/overview.md) employed within the [workflow](../../workflows/overview.md) used inside the Job, including their version numbers.
+This option displays the [applications](../../software-directory/overview.md) employed within the [workflow]({{ reference_url }}/workflows/overview/) used inside the Job, including their version numbers.
 
 ### Cluster - Queue & Cores
 
-These are the [name of the cluster](../../infrastructure/clusters/overview.md) and the compute [queue](../../infrastructure/resource/queues.md) therein where the Job is executed. The number of computational nodes and CPU cores are also indicated.
+These are the [name of the cluster]({{ dev_url }}/infrastructure/clusters/overview/) and the compute [queue]({{ dev_url }}/infrastructure/resource/queues/) therein where the Job is executed. The number of computational nodes and CPU cores are also indicated.
 
 ### Run & Wait Time
 
-This corresponds to the amount of time that the Job took to finish, and for how long it had to wait in the [queue](../../infrastructure/resource/queues.md) of the cluster before being executed.
+This corresponds to the amount of time that the Job took to finish, and for how long it had to wait in the [queue]({{ dev_url }}/infrastructure/resource/queues/) of the cluster before being executed.
 
 ### Project
 
-The name of the [Project](../projects.md) containing the Job is displayed under this column.
+The name of the [Project]({{ reference_url }}/jobs/projects/) containing the Job is displayed under this column.

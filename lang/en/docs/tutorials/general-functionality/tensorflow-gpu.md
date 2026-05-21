@@ -3,7 +3,7 @@
 TensorFlow [^1] is a powerful oepn-source machine-learning platform geared towards neural networks.
 
 In this tutorial, we will create an [Anaconda](../../cli/modules.md) environment for TensorFlow, and will run a test job
-on a [GPU](../../infrastructure/resource/category.md) queue within [AWS](../../infrastructure/clusters/aws.md).
+on a [GPU]({{ dev_url }}/infrastructure/resource/category/) queue within [AWS]({{ dev_url }}/infrastructure/clusters/aws/).
 
 ## 1. Create the Test Job
 

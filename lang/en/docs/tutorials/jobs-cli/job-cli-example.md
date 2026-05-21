@@ -1,6 +1,6 @@
 # Running Jobs via Command Line Interface
 
-This page explains how to run a [job](../../jobs/overview.md) via the [Command Line Interface](../../cli/overview.md) (CLI) of our platform. The reader is recommended to first consult the [relevant part of the documentation](../../jobs-cli/overview.md) before proceeding further with the present Tutorial.
+This page explains how to run a [job]({{ reference_url }}/jobs/overview/) via the [Command Line Interface](../../cli/overview.md) (CLI) of our platform. The reader is recommended to first consult the [relevant part of the documentation](../../jobs-cli/overview.md) before proceeding further with the present Tutorial.
  
 Here, we will use a template input file and a bash script to sweep the lattice parameter space for a given structure. We will use [Quantum ESPRESSO](../../software-directory/modeling/quantum-espresso/overview.md) as an example simulations engine, however all command-line related directives apply universally.
 
@@ -84,7 +84,7 @@ K_POINTS (automatic)
 3 3 3 1 1 1
 ```
 
-Note that we are using a template variable in place of `celldm(1)`, indicating the lattice parameter of the underlying simple cubic [Bravais Lattice](../../properties-directory/structural/lattice.md) of the crystal structure. These template variables are defined once the combined `run.sh` script is put together, as explained in what follows.
+Note that we are using a template variable in place of `celldm(1)`, indicating the lattice parameter of the underlying simple cubic [Bravais Lattice]({{ reference_url }}/properties-directory/structural/lattice/) of the crystal structure. These template variables are defined once the combined `run.sh` script is put together, as explained in what follows.
 
 We also need to copy the pseudopotential files into the current [working directory](../../jobs-cli/batch-scripts/directories.md) where the input file is stored, as follows.
 
@@ -116,7 +116,7 @@ cd $PBS_O_WORKDIR
 mpirun -np $PBS_NP $EXEC_CMD pw.x -in pw.in > pw.out
 ```
 
-Just like before, we are using template variables again instead of the [project](../../jobs/projects.md) name and email. Variables starting with `$PBS` are automatically set by the [resource manager](../../infrastructure/resource/overview.md), and are known as the ["PBS Directives"](../../jobs-cli/batch-scripts/directives.md). 
+Just like before, we are using template variables again instead of the [project]({{ reference_url }}/jobs/projects/) name and email. Variables starting with `$PBS` are automatically set by the [resource manager]({{ dev_url }}/infrastructure/resource/overview/), and are known as the ["PBS Directives"](../../jobs-cli/batch-scripts/directives.md). 
 
 The rest of the Batch Script contains UNIX commands necessary for [loading the required modules](../../cli/actions/modules-actions.md) and running the executables in parallel.
 
@@ -270,7 +270,7 @@ The reader should note that within the `mpirun` command we make use of the `tee`
 
 We can put the content of the above file into a bash script called `run.sh` for example, and then make the script executable with `chmod a+x run.sh` command.
  
-The job can finally be [submitted](../../jobs-cli/actions/submit.md) as a set to the [Resource Manager](../../infrastructure/resource/overview.md) by invoking the script via the `./run.sh` command (the `qsub` command is not necessary in this case since it is already included as part of `run.sh`, towards the end of the script).
+The job can finally be [submitted](../../jobs-cli/actions/submit.md) as a set to the [Resource Manager]({{ dev_url }}/infrastructure/resource/overview/) by invoking the script via the `./run.sh` command (the `qsub` command is not necessary in this case since it is already included as part of `run.sh`, towards the end of the script).
 
 ## 5. View Submitted Jobs
 
@@ -283,7 +283,7 @@ The reader is referred to the video below for an explanation on how to inspect t
 
 We summarize the above-mentioned steps in the following video. 
 
-Here, we begin by entering the [Command Line Interface](../../cli/overview.md) via the [Web Terminal](../../remote-connection/web-terminal.md) connection method. We then navigate to the directory containing the `run.sh` script under the [Home Folder](../../infrastructure/clusters/directories.md) of `cluster-007`, where we submit it for execution. 
+Here, we begin by entering the [Command Line Interface](../../cli/overview.md) via the [Web Terminal](../../remote-connection/web-terminal.md) connection method. We then navigate to the directory containing the `run.sh` script under the [Home Folder]({{ dev_url }}/infrastructure/clusters/directories/) of `cluster-007`, where we submit it for execution. 
 
 We conclude by inspecting the [status of the job](../../jobs-cli/actions/check-status.md) on the selected cluster number "007" by entering the `watch qstat` command, for an automatically-refreshing version of `qstat`. Since only one lattice parameter was tested in this example animation for simplicity, only one job has been launched and is returned by `qstat` in this case (scanning over all three lattice parameters, as in the original script shown above, would have correspondingly launched three distinct jobs).
 

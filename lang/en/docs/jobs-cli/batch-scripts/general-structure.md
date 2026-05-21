@@ -18,11 +18,11 @@ The **shebang** [^1] is a short character sequence at the beginning of the Batch
 
 Commentaries (annotations) can be written anywhere within the batch script at the user's discretion, by inserting the "hash" character `#` and a single space ' ' at the start of the corresponding line.
  
-Commentaries may consist in any text string containing any type of character, except for placing an exclamation mark `!` or [resource-manager](../../infrastructure/resource/overview.md)-specific text sequences immediately after the hash. The former character combination is reserved respectively for the above-mentioned shebang.
+Commentaries may consist in any text string containing any type of character, except for placing an exclamation mark `!` or [resource-manager]({{ dev_url }}/infrastructure/resource/overview/)-specific text sequences immediately after the hash. The former character combination is reserved respectively for the above-mentioned shebang.
 
 ## 3. Directives
 
-As introduced [here](overview.md#implementation), we make use of the **Portable Batch System (PBS)** protocol for organizing job scheduling on our platform. A comprehensive set of **PBS  Resource Management Directives** is available for setting the relevant job parameters, such as allocating the necessary [computational resources](../../infrastructure/compute/parameters.md). 
+As introduced [here](overview.md#implementation), we make use of the **Portable Batch System (PBS)** protocol for organizing job scheduling on our platform. A comprehensive set of **PBS  Resource Management Directives** is available for setting the relevant job parameters, such as allocating the necessary [computational resources]({{ dev_url }}/infrastructure/compute/parameters/). 
 
 These directives are the object of a [dedicated review](directives.md).
 

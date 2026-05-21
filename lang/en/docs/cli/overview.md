@@ -6,7 +6,7 @@ After logging in, the user is presented with the following **welcome screen** un
 
 ![CLI splash](../images/cli/CLI-Welcome-Screen.png "CLI splash")
 
-We explain the resource management system in its [dedicated section](../infrastructure/resource/overview.md), the accounting, software modules and commands outlined in the above visual are explained in sections mentioned below.
+We explain the resource management system in its [dedicated section]({{ dev_url }}/infrastructure/resource/overview/), the accounting, software modules and commands outlined in the above visual are explained in sections mentioned below.
 
 ## [Environment](environment.md)
 
@@ -16,7 +16,7 @@ Both forms of environment customization are explained under the same page, [acce
 
 ## [Accounting](accounting.md)
 
-We introduce the aspects of accounting and [Account management](../accounts/overview.md) relevant in the context of CLI [here](accounting.md).
+We introduce the aspects of accounting and [Account management]({{ reference_url }}/accounts/overview/) relevant in the context of CLI [here](accounting.md).
 
 ## [Actions](actions/overview.md)
 

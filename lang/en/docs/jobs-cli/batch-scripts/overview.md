@@ -1,12 +1,12 @@
 # Batch Scripts
 
-This page explains the basic framework for the submission of [simulation Jobs](../../jobs/overview.md) via the [Command Line Interface](../../cli/overview.md) (CLI). The corresponding actions for handling the job submission are narrated [separately](../actions/overview.md).
+This page explains the basic framework for the submission of [simulation Jobs]({{ reference_url }}/jobs/overview/) via the [Command Line Interface](../../cli/overview.md) (CLI). The corresponding actions for handling the job submission are narrated [separately](../actions/overview.md).
 
 ## Batch Mode
 
-Simulation tasks submitted through CLI are expected to be run in **"batch" mode**. Batch jobs are controlled by the so-called **Batch Scripts** (also referred to as **Job Scripts**), which are written by the user and then submitted to the [resource management system](../../infrastructure/resource/overview.md). These scripts specify, at the very least, how many nodes and cores the job will use, how long the job will run, the name of the [application](../../software-directory/overview.md) to be run, and other important [compute parameters](../../infrastructure/compute/parameters.md).
+Simulation tasks submitted through CLI are expected to be run in **"batch" mode**. Batch jobs are controlled by the so-called **Batch Scripts** (also referred to as **Job Scripts**), which are written by the user and then submitted to the [resource management system]({{ dev_url }}/infrastructure/resource/overview/). These scripts specify, at the very least, how many nodes and cores the job will use, how long the job will run, the name of the [application](../../software-directory/overview.md) to be run, and other important [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/).
 
-Interactive parallel jobs are not supported on our platform by design. Users are encouraged to prototype calculations on the [login node](../../infrastructure/login/overview.md) (using 2-8 CPU cores with < 1min walltime per user) instead, and submit larger debug tasks into the [Debug queue](../../infrastructure/resource/category.md) designed specifically for testing purposes.
+Interactive parallel jobs are not supported on our platform by design. Users are encouraged to prototype calculations on the [login node]({{ dev_url }}/infrastructure/login/overview/) (using 2-8 CPU cores with < 1min walltime per user) instead, and submit larger debug tasks into the [Debug queue]({{ dev_url }}/infrastructure/resource/category/) designed specifically for testing purposes.
 
 ## Implementation
 
@@ -18,7 +18,7 @@ The general layout structure of Batch Scripts is the object of [this discussion]
 
 ## [Resource Manager Directives](directives.md)
 
-[This page](directives.md) contains the list of the most important directives for specifying the allocation of [computing resources](../../infrastructure/resource/overview.md), necessary for the execution of the job under consideration.
+[This page](directives.md) contains the list of the most important directives for specifying the allocation of [computing resources]({{ dev_url }}/infrastructure/resource/overview/), necessary for the execution of the job under consideration.
 
 ## [Working Directory](directories.md)
 

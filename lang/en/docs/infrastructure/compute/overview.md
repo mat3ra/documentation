@@ -1,6 +1,6 @@
 # Compute Setup
 
-The "Compute" panel, located as a distinct tab under the [Job Designer](../../jobs-designer/overview.md) interface, allows the user to set up the [computational parameters](parameters.md) for the simulation to be executed. 
+The "Compute" panel, located as a distinct tab under the [Job Designer]({{ guide_url }}/jobs-designer/overview/) interface, allows the user to set up the [computational parameters](parameters.md) for the simulation to be executed. 
 
 ## Components of the Interface
 
@@ -32,4 +32,4 @@ Further advanced options for the computation are available, and consist in the [
 
 ## 6. [Notifications](parameters.md#notifications)
 
-Notifications on the [job status](../../jobs/status.md) can be triggered as explained [in this section](parameters.md#notifications).
+Notifications on the [job status]({{ reference_url }}/jobs/status/) can be triggered as explained [in this section](parameters.md#notifications).

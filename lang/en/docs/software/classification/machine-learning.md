@@ -4,4 +4,4 @@
 
 ## Implementation
 
-We have a proof-of-concept support for Machine Learning within our platform as a way to do predictive modeling of materials, as mentioned [in this section](../../software-directory/overview.md#machine-learning) of the documentation.
+We have a proof-of-concept support for Machine Learning within our platform as a way to do predictive modeling of materials, as mentioned [in this section]({{ guide_url }}/software-directory/overview/#machine-learning) of the documentation.

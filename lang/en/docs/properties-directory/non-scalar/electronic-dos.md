@@ -6,7 +6,7 @@ The Density of States of the material describes the number of states per an inte
 
 ## Example
 
-Example results for the computed electronic Density of States are also presented graphically in the [Results Tab](../../jobs/ui/results-tab.md) of [Job Viewer](../../jobs/ui/viewer.md).
+Example results for the computed electronic Density of States are also presented graphically in the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ guide_url }}/jobs/ui/viewer/).
 
 The typical appearance of such a Density of States plot for electronic bandstructures is shown below.
 
@@ -18,7 +18,7 @@ In this graph, the total density of states is marked by the black line. Individu
 
 ### Export as Image
 
-The possibility to export the graph is offered as mentioned [here](../../properties/ui/viewer.md#export-as-images).
+The possibility to export the graph is offered as mentioned [here]({{ guide_url }}/properties/ui/viewer/#export-as-images).
 
 ## Schema 
 

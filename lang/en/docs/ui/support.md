@@ -2,7 +2,7 @@
 
 Support Widget for Users to communicate with our support team. We attempt to
 respond to support requests as soon as possible, and, depending on the
-[service level](../accounts/service-levels.md). Normally, we reply within 24
+[service level]({{ reference_url }}/accounts/service-levels/). Normally, we reply within 24
 hours during business days. Clicking the `Support` button at the bottom-left
 corner of any page opens the following dialog.
 

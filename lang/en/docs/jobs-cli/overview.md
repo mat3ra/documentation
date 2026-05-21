@@ -1,6 +1,6 @@
 # Jobs via Command Line Interface
 
-The present section of the documentation explains how [simulation Jobs](../jobs/overview.md) can be created and executed via the [Command Line Interface (CLI)](../cli/overview.md) of our platform.
+The present section of the documentation explains how [simulation Jobs]({{ reference_url }}/jobs/overview/) can be created and executed via the [Command Line Interface (CLI)](../cli/overview.md) of our platform.
 
 ## [Batch script](batch-scripts/overview.md)
 
@@ -8,7 +8,7 @@ We explain how to compose **Batch Scripts** (also known as **Job Scripts**), nec
 
 ## [Accounting](accounting.md)
 
-We describe the accounting aspects of Job submission via CLI, such as specifying [Projects](../jobs/projects.md) and inspecting the [Account](../accounts/overview.md) charges and balance, [here](accounting.md).
+We describe the accounting aspects of Job submission via CLI, such as specifying [Projects]({{ reference_url }}/jobs/projects/) and inspecting the [Account]({{ reference_url }}/accounts/overview/) charges and balance, [here](accounting.md).
 
 ## [Actions](../cli/actions/overview.md)
 

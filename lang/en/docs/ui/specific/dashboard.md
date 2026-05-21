@@ -9,8 +9,7 @@ recognized, as shown below.
 
 ## 1. Jobs summary
 
-The "Jobs Summary" panel summarizes the total number of [jobs](
-../../jobs/overview.md) run during a certain period of time, as indicated at the
+The "Jobs Summary" panel summarizes the total number of [jobs]({{ reference_url }}/jobs/overview/) run during a certain period of time, as indicated at the
 top of the panel. It also offers a break down of the job's current status
 between "Active", "Submitted", "Pre-submission", "Success" and "Errors". There
 is finally a quick link to jump to the jobs list at the bottom of the panel,
@@ -24,8 +23,7 @@ calculations, over the given duration of time.
 
 ## 3. Storage Quota
 
-This widget displays a summary of the user's current [storage quota](
-../../accounts/quota.md), in the form of the ratio between used and total
+This widget displays a summary of the user's current [storage quota]({{ reference_url }}/accounts/quota/), in the form of the ratio between used and total
 available storage space. The user can click the
 <i class="zmdi zmdi-plus-circle-o zmdi-hc-border"></i> icon at the top-right
 corner of the panel to request an increase in storage space. In addition, the

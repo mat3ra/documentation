@@ -4,7 +4,7 @@ The "Results" tab displays the results of the job's computational tasks. They ar
 
 ## Panels
 
-The results for each computational [unit](../../workflow-designer/unit-editor.md) contained across the [workflow](../../workflow-designer/overview.md) operations of the Job are displayed in separate **panels**. 
+The results for each computational [unit]({{ guide_url }}/workflow-designer/unit-editor/) contained across the [workflow]({{ guide_url }}/workflow-designer/overview/) operations of the Job are displayed in separate **panels**. 
 
 ### Naming Convention
 
@@ -16,7 +16,7 @@ The option to collapse or expand a panel is offered at its top-right corner.
 
 ## Materials Properties
 
-The panels contain the results for the computation of the [materials properties](../../properties/overview.md) that were selected at the moment of the [creation of the subworkflow](../../workflow-designer/subworkflow-editor/detailed-view.md), or subsequently adjusted during the [job design](../../jobs-designer/overview.md) stage.
+The panels contain the results for the computation of the [materials properties]({{ reference_url }}/properties/overview/) that were selected at the moment of the [creation of the subworkflow]({{ guide_url }}/workflow-designer/subworkflow-editor/detailed-view/), or subsequently adjusted during the [job design]({{ guide_url }}/jobs-designer/overview/) stage.
 
 The manner in which these properties are displayed under the corresponding panels is explained in a [separate section](../../properties/ui/viewer.md) of this documentation. 
 

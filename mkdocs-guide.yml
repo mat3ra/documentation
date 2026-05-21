@@ -4,7 +4,87 @@
 
 docs_dir: !!python/object/apply:os.getenv ["DOCS_DIR", "lang/en/docs"]
 
-site_name: "Platform Guide — Mat3ra Documentation"
+# Exclude pages that belong to other sites (Concepts or Dev).
+# Cross-site links use absolute URLs instead.
+exclude_docs: |
+  # Concepts-only top-level dirs
+  benchmarks/
+  data/
+  data-structured/
+  methods/
+  methods-directory/
+  models/
+  models-directory/
+  properties-directory/
+  security/
+  site-policy/
+  software/
+
+  # Dev-only top-level dirs
+  data-on-disk/
+  infrastructure/
+  rest-api/
+
+  # Concepts-only pages in shared dirs
+  accounts/overview.md
+  accounts/users.md
+  accounts/balance.md
+  accounts/payments-charges.md
+  accounts/quota.md
+  accounts/service-levels.md
+  accounts/collections.md
+  collaboration/organizations/
+  entities-general/overview.md
+  entities-general/data.md
+  entities-general/sets.md
+  entities-general/bank.md
+  entities-general/permissions.md
+  entities-general/default.md
+  entities-general/lifecycle.md
+  entities-general/ownership.md
+  jobs/overview.md
+  jobs/projects.md
+  jobs/data.md
+  jobs/status.md
+  materials/overview.md
+  materials/data.md
+  materials/bank.md
+  materials/default.md
+  materials/classification/
+  properties/overview.md
+  properties/classification/
+  properties/lifecycle/
+  properties/data/
+  workflows/overview.md
+  workflows/bank.md
+  workflows/default.md
+  workflows/addons/
+  workflows/components/
+  workflows/data/
+  workflows/templating/
+  other/publications.md
+  other/documentation.md
+  other/citation.md
+
+  # Dev-only pages in shared dirs
+  data-in-objectstorage/overview.md
+  data-in-objectstorage/files.md
+  data-in-objectstorage/security.md
+  data-in-objectstorage/dropbox.md
+
+  # Other sites' homepages
+  index.md
+  index-concepts.md
+  index-dev.md
+
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+  links:
+    absolute_links: info
+
+site_name: "Platform Guide"
 site_url: https://docs.mat3ra.com/guide
 site_description: "Task-oriented guides, tutorials, and how-tos for the Mat3ra platform."
 dev_addr: "localhost:8001"
@@ -53,6 +133,10 @@ extra:
         origin_url: https://jupyterlite.mat3ra.com/retro/notebooks
         origin_url_lab: https://jupyterlite.mat3ra.com/lab/tree
         notebooks_path_root: made
+    # Cross-site URL variables (resolved by macros plugin at build time)
+    guide_url: https://docs.mat3ra.com/guide
+    reference_url: https://docs.mat3ra.com/reference
+    dev_url: https://docs.mat3ra.com/dev
 
 markdown_extensions:
     - admonition
@@ -110,13 +194,14 @@ plugins:
     - tags
     - macros:
         include_dir: "lang/en/docs/includes/"
-        render_by_default: false
+        render_by_default: true
     - bibtex:
         bib_file: "lang/en/docs/includes/references.bib"
         citation_template: "{{author}} ({{year}})"
         bibliography_template: "{{author}} ({{year}}). {{title}}. {{journal}}. {{volume}}. {{pages}}."
 
 nav:
+    - "← All Docs":                                      /
     - Home:                                              index-guide.md
     - Migrating to New Platform:                         migrating-to-new-platform.md
 

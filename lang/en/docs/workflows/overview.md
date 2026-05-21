@@ -24,8 +24,8 @@ The default workflow present at the moment of creation of a new account on our p
 
 ## User Interface
 
-Specific features pertaining to the Explorer Interface of the Workflows collection are explained [here](ui/explorer.md). Descriptions on [Viewer](ui/viewer.md) and [Designer](../workflow-designer/overview.md) in the context of workflows are also offered.
+Specific features pertaining to the Explorer Interface of the Workflows collection are explained [here]({{ guide_url }}/workflows/ui/explorer/). Descriptions on [Viewer]({{ guide_url }}/workflows/ui/viewer/) and [Designer]({{ guide_url }}/workflow-designer/overview/) in the context of workflows are also offered.
 
-## [Actions](actions/overview.md)
+## [Actions]({{ guide_url }}/workflows/actions/overview/)
 
-The [Actions](actions/overview.md) section explains and provides visual examples of actions that users can perform on workflows.
+The [Actions]({{ guide_url }}/workflows/actions/overview/) section explains and provides visual examples of actions that users can perform on workflows.

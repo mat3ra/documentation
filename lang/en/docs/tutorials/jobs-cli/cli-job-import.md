@@ -30,7 +30,7 @@ In order to submit a new job through [command-line interface](../../cli/overview
 
 This directive instructs our software to automatically parse the output of the calculation, and send back the results to the web interface. After adding this directive, the job can then be [submitted](../../jobs-cli/actions/submit.md) as usual.
 
-Once the job starts executing, the user should be able to see the job entry in the web interface under [Jobs Explorer](../../jobs/ui/explorer.md), and thus monitor the corresponding [status](../../jobs/status.md) of its execution.
+Once the job starts executing, the user should be able to see the job entry in the web interface under [Jobs Explorer](../../jobs/ui/explorer.md), and thus monitor the corresponding [status]({{ reference_url }}/jobs/status/) of its execution.
 
 This feature can conversely be disabled by inserting the following other directive option in the [job submission script](../../jobs-cli/batch-scripts/overview.md).
 
@@ -42,7 +42,7 @@ This feature can conversely be disabled by inserting the following other directi
 
 In the below video, we first navigate to a directory under the [command-line interface](../../cli/overview.md) where we have copied the contents of the [VASP template Job](../../jobs-cli/batch-scripts/directories.md#job-templates). Here, we edit the [job submission script](../../jobs-cli/batch-scripts/overview.md) to insert the aforementioned `#PBS -R y` [directive](../../jobs-cli/batch-scripts/directives.md) for completeness, even though as explained earlier this directive is already enabled by default.
  
-This allows us to monitor the job [status](../../jobs/status.md) under [Jobs Explorer](../../jobs/ui/explorer.md) in [Web Interface](../../ui/overview.md), which we inspect towards the end of the animation.
+This allows us to monitor the job [status]({{ reference_url }}/jobs/status/) under [Jobs Explorer](../../jobs/ui/explorer.md) in [Web Interface](../../ui/overview.md), which we inspect towards the end of the animation.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/p7ex0V0husY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

@@ -7,7 +7,7 @@ In this section, we provide an introduction to the practices we employ to organi
 
 ## Database
 
-We store the structured data in the MongoDB database [^1]. The database is highly available, ie. has multiple equivalent sources at any time, and is backed up daily. Readers are referred to the [Collections](../accounts/collections.md) and [Infrastructure](../infrastructure/overview.md) sections to find out more about how individual items are stored and organized for access.  
+We store the structured data in the MongoDB database [^1]. The database is highly available, ie. has multiple equivalent sources at any time, and is backed up daily. Readers are referred to the [Collections](../accounts/collections.md) and [Infrastructure]({{ dev_url }}/infrastructure/overview/) sections to find out more about how individual items are stored and organized for access.  
 
 ## [Exabyte Data Convention](convention.md)
 

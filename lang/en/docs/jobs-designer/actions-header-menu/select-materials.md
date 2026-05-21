@@ -1,6 +1,9 @@
+---
+render_macros: false
+---
 # Select Materials to Jobs
 
-The user may select one or multiple [materials](../../materials/overview.md) present in the account-owned [collection](../../accounts/collections.md) during [Job creation](../overview.md). Within the [header menu](../header-menu.md) of Jobs Designer, the relevant button <i class="zmdi zmdi-more-vert zmdi-hc-border"></i> on the right-hand side should be clicked, and the `Select materials` option chosen from the resulting drop-down menu.
+The user may select one or multiple [materials]({{ reference_url }}/materials/overview/) present in the account-owned [collection]({{ reference_url }}/accounts/collections/) during [Job creation](../overview.md). Within the [header menu](../header-menu.md) of Jobs Designer, the relevant button <i class="zmdi zmdi-more-vert zmdi-hc-border"></i> on the right-hand side should be clicked, and the `Select materials` option chosen from the resulting drop-down menu.
 
 ## "Select Materials" Dialog
 

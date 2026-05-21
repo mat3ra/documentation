@@ -4,4 +4,4 @@ An **artificial thermal broadening** of the Fermi surface of metallic materials 
 
 ## Implementation Techniques
 
-The different implementations of the smearing, as well as other methods for treating electronic occupancies which might be more suitable for semiconductors and insulators or for certain specific property calculations (such as the tetrahedron method being especially suited for [Density of States computations](../../../tutorials/dft/electronic/density-of-states.md)), are reviewed starting from page 175 of Ref. [2] linked in [this page](../../../software-directory/modeling/vasp/overview.md).
+The different implementations of the smearing, as well as other methods for treating electronic occupancies which might be more suitable for semiconductors and insulators or for certain specific property calculations (such as the tetrahedron method being especially suited for [Density of States computations]({{ guide_url }}/tutorials/dft/electronic/density-of-states/)), are reviewed starting from page 175 of Ref. [2] linked in [this page]({{ guide_url }}/software-directory/modeling/vasp/overview/).

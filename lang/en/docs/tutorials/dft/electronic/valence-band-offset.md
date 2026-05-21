@@ -1,7 +1,7 @@
 # Calculate Valence Band Offset
 
-This tutorial page explains how to calculate the [valence band offset](../../../properties-directory/scalar/valence-band-offset.md) (VBO)
-based on the potential lineup method[^1][^2][^3] using [Density Functional Theory](../../../models-directory/dft/overview.md).
+This tutorial page explains how to calculate the [valence band offset]({{ reference_url }}/properties-directory/scalar/valence-band-offset/) (VBO)
+based on the potential lineup method[^1][^2][^3] using [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/).
 For this tutorial, we consider a 2D material interface MoS<sub>2</sub>/WS<sub>2</sub> and use
 [Quantum Espresso](../../../software-directory/modeling/quantum-espresso/overview.md) as our main simulation engine.
 The content of this tutorial was also part of our 2021 webinar *2D Materials and their Electronic Properties*[^4]
@@ -14,7 +14,7 @@ The content of this tutorial was also part of our 2021 webinar *2D Materials and
 
 ### Valence Band Offset
 
-The [valence band offset](../../../properties-directory/scalar/valence-band-offset.md) is defined by the relative position
+The [valence band offset]({{ reference_url }}/properties-directory/scalar/valence-band-offset/) is defined by the relative position
 of the valence band on both sides of the interface. This property is relevant to study the charge transport across
 interfaces such as semiconductor heterojunctions. Other properties related to the band profile at the interface are
 the *conduction band offset* and *Schottky barrier* (metal-semiconductor interface).
@@ -60,9 +60,9 @@ and optimized in the same way. The final structures are available on the Mat3ra 
 
 ## Choose Workflow
 
-The [workflow](../../../workflows/overview.md) for calculating the valence band offset can be
-[imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank](../../../workflows/bank.md) into the account-owned
-[collection](../../../accounts/collections.md).
+The [workflow]({{ reference_url }}/workflows/overview/) for calculating the valence band offset can be
+[imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned
+[collection]({{ reference_url }}/accounts/collections/).
 This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the
 [Job being created](../../../jobs-designer/workflow-tab.md).
 A [representation of this workflow](https://github.com/Exabyte-io/wode.js/blob/2022.11.16-0/assets/workflows/espresso/valence_band_offset.yml)
@@ -86,13 +86,13 @@ monolayers (ca. 5.7 bohr).
 
 ## Submit Job
 
-Before [submitting](../../../jobs/actions/run.md) the [job](../../../jobs/overview.md), the user should click on the
+Before [submitting](../../../jobs/actions/run.md) the [job]({{ reference_url }}/jobs/overview/), the user should click on the
 ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and inspect
-the [compute parameters](../../../infrastructure/compute/parameters.md) included therein.
+the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein.
 
 ## Examine results
 
-When all [unit](../../../workflows/components/units.md) computations are complete at the end of Job execution, switching
+When all [unit]({{ reference_url }}/workflows/components/units/) computations are complete at the end of Job execution, switching
 to the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md) will show the results
 of the simulation, including the valence band offset as well as the plots of the planar and macroscopic average of
 the electrostatic potentials.
