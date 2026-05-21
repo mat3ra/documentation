@@ -44,6 +44,10 @@ jobs:
           python -m mkdocs build -f mkdocs-concepts.yml -d site/reference
           python -m mkdocs build -f mkdocs-dev.yml      -d site/dev
 
+      - name: Check for broken internal links
+        continue-on-error: true  # TODO: remove once pre-existing broken links are fixed
+        run: python scripts/links/check-links.py site
+
   publish-py-package:
     needs:
       - run-py-tests
