@@ -46,7 +46,11 @@ jobs:
 
       - name: Check for broken internal links
         continue-on-error: true  # TODO: remove once pre-existing broken links are fixed
+<<<<<<< HEAD
         run: python scripts/links/check-links.py site
+=======
+        run: python scripts/check-links.py site
+>>>>>>> 7234e77aad3d839f82c86ad98f322a2549727b7c
 
   publish-py-package:
     needs:
