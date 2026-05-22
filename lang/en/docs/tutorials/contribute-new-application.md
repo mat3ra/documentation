@@ -224,9 +224,9 @@ or Intel OneAPI), declare the Apptainer environment forwarding variables under
 the variable into the container at runtime:
 
 ```yaml
-    environmentVariables:
-      APPTAINERENV_PREPEND_PATH: '${SOFTWARE_LIBRARIES_PATH}/nvidia/hpc-sdk/bin'
-      APPTAINERENV_LD_LIBRARY_PATH: '${SOFTWARE_LIBRARIES_PATH}/nvidia/hpc-sdk/lib'
+environmentVariables:
+  APPTAINERENV_PREPEND_PATH: '${SOFTWARE_LIBRARIES_PATH}/nvidia/hpc-sdk/bin'
+  APPTAINERENV_LD_LIBRARY_PATH: '${SOFTWARE_LIBRARIES_PATH}/nvidia/hpc-sdk/lib'
 ```
 
 `SOFTWARE_LIBRARIES_PATH` is a platform-native variable that resolves to the
