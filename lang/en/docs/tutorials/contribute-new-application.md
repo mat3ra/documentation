@@ -168,10 +168,12 @@ The image name, and tag are needed in the next section.
 
 ## 3. standata repository
 
-Although, the `standata` repository contains JavaScript code, the only changes
-required are in the YAML files. YAML is a human-readable data serialization
-format, containing key-value pairs, lists, and nested structures, very similar
-to JSON or dictionaries in Python and other programming languages.
+!!!info
+    Although the `standata` repository contains JavaScript code, the only
+    changes required to add new application are in the YAML files. YAML is a
+    human-readable data serialization format, containing key-value pairs, lists,
+    and nested structures, very similar to JSON or dictionaries in Python and
+    other programming languages.
 
 ### 3.1. Fork and clone the repository
 
