@@ -36,9 +36,8 @@ modulefiles are also generated based on these metadata for CLI use.
 
 The two repositories are coupled by `imageName` and `imageTag`: the value
 provided to `standata` must exactly match the value registered in
-`application-containers-public`. As a result, the container pull request must
-be merged and the image published before the `standata` pull request can be
-merged.
+`application-containers-public`. As a result, the container pull request must be
+merged and the image published before the `standata` pull request can be merged.
 
 ```mermaid
 flowchart TB
@@ -169,10 +168,14 @@ The image name, and tag are needed in the next section.
 
 ## 3. standata repository
 
+Although, the `standata` repository contains JavaScript code, the only changes
+required are in the YAML files. YAML is a human-readable data serialization
+format, containing key-value pairs, lists, and nested structures, very similar
+to JSON or dictionaries in Python and other programming languages.
+
 ### 3.1. Fork and clone the repository
 
-Fork `github.com/Exabyte-io/standata` and clone locally. The relevant subtree
-is:
+Fork `github.com/Exabyte-io/standata` and clone locally. The relevant subtree is:
 
 ```
 assets/applications/
@@ -191,8 +194,8 @@ Each application has its own YAML file under `applications/`, and
 ### 3.2. Add application version block
 
 Create or extend the YAML file for the new application, e.g.
-`assets/applications/applications/espresso.yml`. Each version block follows
-this structure:
+`assets/applications/applications/espresso.yml`. Each version block follows this
+structure:
 
 ```yaml
 - version: '7.5'
@@ -215,8 +218,8 @@ repositories.
 
 For applications that require mapping host-side toolchains (e.g. NVIDIA HPC SDK
 or Intel OneAPI), declare the Apptainer environment forwarding variables under
-`environmentVariables`. The prefix `APPTAINERENV_` instructs Apptainer to
-inject the variable into the container at runtime:
+`environmentVariables`. The prefix `APPTAINERENV_` instructs Apptainer to inject
+the variable into the container at runtime:
 
 ```yaml
     environmentVariables:
@@ -274,10 +277,10 @@ flavors:
     executableName: myexec
 ```
 
-Each key in `flavors` corresponds to one flavor visible in the workflow
-designer unit editor. The `input` list names the input files the template
-system will render. `monitors` controls which output streams the platform
-captures in real time (at minimum `standard_output`).
+Each key in `flavors` corresponds to one flavor visible in the workflow designer
+unit editor. The `input` list names the input files the template system will
+render. `monitors` controls which output streams the platform captures in real
+time (at minimum `standard_output`).
 
 Then register the executable in `assets/applications/executables/tree.yml`:
 
@@ -344,8 +347,8 @@ template content renders correctly.
 ### 3.7. Open the pull request
 
 Open a pull request against `standata` only after the container pull request
-has been merged and the image is live in GHCR. Commit the generated files
-under `data/` and `dist/` produced by the build step above.
+has been merged and the image is live in GHCR. Commit the generated files under
+`data/` and `dist/` produced by the build step above.
 
 ### 3.8. Example Pull Request
 - [Quantum ESPRESSO 7.5](https://github.com/Exabyte-io/standata/pull/109/changes)
