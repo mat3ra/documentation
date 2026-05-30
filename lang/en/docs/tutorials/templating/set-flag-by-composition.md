@@ -1,5 +1,5 @@
 ---
-render_macros: false
+render_macros: true
 ---
 # Setting Input Parameter Based on Elemental Composition
 
@@ -11,6 +11,7 @@ In this page we review setting input flags based on the data about material(s) a
 
 The code below automatically sets the value of the "ENCUT" variable to higher values for materials that contain Nitrogen within their structures than for those than don't. In particular, ENCUT = 600 eV if Nitrogen is present, or ENCUT = 450 eV otherwise. This variable is found in [VASP](../../software-directory/modeling/vasp/overview.md) input file, and defines the cutoff energy characterizing the precision of the [DFT computation]({{ reference_url }}/models-directory/dft/parameters/).
 
+{% raw %}
 ```jinja
 {% spaceless %}
 {% set high_cutoff_element = "N" %}
@@ -27,6 +28,7 @@ The code below automatically sets the value of the "ENCUT" variable to higher va
 ENCUT = {{ ENCUT }}
 {% endspaceless %}
 ```
+{% endraw %}
 
 Each line number in the above block of statements is described in what follows.
 

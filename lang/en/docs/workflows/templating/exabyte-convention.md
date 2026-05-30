@@ -1,5 +1,5 @@
 ---
-render_macros: false
+render_macros: true
 ---
 
 # Exabyte Templating Convention

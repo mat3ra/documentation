@@ -1,5 +1,5 @@
 ---
-render_macros: false
+render_macros: true
 ---
 # Setting Magnetic Moment on Atoms by Specie
 
@@ -11,6 +11,7 @@ In this page we review setting input atom-specific flags based on the data about
 
 The template code below sets the value of magnetic moments for ferromagnetic elements present in a material structure to number `5`, and alternates the sign. Non-magnetic elements are instead set to zero. The rendered output of this template is suitable for a [VASP](../../software-directory/modeling/vasp/overview.md) simulation.
 
+{% raw %}
 ```jinja
 MAGMOM = {% spaceless %}
 {% set magnetic_elements = ['V', 'Cr', 'Mn', 'Fe', 'Co', 'Ni'] %}
@@ -33,6 +34,7 @@ MAGMOM = {% spaceless %}
 ") %}
 {% endspaceless %}
 ```
+{% endraw %}
 
 Each line number in the above block of statements is further explained in the ensuing sections.
 

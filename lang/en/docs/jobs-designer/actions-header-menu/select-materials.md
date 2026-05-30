@@ -1,5 +1,5 @@
 ---
-render_macros: false
+render_macros: true
 ---
 # Select Materials to Jobs
 
@@ -23,7 +23,7 @@ Once the desired material(s) have been selected, they can be selected for the Jo
 
 This returns the view to the main Jobs Designer page, where the structures of the imported materials can be inspected within the [Materials Tab](../materials-tab.md). It is worth noticing that the original default material which was present when the Jobs Designer was first opened is replaced with the newly selected material(s). 
 
-When multiple materials are selected the [Job Name Field](../header-menu.md#1-job-name) can have a `{{ FORMULA }}` text added to it indicating that one separate job will be created per each selected material appending its formula to the name as explained [here](../header-menu.md#4-save-job).
+When multiple materials are selected the [Job Name Field](../header-menu.md#1-job-name) can have a `{% raw %}{{ FORMULA }}{% endraw %}` text added to it indicating that one separate job will be created per each selected material appending its formula to the name as explained [here](../header-menu.md#4-save-job).
 
 ## Animation
 

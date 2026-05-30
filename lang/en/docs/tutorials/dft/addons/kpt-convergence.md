@@ -1,5 +1,5 @@
 ---
-render_macros: false
+render_macros: true
 ---
 # Study Convergence of the Reciprocal Space Grid
 
@@ -28,7 +28,7 @@ At the end of the insertion of the k-point convergence Add-on to the Total Energ
 
 Readers can open the main [Execution Unit]({{ reference_url }}/workflows/components/units/#execution) "vasp" by clicking it. The contents of the input files used for the convergence study within the VASP calculation can in this way be inspected, towards the bottom of the [unit editor interface](../../../workflow-designer/unit-editor.md#unit-input-templates). 
 
-Users should be able to notice some differences in the formatting of the KPOINTS file, compared to the more conventional cases. This file should not normally be edited, or should be edited with caution, since the text is modified to contain [templating expressions]({{ reference_url }}/workflows/templating/overview/) (eg. `{{PARAMETER}}`) that are necessary for the workflow to function correctly.
+Users should be able to notice some differences in the formatting of the KPOINTS file, compared to the more conventional cases. This file should not normally be edited, or should be edited with caution, since the text is modified to contain [templating expressions]({{ reference_url }}/workflows/templating/overview/) (eg. `{% raw %}{{PARAMETER}}{% endraw %}`) that are necessary for the workflow to function correctly.
 
 ## Submit Job
 

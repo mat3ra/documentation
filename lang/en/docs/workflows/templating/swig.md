@@ -1,5 +1,5 @@
 ---
-render_macros: false
+render_macros: true
 ---
 
 # Swig
@@ -10,6 +10,7 @@ As mentioned in [the concept explanation](concept.md) we make use of **Swig** to
 
 All Javascript-related prototypes such as *Array* and *Object* [^2] are supported by Swig, as long as the function does not require a callback (function) as one of its arguments. For example `Array.prototype.find()` is not supported by Swig as it needs a callback, however it can be implemented by pure templating features as below.
 
+{% raw %}
 ```jinja
 {% set elements = [
   {"id": 0, "value": "Si"},
@@ -25,6 +26,7 @@ All Javascript-related prototypes such as *Array* and *Object* [^2] are supporte
 {% endfor %}
 element = {{ element["value"] }}
 ```
+{% endraw %}
 
 ## Specific Statements
 

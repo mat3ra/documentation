@@ -1,5 +1,5 @@
 ---
-render_macros: false
+render_macros: true
 ---
 # Unit input templates
 
@@ -83,11 +83,11 @@ An example of an input template matching the above JSON source data, and referri
   </summary>
 
 ```jinja
-&CONTROL
+{% raw %}&CONTROL
     calculation = 'scf'
     title = ''
     verbosity = 'low'
-    restart_mode = '{{ input.RESTART_MODE }}'
+    restart_mode = '{{ input.RESTART_MODE }}'{% endraw %}
     wf_collect = .true.
     tstress = .true.
     tprnfor = .true.
@@ -95,7 +95,7 @@ An example of an input template matching the above JSON source data, and referri
     wfcdir = {% raw %}'{{ JOB_WORK_DIR }}/outdir'{% endraw %}
     prefix = '__prefix__'
     pseudo_dir = {% raw %}'{{ JOB_WORK_DIR }}/pseudo'{% endraw %}
-/
+{% raw %}/
 &SYSTEM
     ibrav = {{ input.IBRAV }}
     nat = {{ input.NAT }}
@@ -123,7 +123,7 @@ ATOMIC_POSITIONS crystal
 CELL_PARAMETERS angstrom
 {{ input.CELL_PARAMETERS }}
 K_POINTS automatic
-{% for d in kgrid.dimensions %}{{d}} {% endfor %}{% for s in kgrid.shifts %}{{s}} {% endfor %}
+{% for d in kgrid.dimensions %}{{d}} {% endfor %}{% for s in kgrid.shifts %}{{s}} {% endfor %}{% endraw %}
 ```
 </details>
 
@@ -139,6 +139,7 @@ An example of input text, resulting from the above-mentioned JSON data structure
      "Expand to view": ...
   </summary>
 
+{% raw %}
 ```Fortran
 &CONTROL
     calculation = 'scf'
@@ -185,6 +186,7 @@ CELL_PARAMETERS angstrom
 K_POINTS automatic
 10 10 10 0 0 0
 ```
+{% endraw %}
 </details>
 
 ## Selecting different materials

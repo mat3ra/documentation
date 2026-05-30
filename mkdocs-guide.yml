@@ -24,6 +24,7 @@ exclude_docs: |
   data-on-disk/
   infrastructure/
   rest-api/
+  other/terms-of-service.md
 
   # Concepts-only pages in shared dirs
   accounts/overview.md
