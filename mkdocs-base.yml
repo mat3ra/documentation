@@ -87,7 +87,11 @@ markdown_extensions:
     - pymdownx.highlight:
         pygments_lang_class: true
         linenums: true
-    - pymdownx.snippets
+    - pymdownx.snippets:
+        base_path:
+          - lang/en/docs
+          - data
+          - .
     - pymdownx.striphtml
     - pymdownx.superfences
     - pymdownx.tabbed:
