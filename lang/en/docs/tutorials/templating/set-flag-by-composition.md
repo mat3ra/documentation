@@ -34,7 +34,7 @@ Each line number in the above block of statements is described in what follows.
 
 ### 1. Spaceless Rendering
 
-The initial `{% spaceless %}` flag is explained [here]({{ reference_url }}/workflows/templating/swig/#spaceless)
+The initial `{% raw %}{% spaceless %}{% endraw %}` flag is explained [here]({{ reference_url }}/workflows/templating/swig/#spaceless)
 
 ### 2. Set Element Requiring Higher Cutoff Parameter (Nitrogen)
 
