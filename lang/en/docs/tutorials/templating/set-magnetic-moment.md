@@ -41,7 +41,7 @@ Each line number in the above block of statements is further explained in the en
 
 ### 1. Define MAGMOM Variable
 
-We begin by defining the "MAGMOM" variable [^1], which will be included in the input file for a [VASP](../../software-directory/modeling/vasp/overview.md) computation, within the "INCAR" input parameters file associated with this code. `{% spaceless %}` flag is explained [here]({{ reference_url }}/workflows/templating/swig/#spaceless)
+We begin by defining the "MAGMOM" variable [^1], which will be included in the input file for a [VASP](../../software-directory/modeling/vasp/overview.md) computation, within the "INCAR" input parameters file associated with this code. `{% raw %}{% spaceless %}{% endraw %}` flag is explained [here]({{ reference_url }}/workflows/templating/swig/#spaceless)
 
 ### 2. Define Ferromagnetic Elements
 

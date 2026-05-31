@@ -32,7 +32,7 @@ element = {{ element["value"] }}
 
 ### Spaceless
 
-`{% spaceless %}` statement ensures that the text is rendered with no extra white spaces or empty lines added to it, and has to be terminated by `{% endspaceless %}`.
+`{% raw %}{% spaceless %}{% endraw %}` statement ensures that the text is rendered with no extra white spaces or empty lines added to it, and has to be terminated by `{% raw %}{% endspaceless %}{% endraw %}`.
 
 ## Links
 

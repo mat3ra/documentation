@@ -22,9 +22,9 @@ The user can choose among the available [clusters](../clusters/overview.md) as e
 
 The [Queue](../resource/queues.md) of the resource manager can be set [as follows](parameters.md#queue).
 
-## 4. [Nodes/PPN](parameters.md#nodes-/-ppn)
+## 4. [Nodes/PPN](parameters.md#nodes-ppn)
 
-The number of computing nodes, and number of Processors per Node (PPN), can be set by the user as described [here](parameters.md#nodes-/-ppn).
+The number of computing nodes, and number of Processors per Node (PPN), can be set by the user as described [here](parameters.md#nodes-ppn).
 
 ## 5. [Advanced Options](parameters.md#advanced-options)
 

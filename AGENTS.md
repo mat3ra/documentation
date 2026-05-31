@@ -57,12 +57,58 @@ extra:
     dev_url: https://docs.mat3ra.com/dev
 ```
 
-In Markdown, use `{{ guide_url }}`, `{{ reference_url }}`, or
-`{{ dev_url }}` to reference other sub-sites. The macros plugin
-(`render_by_default: true`) resolves these at build time.
+#### When to use relative vs macro links
+
+| Link target is…               | Use this form                                       |
+| ----------------------------- | --------------------------------------------------- |
+| In the **same** sub-site      | Relative path: `[text](../path/to/page.md)`         |
+| In a **different** sub-site   | Macro link: `[text]({{ reference_url }}/path/to/page/)` |
+
+Never hardcode `https://docs.mat3ra.com/guide/…` in Markdown — always
+use the macro variable so `serve-all.sh` can rewrite it for local
+development.
+
+#### How `exclude_docs` determines page ownership
+
+Each sub-site config has an `exclude_docs:` block listing directories
+and files that belong to other sites. Some directories are split between
+sites at the page level (e.g., `jobs/overview.md` → Reference,
+`jobs/actions/` → Guide). When linking, check the target page's
+`exclude_docs` status in the config of the site the source page belongs
+to. If the target is excluded, use a macro link.
+
+#### The `render_macros` + `{% raw %}` pattern
+
+Some pages contain raw Jinja2 code examples (e.g., templating
+tutorials with `{{ input.RESTART_MODE }}`). The macros plugin would
+try to resolve these as variables, causing errors or empty output.
+
+The fix:
+
+1. Leave `render_macros: true` (or omit it — the default is `true`).
+2. Wrap raw Jinja code blocks in `{% raw %}…{% endraw %}`.
+
+**Critical rule:** never set `render_macros: false` on a page that
+contains cross-site macro links (`{{ guide_url }}`, etc.). Setting it
+to `false` prevents ALL macros from resolving, leaving them as literal
+text in the HTML and creating broken links. The only pages that may
+use `render_macros: false` are those with no cross-site macro links at
+all (e.g., `benchmarks/2018-11-12-comparison.md`).
+
+#### Link validation
+
+After building, run the post-build link checker:
+
+```bash
+.venv/bin/python scripts/links/check-links.py
+```
+
+This scans every `<a href>` in the built `site/` directory and verifies
+that the target file exists. Exit code 1 means broken links were found.
 
 Helper scripts in `scripts/links/`:
 
+- `check-links.py` — post-build internal link checker (the main tool).
 - `find-cross-site-links.py` — detect which pages contain cross-site refs.
 - `fix-broken-cross-links.py` — repair broken inter-site links.
 - `rewrite-cross-site-links.py` — convert hardcoded URLs to macros.
@@ -257,9 +303,12 @@ JavaScript workarounds for this; the native mechanism is sufficient.
 - [ ] Third person / passive voice; no "you" or "your".
 - [ ] None of the forbidden words from `WRITING-STYLE.md`.
 - [ ] Acronyms are introduced on first use.
-- [ ] All internal links and image paths are relative.
-- [ ] `mkdocs.yml` is updated if pages were added, renamed, or moved.
-- [ ] Changes to CSS/JS/plugins are reflected in **all four** config files.
+- [ ] Same-site links and image paths use relative paths.
 - [ ] Cross-site links use `{{ guide_url }}`, `{{ reference_url }}`, or
       `{{ dev_url }}` macros — not hardcoded URLs.
+- [ ] Pages with raw Jinja code use `{% raw %}` blocks — not
+      `render_macros: false` — if they also contain cross-site macros.
+- [ ] `mkdocs.yml` is updated if pages were added, renamed, or moved.
+- [ ] Changes to CSS/JS/plugins are reflected in **all four** config files.
+- [ ] Post-build link check passes: `.venv/bin/python scripts/links/check-links.py`.
 - [ ] Only the files the user asked about were modified.
