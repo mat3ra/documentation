@@ -1,6 +1,6 @@
 # Move Entities to Sets
 
-Items in the account-owned collection of entities (including other Sets) can be moved into a [Set](../sets.md) by first [selecting](select.md) the item, and then clicking `Move to Set` button <i class="zmdi zmdi-square-right zmdi-hc-border"></i> in the [actions toolbar](../../entities-general/ui/explorer.md#actions-toolbar). 
+Items in the account-owned collection of entities (including other Sets) can be moved into a [Set]({{ reference_url }}/entities-general/sets/) by first [selecting](select.md) the item, and then clicking `Move to Set` button <i class="zmdi zmdi-square-right zmdi-hc-border"></i> in the [actions toolbar](../../entities-general/ui/explorer.md#actions-toolbar). 
 
 The user is presented with the following dialog. Here, the destination Set can be searched by its name in the text field. As new characters are entered, suggestions are offered in real time in the drop-down menu appearing directly below.
 

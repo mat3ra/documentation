@@ -1,6 +1,6 @@
 # Compute Setup
 
-The "Compute" panel, located as a distinct tab under the [Job Designer](../../jobs-designer/overview.md) interface, allows the user to set up the [computational parameters](parameters.md) for the simulation to be executed. 
+The "Compute" panel, located as a distinct tab under the [Job Designer]({{ guide_url }}/jobs-designer/overview/) interface, allows the user to set up the [computational parameters](parameters.md) for the simulation to be executed. 
 
 ## Components of the Interface
 
@@ -22,9 +22,9 @@ The user can choose among the available [clusters](../clusters/overview.md) as e
 
 The [Queue](../resource/queues.md) of the resource manager can be set [as follows](parameters.md#queue).
 
-## 4. [Nodes/PPN](parameters.md#nodes-/-ppn)
+## 4. [Nodes/PPN](parameters.md#nodes-ppn)
 
-The number of computing nodes, and number of Processors per Node (PPN), can be set by the user as described [here](parameters.md#nodes-/-ppn).
+The number of computing nodes, and number of Processors per Node (PPN), can be set by the user as described [here](parameters.md#nodes-ppn).
 
 ## 5. [Advanced Options](parameters.md#advanced-options)
 
@@ -32,4 +32,4 @@ Further advanced options for the computation are available, and consist in the [
 
 ## 6. [Notifications](parameters.md#notifications)
 
-Notifications on the [job status](../../jobs/status.md) can be triggered as explained [in this section](parameters.md#notifications).
+Notifications on the [job status]({{ reference_url }}/jobs/status/) can be triggered as explained [in this section](parameters.md#notifications).

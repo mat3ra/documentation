@@ -13,9 +13,9 @@ Only the aspects of NEB calculations which are specific to VASP will be reviewed
 
 General instructions on how NEB is implemented under VASP can be found in Ref. [^1]. An example demonstration of VASP NEB capabilities, for calculating the energy barrier in the case of the self-diffusion of a Pt-adatom on Pt (001), is offered in Ref. [^2].
 
-Most importantly, VASP expects there to be a group of pre-existing [set folders](../../../entities-general/sets.md), within the account-owned [collection](../../../accounts/collections.md) of materials, named "00" (initial) to "0N" (final), each containing the POSCAR structure file for each of the N images constituting the interpolated set under consideration. All output files (OUTCAR, CONTCAR, OSZICAR etc...) of the NEB-steps run are written to these same directories. These sets are generated automatically on our platform, as explained in what follows.
+Most importantly, VASP expects there to be a group of pre-existing [set folders]({{ reference_url }}/entities-general/sets/), within the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials, named "00" (initial) to "0N" (final), each containing the POSCAR structure file for each of the N images constituting the interpolated set under consideration. All output files (OUTCAR, CONTCAR, OSZICAR etc...) of the NEB-steps run are written to these same directories. These sets are generated automatically on our platform, as explained in what follows.
  
-We describe now the overall structure of the [Workflow](../../../workflows/overview.md) used for executing NEB calculations on our platform via [VASP](../../../software-directory/modeling/vasp/overview.md), which is composed of three main [subworkflow](../../../workflows/components/subworkflows.md) operations.
+We describe now the overall structure of the [Workflow]({{ reference_url }}/workflows/overview/) used for executing NEB calculations on our platform via [VASP](../../../software-directory/modeling/vasp/overview.md), which is composed of three main [subworkflow]({{ reference_url }}/workflows/components/subworkflows/) operations.
 
 !!!warning "Restrictions on number of computing cores"
     The number of cores on which VASP is run for NEB purposes has to be an integer multiple of the total number of *intermediate* images. Hence, if the user is working with 2 intermediate images, the number of cores selected should be 2, 4, 6, or all other even numbers.
@@ -24,11 +24,11 @@ We describe now the overall structure of the [Workflow](../../../workflows/overv
 
 One important point about the VASP NEB workflow is that VASP does not run the calculation for initial and final image structures within the interpolated set.
 
-Consequently, the first subworkflow step consists in executing a pair of self-consistent field (SCF) ground-state energy computations, in order to extract the [total energy](../../../properties-directory/scalar/total-energy.md) for both the initial and final images.
+Consequently, the first subworkflow step consists in executing a pair of self-consistent field (SCF) ground-state energy computations, in order to extract the [total energy]({{ reference_url }}/properties-directory/scalar/total-energy/) for both the initial and final images.
 
 This first subworkflow has a separate compute configuration, independent from the rest of the workflow, that can be adjusted by the user under its ["Compute" Tab](../../../workflow-designer/subworkflow-editor/compute.md). The reason is that if there are 10 images, at least 10 cores are needed, as mentioned before, but such a large number of cores is not necessarily required for the initial/final total energy SCF calculations performed in the present step.
 
-We also remind the reader that the size of the [grid of reciprocal k-points (kgrid)](../../../models/auxiliary-concepts/reciprocal-space/sampling.md) should be set to 1 x 1 x 1 for the case of chemical molecules, such as those considered in the present tutorial. This option can be set under the ["Important Settings" Tab](../../../workflow-designer/subworkflow-editor/important-settings.md) of the [Workflow Designer Interface](../../../workflow-designer/overview.md).
+We also remind the reader that the size of the [grid of reciprocal k-points (kgrid)]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) should be set to 1 x 1 x 1 for the case of chemical molecules, such as those considered in the present tutorial. This option can be set under the ["Important Settings" Tab](../../../workflow-designer/subworkflow-editor/important-settings.md) of the [Workflow Designer Interface](../../../workflow-designer/overview.md).
 
 ### 2. Prepare Directories 
 
@@ -74,15 +74,15 @@ The constrained **Interpolated Set** generated in [this other tutorial](../../ma
 
 ## Create and Submit Job
 
-The same set of instructions as in the [alternative NEB tutorial](reaction-profile-qe.md#create-job-and-choose-workflow) should now be followed for [importing](../../../workflows/actions/copy-bank.md) the relevant VASP NEB [workflow](../../../workflows/overview.md) from the [bank](../../../workflows/bank.md) into the account-owned [collection](../../../accounts/collections.md), and for later [selecting and adding it](../../../jobs-designer/actions-header-menu/select-workflow.md) into the new [Job](../../../jobs/overview.md) being [designed](../../../jobs-designer/overview.md).
+The same set of instructions as in the [alternative NEB tutorial](reaction-profile-qe.md#create-job-and-choose-workflow) should now be followed for [importing](../../../workflows/actions/copy-bank.md) the relevant VASP NEB [workflow]({{ reference_url }}/workflows/overview/) from the [bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/), and for later [selecting and adding it](../../../jobs-designer/actions-header-menu/select-workflow.md) into the new [Job]({{ reference_url }}/jobs/overview/) being [designed](../../../jobs-designer/overview.md).
 
 ## Retrieve Final Optimized Images
 
-The final optimized image structures can be retrieved at the end of Job execution according to the instructions contained [in this page](../../../workflows/addons/structural-relaxation.md#initial/final-structures-set).
+The final optimized image structures can be retrieved at the end of Job execution according to the instructions contained [in this page]({{ reference_url }}/workflows/addons/structural-relaxation/#initial/final-structures-set).
 
 ## Animation
 
-We demonstrate the above-mentioned steps involved in the creation and execution of an NEB-based reaction energy profile computation on H3 molecules, using the [VASP](../../../software-directory/modeling/vasp/overview.md) simulation engine, in the following animation. Because we are working with 3 intermediate images, we run the NEB [Job](../../../jobs/overview.md) on a total of 6 cores, which is a multiple of 3 as required.
+We demonstrate the above-mentioned steps involved in the creation and execution of an NEB-based reaction energy profile computation on H3 molecules, using the [VASP](../../../software-directory/modeling/vasp/overview.md) simulation engine, in the following animation. Because we are working with 3 intermediate images, we run the NEB [Job]({{ reference_url }}/jobs/overview/) on a total of 6 cores, which is a multiple of 3 as required.
 
 It can be deduced from the final results for the energy reaction profile, available under the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md), that the size of the activation energy barrier in this case is of about 0.2 eV, in agreement with the outcome of the [other NEB Tutorial](reaction-profile-qe.md).
 

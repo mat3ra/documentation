@@ -1,30 +1,43 @@
-# Mat3ra.com platform documentation
+# Documentation
 
-Mat3ra.com is an online platform for digital materials R&D. 
-We offer a cloud-based interface for designing new materials,
-managing modeling and simulation workflows, performing simulations, 
-and organizing results and data in a collaborative, accessible, and searchable way. 
-This documentation explains how to use the platform.
-
-## How to use this documentation
-
-The left sidebar is the global table of contents. Click any top-level item to
-expand sections. For a high-level tour of major features, see
-[Content highlights](getting-started/content-highlights.md).
-
-Please use the search box at the top to quickly find specific topics across the
-documentation.
+Mat3ra.com is an online platform for digital materials R&D.
+The platform offers a cloud-based interface for designing new materials,
+managing modeling and simulation workflows, performing simulations,
+and organizing results and data in a collaborative, accessible, and searchable way.
 
 
-## Quick start
+## Browse by Section
+
+<div class="section-cards" markdown>
+
+<a href="/guide/" class="grid-card">
+<strong>Tutorials / Guide</strong>
+<span>Step-by-step instructions for every part of the platform interface: tutorials, jobs, materials, workflows, and more.</span>
+</a>
+
+<a href="/reference/" class="grid-card">
+<strong>Concepts / Reference</strong>
+<span>In-depth explanations of models, methods, data structures, properties, and the science behind the platform.</span>
+</a>
+
+<a href="/dev/" class="grid-card">
+<strong>Developer Docs</strong>
+<span>REST API documentation, infrastructure details, data-on-disk layout, and developer-oriented resources.</span>
+</a>
+
+</div>
+
+
+## Quick Start
 
 New to Mat3ra.com? Start here:
 
-- [Run your first simulation (web interface)](getting-started/run-first-simulation/web-interface.md)
-- [Run your first CLI job](getting-started/run-first-simulation/cli-job.md)
+- [Run a first simulation (web interface)](getting-started/run-first-simulation/web-interface.md)
+- [Run a first CLI job](getting-started/run-first-simulation/cli-job.md)
 - [Content highlights](getting-started/content-highlights.md)
 
-## Popular topics
+
+## Popular Topics
 
 - **Access the platform**: [Platform access guide](tutorials/platform-access.md)
 - **Jobs via CLI**: [Overview](jobs-cli/overview.md) · Batch scripts
@@ -39,10 +52,10 @@ New to Mat3ra.com? Start here:
 - **Data locations and quotas**: [Data on disk: directories](data-on-disk/directories.md) ·
   [Quotas](data-on-disk/quotas.md)
 - **Clusters**: [Overview](infrastructure/clusters/overview.md) ·
-  [Cluster-101 (free tier)](infrastructure/clusters/cluster-101.md) ·
+  [Cluster-101 (free tier)]({{ dev_url }}/infrastructure/clusters/cluster-101/) ·
   [AWS](infrastructure/clusters/aws.md) · [Azure](infrastructure/clusters/azure.md) ·
   [GCP](infrastructure/clusters/google.md)
-- **Materials**: [Overview](materials/overview.md) · [Import from files](materials/import-from-files.md)
+- **Materials**: [Overview](materials/overview.md) · [Import from files](materials/actions/import.md)
 - **Models**: [DFT overview](models-directory/dft/overview.md)
 - **Properties**: [Overview](properties/overview.md) · [Band structure](properties-directory/non-scalar/bandstructure.md)
 - **Workflows**: [Overview](workflows/overview.md) · [Designer](workflow-designer/overview.md)
@@ -51,9 +64,9 @@ New to Mat3ra.com? Start here:
 
 ## Support
 
-We respond to support requests within 24 hours during working hours (Pacific
+The team responds to support requests within 24 hours during working hours (Pacific
 Time). See [Help & Support](other/support.md) for ways to get assistance.
 
-!!! tip "Help us improve"
+!!! tip "Help improve the documentation"
     If something is missing or unclear, please open the [Help & Support](
     other/support.md) page and get in touch.

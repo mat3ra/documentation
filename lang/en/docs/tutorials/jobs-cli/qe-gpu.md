@@ -33,7 +33,7 @@ cd espresso/gpu
 Please review the input files and PBS job script, update the project name, and
 other parameters as necessary.
 
-4. We will use [GOF](../../infrastructure/clusters/aws.md#hardware-specifications)
+4. We will use [GOF]({{ dev_url }}/infrastructure/clusters/aws/#hardware-specifications)
 queue, which comprises 8 CPUs and 1 NVIDIA V100 GPU per node.
 
 5. Since our compute node contains 8 CPUs with 1 GPU, we will run 1 MPI process

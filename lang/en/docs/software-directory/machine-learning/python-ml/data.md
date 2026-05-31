@@ -1,7 +1,7 @@
 # Data
 
 This implementation of Machine Learning uses [Python](../../scripting/python/overview.md) under-the-hood. Hence, its
-workflow units adopt the [schema](../../../data-structured/overview.md) used
+workflow units adopt the [schema]({{ reference_url }}/data-structured/overview/) used
 by [Python Units](../../scripting/python/data.md).
 
 === "Schema"

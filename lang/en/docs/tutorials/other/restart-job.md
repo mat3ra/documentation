@@ -1,6 +1,6 @@
 # Restart From Previous Run
 
-This page explains how to **restart** a [Job](../../jobs/overview.md) from the **results of a previous calculation**. 
+This page explains how to **restart** a [Job]({{ reference_url }}/jobs/overview/) from the **results of a previous calculation**. 
  
 ## Restart File Operations
 
@@ -8,7 +8,7 @@ When a job is added as a parent in this way, some directories and files are copi
 
 ## Example of Restart Application
  
-In the present tutorial we will, by way of an example, make use of the "restart" functionality to feed the wavefunction data obtained in a self-consistent field (SCF) [Total Energy](../../properties-directory/scalar/total-energy.md) computation to the subsequent non-self consistent (NSCF) step in an electronic band structure calculation, which is reviewed in a [separate tutorial](../dft/electronic/band-structure.md).
+In the present tutorial we will, by way of an example, make use of the "restart" functionality to feed the wavefunction data obtained in a self-consistent field (SCF) [Total Energy]({{ reference_url }}/properties-directory/scalar/total-energy/) computation to the subsequent non-self consistent (NSCF) step in an electronic band structure calculation, which is reviewed in a [separate tutorial](../dft/electronic/band-structure.md).
 
 Restarting and linking the two Jobs in this way allows the band structure to be computed without having to recalculate the charge density and wavefunctions through an SCF calculation a second time, with the consequent gain in computational time. The results of such  SCF Job can thus be re-utilized as starting point for multiple other calculations that require such preliminary results.
 
@@ -16,9 +16,9 @@ Restarting and linking the two Jobs in this way allows the band structure to be 
 
 Within [Job Designer](../../jobs-designer/overview.md), Job restarting is accomplished via the ["Select Parent" Option](../../jobs-designer/actions-header-menu/select-parent.md) under the main [header menu](../../jobs-designer/header-menu.md) of the interface. 
 
-The user should first create a new [Job](../../jobs/overview.md), with the NSCF component [unit](../../workflows/components/units.md) of a band structure calculation present on its own in the main [workflow](../../workflows/overview.md). The same instructions as in the [original tutorial](../dft/electronic/band-structure.md#create-job) should be followed to [select and insert](../../jobs-designer/actions-header-menu/select-workflow.md) such a Workflow into the new [Job being designed](../../jobs-designer/overview.md). 
+The user should first create a new [Job]({{ reference_url }}/jobs/overview/), with the NSCF component [unit]({{ reference_url }}/workflows/components/units/) of a band structure calculation present on its own in the main [workflow]({{ reference_url }}/workflows/overview/). The same instructions as in the [original tutorial](../dft/electronic/band-structure.md#create-job) should be followed to [select and insert](../../jobs-designer/actions-header-menu/select-workflow.md) such a Workflow into the new [Job being designed](../../jobs-designer/overview.md). 
 
-The next steps consist in finding the previously-run SCF job via the aforementioned ["Select Parent" option](../../jobs-designer/actions-header-menu#select-parent-job), and in selecting that job in order to prepend its results as a restart precursor to the new NSCF job being created.  
+The next steps consist in finding the previously-run SCF job via the aforementioned ["Select Parent" option](../../jobs-designer/actions-header-menu/select-parent.md), and in selecting that job in order to prepend its results as a restart precursor to the new NSCF job being created.  
 
 ## Submit Job
 

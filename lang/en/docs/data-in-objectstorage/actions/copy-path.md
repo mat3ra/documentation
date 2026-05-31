@@ -1,6 +1,6 @@
 # Copy Path of Files
 
-The path of the file, within the [directory structure of the cluster](../../infrastructure/clusters/directories.md) where it is [stored](../../infrastructure/storage.md), can be **copied to the clipboard** through the corresponding `Copy Path` [dropdown button](../../entities-general/ui/explorer.md#actions-dropdown) <i class="zmdi zmdi-copy zmdi-hc-border"></i> under [Files Explorer](../ui/explorer.md).
+The path of the file, within the [directory structure of the cluster]({{ dev_url }}/infrastructure/clusters/directories/) where it is [stored]({{ dev_url }}/infrastructure/storage/), can be **copied to the clipboard** through the corresponding `Copy Path` [dropdown button](../../entities-general/ui/explorer.md#actions-dropdown) <i class="zmdi zmdi-copy zmdi-hc-border"></i> under [Files Explorer](../ui/explorer.md).
 
 Upon its copying, this path can be conveniently used in the [Command Line Interface](../../cli/overview.md) or [Remote Desktop](../../remote-connection/remote-desktop.md) environments for example.
 

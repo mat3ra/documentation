@@ -1,6 +1,6 @@
 # Calculate Electronic Band Structure with GW Approximation and Plasmon-pole Approach
 
-This page explains how to calculate the [electronic band structure](../../../properties-directory/non-scalar/bandstructure.md) based on [Density Functional Theory](../../../models-directory/dft/overview.md) and [GW Approximation](../../../models-directory/dft/notes.md#the-gw-approximation). We consider a hexagonal Boron Nitride (BN) monolayer [^1] as our sample material, and use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md).
+This page explains how to calculate the [electronic band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/) and [GW Approximation]({{ reference_url }}/models-directory/dft/notes/#the-gw-approximation). We consider a hexagonal Boron Nitride (BN) monolayer [^1] as our sample material, and use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md).
 
 !!!note "Quantum ESPRESSO version considered in this tutorial"
     The present tutorial is written for Quantum ESPRESSO at version(s) 6.3.
@@ -14,7 +14,7 @@ Here we employ of the **Plasmon pole** approach [^2] and only sample at zero fre
 <details markdown="1">
   <summary>Expand to view</summary> 
 
-We shall now review the plasmon-pole-specific components of the input file for the second compute [unit](../../../workflows/components/units.md) (based on SternheimerGW), within the larger [Workflow](../../../workflows/overview.md) based upon the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) modeling engine.
+We shall now review the plasmon-pole-specific components of the input file for the second compute [unit]({{ reference_url }}/workflows/components/units/) (based on SternheimerGW), within the larger [Workflow]({{ reference_url }}/workflows/overview/) based upon the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) modeling engine.
 
 ### Truncation
 
@@ -40,7 +40,7 @@ These two frequencies are then used to construct an approximation for the screen
 
 ## Create and Submit Job
 
-The user should, at this point, follow the instructions included in the [alternative GW tutorial](gw-qe-bs-fullfreq.md#create-job) for explanations on how to create and execute a GW Workflow computational [Job](../../../jobs/overview.md), and on how to retrieve and inspect its corresponding results.
+The user should, at this point, follow the instructions included in the [alternative GW tutorial](gw-qe-bs-fullfreq.md#create-job) for explanations on how to create and execute a GW Workflow computational [Job]({{ reference_url }}/jobs/overview/), and on how to retrieve and inspect its corresponding results.
 
 ## Animation
 

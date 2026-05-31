@@ -26,7 +26,7 @@ Finally, the "Comment" permission allows Accounts to write comments under the gi
 
 ## Relevance to Entity Sharing and Organizations
 
-Permissions are important in the context of [entity sharing](../collaboration/sharing/ui.md) between accounts, and during the [assignment of entities](../collaboration/actions/team/add-remove-entity.md) to [Teams](../collaboration/organizations/teams.md)  within an [Organization](../collaboration/organizations/overview.md).
+Permissions are important in the context of [entity sharing]({{ guide_url }}/collaboration/sharing/ui/) between accounts, and during the [assignment of entities]({{ guide_url }}/collaboration/actions/team/add-remove-entity/) to [Teams](../collaboration/organizations/teams.md)  within an [Organization](../collaboration/organizations/overview.md).
 
 !!!note  "Note: analogy with Google Drive functionality"
     Similarly to [Access Levels](../collaboration/sharing/access-levels.md), the permission types included on our platform mirror that of the Google Drive, for example [^1]. 

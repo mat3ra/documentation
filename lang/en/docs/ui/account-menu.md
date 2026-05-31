@@ -14,7 +14,7 @@ Account Switcher                                              | Enables switchin
 Quota, Queue, Service Level                                   | This section shows a quick snapshot of the status of the user's quota: Storage, job queue breakdown and the service level. The user can easily upgrade the service level, to obtain more compute power, by clicking the upgrade button. If the user wants to compare service levels, the user can find more information in the Account menu, below.
 Account Balance                                               | A snapshot of the user's current balance, quickly credit the balance using the Apply Credit Button
 <i class="zmdi zmdi-settings"></i> &nbsp; [Account Preferences](../accounts/ui/preferences-overview.md) | A link to [the user's account](../accounts/ui/profile-page.md) page. In here the user can find his/her profile, preferences and service level.
-<i class="zmdi zmdi-card"></i> &nbsp; [Billing & Payments](../accounts/payments-charges.md) | A link to the [billings and payments](../accounts/payments-charges.md) section. In here the user can inspect compute charges, payment records and payment methods.
+<i class="zmdi zmdi-card"></i> &nbsp; [Billing & Payments]({{ reference_url }}/accounts/payments-charges/) | A link to the [billings and payments]({{ reference_url }}/accounts/payments-charges/) section. In here the user can inspect compute charges, payment records and payment methods.
 <i class="fa fa-desktop"></i> &nbsp; Remote Desktop           | Opens a desktop session (VNC) on Exabyte.io remote server.
 <i class="zmdi zmdi-accounts-add"></i> &nbsp; Invite a friend | Earn credits by inviting people to join Exabyte.io
 <i class="zmdi zmdi-power"></i> &nbsp; Logout                 | Secure logout
@@ -28,10 +28,8 @@ Switching between Accounts is described in a
 ## Account Snapshot
 
 The right-hand sidebar also offers a snapshot of the Account, containing some
-basic information: storage [quota](../accounts/quota.md) on each available
-computing cluster, [job](../jobs/overview.md) queue summary, [service level](
-../accounts/service-levels.md), and finally the current [balance](
-../accounts/balance.md). The possibility to expand or replenish these two latter
+basic information: storage [quota]({{ reference_url }}/accounts/quota/) on each available
+computing cluster, [job]({{ reference_url }}/jobs/overview/) queue summary, [service level]({{ reference_url }}/accounts/service-levels/), and finally the current [balance]({{ reference_url }}/accounts/balance/). The possibility to expand or replenish these two latter
 items is also offered next to each one of them.
 
 

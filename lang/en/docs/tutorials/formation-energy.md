@@ -47,8 +47,8 @@ simulation.
 
 Next go to the workflow tab and select "Formation Energy" as the workflow type.
 The units displayed as part of this workflow will look similar to a combination
-of the [kpt-convergence](kpt-convergence) and [relaxation tutorials](
-relaxation), but will include a couple of extra units after the vc_relax unit
+of the [kpt-convergence](dft/addons/kpt-convergence.md) and [relaxation tutorials](
+dft/addons/structural-relaxation.md), but will include a couple of extra units after the vc_relax unit
 used to obtain the elements total and zero point energies and calculate the
 formation energy.
 

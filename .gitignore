@@ -20,3 +20,4 @@ scripts/*.mp4
 .python-version
 # Agents workdir
 tmp
+.local-mkdocs*.yml

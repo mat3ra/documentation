@@ -1,6 +1,6 @@
 # Boundary Conditions
 
-Boundary conditions specify how the system under investigation (referred to as "Slab" for the case of interfaces) can interact or is related to its surroundings. Such customization of boundary conditions can be especially resourceful in the case of [Effective Screening Medium](../../../models/auxiliary-concepts/esm.md) calculations.
+Boundary conditions specify how the system under investigation (referred to as "Slab" for the case of interfaces) can interact or is related to its surroundings. Such customization of boundary conditions can be especially resourceful in the case of [Effective Screening Medium]({{ reference_url }}/models/auxiliary-concepts/esm/) calculations.
 
 ## Set Boundary Conditions Dialog
 

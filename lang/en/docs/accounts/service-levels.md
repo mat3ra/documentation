@@ -1,6 +1,6 @@
 # Service Levels
 
-Service levels define the types, qualities, and quantities of services provided to the accounts within our platform. The features available on our platform are affected by the opted Service Level. For a detailed comparison of the pricing associated with different Service Levels offered as part of our platform, the user is referred to the [pricing documentation page](../pricing/service-levels.md). 
+Service levels define the types, qualities, and quantities of services provided to the accounts within our platform. The features available on our platform are affected by the opted Service Level. For a detailed comparison of the pricing associated with different Service Levels offered as part of our platform, the user is referred to the [pricing documentation page]({{ guide_url }}/pricing/service-levels/). 
 
 ## Comparison
 
@@ -68,7 +68,7 @@ Organizations interested in a managed cloud solution where our software can run 
 
 ## View/Change Service Level
 
-All the relevant information concerning Service Levels, under the context of the currently selected Account, can be inspected through the corresponding [component of the User Interface](ui/service-level.md). It is important to bear in mind that, when dealing with collaborative accounts, only the Owner or an Administrator of the account is given the right to undergo such operations on behalf of the whole Organization. 
+All the relevant information concerning Service Levels, under the context of the currently selected Account, can be inspected through the corresponding [component of the User Interface]({{ guide_url }}/accounts/ui/service-level/). It is important to bear in mind that, when dealing with collaborative accounts, only the Owner or an Administrator of the account is given the right to undergo such operations on behalf of the whole Organization. 
 
 ## Validity Period
 

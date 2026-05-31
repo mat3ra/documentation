@@ -1,6 +1,6 @@
 # Structured Data
 
-We store each item in the Entity Collections in the form of **structured data** in JSON format. The user is referred to the corresponding [section of the documentation](../data-structured/overview.md) for the explanation of the concept of structured data in the context of our platform.
+We store each item in the Entity Collections in the form of **structured data** in JSON format. The user is referred to the corresponding [section of the documentation]({{ reference_url }}/data-structured/overview/) for the explanation of the concept of structured data in the context of our platform.
 
 ## Example JSON representation
 
@@ -44,7 +44,7 @@ The reader is referred to other documentation pages for aspects that might perta
 | owner / creator | Entity Owner and Creator | Further information about both the [ownership](ownership.md) of the entity, and the user who created it is described separately below. |
 | exabyteId      | Identifier of the corresponding [Bank Entity](bank.md) Collection | Only present for "Bankable" entity types. |
 | hash |  Unique string produced by [Bank Mapping Function](bank.md) |  The entity item within the Bank collection also contains this string.   |
-| schemaVersion |  Version of the JSON schema | The version of the JSON schema according to the [Exabyte Data Convention](../data-structured/overview.md), employed at the moment of the creation of the entity.  |
+| schemaVersion |  Version of the JSON schema | The version of the JSON schema according to the [Exabyte Data Convention]({{ reference_url }}/data-structured/overview/), employed at the moment of the creation of the entity.  |
 | createdAt / updatedAt  | Date and Time Information  | Information about the date and time at which the entity was first created / updated.  |
 | tags | Descriptive Metadata  | See dedicated section below for further explanations. |
 
@@ -59,21 +59,21 @@ The reader is referred to other documentation pages for aspects that might perta
 
 ## Metadata
 
-Metadata refers to information that in turn provides information about other data. In the context of our platform, Metadata is used primarily to facilitate [search](actions/search.md) through the [Entity collections](../accounts/collections.md). We supplement entries with additional descriptive textual information, such as tags, for example. The above example of JSON representation shows how tags are stored within the structured data, under the "tags" keyword.
+Metadata refers to information that in turn provides information about other data. In the context of our platform, Metadata is used primarily to facilitate [search]({{ guide_url }}/entities-general/actions/search/) through the [Entity collections](../accounts/collections.md). We supplement entries with additional descriptive textual information, such as tags, for example. The above example of JSON representation shows how tags are stored within the structured data, under the "tags" keyword.
 
 Metadata can be added to an entity item in one or more of the following forms.
 
 ### Description
 
-In some cases, the user can add a general description for reference purposes, which can be entered in plain text or using Markdown language [^1] as explained [here](actions/metadata.md#edit-description)
+In some cases, the user can add a general description for reference purposes, which can be entered in plain text or using Markdown language [^1] as explained [here]({{ guide_url }}/entities-general/actions/metadata/#edit-description)
 
 ### Tags
 
-The user can add descriptive tags to the entity in order to retrieve it more easily when searches are performed. Tags take the form of separate keyword strings, that can each contain one or multiple words. They can be inserted according to the [following instructions](actions/metadata.md#edit-tags).
+The user can add descriptive tags to the entity in order to retrieve it more easily when searches are performed. Tags take the form of separate keyword strings, that can each contain one or multiple words. They can be inserted according to the [following instructions]({{ guide_url }}/entities-general/actions/metadata/#edit-tags).
 
 ### Metadata for surfaces / slabs
 
-A specific kind of metadata is used to mark slabs / surfaces. Such metadata is stored in the entity on its creation and can, for example, be used for surface energy calculations. This is explained further in the [corresponding documentation section](../materials-designer/header-menu/advanced/surface-slab.md/#structural-metadata).
+A specific kind of metadata is used to mark slabs / surfaces. Such metadata is stored in the entity on its creation and can, for example, be used for surface energy calculations. This is explained further in the [corresponding documentation section]({{ guide_url }}/materials-designer/header-menu/advanced/surface-slab/#structural-metadata).
 
 ## Slug
 

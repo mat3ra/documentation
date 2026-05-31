@@ -10,11 +10,11 @@ Our platform contains three main classes of **Entities**, each recognizable by i
 
 ## [Ownership and Permissions](permissions.md)
 
-Each entity has an [Owner](ownership.md) and a set of [permissions](permissions.md) in relation to how they can be accessed, manipulated or modified by users. Permissions are relevant in the context of [Entity Sharing](../collaboration/sharing/ui.md) and [Organizational Accounts](../collaboration/organizations/overview.md). 
+Each entity has an [Owner](ownership.md) and a set of [permissions](permissions.md) in relation to how they can be accessed, manipulated or modified by users. Permissions are relevant in the context of [Entity Sharing]({{ guide_url }}/collaboration/sharing/ui/) and [Organizational Accounts](../collaboration/organizations/overview.md). 
 
-## [Common User Interface Components](ui/overview.md)
+## [Common User Interface Components]({{ guide_url }}/entities-general/ui/overview/)
 
-There are interface components, and some of their respective sub-components, which are [common to all entity types](ui/overview.md). 
+There are interface components, and some of their respective sub-components, which are [common to all entity types]({{ guide_url }}/entities-general/ui/overview/). 
 
 ## [Data](data.md)
 
@@ -28,6 +28,6 @@ Some Entities can be grouped together under folders, or "Sets", as explained [he
 
 Unique Entities are collected inside the Entity Banks by type. Please refer to [this page](bank.md) for an introduction to the "Bank" concept.
 
-## [Common Actions](../entities-general/actions/overview.md)
+## [Common Actions]({{ guide_url }}/entities-general/actions/overview/)
 
-Finally, [this page](../entities-general/actions/overview.md) introduces actions pertinent to all entity types.
+Finally, [this page]({{ guide_url }}/entities-general/actions/overview/) introduces actions pertinent to all entity types.

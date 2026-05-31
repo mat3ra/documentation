@@ -16,3 +16,20 @@ python -m mkdocs build
 python -m mkdocs build -f mkdocs-guide.yml    -d site/guide
 python -m mkdocs build -f mkdocs-concepts.yml -d site/reference
 python -m mkdocs build -f mkdocs-dev.yml      -d site/dev
+
+# Copy subsite homepages to root index.html, fixing relative paths
+fix_and_copy_homepage() {
+    local src="$1" dst="$2"
+    [ -f "$src" ] && sed \
+        -e 's|"base": ".."|"base": "."|' \
+        -e 's|"\.\./assets/|"./assets/|g' \
+        -e 's|"\.\./search/|"./search/|g' \
+        -e 's|"\.\./extra/|"./extra/|g' \
+        -e 's|"\.\./images/|"./images/|g' \
+        -e 's|href="\.\./|href="./|g' \
+        -e 's|src="\.\./|src="./|g' \
+        "$src" > "$dst" || true
+}
+fix_and_copy_homepage site/guide/index-guide/index.html         site/guide/index.html
+fix_and_copy_homepage site/reference/index-concepts/index.html  site/reference/index.html
+fix_and_copy_homepage site/dev/index-dev/index.html             site/dev/index.html

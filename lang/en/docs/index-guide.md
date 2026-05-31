@@ -3,8 +3,8 @@
 This guide provides step-by-step instructions for using the Mat3ra platform through its web interface. It covers tutorials, tool walkthroughs, and common actions.
 
 !!!tip "Other documentation sites"
-    For explanations of underlying concepts, see [Concepts & Reference](https://docs.mat3ra.com/reference/).
-    For developer-focused content (REST API, CLI, infrastructure), see the [Developer Guide](https://docs.mat3ra.com/dev/).
+    For explanations of underlying concepts, see [Concepts & Reference]({{ reference_url }}/).
+    For developer-focused content (REST API, CLI, infrastructure), see the [Developer Guide]({{ dev_url }}/).
 
 
 ## Quick start

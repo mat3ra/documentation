@@ -35,4 +35,4 @@ Finally, we provide [these instructions](copy-paste.md) on how text can be copie
 
 ## [Access data in Web Platform](../../ui/overview.md)
 
-Finally, we review the procedure for exchanging data back and forth between the remote connection interfaces and the [Web Interface](../../ui/overview.md) of our platform, through the use of [Dropbox](../../data-in-objectstorage/dropbox.md).
+Finally, we review the procedure for exchanging data back and forth between the remote connection interfaces and the [Web Interface](../../ui/overview.md) of our platform, through the use of [Dropbox]({{ dev_url }}/data-in-objectstorage/dropbox/).

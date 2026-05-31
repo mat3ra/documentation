@@ -1,10 +1,67 @@
-# Concepts & Reference — explanatory documentation for understanding the platform.
-# Covers data models, entity concepts, software/method/model references, properties.
+# Concepts & Reference — encyclopedic documentation of platform abstractions.
+# Covers entities, models, methods, software, and properties.
 # Deploy to: docs.mat3ra.com/reference/
 
 docs_dir: !!python/object/apply:os.getenv ["DOCS_DIR", "lang/en/docs"]
 
-site_name: "Concepts & Reference — Mat3ra Documentation"
+# Exclude pages that belong to other sites (Guide or Dev).
+# Cross-site links use absolute URLs instead.
+exclude_docs: |
+  # Guide-only top-level dirs
+  cli/
+  data-in-objectstorage/
+  getting-started/
+  jobs-cli/
+  jobs-designer/
+  jupyterlite/
+  materials-designer/
+  pricing/
+  remote-connection/
+  software-directory/
+  tutorials/
+  ui/
+  workflow-designer/
+  migrating-to-new-platform.md
+
+  # Dev-only top-level dirs
+  data-on-disk/
+  infrastructure/
+  rest-api/
+
+  # Guide-only pages in shared dirs
+  accounts/accounting/
+  accounts/ui/
+  collaboration/actions/
+  collaboration/sharing/actions.md
+  collaboration/sharing/ui.md
+  collaboration/ui/
+  entities-general/actions/
+  entities-general/ui/
+  jobs/actions/
+  jobs/ui/
+  materials/actions/
+  materials/ui/
+  properties/ui/
+  workflows/actions/
+  workflows/ui/
+  other/support.md
+  other/community-programs.md
+  other/registration.md
+  other/faq.md
+
+  # Other sites' homepages
+  index.md
+  index-guide.md
+  index-dev.md
+
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+  links:
+    absolute_links: info
+
+site_name: "Concepts & Reference"
 site_url: https://docs.mat3ra.com/reference
 site_description: "Explanatory reference for Mat3ra platform concepts, data models, and scientific methods."
 dev_addr: "localhost:8002"
@@ -53,6 +110,10 @@ extra:
         origin_url: https://jupyterlite.mat3ra.com/retro/notebooks
         origin_url_lab: https://jupyterlite.mat3ra.com/lab/tree
         notebooks_path_root: made
+    # Cross-site URL variables (resolved by macros plugin at build time)
+    guide_url: https://docs.mat3ra.com/guide
+    reference_url: https://docs.mat3ra.com/reference
+    dev_url: https://docs.mat3ra.com/dev
 
 markdown_extensions:
     - admonition
@@ -110,13 +171,14 @@ plugins:
     - tags
     - macros:
         include_dir: "lang/en/docs/includes/"
-        render_by_default: false
+        render_by_default: true
     - bibtex:
         bib_file: "lang/en/docs/includes/references.bib"
         citation_template: "{{author}} ({{year}})"
         bibliography_template: "{{author}} ({{year}}). {{title}}. {{journal}}. {{volume}}. {{pages}}."
 
 nav:
+    - "← All Docs":                                      /
     - Home:                                              index-concepts.md
 
 # ENTITIES — Concepts

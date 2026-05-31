@@ -1,6 +1,6 @@
 # Materials Properties Classification
 
-The classification explained below complements the more general one introduced [here](../../data/classification.md). We further classify the Properties of [Materials](../../materials/overview.md) according to the conventions below.
+The classification explained below complements the more general one introduced [here]({{ reference_url }}/data/classification/). We further classify the Properties of [Materials](../../materials/overview.md) according to the conventions below.
 
 | By origin                      | By domain           |
 |:------------------------------:|:------------------------------:|

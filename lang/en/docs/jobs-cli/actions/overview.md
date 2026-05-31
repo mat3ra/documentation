@@ -20,4 +20,4 @@ A Job can be terminated artificially by the user at any time preceding its compl
 
 ## [View List of Jobs and Charges](view-job-list.md)
 
-A detailed list of Jobs and associated [Accounting Charges](../../accounts/payments-charges.md) produced to date by the user can be generated under CLI as explained [here](view-job-list.md), for user's reference and convenience.
+A detailed list of Jobs and associated [Accounting Charges]({{ reference_url }}/accounts/payments-charges/) produced to date by the user can be generated under CLI as explained [here](view-job-list.md), for user's reference and convenience.

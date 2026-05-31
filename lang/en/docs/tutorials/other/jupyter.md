@@ -4,11 +4,11 @@ This tutorial page explains how to create a Jupyter Notebook environment through
 
 ## Generate RESTFul API Tokens
 
-The Jupyter notebook environment in the present tutorial is used to run an IPython notebook from [Exabyte API Examples Repository](../../rest-api/api-examples.md) in which a connection is made to the RESTFul API to retrieve a list of materials. In order to establish the connection, one should generate RESTFul API tokens following the steps described in [here](../../rest-api/authentication.md).
+The Jupyter notebook environment in the present tutorial is used to run an IPython notebook from [Exabyte API Examples Repository]({{ dev_url }}/rest-api/api-examples/) in which a connection is made to the RESTFul API to retrieve a list of materials. In order to establish the connection, one should generate RESTFul API tokens following the steps described in [here]({{ dev_url }}/rest-api/authentication/).
 
 ## Upload IPython Notebooks
 
-Jupyter Notebook is started on the account [Dropbox](../../data-in-objectstorage/dropbox.md) directory. This directory provides users with access to previously uploaded/created IPython notebooks. Here, **settings.py** file contains the variables required to configure the RESTFul API endpoints and **get_materials_by_formula.ipynb** from the [Exabyte API Examples Github Repository](../../rest-api/api-examples.md) are uploaded to Dropbox to be later used inside the Jupyter notebook environment.
+Jupyter Notebook is started on the account [Dropbox]({{ dev_url }}/data-in-objectstorage/dropbox/) directory. This directory provides users with access to previously uploaded/created IPython notebooks. Here, **settings.py** file contains the variables required to configure the RESTFul API endpoints and **get_materials_by_formula.ipynb** from the [Exabyte API Examples Github Repository]({{ dev_url }}/rest-api/api-examples/) are uploaded to Dropbox to be later used inside the Jupyter notebook environment.
 
 ## Create Jupyter Job
 
@@ -16,15 +16,15 @@ A simulation job is required to launch a Jupyter notebook. To create a new job, 
 
 ## Choose Workflow
 
-Jupyter Notebook installation and configuration is handled through the Jupyter Notebook [workflow](../../workflows/overview.md) that should be [imported](../../workflows/actions/copy-bank.md) from the [Workflows Bank](../../workflows/bank.md) into the account-owned [collection](../../accounts/collections.md) before the job is created. This workflow can later be [selected](../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [job being created](../../jobs-designer/workflow-tab.md).
+Jupyter Notebook installation and configuration is handled through the Jupyter Notebook [workflow]({{ reference_url }}/workflows/overview/) that should be [imported](../../workflows/actions/copy-bank.md) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/) before the job is created. This workflow can later be [selected](../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [job being created](../../jobs-designer/workflow-tab.md).
 
 ## Adjust Jupyter Notebook Environment
 
-Jupyter Notebook is installed inside a Python [virtual environment](https://virtualenv.pypa.io/en/latest/) with no additional packages initially. The environment can be customized by navigating to the [workflow tab](../../jobs-designer/workflow-tab.md) and adjusting the **configure.sh** script located inside the **notebook** unit. Here, we install [Exabyte API Client](../../rest-api/api-client.md) Python package to connect to Exabyte RESTFul API.
+Jupyter Notebook is installed inside a Python [virtual environment](https://virtualenv.pypa.io/en/latest/) with no additional packages initially. The environment can be customized by navigating to the [workflow tab](../../jobs-designer/workflow-tab.md) and adjusting the **configure.sh** script located inside the **notebook** unit. Here, we install [Exabyte API Client]({{ dev_url }}/rest-api/api-client/) Python package to connect to Exabyte RESTFul API.
 
 ## Submit Job
 
-Before [submitting](../../jobs/actions/run.md) the [job](../../jobs/overview.md), you should click on the ["Compute" tab](../../jobs-designer/compute-tab.md) of [Job Designer](../../jobs-designer/overview.md) and inspect the [compute parameters](../../infrastructure/compute/parameters.md) included therein.
+Before [submitting](../../jobs/actions/run.md) the [job]({{ reference_url }}/jobs/overview/), you should click on the ["Compute" tab](../../jobs-designer/compute-tab.md) of [Job Designer](../../jobs-designer/overview.md) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein.
 
 ## Access Jupyter Notebook
 
@@ -35,7 +35,7 @@ The Jupyter notebook can be accessed when the job is active by navigating to the
 
 ## Save Jupyter Notebooks
 
-**Make sure to save and checkpoint the notebook after introducing any changes**. The "save and checkpoint" Jupyter action overwrites the original notebook loaded from Dropbox and saves a copy of the notebook inside **checkpoints** directory located in the [job working directory](../../jobs-cli/batch-scripts/directories.md#working-directory). The checkpoints will be later accessible through the [Job Files Explorer](../../data-in-objectstorage/files.md) tab.
+**Make sure to save and checkpoint the notebook after introducing any changes**. The "save and checkpoint" Jupyter action overwrites the original notebook loaded from Dropbox and saves a copy of the notebook inside **checkpoints** directory located in the [job working directory](../../jobs-cli/batch-scripts/directories.md#working-directory). The checkpoints will be later accessible through the [Job Files Explorer]({{ dev_url }}/data-in-objectstorage/files/) tab.
 
 ## Stop Jupyter Environment
 

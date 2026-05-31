@@ -6,17 +6,17 @@ The electronic bandstructure of a material describes the range of energies that 
 
 ## Example
 
-Electronic bandstructure calculations can be performed with an appropriate [Workflow](../../workflows/overview.md). The results are portrayed in the [Results Tab](../../jobs/ui/results-tab.md) of [Job Viewer](../../jobs/ui/viewer.md) in the form of a **dispersion curve**, as illustrated in the graphic below. The visual contains the bandstructure calculated on the path "Г-X-W-K-Г-L-U-W-L-U-X" with indirect band gap realized between k-points at [0.0,0.0,0.0] and [0.4,0.0,0.4] with the value of 0.601. Similarly, the direct gap of 2.422 is found at the gamma point.
+Electronic bandstructure calculations can be performed with an appropriate [Workflow](../../workflows/overview.md). The results are portrayed in the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ guide_url }}/jobs/ui/viewer/) in the form of a **dispersion curve**, as illustrated in the graphic below. The visual contains the bandstructure calculated on the path "Г-X-W-K-Г-L-U-W-L-U-X" with indirect band gap realized between k-points at [0.0,0.0,0.0] and [0.4,0.0,0.4] with the value of 0.601. Similarly, the direct gap of 2.422 is found at the gamma point.
 
 ![Bandstructure](../../images/properties-directory//bandstructure.png "Bandstructure")
 
 ### Path in the reciprocal space
 
-This dispersion plot covers the [desired path](../../workflow-designer/subworkflow-editor/important-settings.md) in the reciprocal space of the Brillouin Zone, with its corresponding Greek letter labels indicating special symmetry points. The energy along the vertical axis is scaled relative to the [Fermi energy](../scalar/fermi-energy.md) of the material (red dashed line), marking the highest occupied energy level.
+This dispersion plot covers the [desired path]({{ guide_url }}/workflow-designer/subworkflow-editor/important-settings/) in the reciprocal space of the Brillouin Zone, with its corresponding Greek letter labels indicating special symmetry points. The energy along the vertical axis is scaled relative to the [Fermi energy](../scalar/fermi-energy.md) of the material (red dashed line), marking the highest occupied energy level.
 
 ### Export as Image
 
-The possibility to export the graph is offered as mentioned [here](../../properties/ui/viewer.md#export-as-images).
+The possibility to export the graph is offered as mentioned [here]({{ guide_url }}/properties/ui/viewer/#export-as-images).
 
 ## Energy Eigenvalues
 

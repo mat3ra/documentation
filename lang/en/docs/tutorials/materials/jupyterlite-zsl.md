@@ -4,11 +4,11 @@ This tutorial explains how to create an interface between two materials in Mater
 
 ## Step 0: Open Materials Designer
 
-We start with [opening](../../entities-general/actions/create.md) an instance of the [Materials Designer Interface](../../materials-designer/overview.md) for creating and designing new [Materials structures](../../materials/overview.md) on our platform.
+We start with [opening](../../entities-general/actions/create.md) an instance of the [Materials Designer Interface](../../materials-designer/overview.md) for creating and designing new [Materials structures]({{ reference_url }}/materials/overview/) on our platform.
 
 ## Step 1: Import Materials
 
-In order to use Graphene and Ni, the user should first [import](../../materials-designer/header-menu/input-output/import.md) sample crystalline structures of the two respective materials into the current Materials Designer session, from the account-owned [collection](../../accounts/collections.md) of materials.
+In order to use Graphene and Ni, the user should first [import](../../materials-designer/header-menu/input-output/import.md) sample crystalline structures of the two respective materials into the current Materials Designer session, from the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials.
 
 Another option is to use materials from a Standard Materials Dataset via [Import from Standata](../../materials-designer/header-menu/input-output/standata-import.md).
 

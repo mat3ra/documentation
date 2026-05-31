@@ -18,11 +18,11 @@ ESM screens the electronic charge of a polarized/charged medium along one perpen
 
 The ESM method typically relies on the customization of the boundary conditions for the slab system under investigation, differently from the standard periodic boundary conditions which are usually encountered in [DFT-based computations](../../models-directory/dft/overview.md). 
 
-We review the list of available boundary condition options offered on our platform [in this section](../../materials-designer/header-menu/advanced/boundary-conditions.md) of the documentation.
+We review the list of available boundary condition options offered on our platform [in this section]({{ guide_url }}/materials-designer/header-menu/advanced/boundary-conditions/) of the documentation.
 
 ## Implementation
 
-We explain how ESM calculations are implemented and performed on our platform in a dedicated [tutorial page](../../tutorials/dft/electronic/esm-qe.md).
+We explain how ESM calculations are implemented and performed on our platform in a dedicated [tutorial page]({{ guide_url }}/tutorials/dft/electronic/esm-qe/).
 
 ## Links
 

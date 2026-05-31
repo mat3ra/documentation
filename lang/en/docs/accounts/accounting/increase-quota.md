@@ -3,12 +3,12 @@
 !!!warning "Warning: content with restricted access"
     All the information contained under the present documentation page is only relevant for Account Owners or Administrators, since only they have sufficient rights to view the content exposed herein and make the appropriate changes. We remind the reader that a user is always the Owner and full administrator of his own personal Account.
 
-This page explains how to request an increase to the Account's [Storage Quota](../quota.md) on the available supercomputing clusters, in addition to the storage space already provided under the account's current [service level](../../pricing/service-levels.md). This action can be performed from the following four alternative locations across the platform interface:
+This page explains how to request an increase to the Account's [Storage Quota]({{ reference_url }}/accounts/quota/) on the available supercomputing clusters, in addition to the storage space already provided under the account's current [service level]({{ guide_url }}/pricing/service-levels/). This action can be performed from the following four alternative locations across the platform interface:
 
 
-- [The Account Menu](../../ui/account-menu.md)
+- [The Account Menu]({{ guide_url }}/ui/account-menu/)
 - [The Service Level Tab](../ui/service-level.md)
-- [Dashboard](../../ui/specific/dashboard.md)
+- [Dashboard]({{ guide_url }}/ui/specific/dashboard/)
 - [The "Bio" tab](../ui/bio.md)
 
 In the former two cases, the increase in Storage Quota can be executed through either of the corresponding `Add Storage` buttons, located within the broader User Interface as highlighted in red in the image below:

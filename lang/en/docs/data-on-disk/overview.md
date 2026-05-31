@@ -1,6 +1,6 @@
 # Data on Disk
 
-[Unstructured](../data/classification.md#by-internal-organization) data generated on our platform consists of the input and output files of simulations. This data is stored in [block storage](../infrastructure/storage.md) (or conventional hard drive disks) connected to the [computing clusters](../infrastructure/clusters/overview.md) at the heart of the general [infrastructure](../infrastructure/overview.md).
+[Unstructured]({{ reference_url }}/data/classification/#by-internal-organization) data generated on our platform consists of the input and output files of simulations. This data is stored in [block storage](../infrastructure/storage.md) (or conventional hard drive disks) connected to the [computing clusters](../infrastructure/clusters/overview.md) at the heart of the general [infrastructure](../infrastructure/overview.md).
 
 We introduce below the key concepts associated with the disk storage of such unstructured data.
 

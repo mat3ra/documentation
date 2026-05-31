@@ -6,7 +6,7 @@ The Fermi Energy marks the highest occupied energy level in the [electronic band
 
 ## Example
 
-Its value can be estimated with any [bandstructure](../non-scalar/bandstructure.md) [Workflow](../../workflows/overview.md), and it is returned under the [Results Tab](../../jobs/ui/results-tab.md) interface with the following appearance (in eV).
+Its value can be estimated with any [bandstructure](../non-scalar/bandstructure.md) [Workflow](../../workflows/overview.md), and it is returned under the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) interface with the following appearance (in eV).
 
 <div class="clearfix">
     <center>

@@ -1,6 +1,6 @@
 # Units: Structured Representation
 
-The JSON [structured representations](../../data-structured/overview.md) for the different [types of units](../components/units.md) supported on our platform are contained in the expandable sections presented throughout the present page, accompanied each time by a corresponding example.
+The JSON [structured representations]({{ reference_url }}/data-structured/overview/) for the different [types of units](../components/units.md) supported on our platform are contained in the expandable sections presented throughout the present page, accompanied each time by a corresponding example.
 
 For a description of unit input templating, the reader is referred to [this section](../templating/overview.md) of the documentation.
 

@@ -1,8 +1,6 @@
 # Running Jobs via Web Interface
 
-This page explains how to run a simple [density functional theory calculation](
-../../models-directory/dft/overview.md) to obtain [electronic band structure](
-../../properties-directory/non-scalar/bandstructure.md) of silicon via our main
+This page explains how to run a simple [density functional theory calculation]({{ reference_url }}/models-directory/dft/overview/) to obtain [electronic band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) of silicon via our main
 [Web Interface](../../ui/overview.md).
 
 Before going into the detailed step-by-step instructions, first we present a
@@ -27,13 +25,12 @@ Running simulations in Mat3ra web platform involves three main steps:
 3. Create and submit job with material(s) of interest, workflow steps and
   required compute parameters.
 
-Each [account](../../accounts/overview.md) is pre-configured with a default
-[material](../../materials/overview.md) and [workflow](
-../../workflows/overview.md). Silicon with standard FCC structure is the default
+Each [account]({{ reference_url }}/accounts/overview/) is pre-configured with a default
+[material]({{ reference_url }}/materials/overview/) and [workflow]({{ reference_url }}/workflows/overview/). Silicon with standard FCC structure is the default
 material, and "Total Energy" calculation with Quantum ESPRESSO is the default
 workflow added to each account on creation. However, it is possible to set a
 different material and workflow as default during the account creation or later.
-We maintain a ["Bank"](../../entities-general/bank.md) (collection) of materials
+We maintain a ["Bank"]({{ reference_url }}/entities-general/bank/) (collection) of materials
 and workflows, which includes both Mat3ra-curated and user contributed material
 structures and workflows.
 
@@ -43,8 +40,7 @@ structures and workflows.
 There are several ways, we can add new material structures to our account
 collection:
 
-- Import crystal structures from the [Materials Bank](
-  ../../entities-general/bank.md)
+- Import crystal structures from the [Materials Bank]({{ reference_url }}/entities-general/bank/)
 - Import crystal structures from a third-party source such as
   [Materials Project](https://materialsproject.org/) using [Import](
   ../../materials/actions/import.md) action
@@ -77,7 +73,7 @@ Workflow Bank to our account collection.
 
 The above task involves following steps:
 
-  1. Navigate to the [Workflows Bank](../../workflows/bank.md) page by clicking
+  1. Navigate to the [Workflows Bank]({{ reference_url }}/workflows/bank/) page by clicking
   on the "Bank" option in the [left-hand sidebar](../../ui/left-sidebar.md)
   2. Search with the text "curators" to filter workflows created by the
   Mat3ra "Curators" account
@@ -122,7 +118,7 @@ On the Job creation page, we can:
 ### 3.1. Materials Tab
 
 [Materials Tab](../../jobs-designer/materials-tab.md) lets the user choose one
-or more previously imported [materials](../../materials/overview.md) for use
+or more previously imported [materials]({{ reference_url }}/materials/overview/) for use
 in the calculation. We will proceed with the default structure of Silicon for
 this demonstration.
 
@@ -130,28 +126,26 @@ this demonstration.
 ### 3.2. Workflow Tab
 
 Simulations usually have multiple steps that need to be executed in a certain
-order. This sequence of steps are defined as a ["Workflow"](
-../../workflows/overview.md).
+order. This sequence of steps are defined as a ["Workflow"]({{ reference_url }}/workflows/overview/).
 
-A workflow consists of one or multiple ["Subworkflows"](
-../../workflows/components/subworkflows.md), as such each Subworkflow can only
-contain one [modeling engine](../../software/overview.md) and one
-[theoretical model](../../models/overview.md) (eg. [Quantum ESPRESSO](
+A workflow consists of one or multiple ["Subworkflows"]({{ reference_url }}/workflows/components/subworkflows/), as such each Subworkflow can only
+contain one [modeling engine]({{ reference_url }}/software/overview/) and one
+[theoretical model]({{ reference_url }}/models/overview/) (eg. [Quantum ESPRESSO](
 ../../software-directory/modeling/quantum-espresso/overview.md), or "espresso",
-and [density functional theory](../../models-directory/dft/overview.md)
+and [density functional theory]({{ reference_url }}/models-directory/dft/overview/)
 respectively). Therefore, if a simulation involves multiple simulation engines
 in the same workflow, e.g, Quantum ESPRESSO for DFT and LAMMPS for molecular
 dynamics, then we must create multiple subworkflows.
 
 The subworkflow ["Overview" tab](
 ../../workflow-designer/subworkflow-editor/overview-tab.md) contains individual
-computational building blocks or ["Units"](../../workflows/components/units.md).
+computational building blocks or ["Units"]({{ reference_url }}/workflows/components/units/).
 Various simulation parameters can be reviewed and adjusted under the
 ["Important Settings"](
 ../../workflow-designer/subworkflow-editor/important-settings.md), such as:
-[k-point grid](../../models/auxiliary-concepts/reciprocal-space/sampling.md) and
-[k-point path](../../models/auxiliary-concepts/reciprocal-space/paths.md)
-in the [reciprocal space](../../models/auxiliary-concepts/reciprocal-space.md),
+[k-point grid]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) and
+[k-point path]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/paths/)
+in the [reciprocal space]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/),
 relevant for a "Band Structure" calculation. Finally, "Save and Exit"
 the job designer.
 
@@ -164,12 +158,11 @@ the job designer.
 The ["Compute" tab](../../jobs-designer/compute-tab.md) lets the user set
 various compute parameters, such as cluster, queue, number of nodes and
 number of processor cores per node to be used for the simulation, maximum time
-limit and other relevant [compute parameters](
-../../infrastructure/compute/parameters.md). We set the maximum time limit for
+limit and other relevant [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/). We set the maximum time limit for
 the calculation to properly schedule the allocation of resources. The format is
 HH:MM:SS, so that `01:00:00` corresponds to up to 1 hour runtime. One can also
 choose to be notified of the job status by clicking on his/her name in the
-["Notifications" section](../../infrastructure/compute/parameters.md#notifications).
+["Notifications" section]({{ dev_url }}/infrastructure/compute/parameters/#notifications).
 
 ![Compute Tab](../../images/getting-started/run-first-simulation-tab-3-compute.webp "Compute Tab")
 
@@ -178,8 +171,7 @@ choose to be notified of the job status by clicking on his/her name in the
 
 After saving the job, the user is redirected back to the default
 ["Project" page](../../jobs/ui/project-page.md). Here, the user can
-[submit the job](../../jobs/actions/run.md) and track its [status](
-../../jobs/status.md).
+[submit the job](../../jobs/actions/run.md) and track its [status]({{ reference_url }}/jobs/status/).
 
 ### 4.1. Submit and Track Progress
 
@@ -187,9 +179,9 @@ The user can run the job by clicking on the "Run" button in the Actions column,
 or clicking on the three vertical dots and choosing ["Run"](
 ../../jobs/actions/run.md) action.
 
-The [status](../../jobs/status.md) will change from "pre-submission" to
+The [status]({{ reference_url }}/jobs/status/) will change from "pre-submission" to
 "submitted". This means that the job is finally submitted to our
-[computing clusters](../../infrastructure/clusters/overview.md). Depending on
+[computing clusters]({{ dev_url }}/infrastructure/clusters/overview/). Depending on
 the load, it may take some time for it to become "Active" and thus start
 executing.
 

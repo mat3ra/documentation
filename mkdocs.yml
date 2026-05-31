@@ -1,7 +1,7 @@
 # get docs dir from the environment. Defaults to lang/en/docs.
 docs_dir: !!python/object/apply:os.getenv ["DOCS_DIR", "lang/en/docs"]
 
-site_name: Platform Documentation
+site_name: Documentation
 site_url: https://docs.mat3ra.com
 site_description: Mat3ra platform documentation.
 dev_addr: "localhost:8000"
@@ -50,6 +50,11 @@ extra:
         origin_url: https://jupyterlite.mat3ra.com/retro/notebooks
         origin_url_lab: https://jupyterlite.mat3ra.com/lab/tree
         notebooks_path_root: made
+    # Cross-site URL variables (resolved by macros plugin at build time).
+    # In the legacy build all content is at the root, so these point to root paths.
+    guide_url: https://docs.mat3ra.com
+    reference_url: https://docs.mat3ra.com
+    dev_url: https://docs.mat3ra.com
 
 markdown_extensions:
     - admonition
@@ -111,7 +116,7 @@ plugins:
     - tags
     - macros:
         include_dir: "lang/en/docs/includes/"
-        render_by_default: false
+        render_by_default: true
         # add header from https://mkdocs-macros-plugin.readthedocs.io/en/stable/rendering/#opt-in-through-the-config-file to enable in the specific markdown
     - bibtex:
         bib_file: "lang/en/docs/includes/references.bib"
@@ -304,7 +309,7 @@ nav:
             - People Explorer:                           collaboration/ui/people-explorer.md
         - Entity Sharing:
             - User Interface:                            collaboration/sharing/ui.md
-            - Actions:                                   collaboration/sharing/common-actions.md
+            - Actions:                                   collaboration/sharing/actions.md
             - Account Access Levels:                     collaboration/sharing/access-levels.md
         - Actions:
             - Organization > Overview:                  collaboration/actions/organization/overview.md
@@ -368,7 +373,7 @@ nav:
             - Parameters:                               methods-directory/pseudopotential/parameters.md
             - Precision:                                methods-directory/pseudopotential/precision.md
             - Important Settings:                       methods-directory/pseudopotential/important-settings.md
-            - Actions:                                  methods-directory/pseudopotential/common-actions.md
+            - Actions:                                  methods-directory/pseudopotential/actions.md
         - Linear Regression:
             - Overview:                                 methods-directory/linear-regression/overview.md
             - Parameters:                               methods-directory/linear-regression/parameters.md
@@ -418,9 +423,7 @@ nav:
                 - Data:                                 software-directory/scripting/jupyter-lab/data.md
         - Machine Learning (ML):
             - TensorFlow:                               software-directory/machine-learning/tensorflow.md
-            - Exabyte ML:
-                - Overview:                             software-directory/machine-learning/exabyte/overview.md
-                - Data:                                 software-directory/machine-learning/exabyte/data.md
+
             - Python ML:
                 - Overview:                             software-directory/machine-learning/python-ml/overview.md
                 - Components:                           software-directory/machine-learning/python-ml/components.md
@@ -783,7 +786,7 @@ nav:
         - Accounting:                                   cli/accounting.md
         - Actions:
             - Overview:                                 cli/actions/overview.md
-            - Load / Unload Modules:                    cli/actions/modules-common-actions.md
+            - Load / Unload Modules:                    cli/actions/modules-actions.md
             - Customize Environment:                    cli/actions/customize.md
             - Add new software:                         cli/actions/add-software.md
             - Create Python Environment:                cli/actions/create-python-env.md

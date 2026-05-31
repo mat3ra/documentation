@@ -6,34 +6,34 @@ We summarize here the basic concepts that are used throughout Exabyte.io when re
 
 Useful properties of materials can be obtained either via experiments, from a pure analytical standpoint, or via the application of computational techniques, otherwise referred to as **simulations**. This latter case is what we employ at exabyte.io.
 
-- **Simulation** is an application of a computational model or technique aimed at extracting a specific [property](../properties/overview.md) of [materials](../materials/overview.md).
+- **Simulation** is an application of a computational model or technique aimed at extracting a specific [property]({{ reference_url }}/properties/overview/) of [materials]({{ reference_url }}/materials/overview/).
 
 There are three main concepts that we deal with:
 
-- **Materials**: a combination of chemical elements in a particular geometric arrangement, that can be *uniquely* defined by a set of [descriptive properties](../properties/classification/overview.md) (eg. crystal lattice and basis), and has certain [characteristic properties](../properties/classification/overview.md) that can be computed upon it (eg. band gap, formation energy etc.). This includes both `periodic` (repeating units) and `non-periodic` (single unit) structures.
+- **Materials**: a combination of chemical elements in a particular geometric arrangement, that can be *uniquely* defined by a set of [descriptive properties]({{ reference_url }}/properties/classification/overview/) (eg. crystal lattice and basis), and has certain [characteristic properties]({{ reference_url }}/properties/classification/overview/) that can be computed upon it (eg. band gap, formation energy etc.). This includes both `periodic` (repeating units) and `non-periodic` (single unit) structures.
 
-- **Models**: a [theory](../models/overview.md) that provides scientific insight on how to calculate the characteristic properties of a material; it can be applied via multiple possible **Methods**, or [numerical implementations](../methods/overview.md) of the Model. In practice, methods are enacted on our platform via the creation of **[Workflow Computations](../workflows/overview.md)** to be applied on the material.
+- **Models**: a [theory]({{ reference_url }}/models/overview/) that provides scientific insight on how to calculate the characteristic properties of a material; it can be applied via multiple possible **Methods**, or [numerical implementations]({{ reference_url }}/methods/overview/) of the Model. In practice, methods are enacted on our platform via the creation of **[Workflow Computations]({{ reference_url }}/workflows/overview/)** to be applied on the material.
 
 !!!note "Example Model and Method"
-    **Density Functional Theory (DFT)** is an [example of a model](../models-directory/dft/overview.md), and its **plane-wave pseudopotential formulation** is an [example of method](../methods-directory/pseudopotential/overview.md). Detailed theoretical reviews of such concepts can be found in the references listed [herein](../models-directory/dft/references.md).
+    **Density Functional Theory (DFT)** is an [example of a model]({{ reference_url }}/models-directory/dft/overview/), and its **plane-wave pseudopotential formulation** is an [example of method]({{ reference_url }}/methods-directory/pseudopotential/overview/). Detailed theoretical reviews of such concepts can be found in the references listed [herein]({{ reference_url }}/models-directory/dft/references/).
 
-- **Jobs**: an [entity](../jobs/overview.md) that contains information about the computation that makes the application of the Model (and subsequently Method) upon the material under investigation possible.
+- **Jobs**: an [entity]({{ reference_url }}/jobs/overview/) that contains information about the computation that makes the application of the Model (and subsequently Method) upon the material under investigation possible.
 
 More explanation follows for each of the above concepts.
 
 ## Properties
 
-We introduce the classification schemes of material properties, such as structural, electronic and thermodynamic properties, [in this section of the documentation](../properties/classification/overview.md).
+We introduce the classification schemes of material properties, such as structural, electronic and thermodynamic properties, [in this section of the documentation]({{ reference_url }}/properties/classification/overview/).
 
 ## Model
 
 Within our platform, multiple component concepts comprised within a model are employed:
 
-- [Model](../models/overview.md)
-- [Method](../methods/overview.md)
-- [Workflow](../workflows/overview.md)
-- [Subworkflow](../workflows/components/subworkflows.md)
-- [Unit](../workflows/components/units.md)
+- [Model]({{ reference_url }}/models/overview/)
+- [Method]({{ reference_url }}/methods/overview/)
+- [Workflow]({{ reference_url }}/workflows/overview/)
+- [Subworkflow]({{ reference_url }}/workflows/components/subworkflows/)
+- [Unit]({{ reference_url }}/workflows/components/units/)
 
 ### Components
 
@@ -49,12 +49,12 @@ In order to better understand the difference between Model, Method and Simulatio
 
 Thus, the process of traveling from San Francisco to New York by analogy would be the **simulation** using a model, and a corresponding method contained within it, employed to extract a specific characteristic property.
 
-> A note on "Simulation Engines". Just like there are multiple airplane manufacturers, there are many **simulation engines** (or [software applications](../software/overview.md)) that implement specific model(s) and method(s).
+> A note on "Simulation Engines". Just like there are multiple airplane manufacturers, there are many **simulation engines** (or [software applications]({{ reference_url }}/software/overview/)) that implement specific model(s) and method(s).
 
 ## Jobs
 
-A [simulation Job](../jobs/overview.md) is an [entity](../entities-general/overview.md) that represents the computation employed during the simulation, and the simplest entity that has [accounting](../accounts/overview.md) set up for. Jobs contain the information about the aforementioned Model/Method/Workflow/Units, and can be under any of the following possible [statuses](../jobs/status.md).
+A [simulation Job]({{ reference_url }}/jobs/overview/) is an [entity]({{ reference_url }}/entities-general/overview/) that represents the computation employed during the simulation, and the simplest entity that has [accounting]({{ reference_url }}/accounts/overview/) set up for. Jobs contain the information about the aforementioned Model/Method/Workflow/Units, and can be under any of the following possible [statuses]({{ reference_url }}/jobs/status/).
 
 ### Projects
 
-Jobs are organized into [Projects](../jobs/projects.md) for convenience. One can think about projects as collections of jobs, in the same manner as a file system directory is a collection of files.
+Jobs are organized into [Projects]({{ reference_url }}/jobs/projects/) for convenience. One can think about projects as collections of jobs, in the same manner as a file system directory is a collection of files.

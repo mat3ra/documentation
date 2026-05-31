@@ -6,14 +6,14 @@ We consider the example of a **semiconductor-metal interface**, which is commonl
 
 ## Open Materials Designer 
 
-We start with [opening](../../entities-general/actions/create.md) an instance of the [Materials Designer Interface](../../materials-designer/overview.md) for creating and designing new [Materials structures](../../materials/overview.md) on our platform. 
+We start with [opening](../../entities-general/actions/create.md) an instance of the [Materials Designer Interface](../../materials-designer/overview.md) for creating and designing new [Materials structures]({{ reference_url }}/materials/overview/) on our platform. 
 
 ## Create Slabs 
 
-In order to create the gold and silicon slabs, the user should first [import](../../materials-designer/header-menu/input-output/import.md) sample crystalline structures of the two respective materials into the current Materials Designer session, from the account-owned [collection](../../accounts/collections.md) of materials. 
+In order to create the gold and silicon slabs, the user should first [import](../../materials-designer/header-menu/input-output/import.md) sample crystalline structures of the two respective materials into the current Materials Designer session, from the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials. 
 
 !!!info "Default Material"
-    Silicon may have been loaded by [default](../../materials/default.md) initially at the moment of the opening of Materials Designer.
+    Silicon may have been loaded by [default]({{ reference_url }}/materials/default/) initially at the moment of the opening of Materials Designer.
     
 Once imported into Materials Designer, the gold and silicon crystals will appear as two distinct entry items within the list of structures shown on the [left-had items list sidebar](../../materials-designer/sidebar-items.md) of the Designer interface.
 
@@ -43,7 +43,7 @@ The user will notice that a new material entry, called "New Material" by default
 !!!tip "Toggling of Orthographic Camera"
     The user is recommended to toggle the use of the [Orthographic camera](../../materials-designer/3d-editor/view.md#toggle-orthographic-camera) functionality, accessible via the [3D Editor interface](../../materials-designer/3d-editor.md) of Materials Designer, in order to verify the correct alignment and centrality of the gold slab over the other slab made of silicon.
 
-This new entry should first be [renamed](../../materials-designer/sidebar-items.md#edit-name-of-item) to a more memorable form, and should finally be [saved](../../materials-designer/header-menu/input-output/save.md) via the ["Input/Output" Menu](../../materials-designer/header-menu/input-output.md) located at the top-left corner into the account-owned materials [collection](../../accounts/collections.md), as a new material structure entry which is distinct from both the original isolated gold and silicon structures.
+This new entry should first be [renamed](../../materials-designer/sidebar-items.md#edit-name-of-item) to a more memorable form, and should finally be [saved](../../materials-designer/header-menu/input-output/save.md) via the ["Input/Output" Menu](../../materials-designer/header-menu/input-output.md) located at the top-left corner into the account-owned materials [collection]({{ reference_url }}/accounts/collections/), as a new material structure entry which is distinct from both the original isolated gold and silicon structures.
 
 ## Resulting Material
 

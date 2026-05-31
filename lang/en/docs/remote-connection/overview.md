@@ -1,6 +1,6 @@
 # Remote Connection Methods
 
-We offer alternative **connection methods** other than the [Web Interface](../ui/overview.md) to submit [simulation jobs](../jobs/overview.md) to the [computing clusters](../infrastructure/clusters/overview.md) of our platform, and access the associated data via the [login node](../infrastructure/login/overview.md).
+We offer alternative **connection methods** other than the [Web Interface](../ui/overview.md) to submit [simulation jobs]({{ reference_url }}/jobs/overview/) to the [computing clusters]({{ dev_url }}/infrastructure/clusters/overview/) of our platform, and access the associated data via the [login node]({{ dev_url }}/infrastructure/login/overview/).
 
 The login node can be accessed via any of the following options.
 

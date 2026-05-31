@@ -2,7 +2,7 @@
 
 ## Accessing the Information on the Lattice Vectors
 
-Adjusting the unit cell parameters is achieved by first selecting the "Cell" component entry within the ["Scene" sidebar list](../edit.md#3.-scene) displayed towards the right-hand side of the [3D editor interface](../edit.md). The existing [lattice vectors](../../../properties-directory/structural/lattice.md) describing the geometry of the unit cell under consideration can be inspected under the "Geometry" Tab in the lower panel of the "Scene" sidebar.
+Adjusting the unit cell parameters is achieved by first selecting the "Cell" component entry within the ["Scene" sidebar list](../edit.md#3.-scene) displayed towards the right-hand side of the [3D editor interface](../edit.md). The existing [lattice vectors]({{ reference_url }}/properties-directory/structural/lattice/) describing the geometry of the unit cell under consideration can be inspected under the "Geometry" Tab in the lower panel of the "Scene" sidebar.
 
 ## Editing Lattice Vectors
 

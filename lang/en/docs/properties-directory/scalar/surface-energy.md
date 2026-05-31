@@ -14,7 +14,7 @@ where $N$ is the number of atoms in the slab and $A$ is the surface area, with $
 
 The surface energy can be calculated by an appropriate [Workflow](../../workflows/overview.md) using, for example [Density Functional Theory](../../models-directory/dft/overview.md). 
 
-It is presented to the user with the appearance displayed below, under the interface of the [Results Tab](../../jobs/ui/results-tab.md) of [Job Viewer](../../jobs/ui/viewer.md). Its final value is expressed in units of eV/Angstrom^2.
+It is presented to the user with the appearance displayed below, under the interface of the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ guide_url }}/jobs/ui/viewer/). Its final value is expressed in units of eV/Angstrom^2.
 
 <div class="clearfix">
     <center>

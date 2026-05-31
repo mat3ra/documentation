@@ -4,7 +4,59 @@
 
 docs_dir: !!python/object/apply:os.getenv ["DOCS_DIR", "lang/en/docs"]
 
-site_name: "Developer Guide — Mat3ra Documentation"
+# Exclude pages that belong to other sites (Guide or Concepts).
+# Cross-site links use absolute URLs instead.
+exclude_docs: |
+  accounts/
+  benchmarks/
+  cli/
+  collaboration/
+  data/
+  data-structured/
+  entities-general/
+  getting-started/
+  jobs/
+  jobs-cli/
+  jobs-designer/
+  jupyterlite/
+  materials/
+  materials-designer/
+  methods/
+  methods-directory/
+  models/
+  models-directory/
+  other/
+  pricing/
+  properties/
+  properties-directory/
+  remote-connection/
+  security/
+  site-policy/
+  software/
+  software-directory/
+  tutorials/
+  ui/
+  workflow-designer/
+  workflows/
+  migrating-to-new-platform.md
+
+  # Guide-only pages in shared dirs
+  data-in-objectstorage/actions/
+  data-in-objectstorage/ui/
+
+  # Other sites' homepages
+  index.md
+  index-guide.md
+  index-concepts.md
+
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+  links:
+    absolute_links: info
+
+site_name: "Developer Guide"
 site_url: https://docs.mat3ra.com/dev
 site_description: "Developer-focused documentation for the Mat3ra platform: REST API, infrastructure, and data storage."
 dev_addr: "localhost:8003"
@@ -53,6 +105,10 @@ extra:
         origin_url: https://jupyterlite.mat3ra.com/retro/notebooks
         origin_url_lab: https://jupyterlite.mat3ra.com/lab/tree
         notebooks_path_root: made
+    # Cross-site URL variables (resolved by macros plugin at build time)
+    guide_url: https://docs.mat3ra.com/guide
+    reference_url: https://docs.mat3ra.com/reference
+    dev_url: https://docs.mat3ra.com/dev
 
 markdown_extensions:
     - admonition
@@ -110,13 +166,14 @@ plugins:
     - tags
     - macros:
         include_dir: "lang/en/docs/includes/"
-        render_by_default: false
+        render_by_default: true
     - bibtex:
         bib_file: "lang/en/docs/includes/references.bib"
         citation_template: "{{author}} ({{year}})"
         bibliography_template: "{{author}} ({{year}}). {{title}}. {{journal}}. {{volume}}. {{pages}}."
 
 nav:
+    - "← All Docs":                                      /
     - Home:                                              index-dev.md
 
 # REST API

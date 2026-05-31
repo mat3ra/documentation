@@ -5,7 +5,7 @@
 An Endpoint is one end of a communication channel, the API end of it. It has a unique URL and a set of parameters associated with it. Sending a request with a specific HTTP[^1] method to an Endpoint triggers a certain function. 
 
 !!! example
-    Contacting materials endpoint with a PUT HTTP method and the corresponding data about a material will lead to the creation of the corresponding [Material](../materials/overview.md) inside the database and return the result.
+    Contacting materials endpoint with a PUT HTTP method and the corresponding data about a material will lead to the creation of the corresponding [Material]({{ reference_url }}/materials/overview/) inside the database and return the result.
 
 ## List of Endpoints
 

@@ -22,7 +22,7 @@ scp -i <path to private_key> <username>@login.mat3ra.com:<path inside login home
 For example, let us assume that user `steve` would like to transfer a text file
 called `example.txt` under his local home directory to the remote "bohr" server,
 where the final destination is his personal `data` folder in the
-[Cluster Home](../../infrastructure/clusters/directories.md) directory for
+[Cluster Home]({{ dev_url }}/infrastructure/clusters/directories/) directory for
 "cluster-001".
 
 The command that he needs to enter to perform this file transfer, after opening

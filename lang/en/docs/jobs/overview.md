@@ -14,7 +14,7 @@ simplest entity that has accounting set up for, and can have one or more
 
 We implement Jobs as another [entity type](../entities-general/overview.md). As
 such, they have the same user interface components (with some distinct features)
-as other entities, as explained [here](../entities-general/ui/overview.md).
+as other entities, as explained [here]({{ guide_url }}/entities-general/ui/overview/).
 
 ## [Data](data.md)
 
@@ -35,28 +35,24 @@ Jobs can collectively be grouped together into [Sets](
 
 ## User Interface
 
-### [Explorer](ui/explorer.md)
+### [Explorer]({{ guide_url }}/jobs/ui/explorer/)
 
-Jobs Explorer is another specific implementation of the [Explorer](
-../entities-general/ui/explorer.md) component and is explained [in this page](
-ui/explorer.md).
+Jobs Explorer is another specific implementation of the [Explorer]({{ guide_url }}/entities-general/ui/explorer/) component and is explained [in this page](
+{{ guide_url }}/jobs/ui/explorer/).
 
-### [Designer](../jobs-designer/overview.md)
+### [Designer]({{ guide_url }}/jobs-designer/overview/)
 
-Jobs Designer is another specific implementation of the [Designer](
-../entities-general/ui/designer.md) component described in more detail [here](
-../jobs-designer/overview.md).
+Jobs Designer is another specific implementation of the [Designer]({{ guide_url }}/entities-general/ui/designer/) component described in more detail [here]({{ guide_url }}/jobs-designer/overview/).
 
-### [Viewer](ui/viewer.md)
+### [Viewer]({{ guide_url }}/jobs/ui/viewer/)
 
-[This page](ui/viewer.md) explains how the [Viewer](
-../entities-general/ui/viewer.md) differs from Designer component in the context
+[This page]({{ guide_url }}/jobs/ui/viewer/) explains how the [Viewer]({{ guide_url }}/entities-general/ui/viewer/) differs from Designer component in the context
 of Jobs.
 
-## [Actions](actions/overview.md)
+## [Actions]({{ guide_url }}/jobs/actions/overview/)
 
 Some actions pertain specifically to Jobs, and are introduced [in this page](
-actions/overview.md).
+{{ guide_url }}/jobs/actions/overview/).
 
 ## Screenshare video
 

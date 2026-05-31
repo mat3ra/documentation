@@ -3,8 +3,8 @@
 This guide covers the technical infrastructure of the Mat3ra platform — REST API access, cluster hardware, and data storage internals.
 
 !!!tip "Other documentation sites"
-    For step-by-step tutorials, tool walkthroughs, CLI usage, and software reference, see the [Platform Guide](https://docs.mat3ra.com/guide/).
-    For explanations of underlying concepts, see [Concepts & Reference](https://docs.mat3ra.com/reference/).
+    For step-by-step tutorials, tool walkthroughs, CLI usage, and software reference, see the [Platform Guide]({{ guide_url }}/).
+    For explanations of underlying concepts, see [Concepts & Reference]({{ reference_url }}/).
 
 
 ## REST API

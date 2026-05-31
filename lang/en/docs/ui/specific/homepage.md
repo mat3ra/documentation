@@ -52,9 +52,8 @@ them.
 ## Modeling and Simulations <i class="zmdi zmdi-cloud-outline-alt"></i>
 
 The first option allows for the creation of simulation workflows for material
-modeling. They can be based on any of the supported theoretical [models](
-../../models/overview.md), operated under the associated computational
-[methods](../../methods/overview.md) and [applications](
+modeling. They can be based on any of the supported theoretical [models]({{ reference_url }}/models/overview/), operated under the associated computational
+[methods]({{ reference_url }}/methods/overview/) and [applications](
 ../../software-directory/overview.md).
 
 
@@ -67,8 +66,7 @@ modeling. They can be based on any of the supported theoretical [models](
 
 ### 1. Run Simulations
 
-Here, the user can choose to calculate [material properties](
-../../properties/overview.md) of interest, through the selection of the
+Here, the user can choose to calculate [material properties]({{ reference_url }}/properties/overview/) of interest, through the selection of the
 corresponding workflow template. Examples of pre-defined templates may include
 total energy calculations, phonon dispersions or electronic bandstructure
 calculations.
@@ -86,8 +84,7 @@ Here, the possibility to design new computational workflows is offered.
 
 #### 2A. Density Functional Theory
 
-For example, our platform supports the [Density Functional Theory](
-../../models-directory/dft/overview.md) (DFT) theoretical framework for
+For example, our platform supports the [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/) (DFT) theoretical framework for
 executing electronic structure calculations, as implemented by the
 [Quantum ESPRESSO](../../software-directory/modeling/quantum-espresso/overview.md)
 or [VASP](../../software-directory/modeling/vasp/overview.md) applications.

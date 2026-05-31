@@ -138,3 +138,64 @@ footer {
 .highlight:not(:has(.linenodiv .normal ~ .normal)) .linenos {
     display: none;
 }
+
+/* --------------------------------------------------------- *
+ *                  HOMEPAGE SECTION CARDS
+ * --------------------------------------------------------- */
+.section-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+/* MkDocs wraps <a> inside <p> — make <p> a transparent grid item */
+.section-cards > p {
+    margin: 0;
+    display: flex;
+}
+
+.section-cards a.grid-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 0.4rem;
+    padding: 1.2rem 1.4rem;
+    text-decoration: none;
+    color: var(--md-default-fg-color);
+    cursor: pointer;
+    transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.section-cards a.grid-card:visited {
+    color: var(--md-default-fg-color);
+}
+
+.section-cards a.grid-card:hover {
+    border-color: var(--md-primary-fg-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.section-cards a.grid-card strong {
+    display: block;
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.section-cards a.grid-card span {
+    display: block;
+    flex: 1;
+    font-size: 0.85rem;
+    color: var(--md-default-fg-color--light);
+    line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+    .section-cards { grid-template-columns: 1fr; }
+}
+
+

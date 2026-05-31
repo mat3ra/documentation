@@ -1,6 +1,6 @@
 # Components
 
-We present in this page the different [components](../../../software/components.md) (executables and flavors)
+We present in this page the different [components]({{ reference_url }}/software/components/) (executables and flavors)
 comprised within our [Python-based](overview.md) machine learning implementation.
 
 Only those components implemented on our platform to date are mentioned here, as can be inspected from the lists of
@@ -13,7 +13,7 @@ available executables and flavors under the
 
 ## Executable
 
-PythonML is based on the `python` [executable](../../../software/components.md#executables), and through this executable
+PythonML is based on the `python` [executable]({{ reference_url }}/software/components/#executables), and through this executable
 the implemented ML calculations can be performed.
 
 ## Training and Prediction

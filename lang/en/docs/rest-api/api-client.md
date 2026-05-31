@@ -6,7 +6,7 @@ We have deployed a python-based [**API client**](https://github.com/Exabyte-io/e
 
 ## Other
 
-Please [contact us](..//ui/support.md) if you are interested in any other programming languages. We are able to produce one shortly.
+Please [contact us]({{ guide_url }}/ui/support/) if you are interested in any other programming languages. We are able to produce one shortly.
 
 ## Links
 

@@ -4,7 +4,7 @@
     The information contained under the present documentation page is relevant for Owners or Administrators, since only they have sufficient rights to make the appropriate changes.
     
     
-The [Owner and Administrators](../../organizations/roles.md) of the parent [Organization](../../organizations/overview.md) can perform additional administrative actions with  regards to its constituent [Teams](../../organizations/teams.md). They are listed below with links to their respective documentation pages:
+The [Owner and Administrators]({{ reference_url }}/collaboration/organizations/roles/) of the parent [Organization]({{ reference_url }}/collaboration/organizations/overview/) can perform additional administrative actions with  regards to its constituent [Teams]({{ reference_url }}/collaboration/organizations/teams/). They are listed below with links to their respective documentation pages:
 
 ## [Add or Remove Members](add-remove-member.md)
 

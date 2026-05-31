@@ -1,6 +1,6 @@
 # Calculate Reaction Energy Profile Using Nudged Elastic Band (NEB) method
 
-This tutorial page explains how to calculate the [energy reaction profile](../../../properties-directory/non-scalar/reaction-energy-profile.md) and [activation barrier](../../../properties-directory/scalar/reaction-energy-barrier.md) for the multi-dimensional energy space of chemical reactions via the [**Nudged Elastic Bands (NEB) method**](../../../models/auxiliary-concepts/nudged-elastic-band.md), by making use of the [interpolated sets](../../../materials-designer/header-menu/advanced/interpolated-set.md) introduced in a [separate tutorial](../../materials/interpolated-sets.md). 
+This tutorial page explains how to calculate the [energy reaction profile]({{ reference_url }}/properties-directory/non-scalar/reaction-energy-profile/) and [activation barrier]({{ reference_url }}/properties-directory/scalar/reaction-energy-barrier/) for the multi-dimensional energy space of chemical reactions via the [**Nudged Elastic Bands (NEB) method**]({{ reference_url }}/models/auxiliary-concepts/nudged-elastic-band/), by making use of the [interpolated sets](../../../materials-designer/header-menu/advanced/interpolated-set.md) introduced in a [separate tutorial](../../materials/interpolated-sets.md). 
 
 We consider the example of a one-dimensional, three-atom molecule of Hydrogen (H3) throughout the present tutorial, and shall be making use of [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as the main simulation engine, via the implementation of its `PWneb` [flavor](../../../software-directory/modeling/quantum-espresso/components.md#flavors). 
 
@@ -22,7 +22,7 @@ In this triatomic reaction, the middle H atom breaks the bond with first atom an
     Expand to view ...
   </summary>
 
-We outline here some important aspects of the [Workflow](../../../workflows/overview.md) used for executing NEB calculations on our platform via [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md), which is composed of a single main [unit](../../../workflows/components/units.md).
+We outline here some important aspects of the [Workflow]({{ reference_url }}/workflows/overview/) used for executing NEB calculations on our platform via [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md), which is composed of a single main [unit]({{ reference_url }}/workflows/components/units/).
 
 ### Main Executable
 
@@ -30,7 +30,7 @@ NEB calculations are performed through the ["neb.x" Quantum ESPRESSO Executable]
 
 ### Broyden Algorithm
 
-Within the neb.x input script, we note in particular the need for the [Broyden algorithm](../../../methods/auxiliary-concepts/optimization-algorithms.md) instead of the default one, for numerically solving iterative minimization and optimization problems such as the [structural relaxations](../../../workflows/addons/structural-relaxation.md) performed on the interpolated set images during the course of the NEB computation. This helps to remove the problem of ”oscillations” in the calculated activation energies. If these oscillations persist, and the user cannot afford more images, he/she should focus on smaller problems by decomposing the original one into pieces.
+Within the neb.x input script, we note in particular the need for the [Broyden algorithm]({{ reference_url }}/methods/auxiliary-concepts/optimization-algorithms/) instead of the default one, for numerically solving iterative minimization and optimization problems such as the [structural relaxations]({{ reference_url }}/workflows/addons/structural-relaxation/) performed on the interpolated set images during the course of the NEB computation. This helps to remove the problem of ”oscillations” in the calculated activation energies. If these oscillations persist, and the user cannot afford more images, he/she should focus on smaller problems by decomposing the original one into pieces.
 
 ### Number of Images
 
@@ -50,7 +50,7 @@ Atomic positions for all the images are specified within the `BEGIN_POSITIONS / 
 
 ## Create Job 
 
-We start with [opening](../../../jobs/actions/create.md) an instance of the [Job Designer Interface](../../../jobs-designer/overview.md) for creating and designing new computational [Jobs](../../../jobs/overview.md) on our platform.
+We start with [opening](../../../jobs/actions/create.md) an instance of the [Job Designer Interface](../../../jobs-designer/overview.md) for creating and designing new computational [Jobs]({{ reference_url }}/jobs/overview/) on our platform.
     
 ## Import Interpolated Set
 
@@ -58,14 +58,14 @@ The **Interpolated Set** generated in [this other tutorial](../../materials/inte
 
 ## Choose Workflow
 
-[Workflows](../../../workflows/overview.md) for calculating the reaction energy profile of chemical molecules via NEB with [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank](../../../workflows/bank.md) into the account-owned [collection](../../../accounts/collections.md). This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/workflow-tab.md).
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the reaction energy profile of chemical molecules via NEB with [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/workflow-tab.md).
 
 !!!warning "Size of grid of k-points"
-    The user should take care to set the size of the [grid of reciprocal k-points (kgrid)](../../../models/auxiliary-concepts/reciprocal-space/sampling.md) to 1 x 1 x 1 under the ["Important Settings" Tab](../../../workflow-designer/subworkflow-editor/important-settings.md) of the [Workflow Designer Interface](../../../workflow-designer/overview.md), since we are presently dealing with single molecules as opposed to periodic crystalline structures.
+    The user should take care to set the size of the [grid of reciprocal k-points (kgrid)]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) to 1 x 1 x 1 under the ["Important Settings" Tab](../../../workflow-designer/subworkflow-editor/important-settings.md) of the [Workflow Designer Interface](../../../workflow-designer/overview.md), since we are presently dealing with single molecules as opposed to periodic crystalline structures.
 
 ## Submit Job
 
-Before [submitting](../../../jobs/actions/run.md) the [job](../../../jobs/overview.md), the user should click on the ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and examine the [compute parameters](../../../infrastructure/compute/parameters.md) included therein. The H3 molecules being considered in the present tutorial are relatively small structures, hence 4 CPUs and a few minutes of calculation runtime should be sufficient.
+Before [submitting](../../../jobs/actions/run.md) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and examine the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein. The H3 molecules being considered in the present tutorial are relatively small structures, hence 4 CPUs and a few minutes of calculation runtime should be sufficient.
 
 ## Examine Final Results
 
@@ -77,7 +77,7 @@ An example of such a reaction energy profile is shown in the image below, in whi
 
 ## Retrieve Final Optimized Images
 
-The final optimized image structures can be retrieved at the end of Job execution according to the instructions contained [in this page](../../../workflows/addons/structural-relaxation.md#initial/final-structures-set).
+The final optimized image structures can be retrieved at the end of Job execution according to the instructions contained [in this page]({{ reference_url }}/workflows/addons/structural-relaxation/#initial/final-structures-set).
 
 ## Animation
 
