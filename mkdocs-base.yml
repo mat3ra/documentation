@@ -1,0 +1,108 @@
+repo_name: 'exabyte-io/documentation'
+repo_url: 'https://github.com/exabyte-io/documentation'
+edit_uri: 'edit/main/lang/en/docs/'
+
+extra_css:
+    - https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css
+    - extra/css/general.css
+    - extra/css/tables.css
+    - extra/css/images.css
+    - extra/css/super-fences.css
+    - extra/css/properties.css
+    - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css
+
+extra_javascript:
+    - extra/js/giffer.js
+    - extra/js/ga.js
+    - extra/js/url_parameters.js
+    - extra/js/katex.js
+    - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js
+    - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js
+    - 'https://www.googletagmanager.com/gtag/js?id=UA-69270713-5'
+
+copyright: <a target="_blank" href="https://mat3ra.com">Exabyte Inc</a>. All rights reserved. | <a target="_blank" href="https://platform.mat3ra.com">Back to platform</a>
+
+extra:
+    version: "2026.5.28"
+    preload_javascript:
+        - /extra/js/preload_hotjar.js
+        - /extra/js/preload.js
+    social:
+        - icon: fontawesome/brands/github
+          link: https://github.com/exabyte-io
+        - icon: fontawesome/brands/youtube
+          link: https://www.youtube.com/c/Mat3ra/videos
+        - icon: fontawesome/brands/linkedin
+          link: https://www.linkedin.com/company/mat3ra/
+        - icon: fontawesome/brands/x-twitter
+          link: https://x.com/mat3ra_com
+    analytics:
+        provider: google
+        property: UA-69270713-5
+    jupyterlite:
+        origin_url: https://jupyterlite.mat3ra.com/retro/notebooks
+        origin_url_lab: https://jupyterlite.mat3ra.com/lab/tree
+        notebooks_path_root: made
+
+theme:
+    name: material
+    custom_dir: theme
+    palette:
+        primary: deep purple
+        accent: deep purple
+        scheme: mat3ra
+    logo: "images/logo/logo-white.png"
+    favicon: "images/logo/favicon.svg"
+    icon:
+        edit: material/pencil
+        repo: fontawesome/brands/github
+    font:
+        text: Roboto
+        code: Roboto Mono
+    features:
+        - announce.dismiss
+        - content.action.edit
+        - content.code.annotate
+        - content.code.copy
+        - content.tooltips
+        - navigation.footer
+        - navigation.top
+        - search.highlight
+        - search.suggest
+
+markdown_extensions:
+    - admonition
+    - attr_list
+    - def_list
+    - footnotes:
+        PLACE_MARKER: "///FOOTNOTES GO HERE///"
+    - markdown.extensions.def_list
+    - md_in_html
+    - toc:
+        permalink: true
+    - pymdownx.arithmatex:
+        generic: true
+    - pymdownx.betterem
+    - pymdownx.details
+    - pymdownx.highlight:
+        pygments_lang_class: true
+        linenums: true
+    - pymdownx.snippets
+    - pymdownx.striphtml
+    - pymdownx.superfences
+    - pymdownx.tabbed:
+        alternate_style: true
+
+plugins:
+    - git-revision-date-localized:
+        type: date
+        enable_creation_date: false
+    - search
+    - tags
+    - macros:
+        include_dir: "lang/en/docs/includes/"
+        render_by_default: true
+    - bibtex:
+        bib_file: "lang/en/docs/includes/references.bib"
+        citation_template: "{{author}} ({{year}})"
+        bibliography_template: "{{author}} ({{year}}). {{title}}. {{journal}}. {{volume}}. {{pages}}."
