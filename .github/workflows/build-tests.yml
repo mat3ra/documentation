@@ -1,0 +1,75 @@
+name: Build tests and GitHub release
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    # branches:
+    # - main
+
+jobs:
+  run-py-tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ["ubuntu-24.04"]
+        python-version:
+          - "3.10"
+          # No need to run with many Py versions - as long as one is passing, we should be OK
+          # - "3.11"
+          # - "3.12"
+          # - "3.13"
+
+    steps:
+      - name: Checkout repository and submodules
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          lfs: true
+          submodules: true
+
+      - name: Setup python 3
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Build documentation (legacy)
+        uses: Exabyte-io/action-mkdocs-build@main
+
+      - name: Build split sites
+        run: |
+          pip install -r requirements.txt
+          python -m mkdocs build -f mkdocs-guide.yml    -d site/guide
+          python -m mkdocs build -f mkdocs-concepts.yml -d site/reference
+          python -m mkdocs build -f mkdocs-dev.yml      -d site/dev
+
+      - name: Check for broken internal links
+        run: python scripts/links/check-links.py site
+
+  publish-py-package:
+    needs:
+      - run-py-tests
+    runs-on: ubuntu-24.04
+    if: (github.ref_name == 'main')
+
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          lfs: true
+
+      - name: Checkout actions repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          repository: Exabyte-io/actions
+          token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          path: actions
+
+      - name: Publish python release
+        uses: ./actions/py/publish
+        with:
+          python-version: "3.10"
+          github-token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          publish-tag: "true"
+          publish-to-pypi: "false"
