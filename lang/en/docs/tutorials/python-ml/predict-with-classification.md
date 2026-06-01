@@ -66,7 +66,7 @@ A preview of the data then appears on the dataset tab, indicating that the data 
 We now have our ML workflow selected and our dataset has been supplied.
 Select the [Workflows Tab](../../jobs-designer/workflow-tab.md), and we can see our predict workflow.
 
-We can see two [subworkflows](../../workflows/components/subworkflows.md) available: `Set Up the Job`
+We can see two [subworkflows]({{ reference_url }}/workflows/components/subworkflows/) available: `Set Up the Job`
 and `Machine Learning`.
 
 The `Set Up the Job` subworkflow contains instructions to copy in the trained model as well as the data we have selected.

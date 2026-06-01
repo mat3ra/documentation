@@ -1,6 +1,6 @@
 # Entity Viewer
 
-"Viewer" allows the user to inspect the content of an [Entity](../overview.md) listed under the [Explorer Interface](explorer.md) its contents [Opening](../actions/open-edit.md).
+"Viewer" allows the user to inspect the content of an [Entity]({{ reference_url }}/entities-general/overview/) listed under the [Explorer Interface](explorer.md) its contents [Opening](../actions/open-edit.md).
 
 ## Relation to [Designer](designer.md) 
 
@@ -8,4 +8,4 @@ We often reuse the [Designer Interface](designer.md) as a Viewer component for t
 
 ## Links
 
-Specialized documentation pages on the Viewer are available for [Materials](../../materials-designer/overview.md), [Workflows](../../workflow-designer/overview.md) and [Jobs](../../jobs-designer/overview.md) respectively.
+Specialized documentation pages on the Viewer are available for [Materials]({{ guide_url }}/materials-designer/overview/), [Workflows]({{ guide_url }}/workflow-designer/overview/) and [Jobs]({{ guide_url }}/jobs-designer/overview/) respectively.

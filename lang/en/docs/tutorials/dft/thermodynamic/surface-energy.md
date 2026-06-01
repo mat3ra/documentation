@@ -1,6 +1,6 @@
 # Calculate Surface Energy
 
-This tutorial page explains how to calculate the [surface energy](../../../properties-directory/scalar/surface-energy.md) of [materials](../../../materials/overview.md) based on [Density Functional Theory](../../../models-directory/dft/overview.md). We consider crystalline gold in its standard equilibrium face-centred cubic (fcc) crystal structure, and use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as our main simulation engine during this tutorial.
+This tutorial page explains how to calculate the [surface energy]({{ reference_url }}/properties-directory/scalar/surface-energy/) of [materials]({{ reference_url }}/materials/overview/) based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/). We consider crystalline gold in its standard equilibrium face-centred cubic (fcc) crystal structure, and use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as our main simulation engine during this tutorial.
 
 !!!note "Quantum ESPRESSO version considered in this tutorial"
     The present tutorial is written for Quantum ESPRESSO at versions 5.2.1, 5.4.0, 6.0.0 or 6.3.
@@ -15,15 +15,15 @@ For the present example, we consider a simple surface for Au 111 and 50% vacuum 
 
 ## Workflow Structure
 
-We shall now describe the computational implementation of Surface Energy calculations on our platform, illustrating the various [unit](../../../workflows/components/units.md) steps constituting the overall [Workflow](../../../workflows/overview.md). Each unit will now be reviewed in turn:
+We shall now describe the computational implementation of Surface Energy calculations on our platform, illustrating the various [unit]({{ reference_url }}/workflows/components/units/) steps constituting the overall [Workflow]({{ reference_url }}/workflows/overview/). Each unit will now be reviewed in turn:
 
 ### io-slab
 
-This [input/output type of unit](../../../workflows/components/units.md#i/o) launches a request to the account-owned [collection](../../../accounts/collections.md) of materials, in order to retrieve the relevant identification information about the material under investigation. This request is made via the corresponding endpoint address of the [Rest API](../../../rest-api/overview.md), and is directed at the material entry with id given by the "MATERIAL_ID" keyword. The material information is then assigned to the variable "DATA".
+This [input/output type of unit]({{ reference_url }}/workflows/components/units/#i/o) launches a request to the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials, in order to retrieve the relevant identification information about the material under investigation. This request is made via the corresponding endpoint address of the [Rest API]({{ dev_url }}/rest-api/overview/), and is directed at the material entry with id given by the "MATERIAL_ID" keyword. The material information is then assigned to the variable "DATA".
 
 ### slab
 
-This [assignment unit](../../../workflows/components/units.md#assignment) assigns the above-mentioned material information stored under the "DATA" variable to a new variable called "SLAB". The previous unit where DATA was first defined is specified through reference to its scope. 
+This [assignment unit]({{ reference_url }}/workflows/components/units/#assignment) assigns the above-mentioned material information stored under the "DATA" variable to a new variable called "SLAB". The previous unit where DATA was first defined is specified through reference to its scope. 
 
 ### io-bulk
 
@@ -38,11 +38,11 @@ This assignment unit assigns the new variable "BULK" to the identification data 
 This assertion unit makes sure that the material previously assigned to the "BULK" variable indeed exists inside the account owned collection of materials. Consequently, if the Bulk material does not have any information in the database, an error message is raised that the corresponding surface energy cannot be calculated.
 
 !!!tip "Inclusion of Bulk material properties calculation in Workflow"
-    In case the relevant bulk material information is not already contained in the collection database, such property calculations can readily be included at the start of the surface energy workflow. The only relevant bulk material information that is necessary for computing the surface energy is the [Total Energy](../../../properties-directory/scalar/total-energy.md) of the material.
+    In case the relevant bulk material information is not already contained in the collection database, such property calculations can readily be included at the start of the surface energy workflow. The only relevant bulk material information that is necessary for computing the surface energy is the [Total Energy]({{ reference_url }}/properties-directory/scalar/total-energy/) of the material.
 
 ### io-e-bulk
 
-Here, the information about the relevant properties ([Total Energy](../../../properties-directory/scalar/total-energy.md)) of the bulk material is extracted. The "exabyteId" is also necessary in this case to retrieve the appropriate properties information.
+Here, the information about the relevant properties ([Total Energy]({{ reference_url }}/properties-directory/scalar/total-energy/)) of the bulk material is extracted. The "exabyteId" is also necessary in this case to retrieve the appropriate properties information.
 
 ### e-bulk
 
@@ -62,7 +62,7 @@ In these two units, the total number of atoms in the bulk and slab material resp
 
 ### pw_scf
 
-A ground-state energy self-consistent field (SCF) computation is finally performed with [DFT](../../../models-directory/dft/overview.md) in order to calculate the energy of the slab material. Since the slab is by definition always much thinner than it is wide in terms of its cross-sectional area, the size of the [grid of k-points](../../../models/auxiliary-concepts/reciprocal-space/sampling.md) can be set to be smaller in the $z$ dimension than across the $x-y$ cross-section (e.g. 8 x 8 x 1).
+A ground-state energy self-consistent field (SCF) computation is finally performed with [DFT]({{ reference_url }}/models-directory/dft/overview/) in order to calculate the energy of the slab material. Since the slab is by definition always much thinner than it is wide in terms of its cross-sectional area, the size of the [grid of k-points]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) can be set to be smaller in the $z$ dimension than across the $x-y$ cross-section (e.g. 8 x 8 x 1).
 
 ### e-slab
 
@@ -70,19 +70,19 @@ The variable "E_SLAB" is assigned to the energy of the slab material computed in
 
 ### surface-energy
 
-Finally, the last unit gathers together the previously-defined variables "E_BULK" and "E_SLAB" in order to compute the final value for the surface energy of the material under investigation, according to the formula defined [in this page](../../../properties-directory/scalar/surface-energy.md).
+Finally, the last unit gathers together the previously-defined variables "E_BULK" and "E_SLAB" in order to compute the final value for the surface energy of the material under investigation, according to the formula defined [in this page]({{ reference_url }}/properties-directory/scalar/surface-energy/).
 
 ## Choose Workflow and Create Job
 
-[Workflows](../../../workflows/overview.md) for calculating the surface energy through [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank](../../../workflows/bank.md) into the account-owned [collection](../../../accounts/collections.md). This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/workflow-tab.md).
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the surface energy through [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/workflow-tab.md).
 
 ## Submit Job
 
-Before [submitting](../../../jobs/actions/run.md) the [job](../../../jobs/overview.md), the user should click on the ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and inspect the [compute parameters](../../../infrastructure/compute/parameters.md) included therein. Our slab of gold is a relatively small structure, so four CPUs and a few minutes of calculation runtime should be sufficient.
+Before [submitting](../../../jobs/actions/run.md) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein. Our slab of gold is a relatively small structure, so four CPUs and a few minutes of calculation runtime should be sufficient.
 
 ## Examine results
 
-When all aforementioned [units](../../../workflows/components/units.md) computations are complete at the end of Job execution, switching to the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md) will show the results of the simulation, including the surface energy found for Au (0.049 eV/A^2). This final result is in good agreement with the tabulated value for the same surface orientation of gold [^2].
+When all aforementioned [units]({{ reference_url }}/workflows/components/units/) computations are complete at the end of Job execution, switching to the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md) will show the results of the simulation, including the surface energy found for Au (0.049 eV/A^2). This final result is in good agreement with the tabulated value for the same surface orientation of gold [^2].
 
 ## Animation
 

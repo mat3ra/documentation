@@ -6,8 +6,8 @@ prediction. This page describes how to run MatterSim and other Python-based
 Machine Learning (ML) models on the Mat3ra platform, using three approaches of
 increasing customization:
 
-1. Using a pre-built [workflow](../../workflows/overview.md) from the
-[Mat3ra bank](../../workflows/bank.md).
+1. Using a pre-built [workflow]({{ reference_url }}/workflows/overview/) from the
+[Mat3ra bank]({{ reference_url }}/workflows/bank/).
 2. Creating a new workflow from one of the available MatterSim
 flavors/<wbr/>templates.
 3. Using the general Python flavor/<wbr/>template and supplying the
@@ -18,8 +18,7 @@ using multi-threading, and closes with a step-by-step video walkthrough.
 
 ## 1. Using a bank workflow
 
-A common approach is to import an existing workflow from the [Mat3ra bank](
-../../workflows/bank.md) into the user's account.
+A common approach is to import an existing workflow from the [Mat3ra bank]({{ reference_url }}/workflows/bank/) into the user's account.
 
 ### 1.1. Import a bank workflow
 
@@ -34,8 +33,7 @@ The workflow then appears in the user's *Workflows* list and becomes available
 for selection during job creation. It can be opened for inspection or further
 modification.
 
-The *MatterSim total energy* workflow consists of three [units](
-../../workflows/components/units.md):
+The *MatterSim total energy* workflow consists of three [units]({{ reference_url }}/workflows/components/units/):
 
 - **I/O Material unit:** fetches the input materials from the job context. Its
 output is an array of materials.
@@ -100,7 +98,7 @@ from an existing MatterSim flavor/<wbr/>template. The example below creates a
 
 ### 2.1. Open the Workflow Designer and Unit Editor
 
-First, open the [Workflows](../../workflows/overview.md) page and click
+First, open the [Workflows]({{ reference_url }}/workflows/overview/) page and click
 **Create** to start a new workflow. Expand the *Details* section and select
 **Python Script** as the application. Then, add an **Executable** unit and click
 **EDIT** to open the [Unit Editor](../../workflow-designer/unit-editor.md).
@@ -197,7 +195,7 @@ Just as in Sections 1 and 2 above, create and run a job using this workflow.
 Because MatterSim is a [PyTorch](https://pytorch.org/)-based model, it benefits
 significantly from GPU execution. To run a MatterSim job on GPU, it should be
 submitted to one of the platform's GPU queues, for example the `GOF` queue on
-the [Google Cloud cluster](../../clusters/google.md) (internal identifier
+the [Google Cloud cluster]({{ dev_url }}/infrastructure/clusters/google/) (internal identifier
 `Cluster-001`).
 
 ### 4.1. Confirm GPU availability

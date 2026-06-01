@@ -24,7 +24,7 @@ The Save operation can be accomplished via either of two alternative buttons, bo
 
 ## Inserting Add-ons
 
-The header menu bar of the Workflows Designer interface finally gives the user the possibility to include [Add-ons](../workflows/addons/overview.md), in the form of an additional subworkflow. 
+The header menu bar of the Workflows Designer interface finally gives the user the possibility to include [Add-ons]({{ reference_url }}/workflows/addons/overview/), in the form of an additional subworkflow. 
 
 The location of this drop-down menu is highlighted below:
 

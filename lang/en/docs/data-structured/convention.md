@@ -16,7 +16,7 @@ Data included in the expandable section below shows an example **JSON representa
   </summary> 
 
 ```json 
-{!esse/example/material.json!}
+--8<-- "esse/example/material.json"
 ```
 </details>
 

@@ -1,3 +1,3 @@
 # Default Workflow
 
-When a new Exabyte account is created, its default workflow is set to the [total energy](../properties/overview.md) calculation with [Quantum ESPRESSO](../software-directory/modeling/quantum-espresso/overview.md) and can later be adjusted by the account member(s) according to [these instructions](actions/set-default.md). 
+When a new Exabyte account is created, its default workflow is set to the [total energy](../properties/overview.md) calculation with [Quantum ESPRESSO]({{ guide_url }}/software-directory/modeling/quantum-espresso/overview/) and can later be adjusted by the account member(s) according to [these instructions]({{ guide_url }}/workflows/actions/set-default/). 

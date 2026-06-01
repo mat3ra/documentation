@@ -12,7 +12,7 @@ We explain what Purge means in the context of Jobs [in this page](purge.md).
 
 ## [Run](run.md)
 
-Jobs can be [submitted](../status.md) to the [cluster](../../infrastructure/clusters/overview.md) for execution following [these instructions](run.md).
+Jobs can be [submitted]({{ reference_url }}/jobs/status/) to the [cluster]({{ dev_url }}/infrastructure/clusters/overview/) for execution following [these instructions](run.md).
 
 ## [Terminate](terminate.md)
 
@@ -20,8 +20,8 @@ Submitted Jobs can be terminated artificially by the user at any moment before t
 
 ## [Create / Delete Project](create-delete-project.md)
 
-[This page](create-delete-project.md) describes how the user can create new [Projects](../projects.md).
+[This page](create-delete-project.md) describes how the user can create new [Projects]({{ reference_url }}/jobs/projects/).
 
-## [Assign Job to a Project](../projects.md)
+## [Assign Job to a Project]({{ reference_url }}/jobs/projects/)
 
-We explain how new Jobs can be assigned to [Projects](../projects.md) [here](../projects.md). 
+We explain how new Jobs can be assigned to [Projects]({{ reference_url }}/jobs/projects/) [here]({{ reference_url }}/jobs/projects/). 

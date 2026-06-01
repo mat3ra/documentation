@@ -1,6 +1,6 @@
 # Structured Representations of Workflow Components
 
-We introduce in this section the JSON representations for [Workflows](../overview.md), and for each of their sub-components. We base such representations on the data convention, which is the object of a [separate discussion](../../data-structured/overview.md).
+We introduce in this section the JSON representations for [Workflows](../overview.md), and for each of their sub-components. We base such representations on the data convention, which is the object of a [separate discussion]({{ reference_url }}/data-structured/overview/).
 
 ## [Workflows](workflows.md)
 

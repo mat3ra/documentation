@@ -6,7 +6,7 @@ The Reaction Energy Barrier (also known as Activation Barrier) marks the highest
 
 ## Example
 
-Its value can be estimated with any [Nudged Elastic Band](../../tutorials/dft/chemical/reaction-profile-qe.md) (NEB) [Workflow](../../workflows/overview.md), and it is returned under the [Results Tab](../../jobs/ui/results-tab.md) interface with the following appearance (in eV).
+Its value can be estimated with any [Nudged Elastic Band]({{ guide_url }}/tutorials/dft/chemical/reaction-profile-qe/) (NEB) [Workflow](../../workflows/overview.md), and it is returned under the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) interface with the following appearance (in eV).
 
 <div class="clearfix">
     <center>

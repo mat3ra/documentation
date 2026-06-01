@@ -1,10 +1,10 @@
 # Generate Combinatorial Sets
 
-This tutorial demonstrates how to create a **combinatorial set** of materials. We use III-V semiconductor compounds as example with permutations and combinations of n and p-type dopants. Combinatorial set of materials can be used to execute **combinatorial screening** to investigate, for example, the impact of inserting dopants on the [electronic band gap](../../properties-directory/non-scalar/band-gaps.md) of such semiconductors. 
+This tutorial demonstrates how to create a **combinatorial set** of materials. We use III-V semiconductor compounds as example with permutations and combinations of n and p-type dopants. Combinatorial set of materials can be used to execute **combinatorial screening** to investigate, for example, the impact of inserting dopants on the [electronic band gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) of such semiconductors. 
 
 ## Import Material into Collection
 
-We begin by importing one of the III-V compound semiconductors, Gallium Phosphide (GaP), into the user's [collection](../../accounts/collections.md) of materials, starting from which we will then build further combinatorial sets. This crystal structure can be **imported** directly from a remote repository, by following the instructions outlined in [this page](../../materials/actions/import.md).We select the F-43m space group lowest energy structure, the most stable, polymorph of GaP. 
+We begin by importing one of the III-V compound semiconductors, Gallium Phosphide (GaP), into the user's [collection]({{ reference_url }}/accounts/collections/) of materials, starting from which we will then build further combinatorial sets. This crystal structure can be **imported** directly from a remote repository, by following the instructions outlined in [this page](../../materials/actions/import.md).We select the F-43m space group lowest energy structure, the most stable, polymorph of GaP. 
 
 ## Use Material in Materials Designer
 
@@ -27,7 +27,7 @@ We will examine the effects of n and p-type dopants on Gallium Phosphide. We rem
 
 ### Generate Permutations
 
-**Permutations** change all element atoms in the [basis](../../properties-directory/structural/basis.md) of the crystal structure simultaneously, and are enabled when chemical elements are separated by slashes (`/`) with no trailing spaces.
+**Permutations** change all element atoms in the [basis]({{ reference_url }}/properties-directory/structural/basis/) of the crystal structure simultaneously, and are enabled when chemical elements are separated by slashes (`/`) with no trailing spaces.
 
 The user should hence try replacing the first line under the "Generate Combinatorial Set" dialog, containing the Gallium atom located at the origin of the unit cell, with the following line.
 
@@ -60,7 +60,7 @@ Therefore, we see how permutations had the effect of replacing the original Gall
 
 ### Generate Combinations
 
-**Combinations** change the elements in the [basis](../../properties-directory/structural/basis.md) of the crystal structure one at a time, and are enabled when commas are used as separators (`,`) with no trailing spaces. 
+**Combinations** change the elements in the [basis]({{ reference_url }}/properties-directory/structural/basis/) of the crystal structure one at a time, and are enabled when commas are used as separators (`,`) with no trailing spaces. 
 
 In order to explore the alternative case of Combinations, we shall replace both the Phosphorus and Gallium atoms in GaP with all possible aforementioned n and p-type dopant atoms. This can be achieved by replacing the two lines in the "Generate Combinatorial Set" dialog with the following content.
 

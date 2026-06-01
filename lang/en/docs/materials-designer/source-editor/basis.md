@@ -1,6 +1,6 @@
 # Setting the Crystal Basis
 
-The [atomic basis](../../properties-directory/structural/basis.md) of a Material's crystal structure can be edited and set by expanding the "Crystal Basis" section in the central panel of the Materials Designer interface. The appearance of the "Crystal Basis" editor within the wider interface is shown in the figure below:
+The [atomic basis]({{ reference_url }}/properties-directory/structural/basis/) of a Material's crystal structure can be edited and set by expanding the "Crystal Basis" section in the central panel of the Materials Designer interface. The appearance of the "Crystal Basis" editor within the wider interface is shown in the figure below:
 
 ![Setting the Crystal Basis](../../images/materials-designer/crystal-basis.png "Setting the Crystal Basis")
 

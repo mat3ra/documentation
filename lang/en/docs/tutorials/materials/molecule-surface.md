@@ -39,17 +39,17 @@ Alternatively, the above benzene molecular structure can also be retrieved from 
 
 ## Create Benzene Molecule Entry in Materials Collection
 
-The chemical structure for Benzene can readily be [imported](../../materials/actions/copy-bank.md) from the [Materials Bank](../../materials/bank.md) into the account-owned [collection](../../accounts/collections.md), if it is not already present there. 
+The chemical structure for Benzene can readily be [imported](../../materials/actions/copy-bank.md) from the [Materials Bank]({{ reference_url }}/materials/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/), if it is not already present there. 
 
 Alternatively, the above-mentioned POSCAR structure can be manually [uploaded](../../materials/actions/upload.md) by the user into the materials collection, after saving its data contents into a new file on the local disk.
  
 ## Open Materials Designer 
 
-We start with [opening](../../entities-general/actions/create.md) an instance of the [Materials Designer Interface](../../materials-designer/overview.md) for creating and designing new [Materials structures](../../materials/overview.md) on our platform. 
+We start with [opening](../../entities-general/actions/create.md) an instance of the [Materials Designer Interface](../../materials-designer/overview.md) for creating and designing new [Materials structures]({{ reference_url }}/materials/overview/) on our platform. 
 
 ## Create a Gold Surface 
 
-In order to create a gold surface, the user should first [import](../../materials-designer/header-menu/input-output/import.md) a sample crystalline structure of pure gold into the current Materials Designer session, from the account-owned [collection](../../accounts/collections.md) of materials. 
+In order to create a gold surface, the user should first [import](../../materials-designer/header-menu/input-output/import.md) a sample crystalline structure of pure gold into the current Materials Designer session, from the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials. 
 
 The instructions contained [in this page](../../materials-designer/header-menu/advanced/surface-slab.md) should then be followed in order to create a surface of Gold, with normal vector oriented along the [211] axis, using our surface creator in Materials Designer, starting from the original gold crystalline sample. 
 
@@ -58,11 +58,11 @@ The instructions contained [in this page](../../materials-designer/header-menu/a
 
 ## Import the Benzene Molecule into Materials Designer
 
-The Benzene molecule should now be [imported](../../materials-designer/header-menu/input-output/import.md) into the current Materials Designer session, from the account-owned [collection](../../accounts/collections.md) of materials. 
+The Benzene molecule should now be [imported](../../materials-designer/header-menu/input-output/import.md) into the current Materials Designer session, from the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials. 
 
 Once imported into Materials Designer, the benzene molecule will appear as a new distinct entry item within the list of structures shown on the [left-had items list sidebar](../../materials-designer/sidebar-items.md) of the Designer interface, besides the previously-generated gold surface.
  
-Care should be taken by the user to [remove](../../materials-designer/sidebar-items.md#delete-item) any other material structure entry listed in the sidebar, besides benzene and the gold surface being considered here, that may have been loaded by [default](../../materials/default.md) initially at the moment of the opening of Materials Designer.
+Care should be taken by the user to [remove](../../materials-designer/sidebar-items.md#delete-item) any other material structure entry listed in the sidebar, besides benzene and the gold surface being considered here, that may have been loaded by [default]({{ reference_url }}/materials/default/) initially at the moment of the opening of Materials Designer.
 
 ## Open Multi-Materials 3D Editor
 
@@ -85,7 +85,7 @@ The user will notice that a new material entry, called "New Material" by default
 !!!tip "Toggling of Orthographic Camera"
     The user is recommended to toggle the use of the [Orthographic camera](../../materials-designer/3d-editor/view.md#toggle-orthographic-camera) functionality, accessible via the [3D Editor interface](../../materials-designer/3d-editor.md) of Materials Designer, in order to verify the correct alignment and centrality of the benzene molecule over the surface.
 
-This new entry should first be [renamed](../../materials-designer/sidebar-items.md#edit-name-of-item) to a more memorable form, and should finally be [saved](../../materials-designer/header-menu/input-output/save.md) via the ["Input/Output" Menu](../../materials-designer/header-menu/input-output.md) located at the top-left corner into the account-owned materials [collection](../../accounts/collections.md), as a new material structure entry which is distinct from both the original isolated benzene molecule and gold structure.
+This new entry should first be [renamed](../../materials-designer/sidebar-items.md#edit-name-of-item) to a more memorable form, and should finally be [saved](../../materials-designer/header-menu/input-output/save.md) via the ["Input/Output" Menu](../../materials-designer/header-menu/input-output.md) located at the top-left corner into the account-owned materials [collection]({{ reference_url }}/accounts/collections/), as a new material structure entry which is distinct from both the original isolated benzene molecule and gold structure.
 
 ## Resulting Material
 
@@ -97,7 +97,7 @@ An animation of the final combined benzene molecule-gold surface structure can b
 
 The user is now free to use the newly generated benzene-gold surface system, in order to perform its further analysis, such as studying the adsorption energy.
 
-The [Nudged Elastic Band (NEB)](../../models/auxiliary-concepts/nudged-elastic-band.md) method can be used for reaction energy profile calculations. We offer two alternative approaches for implementing the NEB method on our platform, based on the use of the [VASP](../../software-directory/modeling/vasp/overview.md) or [Quantum ESPRESSO](../../software-directory/modeling/quantum-espresso/overview.md) modeling engines, which are narrated in two separate tutorials accessible [here](../dft/chemical/reaction-profile-vasp.md) and [here](../dft/chemical/reaction-profile-qe.md) respectively.
+The [Nudged Elastic Band (NEB)]({{ reference_url }}/models/auxiliary-concepts/nudged-elastic-band/) method can be used for reaction energy profile calculations. We offer two alternative approaches for implementing the NEB method on our platform, based on the use of the [VASP](../../software-directory/modeling/vasp/overview.md) or [Quantum ESPRESSO](../../software-directory/modeling/quantum-espresso/overview.md) modeling engines, which are narrated in two separate tutorials accessible [here](../dft/chemical/reaction-profile-vasp.md) and [here](../dft/chemical/reaction-profile-qe.md) respectively.
 
 ## Animation
 

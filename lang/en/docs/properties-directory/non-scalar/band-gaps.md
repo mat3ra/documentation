@@ -14,7 +14,7 @@ The indirect band gap can be smaller than the direct one in some cases.
  
 ## Example
 
-Both types of band gaps are returned under the [Results Tab](../../jobs/ui/results-tab.md) as portrayed in the following image, immediately below the main [bandstructure dispersion](bandstructure.md) plot. 
+Both types of band gaps are returned under the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) as portrayed in the following image, immediately below the main [bandstructure dispersion](bandstructure.md) plot. 
 
 In case the material is of indirect-gap nature, the pair of k-vectors linking the corresponding minimal energy difference is indicated. Otherwise, for direct-gap semiconductors, the two types of gap are presented as being equivalent and being both located across the Gamma point.
 

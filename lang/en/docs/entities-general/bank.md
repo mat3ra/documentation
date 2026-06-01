@@ -2,13 +2,13 @@
 
 Entity **Bank** is a [collections](../accounts/collections.md) of **unique** entity items. One Bank exists for each **Bankable [Entity](overview.md)**. The corresponding list of entities is then referred to as the **Bank Entity Collection**. 
 
-For [accounts](../accounts/overview.md) with [service levels](../pricing/service-levels.md) allowing for private data, the Bank items are private and only visible to the members of the account. For the rest - the Bank entries are visible to all platform users. These privacy notions are further explained in subsequent sections of this page. 
+For [accounts](../accounts/overview.md) with [service levels]({{ guide_url }}/pricing/service-levels/) allowing for private data, the Bank items are private and only visible to the members of the account. For the rest - the Bank entries are visible to all platform users. These privacy notions are further explained in subsequent sections of this page. 
   
  Bankable Entities for the moment consist of Materials and Workflows.
 
 ## Mapping Function
 
-Mapping Function produces a **hash** string (explained below) and is used to assert the uniqueness of Bank Entities. Each entity type has a different Mapping Function. It assesses certain [defining features](../data-structured/overview.md#by-relation-to-uniqueness) of the entity, as explained for the case of [Materials](../materials/bank.md) and [Workflows](../workflows/bank.md) separately.
+Mapping Function produces a **hash** string (explained below) and is used to assert the uniqueness of Bank Entities. Each entity type has a different Mapping Function. It assesses certain [defining features]({{ reference_url }}/data-structured/overview/#by-relation-to-uniqueness) of the entity, as explained for the case of [Materials](../materials/bank.md) and [Workflows](../workflows/bank.md) separately.
 
 
 ## How Bank Entities are Generated
@@ -59,7 +59,7 @@ The output of the mapping function is a **hash string**. This hash is stored ins
 
 ### Private 
 
-If an Account has a sufficient [service level](../pricing/service-levels.md) allowing for private data, the situation displayed below will appear, whereby private items are accessible only to the Account members.
+If an Account has a sufficient [service level]({{ guide_url }}/pricing/service-levels/) allowing for private data, the situation displayed below will appear, whereby private items are accessible only to the Account members.
 
 ![Bank Diagram](../images/entities-general/Bank-diagram-Private.png "Bank Diagram")
 
@@ -76,4 +76,4 @@ Alternatively, the lack of data privacy leads to the following scenario, whereby
 
 Bank entities may be **imported** by users with appropriate access to it. This creates a copy of that item under the Account-owned collection.
 
-Specific examples of the importing procedure can be found for both [Materials](../materials/bank.md) and [Workflows](../workflows/bank.md), whereas the general instructions are presented [here](actions/copy-bank.md).
+Specific examples of the importing procedure can be found for both [Materials](../materials/bank.md) and [Workflows](../workflows/bank.md), whereas the general instructions are presented [here]({{ guide_url }}/entities-general/actions/copy-bank/).

@@ -1,10 +1,10 @@
 # Import Entities from Bank
 
-In order to import Entities from their respective [Banks](../bank.md) into the Account-owned [collections](../../accounts/collections.md), the following general procedure should be followed.
+In order to import Entities from their respective [Banks]({{ reference_url }}/entities-general/bank/) into the Account-owned [collections]({{ reference_url }}/accounts/collections/), the following general procedure should be followed.
 
 ## Open Bank Page
 
-First click on the corresponding `Bank` option in the [left-hand Sidebar](../../ui/left-sidebar.md) and choose either Materials or Workflows.
+First click on the corresponding `Bank` option in the [left-hand Sidebar]({{ guide_url }}/ui/left-sidebar/) and choose either Materials or Workflows.
 
 ## Search for Entity
 
@@ -16,4 +16,4 @@ Next, [select](select.md) the desired entries and click `Copy` <i class="zmdi zm
 
 ## Links
 
-Entity-specific explanations of the above procedure are available for [Materials](../../materials/bank.md) and [Workflows](../../workflows/bank.md) respectively.
+Entity-specific explanations of the above procedure are available for [Materials]({{ reference_url }}/materials/bank/) and [Workflows]({{ reference_url }}/workflows/bank/) respectively.

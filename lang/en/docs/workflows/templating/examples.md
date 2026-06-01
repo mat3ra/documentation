@@ -1,21 +1,25 @@
+---
+render_macros: true
+---
+
 # Template Examples
 
-The present page contains example(s) of [unit](../components/units.md) input [templates](overview.md), implemented using the [templating engine](jinja.md), in order to generate the input files for the [simulation engines](../../software/overview.md) supported on our platform.
+The present page contains example(s) of [unit](../components/units.md) input [templates](overview.md), implemented using the [templating engine](jinja.md), in order to generate the input files for the [simulation engines]({{ reference_url }}/software/overview/) supported on our platform.
 
 ## Quantum ESPRESSO Example
 
-For example, the input file template shown in the expandable section below, for a sample [Quantum ESPRESSO](../../software-directory/modeling/quantum-espresso/overview.md) calculation.
+For example, the input file template shown in the expandable section below, for a sample [Quantum ESPRESSO]({{ guide_url }}/software-directory/modeling/quantum-espresso/overview/) calculation.
 
 ### Template
 
 The text below contains references to data that will be different for different materials, such as the number of atoms (`nat` flag).
 
 ```jinja
-&CONTROL
+{% raw %}&CONTROL
     calculation = 'scf'
     title = ''
     verbosity = 'low'
-    restart_mode = '{{ input.RESTART_MODE }}'
+    restart_mode = '{{ input.RESTART_MODE }}'{% endraw %}
     wf_collect = .true.
     tstress = .true.
     tprnfor = .true.
@@ -23,7 +27,7 @@ The text below contains references to data that will be different for different 
     wfcdir = {% raw %}'{{ JOB_WORK_DIR }}/outdir'{% endraw %}
     prefix = '__prefix__'
     pseudo_dir = {% raw %}'{{ JOB_WORK_DIR }}/pseudo'{% endraw %}
-/
+{% raw %}/
 &SYSTEM
     ibrav = {{ input.IBRAV }}
     nat = {{ input.NAT }}
@@ -51,7 +55,7 @@ ATOMIC_POSITIONS crystal
 CELL_PARAMETERS angstrom
 {{ input.CELL_PARAMETERS }}
 K_POINTS automatic
-{% for d in kgrid.dimensions %}{{d}} {% endfor %}{% for s in kgrid.shifts %}{{s}} {% endfor %}
+{% for d in kgrid.dimensions %}{{d}} {% endfor %}{% for s in kgrid.shifts %}{{s}} {% endfor %}{% endraw %}
 ```
 
 ### Context
@@ -104,6 +108,7 @@ K_POINTS automatic
 
 For Silicon FCC as a default material, the resulting text of the unit input, will be as shown as below:
 
+{% raw %}
 ```fortran
 &CONTROL
     calculation = 'scf'
@@ -150,6 +155,7 @@ CELL_PARAMETERS angstrom
 K_POINTS automatic
 10 10 10 0 0 0
 ```
+{% endraw %}
 
 #### Runtime Render
 

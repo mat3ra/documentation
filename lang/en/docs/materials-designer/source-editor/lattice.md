@@ -1,6 +1,6 @@
 # Crystal Lattice
 
-Every crystal structure has an underlying Bravais lattice. For more theoretical background, please refer to [this page](../../properties-directory/structural/lattice.md). 
+Every crystal structure has an underlying Bravais lattice. For more theoretical background, please refer to [this page]({{ reference_url }}/properties-directory/structural/lattice/). 
 
 ## Opening the Crystal Lattice editor
 

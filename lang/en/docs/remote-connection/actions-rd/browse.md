@@ -1,10 +1,10 @@
 # Directory Browsing in Remote Desktop
 
-Directories can be browsed in [Remote Desktop](../remote-desktop.md) under a [standard Linux files explorer interface](../remote-desktop.md#linux-environment). A general review of the directory structure encountered under this environment can be found [here](../../data-on-disk/directories.md).
+Directories can be browsed in [Remote Desktop](../remote-desktop.md) under a [standard Linux files explorer interface](../remote-desktop.md#linux-environment). A general review of the directory structure encountered under this environment can be found [here]({{ dev_url }}/data-on-disk/directories/).
 
 ## Animation
 
-In the following animation, we demonstrate how to navigate in and out of some directories present under the Remote Desktop interface, starting from the main [Home Folder](../../infrastructure/login/directories.md).
+In the following animation, we demonstrate how to navigate in and out of some directories present under the Remote Desktop interface, starting from the main [Home Folder]({{ dev_url }}/infrastructure/login/directories/).
 
 <img data-gifffer="/images/remote-connection/browse-rd.gif" />
 

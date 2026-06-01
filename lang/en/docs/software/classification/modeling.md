@@ -6,7 +6,7 @@ These engines may be based on such [theoretical models](../../models/overview.md
 
 ## Implementation
 
-The modeling engines which are implemented on our platform are introduced [in this section](../../software-directory/overview.md) of the documentation.
+The modeling engines which are implemented on our platform are introduced [in this section]({{ guide_url }}/software-directory/overview/) of the documentation.
 
 ## Links
 

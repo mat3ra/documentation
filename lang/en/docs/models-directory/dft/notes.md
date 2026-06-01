@@ -6,7 +6,7 @@ We list in the present page some special notices concerning the [parameters](par
 
 ### Electronic Band Gap
 
-When computations of the [Electronic Band Gap](../../properties-directory/non-scalar/band-gaps.md) are executed through [Density Functional Theory](../../models-directory/dft/overview.md), operated in conjunction with the [Generalized Gradient Approximation](parameters.md#subtype) (GGA), a systematic **under-estimation of the band gap** is to be expected. This is a well-known shortcoming of the GGA technique, and should be taken into account when following the [procedure](../../tutorials/dft/electronic/band-gap.md) for calculating the band-gap of semiconducting materials. 
+When computations of the [Electronic Band Gap](../../properties-directory/non-scalar/band-gaps.md) are executed through [Density Functional Theory](../../models-directory/dft/overview.md), operated in conjunction with the [Generalized Gradient Approximation](parameters.md#subtype) (GGA), a systematic **under-estimation of the band gap** is to be expected. This is a well-known shortcoming of the GGA technique, and should be taken into account when following the [procedure]({{ guide_url }}/tutorials/dft/electronic/band-gap/) for calculating the band-gap of semiconducting materials. 
 
 Further modifications to the input files and settings to correctly predict the band gap are possible, but lie beyond the scope of the present discussion.
 
@@ -16,7 +16,7 @@ Hybrid functionals [^1] are a class of approximations to the exchange–correlat
 
 This approach typically results in improved [precision](../../methods/precision.md) in the estimation of the values of numerous [material properties](../../properties/overview.md) of interest, as demonstrated in the scientific literature [^3].
 
-A demonstration of the effectiveness of the HSE Hybrid Functional in predicting the [electronic band gap](../../properties-directory/non-scalar/band-gaps.md) of semiconducting materials is offered in the [relevant tutorial page](../../tutorials/dft/electronic/hse-vasp-bg.md).
+A demonstration of the effectiveness of the HSE Hybrid Functional in predicting the [electronic band gap](../../properties-directory/non-scalar/band-gaps.md) of semiconducting materials is offered in the [relevant tutorial page]({{ guide_url }}/tutorials/dft/electronic/hse-vasp-bg/).
 
 ## The GW Approximation
 

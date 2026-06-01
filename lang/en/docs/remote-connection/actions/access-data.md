@@ -1,6 +1,6 @@
 # Access Data in Web Interface with Dropbox
 
-Among its other functions, the [Dropbox](../../data-in-objectstorage/dropbox.md) folder allows the user to exchange data back and forth between the [Remote Desktop](../remote-desktop.md) or [Web Terminal](../web-terminal.md) remote connection methods, and the main [Web Interface](../../ui/overview.md) of our platform.
+Among its other functions, the [Dropbox]({{ dev_url }}/data-in-objectstorage/dropbox/) folder allows the user to exchange data back and forth between the [Remote Desktop](../remote-desktop.md) or [Web Terminal](../web-terminal.md) remote connection methods, and the main [Web Interface](../../ui/overview.md) of our platform.
 
 ## Animation
 

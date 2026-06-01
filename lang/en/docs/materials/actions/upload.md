@@ -6,7 +6,7 @@ At present CIF, POSCAR and XYZ formats are supported [^1], [^2], [^3]. POSCAR fo
 
 ## Open Upload Dialog
 
-Open the [Account Profile](../../accounts/ui/profile-page.md) page and [navigate](../../ui/specific/tabs-navigator.md) to "Materials" tab. Then choose upload tool <i class="zmdi zmdi-upload zmdi-hc-border"></i> in the top right [actions toolbar](../../entities-general/ui/explorer.md#actions-toolbar).
+Open the [Account Profile](../../accounts/ui/profile-page.md) page and [navigate]({{ guide_url }}/ui/specific/tabs-navigator/) to "Materials" tab. Then choose upload tool <i class="zmdi zmdi-upload zmdi-hc-border"></i> in the top right [actions toolbar](../../entities-general/ui/explorer.md#actions-toolbar).
 
 ## Select Files
 
@@ -59,7 +59,7 @@ Next, the [selected](../../entities-general/actions/select.md) files can be uplo
 
 ## View Materials
 
-Once the files have been imported, they are added as entries to the Materials [collection](../../accounts/collections.md). The name of the material is read from the imported file, if possible. Chemical formula is used as a backup option.  
+Once the files have been imported, they are added as entries to the Materials [collection]({{ reference_url }}/accounts/collections/). The name of the material is read from the imported file, if possible. Chemical formula is used as a backup option.  
 
 ## Animation
 

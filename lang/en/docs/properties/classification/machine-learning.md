@@ -1,6 +1,6 @@
 # Classification for Machine Learning purposes
 
-The classification criteria explained in this page complement the more general ones introduced [here](../../data/classification.md). 
+The classification criteria explained in this page complement the more general ones introduced [here]({{ reference_url }}/data/classification/). 
 
 ## Motivation
 

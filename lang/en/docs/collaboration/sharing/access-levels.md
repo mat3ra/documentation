@@ -4,7 +4,7 @@ Different Access Levels can be granted to Accounts on our platform, as explained
 
 ## Private
 
-By default, any/all newly created data is private to the account with the [service level](../../accounts/service-levels.md) that supports private data, or, alternatively, publicly accessible for the accounts with service levels supporting public data only. Consult the aforementioned page to review service levels that support private data.
+By default, any/all newly created data is private to the account with the [service level]({{ reference_url }}/accounts/service-levels/) that supports private data, or, alternatively, publicly accessible for the accounts with service levels supporting public data only. Consult the aforementioned page to review service levels that support private data.
 
 ## Public (all Users)
 
@@ -12,10 +12,10 @@ If the user wishes the entity to be shared with all other users of our platform,
 
 ## Share with Accounts
    
-Entities can be shared between Personal or Organizational [Accounts](../../accounts/overview.md).
+Entities can be shared between Personal or Organizational [Accounts]({{ reference_url }}/accounts/overview/).
 
 !!!note  "Note: analogy with Google Drive functionality"
-    Similarly to [Permissions](../../entities-general/permissions.md), the Access Levels included on our platform mirror the functionality of Google Drive files and folders  closely [^1]. 
+    Similarly to [Permissions]({{ reference_url }}/entities-general/permissions/), the Access Levels included on our platform mirror the functionality of Google Drive files and folders  closely [^1]. 
 
 ## External - Anyone with link
 

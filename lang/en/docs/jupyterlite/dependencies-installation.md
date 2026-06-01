@@ -4,7 +4,7 @@
 
 The `micropip` package installs dependencies in [Pyodide](./pyodide.md) kernel used in JupyterLite notebooks.
 
-For relative imports to work in provided [api-examples](../rest-api/api-examples.md) notebooks, one needs to install the `mat3ra-api-examples` package in the beginning of the notebook:
+For relative imports to work in provided [api-examples]({{ dev_url }}/rest-api/api-examples/) notebooks, one needs to install the `mat3ra-api-examples` package in the beginning of the notebook:
 
 ```python
 import micropip

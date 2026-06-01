@@ -4,7 +4,7 @@ We support direct import of materials structural data from other online sources.
 
 ## Open Import Dialog
 
-Under the [Account Profile](../../accounts/ui/profile-page.md) page, first [navigate](../../ui/specific/tabs-navigator.md) to the "Materials" tab. Then choose import tool <i class="zmdi zmdi-cloud-upload zmdi-hc-border"></i> in the top right [actions toolbar](../../entities-general/ui/explorer.md#actions-toolbar).
+Under the [Account Profile](../../accounts/ui/profile-page.md) page, first [navigate]({{ guide_url }}/ui/specific/tabs-navigator/) to the "Materials" tab. Then choose import tool <i class="zmdi zmdi-cloud-upload zmdi-hc-border"></i> in the top right [actions toolbar](../../entities-general/ui/explorer.md#actions-toolbar).
 
 ## Select Entries
 

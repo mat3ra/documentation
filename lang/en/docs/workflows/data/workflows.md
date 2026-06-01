@@ -1,6 +1,6 @@
 # Workflows: Structured Representation
 
-In order to organize and store the information about [workflows](../overview.md), we employ the **Exabyte Data Convention**, as explained [elsewhere](../../data-structured/overview.md) in this documentation.
+In order to organize and store the information about [workflows](../overview.md), we employ the **Exabyte Data Convention**, as explained [elsewhere]({{ reference_url }}/data-structured/overview/) in this documentation.
 
 In the expandable section below, the user can find the JSON representation of a [workflow](../overview.md) with a corresponding example. It contains a series of [subworkflows](../components/subworkflows.md), each of which contains a number of [units](../components/units.md) in turn.
 

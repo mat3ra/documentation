@@ -44,7 +44,7 @@ for upload. If the upload was successful, the file will then be visible in the d
 ## 3. Copy the "Python ML Train Clustering" Workflow from the Workflow Bank
 
 Next, we select the`Bank Worfklows` button in the [left sidebar](../../ui/left-sidebar.md), which brings us to
-the [Bank Workflows Page](../../workflows/bank.md). We then search for the "Python ML Train Clustering" workflow owned
+the [Bank Workflows Page]({{ reference_url }}/workflows/bank/). We then search for the "Python ML Train Clustering" workflow owned
 by the "Curators" account, and [copy it to our account](../../workflows/actions/copy-bank.md).
 
 A diagram and detailed description of this workflow can be found
@@ -83,7 +83,7 @@ A preview of the data then appears on the dataset tab, indicating that the data 
 We have now chosen our ML workflow and training set. Select the [Workflows Tab](../../jobs-designer/workflow-tab.md), and we
 can see our training workflow.
 
-We can see two [subworkflows](../../workflows/components/subworkflows.md) available: `Set Up the Job`
+We can see two [subworkflows]({{ reference_url }}/workflows/components/subworkflows/) available: `Set Up the Job`
 and `Machine Learning`.
 
 The `Set Up the Job` subworkflow contains instructions to copy in the training data.

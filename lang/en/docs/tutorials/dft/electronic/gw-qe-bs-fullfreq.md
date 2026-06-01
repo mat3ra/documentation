@@ -1,13 +1,13 @@
 # Calculate Electronic Band Structure with GW Approximation and Full-frequency Integration
 
-This tutorial page explains how to calculate the [electronic band structure](../../../properties-directory/non-scalar/bandstructure.md) of a semiconducting material based on [Density Functional Theory](../../../models-directory/dft/overview.md). We consider crystalline silicon in its standard equilibrium cubic-diamond crystal structure, and use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as our main simulation engine during this tutorial.
+This tutorial page explains how to calculate the [electronic band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) of a semiconducting material based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/). We consider crystalline silicon in its standard equilibrium cubic-diamond crystal structure, and use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as our main simulation engine during this tutorial.
 
 !!!note "Quantum ESPRESSO version considered in this tutorial"
     The present tutorial is written for Quantum ESPRESSO at version(s) 6.3.
 
 ## GW Approximation
 
-What sets the present tutorial apart from the [GGA DFT band-structure tutorial](band-structure.md) is the employment of the [GW Approximation](../../../models-directory/dft/notes.md#the-gw-approximation). This method is significantly more computationally intensive than the conventional approach for computing electronic band structures. It yields more accurate electronic results closer to experimental value. More information about this approximation, together with a demonstration of its application and results on a sample set of materials, can be found in Ref. 1 in [this page](gw-vasp-bg.md).
+What sets the present tutorial apart from the [GGA DFT band-structure tutorial](band-structure.md) is the employment of the [GW Approximation]({{ reference_url }}/models-directory/dft/notes/#the-gw-approximation). This method is significantly more computationally intensive than the conventional approach for computing electronic band structures. It yields more accurate electronic results closer to experimental value. More information about this approximation, together with a demonstration of its application and results on a sample set of materials, can be found in Ref. 1 in [this page](gw-vasp-bg.md).
 
 The aim of the present tutorial is to calculate the electronic band structure of silicon along the Gamma-X-W-K directions. In this example, we use **full-frequency integration** along the imaginary axis. For an alternative approach to GW band calculation using the Plasmon pole approximation the user can review [another tutorial](gw-qe-bs-plasmon.md).
 
@@ -20,16 +20,16 @@ SternheimerGW uses time-dependent density-functional perturbation theory to eval
 Further information and examples on how the GW method is supported by the SternheimerGW code can be retrieved in Ref. [^3].
 
 !!!warning "Norm-conserving pseudopotentials required"
-    Steinheimer GW needs to be operated in conjunction with norm-conserving pseudopotentials (default options provided by our platform are explained [here](../../../methods-directory/pseudopotential/default.md)).
+    Steinheimer GW needs to be operated in conjunction with norm-conserving pseudopotentials (default options provided by our platform are explained [here]({{ reference_url }}/methods-directory/pseudopotential/default/)).
 
 ## Workflow Structure
 
 <details markdown="1">
   <summary>Expand to view</summary> 
 
-We shall now describe the computational implementation of the GW Approximation for computing the electronic band structure on our platform, illustrating the various steps constituting the overall [Workflow](../../../workflows/overview.md). 
+We shall now describe the computational implementation of the GW Approximation for computing the electronic band structure on our platform, illustrating the various steps constituting the overall [Workflow]({{ reference_url }}/workflows/overview/). 
 
-Workflows performing GW calculations, based upon the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) modeling engine and the full-frequency integration approach, are composed of two main compute [units](../../../workflows/components/units.md):
+Workflows performing GW calculations, based upon the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) modeling engine and the full-frequency integration approach, are composed of two main compute [units]({{ reference_url }}/workflows/components/units/):
 
 1 - A first ground-state energy self-consistent field (SCF) calculation, to obtain the energy eigenvalues and wave functions.
 2 - GW calculation to obtain quasiparticle energies, using SternheimerGW, using the wave functions and charge density of the previous preliminary calculation.
@@ -70,30 +70,30 @@ The first line of the final `K_points` section gives the number of k-points, fol
 
 ## Create Job
 
-Silicon in its cubic-diamond crystal structure is the [default material](../../../materials/default.md) that is shown on [new job creation](../../../jobs-designer/overview.md), unless this default was [changed](../../../entities-general/actions/set-default.md) by the user following [account](../../../accounts/overview.md) creation. If silicon is still the default choice, it will as such be automatically loaded at the moment of the [opening](../../../jobs/actions/create.md) of [Job Designer](../../../jobs-designer/overview.md).
+Silicon in its cubic-diamond crystal structure is the [default material]({{ reference_url }}/materials/default/) that is shown on [new job creation](../../../jobs-designer/overview.md), unless this default was [changed](../../../entities-general/actions/set-default.md) by the user following [account]({{ reference_url }}/accounts/overview/) creation. If silicon is still the default choice, it will as such be automatically loaded at the moment of the [opening](../../../jobs/actions/create.md) of [Job Designer](../../../jobs-designer/overview.md).
 
 ## Choose Workflow
 
-[Workflows](../../../workflows/overview.md) for calculating the [band structure](../../../properties-directory/non-scalar/bandstructure.md) of [materials](../../../materials/overview.md) with [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md), operated in conjunction with the SternheimerGW code for enabling the GW Approximation via the full-frequency integration approach, can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank](../../../workflows/bank.md) into the account-owned [collection](../../../accounts/collections.md). This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/workflow-tab.md).
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the [band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) of [materials]({{ reference_url }}/materials/overview/) with [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md), operated in conjunction with the SternheimerGW code for enabling the GW Approximation via the full-frequency integration approach, can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/workflow-tab.md).
 
 ## Set Sampling in Reciprocal Space
 
-We set the size of the [grids of k-points and q-points](../../../models/auxiliary-concepts/reciprocal-space/sampling.md) to 4 x 4 x 4 for the second GW workflow unit (8 x 8 x 8 kgrid in the first SCF unit), via the ["Important Settings" section](../../../workflow-designer/subworkflow-editor/important-settings.md) under the [Workflow Tab](../../../jobs-designer/workflow-tab.md) of [Job Designer](../../../jobs-designer/overview.md). We also take care to reduce the plane-wave cutoff from their default values to 20 Ry, and the charge density cutoff to 80 Ry, which for the case of silicon modeled with a norm conserving pseudopotential provide sufficient precision.
+We set the size of the [grids of k-points and q-points]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) to 4 x 4 x 4 for the second GW workflow unit (8 x 8 x 8 kgrid in the first SCF unit), via the ["Important Settings" section](../../../workflow-designer/subworkflow-editor/important-settings.md) under the [Workflow Tab](../../../jobs-designer/workflow-tab.md) of [Job Designer](../../../jobs-designer/overview.md). We also take care to reduce the plane-wave cutoff from their default values to 20 Ry, and the charge density cutoff to 80 Ry, which for the case of silicon modeled with a norm conserving pseudopotential provide sufficient precision.
 
-In addition, we also modify the [k-point path](../../../models/auxiliary-concepts/reciprocal-space/paths.md), accessible towards the bottom of "Important Settings", to sample only the region of the Brillouin Zone of the crystal between the central Gamma point and the X, W and K special symmetry points.
+In addition, we also modify the [k-point path]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/paths/), accessible towards the bottom of "Important Settings", to sample only the region of the Brillouin Zone of the crystal between the central Gamma point and the X, W and K special symmetry points.
 
 ## Submit Job
 
-Before [submitting](../../../jobs/actions/run.md) the [job](../../../jobs/overview.md), the user should click on the ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and examine the [compute parameters](../../../infrastructure/compute/parameters.md) included therein. 
+Before [submitting](../../../jobs/actions/run.md) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and examine the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein. 
 
 !!!warning "Computational Cost"
-    The computational cost of GW calculations is significantly higher than for more basic methods in [DFT](../../../models-directory/dft/overview.md) such as the [Generalized Gradient Approximation](../../../models-directory/dft/parameters.md#subtype). We thus recommend to allow for more [CPU cores and/or walltime](../../../infrastructure/compute/parameters.md) as appropriate for the material system under investigation.
+    The computational cost of GW calculations is significantly higher than for more basic methods in [DFT]({{ reference_url }}/models-directory/dft/overview/) such as the [Generalized Gradient Approximation]({{ reference_url }}/models-directory/dft/parameters/#subtype). We thus recommend to allow for more [CPU cores and/or walltime]({{ dev_url }}/infrastructure/compute/parameters/) as appropriate for the material system under investigation.
 
-In order to run the SternheimerGW code in parallel (more than 1 core), the user should set the `k-point pools` value under the ["Advanced Options"](../../../infrastructure/compute/parameters.md#advanced-options) of the "Compute" tab equal to the number of cores, otherwise, the calculation fails with a "G-vectors mismatch" error message. This is a result of the fact that G-vector parallelization is not implemented for SternheimerGW, and the only available parallelization levels are pools and images.
+In order to run the SternheimerGW code in parallel (more than 1 core), the user should set the `k-point pools` value under the ["Advanced Options"]({{ dev_url }}/infrastructure/compute/parameters/#advanced-options) of the "Compute" tab equal to the number of cores, otherwise, the calculation fails with a "G-vectors mismatch" error message. This is a result of the fact that G-vector parallelization is not implemented for SternheimerGW, and the only available parallelization levels are pools and images.
 
 ## Examine Final Results
 
-When both [unit](../../../workflows/components/units.md) computations are complete at the end of Job execution, switching to the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md) will show the [band structure](../../../properties-directory/non-scalar/bandstructure.md) of silicon, plotted as a dispersion curve as a function of the special [k-point paths](../../../models/auxiliary-concepts/reciprocal-space/paths.md) chosen (the Gamma-X-W-K directions in our case).
+When both [unit]({{ reference_url }}/workflows/components/units/) computations are complete at the end of Job execution, switching to the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md) will show the [band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) of silicon, plotted as a dispersion curve as a function of the special [k-point paths]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/paths/) chosen (the Gamma-X-W-K directions in our case).
 
 We also note that the final result for the indirect band gap of silicon of 1.05 eV is in good agreement with the reported experimental value.
 

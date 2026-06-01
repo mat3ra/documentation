@@ -2,7 +2,7 @@
 
 ## Definition
 
-RESTful[^1] API (or REST-API, or Representational State Transfer Application Programming Interface) is a layer allows to access and manipulate textual representation of the web resources (eg. [Entities](../entities-general/overview.md)) by using a uniform and predefined set of stateless operations. 
+RESTful[^1] API (or REST-API, or Representational State Transfer Application Programming Interface) is a layer allows to access and manipulate textual representation of the web resources (eg. [Entities]({{ reference_url }}/entities-general/overview/)) by using a uniform and predefined set of stateless operations. 
 
 In other words, REST-API provides **programmatic** access to data and functionality for data scientists and engineers, and anyone else who prefers coding to the user interface.
 

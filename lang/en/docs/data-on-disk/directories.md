@@ -1,16 +1,16 @@
 # Directory Structure
 
-We organize the [unstructured](../data/classification.md#by-internal-organization) data corresponding to simulation files under a certain **hierarchic directory structure**, as explained in the present page. The storage quotas which pertain to the folders presented herein are explained in the corresponding [documentation page](quotas.md).
+We organize the [unstructured]({{ reference_url }}/data/classification/#by-internal-organization) data corresponding to simulation files under a certain **hierarchic directory structure**, as explained in the present page. The storage quotas which pertain to the folders presented herein are explained in the corresponding [documentation page](quotas.md).
 
 ## Permissions
 
 We organize our directories under a Linux/Unix filesystem [^1], where standard permissions apply [^2]. We refer the Reader to the original sources of explanation about the Unix permissions. 
 
-We associate [Users](../accounts/users.md) with operating system users, and [Accounts](../accounts/overview.md) with operating system groups. This way the data generated within an account is not accessible to anyone else, but the members of this account, unless explicitly shared. Shared access for the members of the same organizational account is explained further [here](../infrastructure/clusters/directories.md#shared-folders-for-organizations).
+We associate [Users]({{ reference_url }}/accounts/users/) with operating system users, and [Accounts]({{ reference_url }}/accounts/overview/) with operating system groups. This way the data generated within an account is not accessible to anyone else, but the members of this account, unless explicitly shared. Shared access for the members of the same organizational account is explained further [here](../infrastructure/clusters/directories.md#shared-folders-for-organizations).
 
 ## [Login Home](../infrastructure/login/directories.md)
 
-When first accessing the platform via any of the [remote connection methods](../remote-connection/overview.md), users initially enter the [login node](../infrastructure/login/overview.md). The directory where user lands upon login is referred to as the **Login Home**. This directory is at the head of a hierarchical directory structure further described [in this dedicated section](../infrastructure/login/directories.md) . 
+When first accessing the platform via any of the [remote connection methods]({{ guide_url }}/remote-connection/overview/), users initially enter the [login node](../infrastructure/login/overview.md). The directory where user lands upon login is referred to as the **Login Home**. This directory is at the head of a hierarchical directory structure further described [in this dedicated section](../infrastructure/login/directories.md) . 
 
 ## [Cluster Homes](../infrastructure/clusters/directories.md)
 
@@ -22,7 +22,7 @@ As explained [in this dedicated section](../data-in-objectstorage/dropbox.md), D
 
 ## Job Script Templates
 
-A shortcut to a folder containing some quick examples (templates) for command line jobs is also present under both the login and cluster home directories. It contains specific examples of [batch scripts](../jobs-cli/batch-scripts/overview.md) for running [Jobs via the Command Line Interface](../jobs-cli/overview.md). This folder is stored under the absolute path `/export/compute/job_script_templates`.
+A shortcut to a folder containing some quick examples (templates) for command line jobs is also present under both the login and cluster home directories. It contains specific examples of [batch scripts]({{ guide_url }}/jobs-cli/batch-scripts/overview/) for running [Jobs via the Command Line Interface]({{ guide_url }}/jobs-cli/overview/). This folder is stored under the absolute path `/export/compute/job_script_templates`.
 
 ## Links
 

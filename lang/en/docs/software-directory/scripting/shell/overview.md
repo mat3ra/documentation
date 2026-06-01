@@ -14,7 +14,7 @@ An example for running a [Quantum ESPRESSO](../../modeling/quantum-espresso/over
 
 ## Data
 
-We introduce the [structured representation](../../../data-structured/overview.md) for shell scripting [here](data.md).
+We introduce the [structured representation]({{ reference_url }}/data-structured/overview/) for shell scripting [here](data.md).
 
 ## Links
 
