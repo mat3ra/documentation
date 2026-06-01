@@ -11,7 +11,7 @@ Dropbox is implemented through the [Object Storage](overview.md), and effectivel
 
 ## User Interface
 
-Interface, its file contents can be inspected from within its [dedicated page]({{ guide_url }}/data-in-objectstorage/ui/dropbox-page/).
+Interface, its file contents can be inspected from within its [dedicated page]({{ interface_url }}/data-in-objectstorage/ui/dropbox-page/).
 
 ## Accessible From 
 
@@ -19,8 +19,8 @@ In the table below, we list the parts of our [infrastructure](../infrastructure/
 
 | Dropbox is Accessible From |
 |------------|
-| [Web Interface]({{ guide_url }}/ui/overview/) |
-| [Remote Desktop]({{ guide_url }}/remote-connection/remote-desktop/) |
+| [Web Interface]({{ interface_url }}/ui/overview/) |
+| [Remote Desktop]({{ interface_url }}/remote-connection/remote-desktop/) |
 | [Command Line Interface]({{ guide_url }}/cli/overview/) |
 | [Data on Disks](../data-on-disk/overview.md) |
 

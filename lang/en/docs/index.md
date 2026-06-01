@@ -11,8 +11,13 @@ and organizing results and data in a collaborative, accessible, and searchable w
 <div class="section-cards" markdown>
 
 <a href="/guide/" class="grid-card">
-<strong>Tutorials / Guide</strong>
-<span>Step-by-step instructions for every part of the platform interface: tutorials, jobs, materials, workflows, and more.</span>
+<strong>Platform Guide</strong>
+<span>Step-by-step guides for DFT, ML, materials construction, CLI jobs, and simulation software.</span>
+</a>
+
+<a href="/interface/" class="grid-card">
+<strong>User Interface</strong>
+<span>Interface components, entity management, designer tools, and platform actions reference.</span>
 </a>
 
 <a href="/reference/" class="grid-card">

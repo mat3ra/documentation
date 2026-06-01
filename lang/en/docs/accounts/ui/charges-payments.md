@@ -1,6 +1,6 @@
 # Charges, Payments, and Payment Methods
 
-Click `Billing and Payments` <i class="zmdi zmdi-card zmdi-hc-border"></i> in the [Account Menu]({{ guide_url }}/ui/account-menu/) to review the list of charges incurred by the account, and the payments executed to address them. The possibility to view or add Payment Methods is also offered.
+Click `Billing and Payments` <i class="zmdi zmdi-card zmdi-hc-border"></i> in the [Account Menu]({{ interface_url }}/ui/account-menu/) to review the list of charges incurred by the account, and the payments executed to address them. The possibility to view or add Payment Methods is also offered.
 
 An example of a "Billing" page is exhibited below. We have highlighted in red the tabs for viewing charges, payments, and payments methods.
 
@@ -32,7 +32,7 @@ The following properties of Charges are available to be searched under the advan
 
 | Property    |   Description      |
 | :-------- |:----------- |
-| jobTitle |   Name of the Job, as defined at the moment of its [creation]({{ guide_url }}/jobs-designer/header-menu/)   |
+| jobTitle |   Name of the Job, as defined at the moment of its [creation]({{ interface_url }}/jobs-designer/header-menu/)   |
 | queue |  Type of [Queue]({{ dev_url }}/infrastructure/resource/queues/) on the computing [cluster]({{ guide_url }}/pricing/service-levels/#clusters-and-premium-hardware) used for the computational task |
 | jid | A combination of the job number assigned by the task scheduler, and the machine name, as explained below. For example "142.master-production-20160630-cluster-007.exabyte.io" refers to job no. 142 executed on the cluster 007 with the machine name "master-production-20160630-cluster-007.exabyte.io" |
 | machine  |  A [Fully Qualified Domain Name] [^1] of the [cluster]({{ guide_url }}/pricing/service-levels/#clusters-and-premium-hardware) used for the computation, for example: "master-production-20160630-cluster-007.exabyte.io"  |

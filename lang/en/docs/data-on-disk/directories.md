@@ -10,7 +10,7 @@ We associate [Users]({{ reference_url }}/accounts/users/) with operating system 
 
 ## [Login Home](../infrastructure/login/directories.md)
 
-When first accessing the platform via any of the [remote connection methods]({{ guide_url }}/remote-connection/overview/), users initially enter the [login node](../infrastructure/login/overview.md). The directory where user lands upon login is referred to as the **Login Home**. This directory is at the head of a hierarchical directory structure further described [in this dedicated section](../infrastructure/login/directories.md) . 
+When first accessing the platform via any of the [remote connection methods]({{ interface_url }}/remote-connection/overview/), users initially enter the [login node](../infrastructure/login/overview.md). The directory where user lands upon login is referred to as the **Login Home**. This directory is at the head of a hierarchical directory structure further described [in this dedicated section](../infrastructure/login/directories.md) . 
 
 ## [Cluster Homes](../infrastructure/clusters/directories.md)
 

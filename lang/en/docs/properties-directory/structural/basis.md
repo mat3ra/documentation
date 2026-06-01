@@ -14,7 +14,7 @@ A typical example of an atomic arrangement within a material is given by the cub
 
 ## Atomic Positions
 
-The atomic positions, defining the atom's geometric arrangement within the structure, can be defined and entered in the [basis editor]({{ guide_url }}/materials-designer/source-editor/basis/) of [Materials Designer]({{ guide_url }}/materials-designer/overview/), as separate three-dimensional vectors. Each vector labels the position of the corresponding atom within the unit cell of the crystal, expressed under either a fractional or Cartesian coordinate system. 
+The atomic positions, defining the atom's geometric arrangement within the structure, can be defined and entered in the [basis editor]({{ interface_url }}/materials-designer/source-editor/basis/) of [Materials Designer]({{ interface_url }}/materials-designer/overview/), as separate three-dimensional vectors. Each vector labels the position of the corresponding atom within the unit cell of the crystal, expressed under either a fractional or Cartesian coordinate system. 
 
 Depending on these atomic coordinates, finite [inter-atomic forces](atomic-forces.md) might arise.
 
@@ -24,7 +24,7 @@ The ratio of an element in a compound or alloy describes the fraction of all ato
 
 ## Atomic Constraints
 
-The Atomic Constraints or Selective Dynamics, specifying the constraints on the movement of atoms, can be set in the [basis editor]({{ guide_url }}/materials-designer/source-editor/basis/) of [Materials Designer]({{ guide_url }}/materials-designer/overview/), as three-dimensional boolean vector appending to the atom position. For example, "Si 0.25 0.25 0.25 1 0 1" freezes the movement of "Si" along the "Y" direction.
+The Atomic Constraints or Selective Dynamics, specifying the constraints on the movement of atoms, can be set in the [basis editor]({{ interface_url }}/materials-designer/source-editor/basis/) of [Materials Designer]({{ interface_url }}/materials-designer/overview/), as three-dimensional boolean vector appending to the atom position. For example, "Si 0.25 0.25 0.25 1 0 1" freezes the movement of "Si" along the "Y" direction.
 
 ## Schema 
 

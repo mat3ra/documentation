@@ -34,4 +34,4 @@ A description of how we estimate the precision of properties can be found [in th
 
 ## Appearance in User Interface
 
-Both Refined and Best properties can be displayed in [Materials Explorer]({{ guide_url }}/materials/ui/explorer/), for convenient consultation by the user, after having been suitably selected through the [columns selector]({{ guide_url }}/entities-general/ui/explorer/#columns-selector).
+Both Refined and Best properties can be displayed in [Materials Explorer]({{ interface_url }}/materials/ui/explorer/), for convenient consultation by the user, after having been suitably selected through the [columns selector]({{ interface_url }}/entities-general/ui/explorer/#columns-selector).

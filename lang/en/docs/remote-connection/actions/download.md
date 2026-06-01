@@ -18,7 +18,7 @@ From the [Web Terminal](../web-terminal.md) on the other hand, the user can down
 exadownload <filepath/filename>
 ```
 
-Typing this command under the [Command Line Interface](../../cli/overview.md) downloads the file directly to the default location for saving Downloaded content set by the web browser being employed.
+Typing this command under the [Command Line Interface]({{ guide_url }}/cli/overview/) downloads the file directly to the default location for saving Downloaded content set by the web browser being employed.
 
 ## Animation
 

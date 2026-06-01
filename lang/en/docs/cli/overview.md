@@ -1,6 +1,6 @@
 # Introduction to the Command Line Interface
 
-Users can log into the main Unix-based **Command Line Interface (CLI)** [^1] of our platform with any of the available [remote connection methods](../remote-connection/overview.md) (including the [Remote Desktop](../remote-connection/remote-desktop.md), which has its own incorporated Terminal application as explained [here](../remote-connection/actions-rd/browse.md#open-linux-terminal)). 
+Users can log into the main Unix-based **Command Line Interface (CLI)** [^1] of our platform with any of the available [remote connection methods]({{ interface_url }}/remote-connection/overview/) (including the [Remote Desktop]({{ interface_url }}/remote-connection/remote-desktop/), which has its own incorporated Terminal application as explained [here]({{ interface_url }}/remote-connection/actions-rd/browse/#open-linux-terminal)). 
 
 After logging in, the user is presented with the following **welcome screen** under the CLI interface, which includes some useful advices and instructions on how to operate the relevant commands.
 

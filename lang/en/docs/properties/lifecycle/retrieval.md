@@ -4,7 +4,7 @@ Properties can be retrieved for inspection through any of the following means.
 
 ## Web Application
 
-Properties can be retrieved as the output of [Jobs](../../jobs/overview.md), or by inspecting the entries listed in the account-owned collection of [Materials](../../materials/overview.md). The former option can be accessed under the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of [Jobs Viewer]({{ guide_url }}/jobs/ui/viewer/), whereas the latter is available under the [Properties Explorer]({{ guide_url }}/properties/ui/explorer/) interface. 
+Properties can be retrieved as the output of [Jobs](../../jobs/overview.md), or by inspecting the entries listed in the account-owned collection of [Materials](../../materials/overview.md). The former option can be accessed under the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Jobs Viewer]({{ interface_url }}/jobs/ui/viewer/), whereas the latter is available under the [Properties Explorer]({{ interface_url }}/properties/ui/explorer/) interface. 
 
 ## REST API
 

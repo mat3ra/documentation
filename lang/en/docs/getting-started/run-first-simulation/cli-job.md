@@ -6,11 +6,11 @@ Complete instructions on how to operate job submission via CLI can be found [in 
 
 ## Command-line Interface
 
-We provide an an incorporated [Web Terminal](../../remote-connection/web-terminal.md) to conveniently access the CLI. Alternatively, the user can use the [SSH protocol](../../remote-connection/ssh.md).
+We provide an an incorporated [Web Terminal]({{ interface_url }}/remote-connection/web-terminal/) to conveniently access the CLI. Alternatively, the user can use the [SSH protocol]({{ interface_url }}/remote-connection/ssh/).
 
-To use the former Web Terminal interface, open the [Account Menu](../../ui/account-menu.md) and click `Terminal`.
+To use the former Web Terminal interface, open the [Account Menu]({{ interface_url }}/ui/account-menu/) and click `Terminal`.
 
-The simulations that have been submitted through the main [Web Interface](../../ui/overview.md) are under the `data/<username>` sub-directory under the main [Login Home directory]({{ dev_url }}/infrastructure/login/directories/).
+The simulations that have been submitted through the main [Web Interface]({{ interface_url }}/ui/overview/) are under the `data/<username>` sub-directory under the main [Login Home directory]({{ dev_url }}/infrastructure/login/directories/).
 
 Our [queuing system]({{ dev_url }}/infrastructure/resource/queues/) is controlled through the use of [batch scripts](../../jobs-cli/batch-scripts/overview.md). The reader can find batch script templates under the [job templates directory](../../jobs-cli/batch-scripts/directories.md#job-templates).
 

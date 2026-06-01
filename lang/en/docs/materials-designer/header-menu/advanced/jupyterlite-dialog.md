@@ -30,7 +30,7 @@ To apply a transformation, open the notebook containing the desired transformati
 
 ### Access Materials in JupyterLite
 
-Learn how to access materials inside the JupyterLite environment launched from Materials Designer in [Introduction to JupyterLite](../../../jupyterlite/overview.md).
+Learn how to access materials inside the JupyterLite environment launched from Materials Designer in [Introduction to JupyterLite]({{ guide_url }}/jupyterlite/overview/).
 
 ## Submit Results
 

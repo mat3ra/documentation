@@ -8,4 +8,4 @@ We offer some examples on how directories can be browsed in Remote Desktop [here
 
 ## [Open Applications](open-app.md)
 
-The graphical analysis and visualization [software](../../software-directory/overview.md) available within our platform can be accessed under Remote Desktop, as documented in the example contained [in this page](open-app.md).
+The graphical analysis and visualization [software]({{ guide_url }}/software-directory/overview/) available within our platform can be accessed under Remote Desktop, as documented in the example contained [in this page](open-app.md).

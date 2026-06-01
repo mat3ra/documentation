@@ -36,13 +36,13 @@ We will recreate the passivated surface structure shown in Fig. 8:
 
 ### 1.1. Load Base Material.
 
-Navigate to [Materials Designer](../../../materials-designer/overview.md) and import the reconstructed Si(100) surface from [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the reconstructed Si(100) surface from [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Si(100) Structure](../../../images/tutorials/materials/passivation/passivation_surface_silicon/1-wave-original-material.webp "Si(100) Structure")
 
 ### 1.2. Launch JupyterLite Session.
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ### 1.3. Open Modified `create_supercell.ipynb` Notebook.
 

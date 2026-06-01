@@ -20,4 +20,4 @@ For the new platform, CLI workflows use Apptainer-backed modules that set `$EXEC
 
 ## [Tutorials](../tutorials/jobs-cli/overview.md)
 
-We provide tutorials guiding the user through the complete procedure for submitting jobs via CLI, and subsequently retrieving the corresponding results under the [Web Interface](../ui/overview.md) of our platform. These tutorials are introduced [here](../tutorials/jobs-cli/overview.md).
+We provide tutorials guiding the user through the complete procedure for submitting jobs via CLI, and subsequently retrieving the corresponding results under the [Web Interface]({{ interface_url }}/ui/overview/) of our platform. These tutorials are introduced [here](../tutorials/jobs-cli/overview.md).

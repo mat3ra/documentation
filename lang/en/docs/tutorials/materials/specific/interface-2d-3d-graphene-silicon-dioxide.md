@@ -28,7 +28,7 @@ This tutorial demonstrates the process of creating interfaces between 2D and 3D 
     Physical Review B 78, 115404 (2008)
     [DOI: 10.1103/PhysRevB.78.115404](https://doi.org/10.1103/PhysRevB.78.115404) [@Kang2008; @Dahal2014]
 
-We use the [Materials Designer](../../../materials-designer/overview.md) to create interfaces between graphene and silicon dioxide with oxygen termination, as shown in the manuscript.
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create interfaces between graphene and silicon dioxide with oxygen termination, as shown in the manuscript.
 
 We will focus on replicating the material from FIG. 1. (b) -- with Graphene on O-terminated SiO<sub>2</sub>. The material (a) requires relaxation to correctly reproduce the structure, which is not covered in this tutorial.
 
@@ -36,7 +36,7 @@ We will focus on replicating the material from FIG. 1. (b) -- with Graphene on O
 
 ## 1. Load and Preview Materials.
 
-Navigate to [Materials Designer](../../../materials-designer/overview.md) and import graphene and silicon dioxide materials from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import graphene and silicon dioxide materials from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 Then use the [JupyterLite](../../../jupyterlite/overview.md) environment to create the target structures.
 
@@ -44,7 +44,7 @@ Then use the [JupyterLite](../../../jupyterlite/overview.md) environment to crea
 
 ### 2.1 Launch JupyterLite Session.
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 

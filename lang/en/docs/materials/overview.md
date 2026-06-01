@@ -4,21 +4,21 @@ This section contains information about how we define, organize, store and inter
 
 ## User Interface
 
-### [Materials Explorer]({{ guide_url }}/materials/ui/explorer/)
+### [Materials Explorer]({{ interface_url }}/materials/ui/explorer/)
 
-The implementation of the [Explorer Interface]({{ guide_url }}/entities-general/ui/explorer/) for Materials is explained [here]({{ guide_url }}/materials/ui/explorer/). 
+The implementation of the [Explorer Interface]({{ interface_url }}/entities-general/ui/explorer/) for Materials is explained [here]({{ interface_url }}/materials/ui/explorer/). 
 
-### [Materials Designer]({{ guide_url }}/materials-designer/overview/)
+### [Materials Designer]({{ interface_url }}/materials-designer/overview/)
 
-**Materials Designer** is introduced [here]({{ guide_url }}/materials-designer/overview/), 
+**Materials Designer** is introduced [here]({{ interface_url }}/materials-designer/overview/), 
 
-### [Materials Viewer]({{ guide_url }}/materials/ui/viewer/)
+### [Materials Viewer]({{ interface_url }}/materials/ui/viewer/)
 
-The **Viewer** interface and its differences from Designer are highlighted [separately]({{ guide_url }}/materials/ui/viewer/).
+The **Viewer** interface and its differences from Designer are highlighted [separately]({{ interface_url }}/materials/ui/viewer/).
 
-## [Actions]({{ guide_url }}/materials/actions/overview/)
+## [Actions]({{ interface_url }}/materials/actions/overview/)
 
-The Actions section explains and provides visual examples of actions that users can perform on materials. These actions are introduced [in the following page]({{ guide_url }}/materials/actions/overview/).
+The Actions section explains and provides visual examples of actions that users can perform on materials. These actions are introduced [in the following page]({{ interface_url }}/materials/actions/overview/).
 
 ## [Data]({{ data_url }}/materials/data/)
 

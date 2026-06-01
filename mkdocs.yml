@@ -5,6 +5,7 @@ docs_dir: !!python/object/apply:os.getenv ["DOCS_DIR", "lang/en/docs"]
 
 exclude_docs: |
   index-guide.md
+  index-interface.md
   index-concepts.md
   index-dev.md
   index-standards.md
@@ -37,6 +38,7 @@ extra:
     # Cross-site URL variables (resolved by macros plugin at build time).
     # In the legacy build all content is at the root, so these point to root paths.
     guide_url: https://docs.mat3ra.com
+    interface_url: https://docs.mat3ra.com
     reference_url: https://docs.mat3ra.com
     dev_url: https://docs.mat3ra.com
     data_url: https://docs.mat3ra.com/standards

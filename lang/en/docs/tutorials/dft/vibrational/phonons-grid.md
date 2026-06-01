@@ -37,13 +37,13 @@ We review now the different steps involved in implementing the above general Gri
 
 The first [subworkflow step]({{ reference_url }}/workflows/components/subworkflows/) in the overall "Phonons Grid" Workflow is a standard self-consistent field (scf) total energy calculation, providing the ensuing steps of the workflow with the wavefunctions of the material structure under investigation. 
 
-For the sake of this example, we can set the [grid of special k-points]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) to 6 x 6 x 6, under [Important Settings](../../../workflow-designer/subworkflow-editor/important-settings.md).
+For the sake of this example, we can set the [grid of special k-points]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) to 6 x 6 x 6, under [Important Settings]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/).
 
 ### 2. Q-points and Irrep Generation
 
 The second subworkflow step ("ph-init-qpoints") is composed of a single [unit]({{ reference_url }}/workflows/components/units/), which consists in generating the [grid of q-points]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/#other-types-of-reciprocal-space-grids) over which the vibrational phonon modes calculations will be performed, for each irreducible representation of such modes. 
 
-The size of this q-grid should be a divisor of the size of the above-mentioned k-grid. Hence, a q-grid of 2 x 2 x 2 should suffice in this case, which can be set under [Important Settings](../../../workflow-designer/subworkflow-editor/important-settings.md).
+The size of this q-grid should be a divisor of the size of the above-mentioned k-grid. Hence, a q-grid of 2 x 2 x 2 should suffice in this case, which can be set under [Important Settings]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/).
 
 ### 3. Extraction of q-points/irrep pairs
 
@@ -57,15 +57,15 @@ Care should be taken to set the q-grid under the "Important Settings" of the "ph
 
 ### 5. Reduce and Aggregate Results
 
-The final "Reduce" subworkflow collects together the results of the previous calculations over each independent q-point/irrep pair, via the "ph_grid_restart" unit. Here, the size of the q-grid under [Important Settings](../../../workflow-designer/subworkflow-editor/important-settings.md) should once again be set to the 2 x 2 x 2 value being considered in the present example.
+The final "Reduce" subworkflow collects together the results of the previous calculations over each independent q-point/irrep pair, via the "ph_grid_restart" unit. Here, the size of the q-grid under [Important Settings]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/) should once again be set to the 2 x 2 x 2 value being considered in the present example.
 
 These combined results are then used to complete the phonon dispersion and density of states calculation, through the help of the Quantum ESPRESSO "q2r" and "matdyn" [executables](../../../software-directory/modeling/quantum-espresso/components.md#executables). 
 
 ## Creating and Executing Job
 
-"Phonon Map" [workflows]({{ reference_url }}/workflows/overview/) can readily be [imported](../../../workflows/actions/copy-bank.md) into the account-owned [collection]({{ reference_url }}/accounts/collections/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/).
+"Phonon Map" [workflows]({{ reference_url }}/workflows/overview/) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/).
  
-Apart from this, the same procedural instructions as in the [other phonons calculation tutorial](phonon-dispersion-dos.md) should be followed for [creating and launching](../../../jobs-designer/overview.md) the corresponding grid-based phonon [Job]({{ reference_url }}/jobs/overview/) through our [Web Interface](../../../ui/overview.md), and for inspecting the associated results.
+Apart from this, the same procedural instructions as in the [other phonons calculation tutorial](phonon-dispersion-dos.md) should be followed for [creating and launching]({{ interface_url }}/jobs-designer/overview/) the corresponding grid-based phonon [Job]({{ reference_url }}/jobs/overview/) through our [Web Interface]({{ interface_url }}/ui/overview/), and for inspecting the associated results.
 
 ## Animation
 

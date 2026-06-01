@@ -1,6 +1,6 @@
 # Calculate Reaction Energy Profile Using Nudged Elastic Band (NEB) method
 
-This tutorial page explains how to calculate the [energy reaction profile]({{ reference_url }}/properties-directory/non-scalar/reaction-energy-profile/) and [activation barrier]({{ reference_url }}/properties-directory/scalar/reaction-energy-barrier/) for the multi-dimensional energy space of chemical reactions via the [**Nudged Elastic Bands (NEB) method**]({{ reference_url }}/models/auxiliary-concepts/nudged-elastic-band/), by making use of the [interpolated sets](../../../materials-designer/header-menu/advanced/interpolated-set.md) introduced in a [separate tutorial](../../materials/interpolated-sets.md). 
+This tutorial page explains how to calculate the [energy reaction profile]({{ reference_url }}/properties-directory/non-scalar/reaction-energy-profile/) and [activation barrier]({{ reference_url }}/properties-directory/scalar/reaction-energy-barrier/) for the multi-dimensional energy space of chemical reactions via the [**Nudged Elastic Bands (NEB) method**]({{ reference_url }}/models/auxiliary-concepts/nudged-elastic-band/), by making use of the [interpolated sets]({{ interface_url }}/materials-designer/header-menu/advanced/interpolated-set/) introduced in a [separate tutorial](../../materials/interpolated-sets.md). 
 
 We consider the example of a one-dimensional, three-atom molecule of Hydrogen (H3) throughout the present tutorial, and shall be making use of [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as the main simulation engine, via the implementation of its `PWneb` [flavor](../../../software-directory/modeling/quantum-espresso/components.md#flavors). 
 
@@ -26,7 +26,7 @@ We outline here some important aspects of the [Workflow]({{ reference_url }}/wor
 
 ### Main Executable
 
-NEB calculations are performed through the ["neb.x" Quantum ESPRESSO Executable](../../../software-directory/modeling/quantum-espresso/components.md#executables). The input parameters for this executable are described in Ref. 4 of [this page](../../../software-directory/modeling/quantum-espresso/components.md), and can be customized by the user via the [unit input template editor](../../../workflow-designer/unit-editor.md#unit-input-templates) within the [Workflow Designer Interface](../../../workflow-designer/overview.md). 
+NEB calculations are performed through the ["neb.x" Quantum ESPRESSO Executable](../../../software-directory/modeling/quantum-espresso/components.md#executables). The input parameters for this executable are described in Ref. 4 of [this page](../../../software-directory/modeling/quantum-espresso/components.md), and can be customized by the user via the [unit input template editor]({{ interface_url }}/workflow-designer/unit-editor/#unit-input-templates) within the [Workflow Designer Interface]({{ interface_url }}/workflow-designer/overview/). 
 
 ### Broyden Algorithm
 
@@ -34,9 +34,9 @@ Within the neb.x input script, we note in particular the need for the [Broyden a
 
 ### Number of Images
 
-The number of image points used to discretize the reaction path, as defined by the [interpolated set](../../../materials-designer/header-menu/advanced/interpolated-set.md) of images to be considered for the NEB calculation, is defined by the `num_of_images` input parameter, and must be larger than 3 (including the initial and final images). 
+The number of image points used to discretize the reaction path, as defined by the [interpolated set]({{ interface_url }}/materials-designer/header-menu/advanced/interpolated-set/) of images to be considered for the NEB calculation, is defined by the `num_of_images` input parameter, and must be larger than 3 (including the initial and final images). 
 
-The number of intermediate NEB images should be set under the "neb" section of the ["Important Settings" Tab](../../../workflow-designer/subworkflow-editor/important-settings.md) within the [Workflow Designer Interface](../../../workflow-designer/overview.md), for their automatic generation by Quantum ESPRESSO (without consequently the need to import an interpolated set manually, as described later in this page).
+The number of intermediate NEB images should be set under the "neb" section of the ["Important Settings" Tab]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/) within the [Workflow Designer Interface]({{ interface_url }}/workflow-designer/overview/), for their automatic generation by Quantum ESPRESSO (without consequently the need to import an interpolated set manually, as described later in this page).
 
 ### Convergence Threshold
 
@@ -50,26 +50,26 @@ Atomic positions for all the images are specified within the `BEGIN_POSITIONS / 
 
 ## Create Job 
 
-We start with [opening](../../../jobs/actions/create.md) an instance of the [Job Designer Interface](../../../jobs-designer/overview.md) for creating and designing new computational [Jobs]({{ reference_url }}/jobs/overview/) on our platform.
+We start with [opening]({{ interface_url }}/jobs/actions/create/) an instance of the [Job Designer Interface]({{ interface_url }}/jobs-designer/overview/) for creating and designing new computational [Jobs]({{ reference_url }}/jobs/overview/) on our platform.
     
 ## Import Interpolated Set
 
-The **Interpolated Set** generated in [this other tutorial](../../materials/interpolated-sets.md) under the name "NEB CONSTRAINED SET", containing the initial, final and a total of 3 intermediate images of the H3 molecule under investigation (including atomic constraints along the single dimension of the molecule), should then be [selected and imported](../../../jobs-designer/actions-header-menu/select-materials.md) into the ["Materials Viewer" Tab](../../../jobs-designer/materials-tab.md) of the NEB job being [designed](../../../jobs-designer/overview.md). This is done by [selecting](../../../entities-general/actions/select.md) all images contained in the set at the moment of import.
+The **Interpolated Set** generated in [this other tutorial](../../materials/interpolated-sets.md) under the name "NEB CONSTRAINED SET", containing the initial, final and a total of 3 intermediate images of the H3 molecule under investigation (including atomic constraints along the single dimension of the molecule), should then be [selected and imported]({{ interface_url }}/jobs-designer/actions-header-menu/select-materials/) into the ["Materials Viewer" Tab]({{ interface_url }}/jobs-designer/materials-tab/) of the NEB job being [designed]({{ interface_url }}/jobs-designer/overview/). This is done by [selecting]({{ interface_url }}/entities-general/actions/select/) all images contained in the set at the moment of import.
 
 ## Choose Workflow
 
-[Workflows]({{ reference_url }}/workflows/overview/) for calculating the reaction energy profile of chemical molecules via NEB with [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/workflow-tab.md).
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the reaction energy profile of chemical molecules via NEB with [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 
 !!!warning "Size of grid of k-points"
-    The user should take care to set the size of the [grid of reciprocal k-points (kgrid)]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) to 1 x 1 x 1 under the ["Important Settings" Tab](../../../workflow-designer/subworkflow-editor/important-settings.md) of the [Workflow Designer Interface](../../../workflow-designer/overview.md), since we are presently dealing with single molecules as opposed to periodic crystalline structures.
+    The user should take care to set the size of the [grid of reciprocal k-points (kgrid)]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) to 1 x 1 x 1 under the ["Important Settings" Tab]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/) of the [Workflow Designer Interface]({{ interface_url }}/workflow-designer/overview/), since we are presently dealing with single molecules as opposed to periodic crystalline structures.
 
 ## Submit Job
 
-Before [submitting](../../../jobs/actions/run.md) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and examine the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein. The H3 molecules being considered in the present tutorial are relatively small structures, hence 4 CPUs and a few minutes of calculation runtime should be sufficient.
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and examine the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein. The H3 molecules being considered in the present tutorial are relatively small structures, hence 4 CPUs and a few minutes of calculation runtime should be sufficient.
 
 ## Examine Final Results
 
-When the NEB computation is complete at the end of Job execution, switching to the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md) will show the **Reaction Energy Profile** for the H3 molecules under investigation, plotted in the form of an energy curve as a function of the one-dimensional reaction coordinate that is varied from the initial to final configuration.
+When the NEB computation is complete at the end of Job execution, switching to the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/) will show the **Reaction Energy Profile** for the H3 molecules under investigation, plotted in the form of an energy curve as a function of the one-dimensional reaction coordinate that is varied from the initial to final configuration.
 
 An example of such a reaction energy profile is shown in the image below, in which the intermediate activation energy barrier between reactants and products is clearly visible.
 
@@ -95,7 +95,7 @@ Here, we have made use of the constrained interpolated set containing 3 intermed
 
 We can repeat the same reaction profile calculation for H3 molecules as above, but this time taking advantage of the Quantum ESPRESSO feature for the automatic generation of intermediate images mentioned previously. This effectively makes it redundant to import manually an interpolated set, such as was done in the previous video. 
 
-This feature can be enabled by selecting an appropriate number of intermediate images to be generated under the ["Important Settings" Tab](../../../workflow-designer/subworkflow-editor/important-settings.md) of the [Workflow Designer Interface](../../../workflow-designer/overview.md), as demonstrated in the following animation, where we select to generate a total of 5 intermediate images. In this case, only the initial and final images need to be imported manually into Job Designer.
+This feature can be enabled by selecting an appropriate number of intermediate images to be generated under the ["Important Settings" Tab]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/) of the [Workflow Designer Interface]({{ interface_url }}/workflow-designer/overview/), as demonstrated in the following animation, where we select to generate a total of 5 intermediate images. In this case, only the initial and final images need to be imported manually into Job Designer.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/m7HoFpXZ57k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

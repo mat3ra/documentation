@@ -1,6 +1,6 @@
 # Method Parameters
 
-Our platform supports the following method parameters, which can be edited by the user within the "Overview" tab of the [Subworkflow Editor Interface]({{ guide_url }}/workflow-designer/subworkflow-editor/overview-tab/).
+Our platform supports the following method parameters, which can be edited by the user within the "Overview" tab of the [Subworkflow Editor Interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview-tab/).
  
 ## Type
   

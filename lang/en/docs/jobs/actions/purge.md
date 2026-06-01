@@ -12,6 +12,6 @@ Alternatively, the same action can be performed under the [actions dropdown](../
 
 ## Animation
 
-In the example animation below, we begin by purging a Job. We then copy the command line path of one of the files listed under Jobs Viewer, and under the [Web Terminal]({{ guide_url }}/remote-connection/web-terminal/) we finally confirm its deletion from the [cluster disk]({{ dev_url }}/infrastructure/storage/) after pasting the file path in it.
+In the example animation below, we begin by purging a Job. We then copy the command line path of one of the files listed under Jobs Viewer, and under the [Web Terminal]({{ interface_url }}/remote-connection/web-terminal/) we finally confirm its deletion from the [cluster disk]({{ dev_url }}/infrastructure/storage/) after pasting the file path in it.
 
 <img data-gifffer="/images/jobs/purge-job.gif">

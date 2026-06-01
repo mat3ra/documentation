@@ -8,7 +8,7 @@ The entity lifecycle is portrayed in the diagram below, where the four main logi
 
 ## 1. Job Design
 
-New [simulation Jobs](../jobs/overview.md) can be designed by the user with the help of the [Job Designer Interface]({{ guide_url }}/jobs-designer/overview/). Jobs can be designed in this way by assembling together a [material](../materials/overview.md) structure with a corresponding [Workflow computation](../workflows/overview.md).
+New [simulation Jobs](../jobs/overview.md) can be designed by the user with the help of the [Job Designer Interface]({{ interface_url }}/jobs-designer/overview/). Jobs can be designed in this way by assembling together a [material](../materials/overview.md) structure with a corresponding [Workflow computation](../workflows/overview.md).
 
 ## 2. Submit and Execute Jobs
 
@@ -20,4 +20,4 @@ At the end of Job execution, the computed [Properties](../properties/overview.md
 
 ## 4. Analysis of Results
 
-The user is then free to inspect, manipulate and analyse the entity properties output by simulations by [retrieving](../properties/lifecycle/retrieval.md) them from the relevant [Account-owned entity collections](../accounts/collections.md), as displayed to the user under the corresponding [Explorer Interface]({{ guide_url }}/entities-general/ui/explorer/) for the given entity type.
+The user is then free to inspect, manipulate and analyse the entity properties output by simulations by [retrieving](../properties/lifecycle/retrieval.md) them from the relevant [Account-owned entity collections](../accounts/collections.md), as displayed to the user under the corresponding [Explorer Interface]({{ interface_url }}/entities-general/ui/explorer/) for the given entity type.

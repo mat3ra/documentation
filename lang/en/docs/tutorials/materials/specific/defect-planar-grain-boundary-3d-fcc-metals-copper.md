@@ -32,7 +32,7 @@ We will focus on creating copper grain boundary structures similar to Figure 1b 
 
 ### 1.1. Load Copper Material.
 
-Navigate to [Materials Designer](../../../materials-designer/overview.md) and import the copper material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the copper material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 1. Click on "Input/Output" menu
 2. Select "Import from Standata"
@@ -42,7 +42,7 @@ Navigate to [Materials Designer](../../../materials-designer/overview.md) and im
 
 ### 1.2. Launch JupyterLite Session.
 
-Select "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" to open JupyterLite.
+Select "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" to open JupyterLite.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
@@ -130,7 +130,7 @@ The structure has differences from the original figure in the manuscript, since 
 The final structure can be:
 
 1. Passed back to Materials Designer
-2. [Saved or downloaded](../../../materials-designer/header-menu/input-output.md) in Material JSON format
+2. [Saved or downloaded]({{ interface_url }}/materials-designer/header-menu/input-output/) in Material JSON format
 3. Exported as a POSCAR file
 
 ## Interactive JupyterLite Notebook.

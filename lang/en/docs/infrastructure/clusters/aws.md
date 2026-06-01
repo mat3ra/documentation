@@ -16,7 +16,7 @@ page in web application.
 
 The list of currently enabled queues is given below. Price per core hour is shown in relation to
 the [relative unit price]({{ guide_url }}/pricing/service-levels/#comparison-table) and is subject to change at any time. Total
-number of nodes can be increased upon [request]({{ guide_url }}/ui/support/).
+number of nodes can be increased upon [request]({{ interface_url }}/ui/support/).
 
 |  Name  | Category[^2] | Mode[^3] | Charge Policy[^4] | Price | Max Nodes per Job<sup>+</sup> | Max Nodes Total |
 |:------:|:------------:|:--------:|:-----------------:|:-----:|:-----------------------------:|:---------------:|

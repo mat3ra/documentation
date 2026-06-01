@@ -8,4 +8,4 @@ We explain how the user can go through the procedure for [submitting jobs via th
 
 ## [Import Command Line Jobs to Web Interface](cli-job-import.md)
 
-[This tutorial](cli-job-import.md) explains how to import the results of a [job](../../jobs-cli/overview.md) run via [command-line interface](../../cli/overview.md) to the main [Web Interface](../../ui/overview.md) of our platform.
+[This tutorial](cli-job-import.md) explains how to import the results of a [job](../../jobs-cli/overview.md) run via [command-line interface](../../cli/overview.md) to the main [Web Interface]({{ interface_url }}/ui/overview/) of our platform.

@@ -1,6 +1,6 @@
 # Command Line Interface via SSH
 
-Users can connect to the [Command Line Interface](../cli/overview.md) (CLI)
+Users can connect to the [Command Line Interface]({{ guide_url }}/cli/overview/) (CLI)
 of our platform using an **SSH terminal client** under any Operating System
 (OS), as an alternative to the [Web Terminal](web-terminal.md).
 
@@ -111,7 +111,7 @@ as before, namely `login.mat3ra.com`.
 ### Enter the CLI
 
 Following successful SSH connection, the user is presented with the
-[CLI of our platform](../cli/overview.md).
+[CLI of our platform]({{ guide_url }}/cli/overview/).
 
 Some useful instructions are already contained in the CLI
 **splash welcome screen** greeting the user at the moment of login. A copy of

@@ -4,11 +4,11 @@ This tutorial explains how to import materials from files in various formats int
 
 ## Step 0: Open Materials Designer
 
-Start by opening an instance of the [Materials Designer Interface](../../materials-designer/overview.md) for creating and designing new [Materials structures]({{ reference_url }}/materials/overview/) on our platform.
+Start by opening an instance of the [Materials Designer Interface]({{ interface_url }}/materials-designer/overview/) for creating and designing new [Materials structures]({{ reference_url }}/materials/overview/) on our platform.
 
 ## Step 1: Open JupyterLite Environment
 
-Open the [JupyterLite Environment](../../materials-designer/header-menu/advanced/jupyterlite-dialog.md) by navigating to "Advanced" > "JupyterLite Transformation" menu item in the Materials Designer interface.
+Open the [JupyterLite Environment]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/) by navigating to "Advanced" > "JupyterLite Transformation" menu item in the Materials Designer interface.
 
 ## Step 2: Open the Notebook
 

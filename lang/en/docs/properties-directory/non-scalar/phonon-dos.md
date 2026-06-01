@@ -6,7 +6,7 @@ The Density of States for the case of lattice vibrations [^1] describes the numb
 
 ## Example
 
-The final results for the computed phonon Density of States are also presented graphically in the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ guide_url }}/jobs/ui/viewer/). 
+The final results for the computed phonon Density of States are also presented graphically in the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/). 
 
 An example of such a Density of States plot is shown below.
 
@@ -14,7 +14,7 @@ An example of such a Density of States plot is shown below.
 
 ### Export as Image
 
-The possibility to export the graph is offered as mentioned [here]({{ guide_url }}/properties/ui/viewer/#export-as-images).
+The possibility to export the graph is offered as mentioned [here]({{ interface_url }}/properties/ui/viewer/#export-as-images).
 
 ## Schema 
 

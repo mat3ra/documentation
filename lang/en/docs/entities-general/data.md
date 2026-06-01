@@ -59,21 +59,21 @@ The reader is referred to other documentation pages for aspects that might perta
 
 ## Metadata
 
-Metadata refers to information that in turn provides information about other data. In the context of our platform, Metadata is used primarily to facilitate [search]({{ guide_url }}/entities-general/actions/search/) through the [Entity collections]({{ reference_url }}/accounts/collections/). We supplement entries with additional descriptive textual information, such as tags, for example. The above example of JSON representation shows how tags are stored within the structured data, under the "tags" keyword.
+Metadata refers to information that in turn provides information about other data. In the context of our platform, Metadata is used primarily to facilitate [search]({{ interface_url }}/entities-general/actions/search/) through the [Entity collections]({{ reference_url }}/accounts/collections/). We supplement entries with additional descriptive textual information, such as tags, for example. The above example of JSON representation shows how tags are stored within the structured data, under the "tags" keyword.
 
 Metadata can be added to an entity item in one or more of the following forms.
 
 ### Description
 
-In some cases, the user can add a general description for reference purposes, which can be entered in plain text or using Markdown language [^1] as explained [here]({{ guide_url }}/entities-general/actions/metadata/#edit-description)
+In some cases, the user can add a general description for reference purposes, which can be entered in plain text or using Markdown language [^1] as explained [here]({{ interface_url }}/entities-general/actions/metadata/#edit-description)
 
 ### Tags
 
-The user can add descriptive tags to the entity in order to retrieve it more easily when searches are performed. Tags take the form of separate keyword strings, that can each contain one or multiple words. They can be inserted according to the [following instructions]({{ guide_url }}/entities-general/actions/metadata/#edit-tags).
+The user can add descriptive tags to the entity in order to retrieve it more easily when searches are performed. Tags take the form of separate keyword strings, that can each contain one or multiple words. They can be inserted according to the [following instructions]({{ interface_url }}/entities-general/actions/metadata/#edit-tags).
 
 ### Metadata for surfaces / slabs
 
-A specific kind of metadata is used to mark slabs / surfaces. Such metadata is stored in the entity on its creation and can, for example, be used for surface energy calculations. This is explained further in the [corresponding documentation section]({{ guide_url }}/materials-designer/header-menu/advanced/surface-slab/#structural-metadata).
+A specific kind of metadata is used to mark slabs / surfaces. Such metadata is stored in the entity on its creation and can, for example, be used for surface energy calculations. This is explained further in the [corresponding documentation section]({{ interface_url }}/materials-designer/header-menu/advanced/surface-slab/#structural-metadata).
 
 ## Slug
 

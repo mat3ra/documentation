@@ -13,7 +13,7 @@ By our convention, this working folder must be located under the [cluster home d
     
     1. Jobs that require long walltime will [reserve the corresponding balance]({{ reference_url }}/accounts/balance/#reserved-balance), and thus prevent other jobs from starting.
     2. When not enough walltime is allocated, the job may not finish on time, resulting in an erroneous output. 
-    3. The user is advised to [submit a support ticket](../../ui/support.md) if a walltime adjustment is needed during the course of a long job execution. Our support staff will do their best to accommodate the necessary desired changes, depending on the current computing load and business hours.
+    3. The user is advised to [submit a support ticket]({{ interface_url }}/ui/support/) if a walltime adjustment is needed during the course of a long job execution. Our support staff will do their best to accommodate the necessary desired changes, depending on the current computing load and business hours.
 
 Users can find our examples of job batch scripts and input files as explained [here](../batch-scripts/sample-scripts.md). 
 

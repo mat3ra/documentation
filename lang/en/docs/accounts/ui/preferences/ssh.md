@@ -25,7 +25,7 @@ Once the new SSH key has been added, the user will be able to see the key as a n
 
 ### Connect to Server
 
-Use the guidelines available in [this page]({{ guide_url }}/remote-connection/ssh/#connect-to-server) to establish connection to our login node server via the command-line terminal.
+Use the guidelines available in [this page]({{ interface_url }}/remote-connection/ssh/#connect-to-server) to establish connection to our login node server via the command-line terminal.
 
 ### Animation
 

@@ -76,4 +76,4 @@ Alternatively, the lack of data privacy leads to the following scenario, whereby
 
 Bank entities may be **imported** by users with appropriate access to it. This creates a copy of that item under the Account-owned collection.
 
-Specific examples of the importing procedure can be found for both [Materials](../materials/bank.md) and [Workflows](../workflows/bank.md), whereas the general instructions are presented [here]({{ guide_url }}/entities-general/actions/copy-bank/).
+Specific examples of the importing procedure can be found for both [Materials](../materials/bank.md) and [Workflows](../workflows/bank.md), whereas the general instructions are presented [here]({{ interface_url }}/entities-general/actions/copy-bank/).

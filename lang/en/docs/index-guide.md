@@ -1,10 +1,11 @@
 # Platform Guide
 
-This guide provides step-by-step instructions for using the Mat3ra platform through its web interface. It covers tutorials, tool walkthroughs, and common actions.
+Step-by-step tutorials, simulation software reference, and command-line tools for the Mat3ra platform.
 
 !!!tip "Other documentation sites"
+    For interface walkthroughs and platform actions, see the [User Interface]({{ interface_url }}/).
     For explanations of underlying concepts, see [Concepts & Reference]({{ reference_url }}/).
-    For developer-focused content (REST API, CLI, infrastructure), see the [Developer Guide]({{ dev_url }}/).
+    For developer-focused content (REST API, infrastructure), see the [Developer Guide]({{ dev_url }}/).
 
 
 ## Quick start
@@ -29,17 +30,6 @@ Step-by-step guides for specific calculations and workflows.
 - **Templating**: parameterize workflows with Jinja templates — see [Templating tutorials](tutorials/templating/overview.md)
 
 
-## Tool guides
-
-Detailed walkthroughs for each major platform tool.
-
-- [Materials Designer](materials-designer/overview.md) — create and edit crystal structures
-- [Workflow Designer](workflow-designer/overview.md) — build and configure simulation workflows
-- [Jobs Designer](jobs-designer/overview.md) — set up and submit computational jobs
-- [JupyterLite Environment](jupyterlite/overview.md) — run Python notebooks in the browser
-- [Remote Connection](remote-connection/overview.md) — access via SSH, web terminal, or remote desktop
-
-
 ## Software directory
 
 Reference pages for the simulation engines and scripting environments available on the platform.
@@ -57,17 +47,6 @@ For users who prefer terminal access to the platform.
 - [Jobs via command line](jobs-cli/overview.md) — batch scripts, job submission, status checks
 
 
-## Account management
-
-- [Account preferences and settings](accounts/ui/overview.md)
-- [Accounting actions (balance, quota, payments)](accounts/accounting/overview.md)
-- [Organizations and teams](collaboration/actions/organization/overview.md)
-- [Entity sharing](collaboration/sharing/actions.md)
-
-
 ## Support
 
 The support team responds to requests within 24 hours during working hours (Pacific Time). See [Help & Support](other/support.md) for ways to get assistance.
-
-!!!tip "Help improve this documentation"
-    If something is missing or unclear, open the [Help & Support](other/support.md) page and get in touch.

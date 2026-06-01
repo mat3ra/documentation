@@ -7,7 +7,7 @@ The underlying [theoretical model]({{ reference_url }}/models/overview/) is [Den
 Complete information and documentation about the VASP code can be found in its corresponding website [^1], [^2], [^3].
 
 !!!warning "License Requirements"
-    VASP is a proprietary software, and as such it requires a license in order to be operated. All users who would like to use this code are advised to send us a [support request](../../../ui/support.md) so that we can check their existing licenses. Contact us about an on-demand license option for interested parties.
+    VASP is a proprietary software, and as such it requires a license in order to be operated. All users who would like to use this code are advised to send us a [support request]({{ interface_url }}/ui/support/) so that we can check their existing licenses. Contact us about an on-demand license option for interested parties.
 
 ## Supported Versions
 

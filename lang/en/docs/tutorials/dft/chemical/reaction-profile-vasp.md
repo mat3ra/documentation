@@ -1,6 +1,6 @@
 # Calculate Reaction Energy Profile Using Nudged Elastic Band (NEB) method
 
-This tutorial page explains how to calculate the energy reaction profile and activation barrier for the multi-dimensional energy space of chemical reactions via the **Nudged Elastic Bands (NEB) method**, by making use of the [interpolated sets](../../../materials-designer/header-menu/advanced/interpolated-set.md) of intermediate image structures introduced in a [separate tutorial](../../materials/interpolated-sets.md).
+This tutorial page explains how to calculate the energy reaction profile and activation barrier for the multi-dimensional energy space of chemical reactions via the **Nudged Elastic Bands (NEB) method**, by making use of the [interpolated sets]({{ interface_url }}/materials-designer/header-menu/advanced/interpolated-set/) of intermediate image structures introduced in a [separate tutorial](../../materials/interpolated-sets.md).
 
 We consider the example of a one-dimensional, three-atom molecule of Hydrogen (H3) throughout the present tutorial, and shall be making use of [VASP](../../../software-directory/modeling/vasp/overview.md) as the main simulation engine. 
 
@@ -26,9 +26,9 @@ One important point about the VASP NEB workflow is that VASP does not run the ca
 
 Consequently, the first subworkflow step consists in executing a pair of self-consistent field (SCF) ground-state energy computations, in order to extract the [total energy]({{ reference_url }}/properties-directory/scalar/total-energy/) for both the initial and final images.
 
-This first subworkflow has a separate compute configuration, independent from the rest of the workflow, that can be adjusted by the user under its ["Compute" Tab](../../../workflow-designer/subworkflow-editor/compute.md). The reason is that if there are 10 images, at least 10 cores are needed, as mentioned before, but such a large number of cores is not necessarily required for the initial/final total energy SCF calculations performed in the present step.
+This first subworkflow has a separate compute configuration, independent from the rest of the workflow, that can be adjusted by the user under its ["Compute" Tab]({{ interface_url }}/workflow-designer/subworkflow-editor/compute/). The reason is that if there are 10 images, at least 10 cores are needed, as mentioned before, but such a large number of cores is not necessarily required for the initial/final total energy SCF calculations performed in the present step.
 
-We also remind the reader that the size of the [grid of reciprocal k-points (kgrid)]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) should be set to 1 x 1 x 1 for the case of chemical molecules, such as those considered in the present tutorial. This option can be set under the ["Important Settings" Tab](../../../workflow-designer/subworkflow-editor/important-settings.md) of the [Workflow Designer Interface](../../../workflow-designer/overview.md).
+We also remind the reader that the size of the [grid of reciprocal k-points (kgrid)]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) should be set to 1 x 1 x 1 for the case of chemical molecules, such as those considered in the present tutorial. This option can be set under the ["Important Settings" Tab]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/) of the [Workflow Designer Interface]({{ interface_url }}/workflow-designer/overview/).
 
 ### 2. Prepare Directories 
 
@@ -70,11 +70,11 @@ Additional information on further possible input parameters available for VASP N
     
 ## Import Interpolated Set
 
-The constrained **Interpolated Set** generated in [this other tutorial](../../materials/interpolated-sets.md) under the name "NEB CONSTRAINED SET", containing the initial, final and a total of 3 intermediate images of the H3 molecule under investigation, should then be [selected and imported](../../../jobs-designer/actions-header-menu/select-materials.md) into the ["Materials Viewer" Tab](../../../jobs-designer/materials-tab.md) of the NEB VASP job being [designed](../../../jobs-designer/overview.md). This is done by [selecting](../../../entities-general/actions/select.md) all images contained in the set at the moment of import.                                        
+The constrained **Interpolated Set** generated in [this other tutorial](../../materials/interpolated-sets.md) under the name "NEB CONSTRAINED SET", containing the initial, final and a total of 3 intermediate images of the H3 molecule under investigation, should then be [selected and imported]({{ interface_url }}/jobs-designer/actions-header-menu/select-materials/) into the ["Materials Viewer" Tab]({{ interface_url }}/jobs-designer/materials-tab/) of the NEB VASP job being [designed]({{ interface_url }}/jobs-designer/overview/). This is done by [selecting]({{ interface_url }}/entities-general/actions/select/) all images contained in the set at the moment of import.                                        
 
 ## Create and Submit Job
 
-The same set of instructions as in the [alternative NEB tutorial](reaction-profile-qe.md#create-job-and-choose-workflow) should now be followed for [importing](../../../workflows/actions/copy-bank.md) the relevant VASP NEB [workflow]({{ reference_url }}/workflows/overview/) from the [bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/), and for later [selecting and adding it](../../../jobs-designer/actions-header-menu/select-workflow.md) into the new [Job]({{ reference_url }}/jobs/overview/) being [designed](../../../jobs-designer/overview.md).
+The same set of instructions as in the [alternative NEB tutorial](reaction-profile-qe.md#create-job-and-choose-workflow) should now be followed for [importing]({{ interface_url }}/workflows/actions/copy-bank/) the relevant VASP NEB [workflow]({{ reference_url }}/workflows/overview/) from the [bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/), and for later [selecting and adding it]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) into the new [Job]({{ reference_url }}/jobs/overview/) being [designed]({{ interface_url }}/jobs-designer/overview/).
 
 ## Retrieve Final Optimized Images
 
@@ -84,7 +84,7 @@ The final optimized image structures can be retrieved at the end of Job executio
 
 We demonstrate the above-mentioned steps involved in the creation and execution of an NEB-based reaction energy profile computation on H3 molecules, using the [VASP](../../../software-directory/modeling/vasp/overview.md) simulation engine, in the following animation. Because we are working with 3 intermediate images, we run the NEB [Job]({{ reference_url }}/jobs/overview/) on a total of 6 cores, which is a multiple of 3 as required.
 
-It can be deduced from the final results for the energy reaction profile, available under the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md), that the size of the activation energy barrier in this case is of about 0.2 eV, in agreement with the outcome of the [other NEB Tutorial](reaction-profile-qe.md).
+It can be deduced from the final results for the energy reaction profile, available under the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/), that the size of the activation energy barrier in this case is of about 0.2 eV, in agreement with the outcome of the [other NEB Tutorial](reaction-profile-qe.md).
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/-ZKK8xTrmSY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

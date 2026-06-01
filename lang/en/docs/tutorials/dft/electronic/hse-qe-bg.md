@@ -13,9 +13,9 @@ The instructions presented herein complement the general discussion introduced i
 
 Contrary to the case of [Quantum ESPRESSO-based HSE computations of the band structure](hse-qe-bs.md), in which the list of electronic k-points had to be extracted and then inserted manually within the main input script, in the present case where we limit ourselves to the computation of the band gap and DoS only, the [grid of special k-points]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) can be defined automatically as customarily done in self-consistent field (scf) total ground-state energy computations.
 
-Apart from this, the structure of the main Quantum ESPRESSO input script is essentially the same as for a general HSE-based band structure computation. The HSE-specific aspects and parameters of the scf calculation can be triggered by including the HSE [Refiner]({{ reference_url }}/models-directory/dft/parameters/#refiners), as set under the [Subworkflow Editor Interface](../../../workflow-designer/subworkflow-editor/overview-tab.md#refiners).
+Apart from this, the structure of the main Quantum ESPRESSO input script is essentially the same as for a general HSE-based band structure computation. The HSE-specific aspects and parameters of the scf calculation can be triggered by including the HSE [Refiner]({{ reference_url }}/models-directory/dft/parameters/#refiners), as set under the [Subworkflow Editor Interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview-tab/#refiners).
 
-For band-gap computations, it is also essential to ensure that the corresponding "band_gaps" [property]({{ reference_url }}/properties/overview/) calculation option, available under the ["Detailed View" tab](../../../workflow-designer/subworkflow-editor/detailed-view.md) of the [Subworkflow Editor Interface](../../../workflow-designer/subworkflow-editor/overview-tab.md#refiners), gets ticked for selection before the beginning of Job execution.
+For band-gap computations, it is also essential to ensure that the corresponding "band_gaps" [property]({{ reference_url }}/properties/overview/) calculation option, available under the ["Detailed View" tab]({{ interface_url }}/workflow-designer/subworkflow-editor/detailed-view/) of the [Subworkflow Editor Interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview-tab/#refiners), gets ticked for selection before the beginning of Job execution.
 
 ### Main HSE Computation Unit
 
@@ -23,7 +23,7 @@ The [Workflow]({{ reference_url }}/workflows/overview/) for executing the HSE ba
 
 ### Size of the q-grid
 
-It is nevertheless crucial, in order to obtain an accurate numerical estimate of the band gap size, to have a sufficiently large three-dimensional mesh for the q (k1-k2) sampling of the Fock operator, as defined through the "nqx1, nqx2, nqx3" input keywords within the Quantum ESPRESSO input script. This "q-grid" size has to be a divisor of the k-grid size, and for the sake of the present tutorial we recommend setting the k-grid dimensions to 8x8x8 and the q-grid to 4x4x4 for example, as can be set under the ["Important Settings" tab](../../../workflow-designer/subworkflow-editor/important-settings.md) of the [Subworkflow Editor interface](../../../workflow-designer/subworkflow-editor/overview.md). 
+It is nevertheless crucial, in order to obtain an accurate numerical estimate of the band gap size, to have a sufficiently large three-dimensional mesh for the q (k1-k2) sampling of the Fock operator, as defined through the "nqx1, nqx2, nqx3" input keywords within the Quantum ESPRESSO input script. This "q-grid" size has to be a divisor of the k-grid size, and for the sake of the present tutorial we recommend setting the k-grid dimensions to 8x8x8 and the q-grid to 4x4x4 for example, as can be set under the ["Important Settings" tab]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/) of the [Subworkflow Editor interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview/). 
 
 #### Restrictions on kgrid size
 
@@ -31,7 +31,7 @@ The user is advised that the default settings in the HSE band gap computation wo
  
  Should the user enter an odd number for the kgrid dimensions by mistake, this size will automatically be increased by one in the workflow to make it even: for example, a 5x5x5 kgrid size entered by the user is increased to 6x6x6 by the workflow operations, thus resulting in a 3x3x3 q-grid. 
  
- In order to change this default behaviour, the user is invited to manually edit the Quantum ESPRESSO input script for the main HSE calculation directly through the corresponding [unit editor interface](../../../workflow-designer/unit-editor.md), within its [input script template](../../../workflow-designer/unit-editor/input-templates.md).
+ In order to change this default behaviour, the user is invited to manually edit the Quantum ESPRESSO input script for the main HSE calculation directly through the corresponding [unit editor interface]({{ interface_url }}/workflow-designer/unit-editor/), within its [input script template]({{ interface_url }}/workflow-designer/unit-editor/input-templates/).
 
 ### Estimated Computational Cost
 
@@ -41,16 +41,16 @@ The aforementioned recommended choice of grid dimensions however already constit
 
 ## Copy HSE Workflow from Bank
 
-[Workflows]({{ reference_url }}/workflows/overview/) for calculating the [electronic band gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) and [Density of States]({{ reference_url }}/properties-directory/non-scalar/electronic-dos/) of semiconducting [materials]({{ reference_url }}/materials/overview/) with [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) via the HSE approach being presently considered can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). 
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the [electronic band gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) and [Density of States]({{ reference_url }}/properties-directory/non-scalar/electronic-dos/) of semiconducting [materials]({{ reference_url }}/materials/overview/) with [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) via the HSE approach being presently considered can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). 
 
-This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/overview.md). The same procedure as in the [general band-gap computation tutorial](band-gap.md) can otherwise be followed.
+This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/overview/). The same procedure as in the [general band-gap computation tutorial](band-gap.md) can otherwise be followed.
 
 !!!warning "Computational Cost"
     The computational cost of HSE calculations is significantly higher than for more basic methods in [DFT]({{ reference_url }}/models-directory/dft/overview/) such as the [Generalized Gradient Approximation]({{ reference_url }}/models-directory/dft/parameters/#subtype). We thus recommend to allow for more [CPU cores and/or walltime]({{ dev_url }}/infrastructure/compute/parameters/) as appropriate for the material system under investigation.
     
 ## Animation
 
-We demonstrate the steps involved in the creation and execution of a HSE Band Gap and DoS computation workflow on silicon, using the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) simulation engine, in the following animation. We conclude by inspecting the final numerical result for the size of the indirect band gap of silicon under the ["Results" Tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md). 
+We demonstrate the steps involved in the creation and execution of a HSE Band Gap and DoS computation workflow on silicon, using the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) simulation engine, in the following animation. We conclude by inspecting the final numerical result for the size of the indirect band gap of silicon under the ["Results" Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/). 
 
 The final result of 1.193 eV is in excellent agreement with the value at zero temperature quoted in the literature of 1.17 eV. Thus, HSE provides a marked improvement in the accuracy of band gap estimations compared to more traditional approaches in DFT such as the [Generalized Gradient Approximation]({{ reference_url }}/models-directory/dft/parameters/#subtype), which is known on the other hand to significantly underestimate the size of band gaps as discussed [elsewhere]({{ reference_url }}/models-directory/dft/notes/#accuracy-limits-of-the-generalized-gradient-approximation).
 

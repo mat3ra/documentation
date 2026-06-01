@@ -4,26 +4,26 @@ This page helps users quickly grasp the content of the documentation. Use the ta
 
 ## Login
 
-We support two main login connection methods: through [Web Interface](../ui/overview.md), and [Command Line Interface (CLI)](../cli/overview.md). One must have a valid username and password in order to log in via either. Secure shell sessions use [key-based authentication](../remote-connection/ssh.md#generate-ssh-keys). Users logged in through the web interface can, without additional authentication, also access the CLI via the [Web Terminal](../remote-connection/web-terminal.md), and have a [Remote Desktop Environment](../remote-connection/remote-desktop.md) option available to them.
+We support two main login connection methods: through [Web Interface]({{ interface_url }}/ui/overview/), and [Command Line Interface (CLI)](../cli/overview.md). One must have a valid username and password in order to log in via either. Secure shell sessions use [key-based authentication]({{ interface_url }}/remote-connection/ssh/#generate-ssh-keys). Users logged in through the web interface can, without additional authentication, also access the CLI via the [Web Terminal]({{ interface_url }}/remote-connection/web-terminal/), and have a [Remote Desktop Environment]({{ interface_url }}/remote-connection/remote-desktop/) option available to them.
 
-The user can find out more about such connection methods under the [connection options page](../remote-connection/overview.md). The
+The user can find out more about such connection methods under the [connection options page]({{ interface_url }}/remote-connection/overview/). The
 - <a href="http://platform.mat3ra.com/login" target="_blank">login page</a> is where the platform can be accessed.
 
 ## Creating Materials
 
 We highlight three ways to input material geometries:
 
-- [construct new crystal geometries](../materials-designer/overview.md), using our web-based crystallographic design tools
-- [upload structure](../materials/actions/upload.md) in widely used (eg. POSCAR/CIF/XYZ) format(s)
-- [import structure](../materials/actions/import.md) from a third-party database (e.g. materialsproject.org)
+- [construct new crystal geometries]({{ interface_url }}/materials-designer/overview/), using our web-based crystallographic design tools
+- [upload structure]({{ interface_url }}/materials/actions/upload/) in widely used (eg. POSCAR/CIF/XYZ) format(s)
+- [import structure]({{ interface_url }}/materials/actions/import/) from a third-party database (e.g. materialsproject.org)
 
-> [Combinatorial sets](../materials-designer/header-menu/advanced/combinatorial-set.md), for example, make it possible to rapidly create a large number of material geometries.
+> [Combinatorial sets]({{ interface_url }}/materials-designer/header-menu/advanced/combinatorial-set/), for example, make it possible to rapidly create a large number of material geometries.
 
-> [Toggle "isNonPeriodic"](../materials-designer/header-menu/edit.md), for example, makes it possible to create a non-periodic structure, i.e., a molecule.
+> [Toggle "isNonPeriodic"]({{ interface_url }}/materials-designer/header-menu/edit/), for example, makes it possible to create a non-periodic structure, i.e., a molecule.
 
 ## Running Simulations
 
-We allow users to simulate materials to extract desired [properties]({{ reference_url }}/properties/overview/). In order to do so, one needs to [construct](../workflow-designer/overview.md) a simulation [workflow]({{ reference_url }}/workflows/overview/). For many properties, we have a set of workflows available in the [workflows bank]({{ reference_url }}/workflows/bank/) that are available for [copy](../workflows/actions/copy-bank.md) by users.
+We allow users to simulate materials to extract desired [properties]({{ reference_url }}/properties/overview/). In order to do so, one needs to [construct]({{ interface_url }}/workflow-designer/overview/) a simulation [workflow]({{ reference_url }}/workflows/overview/). For many properties, we have a set of workflows available in the [workflows bank]({{ reference_url }}/workflows/bank/) that are available for [copy]({{ interface_url }}/workflows/actions/copy-bank/) by users.
 
 ### Workflows
 

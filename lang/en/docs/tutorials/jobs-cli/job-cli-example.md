@@ -266,7 +266,7 @@ done
 
 ```
 
-The reader should note that within the `mpirun` command we make use of the `tee` command. This redirects the output of the simulation to both the standard output (abbreviated as "stdout") and to the output file simultaneously. Redirecting to "stdout" in this way allows the status of the job to be regularly updated and refreshed under the corresponding [Job Viewer](../../jobs/ui/viewer.md) in the [Web Interface](../../ui/overview.md), as demonstrated in [another Tutorial](cli-job-import.md).
+The reader should note that within the `mpirun` command we make use of the `tee` command. This redirects the output of the simulation to both the standard output (abbreviated as "stdout") and to the output file simultaneously. Redirecting to "stdout" in this way allows the status of the job to be regularly updated and refreshed under the corresponding [Job Viewer]({{ interface_url }}/jobs/ui/viewer/) in the [Web Interface]({{ interface_url }}/ui/overview/), as demonstrated in [another Tutorial](cli-job-import.md).
 
 We can put the content of the above file into a bash script called `run.sh` for example, and then make the script executable with `chmod a+x run.sh` command.
  
@@ -276,14 +276,14 @@ The job can finally be [submitted](../../jobs-cli/actions/submit.md) as a set to
 
 The user can view the currently submitted jobs and their statuses in CLI with the `qstat` [command](../../jobs-cli/actions/check-status.md). 
 
-The reader is referred to the video below for an explanation on how to inspect the results of the above simulation under the [Web Interface](../../ui/overview.md) of our platform.
+The reader is referred to the video below for an explanation on how to inspect the results of the above simulation under the [Web Interface]({{ interface_url }}/ui/overview/) of our platform.
 
 
 ## Animation
 
 We summarize the above-mentioned steps in the following video. 
 
-Here, we begin by entering the [Command Line Interface](../../cli/overview.md) via the [Web Terminal](../../remote-connection/web-terminal.md) connection method. We then navigate to the directory containing the `run.sh` script under the [Home Folder]({{ dev_url }}/infrastructure/clusters/directories/) of `cluster-007`, where we submit it for execution. 
+Here, we begin by entering the [Command Line Interface](../../cli/overview.md) via the [Web Terminal]({{ interface_url }}/remote-connection/web-terminal/) connection method. We then navigate to the directory containing the `run.sh` script under the [Home Folder]({{ dev_url }}/infrastructure/clusters/directories/) of `cluster-007`, where we submit it for execution. 
 
 We conclude by inspecting the [status of the job](../../jobs-cli/actions/check-status.md) on the selected cluster number "007" by entering the `watch qstat` command, for an automatically-refreshing version of `qstat`. Since only one lattice parameter was tested in this example animation for simplicity, only one job has been launched and is returned by `qstat` in this case (scanning over all three lattice parameters, as in the original script shown above, would have correspondingly launched three distinct jobs).
 

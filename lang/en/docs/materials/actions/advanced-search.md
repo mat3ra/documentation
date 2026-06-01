@@ -18,7 +18,7 @@ Generic keywords present for all materials are described below. These can also b
 | :-------- |:----------- |
 | name | Name of the Material |
 | formula | Chemical formula, for example "CaTiO3" |
-| latticeType | The [Bravais lattice type]({{ guide_url }}/materials-designer/source-editor/lattice/) of the crystal structure under consideration |
+| latticeType | The [Bravais lattice type]({{ interface_url }}/materials-designer/source-editor/lattice/) of the crystal structure under consideration |
 | model  | The [theoretical model]({{ reference_url }}/models/overview/) employed to calculate the materials properties  |
 | method | The [computational method]({{ reference_url }}/methods/overview/) implementing the above model |
 | spaceGroupSymbol | The space group symbol describing the symmetry elements present in the crystal structure, e.g. "Fd-3m" |

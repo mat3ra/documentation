@@ -164,6 +164,7 @@ exclude_docs: |
   # Other sites' homepages
   index.md
   index-guide.md
+  index-interface.md
   index-concepts.md
   index-dev.md
   migrating-to-new-platform.md
@@ -196,6 +197,7 @@ theme:
 extra:
     # Cross-site URL variables (resolved by macros plugin at build time)
     guide_url: https://docs.mat3ra.com/guide
+    interface_url: https://docs.mat3ra.com/interface
     reference_url: https://docs.mat3ra.com/reference
     dev_url: https://docs.mat3ra.com/dev
     data_url: https://docs.mat3ra.com/standards

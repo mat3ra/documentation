@@ -1,13 +1,11 @@
 INHERIT: mkdocs-base.yml
 
-# Platform Guide — task-oriented documentation for end users.
-# Covers tutorials, UI walkthroughs, and how-to actions.
+# Platform Guide — tutorials, software directory, and CLI reference.
 # Deploy to: docs.mat3ra.com/guide/
 
 docs_dir: !!python/object/apply:os.getenv ["DOCS_DIR", "lang/en/docs"]
 
-# Exclude pages that belong to other sites (Concepts or Dev).
-# Cross-site links use absolute URLs instead.
+# Exclude pages that belong to other sites.
 exclude_docs: |
   # Concepts-only top-level dirs
   benchmarks/
@@ -27,6 +25,13 @@ exclude_docs: |
   infrastructure/
   rest-api/
   other/terms-of-service.md
+
+  # Interface site top-level dirs
+  jobs-designer/
+  materials-designer/
+  ui/
+  workflow-designer/
+  remote-connection/
 
   # Concepts-only pages in shared dirs
   accounts/overview.md
@@ -69,6 +74,23 @@ exclude_docs: |
   other/documentation.md
   other/citation.md
 
+  # Interface site pages in shared dirs
+  accounts/accounting/
+  accounts/ui/
+  collaboration/actions/
+  collaboration/sharing/
+  collaboration/ui/
+  entities-general/actions/
+  entities-general/ui/
+  jobs/actions/
+  jobs/ui/
+  materials/actions/
+  materials/ui/
+  properties/ui/
+  workflows/actions/
+  workflows/ui/
+  data-in-objectstorage/
+
   # Dev-only pages in shared dirs
   data-in-objectstorage/overview.md
   data-in-objectstorage/files.md
@@ -80,6 +102,7 @@ exclude_docs: |
   index-concepts.md
   index-dev.md
   index-standards.md
+  index-interface.md
 
   # Data Standards site pages
   software-directory/modeling/vasp/data.md
@@ -88,6 +111,15 @@ exclude_docs: |
   software-directory/scripting/shell/data.md
   software-directory/scripting/jupyter-lab/data.md
   software-directory/machine-learning/python-ml/data.md
+  models/data.md
+  methods/data.md
+  software/data.md
+  models-directory/dft/data.md
+  models-directory/machine-learning/data.md
+  methods-directory/pseudopotential/data.md
+  methods-directory/linear-regression/data.md
+  materials/data.md
+  jobs/data.md
 
 validation:
   nav:
@@ -98,12 +130,25 @@ validation:
 
 site_name: "Platform Guide"
 site_url: https://docs.mat3ra.com/guide
-site_description: "Task-oriented guides, tutorials, and how-tos for the Mat3ra platform."
+site_description: "Step-by-step tutorials, software directory, and CLI reference for the Mat3ra platform."
 dev_addr: "localhost:8001"
+
+theme:
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.footer
+    - navigation.top
+    - search.highlight
+    - search.suggest
 
 extra:
     # Cross-site URL variables (resolved by macros plugin at build time)
     guide_url: https://docs.mat3ra.com/guide
+    interface_url: https://docs.mat3ra.com/interface
     reference_url: https://docs.mat3ra.com/reference
     dev_url: https://docs.mat3ra.com/dev
     data_url: https://docs.mat3ra.com/standards
@@ -228,250 +273,6 @@ nav:
             - Gr/Ni(111) Interface Optimization:                            tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel.md
             - Pt Adatoms Island on MoS2:                                    tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum.md
 
-# UI COMPONENTS
-    - Interface Components:
-        - Overview:                                      ui/overview.md
-        - Header and Footer:                             ui/header-footer.md
-        - Left-hand Sidebar:                             ui/left-sidebar.md
-        - Account Menu:                                  ui/account-menu.md
-        - Support:                                       ui/support.md
-        - Specific:
-            - Homepage Navigation:                       ui/specific/homepage.md
-            - Dashboard:                                 ui/specific/dashboard.md
-            - Tabs Navigation:                           ui/specific/tabs-navigator.md
-
-# ACCOUNTS — UI & Actions (concepts go to Concepts site)
-    - Accounts:
-        - User Interface:
-            - Overview:                                  accounts/ui/overview.md
-            - Profile Page:                              accounts/ui/profile-page.md
-            - Account Badge:                             accounts/ui/account-badge.md
-            - Switcher:                                  accounts/ui/switcher.md
-            - Explorer:                                  accounts/ui/explorer.md
-            - Bio:                                       accounts/ui/bio.md
-            - Service Levels:                            accounts/ui/service-level.md
-            - Payments and Charges:                      accounts/ui/charges-payments.md
-            - Preferences:                               accounts/ui/preferences-overview.md
-            - Preferences > Profile:                     accounts/ui/preferences/profile.md
-            - Preferences > User Settings:               accounts/ui/preferences/settings.md
-            - Preferences > API Tokens:                  accounts/ui/preferences/api.md
-            - Preferences > SSH Keys:                    accounts/ui/preferences/ssh.md
-            - Preferences > Change Password:             accounts/ui/preferences/password.md
-        - Accounting Actions:
-            - Overview:                                  accounts/accounting/overview.md
-            - Check balance and quota:                   accounts/accounting/check-balance-quota.md
-            - Increase balance:                          accounts/accounting/increase-balance.md
-            - Increase Quota:                            accounts/accounting/increase-quota.md
-            - Change Payment Method:                     accounts/accounting/payment-methods.md
-            - Charges > Advanced search:                 accounts/accounting/charges-advanced-search.md
-
-# COLLABORATION — UI & Actions
-    - Collaboration:
-        - User Interface:
-            - Overview:                                  collaboration/ui/overview.md
-            - Teams Explorer:                            collaboration/ui/teams-explorer.md
-            - Team Page:                                 collaboration/ui/team-page.md
-            - People Explorer:                           collaboration/ui/people-explorer.md
-        - Entity Sharing:
-            - User Interface:                            collaboration/sharing/ui.md
-            - Actions:                                   collaboration/sharing/actions.md
-        - Actions:
-            - Organization > Overview:                  collaboration/actions/organization/overview.md
-            - Organization > Create:                    collaboration/actions/organization/create.md
-            - Organization > Add / Remove Member:       collaboration/actions/organization/add-remove-member.md
-            - Organization > Make / Revoke Admin:       collaboration/actions/organization/make-revoke-admin.md
-            - Organization > Create / Delete Team:      collaboration/actions/organization/create-delete-team.md
-            - Organization > Create Entities:           collaboration/actions/organization/create-entities.md
-            - Team > Overview:                          collaboration/actions/team/overview.md
-            - Team > Edit Permissions:                  collaboration/actions/team/edit-permissions.md
-            - Team > Add / Remove Member:               collaboration/actions/team/add-remove-member.md
-            - Team > Add / Remove Entity:               collaboration/actions/team/add-remove-entity.md
-
-# ENTITIES — UI & Actions
-    - Entities (Common Actions):
-        - User Interface:
-            - Overview:                                 entities-general/ui/overview.md
-            - Explorer:                                 entities-general/ui/explorer.md
-            - Designer:                                 entities-general/ui/designer.md
-            - Viewer:                                   entities-general/ui/viewer.md
-        - Actions:
-            - Overview:                                 entities-general/actions/overview.md
-            - Select:                                   entities-general/actions/select.md
-            - Search:                                   entities-general/actions/search.md
-            - Advanced search:                          entities-general/actions/advanced-search.md
-            - Open:                                     entities-general/actions/open-edit.md
-            - Clone:                                    entities-general/actions/clone.md
-            - Delete:                                   entities-general/actions/delete.md
-            - Set default:                              entities-general/actions/set-default.md
-            - Add metadata:                             entities-general/actions/metadata.md
-            - Change name:                              entities-general/actions/name.md
-            - Create:                                   entities-general/actions/create.md
-            - Bank > Copy from:                         entities-general/actions/copy-bank.md
-            - Sets > Create / Delete:                   entities-general/actions/create-sets.md
-            - Sets > Change Type:                       entities-general/actions/change-set-type.md
-            - Sets > Set Index:                         entities-general/actions/set-entity-index.md
-            - Sets > Move To:                           entities-general/actions/move-to-sets.md
-
-# MATERIALS — UI & Actions
-    - Materials:
-        - User Interface:
-            - Explorer:                                 materials/ui/explorer.md
-            - Viewer:                                   materials/ui/viewer.md
-        - Actions:
-            - Overview:                                 materials/actions/overview.md
-            - Import:                                   materials/actions/import.md
-            - Upload:                                   materials/actions/upload.md
-            - Set default:                              materials/actions/set-default.md
-            - Advanced search:                          materials/actions/advanced-search.md
-            - Bank > Copy from:                         materials/actions/copy-bank.md
-
-# MATERIALS DESIGNER (full tool guide)
-    - Materials Designer:
-        - Overview:                                     materials-designer/overview.md
-        - Header Menu:
-            - Overview:                                 materials-designer/header-menu/header-menu-intro.md
-            - Input/Output:                             materials-designer/header-menu/input-output.md
-            - "Input/Output > Import":                  materials-designer/header-menu/input-output/import.md
-            - "Input/Output > Import from Standata":    materials-designer/header-menu/input-output/standata-import.md
-            - "Input/Output > Export":                  materials-designer/header-menu/input-output/export.md
-            - "Input/Output > Save":                    materials-designer/header-menu/input-output/save.md
-            - Edit:                                     materials-designer/header-menu/edit.md
-            - View:                                     materials-designer/header-menu/view.md
-            - Advanced:                                 materials-designer/header-menu/advanced.md
-            - "Advanced > Supercell":                   materials-designer/header-menu/advanced/supercell.md
-            - "Advanced > Combinatorial Set":           materials-designer/header-menu/advanced/combinatorial-set.md
-            - "Advanced > Interpolated Set":            materials-designer/header-menu/advanced/interpolated-set.md
-            - "Advanced > Surface / Slab":              materials-designer/header-menu/advanced/surface-slab.md
-            - "Advanced > Boundary Conditions":         materials-designer/header-menu/advanced/boundary-conditions.md
-            - "Advanced > JupyterLite Transformation":  materials-designer/header-menu/advanced/jupyterlite-dialog.md
-            - Help:                                     materials-designer/header-menu/help.md
-        - Sidebar:
-            - Items List:                               materials-designer/sidebar-items.md
-        - Source Editor:
-            - Overview:                                 materials-designer/source-editor.md
-            - Lattice Editor:                           materials-designer/source-editor/lattice.md
-            - Basis Editor:                             materials-designer/source-editor/basis.md
-        - 3D Viewer/Editor:
-            - Overview:                                 materials-designer/3d-editor.md
-            - View Options:                             materials-designer/3d-editor/view.md
-            - Parameters Options:                       materials-designer/3d-editor/parameters.md
-            - Edit Options:                             materials-designer/3d-editor/edit.md
-            - "Edit Actions > Overview":                materials-designer/3d-editor/editor-actions/overview.md
-            - "Edit Actions > Add/Remove Atoms":        materials-designer/3d-editor/editor-actions/add-remove-atoms.md
-            - "Edit Actions > Adjust Cell Parameters":  materials-designer/3d-editor/editor-actions/adjust-cell-parameters.md
-            - "Edit Actions > Move/Rotate Atoms":       materials-designer/3d-editor/editor-actions/move-rotate-atoms.md
-            - Export Options:                           materials-designer/3d-editor/export.md
-
-# WORKFLOWS — UI & Actions
-    - Workflows:
-        - User Interface:
-            - Explorer:                                 workflows/ui/explorer.md
-            - Viewer:                                   workflows/ui/viewer.md
-        - Actions:
-            - Overview:                                 workflows/actions/overview.md
-            - Update:                                   workflows/actions/update.md
-            - Set default:                              workflows/actions/set-default.md
-            - Bank > Copy from:                         workflows/actions/copy-bank.md
-
-# WORKFLOW DESIGNER (full tool guide)
-    - Workflow Designer:
-        - Overview:                                     workflow-designer/overview.md
-        - Header Menu:
-            - Overview:                                 workflow-designer/header-menu.md
-        - Sidebar:
-            - Items List:                               workflow-designer/sidebar.md
-        - Subworkflow Editor:
-            - Overview:                                 workflow-designer/subworkflow-editor/overview.md
-            - Actions Menu:                             workflow-designer/subworkflow-editor/actions-menu.md
-            - Tabs:                                     workflow-designer/subworkflow-editor/tabs-general.md
-            - Tabs > Overview:                          workflow-designer/subworkflow-editor/overview-tab.md
-            - Tabs > Important Settings:                workflow-designer/subworkflow-editor/important-settings.md
-            - Tabs > Detailed View:                     workflow-designer/subworkflow-editor/detailed-view.md
-            - Tabs > Compute:                           workflow-designer/subworkflow-editor/compute.md
-            - Units Flowchart:                          workflow-designer/subworkflow-editor/units-flowchart.md
-        - Unit Editor:
-            - Overview:                                 workflow-designer/unit-editor.md
-            - Input Templates:                          workflow-designer/unit-editor/input-templates.md
-
-# JOBS — UI & Actions
-    - Jobs:
-        - User Interface:
-            - Explorer:                                 jobs/ui/explorer.md
-            - Viewer:                                   jobs/ui/viewer.md
-            - Results Tab:                              jobs/ui/results-tab.md
-            - Files Tab:                                jobs/ui/files-tab.md
-            - Projects Explorer:                        jobs/ui/projects-explorer.md
-            - Projects Page:                            jobs/ui/project-page.md
-        - Actions:
-            - Overview:                                 jobs/actions/overview.md
-            - Create:                                   jobs/actions/create.md
-            - Run:                                      jobs/actions/run.md
-            - Terminate:                                jobs/actions/terminate.md
-            - Purge:                                    jobs/actions/purge.md
-            - Projects > Create / Delete:               jobs/actions/create-delete-project.md
-
-# JOBS DESIGNER (full tool guide)
-    - Jobs Designer:
-        - Overview:                                     jobs-designer/overview.md
-        - Header Menu:                                  jobs-designer/header-menu.md
-        - Materials Tab:                                jobs-designer/materials-tab.md
-        - Workflow Tab:                                 jobs-designer/workflow-tab.md
-        - Compute Tab:                                  jobs-designer/compute-tab.md
-        - Actions > Header Menu:
-            - Select Materials:                         jobs-designer/actions-header-menu/select-materials.md
-            - Select Workflow:                          jobs-designer/actions-header-menu/select-workflow.md
-            - Select Parent:                            jobs-designer/actions-header-menu/select-parent.md
-
-# PROPERTIES — UI only
-    - Properties:
-        - User Interface:
-            - Explorer:                                 properties/ui/explorer.md
-            - Viewer:                                   properties/ui/viewer.md
-
-# REMOTE CONNECTION (full how-to guide)
-    - Remote Connection:
-        - Overview:                                     remote-connection/overview.md
-        - SSH Terminal (SSH):                           remote-connection/ssh.md
-        - Web Terminal (WT):                            remote-connection/web-terminal.md
-        - Remote Desktop (RD):                          remote-connection/remote-desktop.md
-        - Actions > (WT) & (RD):
-            - Overview:                                 remote-connection/actions/overview.md
-            - Open Web Terminal:                        remote-connection/actions/open-terminal.md
-            - Open Remote Desktop:                      remote-connection/actions/open-desktop.md
-            - Open Sidebar:                             remote-connection/actions/sidebar.md
-            - Upload:                                   remote-connection/actions/upload.md
-            - Download:                                 remote-connection/actions/download.md
-            - Transfer Files via SCP:                   remote-connection/actions/transfer-files-scp.md
-            - Copy / Paste Text:                        remote-connection/actions/copy-paste.md
-            - Access data in Web Platfrom:              remote-connection/actions/access-data.md
-        - Actions > Remote Desktop:
-            - Overview:                                 remote-connection/actions-rd/overview.md
-            - Browse Directories:                       remote-connection/actions-rd/browse.md
-            - Open Applications:                        remote-connection/actions-rd/open-app.md
-
-# DATA IN OBJECT STORAGE — UI & Actions
-    - Data in Object Storage:
-        - User Interface:
-            - Dropbox Page:                             data-in-objectstorage/ui/dropbox-page.md
-            - Files Explorer:                           data-in-objectstorage/ui/explorer.md
-        - Actions > Files:
-            - Overview:                                 data-in-objectstorage/actions/overview.md
-            - Download:                                 data-in-objectstorage/actions/download.md
-            - Copy Path:                                data-in-objectstorage/actions/copy-path.md
-            - Upload:                                   data-in-objectstorage/actions/upload.md
-            - Create Folder:                            data-in-objectstorage/actions/create-folder.md
-
-# JUPYTERLITE
-    - JupyterLite Environment:
-          - Overview:                                jupyterlite/overview.md
-          - Accessing JupyterLite:                   jupyterlite/accessing-jupyterlite.md
-          - Authentication:                          jupyterlite/authentication.md
-          - Pyodide:                                 jupyterlite/pyodide.md
-          - Dependencies and Imports:                jupyterlite/dependencies-installation.md
-          - Data Exchange:                           jupyterlite/data-exchange.md
-          - File Storage and Synchronization:        jupyterlite/file-storage-synchronization.md
-          - Common Actions:                          jupyterlite/common-actions.md
-
 # SOFTWARE DIRECTORY
     - Software Directory:
         - Overview:                                     software-directory/overview.md
@@ -547,6 +348,17 @@ nav:
             - Check status:                             jobs-cli/actions/check-status.md
             - Terminate:                                jobs-cli/actions/terminate.md
             - View Jobs List:                           jobs-cli/actions/view-job-list.md
+
+# JUPYTERLITE
+    - JupyterLite Environment:
+          - Overview:                                jupyterlite/overview.md
+          - Accessing JupyterLite:                   jupyterlite/accessing-jupyterlite.md
+          - Authentication:                          jupyterlite/authentication.md
+          - Pyodide:                                 jupyterlite/pyodide.md
+          - Dependencies and Imports:                jupyterlite/dependencies-installation.md
+          - Data Exchange:                           jupyterlite/data-exchange.md
+          - File Storage and Synchronization:        jupyterlite/file-storage-synchronization.md
+          - Common Actions:                          jupyterlite/common-actions.md
 
 # OTHER
     - Other:

@@ -5,7 +5,7 @@ render_macros: true
 
 ## Introduction
 
-In this page we review setting input atom-specific flags based on the data about material. We present the template source that can be further re-used (copied and inserted) during the [workflow design](../../workflow-designer/overview.md) stage.
+In this page we review setting input atom-specific flags based on the data about material. We present the template source that can be further re-used (copied and inserted) during the [workflow design]({{ interface_url }}/workflow-designer/overview/) stage.
 
 ## Source
 
@@ -101,7 +101,7 @@ MAGMOM = 5 -5 5 -5 5 -5 5 -5 0 0 0 0 0
 
 ### Animation
 
-In the following animation, we demonstrate how to switch between viewing the POSCAR structure file for Cobalt Oxide within [Workflow Designer](../../workflow-designer/unit-editor/input-templates.md), to viewing the template for adding the MAGMOM parameter to the INCAR input file, and finally its rendered output.
+In the following animation, we demonstrate how to switch between viewing the POSCAR structure file for Cobalt Oxide within [Workflow Designer]({{ interface_url }}/workflow-designer/unit-editor/input-templates/), to viewing the template for adding the MAGMOM parameter to the INCAR input file, and finally its rendered output.
 
 <img data-gifffer="/images/tutorials/magmom_template.gif">
 

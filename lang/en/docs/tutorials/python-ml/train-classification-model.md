@@ -21,8 +21,8 @@ For the purposes of this tutorial, we will name this dataset "data_to_train_with
 
 ## 2. Upload the Training Data
 
-In order to upload training data, we first click the `Dropbox` button in the [left sidebar](../../ui/left-sidebar.md).
-This will bring us to the [Dropbox Page](../../jobs/ui/files-tab.md). We can then click the "Upload" button, circled
+In order to upload training data, we first click the `Dropbox` button in the [left sidebar]({{ interface_url }}/ui/left-sidebar/).
+This will bring us to the [Dropbox Page]({{ interface_url }}/jobs/ui/files-tab/). We can then click the "Upload" button, circled
 below:
 
 ![Dropbox Page with Upload](../../images/tutorials/pythonML/dropbox-page-with-upload-circled.png "Dropbox page with upload circled")
@@ -32,25 +32,25 @@ for upload. If the upload was successful, the file will then be visible in the d
 
 ## 3. Copy the "Python ML Train Classification" Workflow from the Workflow Bank
 
-Next, we select the`Bank Worfklows` button in the [left sidebar](../../ui/left-sidebar.md), which brings us to
+Next, we select the`Bank Worfklows` button in the [left sidebar]({{ interface_url }}/ui/left-sidebar/), which brings us to
 the [Bank Workflows Page]({{ reference_url }}/workflows/bank/). We then search for the "Python ML Train Classification" workflow owned
-by the "Curators" account, and [copy it to our account](../../workflows/actions/copy-bank.md).
+by the "Curators" account, and [copy it to our account]({{ interface_url }}/workflows/actions/copy-bank/).
 
 A diagram and detailed description of this workflow can be found
 [here](../../software-directory/machine-learning/python-ml/components.md).
 
 ## 4. Create the ML Job
 
-Next, we can create a new job by selecting the `Create Job` button in the [left sidebar](../../ui/left-sidebar.md). This
-will bring us to a new job on the [Job Designer](../../jobs-designer/overview.md) page.
+Next, we can create a new job by selecting the `Create Job` button in the [left sidebar]({{ interface_url }}/ui/left-sidebar/). This
+will bring us to a new job on the [Job Designer]({{ interface_url }}/jobs-designer/overview/) page.
 
 First, we will give the job a friendly name, such as "Python ML Tutorial" (see below). Then, we will click
-the [Actions Button](../../jobs-designer/header-menu.md#Actions) (the three vertical dots in the upper-right of the job
+the [Actions Button]({{ interface_url }}/jobs-designer/header-menu/#Actions) (the three vertical dots in the upper-right of the job
 designer), and choose "Select Workflow."
 
 ![Job Designer with Circles](../../images/tutorials/pythonML/job-designer-with-python-ml-name-and-three-dots-circled.png "Job designer page")
 
-This will bring up the [Select Workflow](../../jobs-designer/actions-header-menu/select-workflow.md) dialogue. We then
+This will bring up the [Select Workflow]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) dialogue. We then
 search for "Python ML Train Classification" and select it.
 
 ## 5. Select the Dataset
@@ -61,7 +61,7 @@ a preview of the dataset once it is selected.
 
 ![Dataset Tab](../../images/tutorials/classification_tutorial/dataset-tab-with-data.png "Dataset Tab")
 
-To select a dataset, click the [Actions Button](../../jobs-designer/header-menu.md#Actions) (the three vertical dots in
+To select a dataset, click the [Actions Button]({{ interface_url }}/jobs-designer/header-menu/#Actions) (the three vertical dots in
 the upper-right of the job designer) and choose "Select Dataset." This will bring up a files explorer containing all
 files presently on the dropbox. Choose the training set we uploaded earlier, "data_to_train_with.csv."
 
@@ -69,7 +69,7 @@ A preview of the data then appears on the dataset tab, indicating that the data 
 
 ## 6. Configure the Workflow
 
-We have now chosen our ML workflow and training set. Select the [Workflows Tab](../../jobs-designer/workflow-tab.md), and we
+We have now chosen our ML workflow and training set. Select the [Workflows Tab]({{ interface_url }}/jobs-designer/workflow-tab/), and we
 can see our training workflow.
 
 We can see two [subworkflows]({{ reference_url }}/workflows/components/subworkflows/) available: `Set Up the Job`
@@ -100,17 +100,17 @@ The workflow has now been configured, and we are ready to train.
 
 ## 7. Submit the Job
 
-Click the check-mark in the upper right of the job designer, in the [Header Menu](../../jobs-designer/header-menu.md) to
-save the job. We now return to the [job explorer](../../jobs/ui/explorer.md) page with the job in a pre-submission
+Click the check-mark in the upper right of the job designer, in the [Header Menu]({{ interface_url }}/jobs-designer/header-menu/) to
+save the job. We now return to the [job explorer]({{ interface_url }}/jobs/ui/explorer/) page with the job in a pre-submission
 status
 
 ![Jobs Tab with ML Training Calculation Set Up](../../images/tutorials/pythonML/jobs-tab-with-ml-train-job-set-up.png "Jobs Tab with ML Training Calculation Set Up")
 
-We can now [run the job](../../jobs/actions/run.md) and wait for it to complete.
+We can now [run the job]({{ interface_url }}/jobs/actions/run/) and wait for it to complete.
 
 ## 8. Analyze the Training Results
 
-After a few minutes, the job will complete. We can then visit the job's [results tab](../../jobs/ui/results-tab.md),
+After a few minutes, the job will complete. We can then visit the job's [results tab]({{ interface_url }}/jobs/ui/results-tab/),
 where we will see that two properties have been calculated. The first, `Machine Learning - Model Train and Predict` is
 the predict workflow that was generated by the machine learning job. The predict workflow can be used to leverage the
 trained model for additional predictions on new data.

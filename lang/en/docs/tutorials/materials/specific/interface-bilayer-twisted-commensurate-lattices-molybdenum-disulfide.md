@@ -27,7 +27,7 @@ This tutorial demonstrates the process of creating a twisted bilayer molybdenum 
     [DOI: 10.1038/ncomms5966](https://doi.org/10.1038/ncomms5966) [@Liu2014; @Zhang2016; @Cao2018]
 
 
-We use the [Materials Designer](../../../materials-designer/overview.md) to create molybdenum disulfide bilayer structure configurations with multiple twist angles.
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create molybdenum disulfide bilayer structure configurations with multiple twist angles.
 
 The Figure 4 shows the twisted bilayer MoS2 configurations.
 
@@ -35,7 +35,7 @@ The Figure 4 shows the twisted bilayer MoS2 configurations.
 
 ## 1. Load and preview MoS2 structure.
 
-First, we navigate to [Materials Designer](../../../materials-designer/overview.md) and import the MoS2 material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the MoS2 material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 
 ![Standata MoS2 Import](../../../images/tutorials/materials/interfaces/twisted-bilayer-molybdenum-disulfide/standata-import-mos2.png "Standata MoS2 Import")
@@ -47,7 +47,7 @@ Then we will use the [JupyterLite](../../../jupyterlite/overview.md) environment
 
 ### 2.1 Launch JupyterLite Session.
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")

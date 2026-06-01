@@ -12,4 +12,4 @@ Workflows [Mapping Function](../entities-general/bank.md#bank-mapping-function) 
 
 ## Copy from Bank
 
-The procedure of copying (or importing) Bank Workflows into Account-owned Workflows collection is described [here]({{ guide_url }}/workflows/actions/copy-bank/).
+The procedure of copying (or importing) Bank Workflows into Account-owned Workflows collection is described [here]({{ interface_url }}/workflows/actions/copy-bank/).

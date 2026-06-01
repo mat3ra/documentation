@@ -1,13 +1,13 @@
 # List of Available Software
 
-We list on the present page the [software]({{ reference_url }}/software/overview/) available on our platform, accessible via the appropriate [connection method](../remote-connection/overview.md). The reader is referred to the introductory pages dedicated to each of the packages listed here by clicking the links contained below. Dedicated pages contain references to the relevant documentation explaining the operations of the corresponding software in detail.
+We list on the present page the [software]({{ reference_url }}/software/overview/) available on our platform, accessible via the appropriate [connection method]({{ interface_url }}/remote-connection/overview/). The reader is referred to the introductory pages dedicated to each of the packages listed here by clicking the links contained below. Dedicated pages contain references to the relevant documentation explaining the operations of the corresponding software in detail.
 
 ## Access Scenarios
 
 Tools can be accessed through one or more of the following methods:
  
- 1. The main user interface (in the [subworkflow editor](../workflow-designer/subworkflow-editor/overview.md)), 
- 2. Remote Desktop (we provide an example for [VESTA](analysis/vesta.md)) in [this page](../remote-connection/actions-rd/open-app.md),
+ 1. The main user interface (in the [subworkflow editor]({{ interface_url }}/workflow-designer/subworkflow-editor/overview/)), 
+ 2. Remote Desktop (we provide an example for [VESTA](analysis/vesta.md)) in [this page]({{ interface_url }}/remote-connection/actions-rd/open-app/),
  3. [Environment Modules](../cli/modules.md) in [command line interface](../cli/overview.md).
 
 
@@ -31,11 +31,11 @@ The platform currently offers the choice between the following software engines 
 
 ## Machine Learning
 
-We have a proof-of-concept support for [machine learning]({{ reference_url }}/models-directory/machine-learning/overview/). This application is accessible via the [subworkflow editor interface](../workflow-designer/subworkflow-editor/overview.md) only.
+We have a proof-of-concept support for [machine learning]({{ reference_url }}/models-directory/machine-learning/overview/). This application is accessible via the [subworkflow editor interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview/) only.
 
 ## Analysis Tools
 
-We support the following structural analysis and visualization tools through a [remote desktop connection](../remote-connection/remote-desktop.md). The reader may click each entry listed below to be redirected to the software's corresponding documentation introduction.
+We support the following structural analysis and visualization tools through a [remote desktop connection]({{ interface_url }}/remote-connection/remote-desktop/). The reader may click each entry listed below to be redirected to the software's corresponding documentation introduction.
 
 | Name      |  Version(s) | Access Scenarios (see previous section) |
 | :-------- | ----------- | ------------- |
@@ -45,7 +45,7 @@ We support the following structural analysis and visualization tools through a [
 | [P4VASP](analysis/p4vasp.md) |  0.3.30 | 2, 3 |
 
 !!!info "Opening graphical software in remote desktop."
-    An example of how to open a graphical structural visualization tool in our remote desktop environment is provided [under this page](../remote-connection/actions-rd/open-app.md).
+    An example of how to open a graphical structural visualization tool in our remote desktop environment is provided [under this page]({{ interface_url }}/remote-connection/actions-rd/open-app/).
 
 ## Scripting Applications
 

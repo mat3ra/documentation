@@ -4,7 +4,7 @@ In order to import Entities from their respective [Banks]({{ reference_url }}/en
 
 ## Open Bank Page
 
-First click on the corresponding `Bank` option in the [left-hand Sidebar]({{ guide_url }}/ui/left-sidebar/) and choose either Materials or Workflows.
+First click on the corresponding `Bank` option in the [left-hand Sidebar]({{ interface_url }}/ui/left-sidebar/) and choose either Materials or Workflows.
 
 ## Search for Entity
 

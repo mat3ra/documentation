@@ -1,7 +1,7 @@
 # Running Jobs via Web Interface
 
 This page explains how to run a simple [density functional theory calculation]({{ reference_url }}/models-directory/dft/overview/) to obtain [electronic band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) of silicon via our main
-[Web Interface](../../ui/overview.md).
+[Web Interface]({{ interface_url }}/ui/overview/).
 
 Before going into the detailed step-by-step instructions, first we present a
 short video tutorial to get an overview of the process and look-and-feel of
@@ -42,23 +42,19 @@ collection:
 
 - Import crystal structures from the [Materials Bank]({{ reference_url }}/entities-general/bank/)
 - Import crystal structures from a third-party source such as
-  [Materials Project](https://materialsproject.org/) using [Import](
-  ../../materials/actions/import.md) action
+  [Materials Project](https://materialsproject.org/) using [Import]({{ interface_url }}/materials/actions/import/) action
 - Upload crystal structures from your local computer such as CIF, POSCAR
-  formatted files using [Upload](../../materials/actions/upload.md) action
-- Create a new material structure from scratch using [Materials Designer](
-  ../../materials-designer/overview.md).
+  formatted files using [Upload]({{ interface_url }}/materials/actions/upload/) action
+- Create a new material structure from scratch using [Materials Designer]({{ interface_url }}/materials-designer/overview/).
 
 To import a material or workflow from the Bank to user's own account collection,
-select the "Bank" option in the [left-hand sidebar](../../ui/left-sidebar.md),
+select the "Bank" option in the [left-hand sidebar]({{ interface_url }}/ui/left-sidebar/),
 and then select "Materials" or "Workflows" as the user prefers. Then select the
 desired material or workflow entry and click "Copy" button in the Actions
-column, as explained in more detail [here](
-../../entities-general/actions/copy-bank.md). Readers can find additional
-details on how to [import](../../materials/actions/import.md) materials with the
+column, as explained in more detail [here]({{ interface_url }}/entities-general/actions/copy-bank/). Readers can find additional
+details on how to [import]({{ interface_url }}/materials/actions/import/) materials with the
 aid of the incorporated Mat3ra Materials Designer tool, as well as further
-setting a material as the [default](
-../../entities-general/actions/set-default.md) for the account.
+setting a material as the [default]({{ interface_url }}/entities-general/actions/set-default/) for the account.
 
 
 ## 2. Workflow steps
@@ -74,7 +70,7 @@ Workflow Bank to our account collection.
 The above task involves following steps:
 
   1. Navigate to the [Workflows Bank]({{ reference_url }}/workflows/bank/) page by clicking
-  on the "Bank" option in the [left-hand sidebar](../../ui/left-sidebar.md)
+  on the "Bank" option in the [left-hand sidebar]({{ interface_url }}/ui/left-sidebar/)
   2. Search with the text "curators" to filter workflows created by the
   Mat3ra "Curators" account
   3. Sort workflows by name, and look for the "Band Structure + Density of
@@ -85,8 +81,7 @@ The above task involves following steps:
 Now the workflow is added to the account collection, and can be found under the
 Workflows tab. Click on the workflow name to open the workflow details page,
 where further adjustments can be made to the workflow such as "Important
-Settings" or modify the [input files](
-../../workflow-designer/unit-editor/input-templates.md) for individual units.
+Settings" or modify the [input files]({{ interface_url }}/workflow-designer/unit-editor/input-templates/) for individual units.
 
 ![Edit unit](../../images/getting-started/run-first-simulation-edit-unit.webp "Subworkflow overview in the Workflow Explorer")
 
@@ -94,16 +89,15 @@ Settings" or modify the [input files](
 ## 3. Job Designer
 
 Once we have a material structure and workflow in hand, we can either use the
-"Create Job" button in the [left-hand sidebar](../../ui/left-sidebar.md) or
-first navigate to the [Jobs Designer page](../../jobs-designer/overview.md) and
+"Create Job" button in the [left-hand sidebar]({{ interface_url }}/ui/left-sidebar/) or
+first navigate to the [Jobs Designer page]({{ interface_url }}/jobs-designer/overview/) and
 then click on the "Create" job button.
 
 ![Create job button](../../images/getting-started/run-first-simulation-create-job.webp "Create job")
 
 On the Job creation page, we can:
 
-- Click on the "Select Job Actions" dropdown menu, and select a [material](
-  ../../jobs-designer/materials-tab.md) or multiple materials from user's
+- Click on the "Select Job Actions" dropdown menu, and select a [material]({{ interface_url }}/jobs-designer/materials-tab/) or multiple materials from user's
   account collection (in this tutorial, we will use the default selection of
   Silicon)
 - Agiain, click on the "Select Job Actions" dropdown menu, click
@@ -117,7 +111,7 @@ On the Job creation page, we can:
 
 ### 3.1. Materials Tab
 
-[Materials Tab](../../jobs-designer/materials-tab.md) lets the user choose one
+[Materials Tab]({{ interface_url }}/jobs-designer/materials-tab/) lets the user choose one
 or more previously imported [materials]({{ reference_url }}/materials/overview/) for use
 in the calculation. We will proceed with the default structure of Silicon for
 this demonstration.
@@ -137,12 +131,10 @@ respectively). Therefore, if a simulation involves multiple simulation engines
 in the same workflow, e.g, Quantum ESPRESSO for DFT and LAMMPS for molecular
 dynamics, then we must create multiple subworkflows.
 
-The subworkflow ["Overview" tab](
-../../workflow-designer/subworkflow-editor/overview-tab.md) contains individual
+The subworkflow ["Overview" tab]({{ interface_url }}/workflow-designer/subworkflow-editor/overview-tab/) contains individual
 computational building blocks or ["Units"]({{ reference_url }}/workflows/components/units/).
 Various simulation parameters can be reviewed and adjusted under the
-["Important Settings"](
-../../workflow-designer/subworkflow-editor/important-settings.md), such as:
+["Important Settings"]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/), such as:
 [k-point grid]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) and
 [k-point path]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/paths/)
 in the [reciprocal space]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/),
@@ -155,7 +147,7 @@ the job designer.
 
 ### 3.3. Compute Tab
 
-The ["Compute" tab](../../jobs-designer/compute-tab.md) lets the user set
+The ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) lets the user set
 various compute parameters, such as cluster, queue, number of nodes and
 number of processor cores per node to be used for the simulation, maximum time
 limit and other relevant [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/). We set the maximum time limit for
@@ -170,14 +162,13 @@ choose to be notified of the job status by clicking on his/her name in the
 ## 4. Run Calculation
 
 After saving the job, the user is redirected back to the default
-["Project" page](../../jobs/ui/project-page.md). Here, the user can
-[submit the job](../../jobs/actions/run.md) and track its [status]({{ reference_url }}/jobs/status/).
+["Project" page]({{ interface_url }}/jobs/ui/project-page/). Here, the user can
+[submit the job]({{ interface_url }}/jobs/actions/run/) and track its [status]({{ reference_url }}/jobs/status/).
 
 ### 4.1. Submit and Track Progress
 
 The user can run the job by clicking on the "Run" button in the Actions column,
-or clicking on the three vertical dots and choosing ["Run"](
-../../jobs/actions/run.md) action.
+or clicking on the three vertical dots and choosing ["Run"]({{ interface_url }}/jobs/actions/run/) action.
 
 The [status]({{ reference_url }}/jobs/status/) will change from "pre-submission" to
 "submitted". This means that the job is finally submitted to our
@@ -186,17 +177,15 @@ the load, it may take some time for it to become "Active" and thus start
 executing.
 
 The user can click on the job name to monitor the progress of the job in real
-time within the [Job Viewer Interface](../../jobs/ui/viewer.md).
+time within the [Job Viewer Interface]({{ interface_url }}/jobs/ui/viewer/).
 
 
 ### 4.2. View Results and Access Files
 
-The [Job Viewer screen](../../jobs/ui/viewer.md) tracks the input parameters,
+The [Job Viewer screen]({{ interface_url }}/jobs/ui/viewer/) tracks the input parameters,
 output text, and convergence parameters involved in the computation (total
 energy in this tutorial). Once the job is completed, user can navigate to the
-[Results Tab](../../jobs/ui/results-tab.md) to [view summary of results](
-../../jobs/ui/results-tab.md), and preview or download [output files](
-../../jobs/ui/files-tab.md) from the "Files" tab.
+[Results Tab]({{ interface_url }}/jobs/ui/results-tab/) to [view summary of results]({{ interface_url }}/jobs/ui/results-tab/), and preview or download [output files]({{ interface_url }}/jobs/ui/files-tab/) from the "Files" tab.
 
 
 ## 5. Done

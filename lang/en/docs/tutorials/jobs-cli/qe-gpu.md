@@ -12,8 +12,8 @@ GPUs. As of the time of writing, the GPU (CUDA) build of Quantum ESPRESSO is
 only available via the Command Line Interface (CLI). We will see that we can
 dramatically speedup our Quantum ESPRESSO simulation by using GPUs.
 
-1. First connect to login node via [SSH client](../../remote-connection/ssh.md),
-or [web terminal](../../remote-connection/web-terminal.md). Note that it is also
+1. First connect to login node via [SSH client]({{ interface_url }}/remote-connection/ssh/),
+or [web terminal]({{ interface_url }}/remote-connection/web-terminal/). Note that it is also
 possible to run CLI jobs by creating a [bash workflow](
 ../../software-directory/scripting/shell/overview.md).
 

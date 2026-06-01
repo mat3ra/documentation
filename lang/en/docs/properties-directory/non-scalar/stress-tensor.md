@@ -19,7 +19,7 @@ The image below offers an explanation of the directions in which each shear and 
 
 ## Example
 
-Under the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ guide_url }}/jobs/ui/viewer/), the components of the stress tensor are presented as follows, expressed in units of kilobars (kbar).
+Under the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/), the components of the stress tensor are presented as follows, expressed in units of kilobars (kbar).
 
 ![Stress Tensor](../../images/properties-directory//stress-tensor.png "Stress Tensor")
 

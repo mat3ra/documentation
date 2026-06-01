@@ -17,7 +17,7 @@ Workflows performing GW calculations follow a three-step procedure:
 
 The first [subworkflow step]({{ reference_url }}/workflows/components/subworkflows/) in the overall GW Workflow is a standard self-consistent field (scf) total ground state energy calculation, providing the ensuing steps of the workflow with the wavefunctions of the material structure under investigation (GW calculations always require a one-electron basis set). 
 
-For the sake of the present example, we can set the [grid of special k-points]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) to 10 x 10 x 10, under [Important Settings](../../../workflow-designer/subworkflow-editor/important-settings.md).
+For the sake of the present example, we can set the [grid of special k-points]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) to 10 x 10 x 10, under [Important Settings]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/).
 
 ### 2. Many Bands SCF Calculation
 
@@ -35,16 +35,16 @@ In the present example we calculate quasi-particle energies on the grid of k-poi
 
 ## Creating and Executing Job
 
-GW-based band gap calculation [workflows]({{ reference_url }}/workflows/overview/) can readily be [imported](../../../workflows/actions/copy-bank.md) into the account-owned [collection]({{ reference_url }}/accounts/collections/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/), for example under the name "D1-GW0-BG".
+GW-based band gap calculation [workflows]({{ reference_url }}/workflows/overview/) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/), for example under the name "D1-GW0-BG".
 
 !!!info "Workflow naming convention"
     The "D1-GW0-BG" name for the GW workflow contains the following information: "D" refers to the difficulty level (see table II in Ref. [^1]), "GW0" represents the method, and "BG" is an abbreviation for the band gap. 
  
-Apart from this, the same procedural instructions as in the [other band gap calculation tutorial](band-gap.md) should be followed for [creating and launching](../../../jobs-designer/overview.md) the corresponding GW-based electronic band gap [Job]({{ reference_url }}/jobs/overview/) through our [Web Interface](../../../ui/overview.md), and for inspecting the associated results.
+Apart from this, the same procedural instructions as in the [other band gap calculation tutorial](band-gap.md) should be followed for [creating and launching]({{ interface_url }}/jobs-designer/overview/) the corresponding GW-based electronic band gap [Job]({{ reference_url }}/jobs/overview/) through our [Web Interface]({{ interface_url }}/ui/overview/), and for inspecting the associated results.
 
 ## Animation
 
-In the video animation below, we outline the procedure for creating and executing an electronic band gap calculation job via the GW Approximation, considering crystalline silicon as our example material and employing [VASP](../../../software-directory/modeling/vasp/overview.md) as the main simulation engine. We conclude by inspecting the corresponding results displayed under the [Results Tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md).
+In the video animation below, we outline the procedure for creating and executing an electronic band gap calculation job via the GW Approximation, considering crystalline silicon as our example material and employing [VASP](../../../software-directory/modeling/vasp/overview.md) as the main simulation engine. We conclude by inspecting the corresponding results displayed under the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/).
 
 !!!tip "Computational cost of GW calculations"
     GW calculations are in general quite computationally demanding. We therefore recommend the employment of at least 8 computing cores. For larger calculations, [OF queues]({{ dev_url }}/infrastructure/resource/queues/) will have faster turnaround than the OR queues considered in the video.

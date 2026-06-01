@@ -24,8 +24,8 @@ For an example of a JSON structure-based representation of properties, and of th
 
 We describe the lifecycle that properties go through in order to be extracted from simulation output, and then subsequently refined and retrieved, [in this section](lifecycle/overview.md).
 
-## [User Interface]({{ guide_url }}/properties/ui/explorer/)
+## [User Interface]({{ interface_url }}/properties/ui/explorer/)
 
-Properties are presented in special panels within the user interface of the [Job Viewer]({{ guide_url }}/jobs/ui/viewer/), as introduced [here]({{ guide_url }}/properties/ui/viewer/).
+Properties are presented in special panels within the user interface of the [Job Viewer]({{ interface_url }}/jobs/ui/viewer/), as introduced [here]({{ interface_url }}/properties/ui/viewer/).
 
-These properties can also be reviewed under a dedicated [Explorer-type interface]({{ guide_url }}/entities-general/ui/explorer/) for each Material stored in the account-owned [collection](../accounts/collections.md). We explain how to retrieve and inspect the contents of this Properties Explorer [in this page]({{ guide_url }}/properties/ui/explorer/). 
+These properties can also be reviewed under a dedicated [Explorer-type interface]({{ interface_url }}/entities-general/ui/explorer/) for each Material stored in the account-owned [collection](../accounts/collections.md). We explain how to retrieve and inspect the contents of this Properties Explorer [in this page]({{ interface_url }}/properties/ui/explorer/). 

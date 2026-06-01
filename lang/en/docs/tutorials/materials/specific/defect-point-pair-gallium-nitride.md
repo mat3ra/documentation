@@ -30,7 +30,7 @@ This tutorial demonstrates the process of creating material with nitrogen vacanc
     "Self-compensation due to point defects in Mg-doped GaN", Physical Review B, 2016.
     [DOI: 10.1103/PhysRevB.93.165207](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.93.165207){:target='_blank'}. [@Miceli2016]
 
-We use the [Materials Designer](../../../materials-designer/overview.md) to create a supercell of GaN, identify the crystal site positions for defects, and introduce nitrogen atoms and vacancies accordingly.
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create a supercell of GaN, identify the crystal site positions for defects, and introduce nitrogen atoms and vacancies accordingly.
 
 We will focus on creating GaN-nitrogen structures from the publication.
 Specifically, the material from FIG. 2. c) of the manuscript: 
@@ -41,11 +41,11 @@ Specifically, the material from FIG. 2. c) of the manuscript:
 
 ## 1. Create GaN Supercell.
 
-First, we navigate to [Materials Designer](../../../materials-designer/overview.md) and import the GaN material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the GaN material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Standata GaN Import](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/1-standata-GaN.webp "Standata GaN Import")
 
-We then use the [Advanced](../../../materials-designer/header-menu/advanced/supercell.md) menu to create a supercell of GaN with a size of 4x4x1.
+We then use the [Advanced]({{ interface_url }}/materials-designer/header-menu/advanced/supercell/) menu to create a supercell of GaN with a size of 4x4x1.
 
 ![Supercell Creation for GaN](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/2-advanced-supercell.webp "Supercell GaN")
 
@@ -68,7 +68,7 @@ For the defect creation, we will use the [JupyterLite](../../../jupyterlite/over
 
 ### 3.1. Launch JupyterLite Session.
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
@@ -129,7 +129,7 @@ The user can pass the resulting material in the current Materials Designer envir
 
 ![Final Material](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/7-wave-result.webp "Vacancy and Mg Substitution in GaN")
 
-Or the user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
 
 ## Interactive JupyterLite Notebook.

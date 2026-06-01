@@ -18,7 +18,7 @@ Additional Job-specific columns that can be listed in Explorer include those tic
 
 ### Application
 
-This option displays the [applications](../../software-directory/overview.md) employed within the [workflow]({{ reference_url }}/workflows/overview/) used inside the Job, including their version numbers.
+This option displays the [applications]({{ guide_url }}/software-directory/overview/) employed within the [workflow]({{ reference_url }}/workflows/overview/) used inside the Job, including their version numbers.
 
 ### Cluster - Queue & Cores
 

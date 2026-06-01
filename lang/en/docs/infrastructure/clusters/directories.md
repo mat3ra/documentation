@@ -21,7 +21,7 @@ The home directories on each cluster are mapped under the main [Login Home](../l
 
 ## Example
 
-In the image below, we highlight two examples of cluster home directories present under the login home, as viewed in a [remote desktop environment]({{ guide_url }}/remote-connection/remote-desktop/). The two clusters available in this case are referenced under the aliases "cluster-001" and "cluster-007". 
+In the image below, we highlight two examples of cluster home directories present under the login home, as viewed in a [remote desktop environment]({{ interface_url }}/remote-connection/remote-desktop/). The two clusters available in this case are referenced under the aliases "cluster-001" and "cluster-007". 
 
 ![Cluster Homes](../../images/infrastructure/cluster-homes.png "Cluster Homes")
 
@@ -52,7 +52,7 @@ The absolute path of the data folder for a cluster under the alias "cluster-001"
 
 ## Project/Job based directory naming
 
-Simulation files created through the [Web Interface]({{ guide_url }}/ui/overview/) are automatically organized based on the [Project]({{ reference_url }}/jobs/projects/) and constituent [Jobs]({{ reference_url }}/jobs/overview/) that they are associated with. The subfolders are named according to the [project slug]({{ reference_url }}/jobs/projects/#slug) and the job [slug]({{ reference_url }}/entities-general/data/#slug), as well as its [ID]({{ reference_url }}/entities-general/data/#top-level-keywords). 
+Simulation files created through the [Web Interface]({{ interface_url }}/ui/overview/) are automatically organized based on the [Project]({{ reference_url }}/jobs/projects/) and constituent [Jobs]({{ reference_url }}/jobs/overview/) that they are associated with. The subfolders are named according to the [project slug]({{ reference_url }}/jobs/projects/#slug) and the job [slug]({{ reference_url }}/entities-general/data/#slug), as well as its [ID]({{ reference_url }}/entities-general/data/#top-level-keywords). 
 
 This is demonstrated below for an example user with username "steven", project named "Default", and a job named "New Job Nov 11, 2018-20-59 pm", with id "575z5FgGQvtRMBnXg".
 

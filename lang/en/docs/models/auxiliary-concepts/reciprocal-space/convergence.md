@@ -19,7 +19,7 @@ Currently, the default k-point convergence algorithm systematically increments t
 
 ## Animation
 
-In the following animation, we show how to insert a k-point convergence add-on to a total energy subworkflow, from the [Actions Menu]({{ guide_url }}/workflow-designer/subworkflow-editor/actions-menu/) in [Workflow Designer]({{ guide_url }}/workflow-designer/overview/). The new [compute units](../../../workflows/components/units.md) are consequently added to the subworkflow.
+In the following animation, we show how to insert a k-point convergence add-on to a total energy subworkflow, from the [Actions Menu]({{ interface_url }}/workflow-designer/subworkflow-editor/actions-menu/) in [Workflow Designer]({{ interface_url }}/workflow-designer/overview/). The new [compute units](../../../workflows/components/units.md) are consequently added to the subworkflow.
   
 <img data-gifffer="/images/models/AddKpointConvergence.gif" />
 

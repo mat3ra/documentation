@@ -31,7 +31,7 @@ For the sake of the present discussion, the important folders are the ones label
 
 The "dropbox" and "job_script_templates" folders are present under both Cluster Home and [Login Home](../login/directories.md) and are explained in more detail [in this page]({{ reference_url }}/data-on-disk/directories/). Each other important folder is introduced in what follows. 
 
-The remaining folders conform to the conventions of the [Linux distribution]({{ guide_url }}/remote-connection/remote-desktop/#linux-environment) used in our platform.
+The remaining folders conform to the conventions of the [Linux distribution]({{ interface_url }}/remote-connection/remote-desktop/#linux-environment) used in our platform.
 
 ## Cluster Homes
 
@@ -47,6 +47,6 @@ Explained in more details [here]({{ reference_url }}/data-on-disk/directories/#d
 
 ## Example
 
-The location of the login home folder under the main [remote desktop environment]({{ guide_url }}/remote-connection/remote-desktop/) is highlighted in red in the following illustration. 
+The location of the login home folder under the main [remote desktop environment]({{ interface_url }}/remote-connection/remote-desktop/) is highlighted in red in the following illustration. 
 
 ![Login Home](../../images/infrastructure/login-home.png "Login Home")

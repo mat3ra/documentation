@@ -6,13 +6,13 @@ The results of phonon lattice vibration calculations [^1] are presented in a sim
 
 ## Example
 
-An example of such a phonon dispersion plot, as presented under the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ guide_url }}/jobs/ui/viewer/), is shown below.
+An example of such a phonon dispersion plot, as presented under the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/), is shown below.
 
 ![Phonons](../../images/properties-directory//phonons.png "Phonons")
 
 ### Export as Image
 
-The possibility to export the graph is offered as mentioned [here]({{ guide_url }}/properties/ui/viewer/#export-as-images).
+The possibility to export the graph is offered as mentioned [here]({{ interface_url }}/properties/ui/viewer/#export-as-images).
 
 ## Schema 
 

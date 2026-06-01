@@ -94,4 +94,4 @@ USED    BSOFT    BHARD      BWARN  BGRACE    IUSED      ISOFT    IHARD    IWARN 
 This output contains information about the used storage space under the first column. We don't allow for "soft" quotas (under "BSOFT" column) for temporarily exceeding the maximum allowed limit, hence "soft" and "hard" quotas match to the same total limit value, and no "Grace" period is available. The remaining columns starting with "I" concern the compute nodes as opposed to the clusters.
 
 !!!warning "Authorization Required to Access Clusters via CLI"
-    In order to use the `quotas` command, the user needs to first access the clusters via SSH. Please [submit a support request](../../ui/support.md) for gaining the necessary permissions to do this.
+    In order to use the `quotas` command, the user needs to first access the clusters via SSH. Please [submit a support request]({{ interface_url }}/ui/support/) for gaining the necessary permissions to do this.

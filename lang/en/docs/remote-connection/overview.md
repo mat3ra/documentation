@@ -6,11 +6,11 @@ The login node can be accessed via any of the following options.
 
 ## [SSH Terminal](ssh.md) 
 
-The user can use an **external SSH client** [^1] under any Operating System to connect to our [Command Line Interface](../cli/overview.md). We explain how to do so in [this page](ssh.md).
+The user can use an **external SSH client** [^1] under any Operating System to connect to our [Command Line Interface]({{ guide_url }}/cli/overview/). We explain how to do so in [this page](ssh.md).
 
 ## [Web Terminal (WT)](web-terminal.md)
 
-Alternatively, we offer an incorporated Terminal within our Web Interface which also takes the user to the same [Command Line Interface](../cli/overview.md). We refer to this as the [Web Terminal](web-terminal.md).
+Alternatively, we offer an incorporated Terminal within our Web Interface which also takes the user to the same [Command Line Interface]({{ guide_url }}/cli/overview/). We refer to this as the [Web Terminal](web-terminal.md).
 
 ## [Remote Desktop (RD)](remote-desktop.md)
 

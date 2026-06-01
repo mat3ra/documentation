@@ -12,23 +12,23 @@ Jupyter Notebook is started on the account [Dropbox]({{ dev_url }}/data-in-objec
 
 ## Create Jupyter Job
 
-A simulation job is required to launch a Jupyter notebook. To create a new job, click on the **Create Job** link located on the [left-hand Sidebar](../../ui/left-sidebar.md) which takes you to the [Job Designer](../../jobs-designer/overview.md) page where you can configure Jupyter Notebook environment.
+A simulation job is required to launch a Jupyter notebook. To create a new job, click on the **Create Job** link located on the [left-hand Sidebar]({{ interface_url }}/ui/left-sidebar/) which takes you to the [Job Designer]({{ interface_url }}/jobs-designer/overview/) page where you can configure Jupyter Notebook environment.
 
 ## Choose Workflow
 
-Jupyter Notebook installation and configuration is handled through the Jupyter Notebook [workflow]({{ reference_url }}/workflows/overview/) that should be [imported](../../workflows/actions/copy-bank.md) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/) before the job is created. This workflow can later be [selected](../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [job being created](../../jobs-designer/workflow-tab.md).
+Jupyter Notebook installation and configuration is handled through the Jupyter Notebook [workflow]({{ reference_url }}/workflows/overview/) that should be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/) before the job is created. This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 
 ## Adjust Jupyter Notebook Environment
 
-Jupyter Notebook is installed inside a Python [virtual environment](https://virtualenv.pypa.io/en/latest/) with no additional packages initially. The environment can be customized by navigating to the [workflow tab](../../jobs-designer/workflow-tab.md) and adjusting the **configure.sh** script located inside the **notebook** unit. Here, we install [Exabyte API Client]({{ dev_url }}/rest-api/api-client/) Python package to connect to Exabyte RESTFul API.
+Jupyter Notebook is installed inside a Python [virtual environment](https://virtualenv.pypa.io/en/latest/) with no additional packages initially. The environment can be customized by navigating to the [workflow tab]({{ interface_url }}/jobs-designer/workflow-tab/) and adjusting the **configure.sh** script located inside the **notebook** unit. Here, we install [Exabyte API Client]({{ dev_url }}/rest-api/api-client/) Python package to connect to Exabyte RESTFul API.
 
 ## Submit Job
 
-Before [submitting](../../jobs/actions/run.md) the [job]({{ reference_url }}/jobs/overview/), you should click on the ["Compute" tab](../../jobs-designer/compute-tab.md) of [Job Designer](../../jobs-designer/overview.md) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein.
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), you should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein.
 
 ## Access Jupyter Notebook
 
-The Jupyter notebook can be accessed when the job is active by navigating to the [workflow tab](../../jobs-designer/workflow-tab.md) and opening the **notebook** unit. Wait for the Jupyter Notebook to start, as installation and configuration process takes some time, then click on the **Notebook** or **Lab** links to access the environment.
+The Jupyter notebook can be accessed when the job is active by navigating to the [workflow tab]({{ interface_url }}/jobs-designer/workflow-tab/) and opening the **notebook** unit. Wait for the Jupyter Notebook to start, as installation and configuration process takes some time, then click on the **Notebook** or **Lab** links to access the environment.
 
 !!!note "Do not use the URL Inside the Output File"
     Do not use the URL printed in the output file as the notebooks can not be accessed via printed URL for security reasons.
@@ -39,7 +39,7 @@ The Jupyter notebook can be accessed when the job is active by navigating to the
 
 ## Stop Jupyter Environment
 
-When don editing, the Jupyter Notebook environment can be stopped by either clicking the **Quit** button in Jupyter Notebook or [terminating](../../jobs/actions/terminate.md) the job. In either case, **make sure to save any changes you have made before stopping the notebook as unsaved changes will be lost otherwise**.
+When don editing, the Jupyter Notebook environment can be stopped by either clicking the **Quit** button in Jupyter Notebook or [terminating]({{ interface_url }}/jobs/actions/terminate/) the job. In either case, **make sure to save any changes you have made before stopping the notebook as unsaved changes will be lost otherwise**.
 
 ## Access Modified Files
 

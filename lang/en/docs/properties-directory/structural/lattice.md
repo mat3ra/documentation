@@ -10,7 +10,7 @@ $$
   
 where $n_i$ are any integers, and $a_i$ are known as the **lattice vectors** spanning the lattice in three-dimensional space. The defining characteristic of a Bravais lattice is that, for any choice of position vector $R$, the lattice has to look exactly the same when viewed from any equivalent lattice point.
 
-Information about the Bravais Lattice can be entered within the [lattice editor]({{ guide_url }}/materials-designer/source-editor/lattice/) of [Materials Designer]({{ guide_url }}/materials-designer/overview/), when a new material is being created.
+Information about the Bravais Lattice can be entered within the [lattice editor]({{ interface_url }}/materials-designer/source-editor/lattice/) of [Materials Designer]({{ interface_url }}/materials-designer/overview/), when a new material is being created.
 
 ## Lattice types
   

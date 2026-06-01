@@ -14,4 +14,4 @@ Below, we show how to create a new "Example Project".
 
 ## Delete Project
 
-The action of deleting a Project cannot be performed by the user. In case of necessity, please send us a [support request]({{ guide_url }}/ui/support/). 
+The action of deleting a Project cannot be performed by the user. In case of necessity, please send us a [support request]({{ interface_url }}/ui/support/). 

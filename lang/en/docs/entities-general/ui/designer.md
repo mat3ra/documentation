@@ -4,4 +4,4 @@ The "Designer" component allows the user to edit existing entities, or design ne
 
 ## Links
 
-Specialized documentation pages about the corresponding Designer components are available for [Materials]({{ guide_url }}/materials-designer/overview/), [Workflows]({{ guide_url }}/workflow-designer/overview/) and [Jobs]({{ guide_url }}/jobs-designer/overview/) elsewhere.
+Specialized documentation pages about the corresponding Designer components are available for [Materials]({{ interface_url }}/materials-designer/overview/), [Workflows]({{ interface_url }}/workflow-designer/overview/) and [Jobs]({{ interface_url }}/jobs-designer/overview/) elsewhere.

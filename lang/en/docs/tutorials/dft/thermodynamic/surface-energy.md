@@ -9,7 +9,7 @@ More information on the conduction of surface energy calculations, together with
 
 ## Create Surface
 
-In order to create a surface of crystalline gold using the [Materials Designer Interface](../../../materials-designer/overview.md), the reader should follow the instructions contained in [this page](../../../materials-designer/header-menu/advanced/surface-slab.md).
+In order to create a surface of crystalline gold using the [Materials Designer Interface]({{ interface_url }}/materials-designer/overview/), the reader should follow the instructions contained in [this page]({{ interface_url }}/materials-designer/header-menu/advanced/surface-slab/).
 
 For the present example, we consider a simple surface for Au 111 and 50% vacuum ratio, keeping the supercell dimensions along x-y to one and the slab thickness to 3 layers (corresponding to roughly 10 Angstroms). This gives a total of 3 atoms of gold within our surface.
 
@@ -74,15 +74,15 @@ Finally, the last unit gathers together the previously-defined variables "E_BULK
 
 ## Choose Workflow and Create Job
 
-[Workflows]({{ reference_url }}/workflows/overview/) for calculating the surface energy through [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/workflow-tab.md).
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the surface energy through [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 
 ## Submit Job
 
-Before [submitting](../../../jobs/actions/run.md) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein. Our slab of gold is a relatively small structure, so four CPUs and a few minutes of calculation runtime should be sufficient.
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein. Our slab of gold is a relatively small structure, so four CPUs and a few minutes of calculation runtime should be sufficient.
 
 ## Examine results
 
-When all aforementioned [units]({{ reference_url }}/workflows/components/units/) computations are complete at the end of Job execution, switching to the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md) will show the results of the simulation, including the surface energy found for Au (0.049 eV/A^2). This final result is in good agreement with the tabulated value for the same surface orientation of gold [^2].
+When all aforementioned [units]({{ reference_url }}/workflows/components/units/) computations are complete at the end of Job execution, switching to the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/) will show the results of the simulation, including the surface energy found for Au (0.049 eV/A^2). This final result is in good agreement with the tabulated value for the same surface orientation of gold [^2].
 
 ## Animation
 

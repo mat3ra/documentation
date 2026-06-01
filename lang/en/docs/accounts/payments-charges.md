@@ -8,13 +8,13 @@ An Account is not billed, or "Charged", until the completion of the correspondin
 
 ## View Charges and Payments
 
-Inspection of the complete list of all previously-made payments, and of all incurred charges, associated with an Account is rendered possible through the "Billing & Payments" option under the [Account Menu]({{ guide_url }}/ui/account-menu/) interface component, accessible from anywhere across the platform. This particular aspect of the User Interface is reviewed in the following [dedicated page]({{ guide_url }}/accounts/ui/charges-payments/).
+Inspection of the complete list of all previously-made payments, and of all incurred charges, associated with an Account is rendered possible through the "Billing & Payments" option under the [Account Menu]({{ interface_url }}/ui/account-menu/) interface component, accessible from anywhere across the platform. This particular aspect of the User Interface is reviewed in the following [dedicated page]({{ interface_url }}/accounts/ui/charges-payments/).
 
 ## Payment Methods
 
 ### Card-based Payments
 
-Payments can be executed through Credit/Debit Cards, by providing the relevant card information as outlined in the following [procedural instructions]({{ guide_url }}/accounts/accounting/payment-methods/).
+Payments can be executed through Credit/Debit Cards, by providing the relevant card information as outlined in the following [procedural instructions]({{ interface_url }}/accounts/accounting/payment-methods/).
 
 ### Wire-based Payments
 

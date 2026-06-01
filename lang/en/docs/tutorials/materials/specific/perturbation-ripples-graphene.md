@@ -34,13 +34,13 @@ We will focus on creating graphene with edge-induced ripples that match the patt
 
 ### 1.1. Load Graphene Material.
 
-Navigate to [Materials Designer](../../../materials-designer/overview.md) and import the graphene material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the graphene material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Standata Graphene Import](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/1-standata-graphene.webp "Standata Graphene Import")
 
 ### 1.2. Launch JupyterLite Session.
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
@@ -192,7 +192,7 @@ Graphene with edge-induced ripples with amplitude of 0.27 crystal units.
 
 ![Final Material](../../../images/tutorials/materials/defects/perturbation_ripple_graphene/6-wave-result-final-2.webp "Final Rippled Graphene, amplitude 0.27 crystal units")
 
-Or user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+Or user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
 ## Interactive JupyterLite Notebook.
 

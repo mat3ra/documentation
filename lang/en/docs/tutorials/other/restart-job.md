@@ -14,11 +14,11 @@ Restarting and linking the two Jobs in this way allows the band structure to be 
 
 ## Select Parent Job
 
-Within [Job Designer](../../jobs-designer/overview.md), Job restarting is accomplished via the ["Select Parent" Option](../../jobs-designer/actions-header-menu/select-parent.md) under the main [header menu](../../jobs-designer/header-menu.md) of the interface. 
+Within [Job Designer]({{ interface_url }}/jobs-designer/overview/), Job restarting is accomplished via the ["Select Parent" Option]({{ interface_url }}/jobs-designer/actions-header-menu/select-parent/) under the main [header menu]({{ interface_url }}/jobs-designer/header-menu/) of the interface. 
 
-The user should first create a new [Job]({{ reference_url }}/jobs/overview/), with the NSCF component [unit]({{ reference_url }}/workflows/components/units/) of a band structure calculation present on its own in the main [workflow]({{ reference_url }}/workflows/overview/). The same instructions as in the [original tutorial](../dft/electronic/band-structure.md#create-job) should be followed to [select and insert](../../jobs-designer/actions-header-menu/select-workflow.md) such a Workflow into the new [Job being designed](../../jobs-designer/overview.md). 
+The user should first create a new [Job]({{ reference_url }}/jobs/overview/), with the NSCF component [unit]({{ reference_url }}/workflows/components/units/) of a band structure calculation present on its own in the main [workflow]({{ reference_url }}/workflows/overview/). The same instructions as in the [original tutorial](../dft/electronic/band-structure.md#create-job) should be followed to [select and insert]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) such a Workflow into the new [Job being designed]({{ interface_url }}/jobs-designer/overview/). 
 
-The next steps consist in finding the previously-run SCF job via the aforementioned ["Select Parent" option](../../jobs-designer/actions-header-menu/select-parent.md), and in selecting that job in order to prepend its results as a restart precursor to the new NSCF job being created.  
+The next steps consist in finding the previously-run SCF job via the aforementioned ["Select Parent" option]({{ interface_url }}/jobs-designer/actions-header-menu/select-parent/), and in selecting that job in order to prepend its results as a restart precursor to the new NSCF job being created.  
 
 ## Submit Job
 

@@ -2,7 +2,7 @@
 
 Our platform includes full support for **shell scripting** [^1], that is the execution of UNIX commands inside a program to be run by the [Unix shell](../../../cli/environment.md#shell-type) as command line interpreter.
 
-Shell scripts can be edited directly via the [Command Line Interface](../../../cli/overview.md), or alternatively entered within the [editor for the unit input templates](../../../workflow-designer/unit-editor/input-templates.md) inside [Workflow Designer](../../../workflow-designer/overview.md).
+Shell scripts can be edited directly via the [Command Line Interface](../../../cli/overview.md), or alternatively entered within the [editor for the unit input templates]({{ interface_url }}/workflow-designer/unit-editor/input-templates/) inside [Workflow Designer]({{ interface_url }}/workflow-designer/overview/).
 
 ## Versions
 

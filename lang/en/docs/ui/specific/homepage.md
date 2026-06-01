@@ -53,8 +53,7 @@ them.
 
 The first option allows for the creation of simulation workflows for material
 modeling. They can be based on any of the supported theoretical [models]({{ reference_url }}/models/overview/), operated under the associated computational
-[methods]({{ reference_url }}/methods/overview/) and [applications](
-../../software-directory/overview.md).
+[methods]({{ reference_url }}/methods/overview/) and [applications]({{ guide_url }}/software-directory/overview/).
 
 
 !!!note "Note: labeling of options"
@@ -86,8 +85,8 @@ Here, the possibility to design new computational workflows is offered.
 
 For example, our platform supports the [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/) (DFT) theoretical framework for
 executing electronic structure calculations, as implemented by the
-[Quantum ESPRESSO](../../software-directory/modeling/quantum-espresso/overview.md)
-or [VASP](../../software-directory/modeling/vasp/overview.md) applications.
+[Quantum ESPRESSO]({{ guide_url }}/software-directory/modeling/quantum-espresso/overview/)
+or [VASP]({{ guide_url }}/software-directory/modeling/vasp/overview/) applications.
 Plans are under way to expand the offer to new atomistic simulation approaches,
 such as the classical Molecular Dynamics and Multi-scale techniques.
 
@@ -116,8 +115,7 @@ Alternatively, the [Remote Desktop environment](
 The Machine Learning functionality offered by our platform can be accessed as
 the second main option. Such functionality affords for the building of
 data-driven statistical models, based on results of materials simulations. The
-techniques implemented in our platform are the object of a [dedicated tutorial](
-../../tutorials/ml/train-ml-model.md).
+techniques implemented in our platform are the object of a [dedicated tutorial]({{ guide_url }}/tutorials/ml/overview/).
 
 Machine Learning allows to predict new material properties by applying
 previously-trained models. In addition, new models can be trained by designing

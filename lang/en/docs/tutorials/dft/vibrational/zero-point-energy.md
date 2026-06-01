@@ -7,11 +7,11 @@ This page explains how to run a [zero point energy]({{ reference_url }}/properti
 
 ## Create Job
 
-Silicon in its cubic-diamond crystal structure is the [default material]({{ reference_url }}/materials/default/) that is shown on [new job creation](../../../jobs-designer/overview.md), unless this default was [changed](../../../entities-general/actions/set-default.md) by the user following [account]({{ reference_url }}/accounts/overview/) creation. If silicon is still the default choice, it will as such be automatically loaded at the moment of the [opening](../../../jobs/actions/create.md) of [Job Designer](../../../jobs-designer/overview.md).
+Silicon in its cubic-diamond crystal structure is the [default material]({{ reference_url }}/materials/default/) that is shown on [new job creation]({{ interface_url }}/jobs-designer/overview/), unless this default was [changed]({{ interface_url }}/entities-general/actions/set-default/) by the user following [account]({{ reference_url }}/accounts/overview/) creation. If silicon is still the default choice, it will as such be automatically loaded at the moment of the [opening]({{ interface_url }}/jobs/actions/create/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/).
 
 ## Choose Workflow
 
-[Workflows]({{ reference_url }}/workflows/overview/) for calculating the Zero Point Energy through [VASP](../../../software-directory/modeling/vasp/overview.md) can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/workflow-tab.md). 
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the Zero Point Energy through [VASP](../../../software-directory/modeling/vasp/overview.md) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/workflow-tab/). 
 
 ## Examine Input File	
 
@@ -27,11 +27,11 @@ We explain how to perform both [structural relaxations](../addons/structural-rel
 
 ## Submit Job
 
-Before [submitting](../../../jobs/actions/run.md) the [Job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein.  Silicon is a small structure, so four CPUs and one minute of calculation runtime should be sufficient.
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [Job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein.  Silicon is a small structure, so four CPUs and one minute of calculation runtime should be sufficient.
 
 ## Examine Results
 
-Once the Job execution is finished, switching to the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md) will show the results of the simulation, including a card titled "Zero Point Energy" that displays the value of this [property]({{ reference_url }}/properties/overview/) for the material in question. 
+Once the Job execution is finished, switching to the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/) will show the results of the simulation, including a card titled "Zero Point Energy" that displays the value of this [property]({{ reference_url }}/properties/overview/) for the material in question. 
 
 The larger its value, the more critical it becomes to include the zero point energy in ab-initio thermodynamic calculations performed at zero temperature.
 

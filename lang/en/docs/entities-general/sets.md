@@ -6,19 +6,19 @@ There are two types of sets, **unordered** and **ordered**. As the names imply, 
 
 ## Change Type
 
-The type of entity set can be changed following [these instructions]({{ guide_url }}/entities-general/actions/change-set-type/).
+The type of entity set can be changed following [these instructions]({{ interface_url }}/entities-general/actions/change-set-type/).
 
 ## Change Order
 
-The order of entities inside an ordered set can be adjusted following [these instructions]({{ guide_url }}/entities-general/actions/set-entity-index/).
+The order of entities inside an ordered set can be adjusted following [these instructions]({{ interface_url }}/entities-general/actions/set-entity-index/).
 
 ## Inspect Contents
  
-Following the [creation]({{ guide_url }}/entities-general/actions/create-sets/) of a new Set, the user can [open it]({{ guide_url }}/entities-general/actions/open-edit/) to inspect its contents. 
+Following the [creation]({{ interface_url }}/entities-general/actions/create-sets/) of a new Set, the user can [open it]({{ interface_url }}/entities-general/actions/open-edit/) to inspect its contents. 
 
 ## Move Contents
 
-Entities (and other Sets as well) can be moved to Sets following [these instructions]({{ guide_url }}/entities-general/actions/move-to-sets/).
+Entities (and other Sets as well) can be moved to Sets following [these instructions]({{ interface_url }}/entities-general/actions/move-to-sets/).
 
 ## Nested Structure
 

@@ -12,7 +12,7 @@ The Data Lifecycle is composed primarily of the following three steps. The reade
 
 ## 1. Entity Structured Data Creation
 
-The [actions]({{ guide_url }}/entities-general/actions/overview/) performed by the user in the Web Interface lead to the creation of entity-related [structured data](../data-structured/overview.md) in the corresponding [account-owned collections]({{ reference_url }}/accounts/collections/), stored within the database. [Jobs]({{ data_url }}/jobs/data/) corresponding to the simulation tasks provide one such example.
+The [actions]({{ interface_url }}/entities-general/actions/overview/) performed by the user in the Web Interface lead to the creation of entity-related [structured data](../data-structured/overview.md) in the corresponding [account-owned collections]({{ reference_url }}/accounts/collections/), stored within the database. [Jobs]({{ data_url }}/jobs/data/) corresponding to the simulation tasks provide one such example.
                 
 ## 2. Execution of Simulation
 
@@ -30,4 +30,4 @@ This information is further stored as [structured data](../data-structured/overv
 
 ### 3b. Storage of Output Files as Objects
 
-All simulation output files are additionally stored in the [Object storage]({{ dev_url }}/data-in-objectstorage/overview/), in order to make them accessible to the Web Interface. This can be accomplished under the [Files Tab]({{ guide_url }}/jobs/ui/files-tab/) of [Job Viewer]({{ guide_url }}/jobs/ui/viewer/), for example.
+All simulation output files are additionally stored in the [Object storage]({{ dev_url }}/data-in-objectstorage/overview/), in order to make them accessible to the Web Interface. This can be accomplished under the [Files Tab]({{ interface_url }}/jobs/ui/files-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/), for example.

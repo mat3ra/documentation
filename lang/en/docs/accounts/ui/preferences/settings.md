@@ -7,7 +7,7 @@ Here, the user is given the opportunity to enter a suffix which will be appended
 
 ## Material Cell Type
 
-Here, user can specify primitive or conventional unit cell representation to be used by default while visualizing materials in [3D Editor]({{ guide_url }}/materials-designer/3d-editor/view/).
+Here, user can specify primitive or conventional unit cell representation to be used by default while visualizing materials in [3D Editor]({{ interface_url }}/materials-designer/3d-editor/view/).
 
 ## Default Entity Privacy
 

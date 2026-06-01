@@ -7,11 +7,11 @@ This tutorial page explains how to calculate and visualize the electronic charge
 
 ## Create job
 
-Silicon in its cubic-diamond crystal structure is the [default material]({{ reference_url }}/materials/default/) that is shown on [new job creation](../../../jobs-designer/overview.md), unless this default was [changed](../../../entities-general/actions/set-default.md) by the user following [account]({{ reference_url }}/accounts/overview/) creation. If silicon is still the default choice, it will as such be automatically loaded at the moment of the [opening](../../../jobs/actions/create.md) of [Job Designer](../../../jobs-designer/overview.md).
+Silicon in its cubic-diamond crystal structure is the [default material]({{ reference_url }}/materials/default/) that is shown on [new job creation]({{ interface_url }}/jobs-designer/overview/), unless this default was [changed]({{ interface_url }}/entities-general/actions/set-default/) by the user following [account]({{ reference_url }}/accounts/overview/) creation. If silicon is still the default choice, it will as such be automatically loaded at the moment of the [opening]({{ interface_url }}/jobs/actions/create/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/).
 
 ## Choose Workflow
 
-[Workflows]({{ reference_url }}/workflows/overview/) for calculating the electronic density mesh through [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/workflow-tab.md).
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the electronic density mesh through [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 
 ## Set Sampling in Reciprocal Space
 
@@ -23,11 +23,11 @@ We set the size of the grid of k-points to 18 x 18 x 18 in the first workflow un
 
 ## Submit Job
 
-Before [submitting](../../../jobs/actions/run.md) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein.  Silicon is a small structure, so 4 CPUs and 1 minute of calculation runtime should be sufficient.
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein.  Silicon is a small structure, so 4 CPUs and 1 minute of calculation runtime should be sufficient.
 
 ## Examine Results
 
-Once the computation is complete at the end of Job execution, switching to the [Files tab](../../../jobs/ui/files-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md) will show a listing of the files and directories on the system associated with the electronic density job under consideration.
+Once the computation is complete at the end of Job execution, switching to the [Files tab]({{ interface_url }}/jobs/ui/files-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/) will show a listing of the files and directories on the system associated with the electronic density job under consideration.
  
 The file that is of interest to us in this case is the aforementioned "density.xsf" output file, containing the results for the electronic charge density computation. 
 
@@ -35,13 +35,13 @@ The file that is of interest to us in this case is the aforementioned "density.x
 
 ### Open remote Desktop
 
-Following Job execution, we are now ready to visualize graphically the electron density mesh. The next step is to open a [Remote Desktop Connection](../../../remote-connection/remote-desktop.md) so that graphical interface programs for [visualization](../../../software-directory/overview.md#analysis-tools) purposes can be run. Instructions on how to open the [Remote Desktop Interface](../../../remote-connection/remote-desktop.md) starting from our [Web Interface](../../../ui/overview.md) can be found [here](../../../remote-connection/actions/open-desktop.md).
+Following Job execution, we are now ready to visualize graphically the electron density mesh. The next step is to open a [Remote Desktop Connection]({{ interface_url }}/remote-connection/remote-desktop/) so that graphical interface programs for [visualization](../../../software-directory/overview.md#analysis-tools) purposes can be run. Instructions on how to open the [Remote Desktop Interface]({{ interface_url }}/remote-connection/remote-desktop/) starting from our [Web Interface]({{ interface_url }}/ui/overview/) can be found [here]({{ interface_url }}/remote-connection/actions/open-desktop/).
 
 ### Open visualization software
 
-The next steps depend on the [analysis and visualization software](../../../software-directory/overview.md#analysis-tools) preferred by the user. We provide below two examples supported on our platform, for the cases of [XCrysden](../../../software-directory/analysis/xcrysden.md) and [VESTA](../../../software-directory/analysis/vesta.md) respectively. Instructions on how to open Applications in the Remote Desktop Environment can be retrieved [in this page](../../../remote-connection/actions-rd/open-app.md).
+The next steps depend on the [analysis and visualization software](../../../software-directory/overview.md#analysis-tools) preferred by the user. We provide below two examples supported on our platform, for the cases of [XCrysden](../../../software-directory/analysis/xcrysden.md) and [VESTA](../../../software-directory/analysis/vesta.md) respectively. Instructions on how to open Applications in the Remote Desktop Environment can be retrieved [in this page]({{ interface_url }}/remote-connection/actions-rd/open-app/).
 
-> If the [default project]({{ reference_url }}/jobs/projects/) was used for the electron charge density calculation, then the location of the "density.xsf" output file referenced in what follows will be: `/home/<username>/data/<username>/<job name>/`. Otherwise, the full path to the file is shown underneath the filename among the list of entries in the [Files tab](../../../jobs/ui/files-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md).
+> If the [default project]({{ reference_url }}/jobs/projects/) was used for the electron charge density calculation, then the location of the "density.xsf" output file referenced in what follows will be: `/home/<username>/data/<username>/<job name>/`. Otherwise, the full path to the file is shown underneath the filename among the list of entries in the [Files tab]({{ interface_url }}/jobs/ui/files-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/).
 
 ## Visualize Charge Density with XCrysden
 

@@ -5,7 +5,7 @@ render_macros: true
 
 ## Introduction
 
-In this page we review setting input flags based on the data about material(s) and elemental constitution in particular. We present the template source that can be further re-used (copied and inserted) during the [workflow design](../../workflow-designer/overview.md) stage.
+In this page we review setting input flags based on the data about material(s) and elemental constitution in particular. We present the template source that can be further re-used (copied and inserted) during the [workflow design]({{ interface_url }}/workflow-designer/overview/) stage.
 
 ## Source
 
@@ -109,6 +109,6 @@ Then the rendered output of the template would in this case consist in `ENCUT = 
 
 ### Animation
 
-In the animation below, we demonstrate how to switch between viewing the POSCAR structure file within the [Workflow Designer Interface](../../workflow-designer/unit-editor/input-templates.md), to viewing the same template as above for setting the "ENCUT" parameter, and finally its rendered output. The final result is `ENCUT =600` in this case since the material under investigation consists in the Nitrogen-containing Al2N2 structure, shown in the above POSCAR file example.
+In the animation below, we demonstrate how to switch between viewing the POSCAR structure file within the [Workflow Designer Interface]({{ interface_url }}/workflow-designer/unit-editor/input-templates/), to viewing the same template as above for setting the "ENCUT" parameter, and finally its rendered output. The final result is `ENCUT =600` in this case since the material under investigation consists in the Nitrogen-containing Al2N2 structure, shown in the above POSCAR file example.
 
 <img data-gifffer="/images/tutorials/encut_template.gif">

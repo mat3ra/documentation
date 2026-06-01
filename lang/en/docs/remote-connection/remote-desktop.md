@@ -1,6 +1,6 @@
 # Exabyte Platform via Remote Desktop
 
-A graphical **Remote Desktop (RD)** environment is also available as an option for connecting to our platform. This type of connection is recommended to users who are not familiar with the [Command Line Interface](../cli/overview.md), or want to run graphical [applications](../software-directory/overview.md) for, for example, visualizing the crystal structures output by simulations.
+A graphical **Remote Desktop (RD)** environment is also available as an option for connecting to our platform. This type of connection is recommended to users who are not familiar with the [Command Line Interface]({{ guide_url }}/cli/overview/), or want to run graphical [applications]({{ guide_url }}/software-directory/overview/) for, for example, visualizing the crystal structures output by simulations.
 
 ## Linux Environment
 
@@ -8,9 +8,9 @@ Our Remote Desktop environment is based on the CentOS Linux distribution [^1] [^
 
 ## Available Analysis Software
 
-The set of **Analysis and Visualization Software** presented [here](../software-directory/overview.md) is available under the Remote Desktop, in their Graphical User Interface versions. 
+The set of **Analysis and Visualization Software** presented [here]({{ guide_url }}/software-directory/overview/) is available under the Remote Desktop, in their Graphical User Interface versions. 
 
-We explain how to open and launch such analysis software [in this page](actions-rd/open-app.md). An example of the appearance of the Remote Desktop interface is shown in the image below, where the [VESTA](../software-directory/analysis/vesta.md) option under the corresponding access menu is highlighted.
+We explain how to open and launch such analysis software [in this page](actions-rd/open-app.md). An example of the appearance of the Remote Desktop interface is shown in the image below, where the [VESTA]({{ guide_url }}/software-directory/analysis/vesta/) option under the corresponding access menu is highlighted.
 
 !["VESTA RD"](../images/remote-connection/vesta-rd.png "VESTA RD")
 

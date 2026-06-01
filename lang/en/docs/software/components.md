@@ -2,7 +2,7 @@
 
 The concept of **"Software Application"** is related to the main **modeling engine** and associated software tools employed by the user for the design, execution and postprocessing of a [simulation Job](../jobs/overview.md), through the implementation of any of the available [computational methods](../methods/overview.md). 
 
-Each application may be comprised of one or multiple **Executables**, implementing in turn different possible computation **Flavors**. These settings can be entered within the [unit editor interface]({{ guide_url }}/workflow-designer/unit-editor/#application) of [Workflow Designer]({{ guide_url }}/workflow-designer/overview/).
+Each application may be comprised of one or multiple **Executables**, implementing in turn different possible computation **Flavors**. These settings can be entered within the [unit editor interface]({{ interface_url }}/workflow-designer/unit-editor/#application) of [Workflow Designer]({{ interface_url }}/workflow-designer/overview/).
 
 ## Executables
 

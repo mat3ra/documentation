@@ -23,7 +23,7 @@ This tutorial demonstrates the process of creating materials with vacancy point 
 !!!note "Manuscript"
     Fabian Bertoldo, Sajid Ali, Simone Manti & Kristian S. Thygesen, "Quantum point defects in 2D materials - the QPOD database", Nature, 2022. [DOI:10.1038/s41524-022-00730-w](https://doi.org/10.1038/s41524-022-00730-w){:target='_blank'}. [@Bertoldo2022; @Kohan2000]
 
-We use the [Materials Designer](../../../materials-designer/overview.md) and JupyterLite environment to create a nanoribbon of hexagonal boron nitride (h-BN) and introduce vacancy defects. The process combines the capabilities of nanoribbon creation and point defect introduction.
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) and JupyterLite environment to create a nanoribbon of hexagonal boron nitride (h-BN) and introduce vacancy defects. The process combines the capabilities of nanoribbon creation and point defect introduction.
 
 We will focus on creating a structure similar to Figure 6 from the manuscript, which demonstrates boron vacancy defects in hexagonal boron nitride:
 
@@ -31,11 +31,11 @@ We will focus on creating a structure similar to Figure 6 from the manuscript, w
 
 ## 1. Import Base Material.
 
-First, we need to import the hexagonal boron nitride (h-BN) material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md) database.
+First, we need to import the hexagonal boron nitride (h-BN) material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/) database.
 
 ### 1.1. Open Materials Designer.
 
-Navigate to [Materials Designer](../../../materials-designer/overview.md) and click on the "Input/Output" menu.
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and click on the "Input/Output" menu.
 
 ### 1.2. Import from Standata.
 
@@ -51,7 +51,7 @@ Next, we'll create a nanoribbon structure using the JupyterLite environment.
 
 ### 2.1. Launch JupyterLite Session.
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
@@ -131,7 +131,7 @@ After running both notebooks, user can visualize the structure of h-BN with the 
 ![Vacancy in h-BN](../../../images/tutorials/materials/defects/defect_point_vacancy_boron_nitride/6-wave-result.webp "Vacancy in h-BN")
 
 
-[Save or download](../../../materials-designer/header-menu/input-output.md) in Material JSON format
+[Save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) in Material JSON format
 
 ## Interactive JupyterLite Notebook.
 

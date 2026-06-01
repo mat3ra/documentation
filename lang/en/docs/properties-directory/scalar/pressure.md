@@ -14,7 +14,7 @@ where ${\boldsymbol{\sigma}}$ is the [internal stress tensor](../non-scalar/stre
 
 The average pressure can be computed as part of any [Workflow](../../workflows/overview.md) involving at least one basic "self-consistent field" (scf) total energy calculation in [DFT](../../models-directory/dft/overview.md). 
 
-It is then presented to the user, as part of the output of a [Job](../../jobs/overview.md), with the following appearance under the interface of the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ guide_url }}/jobs/ui/viewer/). Its final value is expressed in units of kilobars (kbar).
+It is then presented to the user, as part of the output of a [Job](../../jobs/overview.md), with the following appearance under the interface of the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/). Its final value is expressed in units of kilobars (kbar).
 
 <div class="clearfix">
     <center>

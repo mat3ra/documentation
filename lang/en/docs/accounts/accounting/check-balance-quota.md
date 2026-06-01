@@ -6,7 +6,7 @@ There are two ways through which both pieces of information can be accessed and 
 
 ## In Account Menu
 
-The information about both balance and quota is present in the [Account Menu]({{ guide_url }}/ui/account-menu/) as shown in the visual below.
+The information about both balance and quota is present in the [Account Menu]({{ interface_url }}/ui/account-menu/) as shown in the visual below.
 
 ![Account Snapshot](../../images/accounts/account-snapshot.png "Account Snapshot")
 
@@ -23,7 +23,7 @@ It can be seen that in both of the above panels, the information about the Balan
 
 ## In Dashboard or "Bio" Tab
 
-Furthermore, the current information about the Storage Quota across all the available supercomputing nodes can also be retrieved by itself from the main account [Dashboard]({{ guide_url }}/ui/specific/dashboard/), or alternatively from the "[Bio](../ui/bio.md)" tab of the "Account Profile" interface. In both of these cases, the typical appearance of the panel displaying such storage quota information is as shown in the below example:
+Furthermore, the current information about the Storage Quota across all the available supercomputing nodes can also be retrieved by itself from the main account [Dashboard]({{ interface_url }}/ui/specific/dashboard/), or alternatively from the "[Bio](../ui/bio.md)" tab of the "Account Profile" interface. In both of these cases, the typical appearance of the panel displaying such storage quota information is as shown in the below example:
 
 ![Storage Quota](../../images/accounts/storage-quota.png "Storage Quota")
 
