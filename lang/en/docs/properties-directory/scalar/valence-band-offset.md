@@ -28,7 +28,7 @@ Its value can be estimated using the valence band offset [workflow](../../workfl
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#valence-band-offset).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#valence-band-offset).
 
 ## Links
 

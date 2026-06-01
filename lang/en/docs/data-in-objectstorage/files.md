@@ -1,6 +1,6 @@
 # Files
 
-Simulations [data]({{ reference_url }}/data/overview/) is naturally organized in Files in order to interact and exchange information with the [simulation engines]({{ reference_url }}/software/components/). These could be **input** parameters defining the nature of the simulation, and the **output** of the calculation upon its completion. 
+Simulations [data]({{ data_url }}/data/overview/) is naturally organized in Files in order to interact and exchange information with the [simulation engines]({{ reference_url }}/software/components/). These could be **input** parameters defining the nature of the simulation, and the **output** of the calculation upon its completion. 
 
 ## Files in the Web Interface
 

@@ -42,7 +42,7 @@ Two additional energy contributions can be evaluated with Quantum ESPRESSO-based
 
 ## Schema 
 
-The JSON schema and an example representation for the total energy can be found [here](../../properties/data/list.md#total-energy), whereas that for its contributions [here](../../properties/data/list.md#total-energy-contributions).
+The JSON schema and an example representation for the total energy can be found [here]({{ data_url }}/properties/data/list/#total-energy), whereas that for its contributions [here]({{ data_url }}/properties/data/list/#total-energy-contributions).
  
 ## Links 
 

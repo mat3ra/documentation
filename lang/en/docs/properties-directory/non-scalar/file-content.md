@@ -14,7 +14,7 @@ Below, this can be observed in the results tab of the job.
 
 ## Schema
 
-The JSON schema and an example implementation can be found [here](../../properties/data/list.md#file-content)
+The JSON schema and an example implementation can be found [here]({{ data_url }}/properties/data/list/#file-content)
 
 ## Links
 

@@ -28,7 +28,7 @@ It is presented to the user with the appearance displayed below, under the inter
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#surface-energy).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#surface-energy).
 
 ## Links 
 

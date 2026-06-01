@@ -20,7 +20,7 @@ Its value can be estimated with any [bandstructure](../non-scalar/bandstructure.
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#fermi-energy).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#fermi-energy).
 
 ## Links
 

@@ -25,7 +25,7 @@ Under the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of [Job Viewer]({{
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#stress-tensor).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#stress-tensor).
 
 ## Links
 

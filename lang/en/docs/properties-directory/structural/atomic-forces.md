@@ -16,7 +16,7 @@ Under the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) within [Jobs Viewe
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#atomic-forces).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#atomic-forces).
 
 ## Links
 

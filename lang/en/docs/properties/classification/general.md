@@ -2,7 +2,7 @@
 
 ## Summary
 
-[Properties](../overview.md) are classified according to the below. We explain the terms contained in the table throughout the remainder of the present documentation page. These classification criteria complement the more general ones introduced [here]({{ reference_url }}/data/classification/).
+[Properties](../overview.md) are classified according to the below. We explain the terms contained in the table throughout the remainder of the present documentation page. These classification criteria complement the more general ones introduced [here]({{ data_url }}/data/classification/).
 
 | By refinement status |  By data type | By relation to Workflow  | By Uniqueness   | By Physical Meaning      |
 |:--------:|:-------------:|:------------------------:|:---------------:|:------------------------:|
@@ -46,7 +46,7 @@ For atomistic simulations, a descriptive property can be for example the initial
 
 ## By Relation to Uniqueness
 
-An effective way of organizing the data consists in identifying the materials themselves, rather than their properties. We do so by considering **Identifiers**, a special subset of *Descriptive* properties that helps associating each material with its ["exabyteId" keyword](../../entities-general/data.md). 
+An effective way of organizing the data consists in identifying the materials themselves, rather than their properties. We do so by considering **Identifiers**, a special subset of *Descriptive* properties that helps associating each material with its ["exabyteId" keyword]({{ data_url }}/entities-general/data/). 
 
 ### Example 
 

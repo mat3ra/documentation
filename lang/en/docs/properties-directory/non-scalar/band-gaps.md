@@ -22,7 +22,7 @@ In case the material is of indirect-gap nature, the pair of k-vectors linking th
 
 ## Schema
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#band-gaps).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#band-gaps).
 
 ## Links
 

@@ -20,9 +20,9 @@ The **Viewer** interface and its differences from Designer are highlighted [sepa
 
 The Actions section explains and provides visual examples of actions that users can perform on materials. These actions are introduced [in the following page]({{ guide_url }}/materials/actions/overview/).
 
-## [Data](data.md)
+## [Data]({{ data_url }}/materials/data/)
 
-The [Data](data.md) section contains an example of JSON representation of a material, with its detailed explanation.
+The [Data]({{ data_url }}/materials/data/) section contains an example of JSON representation of a material, with its detailed explanation.
 
 ## [Bank](bank.md)
 

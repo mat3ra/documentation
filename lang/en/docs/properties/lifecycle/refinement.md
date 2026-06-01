@@ -30,7 +30,7 @@ The [band gap]({{ reference_url }}/properties-directory/non-scalar/bandstructure
 
 The property classified as "Best" is defined as the computation of a given refined material property which has achieved the best **numerical precision**. The comparison is made with all other computations for that particular property performed across the Exabyte platform per user and by all users combined.
 
-A description of how we estimate the precision of properties can be found [in this page]({{ reference_url }}/methods/data/).  
+A description of how we estimate the precision of properties can be found [in this page]({{ data_url }}/methods/data/).  
 
 ## Appearance in User Interface
 

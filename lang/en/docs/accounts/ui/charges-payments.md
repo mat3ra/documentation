@@ -36,7 +36,7 @@ The following properties of Charges are available to be searched under the advan
 | queue |  Type of [Queue]({{ dev_url }}/infrastructure/resource/queues/) on the computing [cluster]({{ guide_url }}/pricing/service-levels/#clusters-and-premium-hardware) used for the computational task |
 | jid | A combination of the job number assigned by the task scheduler, and the machine name, as explained below. For example "142.master-production-20160630-cluster-007.exabyte.io" refers to job no. 142 executed on the cluster 007 with the machine name "master-production-20160630-cluster-007.exabyte.io" |
 | machine  |  A [Fully Qualified Domain Name] [^1] of the [cluster]({{ guide_url }}/pricing/service-levels/#clusters-and-premium-hardware) used for the computation, for example: "master-production-20160630-cluster-007.exabyte.io"  |
-| project |   [Slug]({{ reference_url }}/entities-general/data/#Slug-Representation), or computer-friendly representation of the name of the project containing the Job, in the format "<username>-project-year-month-computation". For example "demo-project-2018-10-bandstructures"   |
+| project |   [Slug]({{ data_url }}/entities-general/data/#Slug-Representation), or computer-friendly representation of the name of the project containing the Job, in the format "<username>-project-year-month-computation". For example "demo-project-2018-10-bandstructures"   |
 | type |  The type of task being charged, for example "Job"  |
 | wallDuration  | Time duration of the computation  |
 | charge |  Charge amount incurred as part of the computational task   |

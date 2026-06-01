@@ -67,16 +67,16 @@ Advanced users connecting to our CLI may [submit jobs directly through it](../jo
 
 ## Data Convention
 
-We employ a [data convention]({{ reference_url }}/data-structured/overview/) that supports storing materials, simulations and properties in an organized and easy-to-navigate manner. It is designed with collaborative access to data in mind, and has a flexible permission scheme allowing for complete privacy or wide publicity.
+We employ a [data convention]({{ data_url }}/data-structured/overview/) that supports storing materials, simulations and properties in an organized and easy-to-navigate manner. It is designed with collaborative access to data in mind, and has a flexible permission scheme allowing for complete privacy or wide publicity.
 
-We store all data about simulations and materials. Data originated from a web application is automatically organized and searchable within the web interface. Data originated on the command line is [accessible from within the web application]({{ dev_url }}/data-in-objectstorage/overview/), and can also be further imported and organized for future search and potential use in advanced analytics / data mining / machine learning applications. We further explain our approach [here]({{ reference_url }}/data/overview/).
+We store all data about simulations and materials. Data originated from a web application is automatically organized and searchable within the web interface. Data originated on the command line is [accessible from within the web application]({{ dev_url }}/data-in-objectstorage/overview/), and can also be further imported and organized for future search and potential use in advanced analytics / data mining / machine learning applications. We further explain our approach [here]({{ data_url }}/data/overview/).
 
 Find out more under the following pages:
 
-- [data convention]({{ reference_url }}/data-structured/overview/)
-- [materials data]({{ reference_url }}/materials/data/)
-- [workflows data]({{ reference_url }}/workflows/data/overview/)
-- [properties data]({{ reference_url }}/properties/data/list/)
+- [data convention]({{ data_url }}/data-structured/overview/)
+- [materials data]({{ data_url }}/materials/data/)
+- [workflows data]({{ data_url }}/workflows/data/overview/)
+- [properties data]({{ data_url }}/properties/data/list/)
 
 ## Account-related Items
 

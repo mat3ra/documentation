@@ -16,9 +16,9 @@ We have listed and described the properties available for computation on our pla
 
 We explain how properties can be classified into different categories [here](classification/overview.md).
 
-## [Data](data/overview.md)
+## [Data]({{ data_url }}/properties/data/overview/)
 
-For an example of a JSON structure-based representation of properties, and of the associated validating/descriptive schema, please consult the [Data section](data/overview.md).
+For an example of a JSON structure-based representation of properties, and of the associated validating/descriptive schema, please consult the [Data section]({{ data_url }}/properties/data/overview/).
 
 ## [Lifecycle](lifecycle/overview.md)
 

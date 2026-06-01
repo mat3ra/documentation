@@ -6,9 +6,9 @@ This section contains information about how we organize, store and apply **workf
 
 We introduce the computational sub-components of workflows, with particular attention to **subworkflows** and **units**, [in this section](components/overview.md). 
 
-## [Data](data/overview.md)
+## [Data]({{ data_url }}/workflows/data/overview/)
 
-The [Data](data/overview.md) section contains information about the structured data convention used to store workflows and their sub-components, with example JSON representations for each.
+The [Data]({{ data_url }}/workflows/data/overview/) section contains information about the structured data convention used to store workflows and their sub-components, with example JSON representations for each.
 
 ## [Templating](templating/overview.md)
 

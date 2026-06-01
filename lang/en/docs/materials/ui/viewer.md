@@ -8,7 +8,7 @@ As explained in the [general introduction](../../entities-general/ui/viewer.md),
 
 ## Allowed Adjustments
 
-Some minor adjustments, not related to the crystal structure (as an [identifying descriptive property]({{ reference_url }}/data-structured/overview/#by-relation-to-uniqueness)) , might still be performed under the Materials Viewer. These can primarily be performed under the *header* and *footer* of Viewer, both highlighted in red in the image below.
+Some minor adjustments, not related to the crystal structure (as an [identifying descriptive property]({{ data_url }}/data-structured/overview/#by-relation-to-uniqueness)) , might still be performed under the Materials Viewer. These can primarily be performed under the *header* and *footer* of Viewer, both highlighted in red in the image below.
 
 ![Materials Viewer](../../images/materials/materials-viewer.png "Materials Viewer")
 
@@ -18,7 +18,7 @@ One such permitted action is the changing of the Material's name, as it appears 
 
 ### Edit Metadata
 
-[Metadata]({{ reference_url }}/entities-general/data/#metadata) can also be added or modified for the material entry currently being inspected. For example, a general description can be written under the "Info" button <i class="zmdi zmdi-info-outline zmdi-hc-border"></i>  present towards the right-hand side of the header. Tags can inserted/edited in the footer, following the [these instructions](../../entities-general/actions/metadata.md).
+[Metadata]({{ data_url }}/entities-general/data/#metadata) can also be added or modified for the material entry currently being inspected. For example, a general description can be written under the "Info" button <i class="zmdi zmdi-info-outline zmdi-hc-border"></i>  present towards the right-hand side of the header. Tags can inserted/edited in the footer, following the [these instructions](../../entities-general/actions/metadata.md).
 
 ### Toggle Privacy
 

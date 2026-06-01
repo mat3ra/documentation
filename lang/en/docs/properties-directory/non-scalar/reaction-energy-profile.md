@@ -26,7 +26,7 @@ The highest potential energy molecular configuration across a reaction energy pr
 
 ## Schema
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#reaction-energy-profile).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#reaction-energy-profile).
 
 ## Links
 

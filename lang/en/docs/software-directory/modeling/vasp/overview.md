@@ -24,9 +24,9 @@ We introduce the different [components]({{ reference_url }}/software/components/
 
 We explain the specific aspects of [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) [here](compute-parameters.md).
 
-## [Data](data.md)
+## [Data]({{ data_url }}/software-directory/modeling/vasp/data/)
 
-The [structured representation]({{ reference_url }}/data-structured/overview/) for VASP is explained [in this page](data.md).
+The [structured representation]({{ data_url }}/data-structured/overview/) for VASP is explained [in this page]({{ data_url }}/software-directory/modeling/vasp/data/).
 
 ## Links
 

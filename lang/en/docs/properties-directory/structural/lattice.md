@@ -34,7 +34,7 @@ $$
 
 ## Schema 
 
-The JSON schema and an example representation for the properties described in this page can be found for each of the [Bravais Lattice](../../properties/data/list.md#bravais-lattice), [lattice vectors](../../properties/data/list.md#lattice-vectors), [volume](../../properties/data/list.md#volume) and [density](../../properties/data/list.md#density).
+The JSON schema and an example representation for the properties described in this page can be found for each of the [Bravais Lattice]({{ data_url }}/properties/data/list/#bravais-lattice), [lattice vectors]({{ data_url }}/properties/data/list/#lattice-vectors), [volume]({{ data_url }}/properties/data/list/#volume) and [density]({{ data_url }}/properties/data/list/#density).
 
 ## Links
 

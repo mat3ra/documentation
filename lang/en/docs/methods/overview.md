@@ -5,9 +5,9 @@ A theoretical [model](../models/overview.md) may have multiple **Methods**, or c
 !!! note "Example Model & Method"
     If we use Newtonian mechanics as Model, then the Method would be the algorithmic implementation of calculating the multiple between m and a in the `F = ma` equation.
 
-## [Structured Representation](data.md)
+## [Structured Representation]({{ data_url }}/methods/data/)
 
-We explain structured representation of a method [here](data.md).
+We explain structured representation of a method [here]({{ data_url }}/methods/data/).
 
 ## [Parameters](parameters.md)
 

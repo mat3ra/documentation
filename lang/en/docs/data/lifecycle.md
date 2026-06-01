@@ -12,7 +12,7 @@ The Data Lifecycle is composed primarily of the following three steps. The reade
 
 ## 1. Entity Structured Data Creation
 
-The [actions]({{ guide_url }}/entities-general/actions/overview/) performed by the user in the Web Interface lead to the creation of entity-related [structured data](../data-structured/overview.md) in the corresponding [account-owned collections](../accounts/collections.md), stored within the database. [Jobs](../jobs/overview.md) corresponding to the simulation tasks provide one such example.
+The [actions]({{ guide_url }}/entities-general/actions/overview/) performed by the user in the Web Interface lead to the creation of entity-related [structured data](../data-structured/overview.md) in the corresponding [account-owned collections]({{ reference_url }}/accounts/collections/), stored within the database. [Jobs]({{ data_url }}/jobs/data/) corresponding to the simulation tasks provide one such example.
                 
 ## 2. Execution of Simulation
 
@@ -24,9 +24,9 @@ Following simulation completion, the output data produced by the simulation engi
 
 ### 3a. Extraction of Properties as Structured Data
 
-The [properties](../properties/overview.md) (and/or other information) contained in the output data are subsequently [extracted](../properties/lifecycle/extractor.md) through the processing of simulation output. 
+The [properties]({{ reference_url }}/properties/overview/) (and/or other information) contained in the output data are subsequently [extracted]({{ reference_url }}/properties/lifecycle/extractor/) through the processing of simulation output. 
 
-This information is further stored as [structured data](../data-structured/overview.md) in the database, and can be [retrieved](../properties/lifecycle/retrieval.md), for example, from the Web Interface as part of the [account-owned collections](../accounts/collections.md) of entities.
+This information is further stored as [structured data](../data-structured/overview.md) in the database, and can be [retrieved]({{ reference_url }}/properties/lifecycle/retrieval/), for example, from the Web Interface as part of the [account-owned collections]({{ reference_url }}/accounts/collections/) of entities.
 
 ### 3b. Storage of Output Files as Objects
 

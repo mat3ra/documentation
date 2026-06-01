@@ -16,10 +16,10 @@ We implement Jobs as another [entity type](../entities-general/overview.md). As
 such, they have the same user interface components (with some distinct features)
 as other entities, as explained [here]({{ guide_url }}/entities-general/ui/overview/).
 
-## [Data](data.md)
+## [Data]({{ data_url }}/jobs/data/)
 
 The data convention applied for Jobs including, for example, their database
-representation is explained [in this page](data.md).
+representation is explained [in this page]({{ data_url }}/jobs/data/).
 
 ## [Status](status.md)
 

@@ -21,9 +21,9 @@ We introduce [here](actions.md) the action for uploading a custom Pseudopotentia
 
 We discuss the parameters that limit the [numerical precision](../../methods/precision.md) of the plane-wave pseudopotential method [here](precision.md).
 
-## [Structured Representation](data.md)
+## [Structured Representation]({{ data_url }}/methods-directory/pseudopotential/data/)
 
-[This page](data.md) contains an example [structured representation](../../data-structured/overview.md) for the method.
+[This page]({{ data_url }}/methods-directory/pseudopotential/data/) contains an example [structured representation]({{ data_url }}/data-structured/overview/) for the method.
 
 ## [Important Settings](important-settings.md)
 

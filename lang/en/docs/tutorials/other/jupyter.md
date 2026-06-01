@@ -43,7 +43,7 @@ When don editing, the Jupyter Notebook environment can be stopped by either clic
 
 ## Access Modified Files
 
-As explained in the [dedicated section](../../software-directory/scripting/jupyter-lab/data.md) the modified IPython files, as well as the checkpoints at each save, and the other files associated with the job can be accessed from the Dropbox folder, the job and through command-line.
+As explained in the [dedicated section]({{ data_url }}/software-directory/scripting/jupyter-lab/data/) the modified IPython files, as well as the checkpoints at each save, and the other files associated with the job can be accessed from the Dropbox folder, the job and through command-line.
 
 ## Animation
 

@@ -22,7 +22,7 @@ It is displayed under the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#zero-point-energy).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#zero-point-energy).
 
 ## Links 
 

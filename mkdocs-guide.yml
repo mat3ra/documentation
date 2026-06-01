@@ -79,6 +79,15 @@ exclude_docs: |
   index.md
   index-concepts.md
   index-dev.md
+  index-standards.md
+
+  # Data Standards site pages
+  software-directory/modeling/vasp/data.md
+  software-directory/modeling/quantum-espresso/data.md
+  software-directory/scripting/python/data.md
+  software-directory/scripting/shell/data.md
+  software-directory/scripting/jupyter-lab/data.md
+  software-directory/machine-learning/python-ml/data.md
 
 validation:
   nav:
@@ -97,6 +106,7 @@ extra:
     guide_url: https://docs.mat3ra.com/guide
     reference_url: https://docs.mat3ra.com/reference
     dev_url: https://docs.mat3ra.com/dev
+    data_url: https://docs.mat3ra.com/standards
 
 
 
@@ -469,12 +479,10 @@ nav:
             - Quantum ESPRESSO:
                 - Overview:                             software-directory/modeling/quantum-espresso/overview.md
                 - Components:                           software-directory/modeling/quantum-espresso/components.md
-                - Data:                                 software-directory/modeling/quantum-espresso/data.md
                 - Compute Parameters:                   software-directory/modeling/quantum-espresso/compute-parameters.md
             - VASP:
                 - Overview:                             software-directory/modeling/vasp/overview.md
                 - Components:                           software-directory/modeling/vasp/components.md
-                - Data:                                 software-directory/modeling/vasp/data.md
                 - Compute Parameters:                   software-directory/modeling/vasp/compute-parameters.md
             - TurboMole:                                software-directory/modeling/turbomole.md
             - LAMMPS:                                   software-directory/modeling/lammps.md
@@ -485,20 +493,16 @@ nav:
         - Scripting:
             - Shell:
                 - Overview:                             software-directory/scripting/shell/overview.md
-                - Data:                                 software-directory/scripting/shell/data.md
             - Python:
                 - Overview:                             software-directory/scripting/python/overview.md
-                - Data:                                 software-directory/scripting/python/data.md
             - Jupyter Lab:
                 - Overview:                             software-directory/scripting/jupyter-lab/overview.md
-                - Data:                                 software-directory/scripting/jupyter-lab/data.md
         - Machine Learning (ML):
             - TensorFlow:                               software-directory/machine-learning/tensorflow.md
             - Python ML:
                 - Overview:                             software-directory/machine-learning/python-ml/overview.md
                 - Components:                           software-directory/machine-learning/python-ml/components.md
                 - Workflow Structure:                   software-directory/machine-learning/python-ml/workflow-structure.md
-                - Data:                                 software-directory/machine-learning/python-ml/data.md
         - Analysis & Visualization:
             - VESTA:                                    software-directory/analysis/vesta.md
             - XCRYSDEN:                                 software-directory/analysis/xcrysden.md

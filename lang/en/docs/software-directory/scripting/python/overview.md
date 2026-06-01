@@ -6,7 +6,7 @@ Python scripting can be inserted directly via the [Command Line Interface](../..
 
 ## Data
 
-We introduce the [structured representation]({{ reference_url }}/data-structured/overview/) for python scripting [here](data.md).
+We introduce the [structured representation]({{ data_url }}/data-structured/overview/) for python scripting [here]({{ data_url }}/software-directory/scripting/python/data/).
 
 
 ## Links

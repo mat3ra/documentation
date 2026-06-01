@@ -37,6 +37,7 @@ jobs:
           python -m mkdocs build -f mkdocs-guide.yml    -d site/guide
           python -m mkdocs build -f mkdocs-concepts.yml -d site/reference
           python -m mkdocs build -f mkdocs-dev.yml      -d site/dev
+          python -m mkdocs build -f mkdocs-standards.yml -d site/standards
 
           # Fix and copy subsite homepages to root of each subsite
           fix_homepage() {

@@ -8,7 +8,7 @@ Projects can only be present at the top-level, with no possibility of creating n
 
 > Also referred to as "Accounting Slug".
 
-The [Slug](../entities-general/data.md#Slug-Representation) offers a computer-friendly representation of the name of the Project. This is relevant in the context of [Account Charges]({{ guide_url }}/accounts/ui/charges-payments/) and is used to identify a project inside each charge entry.
+The [Slug]({{ data_url }}/entities-general/data/#Slug-Representation) offers a computer-friendly representation of the name of the Project. This is relevant in the context of [Account Charges]({{ guide_url }}/accounts/ui/charges-payments/) and is used to identify a project inside each charge entry.
 
 ## Accounting
 

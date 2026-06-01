@@ -5,6 +5,7 @@ This site explains the concepts, data models, and scientific methods underlying 
 !!!tip "Other documentation sites"
     For step-by-step tutorials and tool walkthroughs, see the [Platform Guide]({{ guide_url }}/).
     For developer-focused content (REST API, CLI, infrastructure), see the [Developer Guide]({{ dev_url }}/).
+    For JSON schemas and data convention, see the [Data Standards]({{ data_url }}/).
 
 
 ## Core platform concepts
@@ -19,7 +20,6 @@ The platform organizes work around a set of interconnected entities. Each entity
 ## Materials
 
 - [Overview](materials/overview.md) — what a material is, how it is classified and stored
-- [Data schema](materials/data.md) — JSON representation of materials
 - [Classification](materials/classification/crystalline.md) — crystalline vs. non-periodic
 
 
@@ -27,7 +27,6 @@ The platform organizes work around a set of interconnected entities. Each entity
 
 - [Overview](workflows/overview.md) — structure, bank, defaults
 - [Components](workflows/components/overview.md) — subworkflows, units, maps
-- [Data](workflows/data/overview.md) — JSON schemas for workflows, subworkflows, and units
 - [Templating](workflows/templating/overview.md) — Jinja/Swig templates, Exabyte convention
 - [Add-ons](workflows/addons/overview.md) — convergence algorithms, structural relaxation
 
@@ -36,7 +35,6 @@ The platform organizes work around a set of interconnected entities. Each entity
 
 - [Overview](jobs/overview.md) — what a job is, status lifecycle
 - [Projects](jobs/projects.md) — organizing jobs into projects
-- [Data schema](jobs/data.md) — JSON representation of jobs
 
 
 ## Models & methods
@@ -73,10 +71,6 @@ Computed and measured properties extracted from simulations.
 - [Structural properties](properties-directory/structural/basis.md) — basis, lattice, symmetry, forces
 
 
-## Data practices
-
-- [Data overview](data/overview.md) — classification, lifecycle
-- [Structured data](data-structured/overview.md) — conventions and schemas
 
 
 ## Other

@@ -50,6 +50,7 @@ exclude_docs: |
   index.md
   index-guide.md
   index-concepts.md
+  index-standards.md
 
 validation:
   nav:
@@ -63,11 +64,25 @@ site_url: https://docs.mat3ra.com/dev
 site_description: "Developer-focused documentation for the Mat3ra platform: REST API, infrastructure, and data storage."
 dev_addr: "localhost:8003"
 
+theme:
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.footer
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - navigation.expand
+
 extra:
     # Cross-site URL variables (resolved by macros plugin at build time)
     guide_url: https://docs.mat3ra.com/guide
     reference_url: https://docs.mat3ra.com/reference
     dev_url: https://docs.mat3ra.com/dev
+    data_url: https://docs.mat3ra.com/standards
 
 
 

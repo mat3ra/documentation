@@ -8,19 +8,19 @@ This section contains information about the general policies we use for the hand
 - **unstructured**: non-structured data is explained in two separate locations, for data [stored on the disks]({{ dev_url }}/data-on-disk/overview/) and [stored as objects]({{ dev_url }}/data-in-objectstorage/overview/) respectively. The former is employed at runtime to store data on the disk, and the latter is used for long-term storage and data access from within the Web Interface. 
 
 !!!note "Example structured and unstructured data"
-    Unstructured data generated during calculation first resides on disk. Files containing the information can further be processed as explained in [this section](../properties/lifecycle/extractor.md), and further converted to a structured JSON-based format inside our platform. 
+    Unstructured data generated during calculation first resides on disk. Files containing the information can further be processed as explained in [this section]({{ reference_url }}/properties/lifecycle/extractor/), and further converted to a structured JSON-based format inside our platform. 
 
 ## By relation to Entities
 
 We identify the relation of the data as follows:
 
-- **materials**: information uniquely associated with a certain [material](../materials/overview.md).
-- **workflows**: information about a computational [Workflow](../workflows/overview.md) routine used to extract the data.
+- **materials**: information uniquely associated with a certain [material]({{ reference_url }}/materials/overview/).
+- **workflows**: information about a computational [Workflow]({{ reference_url }}/workflows/overview/) routine used to extract the data.
 - **other**: any other information.
 
-It is generally possible to disentangle the data about materials from that concerning the workflow that extracts the properties of such materials. The "Other" category exists for the limiting cases where such a distinction is problematic. [Properties](../properties/overview.md) represent such a case, for example. Further sub-categorization for the Properties is explained [here](../properties/classification/general.md).
+It is generally possible to disentangle the data about materials from that concerning the workflow that extracts the properties of such materials. The "Other" category exists for the limiting cases where such a distinction is problematic. [Properties]({{ reference_url }}/properties/overview/) represent such a case, for example. Further sub-categorization for the Properties is explained [here]({{ reference_url }}/properties/classification/general/).
 
-The data pertaining to each of Materials and Workflows can be related together though a [Job](../jobs/overview.md). 
+The data pertaining to each of Materials and Workflows can be related together though a [Job]({{ reference_url }}/jobs/overview/). 
 
 ## By source
 

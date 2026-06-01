@@ -24,7 +24,7 @@ The list of energy eigenvalue solutions, corresponding to each k-point in the re
 
 ## Schema
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#bandstructure).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#bandstructure).
 
 ## Links
 

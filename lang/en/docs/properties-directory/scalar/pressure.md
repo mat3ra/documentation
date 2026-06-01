@@ -2,7 +2,7 @@
 
 <span class="btn badge b-success border-50">Scalar</span> <span class="btn badge b-info border-50">Thermodynamic</span>
 
-We define the **Average Pressure** $p_{avg}$ of a Material as a **[Scalar and Physical](../../data-structured/overview.md) property** obtained from the following conventional formula.
+We define the **Average Pressure** $p_{avg}$ of a Material as a **[Scalar and Physical]({{ data_url }}/data-structured/overview/) property** obtained from the following conventional formula.
 
 $$
 p_{avg}=-\frac{1}{3} \mathrm{Tr} \hspace{1pt} {\boldsymbol{\sigma}}
@@ -28,7 +28,7 @@ It is then presented to the user, as part of the output of a [Job](../../jobs/ov
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#pressure).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#pressure).
 
 ## Links
 

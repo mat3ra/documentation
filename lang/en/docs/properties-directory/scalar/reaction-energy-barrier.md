@@ -20,7 +20,7 @@ Its value can be estimated with any [Nudged Elastic Band]({{ guide_url }}/tutori
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#reaction-energy-barrier).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#reaction-energy-barrier).
 
 ## Links
 

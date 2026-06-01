@@ -16,7 +16,7 @@ It is returned to the user as a set of vectors (one for each atom present in the
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#magnetic-moments).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#magnetic-moments).
 
 ## Links 
 

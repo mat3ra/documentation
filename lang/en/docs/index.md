@@ -25,6 +25,11 @@ and organizing results and data in a collaborative, accessible, and searchable w
 <span>REST API documentation, infrastructure details, data-on-disk layout, and developer-oriented resources.</span>
 </a>
 
+<a href="/standards/" class="grid-card">
+<strong>Data Standards</strong>
+<span>JSON schemas, data convention, and structured data representations for entities, properties, and workflows.</span>
+</a>
+
 </div>
 
 

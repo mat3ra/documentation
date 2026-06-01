@@ -16,9 +16,9 @@ Each entity has an [Owner](ownership.md) and a set of [permissions](permissions.
 
 There are interface components, and some of their respective sub-components, which are [common to all entity types]({{ guide_url }}/entities-general/ui/overview/). 
 
-## [Data](data.md)
+## [Data]({{ data_url }}/entities-general/data/)
 
-Entities are stored in a database in the form of **structured data**. Entities can also have **metadata** attached to them, in the form of descriptive tags for example. These concepts are elucidated in the following [dedicated page](data.md).
+Entities are stored in a database in the form of **structured data**. Entities can also have **metadata** attached to them, in the form of descriptive tags for example. These concepts are elucidated in the following [dedicated page]({{ data_url }}/entities-general/data/).
 
 ## [Sets](sets.md)
 

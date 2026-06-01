@@ -14,6 +14,6 @@ We introduce the concepts of an [application](components.md), and of its constit
 
 We classify software into a set of distinct categories, as narrated [in this section](classification/overview.md) of the documentation.
 
-## [Data](data.md)
+## [Data]({{ data_url }}/software/data/)
 
-We provide a list of [JSON-based structured representations](../data-structured/overview.md) for applications, and for each of their components, [in this page](data.md).
+We provide a list of [JSON-based structured representations]({{ data_url }}/data-structured/overview/) for applications, and for each of their components, [in this page]({{ data_url }}/software/data/).

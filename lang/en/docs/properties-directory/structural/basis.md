@@ -28,7 +28,7 @@ The Atomic Constraints or Selective Dynamics, specifying the constraints on the 
 
 ## Schema 
 
-The JSON schema and an example representation for the properties described in this page can be found for each of the [basis](../../properties/data/list.md#basis), [atomic elements](../../properties/data/list.md#atomic-elements), [atomic positions](../../properties/data/list.md#atomic-coordinates) and [elemental ratio](../../properties/data/list.md#elemental-ratio).
+The JSON schema and an example representation for the properties described in this page can be found for each of the [basis]({{ data_url }}/properties/data/list/#basis), [atomic elements]({{ data_url }}/properties/data/list/#atomic-elements), [atomic positions]({{ data_url }}/properties/data/list/#atomic-coordinates) and [elemental ratio]({{ data_url }}/properties/data/list/#elemental-ratio).
 
 ## Links
 

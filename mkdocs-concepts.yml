@@ -55,6 +55,23 @@ exclude_docs: |
   index.md
   index-guide.md
   index-dev.md
+  index-standards.md
+
+  # Data Standards site pages
+  data/
+  data-structured/
+  properties/data/
+  workflows/data/
+  entities-general/data.md
+  materials/data.md
+  jobs/data.md
+  models/data.md
+  methods/data.md
+  software/data.md
+  models-directory/dft/data.md
+  models-directory/machine-learning/data.md
+  methods-directory/pseudopotential/data.md
+  methods-directory/linear-regression/data.md
 
 validation:
   nav:
@@ -73,6 +90,7 @@ extra:
     guide_url: https://docs.mat3ra.com/guide
     reference_url: https://docs.mat3ra.com/reference
     dev_url: https://docs.mat3ra.com/dev
+    data_url: https://docs.mat3ra.com/standards
 
 
 
@@ -87,7 +105,6 @@ nav:
         - Lifecycle:                                    entities-general/lifecycle.md
         - Ownership:                                    entities-general/ownership.md
         - Permissions:                                  entities-general/permissions.md
-        - Data:                                         entities-general/data.md
         - Sets:                                         entities-general/sets.md
         - Bank:                                         entities-general/bank.md
         - Default:                                      entities-general/default.md
@@ -114,7 +131,6 @@ nav:
 # MATERIALS — Concepts
     - Materials:
         - Overview:                                     materials/overview.md
-        - Data:                                         materials/data.md
         - Bank:                                         materials/bank.md
         - Default:                                      materials/default.md
         - Classification:
@@ -131,11 +147,7 @@ nav:
             - Subworkflows:                             workflows/components/subworkflows.md
             - Units:                                    workflows/components/units.md
             - Maps:                                     workflows/components/maps.md
-        - Data:
-            - Overview:                                 workflows/data/overview.md
-            - Workflows:                                workflows/data/workflows.md
-            - Subworkflows:                             workflows/data/subworkflows.md
-            - Units:                                    workflows/data/units.md
+
         - Templating:
             - Overview:                                 workflows/templating/overview.md
             - Concept:                                  workflows/templating/concept.md
@@ -153,14 +165,12 @@ nav:
     - Jobs:
         - Overview:                                     jobs/overview.md
         - Projects:                                     jobs/projects.md
-        - Data:                                         jobs/data.md
         - Status:                                       jobs/status.md
 
 # MODELS
     - Models:
         - Overview:                                     models/overview.md
         - Accuracy:                                     models/accuracy.md
-        - Data:                                         models/data.md
         - Parameters:                                   models/parameters.md
         - Auxiliary Concepts:
             - Nudged Elastic Band:                       models/auxiliary-concepts/nudged-elastic-band.md
@@ -175,7 +185,6 @@ nav:
         - Overview:                                     models-directory/overview.md
         - Density Functional Theory:
             - Overview:                                 models-directory/dft/overview.md
-            - Data:                                     models-directory/dft/data.md
             - Parameters:                               models-directory/dft/parameters.md
             - Accuracy:                                 models-directory/dft/accuracy.md
             - Special Notes:                            models-directory/dft/notes.md
@@ -184,14 +193,12 @@ nav:
             - Overview:                                 models-directory/machine-learning/overview.md
             - Parameters:                               models-directory/machine-learning/parameters.md
             - Units:                                    models-directory/machine-learning/units.md
-            - Data:                                     models-directory/machine-learning/data.md
             - Example Workflow:                         models-directory/machine-learning/example-workflow.md
             - Accuracy:                                 models-directory/machine-learning/accuracy.md
 
 # METHODS
     - Methods:
         - Overview:                                     methods/overview.md
-        - Data:                                         methods/data.md
         - Parameters:                                   methods/parameters.md
         - Precision:                                    methods/precision.md
         - Auxiliary Concepts:
@@ -202,7 +209,6 @@ nav:
         - Plane-waves and Pseudopotentials:
             - Overview:                                 methods-directory/pseudopotential/overview.md
             - Default:                                  methods-directory/pseudopotential/default.md
-            - Data:                                     methods-directory/pseudopotential/data.md
             - Parameters:                               methods-directory/pseudopotential/parameters.md
             - Precision:                                methods-directory/pseudopotential/precision.md
             - Important Settings:                       methods-directory/pseudopotential/important-settings.md
@@ -210,13 +216,11 @@ nav:
         - Linear Regression:
             - Overview:                                 methods-directory/linear-regression/overview.md
             - Parameters:                               methods-directory/linear-regression/parameters.md
-            - Data:                                     methods-directory/linear-regression/data.md
 
 # SOFTWARE
     - Software:
         - Overview:                                     software/overview.md
         - Components:                                   software/components.md
-        - Data:                                         software/data.md
         - Classification:
             - Overview:                                 software/classification/overview.md
             - Analysis:                                 software/classification/analysis.md
@@ -233,11 +237,7 @@ nav:
             - Extractors:                               properties/lifecycle/extractor.md
             - Refinement:                               properties/lifecycle/refinement.md
             - Retrieval:                                properties/lifecycle/retrieval.md
-        - Data:
-            - Overview:                                 properties/data/overview.md
-            - Core:                                     properties/data/core.md
-            - List of Schemas:                          properties/data/list.md
-            - Periodic Table:                           properties/data/periodic-table.md
+
         - Classification:
             - Overview:                                 properties/classification/overview.md
             - General:                                  properties/classification/general.md
@@ -279,15 +279,7 @@ nav:
             - Inchi:                                    properties-directory/structural/inchi.md
             - Inchi Key:                                properties-directory/structural/inchi-key.md
 
-# DATA PRACTICES
-    - Data Practices:
-        - Overview:                                     data/overview.md
-        - Classification:                               data/classification.md
-        - Lifecycle:                                    data/lifecycle.md
 
-    - Data Structures:
-        - Overview:                                     data-structured/overview.md
-        - Convention:                                   data-structured/convention.md
 
 
 # SECURITY

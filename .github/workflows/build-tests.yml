@@ -47,6 +47,7 @@ jobs:
           python -m mkdocs build -f mkdocs-guide.yml    -d site/guide
           python -m mkdocs build -f mkdocs-concepts.yml -d site/reference
           python -m mkdocs build -f mkdocs-dev.yml      -d site/dev
+          python -m mkdocs build -f mkdocs-standards.yml -d site/standards
           
           # Fix and copy subsite homepages to root of each subsite
           fix_homepage() {
@@ -67,6 +68,7 @@ jobs:
           fix_homepage site/guide/index-guide/index.html         site/guide/index.html
           fix_homepage site/reference/index-concepts/index.html  site/reference/index.html
           fix_homepage site/dev/index-dev/index.html             site/dev/index.html
+          fix_homepage site/standards/index-standards/index.html  site/standards/index.html
 
       - name: Check for broken internal links
         run: python scripts/links/check-links.py site

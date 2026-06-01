@@ -1,14 +1,16 @@
-# Exabyte Data Convention
+# ESSE Data Convention
 
-Our approach towards storing and organizing structured data is based on the **Exabyte Data Convention (EDC)** explained in the present documentation. We use this convention to store and organize the information associated with the [Entities](../entities-general/overview.md) present across our platform, and their corresponding [Accounts](../accounts/overview.md) and [Permissions](../entities-general/permissions.md). The convention is designed with the aim of facilitating both the access and collaboration with regards to such entities. The fundamental practices are further elucidated in the sections below. 
+Our approach towards storing and organizing structured data is based on the **ESSE Data Convention (EDC)** explained in the present documentation. ESSE stands for Essential Source of Schemas and Examples. The corresponding schema implementations are open-source and available in the [GitHub repository](https://github.com/Exabyte-io/esse) and as a package on [PyPI](https://pypi.org/project/mat3ra-esse/).
+
+We use this convention to store and organize the information associated with the [Entities]({{ reference_url }}/entities-general/overview/) present across our platform, and their corresponding [Accounts]({{ reference_url }}/accounts/overview/) and [Permissions]({{ reference_url }}/entities-general/permissions/). The convention is designed with the aim of facilitating both the access and collaboration with regards to such entities. The fundamental practices are further elucidated in the sections below.
 
 ## JSON Representation
 
-We make use of the **JSON format** [^1] [^2] for storing **structured data** . This structured data might for example be relevant for storing information about the [entities](../entities-general/data.md) present in the [account-owned collections](../accounts/collections.md), and for storing their respective [properties](../properties/data/overview.md).
+We make use of the **JSON format** [^1] [^2] for storing **structured data** . This structured data might for example be relevant for storing information about the [entities]({{ data_url }}/entities-general/data/) present in the [account-owned collections]({{ reference_url }}/accounts/collections/), and for storing their respective [properties]({{ data_url }}/properties/data/overview/).
 
 ### Example
 
-Data included in the expandable section below shows an example **JSON representation** of a material sample of silicon and is presented to demonstrate the concept. The explanation of the keywords specific to [Material](../materials/overview.md) entity can be found [here](../materials/data.md).
+Data included in the expandable section below shows an example **JSON representation** of a material sample of silicon and is presented to demonstrate the concept. The explanation of the keywords specific to [Material]({{ reference_url }}/materials/overview/) entity can be found [here]({{ data_url }}/materials/data/).
 
 <details markdown="1">
   <summary>
@@ -26,7 +28,7 @@ In computer science, a schema [^3] is a general concept referring to how structu
 
 ## Examples
 
-Multiple **schemas** are deployed on our platform in order to describe the data. The reader is referred to the specific pages associated with the different [entities](../entities-general/data.md) and their respective [Properties](../properties/data/overview.md).
+Multiple **schemas** are deployed on our platform in order to describe the data. The reader is referred to the specific pages associated with the different [entities]({{ data_url }}/entities-general/data/) and their respective [Properties]({{ data_url }}/properties/data/overview/).
  
 ## Links
 

@@ -13,7 +13,7 @@ The different components forming the underlying architecture of our computationa
 In the above image, we apply the following conventions for labelling the interconnecting lines.
 
 - Blue lines indicate [remote connection methods]({{ guide_url }}/remote-connection/overview/) to our platform.
-- The orange lines correspond to the transfer of [structured data]({{ reference_url }}/data-structured/overview/) between the corresponding nodes.
+- The orange lines correspond to the transfer of [structured data]({{ data_url }}/data-structured/overview/) between the corresponding nodes.
 - Solid red lines are dedicated to data under [object representation](../data-in-objectstorage/overview.md).
 - Dotted red lines label the Network File System, for accessing files over the infrastructure network.
 - Finally, green lines mark the [Resource Manager](resource/overview.md) for controlling the computational resources of our platform. 
@@ -68,7 +68,7 @@ The Master Node constitutes the main entry gateway to each available computing C
 
 ## 13. [Database]({{ reference_url }}/accounts/collections/)
 
-The Database contains the various account-owned [collections]({{ reference_url }}/accounts/collections/) of [entities]({{ reference_url }}/entities-general/overview/) and their respective [properties]({{ reference_url }}/properties/overview/), stored in the form of [structured data]({{ reference_url }}/data-structured/overview/).
+The Database contains the various account-owned [collections]({{ reference_url }}/accounts/collections/) of [entities]({{ reference_url }}/entities-general/overview/) and their respective [properties]({{ reference_url }}/properties/overview/), stored in the form of [structured data]({{ data_url }}/data-structured/overview/).
 
 ## 14. [Computational Resources](compute/overview.md)
 

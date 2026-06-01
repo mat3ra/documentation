@@ -22,7 +22,7 @@ The possibility to export the graph is offered as mentioned [here]({{ guide_url 
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#density-of-states).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#density-of-states).
 
 ## Links
 

@@ -12,7 +12,7 @@ The following materials keywords are available.
 
 ### Generic Keywords
 
-Generic keywords present for all materials are described below. These can also be referred to as [descriptive properties]({{ reference_url }}/data-structured/overview/#by-relation-to-workflow).
+Generic keywords present for all materials are described below. These can also be referred to as [descriptive properties]({{ data_url }}/data-structured/overview/#by-relation-to-workflow).
 
 | Keyword    |   Description      |
 | :-------- |:----------- |
@@ -25,11 +25,11 @@ Generic keywords present for all materials are described below. These can also b
 | volume  | The volume of the unit cell of the structure, in units of angstrom^3 |
 | density | The density of the crystal structure, in units of g/cm^3 |
 | owner | The Account name which [owns]({{ reference_url }}/entities-general/ownership/) the material under consideration  |
-| tags | Descriptive [metadata]({{ reference_url }}/entities-general/data/#Metadata) tags added to the material entry by the user  |
+| tags | Descriptive [metadata]({{ data_url }}/entities-general/data/#Metadata) tags added to the material entry by the user  |
 
 ### Properties
 
-[Characteristic properties]({{ reference_url }}/data-structured/overview/#by-relation-to-workflow) present for materials after the corresponding calculation(s) are done are described below and in the [corresponding page]({{ reference_url }}/properties/overview/).
+[Characteristic properties]({{ data_url }}/data-structured/overview/#by-relation-to-workflow) present for materials after the corresponding calculation(s) are done are described below and in the [corresponding page]({{ reference_url }}/properties/overview/).
 
 | Property    |   Description      |
 | :-------- |:----------- |
