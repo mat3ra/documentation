@@ -34,10 +34,9 @@ jobs:
 
       - name: Build split sites
         run: |
-          source venv/bin/activate
-          mkdocs build -f mkdocs-guide.yml    -d site/guide
-          mkdocs build -f mkdocs-concepts.yml -d site/reference
-          mkdocs build -f mkdocs-dev.yml      -d site/dev
+          python -m mkdocs build -f mkdocs-guide.yml    -d site/guide
+          python -m mkdocs build -f mkdocs-concepts.yml -d site/reference
+          python -m mkdocs build -f mkdocs-dev.yml      -d site/dev
 
       - name: Deploy to Production (dev branch, old docs)
         if: github.ref == 'refs/heads/dev'
