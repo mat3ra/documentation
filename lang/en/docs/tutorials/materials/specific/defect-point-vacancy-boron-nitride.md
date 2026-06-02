@@ -16,7 +16,7 @@ render_macros: true
 
 # Vacancy Point Defects in Hexagonal Boron Nitride.
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates the process of creating materials with vacancy point defects, based on the work presented in the following manuscript:
 
@@ -29,15 +29,15 @@ We will focus on creating a structure similar to Figure 6 from the manuscript, w
 
 ![Vacancy in h-BN](../../../images/tutorials/materials/defects/defect_point_vacancy_boron_nitride/0-figure-from-manuscript.webp "Vacancy in h-BN")
 
-## 1. Import Base Material.
+## 2. Import Base Material
 
 First, we need to import the hexagonal boron nitride (h-BN) material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/) database.
 
-### 1.1. Open Materials Designer.
+### 2.1. Open Materials Designer
 
 Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and click on the "Input/Output" menu.
 
-### 1.2. Import from Standata.
+### 2.2. Import from Standata
 
 1. Select "Import from Standata" in the Input/Output menu
 2. In the search box, enter "Boron Nitride"
@@ -45,17 +45,17 @@ Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview
 
 ![Standata h-BN Import](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/standata-import-bn.png "Standata h-BN Import")
 
-## 2. Create h-BN Nanoribbon.
+## 3. Create h-BN Nanoribbon
 
 Next, we'll create a nanoribbon structure using the JupyterLite environment.
 
-### 2.1. Launch JupyterLite Session.
+### 3.1. Launch JupyterLite Session
 
 Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
-### 2.2. Open and Configure Nanoribbon Notebook.
+### 3.2. Open and Configure Nanoribbon Notebook
 
 Find and open `create_nanoribbon.ipynb` in the list of notebooks. Edit the nanoribbon parameters in section 1.1 of the notebook:
 
@@ -73,11 +73,11 @@ EDGE_TYPE = "zigzag" # "zigzag" or "armchair"
 
 ![Nanoribbon Parameters](../../../images/tutorials/materials/defects/defect_point_vacancy_boron_nitride/2-jl-nb-setup-nanoribbon.webp "Nanoribbon Parameters")
 
-### 2.3. Run the Notebook.
+### 3.3. Run the Notebook
 
 Run the notebook by clicking `Run` > `Run All` in the top menu. This will create a nanoribbon structure from the imported h-BN material.
 
-### 2.4. Review Nanoribbon in Materials Designer.
+### 3.4. Review Nanoribbon in Materials Designer
 
 After the notebook completes:
 
@@ -88,11 +88,11 @@ After the notebook completes:
 ![Nanoribbon Preview](../../../images/tutorials/materials/defects/defect_point_vacancy_boron_nitride/3-wave-preview-nanoribbon.webp "Nanoribbon Preview")
 
 
-## 3. Create the Vacancy Defect.
+## 4. Create the Vacancy Defect
 
 After creating the nanoribbon, we'll introduce the vacancy defect using the point defect notebook.
 
-### 3.1. Open Point Defect Notebook.
+### 4.1. Open Point Defect Notebook
 
 Open `create_point_defect.ipynb` and modify the defect configuration parameters:
 
@@ -118,13 +118,13 @@ The configuration specifies:
 
 ![Point Defect Parameters](../../../images/tutorials/materials/defects/defect_point_vacancy_boron_nitride/4-jl-nb-setup-point-defect.webp "Point Defect Parameters")
 
-### 3.2. Run the Notebook.
+### 4.2. Run the Notebook
 
 Click `Run` > `Run All` in the top menu to run the notebook and preview the results.
 
 ![Review the Results](../../../images/tutorials/materials/defects/defect_point_vacancy_boron_nitride/5-jl-result-preview.webp "Review the Results")
 
-## 4. Save the Material.
+## 5. Save the Material
 
 After running both notebooks, user can visualize the structure of h-BN with the vacancy defect in the Materials Designer 3D viewer.
 
@@ -133,7 +133,7 @@ After running both notebooks, user can visualize the structure of h-BN with the 
 
 [Save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) in Material JSON format
 
-## Interactive JupyterLite Notebook.
+## 6. Interactive JupyterLite Notebook
 
 The following JupyterLite notebooks demonstrate the complete process. Select "Run" > "Run All Cells".
 
@@ -145,5 +145,5 @@ The following JupyterLite notebooks demonstrate the complete process. Select "Ru
 {% endwith %}
 {% endwith %}
 
-## References.
+## 7. References
 

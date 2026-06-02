@@ -16,29 +16,31 @@ render_macros: true
 
 # Substitutional Point Defects in Graphene (Band Structure)
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates the calculation of the band structure for graphene with vacancy and N substitutions, reproducing results from the following manuscript:
 
 !!!note "Manuscript"
     Yoshitaka Fujimoto and Susumu Saito, "Formation, stabilities, and electronic properties of nitrogen defects in graphene", Physical Review B, 2011. [DOI: 10.1103/PhysRevB.84.245446](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.84.245446){:target='_blank'}. [@Yoshitaka2011]
 
-This tutorial builds upon the [Substitutional Point Defects in Graphene](defect-point-substitution-graphene.md) tutorial, where we created the N-doped graphene structure. Here, we calculate its electronic band structure using Quantum ESPRESSO and compare with the published results.
+This tutorial builds upon the [Substitutional Point Defects in Graphene](defect-point-substitution-graphene.md) tutorial, where the N-doped graphene structure is created. Here, the electronic band structure is calculated using Quantum ESPRESSO and compared with the published results.
 
 The figure below shows the band structure and atomic structure of N-doped graphene from the manuscript (Figure 3a):
 
 ![Band Structure from Paper](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/band-structure-paper-figure.webp "Band structure and atomic structure of N-doped graphene from Fujimoto & Saito 2011, Figure 3a")
 
-The calculation uses density functional theory (DFT) with the local density approximation (LDA) and norm-conserving pseudopotentials, following the methodology described in the manuscript.
+The calculation uses Density Functional Theory (DFT) with the Local Density Approximation (LDA) and norm-conserving pseudopotentials, following the methodology described in the manuscript.
 
-## Prerequisites.
 
-Before starting this tutorial, you should:
+## 2. Prerequisites
+
+Before starting this tutorial, one of the following steps should be completed:
 
 1. Complete the [Substitutional Point Defects in Graphene](defect-point-substitution-graphene.md) tutorial to create the N-doped graphene structure, OR
 2. Have the N-doped graphene material file saved in the `uploads` folder
 
-## Workflow Overview.
+
+## 3. Workflow overview
 
 The band structure calculation workflow consists of the following steps:
 
@@ -51,16 +53,17 @@ The band structure calculation workflow consists of the following steps:
 7. **Monitor job status**: Wait for completion
 8. **Retrieve and visualize results**: Display the calculated band structure
 
-## Calculation Parameters.
 
-### Run Profiles.
+## 4. Calculation parameters
+
+### 4.1. Run profiles
 
 The notebook supports two run profiles:
 
 - **Debug mode**: Quick validation run with minimal k-point sampling and no relaxation. Completes in a few minutes.
 - **Production mode**: Paper-quality settings with structural relaxation and dense k-point sampling, following Fujimoto & Saito (2011).
 
-### DFT Parameters.
+### 4.2. DFT parameters
 
 The calculation uses the following DFT parameters (consistent with the manuscript):
 
@@ -70,13 +73,14 @@ The calculation uses the following DFT parameters (consistent with the manuscrip
 - **K-point grid** (production): 6×6×1 for SCF and relaxation
 - **K-path**: K → Γ → M → K (high-symmetry path in hexagonal Brillouin zone)
 
-### Relaxation Settings.
+### 4.3. Relaxation settings
 
 In production mode, the structure is relaxed before the band structure calculation to optimize atomic positions while maintaining the cell parameters.
 
-## Step-by-Step Instructions.
 
-### 1. Open the Notebook.
+## 5. Step-by-step instructions
+
+### 5.1. Open the notebook
 
 Navigate to the API examples repository and open the band structure calculation notebook:
 
@@ -84,7 +88,7 @@ Navigate to the API examples repository and open the band structure calculation 
 other/materials_designer/specific_examples/defect_point_substitution_graphene_simulation.ipynb
 ```
 
-### 2. Configure Parameters.
+### 5.2. Configure parameters
 
 In cell 1.2, set the run profile and material parameters:
 
@@ -103,7 +107,7 @@ MODEL_SUBTYPE = "lda"
 
 For first-time use, start with `"debug"` mode to validate the workflow. Once confirmed working, switch to `"production"` for final results.
 
-### 3. Set DFT Parameters.
+### 5.3. Set DFT parameters
 
 The specific DFT parameters are configured in cell 1.3:
 
@@ -119,9 +123,9 @@ ECUTRHO = 4 * ECUTWFC
 # K-point sampling and path (automatically set based on RUN_PROFILE)
 ```
 
-### 4. Run the Notebook.
+### 5.4. Run the notebook
 
-Execute all cells by selecting `Run` > `Run All` from the menu.
+Execute all cells by selecting *Run* > *Run All* from the menu.
 
 The notebook will:
 
@@ -132,20 +136,21 @@ The notebook will:
 5. Monitor the job status
 6. Display the results when complete
 
-### 5. Monitor Progress.
+### 5.5. Monitor progress
 
-The notebook includes automatic job monitoring with status updates. In debug mode, the calculation typically completes in 5-10 minutes. Production mode may take several hours depending on the cluster load.
+The notebook includes automatic job monitoring with status updates. In debug mode, the calculation typically completes in 5–10 minutes. Production mode may take several hours depending on the cluster load.
 
-### 6. Analyze Results.
+### 5.6. Analyze results
 
-Once the job completes, the band structure will be displayed automatically. The plot shows:
+Once the job completes, the band structure is displayed. The plot shows:
 
 - Energy bands along the K → Γ → M → K path
 - Fermi level position
 - Band gap (if present)
 - Comparison with pristine graphene (if available)
 
-## Expected Results.
+
+## 6. Expected results
 
 The calculated band structure should show:
 
@@ -154,9 +159,9 @@ The calculated band structure should show:
 - **Localized states** introduced by the nitrogen defects
 - **Band gap opening** (depending on defect configuration)
 
-### Comparison with Published Results
+### 6.1. Comparison with published results
 
-The figure below compares the band structure from the Fujimoto & Saito manuscript (left) with our calculated results (right):
+The figure below compares the band structure from the Fujimoto & Saito manuscript (left) with the calculated results (right):
 
 ![Band Structure Comparison](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/band-structure-comparison.webp "Comparison of band structure: manuscript (left) vs. calculated (right)")
 
@@ -167,11 +172,12 @@ The calculated band structure reproduces the key features from the manuscript, i
 - The electronic structure modifications due to nitrogen substitution
 - The characteristic features near the K and Γ points
 
-## Customization Options.
 
-### Modifying K-path.
+## 7. Customization options
 
-To change the k-point path for band structure calculation, edit the `KPATH` parameter in cell 1.3:
+### 7.1. Modify the K-path
+
+In order to change the k-point path for the band structure calculation, edit the `KPATH` parameter in cell 1.3:
 
 ```python
 KPATH = [
@@ -182,7 +188,7 @@ KPATH = [
 ]
 ```
 
-### Adjusting Computational Resources.
+### 7.2. Adjust computational resources
 
 Modify the compute parameters in cell 1.2:
 
@@ -192,29 +198,30 @@ QUEUE_NAME = QueueName.D  # Queue selection
 PPN = 1  # Processors per node
 ```
 
-### Adding or Removing Relaxation.
+### 7.3. Add or remove relaxation
 
-Toggle structural relaxation by changing the `ADD_RELAXATION` flag (automatically set by `RUN_PROFILE`):
+Toggle structural relaxation by changing the `ADD_RELAXATION` flag (set by `RUN_PROFILE`):
 
 ```python
 ADD_RELAXATION = True  # Enable relaxation
 RELAXATION_KGRID = [6, 6, 1]  # K-point grid for relaxation
 ```
 
-## Troubleshooting.
 
-### Material Not Found.
+## 8. Troubleshooting
+
+### 8.1. Material not found
 
 If the material is not found in the uploads folder:
 
 1. Run the [defect creation notebook](defect-point-substitution-graphene.md) first
-2. Ensure the material is saved with the exact name that is used ("N-doped Graphene")
+2. Ensure the material is saved with the exact name ("N-doped Graphene")
 3. Check that the material file is in the correct `uploads` folder
 
 
-## Interactive JupyterLite Notebook.
+## 9. Interactive JupyterLite notebook
 
-The following JupyterLite notebook demonstrates the complete workflow for calculating the band structure of N-doped graphene. Select "Run" > "Run All Cells".
+The following JupyterLite notebook demonstrates the workflow for calculating the band structure of N-doped graphene. Select *Run* > *Run All Cells*.
 
 {% with origin_url=config.extra.jupyterlite.origin_url_lab %}
 {% with notebooks_path_root=config.extra.jupyterlite.notebooks_path_root %}
@@ -224,4 +231,5 @@ The following JupyterLite notebook demonstrates the complete workflow for calcul
 {% endwith %}
 {% endwith %}
 
-## References.
+
+## 10. References

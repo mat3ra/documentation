@@ -17,7 +17,7 @@ render_macros: true
 
 # Interfaces between 3D Materials: Copper and SiO2 (Cristobalite).
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates the process of creating interfaces between 3D materials, specifically copper (Cu) and cristobalite (SiO<sub>2</sub>), based on the work presented in the following manuscript, where the electronic properties of Cu-SiO<sub>2</sub> interfaces are studied.
 
@@ -34,23 +34,23 @@ The FIG. 1. shows the interfaces with different terminations between Cu and Cris
 ![Copper on Cristobalite](../../../images/tutorials/materials/interfaces/interface_3d_3d_copper_cristobalite/0-figure-from-manuscript.webp   "Copper on Cristobalite, FIG. 1")
 
 
-## 1. Load and Preview Materials.
+## 2. Load and Preview Materials
 
 Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import copper and cristobalite materials from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 Then use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create the target structures.
 
 
-## 2. Create Interface Between Copper and Cristobalite.
+## 3. Create Interface Between Copper and Cristobalite
 
-### 2.1 Launch JupyterLite Session.
+### 2.1 Launch JupyterLite Session
 
 Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
 
-### 2.2 Open and Modify the Notebook.
+### 2.2 Open and Modify the Notebook
 
 Select the input materials with the first being the substrate (SiO₂) and the second being the film (Cu).
 
@@ -110,13 +110,13 @@ REDUCE_RESULT_CELL_TO_PRIMITIVE = True
 ![Notebook setup](../../../images/tutorials/materials/interfaces/interface_3d_3d_copper_cristobalite/1-jl-setup-notebook.webp "Notebook setup")
 
 
-### 2.3. Run the Notebook.
+### 3.3. Run the Notebook
 
 After setting the parameters, run the notebook to create the interface between Cu and SiO₂.
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
-### 2.4. View Results.
+### 3.4. View Results
 
 The generation might take some time.
 After that, the user can pass the material to the Materials Designer for further analysis.
@@ -126,7 +126,7 @@ Interface between Copper and Cristobalite with the specified parameters is shown
 ![Cu/SiO2 Interface](../../../images/tutorials/materials/interfaces/interface_3d_3d_copper_cristobalite/2-jl-result-preview.webp "Cu/SiO2 Interface")
 
 
-## 3. Pass the Material to Materials Designer.
+## 4. Pass the Material to Materials Designer
 
 The user can pass the material with the interface in the current Materials Designer environment and save it.
 
@@ -134,14 +134,14 @@ The user can pass the material with the interface in the current Materials Desig
 
 Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
-## 4. Create Interfaces with other Terminations.
+## 5. Create Interfaces with other Terminations
 
 To create interfaces with other terminations, repeat the steps 1 - 4 and change the `TERMINATION_PAIR_INDEX` parameter to `1` to get the interface with `Cu/O` termination.
 
 Or use the interactive selection of terminations by setting `IS_TERMINATIONS_SELECTION_INTERACTIVE = True`, rerunning the notebook, and selecting the desired termination from the list. 
 
 
-## Interactive JupyterLite Notebook.
+## 6. Interactive JupyterLite Notebook
 
 The interactive JupyterLite notebook for creating interfaces between Copper and Cristobalite is embedded below. To run the notebook, click on the "Run All" button.
 
@@ -154,4 +154,4 @@ The interactive JupyterLite notebook for creating interfaces between Copper and 
 {% endwith %}
 {% endwith %}
 
-## References.
+## 7. References

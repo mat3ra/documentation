@@ -15,7 +15,7 @@ render_macros: true
 
 # Adatom on Graphene Surface.
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates the process of creating a graphene structure with an adatom on the surface based on the work presented in the following manuscript.
 
@@ -30,7 +30,7 @@ The image shows the adatom on the graphene surface.
 
 ![Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/me_adatom_on_hollow_graphene.webp "Fig. 1. Adatom on Graphene Surface")
 
-## 1. Load and preview Graphene structure.
+## 2. Load and preview Graphene structure
 
 First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the Graphene material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
@@ -38,15 +38,15 @@ First, we navigate to [Materials Designer]({{ interface_url }}/materials-designe
 
 Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create a graphene structure with an adatom on the surface.
 
-## 2. Add Li adatom.
+## 3. Add Li adatom
 
-### 2.1 Launch JupyterLite Session.
+### 2.1 Launch JupyterLite Session
 
 Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
-### 2.2. Open and modify the notebook.
+### 3.2. Open and modify the notebook
 
 Next, edit `create_adatom_defect.ipynb` notebook to modify the parameters by changing values:
 
@@ -91,13 +91,13 @@ XY_SUPERCELL_MATRIX = [[4, 0], [0, 4]]  # Supercell matrix for the slab
 TERMINATION_FORMULA = None  # Stoichiometric formula of the slab termination to be used.
 ```
 
-### 2.3. Run the notebook.
+### 3.3. Run the notebook
 
 Run the notebook by selecting "Run > Run All Cells" from the menu.
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
-### 2.4. Analyze the Results.
+### 3.4. Analyze the Results
 
 After running the notebook, the Graphene structure with a Li adatom on the surface will be created.
 
@@ -105,7 +105,7 @@ The user will be able to visualize the created structure and download the corres
 
 ![Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-li.webp "Li Adatom on Graphene Surface")
 
-### 2.5. Pass the Material to the Materials Designer.
+### 3.5. Pass the Material to the Materials Designer
 
 After reviewing the results, the user can pass the material to Materials Designer for further analysis.
 
@@ -113,9 +113,9 @@ After reviewing the results, the user can pass the material to Materials Designe
 
 Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
-## 3. Add other metal adatoms.
+## 4. Add other metal adatoms
 
-### 3.1. Repeat the steps above.
+### 4.1. Repeat the steps above
 
 To create a Graphene structure with other metal adatoms, repeat the steps above by changing the `CHEMICAL_ELEMENT`, `APPORXIMATE_POSITION_ON_SURFACE`, and `DISTANCE_Z` parameters according to he values in the table 1 of the manuscript.
 Notice, that some of the adatoms have more favorable position on top or bridge sites.
@@ -229,7 +229,7 @@ DISTANCE_Z = 2.69
 
 ![Au Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-au.webp "Au Adatom on Graphene Surface")
 
-## Interactive JupiterLite Notebook.
+## 5. Interactive JupiterLite Notebook
 
 The interactive JupyterLite notebook for creating Graphene structures with metal adatoms can be accessed below. To run the notebook, click on the "Run All" button.
 
@@ -241,4 +241,4 @@ The interactive JupyterLite notebook for creating Graphene structures with metal
 {% endwith %}
 {% endwith %}
 
-## References.
+## 6. References

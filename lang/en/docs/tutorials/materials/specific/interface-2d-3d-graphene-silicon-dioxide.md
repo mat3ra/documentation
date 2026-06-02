@@ -18,7 +18,7 @@ render_macros: true
 
 # Interfaces between 2D and 3D Materials: Graphene on SiO2 (alpha-quartz).
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates the process of creating interfaces between 2D and 3D materials, specifically graphene and silicon dioxide (SiO<sub>2</sub>), based on the work presented in the following manuscript, where the electronic properties of graphene on SiO<sub>2</sub> are studied.
 
@@ -34,21 +34,21 @@ We will focus on replicating the material from FIG. 1. (b) -- with Graphene on O
 
 ![Graphene on Silicon Dioxide](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/0-figure-from-manuscript.webp "Graphene on Silicon Dioxide, FIG. 1(b)")
 
-## 1. Load and Preview Materials.
+## 2. Load and Preview Materials
 
 Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import graphene and silicon dioxide materials from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 Then use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create the target structures.
 
-## 2. Create Interface Between Graphene and Silicon Dioxide.
+## 3. Create Interface Between Graphene and Silicon Dioxide
 
-### 2.1 Launch JupyterLite Session.
+### 2.1 Launch JupyterLite Session
 
 Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
-### 2.2 Open and Modify the Notebook.
+### 2.2 Open and Modify the Notebook
 
 Select the input materials with the first being the substrate (SiO₂) and the second being the film (graphene).
 
@@ -112,14 +112,14 @@ Run the notebook to generate the interface structure between graphene and silico
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
-### 2.4. View Results.
+### 3.4. View Results
 
 The generation might take some time.
 After that, the user can pass the material to the Materials Designer for further analysis.
 
 ![Gr/SiO2 Interface](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/3-jl-result-preview.webp "Gr/SiO2 Interface")
 
-## 3. Pass the Material to Materials Designer.
+## 4. Pass the Material to Materials Designer
 
 After generating the interface structure, pass the material to the Materials Designer for further analysis.
 
@@ -127,7 +127,7 @@ The interface between graphene and silicon dioxide with oxygen termination is sh
 
 ![Gr/SiO2 Interface](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/4-wave-result-material.webp "Gr/SiO2 Interface")
 
-## Interactive JupyterLite Notebook.
+## 5. Interactive JupyterLite Notebook
 
 
 The interactive JupyterLite notebook for creating interfaces between graphene and silicon dioxide is embedded below. To run the notebook, click on the "Run All" button.
@@ -141,4 +141,4 @@ The interactive JupyterLite notebook for creating interfaces between graphene an
 {% endwith %}
 {% endwith %}
 
-## References.
+## 6. References

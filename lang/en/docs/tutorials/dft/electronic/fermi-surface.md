@@ -1,41 +1,47 @@
 # Fermi Surface Calculation
 
-This page explains how to calculate the [Fermi surface]({{ reference_url }}/properties-directory/scalar/fermi-energy/) for metallic copper (Cu) lying in its equilibrium face-centred cubic (fcc) [Bravais Lattice]({{ reference_url }}/properties-directory/structural/lattice/), through the use of [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/). We will use [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) as our simulation engine for this tutorial.
+This tutorial explains how to calculate and visualize the [Fermi surface]({{ reference_url }}/properties-directory/scalar/fermi-energy/) for metallic copper (Cu) in its equilibrium face-centred cubic (fcc) [Bravais Lattice]({{ reference_url }}/properties-directory/structural/lattice/), based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/) (DFT). [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) is used as the simulation engine.
 
-!!!note "Quantum ESPRESSO version considered in this tutorial"
-    The present tutorial is written for Quantum ESPRESSO at versions 5.2.1, 5.4.0, 6.0.0 or 6.3.
+!!!note "Quantum ESPRESSO version"
+    This tutorial applies to Quantum ESPRESSO versions 5.2.1, 5.4.0, 6.0.0, 6.3, and later.
 
-## Create Job and Select Material
 
-The user should start by creating a new [Job]({{ reference_url }}/jobs/overview/), through [opening]({{ interface_url }}/jobs/actions/create/) the [Job Designer Interface]({{ interface_url }}/jobs-designer/overview/). The fcc crystal structure of copper should then be [selected and added]({{ interface_url }}/jobs-designer/actions-header-menu/select-materials/) to the new Job being designed, assuming that this structure is already present among the entries listed in the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials.
+## 1. Create a job and select the material
 
-## Choose Workflow
+Start by creating a new [Job]({{ reference_url }}/jobs/overview/) through [opening]({{ interface_url }}/jobs/actions/create/) the [Job Designer Interface]({{ interface_url }}/jobs-designer/overview/). The fcc crystal structure of copper should then be [selected and added]({{ interface_url }}/jobs-designer/actions-header-menu/select-materials/) to the new job, assuming the structure is already present in the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials.
 
-[Workflows]({{ reference_url }}/workflows/overview/) for calculating the [band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) of [materials]({{ reference_url }}/materials/overview/) with [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 
-## Set Sampling in Reciprocal Space
+## 2. Select the workflow
 
-It is critical to have a high [k-point density]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) in order to resolve enough details for the Fermi surface plot.
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the [band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) with [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) can be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). The workflow can then be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 
-The band structure workflow is composed of two [units]({{ reference_url }}/workflows/components/units/). The first unit specifies the settings for the self-consistent calculation of the energy eigenvalues and wave functions.  The second unit calculation is a non self-consistent calculation using the wave functions and charge density of the previous calculation.
 
-We set the size of the grid of k-points to 18 x 18 x 18 in the first workflow unit. This provides a dense enough k-point sampling in order to resolve the fine features present within the output of the band structure computation. The validity of this choice of k-grid size for yielding accurate results of order meV in the final energy can be verified by performing the relevant [convergence study]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/convergence/).
+## 3. Set sampling in reciprocal space
 
-## Submit Job
+A high [k-point density]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) is critical for resolving the details of the Fermi surface plot.
 
-Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and examine the [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) included therein.  Copper is a small structure, so 4 CPUs and 1 minute of calculation runtime should be sufficient.
+The band structure workflow is composed of two [units]({{ reference_url }}/workflows/components/units/). The first unit performs a self-consistent field (SCF) calculation of the energy eigenvalues and wave functions. The second unit performs a non-self-consistent calculation using the wave functions and charge density from the first step.
 
-## Examine Final Results
+The k-point grid is set to 18 × 18 × 18 in the first workflow unit. The validity of this grid size for yielding meV-level accuracy can be verified by performing a [convergence study]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/convergence/).
 
-When both [unit]({{ reference_url }}/workflows/components/units/) computations are complete at the end of Job execution, switching to the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/) will show the final [total energy]({{ reference_url }}/properties-directory/scalar/total-energy/), the [Fermi energy]({{ reference_url }}/properties-directory/scalar/fermi-energy/), and more information about each execution unit.
 
-The user can also browse the actual input and output files that are part of the calculation under the [Files Tab]({{ interface_url }}/jobs/ui/files-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/).
+## 4. Submit the job
 
-## Generate File with Fermi Surface Information
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the [Compute tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) should be reviewed to verify the [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/). Copper is a small structure, so 4 CPUs and 1 minute of calculation runtime are sufficient.
 
-Once the simulation is complete, the user should [open]({{ cli_url }}/remote-connection/actions/open-terminal/) a [Web Terminal session]({{ cli_url }}/remote-connection/web-terminal/) in order to create a file that is essential for visualizing the Fermi surface. The calculation of Fermi surface can in general be performed using the `fs.x` code, part of the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) distribution. The resulting file in `.bxsf` format can then be read and plotted using the [XCrySDen]({{ reference_url }}/software-directory/analysis/xcrysden/) analysis and visualization software.  
 
-In order to generate the post-processing bxsf file, the user should first navigate from within the [Command Line Interface]({{ cli_url }}/cli/overview/) into the [working directory]({{ cli_url }}/jobs-cli/batch-scripts/directories/) containing the simulation input and output files. Once in this directory, a new input file with the following contents should be written using any [command-line text editor]({{ reference_url }}/software-directory/development/text-editors/) (for example `nano`). This new file should be given the name `fs.in` at the moment of saving:
+## 5. Examine the results
+
+Once both [unit]({{ reference_url }}/workflows/components/units/) computations complete, the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/) displays the final [total energy]({{ reference_url }}/properties-directory/scalar/total-energy/), the [Fermi energy]({{ reference_url }}/properties-directory/scalar/fermi-energy/), and additional information about each execution unit.
+
+The actual input and output files can also be browsed under the [Files Tab]({{ interface_url }}/jobs/ui/files-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/).
+
+
+## 6. Generate the Fermi surface file
+
+Once the simulation is complete, a [Web Terminal session]({{ cli_url }}/remote-connection/web-terminal/) should be [opened]({{ cli_url }}/remote-connection/actions/open-terminal/) to create the file needed for Fermi surface visualization. The `fs.x` code, part of the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) distribution, generates a `.bxsf` file that can be plotted using [XCrySDen]({{ reference_url }}/software-directory/analysis/xcrysden/).
+
+First, navigate within the [Command Line Interface]({{ cli_url }}/cli/overview/) into the [working directory]({{ cli_url }}/jobs-cli/batch-scripts/directories/) containing the simulation files. Then, create a new input file named `fs.in` using any [command-line text editor]({{ reference_url }}/software-directory/development/text-editors/) (e.g. `nano`) with the following contents:
 
 ```bash
 &fermi
@@ -44,30 +50,30 @@ In order to generate the post-processing bxsf file, the user should first naviga
 /
 ```
 
-Afterwards, the following commands should be entered, first for [loading]({{ cli_url }}/cli/actions/modules-actions.md#load-desired-module) the appropriate Quantum ESPRESSO [module]({{ cli_url }}/cli/modules/) under the Command Line Interface [environment]({{ cli_url }}/cli/environment/), and then for running the `fs.x` executable on the previously-created `fs.in` file:
+Next, load the appropriate Quantum ESPRESSO [module]({{ cli_url }}/cli/modules/) and run the `fs.x` executable:
 
 ```bash
 module load espresso/540-i-174-impi-044
 fs.x < fs.in
-```   
+```
 
-After the end of the execution of the above commands, the user will notice a new file that has been created in the current working directory called `__prefix__fs.bxsf`. We shall use this file for the ensuing visualization of the Fermi surface with XCrySDen.
+After execution, a new file called `__prefix__fs.bxsf` appears in the current working directory.
 
-Finally, the user should close the Web Terminal session to return to the original [Web Interface]({{ interface_url }}/ui/overview/) of our platform.
+Close the Web Terminal session to return to the [Web Interface]({{ interface_url }}/ui/overview/).
 
-## Visualize Fermi Surface
 
-The next step is to [open]({{ cli_url }}/remote-connection/actions/open-desktop/) a [Remote Desktop Connection]({{ cli_url }}/remote-connection/remote-desktop/), so that graphical interface programs for [visualization purposes]({{ reference_url }}/software-directory/overview/#analysis-tools) can be run.  
+## 7. Visualize the Fermi surface
 
-The user should now find and [open]({{ cli_url }}/remote-connection/actions-rd/open-app/) the [XCrySDen]({{ reference_url }}/software-directory/analysis/xcrysden/) application.
+Open a [Remote Desktop Connection]({{ cli_url }}/remote-connection/remote-desktop/) to run graphical visualization software. Instructions for opening the Remote Desktop are available [here]({{ cli_url }}/remote-connection/actions/open-desktop/).
 
-Within XCrysden, the user should go to `File` -> `Open Structure` -> `Open BXSF`, and then navigate to the directory where the aforementioned `__prefix__fs.bxsf` file was created. This opens a graphical visualization of the Fermi surface, as portrayed in the example screenshot below.
+Find and [open]({{ cli_url }}/remote-connection/actions-rd/open-app/) the [XCrySDen]({{ reference_url }}/software-directory/analysis/xcrysden/) application. Within XCrySDen, navigate to `File` → `Open Structure` → `Open BXSF`, then browse to the directory where `__prefix__fs.bxsf` was created.
 
 ![Fermi Surface Copper](../../../images/tutorials/fermi-surface-copper.png "Fermi Surface Copper")
 
-## Animation
 
-We demonstrate the above-mentioned steps involved in the creation, execution and visualization of a Fermi Surface calculation on crystalline copper, using the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) simulation engine, in the following animation.
+## 8. Video walkthrough
+
+The animation below demonstrates the creation, execution, and visualization of a Fermi surface calculation on crystalline copper using Quantum ESPRESSO.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/isMCrrRF0F4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

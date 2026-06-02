@@ -15,7 +15,7 @@ render_macros: true
 
 # Strontium Titanate Slabs.
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates the process of creating strontium titanate (SrTiO<sub>3</sub>) slabs based on the work presented in the following manuscript, where the electronic properties of SrTiO<sub>3</sub> slabs are studied.
 
@@ -31,25 +31,25 @@ We will focus on creating SrTiO<sub>3</sub> (011) slabs with different terminati
 
 ![Strontium Titanate Slabs](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/0-figure-from-manuscript.webp "Strontium Titanate Slabs, FIG. 2.")
 
-## 1. Create Strontium Titanate Slab.
+## 2. Create Strontium Titanate Slab
 
-### 1.1. Load Strontium Titanate Material.
+### 2.1. Load Strontium Titanate Material
 
 Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the strontium titanate material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Strontium Titanate Material](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/original-material.webp "Strontium Titanate Material")
 
-### 1.2. Launch JupyterLite Session.
+### 2.2. Launch JupyterLite Session
 
 Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
-### 1.3. Open `create_slab.ipynb` notebook.
+### 2.3. Open `create_slab.ipynb` notebook
 
 Find `create_slab.ipynb` in the list of notebooks and click/double-click open it.
 
-### 1.4. Open and modify the notebook.
+### 2.4. Open and modify the notebook
 
 Next, we need to create a SrTiO<sub>3</sub> slab with the (011) orientation.
 
@@ -99,24 +99,24 @@ This will allow for symmetry breaking and correct detection for all possible ter
 
 ![Rotate Material](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/jl-setup-rotation.webp "Rotate Material")
 
-### 1.5. Run the notebook.
+### 2.5. Run the notebook
 
 After setting the parameters, run the notebook by selecting "Run > Run All Cells" from the menu.
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
 
-## 2. Analyze the Results.
+## 3. Analyze the Results
 
 After running the notebook, the slabs for different possible terminations should apper in the preview.
 
 ![Strontium Titanate Slab](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/jl-result-preview.webp "Strontium Titanate Slab")
 
-### 2.1. Select the desired termination.
+### 3.1. Select the desired termination
 
 If the interactive selection of terminations is enabled, select the desired termination from the list or change the `TERMINATION_INDEX` parameter in the notebook and rerun it.
 
-## 3. Pass the Material to Materials Designer.
+## 4. Pass the Material to Materials Designer
 
 The user can pass the material with the selected termination in the current Materials Designer environment and save it.
 
@@ -125,7 +125,7 @@ The user can pass the material with the selected termination in the current Mate
 
 Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
-## Interactive JupyterLite Notebook.
+## 5. Interactive JupyterLite Notebook
 
 The following JupyterLite notebook demonstrates the process of creating strontium titanate slabs. Select "Run" > "Run All Cells".
 
@@ -138,5 +138,5 @@ The following JupyterLite notebook demonstrates the process of creating strontiu
 {% endwith %}
 {% endwith %}
 
-## References.
+## 6. References
 

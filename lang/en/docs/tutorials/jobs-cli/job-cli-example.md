@@ -279,7 +279,7 @@ The user can view the currently submitted jobs and their statuses in CLI with th
 The reader is referred to the video below for an explanation on how to inspect the results of the above simulation under the [Web Interface]({{ interface_url }}/ui/overview/) of our platform.
 
 
-## Animation
+## 6. Animation
 
 We summarize the above-mentioned steps in the following video. 
 
@@ -291,7 +291,7 @@ We conclude by inspecting the [status of the job]({{ cli_url }}/jobs-cli/actions
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/sXKvHahZdoA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## Links
+## 7. Links
 
 [^1]: [GBRV pseudopotential library, Official Website](https://www.physics.rutgers.edu/gbrv/)
 
