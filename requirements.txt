@@ -21,7 +21,7 @@ googleapis-common-protos==1.74.0
 grpcio==1.80.0
 grpcio-status==1.80.0
 httplib2==0.22.0
-idna==3.11
+idna==3.15
 importlib_metadata==8.5.0
 Jinja2==3.1.6
 latexcodec==3.0.1
@@ -48,7 +48,7 @@ pyasn1==0.6.3
 pyasn1_modules==0.4.2
 pybtex==0.24.0
 Pygments==2.20.0
-pymdown-extensions==10.21.2
+pymdown-extensions==10.21.3
 pypandoc==1.16.2
 pyparsing==3.1.4
 python-dateutil==2.9.0.post0
