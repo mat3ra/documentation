@@ -1,6 +1,6 @@
 # Documentation
 
-Mat3ra.com is an accessible and collaborative platform for digital materials R&D. It offers a cloud-based interface for designing new materials, managing simulation workflows, performing simulations, and organizing results and data in a collaborative, accessible, and searchable way.
+Mat3ra.com is an online platform for digital materials R&D. This documentation explains the main concepts and how to use the platform.
 
 
 ## Browse by Section
