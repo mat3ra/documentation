@@ -18,7 +18,7 @@ render_macros: true
 
 # Passivation of Silicon (100) Surface.
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates how to passivate a reconstructed silicon (100) surface with hydrogen atoms, following the methodology described in the literature.
 
@@ -32,19 +32,19 @@ We will recreate the passivated surface structure shown in Fig. 8:
 
 ![Si(100) H-Passivated Surface](../../../images/tutorials/materials/passivation/passivation_surface_silicon/0-figure-from-manuscript.webp "H-Passivated Silicon (100)")
 
-## 1. Obtain the Silicon (100) Surface Structure.
+## 2. Obtain the Silicon (100) Surface Structure
 
-### 1.1. Load Base Material.
+### 2.1. Load Base Material
 
 Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the reconstructed Si(100) surface from [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Si(100) Structure](../../../images/tutorials/materials/passivation/passivation_surface_silicon/1-wave-original-material.webp "Si(100) Structure")
 
-### 1.2. Launch JupyterLite Session.
+### 2.2. Launch JupyterLite Session
 
 Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
-### 1.3. Open Modified `create_supercell.ipynb` Notebook.
+### 2.3. Open Modified `create_supercell.ipynb` Notebook
 
 Open `create_supercell.ipynb`, select input material as the Si(100) structure, and set the supercell parameters in 1.1.:
 
@@ -85,7 +85,7 @@ slab.set_coordinates(new_coordinates)
 
 ![Supercell Parameters](../../../images/tutorials/materials/passivation/passivation_surface_silicon/2-jl-setup-nb-adjust.webp "Supercell Parameters Visualization")
 
-### 1.4. Run Structure Adjustment.
+### 2.4. Run Structure Adjustment
 
 Run the notebook using "Run > Run All Cells". This will:
 
@@ -96,13 +96,13 @@ Run the notebook using "Run > Run All Cells". This will:
 
 ![Adjusted Structure](../../../images/tutorials/materials/passivation/passivation_surface_silicon/3-wave-adjusted-material.webp "Adjusted Si(100) Structure")
 
-## 2. Passivate the Surface.
+## 3. Passivate the Surface
 
-### 2.1. Open `passivate_slab.ipynb` Notebook.
+### 3.1. Open `passivate_slab.ipynb` Notebook
 
 Find and open the `passivate_slab.ipynb` notebook to add hydrogen atoms to the surface.
 
-### 2.2. Set Passivation Parameters.
+### 3.2. Set Passivation Parameters
 
 Configure the following parameters for hydrogen passivation:
 
@@ -144,7 +144,7 @@ Key parameters explained:
 
 ![Passivation Parameters](../../../images/tutorials/materials/passivation/passivation_surface_silicon/4-jl-setup-nb-passivate.webp "Passivation Parameters Visualization")
 
-### 2.3. Run Passivation.
+### 3.3. Run Passivation
 
 Run all cells in the notebook. The passivation process will:
 
@@ -154,7 +154,7 @@ Run all cells in the notebook. The passivation process will:
 
 ![Passivated Structure](../../../images/tutorials/materials/passivation/passivation_surface_silicon/5-jl-result-preview.webp "H-Passivated Si(100) Structure")
 
-## 3. Analyze Results.
+## 4. Analyze Results
 
 After running both notebooks, examine the final structure:
 
@@ -166,14 +166,14 @@ Check that:
 
 ![Final Structure](../../../images/tutorials/materials/passivation/passivation_surface_silicon/6-wave-result.webp "Final H-Passivated Si(100)")
 
-## 4. Save the Results.
+## 5. Save the Results
 
 The final structure will be automatically passed back to Materials Designer where you can:
 1. Save it in your workspace
 2. Export it in various formats
 3. Use it for further calculations
 
-## Interactive JupyterLite Notebook.
+## 6. Interactive JupyterLite Notebook
 
 The following embedded notebook demonstrates the complete process. Select "Run" > "Run All Cells".
 
@@ -185,7 +185,7 @@ The following embedded notebook demonstrates the complete process. Select "Run" 
 {% endwith %}
 {% endwith %}
 
-## Parameter Fine-tuning.
+## 7. Parameter Fine-tuning
 
 To adjust the passivation:
 
@@ -200,4 +200,4 @@ To adjust the passivation:
    - Change `SURFACE` to passivate different surfaces
    - Change `PASSIVANT` to use different passivating species
 
-## References.
+## 8. References

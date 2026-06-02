@@ -1,49 +1,44 @@
 [//]: # (This tutorial is deprecated)
 # Machine Learning: Predict New Properties
 
-In the present tutorial page, we will explore how the results of the [Train Model](train-ml-model.md) derived from [Machine Learning (ML)]({{ reference_url }}/models-directory/machine-learning/overview/) can be used to predict new material [properties]({{ reference_url }}/properties/overview/) by [linear regression]({{ reference_url }}/methods-directory/linear-regression/overview/).
+This tutorial demonstrates how the results of the [Train Model](train-ml-model.md) derived from [Machine Learning (ML)]({{ reference_url }}/models-directory/machine-learning/overview/) can be used to predict new material [properties]({{ reference_url }}/properties/overview/) by [linear regression]({{ reference_url }}/methods-directory/linear-regression/overview/).
 
-In the present example, we consider the [Electronic Band Gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) calculated in the [previous tutorial](train-ml-model.md) for the case of Si/Ge-based materials, however the general approach exposed herein can work for many different **target properties**.
+The [Electronic Band Gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) calculated in the [training tutorial](train-ml-model.md) for Si/Ge-based materials is used as the example, though the approach works for many different **target properties**.
 
-## Steps
 
-We follow the below steps, by making use of our [Web Interface]({{ interface_url }}/ui/overview/).
+## 1. Pre-requisite: trained model
 
-1. Pre-requisite: trained model
-2. Create "ML Predict" job
-3. Select trained model as workflow
-4. Select target properties
-5. Execute "ML Predict" job
-6. View results
+This tutorial assumes that an ML model in the [workflow]({{ reference_url }}/workflows/overview/) called "ml_predict" has already been trained to predict the band gap of Si/Ge-based materials, following the steps in the [training tutorial](train-ml-model.md).
 
-## 1. Pre-requisite: Trained Model
 
-The present tutorial assumes that an ML model contained in the [workflow]({{ reference_url }}/workflows/overview/) called "ml_predict" has already been trained to predict the band-gap of Si/Ge-based materials, by following the steps outlined in this [other tutorial](train-ml-model.md).
+## 2. Create the ML Predict job
 
-## 2. Create "ML Predict" Job
+A new "ML Predict" [Job]({{ reference_url }}/jobs/overview/) can be set up by following the general instructions for [creating a new Job]({{ interface_url }}/jobs-designer/overview/).
 
-The general instructions for [creating a new Job]({{ interface_url }}/jobs-designer/overview/) can be followed for setting up a new "ML Predict" [Job]({{ reference_url }}/jobs/overview/), after [opening]({{ interface_url }}/jobs/actions/create/) the relevant interface.
- 
-## 3. Select Trained Model as Workflow
- 
-The aforementioned "ml_predict" workflow should be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) as the main [Workflow]({{ interface_url }}/jobs-designer/workflow-tab/) for the "ML Predict" Job being designed, so that it can be applied to predict the properties of a new set of target [materials]({{ interface_url }}/jobs-designer/materials-tab/) similar to the ones used originally to train the model. 
 
-## 4. Select Target Properties
+## 3. Select the trained model as workflow
 
-The properties which will be predicted by a trained model are the **target properties** which have been ticked and selected under the [unit editor interface]({{ interface_url }}/workflow-designer/unit-editor/) of the "input" [unit]({{ reference_url }}/workflows/components/units/) of the "ml_predict" workflow, under the "Targets" section of the interface.
+The "ml_predict" workflow should be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) as the main [Workflow]({{ interface_url }}/jobs-designer/workflow-tab/) for the job. This applies the trained model to predict properties of new [materials]({{ interface_url }}/jobs-designer/materials-tab/) similar to those used in training.
 
-## 5. Execute "ML Predict" Job
 
-The reader should follow [these instructions]({{ interface_url }}/jobs/actions/run/) in order to finally execute the "ML Predict" job, following its creation with [Job Designer]({{ interface_url }}/jobs-designer/overview/).
+## 4. Select the target properties
 
-## 6. View Results
+The properties to be predicted are the **target properties** selected under the [unit editor]({{ interface_url }}/workflow-designer/unit-editor/) of the "input" [unit]({{ reference_url }}/workflows/components/units/) of the "ml_predict" workflow, in the "Targets" section.
 
-The newly predicted properties can finally be inspected under the [results tab]({{ interface_url }}/jobs/ui/results-tab/) of [job viewer]({{ interface_url }}/jobs/ui/viewer/).
 
-## Animation
+## 5. Submit the job
 
-In the following animation, we demonstrate how the above steps can be followed to predict the band-gap of a new set of Si/Ge-based materials, using the model trained in a [previous tutorial](train-ml-model.md). For the sake of this example, we predict the bang-gap for the Si4Ge12 stochiometric composition. The results of the ML prediction for both the direct and indirect band gaps (0.525 and 0.490
- eV respectively) are in very good agreement with the values of their direct computation using [DFT]({{ reference_url }}/models-directory/dft/overview/) (0.517 and 0.441 eV respectively).
+The "ML Predict" job can be [executed]({{ interface_url }}/jobs/actions/run/) after configuration in [Job Designer]({{ interface_url }}/jobs-designer/overview/).
+
+
+## 6. View the results
+
+The predicted properties are available under the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/).
+
+
+## 7. Video walkthrough
+
+The animation below demonstrates predicting the band gap of Si₄Ge₁₂ using the model trained in the [training tutorial](train-ml-model.md). The ML-predicted direct and indirect band gaps (0.525 and 0.490 eV) are in good agreement with the [DFT]({{ reference_url }}/models-directory/dft/overview/)-calculated values (0.517 and 0.441 eV).
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/JYz51Wq3yEo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

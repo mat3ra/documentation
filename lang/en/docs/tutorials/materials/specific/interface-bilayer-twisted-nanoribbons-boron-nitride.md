@@ -16,7 +16,7 @@ render_macros: true
 
 # Twisted Bilayer Boron Nitride (TBBN) Structure Creation.
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates the process of creating a twisted bilayer boron nitride (TBBN) structure based on the work presented in the following manuscript.
 
@@ -32,7 +32,7 @@ The image shows the twisted bilayer h-BN structure with a twist angle of 2.64° 
 
 ![Twisted Bilayer Boron Nitride](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/tbbn-paper-image.png "Twisted Bilayer Boron Nitride")
 
-## 1. Load and preview BN structure.
+## 2. Load and preview BN structure
 
 First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the BN material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
@@ -40,15 +40,15 @@ First, we navigate to [Materials Designer]({{ interface_url }}/materials-designe
 
 Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create a twisted bilayer boron nitride structure.
 
-## 2. Create bilayer with a twist angle of 2.64°.
+## 3. Create bilayer with a twist angle of 2.64°
 
-### 2.1 Launch JupyterLite Session.
+### 2.1 Launch JupyterLite Session
 
 Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
-### 2.2. Open and modify the notebook.
+### 3.2. Open and modify the notebook
 
 Next, edit `create_twisted_interface_with_nanoribbons.ipynb` notebook to modify the parameters by adding: `RIBBON_WIDTH = 50` and `RIBBON_LENGTH = 50`, `TWIST_ANGLE = 2.64`.
 Adjust the "1.1. Set up slab parameters" cell in the notebook according to:
@@ -78,34 +78,34 @@ VISUALIZE_REPETITIONS = [3, 3, 1]
 
 ![Notebook setup](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/jl-set-nb.png "Notebook setup")
 
-### 2.3. Run the Notebook.
+### 3.3. Run the Notebook
 
 After setting the parameters, run the notebook with "Run" > "Run All" option to create the twisted bilayer boron nitride structure.
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
-### 2.4. Analyze the Results.
+### 3.4. Analyze the Results
 
 After running the notebook, the user will be able to visualize the created twisted bilayer boron nitride structure.
 
 ![Review the Results](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/tbbn-result-jl.png "Review the Results")
 
-### 2.5. Pass Results to the Materials Designer.
+### 3.5. Pass Results to the Materials Designer
 
 After reviewing the results, the user can pass the material to the Materials Designer for further analysis.
 
 
 ![Result Material](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/tbbn-result-wavejs.png "Result Material")
 
-## 3. Create a TBBN structure with a twist angle of 62.64°.
+## 4. Create a TBBN structure with a twist angle of 62.64°
 
-### 3.1. Repeat the steps above.
+### 4.1. Repeat the steps above
 To create a twisted bilayer boron nitride structure with a twist angle of 62.64°, repeat the above steps 2.1 -- 2.5 with the following modifications.
  
 Set `TWIST_ANGLE = 62.64` in the "1.1. Set up slab parameters" cell in the notebook.
 
 
-### 3.2. View Results and pass to the Materials Designer.
+### 4.2. View Results and pass to the Materials Designer
 
 After running the notebook, the user will be able to visualize the created twisted bilayer boron nitride structure with a twist angle of 62.64°.
 
@@ -113,7 +113,7 @@ After reviewing the results, the user can pass the material to the Materials Des
 
 ![Twisted Bilayer Boron Nitride Structure with 62.64° Twist Angle](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/tbbn-62_64.png "Twisted Bilayer Boron Nitride Structure with 62.64° Twist Angle")
 
-## Interactive JupyterLite Notebook.
+## 5. Interactive JupyterLite Notebook
 
 The interactive JupyterLite notebook for creating the twisted bilayer boron nitride structure can be accessed below. Select "Run" > "Run All Cells" to create two materials.
 
@@ -125,5 +125,5 @@ The interactive JupyterLite notebook for creating the twisted bilayer boron nitr
 {% endwith %}
 {% endwith %}
 
-## References.
+## 6. References
 

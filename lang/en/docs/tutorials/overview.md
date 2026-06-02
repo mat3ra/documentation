@@ -1,8 +1,8 @@
 # Tutorials
 
-The sub-pages under this section contain detailed tutorials. You can find
-specific tutorial from the index below or locate the corresponding entry in the
-sidebar navigation.
+The sub-pages under this section contain detailed tutorials. A specific tutorial
+can be found from the index below or via the corresponding entry in the sidebar
+navigation.
 
 ## Table of Contents
 <!-- this index is generated using scripts/generate_index_of_sub_section.py -->

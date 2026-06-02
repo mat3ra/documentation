@@ -1,15 +1,15 @@
 # Vibrational Properties Tutorials
 
-In the present section, we introduce the most common operations supported on our platform for performing **vibrational properties** computations on [materials]({{ reference_url }}/materials/overview/), implemented through the [Density Functional Theory model]({{ reference_url }}/models-directory/dft/overview/).
+This section covers tutorials for computing **vibrational properties** of [materials]({{ reference_url }}/materials/overview/) using [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/) (DFT).
 
 ## [Zero Point Energy](zero-point-energy.md)
 
-We review the procedure for computing the [Zero Point Energy]({{ reference_url }}/properties-directory/scalar/zero-point-energy/) of crystalline samples [in this tutorial](zero-point-energy.md).
+[This tutorial](zero-point-energy.md) demonstrates how to compute the [Zero Point Energy]({{ reference_url }}/properties-directory/scalar/zero-point-energy/) of crystalline samples.
 
-## [Phonon Dispersion Curve and Density of States](phonon-dispersion-dos.md)
+## [Phonon Dispersion Curves and Density of States](phonon-dispersion-dos.md)
 
-We review the procedure for computing the [vibrational phonon dispersion curve]({{ reference_url }}/properties-directory/non-scalar/phonon-dispersions/) and [Phonon Density of States]({{ reference_url }}/properties-directory/non-scalar/phonon-dos/) of material samples [in this tutorial](phonon-dispersion-dos.md).
+[This tutorial](phonon-dispersion-dos.md) covers the computation of [phonon dispersion curves]({{ reference_url }}/properties-directory/non-scalar/phonon-dispersions/) and [Phonon Density of States]({{ reference_url }}/properties-directory/non-scalar/phonon-dos/).
 
 ## [Phonon Calculations with the Grid Method](phonons-grid.md)
 
-[This tutorial page](phonons-grid.md) explains how to calculate the [Phonon Dispersion Curves]({{ reference_url }}/properties-directory/non-scalar/phonon-dispersions/) and [Phonon Density of States]({{ reference_url }}/properties-directory/non-scalar/phonon-dos/) of materials, based on the Grid Method for the distributed computing of the lattice vibrational modes. 
+[This tutorial](phonons-grid.md) explains how to calculate phonon dispersions and density of states using the Grid Method for distributed parallel computation of lattice vibrational modes.

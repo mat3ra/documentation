@@ -3,7 +3,8 @@
 Guidance for AI coding agents working in the Mat3ra documentation
 repository. Read this alongside [`WRITING-STYLE.md`](WRITING-STYLE.md)
 and [`README.md`](README.md), which remain the canonical references for
-prose style and formatting respectively.
+prose style and formatting respectively. For running structured quality
+reviews, see [`REVIEW.md`](REVIEW.md).
 
 ## Repository at a Glance
 

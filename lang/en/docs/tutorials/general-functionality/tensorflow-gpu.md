@@ -159,7 +159,7 @@ coreClock: 1.53GHz coreCount: 80 deviceMemorySize: 15.78GiB deviceMemoryBandwidt
 In this output, we can see that a single GPU was found: an nVidia TESLA V100-SXM2-16GB. In this case, this is the GPU
 that would have been used by TensorFlow to perform its calculations.
 
-## Links
+## 4. Links
 
 [^1]: [TensorFlow Documentation](https://www.tensorflow.org/)
 

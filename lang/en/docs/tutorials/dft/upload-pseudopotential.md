@@ -1,38 +1,46 @@
-This page explains how to upload a custom pseudopotential during a simulation setup.
+# Upload a Custom Pseudopotential
 
-# Default pseudopotentials
+This page explains how to upload a custom pseudopotential during simulation setup.
 
-We have a set of default pseudopotentials available for each application. Such a set is meant to provide flexibility in choosing chemical elements and reliability of results. For Quantum ESPRESSO we choose [gbrv v1.5 potentials from Rutgers](#links). For VASP we support v5.2 and v5.4 pseudopotential sets.
 
-# Navigate into Job Designer
+## 1. Default pseudopotentials
 
-We will assume that reader knows how to navigate into the job designer and open the workflow tab (more information on that available in [quickstart](/getting-started/run-first-simulation/web-interface/) and [ui overview]({{ interface_url }}/ui/overview/).
+A set of default pseudopotentials is available for each application. The set is designed to provide flexibility in choosing chemical elements and reliability of results. For Quantum ESPRESSO, the platform uses [GBRV v1.5 potentials from Rutgers](#links). For VASP, v5.2 and v5.4 pseudopotential sets are supported.
 
-# Choose alternative pseudopotential
 
-When on the workflow tab, navigate to the "Method" section and expand the "Pseudopotential" section. You will see alist of all chemical elements that the constitute materials currently included into the job (ie. if there are 2 materials - Si FCC and Ge FCC you will see 2 entries, same will happen if there is one SiGe compound chosen as the job material).
+## 2. Navigate to Job Designer
 
-Next click on the input field (delete text inside it if needed) to see the list of available pseudopotenial options for each element. You may type text in the input field to narrow down the list (eg. type "GW" or "1.0"). The items in the list show the basename of the pseudopotential file and the full path to it (as it will be accessed during the calculation).
+This tutorial assumes familiarity with navigating into the [Job Designer]({{ interface_url }}/jobs-designer/overview/) and opening the [workflow tab]({{ interface_url }}/jobs-designer/workflow-tab/).
 
-!!! note "Name and Path"
-    Expert users can use pseudopotential name and path when editing the input for workflow units.
 
-Click on one of the items in the list to select it as the pseudopotential for the chemical element in question.
+## 3. Choose an alternative pseudopotential
 
-# Upload pseudopotential
+On the workflow tab, navigate to the *Method* section and expand the *Pseudopotential* section. A list of all chemical elements that constitute the materials currently included in the job is displayed (e.g. if there are 2 materials — Si FCC and Ge FCC — two entries appear; the same applies if a single SiGe compound is chosen as the job material).
 
-Users may upload their custom pseudopotentials like it is demonstrated in the animation below. We encourage users to correctly indicate the exchange correlation scheme and pseudopotential type during upload as this information is likely to be useful during their future work.
+Next, click the input field (delete existing text if needed) to see the list of available pseudopotential options for each element. Text can be typed in the input field to narrow down the list (e.g. type "GW" or "1.0"). The items in the list show the basename of the pseudopotential file and the full path to it (as it is accessed during the calculation).
 
-Uploaded pseudopotentials will be automatically assoticated with the corresponding element and will be available during the job runtime at the path indicated by selector item (see video below).
+!!!note "Name and Path"
+    Expert users can use the pseudopotential name and path when editing the input for workflow units.
 
-# Demonstration
+Click one of the items in the list to select it as the pseudopotential for the chemical element in question.
 
-The animation below demonstrates the user experience for choosing an alternative pseudopotential, filtering the list of available pseudopotentials, uploading a custom file and navigating to it in "Dropbox" page.
+
+## 4. Upload a pseudopotential
+
+Custom pseudopotentials can be uploaded as demonstrated in the animation below. It is recommended to correctly indicate the exchange-correlation scheme and pseudopotential type during upload, as this information is useful for future work.
+
+Uploaded pseudopotentials are associated with the corresponding element and become available during the job runtime at the path indicated by the selector item (see animation below).
+
+
+## 5. Demonstration
+
+The animation below demonstrates the process of choosing an alternative pseudopotential, filtering the list of available pseudopotentials, uploading a custom file, and navigating to it on the *Dropbox* page.
 
 <img data-gifffer="/images/tutorials/pseudo-upload-view-in-dropbox.gif"/>
 
-# Links
+
+## 6. Links
 
 1. [Quantum ESPRESSO UPF pseudopotentials list](http://www.quantum-espresso.org/pseudopotentials/)
 1. [GBRV pseudopotential set](https://www.physics.rutgers.edu/gbrv/)
-1. [Vienna ab-inito simulation package, Website](https://www.vasp.at/)
+1. [Vienna Ab-initio Simulation Package, Website](https://www.vasp.at/)

@@ -1,21 +1,16 @@
 # Machine Learning: Predict Using a Neural Network Regression Model
 
-This tutorial demonstrates how to perform predictions using
-a [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron)
-trained for regression
-using [SciKit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html).
+This tutorial demonstrates how to perform predictions using a [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) trained for regression via [Scikit-Learn](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html).
 
-!!! warning "Pre-Requisites"
-    In order to perform this tutorial, the [ML Training](train-regression-model.md) tutorial must be completed.
+!!!warning "Pre-requisite"
+    The [ML Training](train-regression-model.md) tutorial must be completed before proceeding.
 
-## 1. Acquire Data
 
-The data we use in this tutorial is taken from a [recent model](http://doi.org/10.1126/sciadv.aax5101) of small molecule
-adsorption to transition metal nanoparticles. Specifically, we use DFT-calculated values for the adsorption energy of
-·CH<sub>3</sub>, CO, and ·OH radicals to Ag, Au, and Cu nanoparticles ranging in size from 55 to 172 atoms.
+## 1. Acquire the prediction data
 
-<a href="/extra/files/data_to_predict_with.csv" download="data_to_predict_with.csv">This File</a> contains the data we
-will use in this tutorial for predictions. A sample of the first 5 lines in the file can be found below:
+The data used in this tutorial is taken from a [recent model](http://doi.org/10.1126/sciadv.aax5101) of small molecule adsorption to transition metal nanoparticles. Specifically, the dataset contains DFT-calculated descriptors of ·CH<sub>3</sub>, CO, and ·OH radicals on Ag, Au, and Cu nanoparticles ranging in size from 55 to 172 atoms.
+
+<a href="/extra/files/data_to_predict_with.csv" download="data_to_predict_with.csv">This file</a> contains the prediction data. A sample of the first 5 lines is shown below:
 
 |CE_Local_eV|ChemPot_eV|MADS_eV
 |----|---|----
@@ -24,86 +19,62 @@ will use in this tutorial for predictions. A sample of the first 5 lines in the 
 |-4.81|-4.96|-2.10
 |-4.60|-4.96|-2.10
 
-## 2. Upload the Data
 
-In order to upload data for predictions, we first click the `Dropbox` button in the [left sidebar]({{ interface_url }}/ui/left-sidebar/).
-This will bring us to the [Dropbox Page]({{ interface_url }}/jobs/ui/files-tab/). We can then click the "Upload" button, circled
-below:
+## 2. Upload the data
+
+Click the `Dropbox` button in the [left sidebar]({{ interface_url }}/ui/left-sidebar/) to navigate to the [Dropbox Page]({{ interface_url }}/jobs/ui/files-tab/). Then click **Upload**:
 
 ![Dropbox Page with Upload Button Circled](../../images/tutorials/pythonML/dropbox-page-with-upload-circled.png "Dropbox Page with Upload Button Circled")
 
-Then, when the browser's upload window appears, we navigate to where we downloaded the file in section 1, and select it
-for upload. If the upload was successful, the file will then be visible in the dropbox.
+When the browser's upload window appears, navigate to the downloaded file and select it. If successful, the file appears in the dropbox.
 
-## 3. Create the ML Job
 
-Next, we can create a new job by selecting the `Create Job` button in the [left sidebar]({{ interface_url }}/ui/left-sidebar/). This
-will bring us to a new job on the [Job Designer]({{ interface_url }}/jobs-designer/overview/) page.
+## 3. Create the ML job
 
-First, we will give the job a friendly name, such as "Python ML Tutorial Prediction" (see below). Then, we will click
-the [Actions Button]({{ interface_url }}/jobs-designer/header-menu/#Actions) (the three vertical dots in the upper-right of the job
-designer), and choose "Select Workflow."
+Create a new job by clicking `Create Job` in the [left sidebar]({{ interface_url }}/ui/left-sidebar/). Give the job a descriptive name, such as "Python ML Tutorial Prediction". Then click the [Actions Button]({{ interface_url }}/jobs-designer/header-menu/#Actions) and choose **Select Workflow**.
 
 ![Job Designer with Python Machine Learning Tutorial Name Set](../../images/tutorials/pythonML/job-designer-python-ml-predict-name.png "Job Designer with Python Machine Learning Tutorial Name Set")
 
-This will bring up the [Select Workflow]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) dialogue. We then
-search for "workflow:pyml_predict" and click on it to bring it into the job.
+In the [Select Workflow]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) dialogue, search for "workflow:pyml_predict" and select it.
 
-A diagram and detailed description of this workflow can be found
-[here]({{ reference_url }}/software-directory/machine-learning/python-ml/components/)
+A diagram and detailed description of this workflow can be found [here]({{ reference_url }}/software-directory/machine-learning/python-ml/components/).
 
-## 4. Select the Dataset
 
-The job designer changes now that our ML Predict workflow is selected. The "Materials" tab has now been replaced with
-a "Dataset" tab. Just as the "Materials" tab shows a preview of the materials the job will use, the "Dataset" tab shows
-a preview of the dataset once it is selected.
+## 4. Select the dataset
 
-To select a dataset, click the [Actions Button]({{ interface_url }}/jobs-designer/header-menu/#Actions) (the three vertical dots in
-the upper-right of the job designer) and choose "Select Dataset." This will bring up a files explorer containing all
-files presently on the dropbox. Choose the training set we uploaded earlier, "data_to_predict_with.csv."
+Once the ML Predict workflow is selected, the *Materials* tab is replaced with a *Dataset* tab. Click the [Actions Button]({{ interface_url }}/jobs-designer/header-menu/#Actions) and choose **Select Dataset**. This opens a file explorer containing all dropbox files. Select "data_to_predict_with.csv".
 
 ![Dataset Tab with Multilayer Perceptron Predictions Visible](../../images/tutorials/pythonML/dataset-tab-visible-predictions.png "Dataset Tab with Multilayer Perceptron Predictions Visible")
 
-A preview of the data then appears on the dataset tab, indicating that the data has successfully been loaded.
+A preview of the data appears on the dataset tab, confirming that the data has been loaded.
 
-## 4. Inspect the ML Workflow
 
-We now have our ML workflow selected and our dataset has been supplied.
-Select the [Workflows Tab]({{ interface_url }}/jobs-designer/workflow-tab/), and we can see our predict workflow.
+## 5. Inspect the ML workflow
 
-We can see two [subworkflows]({{ reference_url }}/workflows/components/subworkflows/) available: `Set Up the Job`
-and `Machine Learning`.
+Open the [Workflows Tab]({{ interface_url }}/jobs-designer/workflow-tab/) to view the predict workflow. Two [subworkflows]({{ reference_url }}/workflows/components/subworkflows/) are available: `Set Up the Job` and `Machine Learning`.
 
-The `Set Up the Job` subworkflow contains instructions to copy in the trained model as well as the data we have selected.
+The `Set Up the Job` subworkflow contains instructions to copy the trained model and the selected data.
 
-!!!warning "A Word of Caution"
-    The `Set Up the Job` subworkflow has been automatically configured during the training process, and is not
-    intended for modification by the user. Changing it can render the predict workflow inoperable, and can lead to
-    inaccurate prediction results. Do not modify the `Set Up the Job` subworkflow.
+!!!warning "Do not modify the setup subworkflow"
+    The `Set Up the Job` subworkflow was automatically configured during the training process. Modifying it can render the predict workflow inoperable or lead to inaccurate prediction results.
 
-The `Machine Learning` subworkflow contains the individual steps of the trained model we created previously.
+The `Machine Learning` subworkflow contains the individual steps of the previously trained model. No further configuration is required — the workflow is already trained and the prediction job is ready to submit.
 
-There is no further configuration required: the workflow is already trained, and the prediction job is ready to submit.
 
-## 6. Submit the Job
+## 6. Submit the job
 
-Click the check-mark in the upper right of the job designer, in the [Header Menu]({{ interface_url }}/jobs-designer/header-menu/) to
-save the job. We now return to the [job explorer]({{ interface_url }}/jobs/ui/explorer/) page with the job in a pre-submission
-status.
+Click the check-mark in the upper right of the job designer, in the [Header Menu]({{ interface_url }}/jobs-designer/header-menu/), to save the job. Then [run the job]({{ interface_url }}/jobs/actions/run/).
 
-We can now [run the job]({{ interface_url }}/jobs/actions/run/) and wait for it to complete.
 
-## 7. Analyze the Prediction Results
+## 7. Analyze the prediction results
 
-After a few minutes, the job will complete. We can then visit the job's [results tab]({{ interface_url }}/jobs/ui/results-tab/),
-where we will see a CSV preview of a file called `predictions.csv`. These are the row-by-row predictions generated by
-the model. Under the hood, this file is generated inside the `Model Train and Predict` unit.
+After a few minutes, the job completes. The [Results tab]({{ interface_url }}/jobs/ui/results-tab/) displays a CSV preview of `predictions.csv`, containing the row-by-row predictions generated by the model. This file is generated inside the `Model Train and Predict` unit.
 
-## Animation
+
+## 8. Video walkthrough
 
 This tutorial is demonstrated in the following animation:
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/I1JNj8ZspH4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-
