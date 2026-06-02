@@ -10,7 +10,7 @@ A set of default pseudopotentials is available for each application. The set is 
 
 ## 2. Navigate to Job Designer
 
-This tutorial assumes familiarity with navigating into the Job Designer and opening the workflow tab. More information is available in the [first simulation walkthrough](../../getting-started/run-first-simulation/web-interface.md) and the [UI overview]({{ interface_url }}/ui/overview/).
+This tutorial assumes familiarity with navigating into the [Job Designer]({{ interface_url }}/jobs-designer/overview/) and opening the [workflow tab]({{ interface_url }}/jobs-designer/workflow-tab/).
 
 
 ## 3. Choose an alternative pseudopotential
