@@ -14,9 +14,9 @@ We discuss the factors limiting the [accuracy](../../models/accuracy.md) of DFT 
 
 A comprehensive list of references reviewing the theoretical background underlying DFT is outlined [in this page](references.md), to be referred to at the reader's discretion.
 
-## [Structured Representation](data.md)
+## [Structured Representation]({{ data_url }}/models-directory/dft/data/)
 
-[This page](data.md) contains an example [structured representation](../../data-structured/overview.md) for the DFT model.
+[This page]({{ data_url }}/models-directory/dft/data/) contains an example [structured representation]({{ data_url }}/data-structured/overview/) for the DFT model.
 
 ## [Special Notes](notes.md)
 

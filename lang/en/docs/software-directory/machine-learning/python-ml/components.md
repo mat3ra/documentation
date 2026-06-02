@@ -5,11 +5,11 @@ comprised within our [Python-based](overview.md) machine learning implementation
 
 Only those components implemented on our platform to date are mentioned here, as can be inspected from the lists of
 available executables and flavors under the
-[Unit Editor Interface](../../../workflow-designer/unit-editor.md#application).
+[Unit Editor Interface]({{ interface_url }}/workflow-designer/unit-editor/#application).
 
 !!!warning "Implementation on our platform"
     The user who wishes for additional functionality to be added to our platform in future should express so via
-    a [support request](../../../ui/support.md).
+    a [support request]({{ interface_url }}/ui/support/).
 
 ## Executable
 

@@ -33,13 +33,13 @@ This tutorial demonstrates how to create a high-k metal gate stack heterostructu
     QuantumATK tutorial: [High-k Metal Gate Stack Builder](https://docs.quantumatk.com/tutorials/hkmg_builder/hkmg_builder.html) [@Muller1999; @Robertson2006]
     
 
-We use the [Materials Designer](../../../materials-designer/overview.md) to create the high-k metal gate stack as shown in the figure below.
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create the high-k metal gate stack as shown in the figure below.
 
 ![High-k Metal Gate Stack](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/original-figure.webp "High-k Metal Gate Stack")
 
 ## 1. Set Up Materials.
 
-First, navigate to Materials Designer and import from [Standata](../../../materials-designer/header-menu/input-output/standata-import.md) the following materials:
+First, navigate to Materials Designer and import from [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/) the following materials:
 
 - Silicon (Si)
 - Silicon dioxide (SiO2)
@@ -203,7 +203,7 @@ Run the notebook to add the TiN layer and complete the stack.
 
 ![Final Stack](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/wave-result-si-sio2-hfo2-tin.webp "Final Stack")
 
-The user then can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+The user then can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
 ## Interactive JupyterLite Notebook.
 

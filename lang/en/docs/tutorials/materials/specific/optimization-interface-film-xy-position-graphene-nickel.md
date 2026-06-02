@@ -37,13 +37,13 @@ We will recreate the interface structure and optimize the film position to match
 
 ### 1.1. Load Base Materials.
 
-Navigate to [Materials Designer](../../../materials-designer/overview.md) and import both graphene and nickel materials from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import both graphene and nickel materials from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Import Graphene and Ni](../../../images/materials-designer/import/import_from_standata.webp "Import Gr and Ni from Standata")
 
 ### 1.2. Launch JupyterLite Session.
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ### 1.3. Open `create_interface_with_min_strain_zsl.ipynb` notebook.
 

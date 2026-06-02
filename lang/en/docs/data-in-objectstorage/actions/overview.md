@@ -1,6 +1,6 @@
 # Files Actions
 
-We introduce here the relevant specific actions for managing [Files]({{ dev_url }}/data-in-objectstorage/files/) under the corresponding [Files Explorer](../ui/explorer.md) interface. These actions concern both the [input/output files of simulations]({{ dev_url }}/data-in-objectstorage/files/), as well as those stored within [Dropbox]({{ dev_url }}/data-in-objectstorage/dropbox/).
+We introduce here the relevant specific actions for managing [Files]({{ resources_url }}/data-in-objectstorage/files/) under the corresponding [Files Explorer](../ui/explorer.md) interface. These actions concern both the [input/output files of simulations]({{ resources_url }}/data-in-objectstorage/files/), as well as those stored within [Dropbox]({{ resources_url }}/data-in-objectstorage/dropbox/).
  
 Performing these actions can be achieved from either the [actions toolbar](../../entities-general/ui/explorer.md#actions-toolbar) or [actions drop-down](../../entities-general/ui/explorer.md#actions-dropdown) menus.
 
@@ -9,7 +9,7 @@ Performing these actions can be achieved from either the [actions toolbar](../..
     
 ## [Copy Path](copy-path.md)
 
-[In this page](copy-path.md), we explain how to copy the path of a file within the [directory structure]({{ dev_url }}/data-on-disk/directories/) of the disk where it is stored.
+[In this page](copy-path.md), we explain how to copy the path of a file within the [directory structure]({{ resources_url }}/data-on-disk/directories/) of the disk where it is stored.
 
 ## [Download](download.md)
 

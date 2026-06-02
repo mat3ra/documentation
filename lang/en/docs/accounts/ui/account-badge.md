@@ -1,6 +1,6 @@
 # Account Badge
 
-The "Account Badge" is always present at the top-right corner of any page under the [header bar]({{ guide_url }}/ui/header-footer/) and displays the general information about the Account that the user is currently logged into.
+The "Account Badge" is always present at the top-right corner of any page under the [header bar]({{ interface_url }}/ui/header-footer/) and displays the general information about the Account that the user is currently logged into.
  
 ## General Information
  
@@ -10,7 +10,7 @@ The "Account Badge" is always present at the top-right corner of any page under 
  
 ## Example for Personal Account
  
-An example of Badge for an Account of personal type is displayed in its right-hand location within the [header bar]({{ guide_url }}/ui/header-footer/) in the image below. In this example, the personal Account belongs to a user called "John Doe".
+An example of Badge for an Account of personal type is displayed in its right-hand location within the [header bar]({{ interface_url }}/ui/header-footer/) in the image below. In this example, the personal Account belongs to a user called "John Doe".
  
  ![example personal badge](../../images/accounts/example-personal-badge.png "example personal badge")
  

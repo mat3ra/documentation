@@ -1,6 +1,6 @@
 # List and Status of Clusters
 
-The available [clusters and cluster nodes]({{ dev_url }}/infrastructure/clusters/overview/) can be listed under the [Command Line Interface](../overview.md), and their statuses inspected, with the `exaclusters` and `exanodes` commands respectively. 
+The available [clusters and cluster nodes]({{ resources_url }}/infrastructure/clusters/overview/) can be listed under the [Command Line Interface](../overview.md), and their statuses inspected, with the `exaclusters` and `exanodes` commands respectively. 
 
 ## List Clusters 
 

@@ -49,7 +49,9 @@ exclude_docs: |
   # Other sites' homepages
   index.md
   index-guide.md
+  index-interface.md
   index-concepts.md
+  index-standards.md
 
 validation:
   nav:
@@ -63,11 +65,26 @@ site_url: https://docs.mat3ra.com/dev
 site_description: "Developer-focused documentation for the Mat3ra platform: REST API, infrastructure, and data storage."
 dev_addr: "localhost:8003"
 
+theme:
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.footer
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - navigation.expand
+
 extra:
     # Cross-site URL variables (resolved by macros plugin at build time)
     guide_url: https://docs.mat3ra.com/guide
+    interface_url: https://docs.mat3ra.com/interface
     reference_url: https://docs.mat3ra.com/reference
     dev_url: https://docs.mat3ra.com/dev
+    data_url: https://docs.mat3ra.com/standards
 
 
 
@@ -82,8 +99,9 @@ nav:
         - Authentication:                              rest-api/authentication.md
         - Query structure:                             rest-api/query-structure.md
         - Endpoints:                                   rest-api/endpoints.md
-        - Exabyte API client:                          rest-api/api-client.md
-        - Exabyte API examples:                        rest-api/api-examples.md
+        - API Explorer:                                rest-api/api-explorer.md
+        - API client:                          rest-api/api-client.md
+        - API examples:                        rest-api/api-examples.md
 
 # INFRASTRUCTURE
     - General Infrastructure:

@@ -1,6 +1,6 @@
 # Band Structure with Quantum ESPRESSO (HSE)
 
-This tutorial page explains how to calculate the [electronic band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/). We will be studying crystalline Silicon in the standard cubic-diamond crystal structure, and we will use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as our simulation engine.
+This tutorial page explains how to calculate the [electronic band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/). We will be studying crystalline Silicon in the standard cubic-diamond crystal structure, and we will use [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) as our simulation engine.
 
 !!!note "Quantum ESPRESSO version considered in this tutorial"
     The present tutorial is written for Quantum ESPRESSO at versions 5.2.1, 5.4.0, 6.0.0 or 6.3.
@@ -23,11 +23,11 @@ The traditional approach for computing the band structure in Quantum ESPRESSO, o
 
 A way around this problem is to manually extract the k-points generated automatically in the preceding step, together with their respective weights, and insert them individually as an explicit list inside the input script for the final HSE calculation described next. 
 
-The procedure to manually extract the k-points from the output of the previous scf calculation is performed automatically in the present subworkflow step via a [Python script](../../../software-directory/scripting/python/overview.md). This script extracts the list of k-points with their corresponding weights within the list under consideration, with the help of [Regular Expressions]({{ reference_url }}/methods-directory/pseudopotential/actions/#regular-expressions) (commonly referred to as "regex"). The resulting output is finally printed out as a JSON file.
+The procedure to manually extract the k-points from the output of the previous scf calculation is performed automatically in the present subworkflow step via a [Python script]({{ reference_url }}/software-directory/scripting/python/overview/). This script extracts the list of k-points with their corresponding weights within the list under consideration, with the help of [Regular Expressions]({{ reference_url }}/methods-directory/pseudopotential/actions/#regular-expressions) (commonly referred to as "regex"). The resulting output is finally printed out as a JSON file.
 
 ### 3. HSE Calculation
 
-The final subworkflow step in the HSE band structure computation workflow is composed of two units. The main HSE calculation is performed in the first one of these units. Apart from the specific elements described in what follows, the remainder of the main HSE input script conforms to the general standard conventions of an scf ground-state total energy calculation performed with Quantum ESPRESSO via its ["pw_scf" flavor](../../../software-directory/modeling/quantum-espresso/components.md#flavors), as implemented on our platform. The HSE-specific aspects and parameters of the scf calculation described below can be triggered by including the HSE [Refiner]({{ reference_url }}/models-directory/dft/parameters/#refiners), as set under the [Subworkflow Editor Interface](../../../workflow-designer/subworkflow-editor/overview-tab.md#refiners).
+The final subworkflow step in the HSE band structure computation workflow is composed of two units. The main HSE calculation is performed in the first one of these units. Apart from the specific elements described in what follows, the remainder of the main HSE input script conforms to the general standard conventions of an scf ground-state total energy calculation performed with Quantum ESPRESSO via its ["pw_scf" flavor]({{ reference_url }}/software-directory/modeling/quantum-espresso/components/#flavors), as implemented on our platform. The HSE-specific aspects and parameters of the scf calculation described below can be triggered by including the HSE [Refiner]({{ reference_url }}/models-directory/dft/parameters/#refiners), as set under the [Subworkflow Editor Interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview-tab/#refiners).
 
 #### Selecting the HSE Exchange-correlation Functional
 
@@ -43,27 +43,27 @@ Another aspect of the main HSE calculation unit worth noticing is how the grid o
  
 #### Specifying the k-path
 
-In addition to this list of k-points for sampling the Brillouin Zone of the crystal over a regular grid, a second list of k-points needs to be provided and inserted manually at the bottom of the Quantum ESPRESSO input script, consisting in the [path of k-points]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/paths/) to be followed across the Brillouin Zone for plotting the final band structure dispersion curves. This k-path can be customized by the user under the ["Important Settings" tab](../../../workflow-designer/subworkflow-editor/important-settings.md) of the [Subworkflow Editor interface](../../../workflow-designer/subworkflow-editor/overview.md). 
+In addition to this list of k-points for sampling the Brillouin Zone of the crystal over a regular grid, a second list of k-points needs to be provided and inserted manually at the bottom of the Quantum ESPRESSO input script, consisting in the [path of k-points]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/paths/) to be followed across the Brillouin Zone for plotting the final band structure dispersion curves. This k-path can be customized by the user under the ["Important Settings" tab]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/) of the [Subworkflow Editor interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview/). 
 
 !!!note "Weight of the k-path points"
     It should be noticed that the reciprocal coordinates of these k-points along the path under consideration are inserted with a **very small weight**  (less than 1e-7), as opposed to the k-grid points which are instead entered with their normal weights. This is done to ensure that the k-path points do not interfere with the HSE electronic structure computation itself, since they are only needed for defining and plotting the final band structure dispersion curve. Such weights are not set to exactly zero in order for them to be applied correctly by Quantum ESPRESSO.
 
 #### Calculating the Final Band Structure
 
-The final band structure calculation based upon the results of the preceding steps is performed through the customary ["bands.x" executable](../../../software-directory/modeling/quantum-espresso/components.md#executables), a component of the Quantum ESPRESSO package distribution.
+The final band structure calculation based upon the results of the preceding steps is performed through the customary ["bands.x" executable]({{ reference_url }}/software-directory/modeling/quantum-espresso/components/#executables), a component of the Quantum ESPRESSO package distribution.
 
 ## Copy HSE Workflow from Bank
 
-[Workflows]({{ reference_url }}/workflows/overview/) for calculating the [band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) of [materials]({{ reference_url }}/materials/overview/) with [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) via the HSE approach being presently described can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). 
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the [band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) of [materials]({{ reference_url }}/materials/overview/) with [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) via the HSE approach being presently described can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). 
 
-This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/overview.md). The same procedure as in the [general band-structure computation tutorial](band-structure.md) based on Quantum ESPRESSO can otherwise be followed.
+This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/overview/). The same procedure as in the [general band-structure computation tutorial](band-structure.md) based on Quantum ESPRESSO can otherwise be followed.
 
 !!!warning "Computational Cost"
-    The computational cost of HSE calculations is significantly higher than for more basic methods in [DFT]({{ reference_url }}/models-directory/dft/overview/) such as the [Generalized Gradient Approximation]({{ reference_url }}/models-directory/dft/parameters/#subtype). We thus recommend to allow for more [CPU cores and/or walltime]({{ dev_url }}/infrastructure/compute/parameters/) as appropriate for the material system under investigation.
+    The computational cost of HSE calculations is significantly higher than for more basic methods in [DFT]({{ reference_url }}/models-directory/dft/overview/) such as the [Generalized Gradient Approximation]({{ reference_url }}/models-directory/dft/parameters/#subtype). We thus recommend to allow for more [CPU cores and/or walltime]({{ resources_url }}/infrastructure/compute/parameters/) as appropriate for the material system under investigation.
 
 ## Animation
 
-We demonstrate the steps involved in the creation and execution of a HSE Band Structure computation workflow on silicon, using the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) simulation engine, in the following animation. We conclude by inspecting the final band structure dispersion plot under the ["Results" Tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md).
+We demonstrate the steps involved in the creation and execution of a HSE Band Structure computation workflow on silicon, using the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) simulation engine, in the following animation. We conclude by inspecting the final band structure dispersion plot under the ["Results" Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/).
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/Q-qPX6EY9Ok" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

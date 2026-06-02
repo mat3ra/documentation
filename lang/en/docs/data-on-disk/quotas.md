@@ -1,6 +1,6 @@
 # Storage Quota
 
-We apply **storage quotas** to both the [directories](directories.md) on clusters. This limits the amount of storage space that can be consumed by [accounts]({{ reference_url }}/accounts/overview/), in order to avoid any problems. The concept of quota in the general context of account management is reviewed [here]({{ reference_url }}/accounts/quota/). This is an administrative limitation and can be easily extended as explained [here]({{ guide_url }}/accounts/accounting/increase-quota/)
+We apply **storage quotas** to both the [directories](directories.md) on clusters. This limits the amount of storage space that can be consumed by [accounts]({{ reference_url }}/accounts/overview/), in order to avoid any problems. The concept of quota in the general context of account management is reviewed [here]({{ reference_url }}/accounts/quota/). This is an administrative limitation and can be easily extended as explained [here]({{ interface_url }}/accounts/accounting/increase-quota/)
 
 ## Conventions
 
@@ -9,7 +9,7 @@ The quotas are set per [cluster](../infrastructure/clusters/overview.md) and are
 !!! note "Service levels contain *compound* quotas"
     The explanation of the service levels [in this page]({{ guide_url }}/pricing/service-levels/) contains compound values for the disk quota for all accessible clusters. Depending on user demands we can allocate more or less quota per cluster.
 
-Current quotas applicable to the folders available to the user can be inspected at any time via the [Command Line Interface]({{ guide_url }}/cli/overview/), using the [`quota` command]({{ guide_url }}/cli/actions/balance-quota/), or alternatively using the [Web Interface]({{ guide_url }}/accounts/accounting/check-balance-quota/).
+Current quotas applicable to the folders available to the user can be inspected at any time via the [Command Line Interface]({{ cli_url }}/cli/overview/), using the [`quota` command]({{ cli_url }}/cli/actions/balance-quota/), or alternatively using the [Web Interface]({{ interface_url }}/accounts/accounting/check-balance-quota/).
 
 ## Login Node Home
 

@@ -4,7 +4,7 @@ Entities of different [types]({{ reference_url }}/entities-general/overview/) ca
 
 ## Open Entity Tabs
 
-Starting from the [Team Page](../../ui/team-page.md), [navigate]({{ guide_url }}/ui/specific/tabs-navigator/) to the appropriate entity tab among the ones highlighted below:
+Starting from the [Team Page](../../ui/team-page.md), [navigate]({{ interface_url }}/ui/specific/tabs-navigator/) to the appropriate entity tab among the ones highlighted below:
  
 ![Team Entities](../../../images/collaboration/team-entities.png "Team Entities")
 

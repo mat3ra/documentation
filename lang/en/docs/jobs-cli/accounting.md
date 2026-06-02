@@ -19,7 +19,7 @@ For the case of [Organizational Accounts]({{ reference_url }}/collaboration/orga
 
 ## Registration of Jobs in Web Interface
 
-We explain how jobs submitted via CLI can be transmitted and registered in the [Web Interface](../ui/overview.md) of our platform in a [dedicated Tutorial](../tutorials/jobs-cli/job-cli-example.md).
+We explain how jobs submitted via CLI can be transmitted and registered in the [Web Interface]({{ interface_url }}/ui/overview/) of our platform in a [dedicated Tutorial]({{ guide_url }}/tutorials/jobs-cli/job-cli-example/).
 
 ## Check Account Balance and Quota
 

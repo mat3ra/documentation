@@ -3,11 +3,11 @@ render_macros: true
 ---
 # Unit input templates
 
-[Unit input templates]({{ reference_url }}/workflows/templating/overview/) allow input text files to be rendered based on unique data per each material, and to be subsequently fed to the simulation engine being employed as part of the present unit calculation. The original input file templates, as well as their final preview appearances, can be inspected in the visual below. The typical appearance of an input template within the Unit Editor interface, for the specific example of a "pw_scf" self-consistent field total ground-state energy unit calculation using the pw.x executable of the [Quantum ESPRESSO](../../software-directory/modeling/quantum-espresso/overview.md) simulation package, is depicted on the left-hand side in the image below.
+[Unit input templates]({{ reference_url }}/workflows/templating/overview/) allow input text files to be rendered based on unique data per each material, and to be subsequently fed to the simulation engine being employed as part of the present unit calculation. The original input file templates, as well as their final preview appearances, can be inspected in the visual below. The typical appearance of an input template within the Unit Editor interface, for the specific example of a "pw_scf" self-consistent field total ground-state energy unit calculation using the pw.x executable of the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) simulation package, is depicted on the left-hand side in the image below.
 
 !["Example Input Template"](../../images/workflow-designer/input-template.png "Example Input Template")
 
-The reader is referred to the Quantum ESPRESSO-specific [documentation page](../../software-directory/modeling/quantum-espresso/overview.md), and to its official online documentation page pertaining specifically to the pw.x executable code [^1], for a detailed description of the meaning of the input flags displayed in the above example.
+The reader is referred to the Quantum ESPRESSO-specific [documentation page]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/), and to its official online documentation page pertaining specifically to the pw.x executable code [^1], for a detailed description of the meaning of the input flags displayed in the above example.
 
 ## Template Data
 

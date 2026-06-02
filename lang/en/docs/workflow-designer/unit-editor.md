@@ -14,13 +14,13 @@ This first line also contains a reminder of the unit's type (*execution* in the 
 
 ## Application
 
-Similar to the "Application" settings section in the [Overview tab](subworkflow-editor/overview-tab.md) of the parent [Subworkflow Editor](subworkflow-editor/overview-tab.md), this section reviews the computational engine (otherwise known as [application](../software-directory/overview.md)) to be employed in the current unit. 
+Similar to the "Application" settings section in the [Overview tab](subworkflow-editor/overview-tab.md) of the parent [Subworkflow Editor](subworkflow-editor/overview-tab.md), this section reviews the computational engine (otherwise known as [application]({{ reference_url }}/software-directory/overview/)) to be employed in the current unit. 
 
 Normally, the application, its specific version and build cannot be changed by the user within the "Unit Editor" interface, as they are set at the parent subworkflow level. What can be changed inside this "Application" section of the Unit Editor is the specific **executable** of the simulation engine that is to be employed as part of the current unit calculation, under the corresponding "Executable" drop-down menu. 
 
 We maintain a set of input templates (as further explained [here](unit-editor/input-templates.md)) for some of the most common use cases per each application and executable - **flavors**. Users may choose to pre-populate the input based one of the templates by selecting a flavor.
 
-> NOTE: Examples "application", "executables" and "flavors. [Quantum Espresso](../software-directory/modeling/quantum-espresso/overview.md) application breaks its operations into a set of distinct executables with "pw.x" being the most commonly encountered one and "ph.x" being another example. Many different types of computations can be performed within the context of the pw.x executable itself, such as [variable-cell relaxation calculations]({{ reference_url }}/workflows/addons/structural-relaxation/) via the "pw_vc-relax" flavor, or electronic band structure calculations with "pw_bands". The input content for each of these represent the different flavors.
+> NOTE: Examples "application", "executables" and "flavors. [Quantum Espresso]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) application breaks its operations into a set of distinct executables with "pw.x" being the most commonly encountered one and "ph.x" being another example. Many different types of computations can be performed within the context of the pw.x executable itself, such as [variable-cell relaxation calculations]({{ reference_url }}/workflows/addons/structural-relaxation/) via the "pw_vc-relax" flavor, or electronic band structure calculations with "pw_bands". The input content for each of these represent the different flavors.
 
 ## Properties and Monitors
 

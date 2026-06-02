@@ -14,12 +14,12 @@ simplest entity that has accounting set up for, and can have one or more
 
 We implement Jobs as another [entity type](../entities-general/overview.md). As
 such, they have the same user interface components (with some distinct features)
-as other entities, as explained [here]({{ guide_url }}/entities-general/ui/overview/).
+as other entities, as explained [here]({{ interface_url }}/entities-general/ui/overview/).
 
-## [Data](data.md)
+## [Data]({{ data_url }}/jobs/data/)
 
 The data convention applied for Jobs including, for example, their database
-representation is explained [in this page](data.md).
+representation is explained [in this page]({{ data_url }}/jobs/data/).
 
 ## [Status](status.md)
 
@@ -35,24 +35,24 @@ Jobs can collectively be grouped together into [Sets](
 
 ## User Interface
 
-### [Explorer]({{ guide_url }}/jobs/ui/explorer/)
+### [Explorer]({{ interface_url }}/jobs/ui/explorer/)
 
-Jobs Explorer is another specific implementation of the [Explorer]({{ guide_url }}/entities-general/ui/explorer/) component and is explained [in this page](
-{{ guide_url }}/jobs/ui/explorer/).
+Jobs Explorer is another specific implementation of the [Explorer]({{ interface_url }}/entities-general/ui/explorer/) component and is explained [in this page](
+{{ interface_url }}/jobs/ui/explorer/).
 
-### [Designer]({{ guide_url }}/jobs-designer/overview/)
+### [Designer]({{ interface_url }}/jobs-designer/overview/)
 
-Jobs Designer is another specific implementation of the [Designer]({{ guide_url }}/entities-general/ui/designer/) component described in more detail [here]({{ guide_url }}/jobs-designer/overview/).
+Jobs Designer is another specific implementation of the [Designer]({{ interface_url }}/entities-general/ui/designer/) component described in more detail [here]({{ interface_url }}/jobs-designer/overview/).
 
-### [Viewer]({{ guide_url }}/jobs/ui/viewer/)
+### [Viewer]({{ interface_url }}/jobs/ui/viewer/)
 
-[This page]({{ guide_url }}/jobs/ui/viewer/) explains how the [Viewer]({{ guide_url }}/entities-general/ui/viewer/) differs from Designer component in the context
+[This page]({{ interface_url }}/jobs/ui/viewer/) explains how the [Viewer]({{ interface_url }}/entities-general/ui/viewer/) differs from Designer component in the context
 of Jobs.
 
-## [Actions]({{ guide_url }}/jobs/actions/overview/)
+## [Actions]({{ interface_url }}/jobs/actions/overview/)
 
 Some actions pertain specifically to Jobs, and are introduced [in this page](
-{{ guide_url }}/jobs/actions/overview/).
+{{ interface_url }}/jobs/actions/overview/).
 
 ## Screenshare video
 

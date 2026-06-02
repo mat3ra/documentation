@@ -15,7 +15,7 @@ regarding the potential lineup method, see also the [valence band offset tutoria
 
 ## Example
 
-Its value can be estimated using the valence band offset [workflow](../../workflows/overview.md), and it is returned under the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) interface with the following appearance (in eV).
+Its value can be estimated using the valence band offset [workflow](../../workflows/overview.md), and it is returned under the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) interface with the following appearance (in eV).
 
 <div class="clearfix" style="text-align:center">
     <div class="chart"><i class="zmdi zmdi-unfold-less zmdi-hc-3x"></i></div>
@@ -28,7 +28,7 @@ Its value can be estimated using the valence band offset [workflow](../../workfl
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#valence-band-offset).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#valence-band-offset).
 
 ## Links
 

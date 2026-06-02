@@ -19,12 +19,6 @@ Mat3ra is a comprehensive platform for materials design and discovery through mo
 
 We believe that focusing on core science is the most effective way to speed things up. We merge together in a single environment: rigorous models, vast compute power, intuitive user interface and data management tools, in order to make your work on materials design highly efficient.
 
-### I don't get it - what is it really?
-
-OK, the animation below might help demonstrate our vision:
-
-<img data-gifffer="https://exabyte.io/img/iron-man-creates-material.gif">
-
 ### Where does your name come from?
 
 Mat3ra is the era of digital materials engineering and R&D. Hence the digit in the name.
@@ -75,7 +69,7 @@ At current we fully support AWS and Azure in production. We paused using Rackspa
 
 ### As far as I understand this project allows one to use supercomputing facilities by paying money. But I cannot find any information about prices?
 
-For pricing, please see [the service levels pricing section]({{ guide_url }}/pricing/service-levels/), and the [service levels features explanation]({{ reference_url }}/accounts/service-levels/). The pricing is quite comprehensive and can be **as low as 2 cents per core hour** for [saving-category]({{ dev_url }}/infrastructure/compute/overview/) resources. 
+For pricing, please see [the service levels pricing section]({{ guide_url }}/pricing/service-levels/), and the [service levels features explanation]({{ reference_url }}/accounts/service-levels/). The pricing is quite comprehensive and can be **as low as 2 cents per core hour** for [saving-category]({{ resources_url }}/infrastructure/compute/overview/) resources. 
 
 ### How much computational resources do you have? How much of them user can use for one job?
 
@@ -90,7 +84,7 @@ We are covering this exact topic, and other similar ones in the webinar series. 
 
 ### Which software codes can we use? Only those installed on your machines? 
 
-Here's the [list of installed software](../software-directory/overview.md), with many packages/versions accessible via command-line interface through [modules environment]({{ guide_url }}/cli/modules/). Users can also [install new software]({{ guide_url }}/cli/actions/add-software/) using the runtime libraries provided (or install them as well), and [set up a python environment]({{ guide_url }}/cli/actions/create-python-env/), for example. We can help install new packages globally too, of course.
+Here's the [list of installed software]({{ reference_url }}/software-directory/overview/), with many packages/versions accessible via command-line interface through [modules environment]({{ cli_url }}/cli/modules/). Users can also [install new software]({{ cli_url }}/cli/actions/add-software/) using the runtime libraries provided (or install them as well), and [set up a python environment]({{ cli_url }}/cli/actions/create-python-env/), for example. We can help install new packages globally too, of course.
 
 ### Can I use our own script or software to connect via ssh to your system and submit jobs?
 
@@ -106,4 +100,4 @@ The beauty of the cloud is that it is elastic, so we can start all 200 jobs at o
 
 Yes, indeed - a job running for a week writing 100-300 Gb during that period is perfectly fine. We do not presently enforce maximum wall time, beyond what the account balance can accommodate. If you have 200 jobs like that running in parallel, we can accommodate with additional preparations. 
 
-We enforce [quotas]({{ dev_url }}/data-on-disk/quotas/) on the accounts to avoid clashing, the exact amounts we can [set per account]({{ guide_url }}/pricing/storage-quota/) as desired.
+We enforce [quotas]({{ resources_url }}/data-on-disk/quotas/) on the accounts to avoid clashing, the exact amounts we can [set per account]({{ guide_url }}/pricing/storage-quota/) as desired.

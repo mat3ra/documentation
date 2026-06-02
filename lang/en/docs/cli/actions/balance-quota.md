@@ -30,7 +30,7 @@ The entries returned by the above command are summarized in the table below, com
 
 ## Itemized Account Statement
 
-We track the **usage** of our platform, or [balance]({{ reference_url }}/accounts/balance/) spent on computations per each [account]({{ reference_url }}/accounts/overview/) and each [project]({{ reference_url }}/jobs/projects/). The usage statistics of each [cluster]({{ dev_url }}/infrastructure/clusters/overview/), in terms of number of CPU hours consumed and charges incurred, is referred to as the **Account Statement**.
+We track the **usage** of our platform, or [balance]({{ reference_url }}/accounts/balance/) spent on computations per each [account]({{ reference_url }}/accounts/overview/) and each [project]({{ reference_url }}/jobs/projects/). The usage statistics of each [cluster]({{ resources_url }}/infrastructure/clusters/overview/), in terms of number of CPU hours consumed and charges incurred, is referred to as the **Account Statement**.
 
 This statement can be inspected with the `statement` command under CLI, as demonstrated in the example below.
 
@@ -82,7 +82,7 @@ Information about all jobs submitted by the user to date can be retrieved as exp
 
 ## Storage Quota
 
-Information about the [Storage Quota]({{ reference_url }}/accounts/quota/) within the available [computing clusters]({{ dev_url }}/infrastructure/clusters/overview/) can be retrieved via the `quotas` command. An example of output of this command is shown below.
+Information about the [Storage Quota]({{ reference_url }}/accounts/quota/) within the available [computing clusters]({{ resources_url }}/infrastructure/clusters/overview/) can be retrieved via the `quotas` command. An example of output of this command is shown below.
 
 ```bash
 >>> quotas
@@ -94,4 +94,4 @@ USED    BSOFT    BHARD      BWARN  BGRACE    IUSED      ISOFT    IHARD    IWARN 
 This output contains information about the used storage space under the first column. We don't allow for "soft" quotas (under "BSOFT" column) for temporarily exceeding the maximum allowed limit, hence "soft" and "hard" quotas match to the same total limit value, and no "Grace" period is available. The remaining columns starting with "I" concern the compute nodes as opposed to the clusters.
 
 !!!warning "Authorization Required to Access Clusters via CLI"
-    In order to use the `quotas` command, the user needs to first access the clusters via SSH. Please [submit a support request](../../ui/support.md) for gaining the necessary permissions to do this.
+    In order to use the `quotas` command, the user needs to first access the clusters via SSH. Please [submit a support request]({{ interface_url }}/ui/support/) for gaining the necessary permissions to do this.

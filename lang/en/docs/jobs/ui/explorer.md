@@ -18,15 +18,15 @@ Additional Job-specific columns that can be listed in Explorer include those tic
 
 ### Application
 
-This option displays the [applications](../../software-directory/overview.md) employed within the [workflow]({{ reference_url }}/workflows/overview/) used inside the Job, including their version numbers.
+This option displays the [applications]({{ reference_url }}/software-directory/overview/) employed within the [workflow]({{ reference_url }}/workflows/overview/) used inside the Job, including their version numbers.
 
 ### Cluster - Queue & Cores
 
-These are the [name of the cluster]({{ dev_url }}/infrastructure/clusters/overview/) and the compute [queue]({{ dev_url }}/infrastructure/resource/queues/) therein where the Job is executed. The number of computational nodes and CPU cores are also indicated.
+These are the [name of the cluster]({{ resources_url }}/infrastructure/clusters/overview/) and the compute [queue]({{ resources_url }}/infrastructure/resource/queues/) therein where the Job is executed. The number of computational nodes and CPU cores are also indicated.
 
 ### Run & Wait Time
 
-This corresponds to the amount of time that the Job took to finish, and for how long it had to wait in the [queue]({{ dev_url }}/infrastructure/resource/queues/) of the cluster before being executed.
+This corresponds to the amount of time that the Job took to finish, and for how long it had to wait in the [queue]({{ resources_url }}/infrastructure/resource/queues/) of the cluster before being executed.
 
 ### Project
 

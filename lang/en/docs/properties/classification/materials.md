@@ -1,6 +1,6 @@
 # Materials Properties Classification
 
-The classification explained below complements the more general one introduced [here]({{ reference_url }}/data/classification/). We further classify the Properties of [Materials](../../materials/overview.md) according to the conventions below.
+The classification explained below complements the more general one introduced [here]({{ data_url }}/data/classification/). We further classify the Properties of [Materials](../../materials/overview.md) according to the conventions below.
 
 | By origin                      | By domain           |
 |:------------------------------:|:------------------------------:|
@@ -17,7 +17,7 @@ The classification explained below complements the more general one introduced [
 
 ## By origin
 
-We further make the following sub-categorization for Materials Properties, following the Exabyte Data Convention.
+We further make the following sub-categorization for Materials Properties, following the ESSE Data Convention.
 
 - **elemental**: entirely defined by pure elements and inherited by compounds without modification (eg. electronegativity, atomic weight). 
 - **primary**: directly available properties specific to material (can be of all types, for example [characteristic or descriptive](general.md)).

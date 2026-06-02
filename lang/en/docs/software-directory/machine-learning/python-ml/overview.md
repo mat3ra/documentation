@@ -6,7 +6,7 @@ based in [Python](../../scripting/python/overview.md) and Scikit-Learn [^1].
 ## Accessibility
 
 This machine learning implementation is accessible via the
-[subworkflow editor interface](../../../workflow-designer/subworkflow-editor/overview.md).
+[subworkflow editor interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview/).
 Pre-assembled ML workflows can be imported directly from the [Workflows Bank]({{ reference_url }}/workflows/bank/).
 
 ## Workflow Structure

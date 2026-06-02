@@ -5,11 +5,11 @@ render_macros: true
 
 ## Introduction
 
-In this page we review setting input flags based on the data about material(s) and elemental constitution in particular. We present the template source that can be further re-used (copied and inserted) during the [workflow design](../../workflow-designer/overview.md) stage.
+In this page we review setting input flags based on the data about material(s) and elemental constitution in particular. We present the template source that can be further re-used (copied and inserted) during the [workflow design]({{ interface_url }}/workflow-designer/overview/) stage.
 
 ## Source
 
-The code below automatically sets the value of the "ENCUT" variable to higher values for materials that contain Nitrogen within their structures than for those than don't. In particular, ENCUT = 600 eV if Nitrogen is present, or ENCUT = 450 eV otherwise. This variable is found in [VASP](../../software-directory/modeling/vasp/overview.md) input file, and defines the cutoff energy characterizing the precision of the [DFT computation]({{ reference_url }}/models-directory/dft/parameters/).
+The code below automatically sets the value of the "ENCUT" variable to higher values for materials that contain Nitrogen within their structures than for those than don't. In particular, ENCUT = 600 eV if Nitrogen is present, or ENCUT = 450 eV otherwise. This variable is found in [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) input file, and defines the cutoff energy characterizing the precision of the [DFT computation]({{ reference_url }}/models-directory/dft/parameters/).
 
 {% raw %}
 ```jinja
@@ -42,7 +42,7 @@ We begin the logic of our template by defining the element that needs a high pla
 
 ### 3. Read Structural Data
 
-We then read the POSCAR input file for [VASP](../../software-directory/modeling/vasp/overview.md), and assign the text contents of this file to the variable "poscar_string". Examples of POSCAR files are included at the end of this section.
+We then read the POSCAR input file for [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/), and assign the text contents of this file to the variable "poscar_string". Examples of POSCAR files are included at the end of this section.
 
 ### 4 - 6. Extract Elements Contained in Material
 
@@ -109,6 +109,6 @@ Then the rendered output of the template would in this case consist in `ENCUT = 
 
 ### Animation
 
-In the animation below, we demonstrate how to switch between viewing the POSCAR structure file within the [Workflow Designer Interface](../../workflow-designer/unit-editor/input-templates.md), to viewing the same template as above for setting the "ENCUT" parameter, and finally its rendered output. The final result is `ENCUT =600` in this case since the material under investigation consists in the Nitrogen-containing Al2N2 structure, shown in the above POSCAR file example.
+In the animation below, we demonstrate how to switch between viewing the POSCAR structure file within the [Workflow Designer Interface]({{ interface_url }}/workflow-designer/unit-editor/input-templates/), to viewing the same template as above for setting the "ENCUT" parameter, and finally its rendered output. The final result is `ENCUT =600` in this case since the material under investigation consists in the Nitrogen-containing Al2N2 structure, shown in the above POSCAR file example.
 
 <img data-gifffer="/images/tutorials/encut_template.gif">

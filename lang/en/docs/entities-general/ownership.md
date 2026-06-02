@@ -12,14 +12,14 @@ An entity item may circulate between accounts, by, for example, being shared or 
 
 ### Sharing
 
-When an entity is [shared]({{ guide_url }}/collaboration/sharing/ui/), its ownership remains **unaltered**: the owner remains the Account under which it was created, no matter how many times it is shared.
+When an entity is [shared]({{ interface_url }}/collaboration/sharing/ui/), its ownership remains **unaltered**: the owner remains the Account under which it was created, no matter how many times it is shared.
 
 ### Copying
 
-When an entity is [copied]({{ guide_url }}/entities-general/actions/clone/), a new entry is created under the recipient Account-owned collection, with exactly the same contents as the original item. 
+When an entity is [copied]({{ interface_url }}/entities-general/actions/clone/), a new entry is created under the recipient Account-owned collection, with exactly the same contents as the original item. 
 
 The ownership of this cloned item is then attributed to the recipient Account.
 
 ### Transfer
 
-The Ownership of an entity can be changed only under the guidance of our [Support Service]({{ guide_url }}/ui/support/).
+The Ownership of an entity can be changed only under the guidance of our [Support Service]({{ interface_url }}/ui/support/).

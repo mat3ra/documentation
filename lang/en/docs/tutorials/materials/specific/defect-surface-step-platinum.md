@@ -44,7 +44,7 @@ We will demonstrate two methods:
 
 First, we need to import the platinum material from Standata:
 
-1. Navigate to [Materials Designer](../../../materials-designer/overview.md)
+1. Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/)
 2. Click on "Input/Output" menu
 3. Select "Import from Standata"
 4. Search for "Pt" and select the bulk platinum material
@@ -53,7 +53,7 @@ First, we need to import the platinum material from Standata:
 
 ### 1.2. Launch JupyterLite Environment.
 
-Select "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" to open JupyterLite.
+Select "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" to open JupyterLite.
 
 ### 1.3. Configure Slab Parameters.
 
@@ -146,7 +146,7 @@ The same material with repetitions:
 
 ![Pt(111) Surface with Terrace Step with repetitions](../../../images/tutorials/materials/defects/defect_surface_step_platinum/6-wave-result-pt-terrace-repetitions.webp "Pt(111) Surface with Terrace Step with repetitions")
 
-The user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+The user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
 ## Interactive JupyterLite Notebook.
 

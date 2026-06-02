@@ -4,7 +4,7 @@
 
 All objects in object storage by default are private. This means that they are only accessible to authorized parties. Authorized parties can share objects with others by creating a pre-signed URL, using their own security credentials, to grant time-limited permission to access the objects. Readers are referred to AWS S3[^1] and Azure Blob[^2] documentations for more information.
 
-Web application is authorized to manage objects and create pre-signed URLs for the objects an [account]({{ reference_url }}/accounts/overview/) has access to (for example, files in [job]({{ guide_url }}/jobs/ui/files-tab/) and [Dropbox](dropbox.md)). Please note that pre-signed URLs are valid only for the specified duration (15 min by default).
+Web application is authorized to manage objects and create pre-signed URLs for the objects an [account]({{ reference_url }}/accounts/overview/) has access to (for example, files in [job]({{ interface_url }}/jobs/ui/files-tab/) and [Dropbox](dropbox.md)). Please note that pre-signed URLs are valid only for the specified duration (15 min by default).
 
 ## Other
 

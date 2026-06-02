@@ -1,6 +1,6 @@
 # Accounts Explorer
 
-The list of existing accounts opened in our platform to date is accessible from the [Left-hand Sidebar]({{ guide_url }}/ui/left-sidebar/), under the option `Accounts` <i class="zmdi zmdi-globe-alt zmdi-hc-border"></i>. The list of accounts is implemented through an [Explorer-type interface](../../entities-general/ui/explorer.md) with its associated layout and actions.
+The list of existing accounts opened in our platform to date is accessible from the [Left-hand Sidebar]({{ interface_url }}/ui/left-sidebar/), under the option `Accounts` <i class="zmdi zmdi-globe-alt zmdi-hc-border"></i>. The list of accounts is implemented through an [Explorer-type interface](../../entities-general/ui/explorer.md) with its associated layout and actions.
 
 ## Viewing Account Information
 

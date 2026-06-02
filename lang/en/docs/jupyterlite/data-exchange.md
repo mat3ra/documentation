@@ -2,7 +2,7 @@
 
 ## Overview
 
-JupyterLite environment can exchange data (1) either directly with the platform or (2) with its sub-parts, such as the [Materials Designer](../materials-designer/overview.md).
+JupyterLite environment can exchange data (1) either directly with the platform or (2) with its sub-parts, such as the [Materials Designer]({{ interface_url }}/materials-designer/overview/).
 
 ## Get data inside JupyterLite
 
@@ -11,7 +11,7 @@ JupyterLite environment can exchange data (1) either directly with the platform 
 
 This `data_from_host` variable is updated by JS extension in response to changes in material selection for Materials Designer, or loads API keys when launched from the [Platform top menu](accessing-jupyterlite.md/#2-mat3ra-platform).
 
-For example, to work with materials from [Materials Designer](../materials-designer/overview.md), the user would request to write them into `materials_in` variable using the following code snippet:
+For example, to work with materials from [Materials Designer]({{ interface_url }}/materials-designer/overview/), the user would request to write them into `materials_in` variable using the following code snippet:
 
 ```python
 from utils.jupyterlite import get_data

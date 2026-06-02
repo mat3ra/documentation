@@ -2,10 +2,10 @@
  
 We present in this page the different [components]({{ reference_url }}/software/components/) (executables and flavors) comprised within the [VASP](overview.md) distribution package. 
  
-Only those components implemented on our platform to date are mentioned here, as can be inspected from the lists of available executables and flavors under the [Unit Editor Interface](../../../workflow-designer/unit-editor.md#application).
+Only those components implemented on our platform to date are mentioned here, as can be inspected from the lists of available executables and flavors under the [Unit Editor Interface]({{ interface_url }}/workflow-designer/unit-editor/#application).
  
 !!!warning "Implementation on our platform"
-     The user who wishes for additional functionality to be added to our platform in future should express so via a [support request](../../../ui/support.md).
+     The user who wishes for additional functionality to be added to our platform in future should express so via a [support request]({{ interface_url }}/ui/support/).
      
 ## Executables
 

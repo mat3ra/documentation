@@ -22,7 +22,7 @@ Service levels define the types, qualities, and quantities of services provided 
 
 [^1]: The total quota of storage space allocated to the account on a monthly basis.
 
-[^2]: The possibility of having private entities inside an account. Otherwise, entities are accessible for other platform users to view. More explanation [here](../collaboration/sharing/access-levels.md).
+[^2]: The possibility of having private entities inside an account. Otherwise, entities are accessible for other platform users to view. More explanation [here]({{ interface_url }}/collaboration/sharing/access-levels/).
 
 [^3]: The maximum number of users hosted inside an account.
 
@@ -68,7 +68,7 @@ Organizations interested in a managed cloud solution where our software can run 
 
 ## View/Change Service Level
 
-All the relevant information concerning Service Levels, under the context of the currently selected Account, can be inspected through the corresponding [component of the User Interface]({{ guide_url }}/accounts/ui/service-level/). It is important to bear in mind that, when dealing with collaborative accounts, only the Owner or an Administrator of the account is given the right to undergo such operations on behalf of the whole Organization. 
+All the relevant information concerning Service Levels, under the context of the currently selected Account, can be inspected through the corresponding [component of the User Interface]({{ interface_url }}/accounts/ui/service-level/). It is important to bear in mind that, when dealing with collaborative accounts, only the Owner or an Administrator of the account is given the right to undergo such operations on behalf of the whole Organization. 
 
 ## Validity Period
 

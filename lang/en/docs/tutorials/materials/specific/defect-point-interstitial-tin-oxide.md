@@ -36,13 +36,13 @@ We will recreate the O-interstitial defect structure shown in Fig. 4 a) using [V
 
 ### 1.1. Load Base Material.
 
-Navigate to [Materials Designer](../../../materials-designer/overview.md) and import the SnO material from [Standata](../../../materials-designer/header-menu/input-output/standata-import.md) using the search term "SnO".
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the SnO material from [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/) using the search term "SnO".
 
 ![Original SnO](../../../images/tutorials/materials/defects/defect_point_interstitial_tin_oxide/2-wave-original-material.webp "SnO from Standata, 2x2x2 repetitions")
 
 ### 1.2. Launch JupyterLite Session.
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ### 1.3. Open `create_defect.ipynb` Notebook.
 

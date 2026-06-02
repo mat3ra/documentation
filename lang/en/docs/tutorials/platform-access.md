@@ -3,8 +3,8 @@
 There are three main modes of accessing the Mat3ra platform:
 
 - (1) Web/browser interface
-- (2) [Command line interface](../cli/overview.md) (CLI), and
-- (3) [REST API]({{ dev_url }}/rest-api/).
+- (2) [Command line interface]({{ cli_url }}/cli/overview/) (CLI), and
+- (3) [REST API]({{ developers_url }}/rest-api/).
 
 - Below we present a short video demonstrating various ways of accessing the Mat3ra platform. It covers:
 

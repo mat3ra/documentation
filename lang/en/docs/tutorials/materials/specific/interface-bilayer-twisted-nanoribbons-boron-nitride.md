@@ -26,7 +26,7 @@ This tutorial demonstrates the process of creating a twisted bilayer boron nitri
     [DOI: 10.1021/acs.nanolett.9b00986](https://doi.org/10.1021/acs.nanolett.9b00986) [@Xian2020]
 
 
-We use the [Materials Designer](../../../materials-designer/overview.md) to  create Hexagonal boron nitride bilayer structure configurations with 2 specific twist angles.
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to  create Hexagonal boron nitride bilayer structure configurations with 2 specific twist angles.
 
 The image shows the twisted bilayer h-BN structure with a twist angle of 2.64° (a) and 62.64° (b).
 
@@ -34,17 +34,17 @@ The image shows the twisted bilayer h-BN structure with a twist angle of 2.64° 
 
 ## 1. Load and preview BN structure.
 
-First, we navigate to [Materials Designer](../../../materials-designer/overview.md) and import the BN material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the BN material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Standata BN Import](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/standata-import-bn.png "Standata BN Import")
 
-Then we will use the [JupyterLite](../../../jupyterlite/overview.md) environment to create a twisted bilayer boron nitride structure.
+Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create a twisted bilayer boron nitride structure.
 
 ## 2. Create bilayer with a twist angle of 2.64°.
 
 ### 2.1 Launch JupyterLite Session.
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 

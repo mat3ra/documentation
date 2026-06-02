@@ -4,4 +4,4 @@ Materials can be analyzed with the help of specialized computer software assisti
 
 ## Implementation
 
-We enable support for several analysis (and visualization) tools. which are accessible primarily via our [Remote Desktop Environment]({{ guide_url }}/remote-connection/remote-desktop/) or [Command Line Interface]({{ guide_url }}/remote-connection/overview/). The tools are introduced [in this section]({{ guide_url }}/software-directory/overview/) of the documentation.
+We enable support for several analysis (and visualization) tools. which are accessible primarily via our [Remote Desktop Environment]({{ cli_url }}/remote-connection/remote-desktop/) or [Command Line Interface]({{ cli_url }}/remote-connection/overview/). The tools are introduced [in this section]({{ reference_url }}/software-directory/overview/) of the documentation.

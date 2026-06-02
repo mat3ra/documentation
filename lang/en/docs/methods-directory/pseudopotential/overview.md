@@ -15,19 +15,19 @@ This method is widely used as an effective algorithmic recipe for the computatio
 
 ## [Actions](actions.md)
 
-We introduce [here](actions.md) the action for uploading a custom Pseudopotential file to our platform via the [Subworkflow Editor Interface]({{ guide_url }}/workflow-designer/subworkflow-editor/overview/). 
+We introduce [here](actions.md) the action for uploading a custom Pseudopotential file to our platform via the [Subworkflow Editor Interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview/). 
 
 ## [Precision](precision.md)
 
 We discuss the parameters that limit the [numerical precision](../../methods/precision.md) of the plane-wave pseudopotential method [here](precision.md).
 
-## [Structured Representation](data.md)
+## [Structured Representation]({{ data_url }}/methods-directory/pseudopotential/data/)
 
-[This page](data.md) contains an example [structured representation](../../data-structured/overview.md) for the method.
+[This page]({{ data_url }}/methods-directory/pseudopotential/data/) contains an example [structured representation]({{ data_url }}/data-structured/overview/) for the method.
 
 ## [Important Settings](important-settings.md)
 
-We explain [under this page](important-settings.md) how important settings concerning the method can be set under the [Subworkflow Editor Interface]({{ guide_url }}/workflow-designer/subworkflow-editor/overview/) of [Workflow Designer]({{ guide_url }}/workflow-designer/overview/).
+We explain [under this page](important-settings.md) how important settings concerning the method can be set under the [Subworkflow Editor Interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview/) of [Workflow Designer]({{ interface_url }}/workflow-designer/overview/).
 
 ## Links
 

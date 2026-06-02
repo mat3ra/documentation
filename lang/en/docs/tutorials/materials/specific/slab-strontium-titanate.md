@@ -35,13 +35,13 @@ We will focus on creating SrTiO<sub>3</sub> (011) slabs with different terminati
 
 ### 1.1. Load Strontium Titanate Material.
 
-Navigate to [Materials Designer](../../../materials-designer/overview.md) and import the strontium titanate material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the strontium titanate material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Strontium Titanate Material](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/original-material.webp "Strontium Titanate Material")
 
 ### 1.2. Launch JupyterLite Session.
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
@@ -123,7 +123,7 @@ The user can pass the material with the selected termination in the current Mate
 ![Final Material](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/wave-result.webp "Strontium Titanate Slab")
 
 
-Or the user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
 ## Interactive JupyterLite Notebook.
 

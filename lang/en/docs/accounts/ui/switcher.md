@@ -8,7 +8,7 @@ is offered at the top of the [right-hand menu sidebar](
 ## Currently Logged-in Account
 
 The name and type of the account that the user is currently logged into is
-displayed in [header]({{ guide_url }}/ui/header-footer/).
+displayed in [header]({{ interface_url }}/ui/header-footer/).
 
 ## View My Accounts
 

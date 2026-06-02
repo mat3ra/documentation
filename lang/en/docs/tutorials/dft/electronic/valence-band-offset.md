@@ -3,12 +3,12 @@
 This tutorial page explains how to calculate the [valence band offset]({{ reference_url }}/properties-directory/scalar/valence-band-offset/) (VBO)
 based on the potential lineup method[^1][^2][^3] using [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/).
 For this tutorial, we consider a 2D material interface MoS<sub>2</sub>/WS<sub>2</sub> and use
-[Quantum Espresso](../../../software-directory/modeling/quantum-espresso/overview.md) as our main simulation engine.
+[Quantum Espresso]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) as our main simulation engine.
 The content of this tutorial was also part of our 2021 webinar *2D Materials and their Electronic Properties*[^4]
 
 !!!note "Simulation engines considered in this tutorial"
     The workflow presented in this tutorial is currently only available for
-    [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md).
+    [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/).
 
 ## Definitions
 
@@ -61,10 +61,10 @@ and optimized in the same way. The final structures are available on the Mat3ra 
 ## Choose Workflow
 
 The [workflow]({{ reference_url }}/workflows/overview/) for calculating the valence band offset can be
-[imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned
+[imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned
 [collection]({{ reference_url }}/accounts/collections/).
-This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the
-[Job being created](../../../jobs-designer/workflow-tab.md).
+This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the
+[Job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 A [representation of this workflow](https://github.com/Exabyte-io/wode.js/blob/2022.11.16-0/assets/workflows/espresso/valence_band_offset.yml)
 is also available as part of the Mat3ra workflow definitions repository ([wode.js](https://github.com/Exabyte-io/wode.js)).
 
@@ -86,14 +86,14 @@ monolayers (ca. 5.7 bohr).
 
 ## Submit Job
 
-Before [submitting](../../../jobs/actions/run.md) the [job]({{ reference_url }}/jobs/overview/), the user should click on the
-["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and inspect
-the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein.
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the user should click on the
+["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect
+the [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) included therein.
 
 ## Examine results
 
 When all [unit]({{ reference_url }}/workflows/components/units/) computations are complete at the end of Job execution, switching
-to the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md) will show the results
+to the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/) will show the results
 of the simulation, including the valence band offset as well as the plots of the planar and macroscopic average of
 the electrostatic potentials.
 

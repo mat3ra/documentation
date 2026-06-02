@@ -37,11 +37,11 @@ We will recreate the Pt island structure shown in Figure 4b:
 
 ### 1.1. Load Base Material.
 
-Navigate to [Materials Designer](../../../materials-designer/overview.md) and import the MoS2 2D material from [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the MoS2 2D material from [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ### 1.2. Launch JupyterLite Session.
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ### 1.3. Open `create_adatom_defect.ipynb` Notebook.
 

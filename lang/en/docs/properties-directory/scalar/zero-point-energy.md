@@ -8,7 +8,7 @@ A further contribution to the internal energy of a material structure originates
 
 The Zero-point Energy  has to be computed by performing a [Phonon calculation](../non-scalar/phonon-dispersions.md) on the material under investigation using an appropriate [Workflow](../../workflows/overview.md).
 
-It is displayed under the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of the corresponding [Job](../../jobs/overview.md) in the following manner, also in units of eV. 
+It is displayed under the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) of the corresponding [Job](../../jobs/overview.md) in the following manner, also in units of eV. 
 
 <div class="clearfix">
     <center>
@@ -22,7 +22,7 @@ It is displayed under the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#zero-point-energy).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#zero-point-energy).
 
 ## Links 
 

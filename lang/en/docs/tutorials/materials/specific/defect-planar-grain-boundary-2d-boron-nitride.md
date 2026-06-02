@@ -31,7 +31,7 @@ We will focus on creating h-BN grain boundary structures similar to Figure 2c fr
 
 ### 1.1. Load h-BN Material.
 
-Navigate to [Materials Designer](../../../materials-designer/overview.md) and import the h-BN material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the h-BN material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 1. Click on "Input/Output" menu
 2. Select "Import from Standata"
@@ -42,7 +42,7 @@ Navigate to [Materials Designer](../../../materials-designer/overview.md) and im
 
 ### 1.2. Launch JupyterLite Session.
 
-Select "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" to open JupyterLite.
+Select "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" to open JupyterLite.
 
 ### 1.3. Open and Configure Notebook.
 
@@ -135,7 +135,7 @@ The user can pass the material with substitution defects in the current Material
 
 ![Final Material](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/7-wave-result-final-gb.webp "Final Material")
 
-Or the user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
 ## 5. Manual Adjustment.
 

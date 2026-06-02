@@ -6,6 +6,6 @@ This action allows the user to inspect the entire content of the set within a si
 
 ## Animation
 
-We demonstrate the procedure to visualize an example of [Interpolated Set]({{ guide_url }}/materials-designer/header-menu/advanced/interpolated-set/), contained within an [ordered set]({{ reference_url }}/entities-general/sets/#change-type) named "NEB set" in this case, in the following animation. We conclude the animation by cycling through the contents of the set, consisting in five different materials structures.
+We demonstrate the procedure to visualize an example of [Interpolated Set]({{ interface_url }}/materials-designer/header-menu/advanced/interpolated-set/), contained within an [ordered set]({{ reference_url }}/entities-general/sets/#change-type) named "NEB set" in this case, in the following animation. We conclude the animation by cycling through the contents of the set, consisting in five different materials structures.
 
 <img data-gifffer="/images/jobs-designer/visualization.gif">

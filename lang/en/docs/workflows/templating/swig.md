@@ -4,7 +4,7 @@ render_macros: true
 
 # Swig
 
-As mentioned in [the concept explanation](concept.md) we make use of **Swig** to render the templates on the [Web Interface]({{ guide_url }}/ui/overview/). We introduce in this page the content specific to Swig. The reader is also referred to Swig official documentation for further reading [^1].
+As mentioned in [the concept explanation](concept.md) we make use of **Swig** to render the templates on the [Web Interface]({{ interface_url }}/ui/overview/). We introduce in this page the content specific to Swig. The reader is also referred to Swig official documentation for further reading [^1].
 
 ## Javascript Native Prototypes
 

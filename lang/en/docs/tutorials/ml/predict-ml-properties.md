@@ -7,7 +7,7 @@ In the present example, we consider the [Electronic Band Gap]({{ reference_url }
 
 ## Steps
 
-We follow the below steps, by making use of our [Web Interface](../../ui/overview.md).
+We follow the below steps, by making use of our [Web Interface]({{ interface_url }}/ui/overview/).
 
 1. Pre-requisite: trained model
 2. Create "ML Predict" job
@@ -22,23 +22,23 @@ The present tutorial assumes that an ML model contained in the [workflow]({{ ref
 
 ## 2. Create "ML Predict" Job
 
-The general instructions for [creating a new Job](../../jobs-designer/overview.md) can be followed for setting up a new "ML Predict" [Job]({{ reference_url }}/jobs/overview/), after [opening](../../jobs/actions/create.md) the relevant interface.
+The general instructions for [creating a new Job]({{ interface_url }}/jobs-designer/overview/) can be followed for setting up a new "ML Predict" [Job]({{ reference_url }}/jobs/overview/), after [opening]({{ interface_url }}/jobs/actions/create/) the relevant interface.
  
 ## 3. Select Trained Model as Workflow
  
-The aforementioned "ml_predict" workflow should be [selected](../../jobs-designer/actions-header-menu/select-workflow.md) as the main [Workflow](../../jobs-designer/workflow-tab.md) for the "ML Predict" Job being designed, so that it can be applied to predict the properties of a new set of target [materials](../../jobs-designer/materials-tab.md) similar to the ones used originally to train the model. 
+The aforementioned "ml_predict" workflow should be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) as the main [Workflow]({{ interface_url }}/jobs-designer/workflow-tab/) for the "ML Predict" Job being designed, so that it can be applied to predict the properties of a new set of target [materials]({{ interface_url }}/jobs-designer/materials-tab/) similar to the ones used originally to train the model. 
 
 ## 4. Select Target Properties
 
-The properties which will be predicted by a trained model are the **target properties** which have been ticked and selected under the [unit editor interface](../../workflow-designer/unit-editor.md) of the "input" [unit]({{ reference_url }}/workflows/components/units/) of the "ml_predict" workflow, under the "Targets" section of the interface.
+The properties which will be predicted by a trained model are the **target properties** which have been ticked and selected under the [unit editor interface]({{ interface_url }}/workflow-designer/unit-editor/) of the "input" [unit]({{ reference_url }}/workflows/components/units/) of the "ml_predict" workflow, under the "Targets" section of the interface.
 
 ## 5. Execute "ML Predict" Job
 
-The reader should follow [these instructions](../../jobs/actions/run.md) in order to finally execute the "ML Predict" job, following its creation with [Job Designer](../../jobs-designer/overview.md).
+The reader should follow [these instructions]({{ interface_url }}/jobs/actions/run/) in order to finally execute the "ML Predict" job, following its creation with [Job Designer]({{ interface_url }}/jobs-designer/overview/).
 
 ## 6. View Results
 
-The newly predicted properties can finally be inspected under the [results tab](../../jobs/ui/results-tab.md) of [job viewer](../../jobs/ui/viewer.md).
+The newly predicted properties can finally be inspected under the [results tab]({{ interface_url }}/jobs/ui/results-tab/) of [job viewer]({{ interface_url }}/jobs/ui/viewer/).
 
 ## Animation
 

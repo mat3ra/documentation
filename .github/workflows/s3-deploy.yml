@@ -34,9 +34,13 @@ jobs:
 
       - name: Build split sites
         run: |
-          python -m mkdocs build -f mkdocs-guide.yml    -d site/guide
-          python -m mkdocs build -f mkdocs-concepts.yml -d site/reference
-          python -m mkdocs build -f mkdocs-dev.yml      -d site/dev
+          python -m mkdocs build -f mkdocs-guide.yml      -d site/guide
+          python -m mkdocs build -f mkdocs-interface.yml  -d site/interface
+          python -m mkdocs build -f mkdocs-concepts.yml   -d site/reference
+          python -m mkdocs build -f mkdocs-resources.yml  -d site/resources
+          python -m mkdocs build -f mkdocs-developers.yml -d site/developers
+          python -m mkdocs build -f mkdocs-cli.yml        -d site/command-line
+          python -m mkdocs build -f mkdocs-standards.yml  -d site/standards
 
           # Fix and copy subsite homepages to root of each subsite
           fix_homepage() {
@@ -54,9 +58,14 @@ jobs:
                 "$src" > "$dst"
             fi
           }
-          fix_homepage site/guide/index-guide/index.html         site/guide/index.html
-          fix_homepage site/reference/index-concepts/index.html  site/reference/index.html
-          fix_homepage site/dev/index-dev/index.html             site/dev/index.html
+          fix_homepage site/guide/index-guide/index.html              site/guide/index.html
+          fix_homepage site/interface/index-interface/index.html       site/interface/index.html
+          fix_homepage site/reference/index-concepts/index.html       site/reference/index.html
+          fix_homepage site/resources/index-resources/index.html      site/resources/index.html
+          fix_homepage site/developers/index-developers/index.html    site/developers/index.html
+          fix_homepage site/command-line/index-cli/index.html                  site/command-line/index.html
+          fix_homepage site/standards/index-standards/index.html      site/standards/index.html
+
 
       - name: Deploy to Production (dev branch, old docs)
         if: github.ref == 'refs/heads/dev'

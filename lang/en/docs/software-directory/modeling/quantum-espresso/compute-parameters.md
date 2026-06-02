@@ -1,6 +1,6 @@
 # Quantum Espresso: Specific Compute Parameters 
 
-The [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) which are specific to Quantum ESPRESSO consist in the **[Advanced Options]({{ dev_url }}/infrastructure/compute/parameters/#advanced-options)**, which can be set from within the relevant [user interface]({{ dev_url }}/infrastructure/compute/overview/).
+The [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) which are specific to Quantum ESPRESSO consist in the **[Advanced Options]({{ resources_url }}/infrastructure/compute/parameters/#advanced-options)**, which can be set from within the relevant [user interface]({{ resources_url }}/infrastructure/compute/overview/).
 
 These specific parameters allow for the **parallelization** of Quantum ESPRESSO computations, as explained in what follows. Detailed explanations on how to best set the values of such parallelization parameters can be found under Ref. [^1]. 
 

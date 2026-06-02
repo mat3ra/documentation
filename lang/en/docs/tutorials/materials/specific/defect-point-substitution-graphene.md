@@ -24,7 +24,7 @@ This tutorial demonstrates the process of creating materials with substitution d
 !!!note "Manuscript"
     Yoshitaka Fujimoto and Susumu Saito, "Formation, stabilities, and electronic properties of nitrogen defects in graphene", Physical Review B, 2011. [DOI: 10.1103/PhysRevB.84.245446](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.84.245446){:target='_blank'}. [@Yoshitaka2011]
 
-We use the [Materials Designer](../../../materials-designer/overview.md) to create a supercell of graphene, identify the crystal site positions for defects, and introduce nitrogen atoms and vacancies accordingly.
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create a supercell of graphene, identify the crystal site positions for defects, and introduce nitrogen atoms and vacancies accordingly.
 
 We will focus on creating graphene-nitrogen structures from FIG. 1.
 Specifically, the material from FIG. 1. b) of the paper: 
@@ -35,11 +35,11 @@ Specifically, the material from FIG. 1. b) of the paper:
 
 ## 1. Create Graphene Supercell.
 
-First, we navigate to [Materials Designer](../../../materials-designer/overview.md) and import the graphene material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the graphene material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Standata Graphene Import](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/1-standata-graphene.webp "Standata Graphene Import")
 
-We then use the [Advanced](../../../materials-designer/header-menu/advanced/supercell.md) menu to create a supercell of graphene with a size of 4x4x1.
+We then use the [Advanced]({{ interface_url }}/materials-designer/header-menu/advanced/supercell/) menu to create a supercell of graphene with a size of 4x4x1.
 
 ![Supercell Creation for Graphene](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/2-advanced-supercell.webp "Supercell Graphene")
 
@@ -55,11 +55,11 @@ Clicking on each atom will copy the coordinates of the atom to the clipboard as 
 
 ## 3. Create Nitrogen Defects and Vacancies.
 
-For the defect creation, we will use the [JupyterLite](../../../jupyterlite/overview.md) environment with the corresponding notebook.
+For the defect creation, we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment with the corresponding notebook.
 
 ### 3.1. Launch JupyterLite Session.
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
@@ -130,7 +130,7 @@ The user can pass the material with substitution defects in the current Material
 
 ![Final Material](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/7-wave-result.webp "N-doped Graphene")
 
-Or the user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
 
 ## Interactive JupyterLite Notebook.

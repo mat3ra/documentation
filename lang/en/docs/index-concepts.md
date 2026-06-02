@@ -3,8 +3,11 @@
 This site explains the concepts, data models, and scientific methods underlying the Mat3ra platform. It is organized around the platform's core abstractions — entities, models, methods, software, and properties.
 
 !!!tip "Other documentation sites"
-    For step-by-step tutorials and tool walkthroughs, see the [Platform Guide]({{ guide_url }}/).
-    For developer-focused content (REST API, CLI, infrastructure), see the [Developer Guide]({{ dev_url }}/).
+    For step-by-step tutorials, tool walkthroughs, CLI usage, and software reference, see the [Platform Guide]({{ guide_url }}/).
+    For interface walkthroughs and platform actions, see the [User Interface]({{ interface_url }}/).
+    For infrastructure and compute resources, see [Platform Resources]({{ resources_url }}/).
+    For REST API documentation, see the [Developers]({{ developers_url }}/) site.
+    For JSON schemas and data convention, see the [Data Standards]({{ data_url }}/).
 
 
 ## Core platform concepts
@@ -19,7 +22,6 @@ The platform organizes work around a set of interconnected entities. Each entity
 ## Materials
 
 - [Overview](materials/overview.md) — what a material is, how it is classified and stored
-- [Data schema](materials/data.md) — JSON representation of materials
 - [Classification](materials/classification/crystalline.md) — crystalline vs. non-periodic
 
 
@@ -27,7 +29,6 @@ The platform organizes work around a set of interconnected entities. Each entity
 
 - [Overview](workflows/overview.md) — structure, bank, defaults
 - [Components](workflows/components/overview.md) — subworkflows, units, maps
-- [Data](workflows/data/overview.md) — JSON schemas for workflows, subworkflows, and units
 - [Templating](workflows/templating/overview.md) — Jinja/Swig templates, Exabyte convention
 - [Add-ons](workflows/addons/overview.md) — convergence algorithms, structural relaxation
 
@@ -36,7 +37,6 @@ The platform organizes work around a set of interconnected entities. Each entity
 
 - [Overview](jobs/overview.md) — what a job is, status lifecycle
 - [Projects](jobs/projects.md) — organizing jobs into projects
-- [Data schema](jobs/data.md) — JSON representation of jobs
 
 
 ## Models & methods
@@ -55,11 +55,11 @@ Physical models and computational methods used for simulations.
 Simulation engines and scripting environments available on the platform.
 
 - [Software overview](software/overview.md) — components, classification
-- [Quantum ESPRESSO]({{ guide_url }}/software-directory/modeling/quantum-espresso/overview/)
-- [VASP]({{ guide_url }}/software-directory/modeling/vasp/overview/)
-- [LAMMPS]({{ guide_url }}/software-directory/modeling/lammps/), [CP2K]({{ guide_url }}/software-directory/modeling/cp2k/), [Gromacs]({{ guide_url }}/software-directory/modeling/gromacs/), [NWChem]({{ guide_url }}/software-directory/modeling/nwchem/)
-- [Python]({{ guide_url }}/software-directory/scripting/python/overview/), [Shell]({{ guide_url }}/software-directory/scripting/shell/overview/), [Jupyter Lab]({{ guide_url }}/software-directory/scripting/jupyter-lab/overview/)
-- [Python ML]({{ guide_url }}/software-directory/machine-learning/python-ml/overview/), [TensorFlow]({{ guide_url }}/software-directory/machine-learning/tensorflow/)
+- [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/)
+- [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/)
+- [LAMMPS]({{ reference_url }}/software-directory/modeling/lammps/), [CP2K]({{ reference_url }}/software-directory/modeling/cp2k/), [Gromacs]({{ reference_url }}/software-directory/modeling/gromacs/), [NWChem]({{ reference_url }}/software-directory/modeling/nwchem/)
+- [Python]({{ reference_url }}/software-directory/scripting/python/overview/), [Shell]({{ reference_url }}/software-directory/scripting/shell/overview/), [Jupyter Lab]({{ reference_url }}/software-directory/scripting/jupyter-lab/overview/)
+- [Python ML]({{ reference_url }}/software-directory/machine-learning/python-ml/overview/), [TensorFlow]({{ reference_url }}/software-directory/machine-learning/tensorflow/)
 
 
 ## Properties
@@ -73,10 +73,6 @@ Computed and measured properties extracted from simulations.
 - [Structural properties](properties-directory/structural/basis.md) — basis, lattice, symmetry, forces
 
 
-## Data practices
-
-- [Data overview](data/overview.md) — classification, lifecycle
-- [Structured data](data-structured/overview.md) — conventions and schemas
 
 
 ## Other

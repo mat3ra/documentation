@@ -2,9 +2,9 @@
 
 In this section of the documentation, we review in detail the physical relevance and description of each [property](../properties/overview.md) available for computation. 
 
-In each case, we also explain how such results are presented to the user under the interface of the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) within [Jobs Viewer]({{ guide_url }}/jobs/ui/viewer/), when results are extracted from the output of simulations. 
+In each case, we also explain how such results are presented to the user under the interface of the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) within [Jobs Viewer]({{ interface_url }}/jobs/ui/viewer/), when results are extracted from the output of simulations. 
 
-Illustrations of the [JSON schemas](../properties/data/overview.md) and associated examples for each property discussed in the present section are contained [in this page](../properties/data/list.md), and referenced at the end of each property's dedicated description.
+Illustrations of the [JSON schemas]({{ data_url }}/properties/data/overview/) and associated examples for each property discussed in the present section are contained [in this page]({{ data_url }}/properties/data/list/), and referenced at the end of each property's dedicated description.
 
 At the top of each property's page, we include colored badges referring to the [property classification](../properties/classification/overview.md), distinguishing between [scalar and non-scalar](../properties/classification/general.md#by-data-type) types and between the different types of [Materials Properties](../properties/classification/materials.md).
 

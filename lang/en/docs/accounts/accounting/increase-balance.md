@@ -3,7 +3,7 @@
 !!!warning "Warning: content with restricted access"
     All the information contained under the present documentation page is only relevant for Account Owners or Administrators, since only they have sufficient rights to view the content exposed herein and make the appropriate changes. We remind the reader that a user is always the Owner and full administrator of his own personal Account.
 
-The action of performing a payment in order to add credit to the [Account Balance]({{ reference_url }}/accounts/balance/), using any of the available [Payment Methods](payment-methods.md), can be performed from either the [Service Levels tab](../ui/service-level.md), or from the [Account Menu]({{ guide_url }}/ui/account-menu/) of the wider User Interface. Under either of these two alternative locations, the account balance can be topped-up with extra credit through their corresponding `Add Credit` (or `Apply Credit`) buttons underneath the current balance indicator, the precise positions of which are encircled in red in the image below:
+The action of performing a payment in order to add credit to the [Account Balance]({{ reference_url }}/accounts/balance/), using any of the available [Payment Methods](payment-methods.md), can be performed from either the [Service Levels tab](../ui/service-level.md), or from the [Account Menu]({{ interface_url }}/ui/account-menu/) of the wider User Interface. Under either of these two alternative locations, the account balance can be topped-up with extra credit through their corresponding `Add Credit` (or `Apply Credit`) buttons underneath the current balance indicator, the precise positions of which are encircled in red in the image below:
 
 ![Increase Balance](../../images/accounts/increase-balance.png "Increase Balance")
 

@@ -1,15 +1,15 @@
 # Job Status Indicators
 
-Jobs listed under the [Explorer]({{ guide_url }}/jobs/ui/explorer/) can be in one of the following possible statuses, appearing under its corresponding letter/color badge.
+Jobs listed under the [Explorer]({{ interface_url }}/jobs/ui/explorer/) can be in one of the following possible statuses, appearing under its corresponding letter/color badge.
 
 !!!note "Note: explanation of clusters-related terms"
-    The user is referred to [this page]({{ dev_url }}/infrastructure/compute/overview/) for instructions on how to operate the computing [clusters]({{ dev_url }}/infrastructure/clusters/overview/) offered on our platform. The concept of [Queue]({{ dev_url }}/infrastructure/resource/queues/) on the  cluster is also explained in its respective page.
+    The user is referred to [this page]({{ resources_url }}/infrastructure/compute/overview/) for instructions on how to operate the computing [clusters]({{ resources_url }}/infrastructure/clusters/overview/) offered on our platform. The concept of [Queue]({{ resources_url }}/infrastructure/resource/queues/) on the  cluster is also explained in its respective page.
 
 ## Pre-submission
 
 Badge: <span class="btn badge b-info border-50">P</span>
 
-"Pre-submission" status indicates that the Job has been created as an entry in [Explorer]({{ guide_url }}/jobs/ui/explorer/), but it has not been submitted to the [queue]({{ dev_url }}/infrastructure/resource/queues/) of the cluster yet. It can still be edited by [opening]({{ guide_url }}/entities-general/actions/open-edit/) it under [Designer]({{ guide_url }}/jobs-designer/overview/).
+"Pre-submission" status indicates that the Job has been created as an entry in [Explorer]({{ interface_url }}/jobs/ui/explorer/), but it has not been submitted to the [queue]({{ resources_url }}/infrastructure/resource/queues/) of the cluster yet. It can still be edited by [opening]({{ interface_url }}/entities-general/actions/open-edit/) it under [Designer]({{ interface_url }}/jobs-designer/overview/).
 
 ## Submitted 
 

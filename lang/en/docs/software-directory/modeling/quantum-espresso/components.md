@@ -2,10 +2,10 @@
 
 We present in this page the different [components]({{ reference_url }}/software/components/) (executables and flavors) comprised within the [Quantum ESPRESSO](overview.md) distribution package. 
 
-Only those components implemented on our platform to date are mentioned here, as can be inspected from the lists of available executables and flavors under the [Unit Editor Interface](../../../workflow-designer/unit-editor.md#application).
+Only those components implemented on our platform to date are mentioned here, as can be inspected from the lists of available executables and flavors under the [Unit Editor Interface]({{ interface_url }}/workflow-designer/unit-editor/#application).
 
 !!!warning "Implementation on our platform"
-    The user who wishes for additional functionality to be added to our platform in future should express so via a [support request](../../../ui/support.md).
+    The user who wishes for additional functionality to be added to our platform in future should express so via a [support request]({{ interface_url }}/ui/support/).
 
 ## Executables
 
@@ -24,7 +24,7 @@ The following executables have been implemented on our platform so far.
 - `pp.x`: data analysis and plotting.
 - `dos.x`:  calculates the Density of States (DOS).
 - `bands.x`: re-orders the bands in the band-structure of the material, and computes band-related properties.
-- `neb.x` [^3] [^4]: performs calculations of the energy profile of chemical reactions via the [Nudged Elastic Band](../../../tutorials/dft/chemical/reaction-profile-qe.md) method.
+- `neb.x` [^3] [^4]: performs calculations of the energy profile of chemical reactions via the [Nudged Elastic Band]({{ guide_url }}/tutorials/dft/chemical/reaction-profile-qe/) method.
 
 ## Flavors
 

@@ -1,6 +1,6 @@
 # Files Explorer
 
-The Files Explorer interface displays a list of files in their [object]({{ dev_url }}/data-in-objectstorage/files/#object-storage-of-files) representation from within the Web Interface of our platform. The way files are presented to the user conforms to the general [Explorer conventions](../../entities-general/ui/explorer.md). 
+The Files Explorer interface displays a list of files in their [object]({{ resources_url }}/data-in-objectstorage/files/#object-storage-of-files) representation from within the Web Interface of our platform. The way files are presented to the user conforms to the general [Explorer conventions](../../entities-general/ui/explorer.md). 
 
 ## Example Appearance
 

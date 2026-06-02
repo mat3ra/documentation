@@ -4,9 +4,9 @@ This page explains the basic framework for the submission of [simulation Jobs]({
 
 ## Batch Mode
 
-Simulation tasks submitted through CLI are expected to be run in **"batch" mode**. Batch jobs are controlled by the so-called **Batch Scripts** (also referred to as **Job Scripts**), which are written by the user and then submitted to the [resource management system]({{ dev_url }}/infrastructure/resource/overview/). These scripts specify, at the very least, how many nodes and cores the job will use, how long the job will run, the name of the [application](../../software-directory/overview.md) to be run, and other important [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/).
+Simulation tasks submitted through CLI are expected to be run in **"batch" mode**. Batch jobs are controlled by the so-called **Batch Scripts** (also referred to as **Job Scripts**), which are written by the user and then submitted to the [resource management system]({{ resources_url }}/infrastructure/resource/overview/). These scripts specify, at the very least, how many nodes and cores the job will use, how long the job will run, the name of the [application]({{ reference_url }}/software-directory/overview/) to be run, and other important [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/).
 
-Interactive parallel jobs are not supported on our platform by design. Users are encouraged to prototype calculations on the [login node]({{ dev_url }}/infrastructure/login/overview/) (using 2-8 CPU cores with < 1min walltime per user) instead, and submit larger debug tasks into the [Debug queue]({{ dev_url }}/infrastructure/resource/category/) designed specifically for testing purposes.
+Interactive parallel jobs are not supported on our platform by design. Users are encouraged to prototype calculations on the [login node]({{ resources_url }}/infrastructure/login/overview/) (using 2-8 CPU cores with < 1min walltime per user) instead, and submit larger debug tasks into the [Debug queue]({{ resources_url }}/infrastructure/resource/category/) designed specifically for testing purposes.
 
 ## Implementation
 
@@ -18,7 +18,7 @@ The general layout structure of Batch Scripts is the object of [this discussion]
 
 ## [Resource Manager Directives](directives.md)
 
-[This page](directives.md) contains the list of the most important directives for specifying the allocation of [computing resources]({{ dev_url }}/infrastructure/resource/overview/), necessary for the execution of the job under consideration.
+[This page](directives.md) contains the list of the most important directives for specifying the allocation of [computing resources]({{ resources_url }}/infrastructure/resource/overview/), necessary for the execution of the job under consideration.
 
 ## [Working Directory](directories.md)
 

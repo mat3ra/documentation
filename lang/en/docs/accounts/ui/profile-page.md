@@ -26,4 +26,4 @@ General Account Preferences and Settings, such as the biographical information a
 
 ## Entity Components
 
-The Profile page also allows the Account-owned Entity Collections to be accessed from their associated ["Entity Tabs"]({{ guide_url }}/ui/specific/tabs-navigator/), located at the top of the page. Each tab leads to the ["Explorer Interface"](../../entities-general/ui/explorer.md) for the corresponding [entity type]({{ reference_url }}/entities-general/overview/). 
+The Profile page also allows the Account-owned Entity Collections to be accessed from their associated ["Entity Tabs"]({{ interface_url }}/ui/specific/tabs-navigator/), located at the top of the page. Each tab leads to the ["Explorer Interface"](../../entities-general/ui/explorer.md) for the corresponding [entity type]({{ reference_url }}/entities-general/overview/). 

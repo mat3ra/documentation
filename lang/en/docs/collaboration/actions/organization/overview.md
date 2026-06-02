@@ -6,7 +6,7 @@ A  set of actions can be performed by the [Owner or Administrators]({{ reference
 
 The user with administrative rights can follow [these instructions](create.md) to create a new Organization. 
 
-Please [contact us]({{ guide_url }}/ui/support/) if you would like to delete an Organization that you own.
+Please [contact us]({{ interface_url }}/ui/support/) if you would like to delete an Organization that you own.
 
 ## [Add or Remove Members](add-remove-member.md)
 

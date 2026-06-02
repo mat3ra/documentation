@@ -12,12 +12,12 @@ All the available free storage space, that has not been yet occupied by the data
 
 ## View Quota
 
-Both the Consumed and Available storage quotas associated with an Account can be inspected by the user through any of the following user interface components: the [Service Levels]({{ guide_url }}/accounts/ui/service-level/) page, the [Account Menu]({{ guide_url }}/ui/account-menu/), the [Bio]({{ guide_url }}/accounts/ui/bio/) account interface component, or on the main [Dashboard]({{ guide_url }}/ui/specific/dashboard/). In the latter three cases, it is possible to visualize such quota information broken down across each individual computing cluster node available to the Account.
+Both the Consumed and Available storage quotas associated with an Account can be inspected by the user through any of the following user interface components: the [Service Levels]({{ interface_url }}/accounts/ui/service-level/) page, the [Account Menu]({{ interface_url }}/ui/account-menu/), the [Bio]({{ interface_url }}/accounts/ui/bio/) account interface component, or on the main [Dashboard]({{ interface_url }}/ui/specific/dashboard/). In the latter three cases, it is possible to visualize such quota information broken down across each individual computing cluster node available to the Account.
 
 ## Increase Quota
 
-Accounts can increase the limit for the total storage quota according to the instructions in [this page]({{ guide_url }}/accounts/accounting/increase-balance/).
+Accounts can increase the limit for the total storage quota according to the instructions in [this page]({{ interface_url }}/accounts/accounting/increase-balance/).
 
 ## Access Quota Information via Command Line
 
-Information about the consumed and available storage quotas can also be accessed via the Command Line Interface of the platform, as explained in a [separate section of the documentation]({{ dev_url }}/infrastructure/storage/).
+Information about the consumed and available storage quotas can also be accessed via the Command Line Interface of the platform, as explained in a [separate section of the documentation]({{ resources_url }}/infrastructure/storage/).

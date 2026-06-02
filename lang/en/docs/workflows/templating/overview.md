@@ -20,7 +20,7 @@ We provide an example of input file templating for a materials science computati
 
 ## [User Interface](ui.md)
 
-The [User Interface components](ui.md) which are pertinent to setting templating options, for the generation of input files during the [Design stage of a new Workflow]({{ guide_url }}/workflow-designer/overview/), are reviewed [in this page]({{ guide_url }}/workflow-designer/unit-editor/input-templates/).
+The [User Interface components](ui.md) which are pertinent to setting templating options, for the generation of input files during the [Design stage of a new Workflow]({{ interface_url }}/workflow-designer/overview/), are reviewed [in this page]({{ interface_url }}/workflow-designer/unit-editor/input-templates/).
 
 ## [Tutorials]({{ guide_url }}/tutorials/templating/overview/)
 

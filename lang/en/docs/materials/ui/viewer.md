@@ -4,11 +4,11 @@ The user can [open](../../entities-general/actions/open-edit.md) entities listed
 
 ## Viewer vs. Designer
 
-As explained in the [general introduction](../../entities-general/ui/viewer.md), we reuse the [Designer]({{ guide_url }}/materials-designer/overview/) component as Viewer throughout the platform, with some adjustments and limitations on editing. For example, the ["Edit" functionality of the 3D crystal viewer]({{ guide_url }}/materials-designer/3d-editor/edit/) is missing from Viewer, due to the inapplicability of its structure-changing actions under the "viewing" circumstances. 
+As explained in the [general introduction](../../entities-general/ui/viewer.md), we reuse the [Designer]({{ interface_url }}/materials-designer/overview/) component as Viewer throughout the platform, with some adjustments and limitations on editing. For example, the ["Edit" functionality of the 3D crystal viewer]({{ interface_url }}/materials-designer/3d-editor/edit/) is missing from Viewer, due to the inapplicability of its structure-changing actions under the "viewing" circumstances. 
 
 ## Allowed Adjustments
 
-Some minor adjustments, not related to the crystal structure (as an [identifying descriptive property]({{ reference_url }}/data-structured/overview/#by-relation-to-uniqueness)) , might still be performed under the Materials Viewer. These can primarily be performed under the *header* and *footer* of Viewer, both highlighted in red in the image below.
+Some minor adjustments, not related to the crystal structure (as an [identifying descriptive property]({{ data_url }}/data-structured/overview/#by-relation-to-uniqueness)) , might still be performed under the Materials Viewer. These can primarily be performed under the *header* and *footer* of Viewer, both highlighted in red in the image below.
 
 ![Materials Viewer](../../images/materials/materials-viewer.png "Materials Viewer")
 
@@ -18,7 +18,7 @@ One such permitted action is the changing of the Material's name, as it appears 
 
 ### Edit Metadata
 
-[Metadata]({{ reference_url }}/entities-general/data/#metadata) can also be added or modified for the material entry currently being inspected. For example, a general description can be written under the "Info" button <i class="zmdi zmdi-info-outline zmdi-hc-border"></i>  present towards the right-hand side of the header. Tags can inserted/edited in the footer, following the [these instructions](../../entities-general/actions/metadata.md).
+[Metadata]({{ data_url }}/entities-general/data/#metadata) can also be added or modified for the material entry currently being inspected. For example, a general description can be written under the "Info" button <i class="zmdi zmdi-info-outline zmdi-hc-border"></i>  present towards the right-hand side of the header. Tags can inserted/edited in the footer, following the [these instructions](../../entities-general/actions/metadata.md).
 
 ### Toggle Privacy
 

@@ -2,7 +2,7 @@
 
 The term "Collection", in the context of our platform, refers to the broad concept of a **database of items**, whereby such items can be of any general type. These collections, comprising all the different items that they contain, are stored in our platform. The concept of a collection can be easily understood by users familiar with MongoDB [^1] database. 
 
-The "front-end" of these collections, or in other words the way the users can visualize and interact graphically with such databases as lists of items on our platform, can typically be accessed via the [Explorer]({{ guide_url }}/entities-general/ui/explorer/) components (or alternatively through the [RESTful API]({{ dev_url }}/rest-api/overview/)).
+The "front-end" of these collections, or in other words the way the users can visualize and interact graphically with such databases as lists of items on our platform, can typically be accessed via the [Explorer]({{ interface_url }}/entities-general/ui/explorer/) components (or alternatively through the [RESTful API]({{ developers_url }}/rest-api/overview/)).
 
 ## Entity Collections
 

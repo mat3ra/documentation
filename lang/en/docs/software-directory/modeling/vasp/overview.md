@@ -7,7 +7,7 @@ The underlying [theoretical model]({{ reference_url }}/models/overview/) is [Den
 Complete information and documentation about the VASP code can be found in its corresponding website [^1], [^2], [^3].
 
 !!!warning "License Requirements"
-    VASP is a proprietary software, and as such it requires a license in order to be operated. All users who would like to use this code are advised to send us a [support request](../../../ui/support.md) so that we can check their existing licenses. Contact us about an on-demand license option for interested parties.
+    VASP is a proprietary software, and as such it requires a license in order to be operated. All users who would like to use this code are advised to send us a [support request]({{ interface_url }}/ui/support/) so that we can check their existing licenses. Contact us about an on-demand license option for interested parties.
 
 ## Supported Versions
 
@@ -22,11 +22,11 @@ We introduce the different [components]({{ reference_url }}/software/components/
 
 ## [Compute Parameters](compute-parameters.md)
 
-We explain the specific aspects of [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) [here](compute-parameters.md).
+We explain the specific aspects of [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) [here](compute-parameters.md).
 
-## [Data](data.md)
+## [Data]({{ data_url }}/software-directory/modeling/vasp/data/)
 
-The [structured representation]({{ reference_url }}/data-structured/overview/) for VASP is explained [in this page](data.md).
+The [structured representation]({{ data_url }}/data-structured/overview/) for VASP is explained [in this page]({{ data_url }}/software-directory/modeling/vasp/data/).
 
 ## Links
 

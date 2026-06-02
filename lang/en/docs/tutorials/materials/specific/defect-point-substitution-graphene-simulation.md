@@ -125,7 +125,7 @@ Execute all cells by selecting `Run` > `Run All` from the menu.
 
 The notebook will:
 
-1. [Authenticate with the platform](../../../jupyterlite/authentication.md) and initialize the API client
+1. [Authenticate with the platform]({{ interface_url }}/jupyterlite/authentication.md) and initialize the API client
 2. Load the N-doped graphene material
 3. Create and configure the band structure workflow
 4. Submit the calculation job

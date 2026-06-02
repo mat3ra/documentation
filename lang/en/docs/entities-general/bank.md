@@ -48,7 +48,7 @@ The correspondence between the Entity and Bank entity collections is visualized 
 
 Distinct Account-owned entities <i class="zmdi zmdi-close-circle-o"></i> may end up corresponding to the same **unique** Bank entry <i class="zmdi zmdi-plus-circle-o"></i>. As mentioned earlier, this happens when the underlying Bankable Entities produce the same output for the Mapping Function.
 
-The reader may refer to this [page](data.md) for an explanation of the structured data keywords contained in the image insets. It is worth noticing that interconnected entity items share the same "hash" keyword string, as explained in the forthcoming section.
+The reader may refer to this [page]({{ data_url }}/entities-general/data/) for an explanation of the structured data keywords contained in the image insets. It is worth noticing that interconnected entity items share the same "hash" keyword string, as explained in the forthcoming section.
 
 ### Hash Strings
 
@@ -76,4 +76,4 @@ Alternatively, the lack of data privacy leads to the following scenario, whereby
 
 Bank entities may be **imported** by users with appropriate access to it. This creates a copy of that item under the Account-owned collection.
 
-Specific examples of the importing procedure can be found for both [Materials](../materials/bank.md) and [Workflows](../workflows/bank.md), whereas the general instructions are presented [here]({{ guide_url }}/entities-general/actions/copy-bank/).
+Specific examples of the importing procedure can be found for both [Materials](../materials/bank.md) and [Workflows](../workflows/bank.md), whereas the general instructions are presented [here]({{ interface_url }}/entities-general/actions/copy-bank/).

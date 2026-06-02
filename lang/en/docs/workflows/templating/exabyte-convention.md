@@ -16,11 +16,11 @@ The context available to templates on web interface, containing materials, workf
 
 ### Runtime-time Context
 
-The context passed to the templates at runtime. This context provides system-level parameters such as `JOB_WORK_DIR` variable which defines the main [Working Directory]({{ guide_url }}/jobs-cli/batch-scripts/directories/) for the [Job](../../jobs/overview.md) under consideration. This is a system-level [Environment Variable]({{ guide_url }}/jobs-cli/batch-scripts/directives/#environment-variables) that will be resolved only during the the runtime.
+The context passed to the templates at runtime. This context provides system-level parameters such as `JOB_WORK_DIR` variable which defines the main [Working Directory]({{ cli_url }}/jobs-cli/batch-scripts/directories/) for the [Job](../../jobs/overview.md) under consideration. This is a system-level [Environment Variable]({{ cli_url }}/jobs-cli/batch-scripts/directives/#environment-variables) that will be resolved only during the the runtime.
 
 ### Raw Syntax
 
-The "Raw" filter syntax is used to prevent the Web Interface from rendering variables during the **Design-time Rendering**, given that such variables are only available during the ensuing **Runtime Rendering**. Hence, for example, the above-mentioned `JOB_WORK_DIR` variable would need to be entered as follows in a [Quantum ESPRESSO]({{ guide_url }}/software-directory/modeling/quantum-espresso/overview/) input file template, containing the line which defines the pseudopotential directory inside the [Working Directory]({{ guide_url }}/jobs-cli/batch-scripts/directories/).
+The "Raw" filter syntax is used to prevent the Web Interface from rendering variables during the **Design-time Rendering**, given that such variables are only available during the ensuing **Runtime Rendering**. Hence, for example, the above-mentioned `JOB_WORK_DIR` variable would need to be entered as follows in a [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) input file template, containing the line which defines the pseudopotential directory inside the [Working Directory]({{ cli_url }}/jobs-cli/batch-scripts/directories/).
 
 ```jinja
 pseudo_dir = {% raw %}'{{ JOB_WORK_DIR }}/pseudo'{% endraw %}

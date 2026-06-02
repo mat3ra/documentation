@@ -6,7 +6,7 @@ Similarly to the [average pressure](pressure.md), the **Total Force** is also tr
 
 ## Example
 
-This material property is displayed under the [Results Tab]({{ guide_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ guide_url }}/jobs/ui/viewer/) as follows, in units of eV/Angstroms. It it also routinely computed as part of any total energy self-consistent field (scf) calculation using [DFT](../../models-directory/dft/overview.md).
+This material property is displayed under the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/) as follows, in units of eV/Angstroms. It it also routinely computed as part of any total energy self-consistent field (scf) calculation using [DFT](../../models-directory/dft/overview.md).
 
 <div class="clearfix">
     <center>
@@ -20,4 +20,4 @@ This material property is displayed under the [Results Tab]({{ guide_url }}/jobs
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#total-force).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#total-force).

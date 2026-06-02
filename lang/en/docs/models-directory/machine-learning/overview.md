@@ -14,9 +14,9 @@ We discuss the classification of properties in the context of ML in a [separate 
 
 We introduce some Machine Learning-specific [unit types](../../workflows/components/units.md) under [this explanation](units.md).
 
-## [Structured Representation](data.md)
+## [Structured Representation]({{ data_url }}/models-directory/machine-learning/data/)
 
-[This page](data.md) contains an example [structured representation](../../data-structured/overview.md) for the ML model.
+[This page]({{ data_url }}/models-directory/machine-learning/data/) contains an example [structured representation]({{ data_url }}/data-structured/overview/) for the ML model.
 
 ## [Example Workflow](example-workflow.md)
 

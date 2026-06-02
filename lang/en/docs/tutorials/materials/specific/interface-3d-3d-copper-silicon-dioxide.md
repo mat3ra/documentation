@@ -27,7 +27,7 @@ This tutorial demonstrates the process of creating interfaces between 3D materia
     Physical Review B, 83(11). 
     [DOI: 10.1103/PhysRevB.83.115327](https://doi.org/10.1103/PhysRevB.83.115327) [@Shan2011].
 
-We use the [Materials Designer](../../../materials-designer/overview.md) to create interfaces between Cu and Cristobalite with different termination pairs.
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create interfaces between Cu and Cristobalite with different termination pairs.
 
 The FIG. 1. shows the interfaces with different terminations between Cu and Cristobalite.
 
@@ -36,16 +36,16 @@ The FIG. 1. shows the interfaces with different terminations between Cu and Cris
 
 ## 1. Load and Preview Materials.
 
-Navigate to [Materials Designer](../../../materials-designer/overview.md) and import copper and cristobalite materials from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import copper and cristobalite materials from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
-Then use the [JupyterLite](../../../jupyterlite/overview.md) environment to create the target structures.
+Then use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create the target structures.
 
 
 ## 2. Create Interface Between Copper and Cristobalite.
 
 ### 2.1 Launch JupyterLite Session.
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
@@ -132,7 +132,7 @@ The user can pass the material with the interface in the current Materials Desig
 
 ![Final Material](../../../images/tutorials/materials/interfaces/interface_3d_3d_copper_cristobalite/3-wave-result.webp "Cu/SiO2 Interface")
 
-Or the user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
 ## 4. Create Interfaces with other Terminations.
 

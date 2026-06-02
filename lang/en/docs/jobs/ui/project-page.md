@@ -1,6 +1,6 @@
 # Projects Page
 
-The page dedicated to each [Project]({{ reference_url }}/jobs/projects/) contains the information about it and is comprised of two [main tabs]({{ guide_url }}/ui/specific/tabs-navigator/), as highlighted below.
+The page dedicated to each [Project]({{ reference_url }}/jobs/projects/) contains the information about it and is comprised of two [main tabs]({{ interface_url }}/ui/specific/tabs-navigator/), as highlighted below.
 
 ![Projects Page](../../images/jobs/projects-page.png "Projects Page")
 

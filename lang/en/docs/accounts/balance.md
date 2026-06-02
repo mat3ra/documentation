@@ -12,8 +12,8 @@ The "Reserved" aspect of the total balance refers to the amount of money which h
 
 ## View Balance
 
-Both the Reserved and Available Balances associated with an Account can be inspected by the User through either the [Service Levels]({{ guide_url }}/accounts/ui/service-level/) or the [Account Menu]({{ guide_url }}/ui/account-menu/) components.
+Both the Reserved and Available Balances associated with an Account can be inspected by the User through either the [Service Levels]({{ interface_url }}/accounts/ui/service-level/) or the [Account Menu]({{ interface_url }}/ui/account-menu/) components.
 
 ## Increase Balance
 
-A description for how the action of increasing the account-related balance can be performed (by the owner of the account or any of the administrators in the case of an Organizational account) is documented in [this page]({{ guide_url }}/accounts/accounting/increase-balance/).
+A description for how the action of increasing the account-related balance can be performed (by the owner of the account or any of the administrators in the case of an Organizational account) is documented in [this page]({{ interface_url }}/accounts/accounting/increase-balance/).

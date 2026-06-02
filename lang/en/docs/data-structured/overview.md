@@ -7,11 +7,11 @@ In this section, we provide an introduction to the practices we employ to organi
 
 ## Database
 
-We store the structured data in the MongoDB database [^1]. The database is highly available, ie. has multiple equivalent sources at any time, and is backed up daily. Readers are referred to the [Collections](../accounts/collections.md) and [Infrastructure]({{ dev_url }}/infrastructure/overview/) sections to find out more about how individual items are stored and organized for access.  
+We store the structured data in the MongoDB database [^1]. The database is highly available, ie. has multiple equivalent sources at any time, and is backed up daily. Readers are referred to the [Collections]({{ reference_url }}/accounts/collections/) and [Infrastructure]({{ resources_url }}/infrastructure/overview/) sections to find out more about how individual items are stored and organized for access.  
 
-## [Exabyte Data Convention](convention.md)
+## [ESSE Data Convention](convention.md)
 
-[This section](convention.md) contains the explanation of the basics of the data convention employed. We particularly explain how we make use of the **JSON format** to structure the data about the [Entities](../entities-general/overview.md) and their respective [Properties](../properties/overview.md).
+[This section](convention.md) contains the explanation of the basics of the data convention employed. We particularly explain how we make use of the **JSON format** to structure the data about the [Entities]({{ reference_url }}/entities-general/overview/) and their respective [Properties]({{ reference_url }}/properties/overview/).
 
 ## Links
 

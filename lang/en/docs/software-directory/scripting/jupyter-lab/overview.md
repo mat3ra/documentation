@@ -6,7 +6,7 @@ We include support for **Jupyter Lab** versions 3.0.3 and 0.33.12 within our pla
 
 ## Data
 
-We introduce the [structured representation]({{ reference_url }}/data-structured/overview/) for Jupyter Lab application [here](data.md).
+We introduce the [structured representation]({{ data_url }}/data-structured/overview/) for Jupyter Lab application [here]({{ data_url }}/software-directory/scripting/jupyter-lab/data/).
 
 ## Links
 
