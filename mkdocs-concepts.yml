@@ -13,21 +13,22 @@ exclude_docs: |
   cli/
   data-in-objectstorage/
   getting-started/
-  jobs-cli/
+  /jobs-cli/
   jobs-designer/
   jupyterlite/
   materials-designer/
   pricing/
   remote-connection/
-  software-directory/
   tutorials/
   ui/
   workflow-designer/
   migrating-to-new-platform.md
 
-  # Dev-only top-level dirs
+  # Resources site top-level dirs
   data-on-disk/
   infrastructure/
+
+  # Developers site top-level dirs
   rest-api/
 
   # Guide-only pages in shared dirs
@@ -56,6 +57,9 @@ exclude_docs: |
   index-guide.md
   index-interface.md
   index-dev.md
+  index-resources.md
+  index-developers.md
+  index-cli.md
   index-standards.md
 
   # Data Standards site pages
@@ -91,7 +95,9 @@ extra:
     guide_url: https://docs.mat3ra.com/guide
     interface_url: https://docs.mat3ra.com/interface
     reference_url: https://docs.mat3ra.com/reference
-    dev_url: https://docs.mat3ra.com/dev
+    resources_url: https://docs.mat3ra.com/resources
+    developers_url: https://docs.mat3ra.com/developers
+    cli_url: https://docs.mat3ra.com/command-line
     data_url: https://docs.mat3ra.com/standards
 
 
@@ -282,7 +288,46 @@ nav:
             - Inchi Key:                                properties-directory/structural/inchi-key.md
 
 
-
+# SOFTWARE DIRECTORY
+    - Software Directory:
+        - Overview:                                     software-directory/overview.md
+        - Modeling:
+            - Quantum ESPRESSO:
+                - Overview:                             software-directory/modeling/quantum-espresso/overview.md
+                - Components:                           software-directory/modeling/quantum-espresso/components.md
+                - Compute Parameters:                   software-directory/modeling/quantum-espresso/compute-parameters.md
+            - VASP:
+                - Overview:                             software-directory/modeling/vasp/overview.md
+                - Components:                           software-directory/modeling/vasp/components.md
+                - Compute Parameters:                   software-directory/modeling/vasp/compute-parameters.md
+            - TurboMole:                                software-directory/modeling/turbomole.md
+            - LAMMPS:                                   software-directory/modeling/lammps.md
+            - NWChem:                                   software-directory/modeling/nwchem.md
+            - CP2K:                                     software-directory/modeling/cp2k.md
+            - Gromacs:                                  software-directory/modeling/gromacs.md
+            - WIEN2k:                                   software-directory/modeling/wien2k.md
+        - Scripting:
+            - Shell:
+                - Overview:                             software-directory/scripting/shell/overview.md
+            - Python:
+                - Overview:                             software-directory/scripting/python/overview.md
+            - Jupyter Lab:
+                - Overview:                             software-directory/scripting/jupyter-lab/overview.md
+        - Machine Learning (ML):
+            - TensorFlow:                               software-directory/machine-learning/tensorflow.md
+            - Python ML:
+                - Overview:                             software-directory/machine-learning/python-ml/overview.md
+                - Components:                           software-directory/machine-learning/python-ml/components.md
+                - Workflow Structure:                   software-directory/machine-learning/python-ml/workflow-structure.md
+        - Analysis & Visualization:
+            - VESTA:                                    software-directory/analysis/vesta.md
+            - XCRYSDEN:                                 software-directory/analysis/xcrysden.md
+            - P4VASP:                                   software-directory/analysis/p4vasp.md
+            - VMD:                                      software-directory/analysis/vmd.md
+        - Development Tools:
+            - Compilers:                                software-directory/development/compilers.md
+            - Libraries:                                software-directory/development/libraries.md
+            - Text Editors:                             software-directory/development/text-editors.md
 
 # SECURITY
     - Security:

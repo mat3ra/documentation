@@ -97,7 +97,7 @@ An animation of the final combined benzene molecule-gold surface structure can b
 
 The user is now free to use the newly generated benzene-gold surface system, in order to perform its further analysis, such as studying the adsorption energy.
 
-The [Nudged Elastic Band (NEB)]({{ reference_url }}/models/auxiliary-concepts/nudged-elastic-band/) method can be used for reaction energy profile calculations. We offer two alternative approaches for implementing the NEB method on our platform, based on the use of the [VASP](../../software-directory/modeling/vasp/overview.md) or [Quantum ESPRESSO](../../software-directory/modeling/quantum-espresso/overview.md) modeling engines, which are narrated in two separate tutorials accessible [here](../dft/chemical/reaction-profile-vasp.md) and [here](../dft/chemical/reaction-profile-qe.md) respectively.
+The [Nudged Elastic Band (NEB)]({{ reference_url }}/models/auxiliary-concepts/nudged-elastic-band/) method can be used for reaction energy profile calculations. We offer two alternative approaches for implementing the NEB method on our platform, based on the use of the [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) or [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) modeling engines, which are narrated in two separate tutorials accessible [here](../dft/chemical/reaction-profile-vasp.md) and [here](../dft/chemical/reaction-profile-qe.md) respectively.
 
 ## Animation
 

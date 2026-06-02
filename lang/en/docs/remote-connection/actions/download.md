@@ -2,11 +2,11 @@
 
 ## Instructions for Remote Desktop
 
-Starting from [Remote Desktop](../remote-desktop.md), the user can download files (of limited size) by putting them in the [Dropbox]({{ dev_url }}/data-in-objectstorage/dropbox/) folder first, which has an overall capacity of 1 Gb. Such files can later be downloaded from the [Web Interface](../../ui/overview.md) by clicking their corresponding entries listed under the [Files Explorer](../../data-in-objectstorage/ui/explorer.md) interface of the [Dropbox Page](../../data-in-objectstorage/ui/dropbox-page.md), as explained [here](../../data-in-objectstorage/actions/download.md).
+Starting from [Remote Desktop](../remote-desktop.md), the user can download files (of limited size) by putting them in the [Dropbox]({{ resources_url }}/data-in-objectstorage/dropbox/) folder first, which has an overall capacity of 1 Gb. Such files can later be downloaded from the [Web Interface]({{ interface_url }}/ui/overview/) by clicking their corresponding entries listed under the [Files Explorer]({{ interface_url }}/data-in-objectstorage/ui/explorer/) interface of the [Dropbox Page]({{ interface_url }}/data-in-objectstorage/ui/dropbox-page/), as explained [here]({{ interface_url }}/data-in-objectstorage/actions/download/).
 
 ## Animation 
 
-We demonstrate how to download a file called "remote-connection.yaml", present under the [Login Home]({{ dev_url }}/infrastructure/login/directories/) directory, starting from the Remote Desktop interface. After copying the file to the Dropbox folder, we then retrieve it under the Web Interface.
+We demonstrate how to download a file called "remote-connection.yaml", present under the [Login Home]({{ resources_url }}/infrastructure/login/directories/) directory, starting from the Remote Desktop interface. After copying the file to the Dropbox folder, we then retrieve it under the Web Interface.
 
 <img data-gifffer="/images/remote-connection/download-rd.gif" />
 
@@ -18,7 +18,7 @@ From the [Web Terminal](../web-terminal.md) on the other hand, the user can down
 exadownload <filepath/filename>
 ```
 
-Typing this command under the [Command Line Interface]({{ guide_url }}/cli/overview/) downloads the file directly to the default location for saving Downloaded content set by the web browser being employed.
+Typing this command under the [Command Line Interface]({{ cli_url }}/cli/overview/) downloads the file directly to the default location for saving Downloaded content set by the web browser being employed.
 
 ## Animation
 

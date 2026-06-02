@@ -1,14 +1,14 @@
 # List of Available Software
 
-We list on the present page the [software]({{ reference_url }}/software/overview/) available on our platform, accessible via the appropriate [connection method]({{ interface_url }}/remote-connection/overview/). The reader is referred to the introductory pages dedicated to each of the packages listed here by clicking the links contained below. Dedicated pages contain references to the relevant documentation explaining the operations of the corresponding software in detail.
+We list on the present page the [software]({{ reference_url }}/software/overview/) available on our platform, accessible via the appropriate [connection method]({{ cli_url }}/remote-connection/overview/). The reader is referred to the introductory pages dedicated to each of the packages listed here by clicking the links contained below. Dedicated pages contain references to the relevant documentation explaining the operations of the corresponding software in detail.
 
 ## Access Scenarios
 
 Tools can be accessed through one or more of the following methods:
  
  1. The main user interface (in the [subworkflow editor]({{ interface_url }}/workflow-designer/subworkflow-editor/overview/)), 
- 2. Remote Desktop (we provide an example for [VESTA](analysis/vesta.md)) in [this page]({{ interface_url }}/remote-connection/actions-rd/open-app/),
- 3. [Environment Modules](../cli/modules.md) in [command line interface](../cli/overview.md).
+ 2. Remote Desktop (we provide an example for [VESTA](analysis/vesta.md)) in [this page]({{ cli_url }}/remote-connection/actions-rd/open-app/),
+ 3. [Environment Modules]({{ cli_url }}/cli/modules/) in [command line interface]({{ cli_url }}/cli/overview/).
 
 
 ## Modeling Applications
@@ -35,7 +35,7 @@ We have a proof-of-concept support for [machine learning]({{ reference_url }}/mo
 
 ## Analysis Tools
 
-We support the following structural analysis and visualization tools through a [remote desktop connection]({{ interface_url }}/remote-connection/remote-desktop/). The reader may click each entry listed below to be redirected to the software's corresponding documentation introduction.
+We support the following structural analysis and visualization tools through a [remote desktop connection]({{ cli_url }}/remote-connection/remote-desktop/). The reader may click each entry listed below to be redirected to the software's corresponding documentation introduction.
 
 | Name      |  Version(s) | Access Scenarios (see previous section) |
 | :-------- | ----------- | ------------- |
@@ -45,14 +45,14 @@ We support the following structural analysis and visualization tools through a [
 | [P4VASP](analysis/p4vasp.md) |  0.3.30 | 2, 3 |
 
 !!!info "Opening graphical software in remote desktop."
-    An example of how to open a graphical structural visualization tool in our remote desktop environment is provided [under this page]({{ interface_url }}/remote-connection/actions-rd/open-app/).
+    An example of how to open a graphical structural visualization tool in our remote desktop environment is provided [under this page]({{ cli_url }}/remote-connection/actions-rd/open-app/).
 
 ## Scripting Applications
 
 Our platform includes support for two widely-used scripting languages, [shell scripting](scripting/shell/overview.md) and [python](scripting/python/overview.md), which are introduced in their respective documentation pages. 
 
-For command line users, we provide a system-default Python installation and recommend users employ virtual environments for controlling the versions of Python packages in [Command Line Interface](../cli/overview.md), as explained [in this page](../cli/actions/create-python-env.md).
+For command line users, we provide a system-default Python installation and recommend users employ virtual environments for controlling the versions of Python packages in [Command Line Interface]({{ cli_url }}/cli/overview/), as explained [in this page]({{ cli_url }}/cli/actions/create-python-env/).
 
 ## Development Tools
 
-Users of our [Command Line Interface](../cli/overview.md) have at their disposal a comprehensive set of development [compilers](development/compilers.md) and [libraries](development/libraries.md), as well as of [text editors](development/text-editors.md) for inspecting or editing the relevant scripts and simulation files.
+Users of our [Command Line Interface]({{ cli_url }}/cli/overview/) have at their disposal a comprehensive set of development [compilers](development/compilers.md) and [libraries](development/libraries.md), as well as of [text editors](development/text-editors.md) for inspecting or editing the relevant scripts and simulation files.

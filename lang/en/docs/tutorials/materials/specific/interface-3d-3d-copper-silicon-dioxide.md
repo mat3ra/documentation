@@ -38,7 +38,7 @@ The FIG. 1. shows the interfaces with different terminations between Cu and Cris
 
 Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import copper and cristobalite materials from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
-Then use the [JupyterLite](../../../jupyterlite/overview.md) environment to create the target structures.
+Then use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create the target structures.
 
 
 ## 2. Create Interface Between Copper and Cristobalite.

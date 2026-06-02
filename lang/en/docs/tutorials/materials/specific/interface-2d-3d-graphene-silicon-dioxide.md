@@ -38,7 +38,7 @@ We will focus on replicating the material from FIG. 1. (b) -- with Graphene on O
 
 Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import graphene and silicon dioxide materials from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
-Then use the [JupyterLite](../../../jupyterlite/overview.md) environment to create the target structures.
+Then use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create the target structures.
 
 ## 2. Create Interface Between Graphene and Silicon Dioxide.
 

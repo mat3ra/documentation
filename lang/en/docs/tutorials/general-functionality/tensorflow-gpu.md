@@ -2,8 +2,8 @@
 
 TensorFlow [^1] is a powerful oepn-source machine-learning platform geared towards neural networks.
 
-In this tutorial, we will create an [Anaconda](../../cli/modules.md) environment for TensorFlow, and will run a test job
-on a [GPU]({{ dev_url }}/infrastructure/resource/category/) queue within [AWS]({{ dev_url }}/infrastructure/clusters/aws/).
+In this tutorial, we will create an [Anaconda]({{ cli_url }}/cli/modules/) environment for TensorFlow, and will run a test job
+on a [GPU]({{ resources_url }}/infrastructure/resource/category/) queue within [AWS]({{ resources_url }}/infrastructure/clusters/aws/).
 
 ## 1. Create the Test Job
 
@@ -50,7 +50,7 @@ prefix: tfgpu
 
 ### job.pbs
 
-We'll finish our job setup by writing a PBS [submission script](../../jobs-cli/batch-scripts/overview.md) to take care
+We'll finish our job setup by writing a PBS [submission script]({{ cli_url }}/jobs-cli/batch-scripts/overview/) to take care
 of setting up the TensorFlow environment and running the Python script. We will name this file `job.pbs`:
 
 ```bash
@@ -118,7 +118,7 @@ qsub job.pbs
 ```
 
 The job will enter the GPU queue, and after a few minutes should start. The job's
-status [can be monitored](../../jobs-cli/actions/check-status.md) with the `qstat` command.
+status [can be monitored]({{ cli_url }}/jobs-cli/actions/check-status/) with the `qstat` command.
 
 ## 3. Analyze the Results
 

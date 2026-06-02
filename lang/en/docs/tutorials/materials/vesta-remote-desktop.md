@@ -1,20 +1,20 @@
 # Create Materials With VESTA under Remote Desktop
 
-The present tutorial describes the steps necessary for connecting to our platform via a [Remote Desktop]({{ interface_url }}/remote-connection/remote-desktop/), in order to create and manipulate a [material structure]({{ reference_url }}/materials/overview/) through [VESTA](../../software-directory/analysis/vesta.md) graphical analysis and visualization software.
+The present tutorial describes the steps necessary for connecting to our platform via a [Remote Desktop]({{ cli_url }}/remote-connection/remote-desktop/), in order to create and manipulate a [material structure]({{ reference_url }}/materials/overview/) through [VESTA]({{ reference_url }}/software-directory/analysis/vesta/) graphical analysis and visualization software.
 
-We demonstrate how this new crystal structure can be retrieved within the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials, accessible via the [Materials Explorer]({{ interface_url }}/materials/ui/explorer/) of our [Web Interface]({{ interface_url }}/ui/overview/). This transfer of the structure information is achieved through the help of the [Dropbox functionality]({{ dev_url }}/data-in-objectstorage/dropbox/) of our platform.
+We demonstrate how this new crystal structure can be retrieved within the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials, accessible via the [Materials Explorer]({{ interface_url }}/materials/ui/explorer/) of our [Web Interface]({{ interface_url }}/ui/overview/). This transfer of the structure information is achieved through the help of the [Dropbox functionality]({{ resources_url }}/data-in-objectstorage/dropbox/) of our platform.
  
-Additional analysis software similar to VESTA can be retrieved under Remote Desktop, as introduced under the list presented [herein](../../software-directory/overview.md#analysis-tools). 
+Additional analysis software similar to VESTA can be retrieved under Remote Desktop, as introduced under the list presented [herein]({{ reference_url }}/software-directory/overview/#analysis-tools). 
 
 ## Accessing Remote Desktop
 
-One must open a [Remote Desktop Connection]({{ interface_url }}/remote-connection/remote-desktop/) via our [Web Interface]({{ interface_url }}/ui/overview/) in order to run [graphical interface programs](../../software-directory/overview.md#analysis-tools) for material analysis and visualization purposes. 
+One must open a [Remote Desktop Connection]({{ cli_url }}/remote-connection/remote-desktop/) via our [Web Interface]({{ interface_url }}/ui/overview/) in order to run [graphical interface programs]({{ reference_url }}/software-directory/overview/#analysis-tools) for material analysis and visualization purposes. 
 
-The instructions for opening and launching a Remote Desktop session can be found under [this page]({{ interface_url }}/remote-connection/actions/open-desktop/).
+The instructions for opening and launching a Remote Desktop session can be found under [this page]({{ cli_url }}/remote-connection/actions/open-desktop/).
 
 ## Launching VESTA Visualization Software
 
-The user should now [follow this procedure]({{ interface_url }}/remote-connection/actions-rd/open-app/) in order to start a session of the [VESTA](../../software-directory/analysis/vesta.md) graphical materials analysis software.
+The user should now [follow this procedure]({{ cli_url }}/remote-connection/actions-rd/open-app/) in order to start a session of the [VESTA]({{ reference_url }}/software-directory/analysis/vesta/) graphical materials analysis software.
 
 !!!warning "Avoid compute intensive visualization tasks"
     We kindly ask users to avoid running excessively intensive visualization tasks when interacting with analysis software such as VESTA, as it may interfere with other users' operations during the course of their execution.
@@ -51,9 +51,9 @@ At the end of entering the appropriate crystallographic data for bcc Iron, the "
 
 ## Save Structure as POSCAR to Dropbox
 
-Following the creation of the bcc Iron crystal structure within VESTA, the associated structural data can then be exported under the POSCAR file format directly to the [Dropbox Folder]({{ dev_url }}/data-in-objectstorage/dropbox/), affording for the simultaneous sharing of files between all [nodes of our platform]({{ dev_url }}/infrastructure/overview/). This should be done by clicking the "Export Data" option under the top-left "File" menu of the VESTA interface.
+Following the creation of the bcc Iron crystal structure within VESTA, the associated structural data can then be exported under the POSCAR file format directly to the [Dropbox Folder]({{ resources_url }}/data-in-objectstorage/dropbox/), affording for the simultaneous sharing of files between all [nodes of our platform]({{ resources_url }}/infrastructure/overview/). This should be done by clicking the "Export Data" option under the top-left "File" menu of the VESTA interface.
 
-Under the resulting "Export Data" dialog, the [dropbox folder]({{ dev_url }}/data-on-disk/directories/#dropbox) accessible via the user's [home folder]({{ dev_url }}/infrastructure/login/directories/) should be selected, and the appropriate POSCAR file format should be chosen under the bottom-right menu of the dialog. A suitable filename can also be entered at the top for later easier retrieval of the file. The interface will finally allow the user to choose between saving the crystallographic atomic position data in fractional or Cartesian coordinates, and whether to convert the crystal structure to its Niggli reduced cell representation. 
+Under the resulting "Export Data" dialog, the [dropbox folder]({{ resources_url }}/data-on-disk/directories/#dropbox) accessible via the user's [home folder]({{ resources_url }}/infrastructure/login/directories/) should be selected, and the appropriate POSCAR file format should be chosen under the bottom-right menu of the dialog. A suitable filename can also be entered at the top for later easier retrieval of the file. The interface will finally allow the user to choose between saving the crystallographic atomic position data in fractional or Cartesian coordinates, and whether to convert the crystal structure to its Niggli reduced cell representation. 
 
 ## Download Structure
 
@@ -69,9 +69,9 @@ After switching to the [Materials Explorer Page]({{ interface_url }}/materials/u
 
 The steps narrated in the preceding paragraphs of the present tutorial page are illustrated in the below video.
  
-We begin with the creation and visualization of a new bcc Iron crystal structure through the [VESTA](../../software-directory/analysis/vesta.md) analysis software, incorporated into our [Remote Desktop Interface]({{ interface_url }}/remote-connection/remote-desktop/).
+We begin with the creation and visualization of a new bcc Iron crystal structure through the [VESTA]({{ reference_url }}/software-directory/analysis/vesta/) analysis software, incorporated into our [Remote Desktop Interface]({{ cli_url }}/remote-connection/remote-desktop/).
  
-We conclude this animation by saving the crystal structure data under the POSCAR format to the [Dropbox Folder]({{ dev_url }}/data-in-objectstorage/dropbox/), and by later retrieving it under the Web Interface in order to upload it and inserting it into the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials. This new material entry is finally inspected under the [Materials Viewer Interface]({{ interface_url }}/materials/ui/viewer/).
+We conclude this animation by saving the crystal structure data under the POSCAR format to the [Dropbox Folder]({{ resources_url }}/data-in-objectstorage/dropbox/), and by later retrieving it under the Web Interface in order to upload it and inserting it into the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials. This new material entry is finally inspected under the [Materials Viewer Interface]({{ interface_url }}/materials/ui/viewer/).
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/F6WyEPKiRfY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

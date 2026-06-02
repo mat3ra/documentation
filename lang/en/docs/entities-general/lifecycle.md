@@ -1,6 +1,6 @@
 # Entities Lifecycle
 
-We explain in this page the **Lifecycle** that [entities](overview.md) go through on our platform from the moment of their design by the users, to the moment they are sent to the [computing clusters]({{ dev_url }}/infrastructure/clusters/overview/) of our [infrastructure]({{ dev_url }}/infrastructure/overview/) for **Job Execution**. This lifecycle concludes when the relevant entity [Properties](../properties/overview.md) are extracted from the output of the Job simulation, and finally stored as [structured data]({{ reference_url }}/data-structured/overview/) in the database.
+We explain in this page the **Lifecycle** that [entities](overview.md) go through on our platform from the moment of their design by the users, to the moment they are sent to the [computing clusters]({{ resources_url }}/infrastructure/clusters/overview/) of our [infrastructure]({{ resources_url }}/infrastructure/overview/) for **Job Execution**. This lifecycle concludes when the relevant entity [Properties](../properties/overview.md) are extracted from the output of the Job simulation, and finally stored as [structured data]({{ reference_url }}/data-structured/overview/) in the database.
 
 The entity lifecycle is portrayed in the diagram below, where the four main logical steps involved are labelled. Each of these steps is reviewed separately in the ensuing explanations. Further information about the general data lifecycle within our platform can be retrieved [here]({{ reference_url }}/data/lifecycle/).
 
@@ -12,7 +12,7 @@ New [simulation Jobs](../jobs/overview.md) can be designed by the user with the 
 
 ## 2. Submit and Execute Jobs
 
-The Jobs designed in the preceding step can then be submitted to our [computing clusters]({{ dev_url }}/infrastructure/clusters/overview/) for their execution.
+The Jobs designed in the preceding step can then be submitted to our [computing clusters]({{ resources_url }}/infrastructure/clusters/overview/) for their execution.
 
 ## 3. Extraction of Properties
 

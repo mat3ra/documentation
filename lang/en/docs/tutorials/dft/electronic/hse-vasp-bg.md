@@ -4,7 +4,7 @@ We discuss in the present tutorial those aspects of the calculation of [electron
 
 ## Band Gap Calculations
 
-Here, we will explain how to compute the [electronic band gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) of crystalline silicon using the [VASP](../../../software-directory/modeling/vasp/overview.md) modeling engine. The increased [precision]({{ reference_url }}/methods/precision/) of Hybdrid Functionals in predicting [material properties]({{ reference_url }}/properties/overview/) of interest such as band gaps will hence be demonstrated. 
+Here, we will explain how to compute the [electronic band gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) of crystalline silicon using the [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) modeling engine. The increased [precision]({{ reference_url }}/methods/precision/) of Hybdrid Functionals in predicting [material properties]({{ reference_url }}/properties/overview/) of interest such as band gaps will hence be demonstrated. 
 
 !!!note "VASP version considered in this tutorial"
     The present tutorial is written for VASP at versions 5.3.5 or 5.4.4.
@@ -13,7 +13,7 @@ The instructions presented herein complement the general discussion introduced i
 
 ## Workflow for HSE Calculation with VASP
 
-Advanced instructions on how to perform an HSE band structure calculation using [VASP](../../../software-directory/modeling/vasp/overview.md) can be retrieved under Refs. [^1],[^2]. 
+Advanced instructions on how to perform an HSE band structure calculation using [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) can be retrieved under Refs. [^1],[^2]. 
 
 For the sake of this brief introduction, it suffices to know that a VASP [Workflow]({{ reference_url }}/workflows/overview/) to compute the band-gap of semiconducting materials using HSE is composed of the following [subworkflow]({{ reference_url }}/workflows/components/subworkflows/) steps.
 
@@ -27,7 +27,7 @@ For the sake of this brief introduction, it suffices to know that a VASP [Workfl
 
 ## Copy HSE Workflow from Bank
 
-[Workflows]({{ reference_url }}/workflows/overview/) for calculating the [band gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) through HSE, as implemented under [VASP](../../../software-directory/modeling/vasp/overview.md), can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). The user should [search]({{ interface_url }}/entities-general/actions/search/) for the string "D7-HSR-BS-BG-DOS" under the Workflows Bank dialog when looking for the relevant HSE-based band-gap workflow.
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the [band gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) through HSE, as implemented under [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/), can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). The user should [search]({{ interface_url }}/entities-general/actions/search/) for the string "D7-HSR-BS-BG-DOS" under the Workflows Bank dialog when looking for the relevant HSE-based band-gap workflow.
 
 !!!info "Workflow naming convention"
     The "D7-HSR-BS-BG-DOS" name for the HSE workflow contains the following information: "D" refers to the difficulty level (see table II in Ref. 1 cited [in this page](gw-vasp-bg.md)), "HSR" represents the method, and "BS", "BG" and "DOS" are abbreviations for band structure, band gap, and density of states respectively. 
@@ -35,7 +35,7 @@ For the sake of this brief introduction, it suffices to know that a VASP [Workfl
 This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/overview/). The same procedure as in the [general band-gap computation tutorial](band-gap.md) can otherwise be followed.
 
 !!!warning "Computational Cost"
-    The computational cost of HSE calculations is significantly higher than for more basic methods in [DFT]({{ reference_url }}/models-directory/dft/overview/) such as the [Generalized Gradient Approximation]({{ reference_url }}/models-directory/dft/parameters/#subtype). We thus recommend to allow for more [CPU cores and/or walltime]({{ dev_url }}/infrastructure/compute/parameters/) as appropriate for the system under investigation.
+    The computational cost of HSE calculations is significantly higher than for more basic methods in [DFT]({{ reference_url }}/models-directory/dft/overview/) such as the [Generalized Gradient Approximation]({{ reference_url }}/models-directory/dft/parameters/#subtype). We thus recommend to allow for more [CPU cores and/or walltime]({{ resources_url }}/infrastructure/compute/parameters/) as appropriate for the system under investigation.
 
 ## Examine results
 
@@ -49,7 +49,7 @@ This provides an example of how HSE can result in improved precision in the esti
 
 ## Animation
 
-We demonstrate the steps involved in the creation and execution of a HSE Band Gap computation workflow on silicon, using the [VASP](../../../software-directory/modeling/vasp/overview.md) simulation engine, in the following animation.
+We demonstrate the steps involved in the creation and execution of a HSE Band Gap computation workflow on silicon, using the [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) simulation engine, in the following animation.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/MV-E1Q2LD_I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

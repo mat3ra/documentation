@@ -12,4 +12,4 @@ We introduce the actions related to the Files in the Web Interface in [this page
 
 Files are distributed under a **Directory Structure** present within the [Storage Disk](../data-on-disk/directories.md) of the computing [infrastructure](../infrastructure/storage.md). 
 
-This affords for the organization of files under a well-defined **hierarchic structure**, for their easier navigation, retrieval and inspection via [remote connection methods]({{ interface_url }}/remote-connection/overview/) for example.
+This affords for the organization of files under a well-defined **hierarchic structure**, for their easier navigation, retrieval and inspection via [remote connection methods]({{ cli_url }}/remote-connection/overview/) for example.

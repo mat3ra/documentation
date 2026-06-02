@@ -2,7 +2,7 @@
 
 We support uploading structural data in the file formats containing the lattice geometry and the ionic positions of the crystal structure under investigation. 
 
-At present CIF, POSCAR and XYZ formats are supported [^1], [^2], [^3]. POSCAR format represents a standard way of defining and inputting crystal structure information to [VASP code]({{ guide_url }}/software-directory/modeling/vasp/overview/), one of the simulations engines incorporated into our platform. XYZ files are a common format for defining and inputting non-periodic molecular structures into simulation engines, such as NWChem[^4].
+At present CIF, POSCAR and XYZ formats are supported [^1], [^2], [^3]. POSCAR format represents a standard way of defining and inputting crystal structure information to [VASP code]({{ reference_url }}/software-directory/modeling/vasp/overview/), one of the simulations engines incorporated into our platform. XYZ files are a common format for defining and inputting non-periodic molecular structures into simulation engines, such as NWChem[^4].
 
 ## Open Upload Dialog
 

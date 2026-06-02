@@ -11,8 +11,8 @@ and organizing results and data in a collaborative, accessible, and searchable w
 <div class="section-cards" markdown>
 
 <a href="/guide/" class="grid-card">
-<strong>Platform Guide</strong>
-<span>Step-by-step guides for DFT, ML, materials construction, CLI jobs, and simulation software.</span>
+<strong>Tutorials</strong>
+<span>Step-by-step tutorials for DFT, ML, materials construction, and simulation workflows.</span>
 </a>
 
 <a href="/interface/" class="grid-card">
@@ -20,22 +20,44 @@ and organizing results and data in a collaborative, accessible, and searchable w
 <span>Interface components, entity management, designer tools, and platform actions reference.</span>
 </a>
 
-<a href="/reference/" class="grid-card">
-<strong>Concepts / Reference</strong>
-<span>In-depth explanations of models, methods, data structures, properties, and the science behind the platform.</span>
+<a href="/command-line/" class="grid-card">
+<strong>Command Line</strong>
+<span>CLI environment, batch jobs, and remote connection methods.</span>
 </a>
 
-<a href="/dev/" class="grid-card">
-<strong>Developer Docs</strong>
-<span>REST API documentation, infrastructure details, data-on-disk layout, and developer-oriented resources.</span>
+<a href="/reference/" class="grid-card">
+<strong>Concepts & Reference</strong>
+<span>In-depth explanations of models, methods, properties, software directory, and the science behind the platform.</span>
+</a>
+
+<a href="/resources/" class="grid-card">
+<strong>Resources / Infrastructure</strong>
+<span>Compute clusters, storage systems, queues, quotas, and resource management.</span>
+</a>
+
+<a href="/developers/" class="grid-card">
+<strong>Software Developers</strong>
+<span>REST API reference, authentication, endpoints, and contribution guides.</span>
 </a>
 
 <a href="/standards/" class="grid-card">
 <strong>Data Standards</strong>
-<span>JSON schemas, data convention, and structured data representations for entities, properties, and workflows.</span>
+<span>JSON schemas, ESSE data convention, and structured data representations.</span>
 </a>
 
 </div>
+
+
+## Quick Links
+
+- **[Getting Started](getting-started/content-highlights.md)** — content highlights, important concepts, terminology
+- **[Run First Simulation](getting-started/run-first-simulation/web-interface.md)** — new user onboarding
+- **[Pricing](pricing/service-levels.md)** — service levels and storage plans
+- **[FAQ](other/faq.md)** — frequently asked questions
+- **[Supported Software](software-directory/overview.md)** — Quantum ESPRESSO, VASP, LAMMPS, CP2K, Python, and more
+- **[Properties Directory](properties-directory/overview.md)** — band structure, band gaps, phonons, surface energy, and more
+- **[REST API](rest-api/overview.md)** — programmatic access to the platform
+- **[Community Programs](other/community-programs.md)** — academic and research partnerships
 
 
 ## Quick Start
@@ -45,31 +67,6 @@ New to Mat3ra.com? Start here:
 - [Run a first simulation (web interface)](getting-started/run-first-simulation/web-interface.md)
 - [Run a first CLI job](getting-started/run-first-simulation/cli-job.md)
 - [Content highlights](getting-started/content-highlights.md)
-
-
-## Popular Topics
-
-- **Access the platform**: [Platform access guide](tutorials/platform-access.md)
-- **Jobs via CLI**: [Overview](jobs-cli/overview.md) · Batch scripts
-  ([Overview](jobs-cli/batch-scripts/overview.md),
-  [General structure](jobs-cli/batch-scripts/general-structure.md),
-  [Directives](jobs-cli/batch-scripts/directives.md),
-  [Working directory](jobs-cli/batch-scripts/directories.md),
-  [Apptainer & Modules](jobs-cli/batch-scripts/apptainer.md),
-  [Samples](jobs-cli/batch-scripts/sample-scripts.md))
-- **Remote connection**: [SSH](remote-connection/ssh.md) · [Web Terminal](remote-connection/web-terminal.md) ·
-  [Remote Desktop](remote-connection/remote-desktop.md)
-- **Data locations and quotas**: [Data on disk: directories](data-on-disk/directories.md) ·
-  [Quotas](data-on-disk/quotas.md)
-- **Clusters**: [Overview](infrastructure/clusters/overview.md) ·
-  [Cluster-101 (free tier)]({{ dev_url }}/infrastructure/clusters/cluster-101/) ·
-  [AWS](infrastructure/clusters/aws.md) · [Azure](infrastructure/clusters/azure.md) ·
-  [GCP](infrastructure/clusters/google.md)
-- **Materials**: [Overview](materials/overview.md) · [Import from files](materials/actions/import.md)
-- **Models**: [DFT overview](models-directory/dft/overview.md)
-- **Properties**: [Overview](properties/overview.md) · [Band structure](properties-directory/non-scalar/bandstructure.md)
-- **Workflows**: [Overview](workflows/overview.md) · [Designer](workflow-designer/overview.md)
-- **REST API**: [Overview](rest-api/overview.md)
 
 
 ## Support

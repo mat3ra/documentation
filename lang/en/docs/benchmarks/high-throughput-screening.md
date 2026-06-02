@@ -11,7 +11,7 @@ The team employed quantum mechanical modeling approaches based on density functi
 The purpose of this study was to estimate the extent to which compute resources can be efficiently scaled while sustaining a constant level of performance.
 
 !!! note "Hardware configuration"
-    Amazon Web Services with the hardware configuration explained [here]({{ dev_url }}/infrastructure/clusters/aws/) were used for benchmarking
+    Amazon Web Services with the hardware configuration explained [here]({{ resources_url }}/infrastructure/clusters/aws/) were used for benchmarking
 
 ## Model and Method
 

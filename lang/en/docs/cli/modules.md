@@ -65,7 +65,7 @@ current naming convention for modules.
 
 The command `module avail` provides a complete list of the **modules made available on our platform**. The common stem for the module installation paths is displayed on top of each section listed in the output, whereas the rest of the path name is specified under each listed entry.
 
-We have reproduced the output of this command below listing all currently available modules, for reference purposes. The reader is referred to the [software directory overview](../software-directory/overview.md) for an introduction to the codes, libraries and software packages listed here.
+We have reproduced the output of this command below listing all currently available modules, for reference purposes. The reader is referred to the [software directory overview]({{ reference_url }}/software-directory/overview/) for an introduction to the codes, libraries and software packages listed here.
 
 ```text
 ---------------------------------------------------------------------------- /export/compute/modulefiles/system -----------------------------------------------------------------------------

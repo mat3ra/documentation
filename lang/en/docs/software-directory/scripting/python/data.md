@@ -1,6 +1,6 @@
 # Python: Structured Representation
 
-We present in what follows the [structured representation]({{ data_url }}/data-structured/overview/) for the [Python scripting language]({{ guide_url }}/software-directory/scripting/python/overview/).
+We present in what follows the [structured representation]({{ data_url }}/data-structured/overview/) for the [Python scripting language]({{ reference_url }}/software-directory/scripting/python/overview/).
 
 === "Schema"
     ```json

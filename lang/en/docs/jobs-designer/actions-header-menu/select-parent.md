@@ -14,7 +14,7 @@ The "Select Job" dialog is now displayed with the following appearance, which is
     Only Jobs that satisfy both of the following criteria are available for selection as "parents".
     
     - The parent Job must be under either a "Finished" <span class="btn badge b-success border-50">F</span> or "Terminated" <span class="btn badge b-default border-50">T</span> [status]({{ reference_url }}/jobs/status/).
-    - The parent Job must have been executed on a [cluster]({{ dev_url }}/infrastructure/clusters/overview/) which is still available for use by the Account under consideration at the moment of the new Job creation.
+    - The parent Job must have been executed on a [cluster]({{ resources_url }}/infrastructure/clusters/overview/) which is still available for use by the Account under consideration at the moment of the new Job creation.
 
 ## Add Parent Job
 

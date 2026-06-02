@@ -20,21 +20,26 @@ exclude_docs: |
   site-policy/
   software/
 
-  # Dev-only top-level dirs
+  # Resources site top-level dirs
   data-on-disk/
   infrastructure/
+
+  # Developers site top-level dirs
   rest-api/
+
   other/terms-of-service.md
 
   # Guide site top-level dirs
-  cli/
   getting-started/
-  jobs-cli/
-  jupyterlite/
   pricing/
   software-directory/
   tutorials/
   migrating-to-new-platform.md
+
+  # CLI site top-level dirs
+  cli/
+  /jobs-cli/
+  remote-connection/
 
   # Concepts-only pages in shared dirs
   accounts/overview.md
@@ -81,7 +86,7 @@ exclude_docs: |
   other/community-programs.md
   other/registration.md
 
-  # Dev-only pages in shared dirs
+  # Resources site pages in shared dirs
   data-in-objectstorage/overview.md
   data-in-objectstorage/files.md
   data-in-objectstorage/security.md
@@ -92,7 +97,10 @@ exclude_docs: |
   index-guide.md
   index-concepts.md
   index-dev.md
+  index-resources.md
+  index-developers.md
   index-standards.md
+  index-cli.md
 
   # Data Standards site pages
   software-directory/modeling/vasp/data.md
@@ -121,7 +129,7 @@ validation:
 site_name: "User Interface"
 site_url: https://docs.mat3ra.com/interface
 site_description: "Platform interface components, entity management, designer tools, and actions reference for the Mat3ra platform."
-dev_addr: "localhost:8005"
+dev_addr: "localhost:8004"
 
 theme:
   features:
@@ -141,7 +149,9 @@ extra:
     guide_url: https://docs.mat3ra.com/guide
     interface_url: https://docs.mat3ra.com/interface
     reference_url: https://docs.mat3ra.com/reference
-    dev_url: https://docs.mat3ra.com/dev
+    resources_url: https://docs.mat3ra.com/resources
+    developers_url: https://docs.mat3ra.com/developers
+    cli_url: https://docs.mat3ra.com/command-line
     data_url: https://docs.mat3ra.com/standards
 
 
@@ -351,27 +361,6 @@ nav:
             - Explorer:                                 properties/ui/explorer.md
             - Viewer:                                   properties/ui/viewer.md
 
-# REMOTE CONNECTION
-    - Remote Connection:
-        - Overview:                                     remote-connection/overview.md
-        - SSH Terminal (SSH):                           remote-connection/ssh.md
-        - Web Terminal (WT):                            remote-connection/web-terminal.md
-        - Remote Desktop (RD):                          remote-connection/remote-desktop.md
-        - Actions > (WT) & (RD):
-            - Overview:                                 remote-connection/actions/overview.md
-            - Open Web Terminal:                        remote-connection/actions/open-terminal.md
-            - Open Remote Desktop:                      remote-connection/actions/open-desktop.md
-            - Open Sidebar:                             remote-connection/actions/sidebar.md
-            - Upload:                                   remote-connection/actions/upload.md
-            - Download:                                 remote-connection/actions/download.md
-            - Transfer Files via SCP:                   remote-connection/actions/transfer-files-scp.md
-            - Copy / Paste Text:                        remote-connection/actions/copy-paste.md
-            - Access data in Web Platfrom:              remote-connection/actions/access-data.md
-        - Actions > Remote Desktop:
-            - Overview:                                 remote-connection/actions-rd/overview.md
-            - Browse Directories:                       remote-connection/actions-rd/browse.md
-            - Open Applications:                        remote-connection/actions-rd/open-app.md
-
 # DATA IN OBJECT STORAGE — UI & Actions
     - Data in Object Storage:
         - User Interface:
@@ -383,3 +372,14 @@ nav:
             - Copy Path:                                data-in-objectstorage/actions/copy-path.md
             - Upload:                                   data-in-objectstorage/actions/upload.md
             - Create Folder:                            data-in-objectstorage/actions/create-folder.md
+
+# JUPYTERLITE
+    - JupyterLite Environment:
+          - Overview:                                jupyterlite/overview.md
+          - Accessing JupyterLite:                   jupyterlite/accessing-jupyterlite.md
+          - Authentication:                          jupyterlite/authentication.md
+          - Pyodide:                                 jupyterlite/pyodide.md
+          - Dependencies and Imports:                jupyterlite/dependencies-installation.md
+          - Data Exchange:                           jupyterlite/data-exchange.md
+          - File Storage and Synchronization:        jupyterlite/file-storage-synchronization.md
+          - Common Actions:                          jupyterlite/common-actions.md

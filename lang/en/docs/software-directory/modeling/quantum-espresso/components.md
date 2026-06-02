@@ -24,7 +24,7 @@ The following executables have been implemented on our platform so far.
 - `pp.x`: data analysis and plotting.
 - `dos.x`:  calculates the Density of States (DOS).
 - `bands.x`: re-orders the bands in the band-structure of the material, and computes band-related properties.
-- `neb.x` [^3] [^4]: performs calculations of the energy profile of chemical reactions via the [Nudged Elastic Band](../../../tutorials/dft/chemical/reaction-profile-qe.md) method.
+- `neb.x` [^3] [^4]: performs calculations of the energy profile of chemical reactions via the [Nudged Elastic Band]({{ guide_url }}/tutorials/dft/chemical/reaction-profile-qe/) method.
 
 ## Flavors
 

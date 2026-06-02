@@ -24,7 +24,7 @@ We review the steps involved in the calculation and visualization of the [Fermi 
 
 ## [HSE Calculations](hse-vasp-bg.md)
 
-[In other tutorial](hse-vasp-bg.md), we demonstrate how the use of the hybrid HSE functional can yield more accurate results for the example case of a band-gap computation with [VASP](../../../software-directory/modeling/vasp/overview.md).
+[In other tutorial](hse-vasp-bg.md), we demonstrate how the use of the hybrid HSE functional can yield more accurate results for the example case of a band-gap computation with [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/).
 
 A similar Band Gap calculation with Quantum ESPRESSO is [available here](hse-qe-bg.md). And for the Band Structure - in [this tutorial](hse-qe-bs.md).
 

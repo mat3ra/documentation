@@ -1,6 +1,6 @@
 # Phonon Dispersions and Density of States Calculation on Grid
 
-This tutorial page explains how to calculate the [Phonon Dispersion Curves]({{ reference_url }}/properties-directory/non-scalar/phonon-dispersions/) and [Phonon Density of States]({{ reference_url }}/properties-directory/non-scalar/phonon-dos/) of materials based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/). We will be studying crystalline Silicon in the standard cubic-diamond crystal structure, and we will use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as our simulation engine.
+This tutorial page explains how to calculate the [Phonon Dispersion Curves]({{ reference_url }}/properties-directory/non-scalar/phonon-dispersions/) and [Phonon Density of States]({{ reference_url }}/properties-directory/non-scalar/phonon-dos/) of materials based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/). We will be studying crystalline Silicon in the standard cubic-diamond crystal structure, and we will use [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) as our simulation engine.
 
 !!!note "Quantum ESPRESSO version considered in this tutorial"
     The present tutorial is written for Quantum ESPRESSO at versions 5.2.1, 5.4.0, 6.0.0 or 6.3.
@@ -31,7 +31,7 @@ A schematic summary of the above workflow procedure is offered in the figure bel
 
 ## Workflow Structure
 
-We review now the different steps involved in implementing the above general Grid Phonon theoretical framework in an actual [Workflow]({{ reference_url }}/workflows/overview/) deployable on our platform. We shall consider the example case of the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) modeling engine.
+We review now the different steps involved in implementing the above general Grid Phonon theoretical framework in an actual [Workflow]({{ reference_url }}/workflows/overview/) deployable on our platform. We shall consider the example case of the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) modeling engine.
 
 ### 1. Preliminary SCF Calculation
 
@@ -47,7 +47,7 @@ The size of this q-grid should be a divisor of the size of the above-mentioned k
 
 ### 3. Extraction of q-points/irrep pairs
 
-The "espresso-xml-get-qpt-irr" subworkflow comprises a main [python script](../../../software-directory/scripting/python/overview.md), whose role is to parse and extract q-points and irreducible representations from the previously-generated Quantum ESPRESSO XML data. Each distinct combination of q-point and irrep is added as a separate entry to what follows.
+The "espresso-xml-get-qpt-irr" subworkflow comprises a main [python script]({{ reference_url }}/software-directory/scripting/python/overview/), whose role is to parse and extract q-points and irreducible representations from the previously-generated Quantum ESPRESSO XML data. Each distinct combination of q-point and irrep is added as a separate entry to what follows.
 
 ### 4. Map Distributed Phonon Calculation
 
@@ -59,7 +59,7 @@ Care should be taken to set the q-grid under the "Important Settings" of the "ph
 
 The final "Reduce" subworkflow collects together the results of the previous calculations over each independent q-point/irrep pair, via the "ph_grid_restart" unit. Here, the size of the q-grid under [Important Settings]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/) should once again be set to the 2 x 2 x 2 value being considered in the present example.
 
-These combined results are then used to complete the phonon dispersion and density of states calculation, through the help of the Quantum ESPRESSO "q2r" and "matdyn" [executables](../../../software-directory/modeling/quantum-espresso/components.md#executables). 
+These combined results are then used to complete the phonon dispersion and density of states calculation, through the help of the Quantum ESPRESSO "q2r" and "matdyn" [executables]({{ reference_url }}/software-directory/modeling/quantum-espresso/components/#executables). 
 
 ## Creating and Executing Job
 
@@ -69,10 +69,10 @@ Apart from this, the same procedural instructions as in the [other phonons calcu
 
 ## Animation
 
-In the video animation below, we outline the procedure for creating and executing a phonon calculation job via the Grid Method. We conclude by inspecting the corresponding results for the [Phonon Dispersion Curves]({{ reference_url }}/properties-directory/non-scalar/phonon-dispersions/) and [Density of States]({{ reference_url }}/properties-directory/non-scalar/phonon-dos/), considering crystalline silicon as our demonstrative sample operated in conjunction with the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) simulation engine.  
+In the video animation below, we outline the procedure for creating and executing a phonon calculation job via the Grid Method. We conclude by inspecting the corresponding results for the [Phonon Dispersion Curves]({{ reference_url }}/properties-directory/non-scalar/phonon-dispersions/) and [Density of States]({{ reference_url }}/properties-directory/non-scalar/phonon-dos/), considering crystalline silicon as our demonstrative sample operated in conjunction with the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) simulation engine.  
 
 !!!tip "Computational cost of phonon calculation"
-    Phonon calculations are in general quite computationally demanding. We therefore recommend the employment of at least 8 computing cores. For larger calculations, [OF queues]({{ dev_url }}/infrastructure/resource/queues/) will have faster turnaround than the OR queues considered in the video.
+    Phonon calculations are in general quite computationally demanding. We therefore recommend the employment of at least 8 computing cores. For larger calculations, [OF queues]({{ resources_url }}/infrastructure/resource/queues/) will have faster turnaround than the OR queues considered in the video.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/xZdjLr7zlhw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

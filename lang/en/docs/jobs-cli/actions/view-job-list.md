@@ -2,7 +2,7 @@
 
 To get detailed information about all the [jobs](../overview.md) [submitted](../overview.md) **to date** by the user on the [Command Line Interface](../../cli/overview.md) (CLI) of our system, the `lsjob` command should be entered, as displayed in the example below.
  
-This information includes the relevant [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) used as part of the job execution, as well as the [Project]({{ reference_url }}/jobs/projects/) container and [Account Charges]({{ reference_url }}/accounts/payments-charges/) incurred by each listed Job. Here, the Jobs are referenced by their **"Job IDs"**, as well as by their IDs attributed by the accounting system. 
+This information includes the relevant [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) used as part of the job execution, as well as the [Project]({{ reference_url }}/jobs/projects/) container and [Account Charges]({{ reference_url }}/accounts/payments-charges/) incurred by each listed Job. Here, the Jobs are referenced by their **"Job IDs"**, as well as by their IDs attributed by the accounting system. 
 
 ## Example
 

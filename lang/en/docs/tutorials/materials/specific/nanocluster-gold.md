@@ -36,7 +36,7 @@ First, we navigate to [Materials Designer]({{ interface_url }}/materials-designe
 
 ![Standata Gold Import](../../../images/tutorials/materials/0d_materials/nanocluster_gold/1-standata-import-gold.webp "Standata Gold Import")
 
-Then we will use the [JupyterLite](../../../jupyterlite/overview.md) environment to create gold nanoparticle structures.
+Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create gold nanoparticle structures.
 
 ## 2. Create cuboctahedra.
 

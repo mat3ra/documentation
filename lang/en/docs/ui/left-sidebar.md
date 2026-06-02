@@ -55,7 +55,7 @@ Workflows are presented under the "Bank" menu.
 
 ## Dropbox
 
-[Dropbox]({{ dev_url }}/data-in-objectstorage/dropbox/), a central limited-capacity
+[Dropbox]({{ resources_url }}/data-in-objectstorage/dropbox/), a central limited-capacity
 cloud-based data storage, is available under this link.
 
 

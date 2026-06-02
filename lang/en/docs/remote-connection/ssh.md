@@ -1,6 +1,6 @@
 # Command Line Interface via SSH
 
-Users can connect to the [Command Line Interface]({{ guide_url }}/cli/overview/) (CLI)
+Users can connect to the [Command Line Interface]({{ cli_url }}/cli/overview/) (CLI)
 of our platform using an **SSH terminal client** under any Operating System
 (OS), as an alternative to the [Web Terminal](web-terminal.md).
 
@@ -68,7 +68,7 @@ and associated with the user's account. This effectively establishes a
 account.
 
 We explain how to upload the SSH keys to our platform in a
-[separate section](../accounts/ui/preferences/ssh.md) of the documentation.
+[separate section]({{ interface_url }}/accounts/ui/preferences/ssh/) of the documentation.
 
 !!!warning "Privacy of SSH keys"
     SSH keys are **private** and are meant to be used to identify exclusively
@@ -111,7 +111,7 @@ as before, namely `login.mat3ra.com`.
 ### Enter the CLI
 
 Following successful SSH connection, the user is presented with the
-[CLI of our platform]({{ guide_url }}/cli/overview/).
+[CLI of our platform]({{ cli_url }}/cli/overview/).
 
 Some useful instructions are already contained in the CLI
 **splash welcome screen** greeting the user at the moment of login. A copy of

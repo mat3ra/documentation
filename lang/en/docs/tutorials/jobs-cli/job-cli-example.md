@@ -1,12 +1,12 @@
 # Running Jobs via Command Line Interface
 
-This page explains how to run a [job]({{ reference_url }}/jobs/overview/) via the [Command Line Interface](../../cli/overview.md) (CLI) of our platform. The reader is recommended to first consult the [relevant part of the documentation](../../jobs-cli/overview.md) before proceeding further with the present Tutorial.
+This page explains how to run a [job]({{ reference_url }}/jobs/overview/) via the [Command Line Interface]({{ cli_url }}/cli/overview/) (CLI) of our platform. The reader is recommended to first consult the [relevant part of the documentation]({{ cli_url }}/jobs-cli/overview/) before proceeding further with the present Tutorial.
  
-Here, we will use a template input file and a bash script to sweep the lattice parameter space for a given structure. We will use [Quantum ESPRESSO](../../software-directory/modeling/quantum-espresso/overview.md) as an example simulations engine, however all command-line related directives apply universally.
+Here, we will use a template input file and a bash script to sweep the lattice parameter space for a given structure. We will use [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) as an example simulations engine, however all command-line related directives apply universally.
 
 ## 1. Input File
 
-We start with preparing an **input file** for [Quantum ESPRESSO](../../software-directory/modeling/quantum-espresso/overview.md). Below is an example input file for performing a total ground-state "self-consistent field" (scf) energy computation, with pseudopotential paths set to use the default **"gbrv" set of pseudopotentials** [^1] implemented on our platform. 
+We start with preparing an **input file** for [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/). Below is an example input file for performing a total ground-state "self-consistent field" (scf) energy computation, with pseudopotential paths set to use the default **"gbrv" set of pseudopotentials** [^1] implemented on our platform. 
 
 The material being considered in this particular example is a supercell of  "Strontium Zirconate" (SrZrO3), in its ground state equilibrium crystal structure with space group "Pnma" [^2]. The reader is referred to the official documentation for the "PWscf" module of Quantum ESPRESSO [^3] [^4] for a description of the keyword parameters contained here.
 
@@ -86,7 +86,7 @@ K_POINTS (automatic)
 
 Note that we are using a template variable in place of `celldm(1)`, indicating the lattice parameter of the underlying simple cubic [Bravais Lattice]({{ reference_url }}/properties-directory/structural/lattice/) of the crystal structure. These template variables are defined once the combined `run.sh` script is put together, as explained in what follows.
 
-We also need to copy the pseudopotential files into the current [working directory](../../jobs-cli/batch-scripts/directories.md) where the input file is stored, as follows.
+We also need to copy the pseudopotential files into the current [working directory]({{ cli_url }}/jobs-cli/batch-scripts/directories/) where the input file is stored, as follows.
 
 ```bash
 cp /export/share/pseudo/si/gga/pbe/gbrv/1.0/us/sr_pbe_gbrv_1.0.upf .
@@ -96,7 +96,7 @@ cp /export/share/pseudo/o/gga/pbe/gbrv/1.0/us/o_pbe_gbrv_1.2.upf .
 
 ## 2. Batch Script
 
-Secondly, we prepare the [Batch Script](../../jobs-cli/batch-scripts/overview.md) necessary for [submitting jobs via CLI](../../jobs-cli/overview.md).
+Secondly, we prepare the [Batch Script]({{ cli_url }}/jobs-cli/batch-scripts/overview/) necessary for [submitting jobs via CLI]({{ cli_url }}/jobs-cli/overview/).
 
 ```bash
 #!/bin/bash
@@ -116,9 +116,9 @@ cd $PBS_O_WORKDIR
 mpirun -np $PBS_NP $EXEC_CMD pw.x -in pw.in > pw.out
 ```
 
-Just like before, we are using template variables again instead of the [project]({{ reference_url }}/jobs/projects/) name and email. Variables starting with `$PBS` are automatically set by the [resource manager]({{ dev_url }}/infrastructure/resource/overview/), and are known as the ["PBS Directives"](../../jobs-cli/batch-scripts/directives.md). 
+Just like before, we are using template variables again instead of the [project]({{ reference_url }}/jobs/projects/) name and email. Variables starting with `$PBS` are automatically set by the [resource manager]({{ resources_url }}/infrastructure/resource/overview/), and are known as the ["PBS Directives"]({{ cli_url }}/jobs-cli/batch-scripts/directives/). 
 
-The rest of the Batch Script contains UNIX commands necessary for [loading the required modules](../../cli/actions/modules-actions.md) and running the executables in parallel.
+The rest of the Batch Script contains UNIX commands necessary for [loading the required modules]({{ cli_url }}/cli/actions/modules-actions/) and running the executables in parallel.
 
 ## 3. Shell Script
 
@@ -270,11 +270,11 @@ The reader should note that within the `mpirun` command we make use of the `tee`
 
 We can put the content of the above file into a bash script called `run.sh` for example, and then make the script executable with `chmod a+x run.sh` command.
  
-The job can finally be [submitted](../../jobs-cli/actions/submit.md) as a set to the [Resource Manager]({{ dev_url }}/infrastructure/resource/overview/) by invoking the script via the `./run.sh` command (the `qsub` command is not necessary in this case since it is already included as part of `run.sh`, towards the end of the script).
+The job can finally be [submitted]({{ cli_url }}/jobs-cli/actions/submit/) as a set to the [Resource Manager]({{ resources_url }}/infrastructure/resource/overview/) by invoking the script via the `./run.sh` command (the `qsub` command is not necessary in this case since it is already included as part of `run.sh`, towards the end of the script).
 
 ## 5. View Submitted Jobs
 
-The user can view the currently submitted jobs and their statuses in CLI with the `qstat` [command](../../jobs-cli/actions/check-status.md). 
+The user can view the currently submitted jobs and their statuses in CLI with the `qstat` [command]({{ cli_url }}/jobs-cli/actions/check-status/). 
 
 The reader is referred to the video below for an explanation on how to inspect the results of the above simulation under the [Web Interface]({{ interface_url }}/ui/overview/) of our platform.
 
@@ -283,9 +283,9 @@ The reader is referred to the video below for an explanation on how to inspect t
 
 We summarize the above-mentioned steps in the following video. 
 
-Here, we begin by entering the [Command Line Interface](../../cli/overview.md) via the [Web Terminal]({{ interface_url }}/remote-connection/web-terminal/) connection method. We then navigate to the directory containing the `run.sh` script under the [Home Folder]({{ dev_url }}/infrastructure/clusters/directories/) of `cluster-007`, where we submit it for execution. 
+Here, we begin by entering the [Command Line Interface]({{ cli_url }}/cli/overview/) via the [Web Terminal]({{ cli_url }}/remote-connection/web-terminal/) connection method. We then navigate to the directory containing the `run.sh` script under the [Home Folder]({{ resources_url }}/infrastructure/clusters/directories/) of `cluster-007`, where we submit it for execution. 
 
-We conclude by inspecting the [status of the job](../../jobs-cli/actions/check-status.md) on the selected cluster number "007" by entering the `watch qstat` command, for an automatically-refreshing version of `qstat`. Since only one lattice parameter was tested in this example animation for simplicity, only one job has been launched and is returned by `qstat` in this case (scanning over all three lattice parameters, as in the original script shown above, would have correspondingly launched three distinct jobs).
+We conclude by inspecting the [status of the job]({{ cli_url }}/jobs-cli/actions/check-status/) on the selected cluster number "007" by entering the `watch qstat` command, for an automatically-refreshing version of `qstat`. Since only one lattice parameter was tested in this example animation for simplicity, only one job has been launched and is returned by `qstat` in this case (scanning over all three lattice parameters, as in the original script shown above, would have correspondingly launched three distinct jobs).
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/sXKvHahZdoA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

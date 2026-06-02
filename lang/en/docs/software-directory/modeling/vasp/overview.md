@@ -22,7 +22,7 @@ We introduce the different [components]({{ reference_url }}/software/components/
 
 ## [Compute Parameters](compute-parameters.md)
 
-We explain the specific aspects of [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) [here](compute-parameters.md).
+We explain the specific aspects of [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) [here](compute-parameters.md).
 
 ## [Data]({{ data_url }}/software-directory/modeling/vasp/data/)
 

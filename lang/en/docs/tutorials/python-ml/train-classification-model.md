@@ -37,7 +37,7 @@ the [Bank Workflows Page]({{ reference_url }}/workflows/bank/). We then search f
 by the "Curators" account, and [copy it to our account]({{ interface_url }}/workflows/actions/copy-bank/).
 
 A diagram and detailed description of this workflow can be found
-[here](../../software-directory/machine-learning/python-ml/components.md).
+[here]({{ reference_url }}/software-directory/machine-learning/python-ml/components/).
 
 ## 4. Create the ML Job
 

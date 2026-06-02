@@ -18,7 +18,7 @@ Relevant for [Saving Compute Category](../resource/category.md#cost-categories).
 
 ### Is restartable
 
-If the job should be restarted upon termination, e.g. due to saving node termination. See "-r" [directive]({{ guide_url }}/jobs-cli/batch-scripts/directives/#other-useful-directives)
+If the job should be restarted upon termination, e.g. due to saving node termination. See "-r" [directive]({{ cli_url }}/jobs-cli/batch-scripts/directives/#other-useful-directives)
 
 ## Cluster choice
 
@@ -46,4 +46,4 @@ Further advanced options are offered in order to optimize the calculation. These
 
 ### Specific Implementation
 
-The user should consult the corresponding [application pages]({{ guide_url }}/software-directory/overview/) for more information about the advanced options which pertain to each respective application.
+The user should consult the corresponding [application pages]({{ reference_url }}/software-directory/overview/) for more information about the advanced options which pertain to each respective application.

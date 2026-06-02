@@ -1,6 +1,6 @@
 # Data Lifecycle
 
-We now explain the general evolution of data. This evolution spans the duration of events from the moment the data is sent to the computing resources for the execution of simulation tasks, to the moment it is stored as [objects]({{ dev_url }}/data-in-objectstorage/overview/) or [structured data](../data-structured/overview.md) in the [database](../data-structured/overview.md#database) to be read by the Web Interface. We refer to this evolution flow as the **Data Lifecycle**.
+We now explain the general evolution of data. This evolution spans the duration of events from the moment the data is sent to the computing resources for the execution of simulation tasks, to the moment it is stored as [objects]({{ resources_url }}/data-in-objectstorage/overview/) or [structured data](../data-structured/overview.md) in the [database](../data-structured/overview.md#database) to be read by the Web Interface. We refer to this evolution flow as the **Data Lifecycle**.
 
 ## Flowchart
 
@@ -16,11 +16,11 @@ The [actions]({{ interface_url }}/entities-general/actions/overview/) performed 
                 
 ## 2. Execution of Simulation
 
-The structured data describing such Entities is then sent from the database to the [computing clusters]({{ dev_url }}/infrastructure/clusters/overview/), the core component of the overall [computational infrastructure]({{ dev_url }}/infrastructure/overview/). Here, the relevant simulations are executed, which creates non-structured data in the form of output files.
+The structured data describing such Entities is then sent from the database to the [computing clusters]({{ resources_url }}/infrastructure/clusters/overview/), the core component of the overall [computational infrastructure]({{ resources_url }}/infrastructure/overview/). Here, the relevant simulations are executed, which creates non-structured data in the form of output files.
                 
 ## 3. Data Retrieval                
                 
-Following simulation completion, the output data produced by the simulation engine is stored on disk as [unstructured files]({{ dev_url }}/data-on-disk/overview/). 
+Following simulation completion, the output data produced by the simulation engine is stored on disk as [unstructured files]({{ resources_url }}/data-on-disk/overview/). 
 
 ### 3a. Extraction of Properties as Structured Data
 
@@ -30,4 +30,4 @@ This information is further stored as [structured data](../data-structured/overv
 
 ### 3b. Storage of Output Files as Objects
 
-All simulation output files are additionally stored in the [Object storage]({{ dev_url }}/data-in-objectstorage/overview/), in order to make them accessible to the Web Interface. This can be accomplished under the [Files Tab]({{ interface_url }}/jobs/ui/files-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/), for example.
+All simulation output files are additionally stored in the [Object storage]({{ resources_url }}/data-in-objectstorage/overview/), in order to make them accessible to the Web Interface. This can be accomplished under the [Files Tab]({{ interface_url }}/jobs/ui/files-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/), for example.

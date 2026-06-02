@@ -1,7 +1,5 @@
 # Pricing
 
-> Updated pricing scheme as of July 2019. For the information about the legacy pricing scheme please contact our support team.
-
 The pricing is dependent on the [Service Level]({{ reference_url }}/accounts/service-levels/). We aim to have a flexible scheme where customers always pay on-demand for the value they extract.
 
 ## Cost structure
@@ -27,7 +25,7 @@ Readers are referred to [Service Levels]({{ reference_url }}/accounts/service-le
 
 | Fees                                      | Free         | Pro            | Enterprise     |
 | :-------------                            | :----------- | :------------- | :------------- |
-| Yearly Subscription Fee                   | -            | $100           | $3,600         |
+| Yearly Subscription Fee                   | -            | $360           | $3,600         |
 | Additional Account Members - Member/Month | -            | -              | $20            |
 | Additional Account Members - Member/Year  | -            | -              | $200           |
 | Additional Disk Space - GB/Month          | -            | $0.2           | $0.2           |
@@ -41,7 +39,7 @@ Readers are referred to [Service Levels]({{ reference_url }}/accounts/service-le
 
 ## Category-based pricing
 
-The compute price above refers to the **Ordinary** [cost category]({{ dev_url }}/infrastructure/resource/category/#cost-categories) for each service level. One can further control the price by varying the category type. When using submission queues with "Saving" cost category, for example, the relative unit price can be as low as 1/5th of the Ordinary.
+The compute price above refers to the **Ordinary** [cost category]({{ resources_url }}/infrastructure/resource/category/#cost-categories) for each service level. One can further control the price by varying the category type. When using submission queues with "Saving" cost category, for example, the relative unit price can be as low as 1/5th of the Ordinary.
 
 |Cost Category| Charge factor
 |:---------   |:------------
@@ -53,7 +51,7 @@ The compute price above refers to the **Ordinary** [cost category]({{ dev_url }}
 
 As the type of hardware and scheduling policies vary for different submission queues, the pricing is also different. For, example, GPU-enabled nodes are available within a certain subset of queues and are generally priced higher.
 
-Detailed description of submission queues is available [here]({{ dev_url }}/infrastructure/resource/queues/). Clusters and associated hardware and pricing are explained in [this section]({{ dev_url }}/infrastructure/clusters/overview/)
+Detailed description of submission queues is available [here]({{ resources_url }}/infrastructure/resource/queues/). Clusters and associated hardware and pricing are explained in [this section]({{ resources_url }}/infrastructure/clusters/overview/)
 
 !!! tip "Least expensive pricing options"
     The options explained above can be combined in order to achieve the least expensive pricing. For example, when "Enterprise" service level is used in combination with submission queues that belong to the "Saving" cost category, the resulting price per core hour can be as low as $0.024.

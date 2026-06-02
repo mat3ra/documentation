@@ -1,6 +1,6 @@
 # Important Settings
 
-An example of appearance of the "Important Settings" tab within the [Subworkflow Editor Interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview/) of [Workflow Designer]({{ interface_url }}/workflow-designer/overview/), for the case of a basic ground-state total energy subworkflow calculation performed with [Quantum ESPRESSO]({{ guide_url }}/software-directory/modeling/quantum-espresso/overview/) (comprising a single Unit of type "pw-scf"), is illustrated in the image below. 
+An example of appearance of the "Important Settings" tab within the [Subworkflow Editor Interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview/) of [Workflow Designer]({{ interface_url }}/workflow-designer/overview/), for the case of a basic ground-state total energy subworkflow calculation performed with [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) (comprising a single Unit of type "pw-scf"), is illustrated in the image below. 
 
 ![Important Settings](../../images/workflow-designer/important-settings-tab.png "Important Settings")
 
@@ -8,7 +8,7 @@ In this image, the two most common types of [input parameters](parameters.md) en
 
 ## Cutoff 
 
-The initial section of the "Important Settings" tab titled "cutoffs" contains settings which are always global to all units in the current subworkflow. In particular, under the label "wavefunction", the user can enter the plane-wave cutoff parameter for expanding the electronic wavefunction of the crystal. It is expressed in the corresponding default energy units for the current [application](../../software/components.md) of choice. For example, Rydbergs for [Quantum ESPRESSO]({{ guide_url }}/software-directory/modeling/quantum-espresso/overview/), and electronVolts (eV) for the [VASP]({{ guide_url }}/software-directory/modeling/vasp/overview/) code.
+The initial section of the "Important Settings" tab titled "cutoffs" contains settings which are always global to all units in the current subworkflow. In particular, under the label "wavefunction", the user can enter the plane-wave cutoff parameter for expanding the electronic wavefunction of the crystal. It is expressed in the corresponding default energy units for the current [application](../../software/components.md) of choice. For example, Rydbergs for [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/), and electronVolts (eV) for the [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) code.
 
 This cutoff parameter is of crucial importance for establishing the overall [precision](../../methods/precision.md) of the DFT calculation, and a judicious choice will usually depend on the conduction of a preliminary [convergence test](../../workflows/addons/convergence-algorithms.md) to ensure that the desired precision in the total energy is reached. For instructions on how to add a preliminary convergence subworkflow add-on to the current workflow, see [this page]({{ interface_url }}/workflow-designer/subworkflow-editor/actions-menu/).
 

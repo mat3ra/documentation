@@ -18,7 +18,7 @@ Any entry listed in [Jobs Explorer](../jobs/ui/explorer.md) which has a "Pre-sub
 
 ## Components of the Interface
 
-The creation of new simulation Jobs via Designer proceeds through three main steps, namely the definition of the [Materials]({{ reference_url }}/materials/overview/) to be investigated (1), the type of simulation [Workflow]({{ reference_url }}/workflows/overview/) to be applied upon them (2), and finally of the [computational resources]({{ dev_url }}/infrastructure/resource/overview/) to be allocated for these calculations (3). 
+The creation of new simulation Jobs via Designer proceeds through three main steps, namely the definition of the [Materials]({{ reference_url }}/materials/overview/) to be investigated (1), the type of simulation [Workflow]({{ reference_url }}/workflows/overview/) to be applied upon them (2), and finally of the [computational resources]({{ resources_url }}/infrastructure/resource/overview/) to be allocated for these calculations (3). 
 
 These three steps are each formulated under the corresponding [tab](../ui/specific/tabs-navigator.md), as highlighted in the picture below. This image also shows the location of the [header menu](header-menu.md) located at the top of the page. 
 

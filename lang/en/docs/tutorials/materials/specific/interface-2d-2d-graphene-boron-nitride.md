@@ -39,7 +39,7 @@ First, we navigate to [Materials Designer]({{ interface_url }}/materials-designe
 
 ![Standata Graphene and h-BN Import](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/1-standata-import-gr-hbn.webp "Standata Graphene and h-BN Import")
 
-Then we will use the [JupyterLite](../../../jupyterlite/overview.md) environment to create the target structures.
+Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create the target structures.
 
 
 ## 2. Create interface between h-BN and Graphene.

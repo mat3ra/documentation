@@ -20,4 +20,4 @@ Accounts can increase the limit for the total storage quota according to the ins
 
 ## Access Quota Information via Command Line
 
-Information about the consumed and available storage quotas can also be accessed via the Command Line Interface of the platform, as explained in a [separate section of the documentation]({{ dev_url }}/infrastructure/storage/).
+Information about the consumed and available storage quotas can also be accessed via the Command Line Interface of the platform, as explained in a [separate section of the documentation]({{ resources_url }}/infrastructure/storage/).

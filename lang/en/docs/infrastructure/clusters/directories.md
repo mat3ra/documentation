@@ -17,11 +17,11 @@ Each important folder is introduced in what follows, complementing the [general 
 The home directories on each cluster are mapped under the main [Login Home](../login/directories.md) and serve as "gateways" to the data in each cluster. They can be accessed by [cluster alias](overview.md#cluster-aliases) with their absolute paths of the form `/<cluster-alias>-home/<username>/`, for example `/cluster-001-home/steven/`.  These directories contain the hierarchical structure outlined in the remainder of the present page, and are affected by the storage quotas described [here]({{ reference_url }}/data-on-disk/quotas/).
 
 !!! warning "Simulations must be executed after navigating to one of the clusters folders only"
-    Any [simulation jobs]({{ reference_url }}/jobs/overview/) must be executed within the clusters (ie. inside cluster home directories) so that the tasks are sent to the corresponding cluster by our [resource management system](../resource/overview.md) and the associated data is stored therein as well. We explain the procedure for doing so via the [Command Line Interface]({{ guide_url }}/cli/overview/) in [this section]({{ guide_url }}/jobs-cli/overview/) of the documentation.
+    Any [simulation jobs]({{ reference_url }}/jobs/overview/) must be executed within the clusters (ie. inside cluster home directories) so that the tasks are sent to the corresponding cluster by our [resource management system](../resource/overview.md) and the associated data is stored therein as well. We explain the procedure for doing so via the [Command Line Interface]({{ cli_url }}/cli/overview/) in [this section]({{ cli_url }}/jobs-cli/overview/) of the documentation.
 
 ## Example
 
-In the image below, we highlight two examples of cluster home directories present under the login home, as viewed in a [remote desktop environment]({{ interface_url }}/remote-connection/remote-desktop/). The two clusters available in this case are referenced under the aliases "cluster-001" and "cluster-007". 
+In the image below, we highlight two examples of cluster home directories present under the login home, as viewed in a [remote desktop environment]({{ cli_url }}/remote-connection/remote-desktop/). The two clusters available in this case are referenced under the aliases "cluster-001" and "cluster-007". 
 
 ![Cluster Homes](../../images/infrastructure/cluster-homes.png "Cluster Homes")
 

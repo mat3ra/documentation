@@ -1,6 +1,6 @@
 # SSH Keys
 
-The concept of SSH authorization keys in the context of the Command Line Interface of our platform are thoroughly explained in a [separate section]({{ dev_url }}/data-on-disk/security/). For the moment, we will restrict ourselves to showing how such keys can be added to or deleted from our platform.
+The concept of SSH authorization keys in the context of the Command Line Interface of our platform are thoroughly explained in a [separate section]({{ resources_url }}/data-on-disk/security/). For the moment, we will restrict ourselves to showing how such keys can be added to or deleted from our platform.
 
 ## Add New Key
 
@@ -25,7 +25,7 @@ Once the new SSH key has been added, the user will be able to see the key as a n
 
 ### Connect to Server
 
-Use the guidelines available in [this page]({{ interface_url }}/remote-connection/ssh/#connect-to-server) to establish connection to our login node server via the command-line terminal.
+Use the guidelines available in [this page]({{ cli_url }}/remote-connection/ssh/#connect-to-server) to establish connection to our login node server via the command-line terminal.
 
 ### Animation
 

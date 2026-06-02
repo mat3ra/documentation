@@ -32,7 +32,7 @@ The reader is referred to the links presented at the bottom of the page for a th
 
 #### Generic Applications
 
-The following contributions, displayed in the image below, are computed and returned to the user under the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/), for the cases of both [VASP]({{ guide_url }}/software-directory/modeling/vasp/overview/) and [Quantum ESPRESSO]({{ guide_url }}/software-directory/modeling/quantum-espresso/overview/) calculations. In all instances, the results are returned in units of eV.
+The following contributions, displayed in the image below, are computed and returned to the user under the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/), for the cases of both [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) and [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) calculations. In all instances, the results are returned in units of eV.
 
 ![Common Contributions](../../images/properties-directory/common-contributions.png "Common Contributions")
 

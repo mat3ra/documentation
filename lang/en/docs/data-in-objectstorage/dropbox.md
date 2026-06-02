@@ -20,8 +20,8 @@ In the table below, we list the parts of our [infrastructure](../infrastructure/
 | Dropbox is Accessible From |
 |------------|
 | [Web Interface]({{ interface_url }}/ui/overview/) |
-| [Remote Desktop]({{ interface_url }}/remote-connection/remote-desktop/) |
-| [Command Line Interface]({{ guide_url }}/cli/overview/) |
+| [Remote Desktop]({{ cli_url }}/remote-connection/remote-desktop/) |
+| [Command Line Interface]({{ cli_url }}/cli/overview/) |
 | [Data on Disks](../data-on-disk/overview.md) |
 
 ## Notes

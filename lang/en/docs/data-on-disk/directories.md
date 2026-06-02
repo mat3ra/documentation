@@ -10,7 +10,7 @@ We associate [Users]({{ reference_url }}/accounts/users/) with operating system 
 
 ## [Login Home](../infrastructure/login/directories.md)
 
-When first accessing the platform via any of the [remote connection methods]({{ interface_url }}/remote-connection/overview/), users initially enter the [login node](../infrastructure/login/overview.md). The directory where user lands upon login is referred to as the **Login Home**. This directory is at the head of a hierarchical directory structure further described [in this dedicated section](../infrastructure/login/directories.md) . 
+When first accessing the platform via any of the [remote connection methods]({{ cli_url }}/remote-connection/overview/), users initially enter the [login node](../infrastructure/login/overview.md). The directory where user lands upon login is referred to as the **Login Home**. This directory is at the head of a hierarchical directory structure further described [in this dedicated section](../infrastructure/login/directories.md) . 
 
 ## [Cluster Homes](../infrastructure/clusters/directories.md)
 
@@ -22,7 +22,7 @@ As explained [in this dedicated section](../data-in-objectstorage/dropbox.md), D
 
 ## Job Script Templates
 
-A shortcut to a folder containing some quick examples (templates) for command line jobs is also present under both the login and cluster home directories. It contains specific examples of [batch scripts]({{ guide_url }}/jobs-cli/batch-scripts/overview/) for running [Jobs via the Command Line Interface]({{ guide_url }}/jobs-cli/overview/). This folder is stored under the absolute path `/export/compute/job_script_templates`.
+A shortcut to a folder containing some quick examples (templates) for command line jobs is also present under both the login and cluster home directories. It contains specific examples of [batch scripts]({{ cli_url }}/jobs-cli/batch-scripts/overview/) for running [Jobs via the Command Line Interface]({{ cli_url }}/jobs-cli/overview/). This folder is stored under the absolute path `/export/compute/job_script_templates`.
 
 ## Links
 

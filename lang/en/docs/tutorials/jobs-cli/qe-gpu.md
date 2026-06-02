@@ -12,10 +12,10 @@ GPUs. As of the time of writing, the GPU (CUDA) build of Quantum ESPRESSO is
 only available via the Command Line Interface (CLI). We will see that we can
 dramatically speedup our Quantum ESPRESSO simulation by using GPUs.
 
-1. First connect to login node via [SSH client]({{ interface_url }}/remote-connection/ssh/),
-or [web terminal]({{ interface_url }}/remote-connection/web-terminal/). Note that it is also
+1. First connect to login node via [SSH client]({{ cli_url }}/remote-connection/ssh/),
+or [web terminal]({{ cli_url }}/remote-connection/web-terminal/). Note that it is also
 possible to run CLI jobs by creating a [bash workflow](
-../../software-directory/scripting/shell/overview.md).
+{{ reference_url }}/software-directory/scripting/shell/overview/).
 
     ![Wen Terminal](../../images/jobs-cli/open-web-terminal.webp)
 
@@ -33,7 +33,7 @@ cd espresso/gpu
 Please review the input files and PBS job script, update the project name, and
 other parameters as necessary.
 
-4. We will use [GOF]({{ dev_url }}/infrastructure/clusters/aws/#hardware-specifications)
+4. We will use [GOF]({{ resources_url }}/infrastructure/clusters/aws/#hardware-specifications)
 queue, which comprises 8 CPUs and 1 NVIDIA V100 GPU per node.
 
 5. Since our compute node contains 8 CPUs with 1 GPU, we will run 1 MPI process

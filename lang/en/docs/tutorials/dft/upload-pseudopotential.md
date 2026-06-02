@@ -6,7 +6,7 @@ We have a set of default pseudopotentials available for each application. Such a
 
 # Navigate into Job Designer
 
-We will assume that reader knows how to navigate into the job designer and open the workflow tab (more information on that available in [quickstart](../../getting-started/run-first-simulation/web-interface.md) and [ui overview]({{ interface_url }}/ui/overview/).
+We will assume that reader knows how to navigate into the job designer and open the workflow tab (more information on that available in [quickstart](/getting-started/run-first-simulation/web-interface/) and [ui overview]({{ interface_url }}/ui/overview/).
 
 # Choose alternative pseudopotential
 

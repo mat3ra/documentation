@@ -18,6 +18,6 @@ The actions pertaining to Jobs submission and execution under the CLI are review
 
 For the new platform, CLI workflows use Apptainer-backed modules that set `$EXEC_CMD` variables for containerized execution. See: [Apptainer and Environment Modules](batch-scripts/apptainer.md)
 
-## [Tutorials](../tutorials/jobs-cli/overview.md)
+## [Tutorials]({{ guide_url }}/tutorials/jobs-cli/overview/)
 
-We provide tutorials guiding the user through the complete procedure for submitting jobs via CLI, and subsequently retrieving the corresponding results under the [Web Interface]({{ interface_url }}/ui/overview/) of our platform. These tutorials are introduced [here](../tutorials/jobs-cli/overview.md).
+We provide tutorials guiding the user through the complete procedure for submitting jobs via CLI, and subsequently retrieving the corresponding results under the [Web Interface]({{ interface_url }}/ui/overview/) of our platform. These tutorials are introduced [here]({{ guide_url }}/tutorials/jobs-cli/overview/).

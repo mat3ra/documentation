@@ -8,6 +8,9 @@ exclude_docs: |
   index-interface.md
   index-concepts.md
   index-dev.md
+  index-resources.md
+  index-developers.md
+  index-cli.md
   index-standards.md
   # Schema data pages (live in Data Standards sub-site)
   entities-general/data.md
@@ -40,7 +43,9 @@ extra:
     guide_url: https://docs.mat3ra.com
     interface_url: https://docs.mat3ra.com
     reference_url: https://docs.mat3ra.com
-    dev_url: https://docs.mat3ra.com
+    resources_url: https://docs.mat3ra.com
+    developers_url: https://docs.mat3ra.com
+    cli_url: https://docs.mat3ra.com/command-line
     data_url: https://docs.mat3ra.com/standards
 
 
@@ -48,7 +53,6 @@ extra:
 
 nav:
     - Home:                                              index.md
-    - Migrating to New Platform:                         migrating-to-new-platform.md
 
 # INTRODUCTION
     - Getting Started:
@@ -724,8 +728,9 @@ nav:
       - Authentication:                              rest-api/authentication.md
       - Query structure:                             rest-api/query-structure.md
       - Endpoints:                                   rest-api/endpoints.md
-      - Exabyte API client:                          rest-api/api-client.md
-      - Exabyte API examples:                        rest-api/api-examples.md
+      - API Explorer:                              rest-api/api-explorer.md
+      - API client:                          rest-api/api-client.md
+      - API examples:                        rest-api/api-examples.md
 
 
 # TODO: refactor/re-implement and re-enable
@@ -747,7 +752,6 @@ nav:
         - Community Programs:                           other/community-programs.md
         - Terms of Service:                             other/terms-of-service.md  # duplicate through link
         - Restricted Content:                           other/restricted.md
-        - Account Registration:                         other/registration.md
 
     - Benchmarks:
         - Overview:                      benchmarks/overview.md

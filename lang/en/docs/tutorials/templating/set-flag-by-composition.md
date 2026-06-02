@@ -9,7 +9,7 @@ In this page we review setting input flags based on the data about material(s) a
 
 ## Source
 
-The code below automatically sets the value of the "ENCUT" variable to higher values for materials that contain Nitrogen within their structures than for those than don't. In particular, ENCUT = 600 eV if Nitrogen is present, or ENCUT = 450 eV otherwise. This variable is found in [VASP](../../software-directory/modeling/vasp/overview.md) input file, and defines the cutoff energy characterizing the precision of the [DFT computation]({{ reference_url }}/models-directory/dft/parameters/).
+The code below automatically sets the value of the "ENCUT" variable to higher values for materials that contain Nitrogen within their structures than for those than don't. In particular, ENCUT = 600 eV if Nitrogen is present, or ENCUT = 450 eV otherwise. This variable is found in [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) input file, and defines the cutoff energy characterizing the precision of the [DFT computation]({{ reference_url }}/models-directory/dft/parameters/).
 
 {% raw %}
 ```jinja
@@ -42,7 +42,7 @@ We begin the logic of our template by defining the element that needs a high pla
 
 ### 3. Read Structural Data
 
-We then read the POSCAR input file for [VASP](../../software-directory/modeling/vasp/overview.md), and assign the text contents of this file to the variable "poscar_string". Examples of POSCAR files are included at the end of this section.
+We then read the POSCAR input file for [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/), and assign the text contents of this file to the variable "poscar_string". Examples of POSCAR files are included at the end of this section.
 
 ### 4 - 6. Extract Elements Contained in Material
 

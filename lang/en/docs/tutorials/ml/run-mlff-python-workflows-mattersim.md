@@ -191,7 +191,7 @@ Just as in Sections 1 and 2 above, create and run a job using this workflow.
 Because MatterSim is a [PyTorch](https://pytorch.org/)-based model, it benefits
 significantly from GPU execution. To run a MatterSim job on GPU, it should be
 submitted to one of the platform's GPU queues, for example the `GOF` queue on
-the [Google Cloud cluster]({{ dev_url }}/infrastructure/clusters/google/) (internal identifier
+the [Google Cloud cluster]({{ resources_url }}/infrastructure/clusters/google/) (internal identifier
 `Cluster-001`).
 
 ### 4.1. Confirm GPU availability

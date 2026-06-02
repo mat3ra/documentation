@@ -1,6 +1,6 @@
 # Data
 
-This implementation of Machine Learning uses [Python]({{ guide_url }}/software-directory/scripting/python/overview/) under-the-hood. Hence, its
+This implementation of Machine Learning uses [Python]({{ reference_url }}/software-directory/scripting/python/overview/) under-the-hood. Hence, its
 workflow units adopt the schema used by [Python Units]({{ data_url }}/software-directory/scripting/python/data/).
 
 === "Schema"

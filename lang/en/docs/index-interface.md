@@ -3,9 +3,11 @@
 Reference documentation for the Mat3ra platform interface: components, entity management, designer tools, and common actions.
 
 !!!tip "Other documentation sites"
-    For step-by-step tutorials and how-to guides, see the [Platform Guide]({{ guide_url }}/).
+    For step-by-step tutorials and how-to guides, see the [Tutorials]({{ guide_url }}/).
+    For CLI environment and remote connection, see the [Command-Line Interface]({{ cli_url }}/).
     For explanations of underlying concepts, see [Concepts & Reference]({{ reference_url }}/).
-    For developer-focused content (REST API, infrastructure), see the [Developer Guide]({{ dev_url }}/).
+    For infrastructure and compute resources, see [Resources / Infrastructure]({{ resources_url }}/).
+    For REST API documentation, see the [Developers]({{ developers_url }}/) site.
 
 
 ## Interface components
@@ -36,11 +38,13 @@ Detailed walkthroughs for each major platform tool.
 - [Jobs Designer](jobs-designer/overview.md) — set up and submit computational jobs
 
 
-## Remote connection
+## JupyterLite
 
-Access the platform via terminal and remote desktop.
+In-browser notebook environment for data analysis and materials construction.
 
-- [SSH](remote-connection/ssh.md), [Web Terminal](remote-connection/web-terminal.md), [Remote Desktop](remote-connection/remote-desktop.md)
+- [JupyterLite overview](jupyterlite/overview.md) — capabilities and architecture
+- [Data exchange](jupyterlite/data-exchange.md) — moving data in and out of notebooks
+- [Common actions](jupyterlite/common-actions.md)
 
 
 ## Account management

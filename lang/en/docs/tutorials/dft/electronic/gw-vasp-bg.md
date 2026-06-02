@@ -1,6 +1,6 @@
 # Calculate Electronic Band Gap with GW Approximation
 
-This tutorial page explains how to calculate the [electronic band gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) of a semiconducting material based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/). We consider crystalline silicon in its standard equilibrium cubic-diamond crystal structure, and use [VASP](../../../software-directory/modeling/vasp/overview.md) as our main simulation engine during this tutorial.
+This tutorial page explains how to calculate the [electronic band gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) of a semiconducting material based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/). We consider crystalline silicon in its standard equilibrium cubic-diamond crystal structure, and use [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) as our main simulation engine during this tutorial.
 
 !!!note "VASP version considered in this tutorial"
     The present tutorial is written for VASP at versions 5.3.5 or 5.4.4.
@@ -9,7 +9,7 @@ What sets the present tutorial apart from the [other tutorial](band-gap.md) on b
 
 ## Workflow Structure
 
-We shall now describe the computational implementation of the GW Approximation for computing electronic band gaps on our platform, illustrating the various steps constituting the overall [Workflow]({{ reference_url }}/workflows/overview/). For the present explanation, we consider the example case of the [VASP](../../../software-directory/modeling/vasp/overview.md) modeling engine. Further information on how the GW method is supported by VASP can be retrieved in Refs. [^2] and [^3].
+We shall now describe the computational implementation of the GW Approximation for computing electronic band gaps on our platform, illustrating the various steps constituting the overall [Workflow]({{ reference_url }}/workflows/overview/). For the present explanation, we consider the example case of the [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) modeling engine. Further information on how the GW method is supported by VASP can be retrieved in Refs. [^2] and [^3].
 
 Workflows performing GW calculations follow a three-step procedure:
 
@@ -44,10 +44,10 @@ Apart from this, the same procedural instructions as in the [other band gap calc
 
 ## Animation
 
-In the video animation below, we outline the procedure for creating and executing an electronic band gap calculation job via the GW Approximation, considering crystalline silicon as our example material and employing [VASP](../../../software-directory/modeling/vasp/overview.md) as the main simulation engine. We conclude by inspecting the corresponding results displayed under the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/).
+In the video animation below, we outline the procedure for creating and executing an electronic band gap calculation job via the GW Approximation, considering crystalline silicon as our example material and employing [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) as the main simulation engine. We conclude by inspecting the corresponding results displayed under the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/).
 
 !!!tip "Computational cost of GW calculations"
-    GW calculations are in general quite computationally demanding. We therefore recommend the employment of at least 8 computing cores. For larger calculations, [OF queues]({{ dev_url }}/infrastructure/resource/queues/) will have faster turnaround than the OR queues considered in the video.
+    GW calculations are in general quite computationally demanding. We therefore recommend the employment of at least 8 computing cores. For larger calculations, [OF queues]({{ resources_url }}/infrastructure/resource/queues/) will have faster turnaround than the OR queues considered in the video.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/t1IDfMcTIxw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

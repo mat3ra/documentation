@@ -55,7 +55,7 @@ Clicking on each atom will copy the coordinates of the atom to the clipboard as 
 
 ## 3. Create Nitrogen Defects and Vacancies.
 
-For the defect creation, we will use the [JupyterLite](../../../jupyterlite/overview.md) environment with the corresponding notebook.
+For the defect creation, we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment with the corresponding notebook.
 
 ### 3.1. Launch JupyterLite Session.
 

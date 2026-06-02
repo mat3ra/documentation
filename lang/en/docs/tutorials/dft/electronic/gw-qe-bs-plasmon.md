@@ -1,6 +1,6 @@
 # Calculate Electronic Band Structure with GW Approximation and Plasmon-pole Approach
 
-This page explains how to calculate the [electronic band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/) and [GW Approximation]({{ reference_url }}/models-directory/dft/notes/#the-gw-approximation). We consider a hexagonal Boron Nitride (BN) monolayer [^1] as our sample material, and use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md).
+This page explains how to calculate the [electronic band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/) and [GW Approximation]({{ reference_url }}/models-directory/dft/notes/#the-gw-approximation). We consider a hexagonal Boron Nitride (BN) monolayer [^1] as our sample material, and use [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/).
 
 !!!note "Quantum ESPRESSO version considered in this tutorial"
     The present tutorial is written for Quantum ESPRESSO at version(s) 6.3.
@@ -14,7 +14,7 @@ Here we employ of the **Plasmon pole** approach [^2] and only sample at zero fre
 <details markdown="1">
   <summary>Expand to view</summary> 
 
-We shall now review the plasmon-pole-specific components of the input file for the second compute [unit]({{ reference_url }}/workflows/components/units/) (based on SternheimerGW), within the larger [Workflow]({{ reference_url }}/workflows/overview/) based upon the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) modeling engine.
+We shall now review the plasmon-pole-specific components of the input file for the second compute [unit]({{ reference_url }}/workflows/components/units/) (based on SternheimerGW), within the larger [Workflow]({{ reference_url }}/workflows/overview/) based upon the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) modeling engine.
 
 ### Truncation
 
@@ -44,7 +44,7 @@ The user should, at this point, follow the instructions included in the [alterna
 
 ## Animation
 
-We demonstrate the steps involved in the creation and execution of a GW band structure computation on a BN monolayer (in its hexagonal form), using the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) simulation engine in the following animation. 
+We demonstrate the steps involved in the creation and execution of a GW band structure computation on a BN monolayer (in its hexagonal form), using the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) simulation engine in the following animation. 
 
 Here, we set the size along the z dimension of the k-grids and q-grid to 1, since we are considering a 2D material. In summary, we use a plane-wave cutoff of 80 Ry, k-grids size of 8 x 8 x 1 and q-grid size of 4 x 4 x 1.
 

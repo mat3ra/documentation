@@ -53,7 +53,7 @@ them.
 
 The first option allows for the creation of simulation workflows for material
 modeling. They can be based on any of the supported theoretical [models]({{ reference_url }}/models/overview/), operated under the associated computational
-[methods]({{ reference_url }}/methods/overview/) and [applications]({{ guide_url }}/software-directory/overview/).
+[methods]({{ reference_url }}/methods/overview/) and [applications]({{ reference_url }}/software-directory/overview/).
 
 
 !!!note "Note: labeling of options"
@@ -85,8 +85,8 @@ Here, the possibility to design new computational workflows is offered.
 
 For example, our platform supports the [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/) (DFT) theoretical framework for
 executing electronic structure calculations, as implemented by the
-[Quantum ESPRESSO]({{ guide_url }}/software-directory/modeling/quantum-espresso/overview/)
-or [VASP]({{ guide_url }}/software-directory/modeling/vasp/overview/) applications.
+[Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/)
+or [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) applications.
 Plans are under way to expand the offer to new atomistic simulation approaches,
 such as the classical Molecular Dynamics and Multi-scale techniques.
 
@@ -102,12 +102,12 @@ provided with a set of pre-loaded libraries and tools.
 #### 3A. Command Line Terminal
 
 The first remote connection method consists in the [Command Line interface](
-../../remote-connection/web-terminal.md) (option "3A").
+{{ cli_url }}/remote-connection/web-terminal/) (option "3A").
 
 #### 3B. Remote Desktop
 
 Alternatively, the [Remote Desktop environment](
-../../remote-connection/remote-desktop.md) (option "3B") can also be employed.
+{{ cli_url }}/remote-connection/remote-desktop/) (option "3B") can also be employed.
 
 
 ## Machine Learning <i class="zmdi zmdi-graduation-cap"></i>

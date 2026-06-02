@@ -62,7 +62,7 @@ setting a material as the [default]({{ interface_url }}/entities-general/actions
 A workflow can be created from scratch or imported from the Workflows Bank. In
 the animation below, we demonstrate how to import the "Band Structure + Density
 of States" workflow for [Quantum ESPRESSO](
-../../software-directory/modeling/quantum-espresso/overview.md) from the
+{{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) from the
 Workflow Bank to our account collection.
 
 <img data-gifffer="/images/getting-started/run-first-simulation-import-workflow.gif"/>
@@ -125,7 +125,7 @@ order. This sequence of steps are defined as a ["Workflow"]({{ reference_url }}/
 A workflow consists of one or multiple ["Subworkflows"]({{ reference_url }}/workflows/components/subworkflows/), as such each Subworkflow can only
 contain one [modeling engine]({{ reference_url }}/software/overview/) and one
 [theoretical model]({{ reference_url }}/models/overview/) (eg. [Quantum ESPRESSO](
-../../software-directory/modeling/quantum-espresso/overview.md), or "espresso",
+{{ reference_url }}/software-directory/modeling/quantum-espresso/overview/), or "espresso",
 and [density functional theory]({{ reference_url }}/models-directory/dft/overview/)
 respectively). Therefore, if a simulation involves multiple simulation engines
 in the same workflow, e.g, Quantum ESPRESSO for DFT and LAMMPS for molecular
@@ -150,11 +150,11 @@ the job designer.
 The ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) lets the user set
 various compute parameters, such as cluster, queue, number of nodes and
 number of processor cores per node to be used for the simulation, maximum time
-limit and other relevant [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/). We set the maximum time limit for
+limit and other relevant [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/). We set the maximum time limit for
 the calculation to properly schedule the allocation of resources. The format is
 HH:MM:SS, so that `01:00:00` corresponds to up to 1 hour runtime. One can also
 choose to be notified of the job status by clicking on his/her name in the
-["Notifications" section]({{ dev_url }}/infrastructure/compute/parameters/#notifications).
+["Notifications" section]({{ resources_url }}/infrastructure/compute/parameters/#notifications).
 
 ![Compute Tab](../../images/getting-started/run-first-simulation-tab-3-compute.webp "Compute Tab")
 
@@ -172,7 +172,7 @@ or clicking on the three vertical dots and choosing ["Run"]({{ interface_url }}/
 
 The [status]({{ reference_url }}/jobs/status/) will change from "pre-submission" to
 "submitted". This means that the job is finally submitted to our
-[computing clusters]({{ dev_url }}/infrastructure/clusters/overview/). Depending on
+[computing clusters]({{ resources_url }}/infrastructure/clusters/overview/). Depending on
 the load, it may take some time for it to become "Active" and thus start
 executing.
 

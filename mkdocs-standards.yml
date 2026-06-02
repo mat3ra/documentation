@@ -44,7 +44,7 @@ exclude_docs: |
   images/workflow-designer/
   images/workflows/
   infrastructure/
-  jobs-cli/
+  /jobs-cli/
   jobs-designer/
   jupyterlite/
   materials-designer/
@@ -167,6 +167,9 @@ exclude_docs: |
   index-interface.md
   index-concepts.md
   index-dev.md
+  index-resources.md
+  index-developers.md
+  index-cli.md
   migrating-to-new-platform.md
 
 validation:
@@ -179,7 +182,7 @@ validation:
 site_name: "Data Standards"
 site_url: https://docs.mat3ra.com/standards
 site_description: "JSON schemas, data convention, and structured data representations for the Mat3ra platform."
-dev_addr: "localhost:8004"
+dev_addr: "localhost:8007"
 
 theme:
   features:
@@ -199,7 +202,9 @@ extra:
     guide_url: https://docs.mat3ra.com/guide
     interface_url: https://docs.mat3ra.com/interface
     reference_url: https://docs.mat3ra.com/reference
-    dev_url: https://docs.mat3ra.com/dev
+    resources_url: https://docs.mat3ra.com/resources
+    developers_url: https://docs.mat3ra.com/developers
+    cli_url: https://docs.mat3ra.com/command-line
     data_url: https://docs.mat3ra.com/standards
 
 

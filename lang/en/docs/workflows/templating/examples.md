@@ -8,7 +8,7 @@ The present page contains example(s) of [unit](../components/units.md) input [te
 
 ## Quantum ESPRESSO Example
 
-For example, the input file template shown in the expandable section below, for a sample [Quantum ESPRESSO]({{ guide_url }}/software-directory/modeling/quantum-espresso/overview/) calculation.
+For example, the input file template shown in the expandable section below, for a sample [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) calculation.
 
 ### Template
 

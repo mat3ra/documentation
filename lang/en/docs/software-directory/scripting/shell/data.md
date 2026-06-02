@@ -1,6 +1,6 @@
 # Shell Scripting: Structured Representation
 
-We present in what follows the [structured representation]({{ data_url }}/data-structured/overview/) for the [shell scripting language]({{ guide_url }}/software-directory/scripting/shell/overview/).
+We present in what follows the [structured representation]({{ data_url }}/data-structured/overview/) for the [shell scripting language]({{ reference_url }}/software-directory/scripting/shell/overview/).
 
 === "Schema"
     ```json

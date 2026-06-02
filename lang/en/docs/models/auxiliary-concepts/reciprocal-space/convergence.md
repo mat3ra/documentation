@@ -10,7 +10,7 @@ The flowchart of the optimization algorithm used to find the optimal density is 
 
 ![Convergence Algorithm](../../../images/models/KpointConvergenceDiagram.png "Convergence Algorithm")
 
-Here, we use a uniform k-point mesh (same in each of the three spatial directions), and first initiate the number of kpoints `N_K` at 1. We then run a self-consistent [density functional theory](../../../models-directory/dft/overview.md) calculation (`pw_scf` - using [Quantum ESPRESSO's]({{ guide_url }}/software-directory/modeling/quantum-espresso/overview/) terminology), and check whether the `Output` value difference at current step and at previous one (`x`) is less than the convergence threshold. This whole process is repeated over a certain number of iterations.
+Here, we use a uniform k-point mesh (same in each of the three spatial directions), and first initiate the number of kpoints `N_K` at 1. We then run a self-consistent [density functional theory](../../../models-directory/dft/overview.md) calculation (`pw_scf` - using [Quantum ESPRESSO's]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) terminology), and check whether the `Output` value difference at current step and at previous one (`x`) is less than the convergence threshold. This whole process is repeated over a certain number of iterations.
 
 Currently, the default k-point convergence algorithm systematically increments the starting k-point density by 1 in along each reciprocal lattice vector, until the total energy of the system does not increase by more than 0.001% (10^-5).
 

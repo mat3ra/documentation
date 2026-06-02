@@ -99,8 +99,9 @@ nav:
         - Authentication:                              rest-api/authentication.md
         - Query structure:                             rest-api/query-structure.md
         - Endpoints:                                   rest-api/endpoints.md
-        - Exabyte API client:                          rest-api/api-client.md
-        - Exabyte API examples:                        rest-api/api-examples.md
+        - API Explorer:                                rest-api/api-explorer.md
+        - API client:                          rest-api/api-client.md
+        - API examples:                        rest-api/api-examples.md
 
 # INFRASTRUCTURE
     - General Infrastructure:

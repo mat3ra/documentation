@@ -2,7 +2,7 @@
 
 In this tutorial, we demonstrate how to create a [Job]({{ reference_url }}/jobs/overview/) in order to extract the **potential/charge profiles** via the [Effective Screening Medium (ESM)]({{ reference_url }}/models/auxiliary-concepts/esm/) approach for simulating **surfaces** and **interfaces**, based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/).
 
-We consider a water (H2O) molecule in the present example, and use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as our main simulation engine.
+We consider a water (H2O) molecule in the present example, and use [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) as our main simulation engine.
 
 !!!note "Quantum ESPRESSO version considered in this tutorial"
     The present tutorial is written for Quantum ESPRESSO at versions 5.2.1, 5.4.0, 6.0.0 or 6.3.
@@ -12,7 +12,7 @@ We consider a water (H2O) molecule in the present example, and use [Quantum ESPR
 <details markdown="1">
   <summary>Expand to view ...</summary>
 
-The [Workflow]({{ reference_url }}/workflows/overview/) implementing ESM calculations on our platform through [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) is composed of a single main computational [unit]({{ reference_url }}/workflows/components/units/). 
+The [Workflow]({{ reference_url }}/workflows/overview/) implementing ESM calculations on our platform through [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) is composed of a single main computational [unit]({{ reference_url }}/workflows/components/units/). 
 
 Examples on how ESM is enabled and supported in Quantum ESPRESSO are offered in Ref. [^1]. Here, we will offer a brief review of the most important input keywords, that are required to be included in Quantum ESPRESSO input scripts in the context of ESM calculations.
 
@@ -82,7 +82,7 @@ The previously-created water structure should now be [selected and imported]({{ 
 
 ## Copy ESM Workflow from Bank
 
-[Workflows]({{ reference_url }}/workflows/overview/) for performing [Effective Screening Medium (ESM)]({{ reference_url }}/models/auxiliary-concepts/esm/) computations with [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). The user should search for the "ESM" keyword whilst performing a [search]({{ interface_url }}/entities-general/actions/search/) within the Bank.
+[Workflows]({{ reference_url }}/workflows/overview/) for performing [Effective Screening Medium (ESM)]({{ reference_url }}/models/auxiliary-concepts/esm/) computations with [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). The user should search for the "ESM" keyword whilst performing a [search]({{ interface_url }}/entities-general/actions/search/) within the Bank.
 
 This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/overview/). 
 
@@ -101,7 +101,7 @@ In addition, the user should set the size of the grid of [k-points]({{ reference
 
 ## Submit Job
 
-Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and examine the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein.  Water is a small structure, so 4 CPUs and a few minutes of calculation runtime should be sufficient.
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and examine the [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) included therein.  Water is a small structure, so 4 CPUs and a few minutes of calculation runtime should be sufficient.
 
 ## Examine Final Results
 
@@ -117,7 +117,7 @@ The two dimensional (xy-plane) average charge density and electrostatic potentia
 
 ## Animation
 
-We demonstrate the above-mentioned steps involved in the creation and execution of an ESM computation on a water molecule, using the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) simulation engine, in the following animation. Here, we shall make use of the "Relax" variant of the Quantum ESPRESSO ESM workflow.
+We demonstrate the above-mentioned steps involved in the creation and execution of an ESM computation on a water molecule, using the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) simulation engine, in the following animation. Here, we shall make use of the "Relax" variant of the Quantum ESPRESSO ESM workflow.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/1KOGtvEGjI8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

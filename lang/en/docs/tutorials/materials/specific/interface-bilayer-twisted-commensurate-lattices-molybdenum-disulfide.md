@@ -40,7 +40,7 @@ First, we navigate to [Materials Designer]({{ interface_url }}/materials-designe
 
 ![Standata MoS2 Import](../../../images/tutorials/materials/interfaces/twisted-bilayer-molybdenum-disulfide/standata-import-mos2.png "Standata MoS2 Import")
 
-Then we will use the [JupyterLite](../../../jupyterlite/overview.md) environment to create a twisted bilayer molybdenum disulfide structure.
+Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create a twisted bilayer molybdenum disulfide structure.
 
 
 ## 2. Create MoS2 bilayer with a twist angle of 22 degrees.

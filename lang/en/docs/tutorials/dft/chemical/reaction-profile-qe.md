@@ -2,7 +2,7 @@
 
 This tutorial page explains how to calculate the [energy reaction profile]({{ reference_url }}/properties-directory/non-scalar/reaction-energy-profile/) and [activation barrier]({{ reference_url }}/properties-directory/scalar/reaction-energy-barrier/) for the multi-dimensional energy space of chemical reactions via the [**Nudged Elastic Bands (NEB) method**]({{ reference_url }}/models/auxiliary-concepts/nudged-elastic-band/), by making use of the [interpolated sets]({{ interface_url }}/materials-designer/header-menu/advanced/interpolated-set/) introduced in a [separate tutorial](../../materials/interpolated-sets.md). 
 
-We consider the example of a one-dimensional, three-atom molecule of Hydrogen (H3) throughout the present tutorial, and shall be making use of [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as the main simulation engine, via the implementation of its `PWneb` [flavor](../../../software-directory/modeling/quantum-espresso/components.md#flavors). 
+We consider the example of a one-dimensional, three-atom molecule of Hydrogen (H3) throughout the present tutorial, and shall be making use of [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) as the main simulation engine, via the implementation of its `PWneb` [flavor]({{ reference_url }}/software-directory/modeling/quantum-espresso/components/#flavors). 
 
 !!!note "Quantum ESPRESSO version considered in this tutorial"
     The present tutorial is written for Quantum ESPRESSO at versions 5.2.1, 5.4.0, 6.0.0 or 6.3.
@@ -22,11 +22,11 @@ In this triatomic reaction, the middle H atom breaks the bond with first atom an
     Expand to view ...
   </summary>
 
-We outline here some important aspects of the [Workflow]({{ reference_url }}/workflows/overview/) used for executing NEB calculations on our platform via [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md), which is composed of a single main [unit]({{ reference_url }}/workflows/components/units/).
+We outline here some important aspects of the [Workflow]({{ reference_url }}/workflows/overview/) used for executing NEB calculations on our platform via [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/), which is composed of a single main [unit]({{ reference_url }}/workflows/components/units/).
 
 ### Main Executable
 
-NEB calculations are performed through the ["neb.x" Quantum ESPRESSO Executable](../../../software-directory/modeling/quantum-espresso/components.md#executables). The input parameters for this executable are described in Ref. 4 of [this page](../../../software-directory/modeling/quantum-espresso/components.md), and can be customized by the user via the [unit input template editor]({{ interface_url }}/workflow-designer/unit-editor/#unit-input-templates) within the [Workflow Designer Interface]({{ interface_url }}/workflow-designer/overview/). 
+NEB calculations are performed through the ["neb.x" Quantum ESPRESSO Executable]({{ reference_url }}/software-directory/modeling/quantum-espresso/components/#executables). The input parameters for this executable are described in Ref. 4 of [this page]({{ reference_url }}/software-directory/modeling/quantum-espresso/components/), and can be customized by the user via the [unit input template editor]({{ interface_url }}/workflow-designer/unit-editor/#unit-input-templates) within the [Workflow Designer Interface]({{ interface_url }}/workflow-designer/overview/). 
 
 ### Broyden Algorithm
 
@@ -58,14 +58,14 @@ The **Interpolated Set** generated in [this other tutorial](../../materials/inte
 
 ## Choose Workflow
 
-[Workflows]({{ reference_url }}/workflows/overview/) for calculating the reaction energy profile of chemical molecules via NEB with [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the reaction energy profile of chemical molecules via NEB with [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 
 !!!warning "Size of grid of k-points"
     The user should take care to set the size of the [grid of reciprocal k-points (kgrid)]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) to 1 x 1 x 1 under the ["Important Settings" Tab]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/) of the [Workflow Designer Interface]({{ interface_url }}/workflow-designer/overview/), since we are presently dealing with single molecules as opposed to periodic crystalline structures.
 
 ## Submit Job
 
-Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and examine the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein. The H3 molecules being considered in the present tutorial are relatively small structures, hence 4 CPUs and a few minutes of calculation runtime should be sufficient.
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and examine the [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) included therein. The H3 molecules being considered in the present tutorial are relatively small structures, hence 4 CPUs and a few minutes of calculation runtime should be sufficient.
 
 ## Examine Final Results
 
@@ -83,7 +83,7 @@ The final optimized image structures can be retrieved at the end of Job executio
 
 ### NEB with Manually-Generated Images
 
-We demonstrate the above-mentioned steps involved in the creation and execution of an NEB-based reaction energy profile computation on H3 molecules using the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) simulation engine in the following animation. 
+We demonstrate the above-mentioned steps involved in the creation and execution of an NEB-based reaction energy profile computation on H3 molecules using the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) simulation engine in the following animation. 
 
 Here, we have made use of the constrained interpolated set containing 3 intermediate images generated manually in a [separate tutorial](../../materials/interpolated-sets.md). It can be deduced from the final result for the energy reaction profile that the size of the activation barrier in this case is of 0.2 eV. This result is in good agreement with those published in the literature for the same collinear proton transfer chemical reaction (see for example page 26 in Ref. [^2]).
 

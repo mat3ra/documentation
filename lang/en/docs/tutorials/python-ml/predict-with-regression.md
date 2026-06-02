@@ -50,7 +50,7 @@ This will bring up the [Select Workflow]({{ interface_url }}/jobs-designer/actio
 search for "workflow:pyml_predict" and click on it to bring it into the job.
 
 A diagram and detailed description of this workflow can be found
-[here](../../software-directory/machine-learning/python-ml/components.md)
+[here]({{ reference_url }}/software-directory/machine-learning/python-ml/components/)
 
 ## 4. Select the Dataset
 

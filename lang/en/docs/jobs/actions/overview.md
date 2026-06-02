@@ -12,7 +12,7 @@ We explain what Purge means in the context of Jobs [in this page](purge.md).
 
 ## [Run](run.md)
 
-Jobs can be [submitted]({{ reference_url }}/jobs/status/) to the [cluster]({{ dev_url }}/infrastructure/clusters/overview/) for execution following [these instructions](run.md).
+Jobs can be [submitted]({{ reference_url }}/jobs/status/) to the [cluster]({{ resources_url }}/infrastructure/clusters/overview/) for execution following [these instructions](run.md).
 
 ## [Terminate](terminate.md)
 

@@ -7,7 +7,7 @@ The present tutorial page explains how to run a [convergence study]({{ reference
 
 K-point convergence can be run either as a stand-alone [workflow]({{ reference_url }}/workflows/overview/), or prepended as a [Workflow Add-on]({{ reference_url }}/workflows/addons/overview/) to another [property calculation]({{ reference_url }}/properties/overview/).
 
-In the present tutorial, we will study the issue of k-point convergence for the case of crystalline silicon under its equilibrium cubic-diamond crystal structure, by making use of [VASP](../../../software-directory/modeling/vasp/overview.md) as the main simulation engine. We will investigate k-point convergence in the context of a [Total Energy]({{ reference_url }}/properties-directory/scalar/total-energy/) calculation.
+In the present tutorial, we will study the issue of k-point convergence for the case of crystalline silicon under its equilibrium cubic-diamond crystal structure, by making use of [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) as the main simulation engine. We will investigate k-point convergence in the context of a [Total Energy]({{ reference_url }}/properties-directory/scalar/total-energy/) calculation.
 
 !!!note "VASP version considered in this tutorial"
     The present tutorial is written for VASP at versions 5.3.5 or 5.4.4.
@@ -18,7 +18,7 @@ Silicon in its cubic-diamond crystal structure is the [default material]({{ refe
 
 ## Choose workflow
 
-[Workflows]({{ reference_url }}/workflows/overview/) for calculating the Total Energy through [VASP](../../../software-directory/modeling/vasp/overview.md) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the Total Energy through [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 
 Thereafter, in order to add k-point convergence as an [Add-on]({{ reference_url }}/workflows/addons/overview/) to the total energy calculation workflow, the user should [click the appropriate button]({{ interface_url }}/workflow-designer/subworkflow-editor/actions-menu/#insert-add-ons) within the [Subworkflow Editor Interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview/) of [Workflow Designer]({{ interface_url }}/workflow-designer/overview/). The corresponding "Convergence" option should thus be chosen. The parameters contained in the resulting "Convergence" dialog should be set according to the instructions outlined [in this page]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/convergence/). For the moment, we shall just accept the default contents of such dialog, and proceed with no further modifications by clicking the bottom `Apply` button.
 
@@ -32,7 +32,7 @@ Users should be able to notice some differences in the formatting of the KPOINTS
 
 ## Submit Job
 
-Before [submitting]({{ interface_url }}/jobs/actions/run/) the [Job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein. Silicon is a small structure, so four cores and a few minutes of calculation runtime should be sufficient.
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [Job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect the [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) included therein. Silicon is a small structure, so four cores and a few minutes of calculation runtime should be sufficient.
 
 ## Examine Results
 

@@ -1,6 +1,6 @@
 # Calculate Zero Point Energy
 
-This page explains how to run a [zero point energy]({{ reference_url }}/properties-directory/scalar/zero-point-energy/) calculation based on [density functional theory]({{ reference_url }}/models-directory/dft/overview/). For the sake of this presentation, we will calculate the zero point energy for crystalline silicon in its equilibrium cubic-diamond crystal structure, making use of [VASP](../../../software-directory/modeling/vasp/overview.md) as our simulation engine.
+This page explains how to run a [zero point energy]({{ reference_url }}/properties-directory/scalar/zero-point-energy/) calculation based on [density functional theory]({{ reference_url }}/models-directory/dft/overview/). For the sake of this presentation, we will calculate the zero point energy for crystalline silicon in its equilibrium cubic-diamond crystal structure, making use of [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) as our simulation engine.
 
 !!!note "VASP version considered in this tutorial"
     The present tutorial is written for VASP at versions 5.3.5 or 5.4.4.
@@ -11,7 +11,7 @@ Silicon in its cubic-diamond crystal structure is the [default material]({{ refe
 
 ## Choose Workflow
 
-[Workflows]({{ reference_url }}/workflows/overview/) for calculating the Zero Point Energy through [VASP](../../../software-directory/modeling/vasp/overview.md) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/workflow-tab/). 
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the Zero Point Energy through [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/workflow-tab/). 
 
 ## Examine Input File	
 
@@ -27,7 +27,7 @@ We explain how to perform both [structural relaxations](../addons/structural-rel
 
 ## Submit Job
 
-Before [submitting]({{ interface_url }}/jobs/actions/run/) the [Job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein.  Silicon is a small structure, so four CPUs and one minute of calculation runtime should be sufficient.
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [Job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect the [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) included therein.  Silicon is a small structure, so four CPUs and one minute of calculation runtime should be sufficient.
 
 ## Examine Results
 
@@ -37,7 +37,7 @@ The larger its value, the more critical it becomes to include the zero point ene
 
 ## Animation
 
-We demonstrate the above-mentioned steps involved in the creation and execution of a Zero Point Energy computation workflow on silicon, using the [VASP](../../../software-directory/modeling/vasp/overview.md) simulation engine, in the following animation.
+We demonstrate the above-mentioned steps involved in the creation and execution of a Zero Point Energy computation workflow on silicon, using the [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) simulation engine, in the following animation.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/SeKAKDaU-g0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

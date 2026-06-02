@@ -5,7 +5,7 @@ This section documents the data convention, JSON schemas, and structured data re
 !!!tip "Other documentation sites"
     For step-by-step tutorials and platform walkthroughs, see the [Platform Guide]({{ guide_url }}/).
     For explanations of underlying concepts, see [Concepts & Reference]({{ reference_url }}/).
-    For developer-oriented resources, see the [Developer Guide]({{ dev_url }}/).
+    For REST API documentation, see the [Developers]({{ developers_url }}/) site.
 
 
 ## Overview & Convention

@@ -8,8 +8,8 @@ Properties can be retrieved as the output of [Jobs](../../jobs/overview.md), or 
 
 ## REST API
 
-We explain how to retrieve properties programmatically via the REST API in a [separate documentation section]({{ dev_url }}/rest-api/overview/). 
+We explain how to retrieve properties programmatically via the REST API in a [separate documentation section]({{ developers_url }}/rest-api/overview/). 
 
 ## Data on Disk 
 
-Properties can also be retrieved directly from the simulation data files stored on the [compute cluster disks]({{ dev_url }}/infrastructure/clusters/overview/), as explained [here]({{ dev_url }}/data-on-disk/overview/).
+Properties can also be retrieved directly from the simulation data files stored on the [compute cluster disks]({{ resources_url }}/infrastructure/clusters/overview/), as explained [here]({{ resources_url }}/data-on-disk/overview/).

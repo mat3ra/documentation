@@ -1,6 +1,6 @@
 # Calculate Surface Energy
 
-This tutorial page explains how to calculate the [surface energy]({{ reference_url }}/properties-directory/scalar/surface-energy/) of [materials]({{ reference_url }}/materials/overview/) based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/). We consider crystalline gold in its standard equilibrium face-centred cubic (fcc) crystal structure, and use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as our main simulation engine during this tutorial.
+This tutorial page explains how to calculate the [surface energy]({{ reference_url }}/properties-directory/scalar/surface-energy/) of [materials]({{ reference_url }}/materials/overview/) based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/). We consider crystalline gold in its standard equilibrium face-centred cubic (fcc) crystal structure, and use [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) as our main simulation engine during this tutorial.
 
 !!!note "Quantum ESPRESSO version considered in this tutorial"
     The present tutorial is written for Quantum ESPRESSO at versions 5.2.1, 5.4.0, 6.0.0 or 6.3.
@@ -19,7 +19,7 @@ We shall now describe the computational implementation of Surface Energy calcula
 
 ### io-slab
 
-This [input/output type of unit]({{ reference_url }}/workflows/components/units/#i/o) launches a request to the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials, in order to retrieve the relevant identification information about the material under investigation. This request is made via the corresponding endpoint address of the [Rest API]({{ dev_url }}/rest-api/overview/), and is directed at the material entry with id given by the "MATERIAL_ID" keyword. The material information is then assigned to the variable "DATA".
+This [input/output type of unit]({{ reference_url }}/workflows/components/units/#i/o) launches a request to the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials, in order to retrieve the relevant identification information about the material under investigation. This request is made via the corresponding endpoint address of the [Rest API]({{ developers_url }}/rest-api/overview/), and is directed at the material entry with id given by the "MATERIAL_ID" keyword. The material information is then assigned to the variable "DATA".
 
 ### slab
 
@@ -54,7 +54,7 @@ This unit asserts that the total energy of the bulk material is indeed listed wi
 
 ### surface
 
-Assignment units in general allow for [Python](../../../software-directory/scripting/python/overview.md) logic and expressions to be executed. Here, we take advantage of this to compute the magnitude of the vector normal to the surface.
+Assignment units in general allow for [Python]({{ reference_url }}/software-directory/scripting/python/overview/) logic and expressions to be executed. Here, we take advantage of this to compute the magnitude of the vector normal to the surface.
 
 ### n-bulk and n-slab
 
@@ -74,11 +74,11 @@ Finally, the last unit gathers together the previously-defined variables "E_BULK
 
 ## Choose Workflow and Create Job
 
-[Workflows]({{ reference_url }}/workflows/overview/) for calculating the surface energy through [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the surface energy through [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) can readily be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). This workflow can later be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [Job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 
 ## Submit Job
 
-Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein. Our slab of gold is a relatively small structure, so four CPUs and a few minutes of calculation runtime should be sufficient.
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the user should click on the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect the [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) included therein. Our slab of gold is a relatively small structure, so four CPUs and a few minutes of calculation runtime should be sufficient.
 
 ## Examine results
 
@@ -86,7 +86,7 @@ When all aforementioned [units]({{ reference_url }}/workflows/components/units/)
 
 ## Animation
 
-We demonstrate the above-mentioned steps involved in the creation and execution of a Surface Energy computation workflow on gold using the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) simulation engine in the following animation.
+We demonstrate the above-mentioned steps involved in the creation and execution of a Surface Energy computation workflow on gold using the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) simulation engine in the following animation.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/Z8GeBovopcM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

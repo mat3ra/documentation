@@ -8,7 +8,7 @@ The results for each computational [unit]({{ interface_url }}/workflow-designer/
 
 ### Naming Convention
 
-Panels are named according to the format convention "Subworkflow Name - Unit Name". The name of the [application]({{ guide_url }}/software-directory/overview/) implemented in the current unit is also shown directly below.
+Panels are named according to the format convention "Subworkflow Name - Unit Name". The name of the [application]({{ reference_url }}/software-directory/overview/) implemented in the current unit is also shown directly below.
  
 ### Collapse / Expand
  

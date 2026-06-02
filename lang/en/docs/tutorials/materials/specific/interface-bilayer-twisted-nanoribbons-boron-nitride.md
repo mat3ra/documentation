@@ -38,7 +38,7 @@ First, we navigate to [Materials Designer]({{ interface_url }}/materials-designe
 
 ![Standata BN Import](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/standata-import-bn.png "Standata BN Import")
 
-Then we will use the [JupyterLite](../../../jupyterlite/overview.md) environment to create a twisted bilayer boron nitride structure.
+Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create a twisted bilayer boron nitride structure.
 
 ## 2. Create bilayer with a twist angle of 2.64°.
 

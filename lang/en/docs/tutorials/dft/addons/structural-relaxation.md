@@ -8,10 +8,10 @@ Relaxation can be run either as a stand-alone [workflow]({{ reference_url }}/wor
 
 ## Summary
 
-In the present tutorial, we study the crystalline silicon distorted from its equilibrium cubic-diamond crystal structure and make use of the [VASP](../../../software-directory/modeling/vasp/overview.md) simulation engine. We will investigate how to optimize the crystal structure geometry and atomic positions in the context of a [Total Energy]({{ reference_url }}/properties-directory/scalar/total-energy/) computation. Relaxation prior to a property calculation is generally-speaking a critical precaution to take in order to ensure an accurate final result in the material property being sought.
+In the present tutorial, we study the crystalline silicon distorted from its equilibrium cubic-diamond crystal structure and make use of the [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) simulation engine. We will investigate how to optimize the crystal structure geometry and atomic positions in the context of a [Total Energy]({{ reference_url }}/properties-directory/scalar/total-energy/) computation. Relaxation prior to a property calculation is generally-speaking a critical precaution to take in order to ensure an accurate final result in the material property being sought.
 
 !!!info "Generality of tutorial instructions"
-    Despite making explicit references to [VASP](../../../software-directory/modeling/vasp/overview.md), the instructions presented herein are of general applicability to all [modeling engines](../../../software-directory/overview.md#modeling-applications) supported on our platform.
+    Despite making explicit references to [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/), the instructions presented herein are of general applicability to all [modeling engines]({{ reference_url }}/software-directory/overview/#modeling-applications) supported on our platform.
     
 !!!note "VASP version considered in this tutorial"
     The present tutorial is written for VASP at versions 5.3.5 or 5.4.4.
@@ -41,7 +41,7 @@ Please note that the second total energy subworkflow reads the structural inform
 
 ## Submit Job
 
-Before [submitting]({{ interface_url }}/jobs/actions/run/) the [Job]({{ reference_url }}/jobs/overview/), the user should click the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein. Silicon is a small structure, so four CPU cores and one minute of calculation runtime should be sufficient.
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [Job]({{ reference_url }}/jobs/overview/), the user should click the ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect the [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) included therein. Silicon is a small structure, so four CPU cores and one minute of calculation runtime should be sufficient.
 
 ## Examine Results
 
@@ -55,7 +55,7 @@ The structural data contained in this file can readily be visualized graphically
 
 ## Animation
 
-We demonstrate the above-mentioned steps involved in the creation and execution of a [structural relaxation]({{ reference_url }}/workflows/addons/structural-relaxation/) study on a [Total Energy]({{ reference_url }}/properties-directory/scalar/total-energy/) workflow computation under the following animation, where we make use of the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) simulation engine. The starting point is a crystal structure of silicon which has been slightly distorted from its equilibrium cubic-diamond lattice parameters and atomic positions.
+We demonstrate the above-mentioned steps involved in the creation and execution of a [structural relaxation]({{ reference_url }}/workflows/addons/structural-relaxation/) study on a [Total Energy]({{ reference_url }}/properties-directory/scalar/total-energy/) workflow computation under the following animation, where we make use of the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) simulation engine. The starting point is a crystal structure of silicon which has been slightly distorted from its equilibrium cubic-diamond lattice parameters and atomic positions.
 
 As expected, the components of both the atomic forces and [stress tensor]({{ reference_url }}/properties-directory/non-scalar/stress-tensor/) shown at the end of the structural relaxation computation, under the interface of [Results tab]({{ interface_url }}/jobs/ui/results-tab/), have low values in proximity to zero, signalling successful relaxation and geometry optimization.
 

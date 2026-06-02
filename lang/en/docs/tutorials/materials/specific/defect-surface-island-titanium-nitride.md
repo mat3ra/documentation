@@ -43,7 +43,7 @@ First, we navigate to [Materials Designer]({{ interface_url }}/materials-designe
 ![Standata Graphene Import](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/1-standata-graphene.webp "Standata Graphene Import")
 
 
-Then we will use the [JupyterLite](../../../jupyterlite/overview.md) environment to create a TiN slab.
+Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create a TiN slab.
 
 ### 1.1. Launch JupyterLite Session.
 

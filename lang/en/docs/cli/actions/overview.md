@@ -24,7 +24,7 @@ The user can create and customize Anaconda environments for their projects, as e
 
 ## [List Clusters and Cluster Nodes](list-clusters.md)
 
-The [computing clusters and nodes]({{ dev_url }}/infrastructure/clusters/overview/) available for use can be listed by entering the commands [explained here](list-clusters.md).
+The [computing clusters and nodes]({{ resources_url }}/infrastructure/clusters/overview/) available for use can be listed by entering the commands [explained here](list-clusters.md).
 
 ## [Accounting](balance-quota.md)
 

@@ -3,12 +3,12 @@
 This tutorial page explains how to calculate the [valence band offset]({{ reference_url }}/properties-directory/scalar/valence-band-offset/) (VBO)
 based on the potential lineup method[^1][^2][^3] using [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/).
 For this tutorial, we consider a 2D material interface MoS<sub>2</sub>/WS<sub>2</sub> and use
-[Quantum Espresso](../../../software-directory/modeling/quantum-espresso/overview.md) as our main simulation engine.
+[Quantum Espresso]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) as our main simulation engine.
 The content of this tutorial was also part of our 2021 webinar *2D Materials and their Electronic Properties*[^4]
 
 !!!note "Simulation engines considered in this tutorial"
     The workflow presented in this tutorial is currently only available for
-    [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md).
+    [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/).
 
 ## Definitions
 
@@ -88,7 +88,7 @@ monolayers (ca. 5.7 bohr).
 
 Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the user should click on the
 ["Compute" tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) and inspect
-the [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/) included therein.
+the [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) included therein.
 
 ## Examine results
 

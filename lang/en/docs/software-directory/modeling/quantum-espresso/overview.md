@@ -20,7 +20,7 @@ are part of the Quantum ESPRESSO software distribution [in this page](components
 
 ## [Compute Parameters](compute-parameters.md)
 
-We explain which [compute parameters]({{ dev_url }}/infrastructure/compute/parameters/)
+We explain which [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/)
 are specific to Quantum ESPRESSO [here](compute-parameters.md).
 
 ## [Data]({{ data_url }}/software-directory/modeling/quantum-espresso/data/)

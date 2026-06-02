@@ -2,7 +2,7 @@
 
 This tutorial page explains how to calculate the energy reaction profile and activation barrier for the multi-dimensional energy space of chemical reactions via the **Nudged Elastic Bands (NEB) method**, by making use of the [interpolated sets]({{ interface_url }}/materials-designer/header-menu/advanced/interpolated-set/) of intermediate image structures introduced in a [separate tutorial](../../materials/interpolated-sets.md).
 
-We consider the example of a one-dimensional, three-atom molecule of Hydrogen (H3) throughout the present tutorial, and shall be making use of [VASP](../../../software-directory/modeling/vasp/overview.md) as the main simulation engine. 
+We consider the example of a one-dimensional, three-atom molecule of Hydrogen (H3) throughout the present tutorial, and shall be making use of [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) as the main simulation engine. 
 
 Only the aspects of NEB calculations which are specific to VASP will be reviewed here. For a more general introduction to how such calculations are performed and defined on our platform, the reader is referred to [this alternative tutorial page](reaction-profile-qe.md). The same collinear proton transfer chemical reaction of the H3 molecule as in this latter tutorial will be investigated here.
 
@@ -15,7 +15,7 @@ General instructions on how NEB is implemented under VASP can be found in Ref. [
 
 Most importantly, VASP expects there to be a group of pre-existing [set folders]({{ reference_url }}/entities-general/sets/), within the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials, named "00" (initial) to "0N" (final), each containing the POSCAR structure file for each of the N images constituting the interpolated set under consideration. All output files (OUTCAR, CONTCAR, OSZICAR etc...) of the NEB-steps run are written to these same directories. These sets are generated automatically on our platform, as explained in what follows.
  
-We describe now the overall structure of the [Workflow]({{ reference_url }}/workflows/overview/) used for executing NEB calculations on our platform via [VASP](../../../software-directory/modeling/vasp/overview.md), which is composed of three main [subworkflow]({{ reference_url }}/workflows/components/subworkflows/) operations.
+We describe now the overall structure of the [Workflow]({{ reference_url }}/workflows/overview/) used for executing NEB calculations on our platform via [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/), which is composed of three main [subworkflow]({{ reference_url }}/workflows/components/subworkflows/) operations.
 
 !!!warning "Restrictions on number of computing cores"
     The number of cores on which VASP is run for NEB purposes has to be an integer multiple of the total number of *intermediate* images. Hence, if the user is working with 2 intermediate images, the number of cores selected should be 2, 4, 6, or all other even numbers.
@@ -32,7 +32,7 @@ We also remind the reader that the size of the [grid of reciprocal k-points (kgr
 
 ### 2. Prepare Directories 
 
-The second subworkflow runs a [shell script](../../../software-directory/scripting/shell/overview.md) which prepares the aforementioned directories necessary to run a VASP NEB calculation. This script first puts the initial POSCAR structure file into a set directory named "00", the final one into "0N", and the remaining intermediate images in "01" to "0(N-1)". 
+The second subworkflow runs a [shell script]({{ reference_url }}/software-directory/scripting/shell/overview/) which prepares the aforementioned directories necessary to run a VASP NEB calculation. This script first puts the initial POSCAR structure file into a set directory named "00", the final one into "0N", and the remaining intermediate images in "01" to "0(N-1)". 
 
 The outputs of the previous subworkflow on the SCF calculations applied to the initial and final images are here copied into the initial (00) and final (0N) directories respectively.
 
@@ -82,7 +82,7 @@ The final optimized image structures can be retrieved at the end of Job executio
 
 ## Animation
 
-We demonstrate the above-mentioned steps involved in the creation and execution of an NEB-based reaction energy profile computation on H3 molecules, using the [VASP](../../../software-directory/modeling/vasp/overview.md) simulation engine, in the following animation. Because we are working with 3 intermediate images, we run the NEB [Job]({{ reference_url }}/jobs/overview/) on a total of 6 cores, which is a multiple of 3 as required.
+We demonstrate the above-mentioned steps involved in the creation and execution of an NEB-based reaction energy profile computation on H3 molecules, using the [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) simulation engine, in the following animation. Because we are working with 3 intermediate images, we run the NEB [Job]({{ reference_url }}/jobs/overview/) on a total of 6 cores, which is a multiple of 3 as required.
 
 It can be deduced from the final results for the energy reaction profile, available under the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/), that the size of the activation energy barrier in this case is of about 0.2 eV, in agreement with the outcome of the [other NEB Tutorial](reaction-profile-qe.md).
 

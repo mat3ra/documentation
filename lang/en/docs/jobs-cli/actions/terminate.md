@@ -14,4 +14,4 @@ This explanation concerns the jobs [submitted for execution via CLI](../overview
 
 ## More information
 
-The manual page for the `qdel` command, listing the available option flags, can be retrieved the reference containing the information about the Resource Management System [in the corresponding page of the present documentation]({{ dev_url }}/infrastructure/resource/overview/#links) (page 337).
+The manual page for the `qdel` command, listing the available option flags, can be retrieved the reference containing the information about the Resource Management System [in the corresponding page of the present documentation]({{ resources_url }}/infrastructure/resource/overview/#links) (page 337).

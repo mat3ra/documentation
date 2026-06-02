@@ -12,4 +12,4 @@ In the above image, we highlight the area that indicates whether a workflow is [
 
 ## Filter Workflows by Applications
 
-Workflows can be [filtered (or searched)](../../entities-general/actions/search.md) conventionally just like other types of entities. The possibility to search them by the [application]({{ guide_url }}/software-directory/overview/) used within them, for performing the relevant computational tasks, also exists in this case.  
+Workflows can be [filtered (or searched)](../../entities-general/actions/search.md) conventionally just like other types of entities. The possibility to search them by the [application]({{ reference_url }}/software-directory/overview/) used within them, for performing the relevant computational tasks, also exists in this case.  
