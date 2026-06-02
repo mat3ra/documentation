@@ -4,6 +4,7 @@
 # Usage:
 #   ./scripts/serve-all.sh          # build + serve on localhost:8000
 #   ./scripts/serve-all.sh --build  # build only, no server
+#   ./scripts/serve-all.sh --serve  # serve only, skip build (uses existing site/)
 #
 # Cross-site links automatically resolve to localhost for local testing.
 
@@ -19,6 +20,26 @@ fi
 
 PORT="${PORT:-8000}"
 LOCAL_BASE="http://localhost:${PORT}"
+
+# --serve: skip build, just start the server on existing site/
+if [ "${1:-}" = "--serve" ]; then
+    if [ ! -d site ]; then
+        echo "Error: site/ directory not found. Run without --serve first to build." >&2
+        exit 1
+    fi
+    echo "Serving existing site/ on ${LOCAL_BASE} (no rebuild)"
+    echo "  ${LOCAL_BASE}/guide/"
+    echo "  ${LOCAL_BASE}/interface/"
+    echo "  ${LOCAL_BASE}/reference/"
+    echo "  ${LOCAL_BASE}/resources/"
+    echo "  ${LOCAL_BASE}/developers/"
+    echo "  ${LOCAL_BASE}/command-line/"
+    echo "  ${LOCAL_BASE}/standards/"
+    echo ""
+    echo "Press Ctrl+C to stop."
+    python -m http.server "$PORT" --directory site
+    exit 0
+fi
 
 # Create local config overrides in project root (relative paths stay valid)
 make_local_config() {

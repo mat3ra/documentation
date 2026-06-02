@@ -71,8 +71,7 @@ New to Mat3ra.com? Start here:
 
 ## Support
 
-The team responds to support requests within 24 hours during working hours (Pacific
-Time). See [Help & Support](other/support.md) for ways to get assistance.
+See [Help & Support](other/support.md) for ways to get assistance.
 
 !!! tip "Help improve the documentation"
     If something is missing or unclear, please open the [Help & Support](

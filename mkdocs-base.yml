@@ -16,6 +16,7 @@ extra_javascript:
     - extra/js/ga.js
     - extra/js/url_parameters.js
     - extra/js/katex.js
+    - extra/js/clickable-rows.js
     - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js
     - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js
     - 'https://www.googletagmanager.com/gtag/js?id=UA-69270713-5'
