@@ -56,12 +56,10 @@ nav:
 
 # INTRODUCTION
     - Getting Started:
-        - Content highlights:                            getting-started/content-highlights.md
-        - Important Concepts:                            getting-started/important-concepts.md
-        - Terminology:                                   getting-started/terminology.md
-        - Useful Links:                                  getting-started/useful-links.md
-        - Frequently Asked Questions:                    other/faq.md
-        - Run first simulation:
+        - First Steps:                                   getting-started/first-steps.md
+        - Content Highlights:                            getting-started/content-highlights.md
+        - Key Concepts:                                  getting-started/concepts.md
+        - Running First Simulations:
             - Web Interface:                             getting-started/run-first-simulation/web-interface.md
             - Command Line:                              getting-started/run-first-simulation/cli-job.md
 

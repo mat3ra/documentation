@@ -1,90 +1,132 @@
 # Content Highlights
 
-This page helps users quickly grasp the content of the documentation. Use the table of contents on the left or the search bar in the header for more.
+This page provides a detailed overview of the documentation and helps locate key topics. The table of contents on the left and the search bar in the header can be used for further navigation.
 
-## Login
+## 1. Login
 
-We support two main login connection methods: through [Web Interface]({{ interface_url }}/ui/overview/), and [Command Line Interface (CLI)]({{ cli_url }}/cli/overview/). One must have a valid username and password in order to log in via either. Secure shell sessions use [key-based authentication]({{ cli_url }}/remote-connection/ssh/#generate-ssh-keys). Users logged in through the web interface can, without additional authentication, also access the CLI via the [Web Terminal]({{ cli_url }}/remote-connection/web-terminal/), and have a [Remote Desktop Environment]({{ cli_url }}/remote-connection/remote-desktop/) option available to them.
+The platform supports two main connection methods: through the [Web Interface]({{ interface_url }}/ui/overview/), and the [Command Line Interface (CLI)]({{ cli_url }}/cli/overview/). A valid username and password is required to log in via either method. Secure shell sessions use [key-based authentication]({{ cli_url }}/remote-connection/ssh/#generate-ssh-keys). The web interface also provides access to the CLI via the [Web Terminal]({{ cli_url }}/remote-connection/web-terminal/), and a [Remote Desktop Environment]({{ cli_url }}/remote-connection/remote-desktop/) is available as well.
 
-The user can find out more about such connection methods under the [connection options page]({{ cli_url }}/remote-connection/overview/). The
-- <a href="http://platform.mat3ra.com/login" target="_blank">login page</a> is where the platform can be accessed.
+More about connection methods can be found on the [connection options page]({{ cli_url }}/remote-connection/overview/). The platform is accessed through the [login page](http://platform.mat3ra.com/login){:target='_blank'}.
 
-## Creating Materials
+## 2. Creating Materials
 
-We highlight three ways to input material geometries:
+Three main ways to input material geometries are available:
 
-- [construct new crystal geometries]({{ interface_url }}/materials-designer/overview/), using our web-based crystallographic design tools
-- [upload structure]({{ interface_url }}/materials/actions/upload/) in widely used (eg. POSCAR/CIF/XYZ) format(s)
-- [import structure]({{ interface_url }}/materials/actions/import/) from a third-party database (e.g. materialsproject.org)
+- [Construct new crystal geometries]({{ interface_url }}/materials-designer/overview/) using the web-based crystallographic design tools
+- [Upload structures]({{ interface_url }}/materials/actions/upload/) in widely-used formats (e.g. POSCAR, CIF, XYZ)
+- [Import structures]({{ interface_url }}/materials/actions/import/) from a third-party database (e.g. materialsproject.org)
 
-> [Combinatorial sets]({{ interface_url }}/materials-designer/header-menu/advanced/combinatorial-set/), for example, make it possible to rapidly create a large number of material geometries.
+> [Combinatorial sets]({{ interface_url }}/materials-designer/header-menu/advanced/combinatorial-set/) make it possible to rapidly create a large number of material geometries.
 
-> [Toggle "isNonPeriodic"]({{ interface_url }}/materials-designer/header-menu/edit/), for example, makes it possible to create a non-periodic structure, i.e., a molecule.
+> [Toggle "isNonPeriodic"]({{ interface_url }}/materials-designer/header-menu/edit/) makes it possible to create a non-periodic structure, i.e., a molecule.
 
-## Running Simulations
+## 3. Running Simulations
 
-We allow users to simulate materials to extract desired [properties]({{ reference_url }}/properties/overview/). In order to do so, one needs to [construct]({{ interface_url }}/workflow-designer/overview/) a simulation [workflow]({{ reference_url }}/workflows/overview/). For many properties, we have a set of workflows available in the [workflows bank]({{ reference_url }}/workflows/bank/) that are available for [copy]({{ interface_url }}/workflows/actions/copy-bank/) by users.
+Materials can be simulated to extract desired [properties]({{ reference_url }}/properties/overview/). This requires [constructing]({{ interface_url }}/workflow-designer/overview/) a simulation [workflow]({{ reference_url }}/workflows/overview/). For many properties, pre-built workflows are available in the [workflows bank]({{ reference_url }}/workflows/bank/) and can be [copied]({{ interface_url }}/workflows/actions/copy-bank/) into a user account.
 
-### Workflows
+### 3.1. Workflows
 
-[Workflows]({{ reference_url }}/workflows/overview/) define the logic used during simulation. Each workflow has one or more characteristic properties associated with it. Workflows are dependent on the [simulation engine]({{ reference_url }}/software/overview/), on the choice for a [model]({{ reference_url }}/models/overview/), and on its computational implementation, or [method]({{ reference_url }}/methods/overview/).
+[Workflows]({{ reference_url }}/workflows/overview/) define the logic used during simulation. Each workflow has one or more characteristic properties associated with it. Workflows depend on the [simulation engine]({{ reference_url }}/software/overview/), on the choice of [model]({{ reference_url }}/models/overview/), and on its computational implementation, or [method]({{ reference_url }}/methods/overview/).
 
-For example, [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/), as implemented in its [plane-wave pseudopotential formulation]({{ reference_url }}/methods-directory/pseudopotential/overview/) under the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) and [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) codes, is supported at current.
+For example, [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/), as implemented in its [plane-wave pseudopotential formulation]({{ reference_url }}/methods-directory/pseudopotential/overview/) under [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) and [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/), is supported.
 
-More information about specific workflows can be found in the [tutorials](../tutorials/overview.md) section.
+More information about specific workflows can be found in the [tutorials]({{ guide_url }}/) section.
 
-### Compute
+### 3.2. Compute
 
-Our [computational infrastructure]({{ resources_url }}/infrastructure/overview/) supports multiple [clusters/cloud providers]({{ resources_url }}/infrastructure/clusters/overview/), including [Amazon's AWS]({{ resources_url }}/infrastructure/clusters/aws/) or [Microsoft's Azure]({{ resources_url }}/infrastructure/clusters/azure/) services.
+The [computational infrastructure]({{ resources_url }}/infrastructure/overview/) supports multiple [clusters and cloud providers]({{ resources_url }}/infrastructure/clusters/overview/), including [Amazon AWS]({{ resources_url }}/infrastructure/clusters/aws/) and [Microsoft Azure]({{ resources_url }}/infrastructure/clusters/azure/).
 
-Important [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) (such as submission queue, number of nodes and processors per node, time limit, cloud provider/cluster etc...) should be set before running simulations. The user can find out more about them under the following links.
+[Compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) (such as submission queue, number of nodes and processors per node, time limit, and cluster) should be set before running simulations. Relevant pages include:
 
-- [setting compute parameters]({{ resources_url }}/infrastructure/compute/parameters/)
-- [compute platform overview]({{ resources_url }}/infrastructure/compute/overview/)
-- [job submission queues]({{ resources_url }}/infrastructure/resource/queues/)
-- [queue-based pricing]({{ resources_url }}/infrastructure/resource/category/)
-- [storage system]({{ resources_url }}/infrastructure/storage/)
-- [linpack benchmark & scalability study]({{ reference_url }}/benchmarks/hpl-benchmark/)
-- [simulation benchmarks]({{ reference_url }}/benchmarks/high-throughput-screening/)
+- [Setting compute parameters]({{ resources_url }}/infrastructure/compute/parameters/)
+- [Compute platform overview]({{ resources_url }}/infrastructure/compute/overview/)
+- [Job submission queues]({{ resources_url }}/infrastructure/resource/queues/)
+- [Queue-based pricing]({{ resources_url }}/infrastructure/resource/category/)
+- [Storage system]({{ resources_url }}/infrastructure/storage/)
+- [LINPACK benchmark and scalability study]({{ reference_url }}/benchmarks/hpl-benchmark/)
+- [Simulation benchmarks]({{ reference_url }}/benchmarks/high-throughput-screening/)
 
-### Run Simulations via Command Line Interface (CLI)
+### 3.3. Run Simulations via Command Line Interface
 
-Advanced users connecting to our CLI may [submit jobs directly through it]({{ cli_url }}/jobs-cli/overview/), through the use of [Batch Scripts]({{ cli_url }}/jobs-cli/batch-scripts/overview/). The user can read more in the following pages.
+Advanced users connecting to the CLI may [submit jobs directly]({{ cli_url }}/jobs-cli/overview/) through the use of [batch scripts]({{ cli_url }}/jobs-cli/batch-scripts/overview/). Relevant pages include:
 
-- [job submission via cli: main explanation]({{ cli_url }}/jobs-cli/overview/)
-- [job submission via cli: tutorial](../tutorials/jobs-cli/job-cli-example.md)
-- [batch script templates]({{ cli_url }}/jobs-cli/batch-scripts/overview/)
-- [modules environment]({{ cli_url }}/cli/modules/)
+- [Job submission via CLI: main explanation]({{ cli_url }}/jobs-cli/overview/)
+- [Job submission via CLI: tutorial]({{ guide_url }}/tutorials/jobs-cli/job-cli-example/)
+- [Batch script templates]({{ cli_url }}/jobs-cli/batch-scripts/overview/)
+- [Modules environment]({{ cli_url }}/cli/modules/)
 
-<!-- TODO by GM: uncomment when tutorials are implemented
+## 4. Data Convention
 
-### Extra Simulation Capabilities
+The platform employs a [data convention]({{ data_url }}/data-structured/overview/) that supports storing materials, simulations, and properties in an organized and navigable manner. It is designed with collaborative access to data in mind and has a flexible permission scheme allowing for complete privacy or wide publicity.
 
-- [restart from previous run](../tutorials/restart-job)
-- [remote desktop visualization](../tutorials/remote-desktop)
+All data about simulations and materials is stored. Data originating from the web application is automatically organized and searchable within the web interface. Data originating on the command line is [accessible from within the web application]({{ resources_url }}/data-in-objectstorage/overview/), and can be further imported and organized for search and potential use in advanced analytics, data mining, and machine learning applications. The approach is further explained [here]({{ data_url }}/data/overview/).
 
--->
+Relevant pages include:
 
-## Data Convention
+- [Data convention]({{ data_url }}/data-structured/overview/)
+- [Materials data]({{ data_url }}/materials/data/)
+- [Workflows data]({{ data_url }}/workflows/data/overview/)
+- [Properties data]({{ data_url }}/properties/data/list/)
 
-We employ a [data convention]({{ data_url }}/data-structured/overview/) that supports storing materials, simulations and properties in an organized and easy-to-navigate manner. It is designed with collaborative access to data in mind, and has a flexible permission scheme allowing for complete privacy or wide publicity.
+## 5. Account-related Items
 
-We store all data about simulations and materials. Data originated from a web application is automatically organized and searchable within the web interface. Data originated on the command line is [accessible from within the web application]({{ resources_url }}/data-in-objectstorage/overview/), and can also be further imported and organized for future search and potential use in advanced analytics / data mining / machine learning applications. We further explain our approach [here]({{ data_url }}/data/overview/).
+Considerations related to accounts, service levels, and data ownership can be found under the links below:
 
-Find out more under the following pages:
+- [Accounts and their types]({{ reference_url }}/accounts/overview/)
+- [Service levels and pricing](../pricing/service-levels.md)
+- [Entities and permissions]({{ reference_url }}/entities-general/permissions/)
+- [Accounts and collaboration]({{ reference_url }}/collaboration/organizations/overview/)
+- [Storage quotas]({{ reference_url }}/accounts/quota/)
+- [Account balance]({{ reference_url }}/accounts/balance/)
 
-- [data convention]({{ data_url }}/data-structured/overview/)
-- [materials data]({{ data_url }}/materials/data/)
-- [workflows data]({{ data_url }}/workflows/data/overview/)
-- [properties data]({{ data_url }}/properties/data/list/)
 
-## Account-related Items
+## 6. Developer Resources
 
-Other considerations related to accounts, their service, and data ownership/permissions can be found under the links below:
+### 6.1. Open-Source Packages
 
-- [accounts and their types]({{ reference_url }}/accounts/overview/)
-- [service levels and pricing](../pricing/service-levels.md)
-- [entities and permissions]({{ reference_url }}/entities-general/permissions/)
-- [accounts and collaboration]({{ reference_url }}/collaboration/organizations/overview/)
-- [storage quotas]({{ reference_url }}/accounts/quota/)
-- [account balance]({{ reference_url }}/accounts/balance/)
+Python packages are available on [PyPI](https://pypi.org/search/?q=mat3ra){:target='_blank'}:
+
+- [mat3ra-made](https://pypi.org/project/mat3ra-made/){:target='_blank'} — Materials Design library for creating and manipulating structures
+- [mat3ra-esse](https://pypi.org/project/mat3ra-esse/){:target='_blank'} — Exabyte Source of Schemas and Examples (ESSE) data standard
+- [mat3ra-api-examples](https://pypi.org/project/mat3ra-api-examples/){:target='_blank'} — example notebooks for REST API usage
+- [mat3ra-parsers](https://pypi.org/project/mat3ra-parsers/){:target='_blank'} — parsers for computational materials science file formats
+- [mat3ra-standata](https://pypi.org/project/mat3ra-standata/){:target='_blank'} — standardized material and simulation data
+
+JavaScript packages are available on [npm](https://www.npmjs.com/search?q=%40mat3ra){:target='_blank'}:
+
+- [@mat3ra/made](https://www.npmjs.com/package/@mat3ra/made){:target='_blank'} — Materials Design library (JavaScript / TypeScript)
+
+### 6.2. Open-Source Repositories
+
+- [Exabyte-io GitHub organization](https://github.com/Exabyte-io/){:target='_blank'} — data structures for materials, workflows, and properties
+- [Materials Designer](https://github.com/Exabyte-io/materials-designer){:target='_blank'} — JavaScript library for web-based materials design
+- [API examples](https://github.com/Exabyte-io/api-examples){:target='_blank'} — Jupyter notebooks demonstrating REST API usage
+
+### 6.3. Programmatic Access (REST API)
+
+- [Upload materials](https://github.com/Exabyte-io/api-examples/blob/main/examples/material/create_material.ipynb){:target='_blank'}
+- [Run simulations and extract properties as JSON](https://github.com/Exabyte-io/api-examples/blob/main/examples/job/run-simulations-and-extract-properties.ipynb){:target='_blank'}
+- [All API examples (GitHub)](https://github.com/Exabyte-io/api-examples){:target='_blank'}
+
+
+## 7. Learning Resources
+
+### 7.1. Example Tutorials
+
+- [Create a molecule on a surface]({{ guide_url }}/tutorials/materials/molecule-surface/)
+- [NEB chemical reaction profile]({{ guide_url }}/tutorials/dft/chemical/reaction-profile-qe/)
+- [Train a machine learning force field]({{ guide_url }}/tutorials/ml/deepmd-mlff-with-espresso-cp-and-lammps/)
+- [Run a command-line job]({{ guide_url }}/tutorials/jobs-cli/job-cli-example/)
+- [Run a Jupyter notebook connected to REST API]({{ guide_url }}/tutorials/other/jupyter/)
+
+### 7.2. Mat3ra 2D Webinar Series
+
+A recurring webinar series on 2D materials design, defect engineering, and DFT simulations. Recordings are available on the [Mat3ra YouTube channel](https://www.youtube.com/@Mat3ra){:target='_blank'}.
+
+### 7.3. Online Tools
+
+- [JupyterLite Materials Designer](https://jupyterlite.mat3ra.com){:target='_blank'} — browser-based materials design environment (no installation required)
+
+### 7.4. Video Resources
+
+- [Mat3ra YouTube channel](https://www.youtube.com/@Mat3ra){:target='_blank'} — tutorial voiceovers, webinar recordings, and platform walkthroughs

@@ -1,14 +1,16 @@
 # Documentation
 
-Mat3ra.com is an online platform for digital materials R&D.
-The platform offers a cloud-based interface for designing new materials,
-managing modeling and simulation workflows, performing simulations,
-and organizing results and data in a collaborative, accessible, and searchable way.
+Mat3ra.com is an accessible and collaborative platform for digital materials R&D. It offers a cloud-based interface for designing new materials, managing simulation workflows, performing simulations, and organizing results and data in a collaborative, accessible, and searchable way.
 
 
 ## Browse by Section
 
 <div class="section-cards" markdown>
+
+<a href="getting-started/first-steps/" class="grid-card">
+<strong>Getting Started</strong>
+<span>New to the platform? Start here for a quick onboarding walkthrough, key concepts, and useful links.</span>
+</a>
 
 <a href="/guide/" class="grid-card">
 <strong>Tutorials</strong>
@@ -47,26 +49,17 @@ and organizing results and data in a collaborative, accessible, and searchable w
 
 </div>
 
-
 ## Quick Links
 
-- **[Getting Started](getting-started/content-highlights.md)** — content highlights, important concepts, terminology
-- **[Run First Simulation](getting-started/run-first-simulation/web-interface.md)** — new user onboarding
+- **[Getting Started](getting-started/first-steps.md)** — content highlights, key concepts, terminology
+- **[Running First Simulations (Web)](getting-started/run-first-simulation/web-interface.md)** — new-user onboarding via the web interface
+- **[Running First Simulations (CLI)](getting-started/run-first-simulation/cli-job.md)** — new-user onboarding via the command line
 - **[Pricing](pricing/service-levels.md)** — service levels and storage plans
 - **[FAQ](other/faq.md)** — frequently asked questions
 - **[Supported Software](software-directory/overview.md)** — Quantum ESPRESSO, VASP, LAMMPS, CP2K, Python, and more
 - **[Properties Directory](properties-directory/overview.md)** — band structure, band gaps, phonons, surface energy, and more
 - **[REST API](rest-api/overview.md)** — programmatic access to the platform
 - **[Community Programs](other/community-programs.md)** — academic and research partnerships
-
-
-## Quick Start
-
-New to Mat3ra.com? Start here:
-
-- [Run a first simulation (web interface)](getting-started/run-first-simulation/web-interface.md)
-- [Run a first CLI job](getting-started/run-first-simulation/cli-job.md)
-- [Content highlights](getting-started/content-highlights.md)
 
 
 ## Support

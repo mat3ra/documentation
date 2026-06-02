@@ -4,7 +4,7 @@ The present section of the documentation explains our approach to organizing, st
 
 ## Definition
  
-**"Property"** is any measurable quantity which provides information about the entity under consideration. Properties can hold information about [Materials](../materials/overview.md) and [Workflows](../workflows/overview.md) as demonstrated [here]({{ guide_url }}/getting-started/important-concepts/)
+**"Property"** is any measurable quantity which provides information about the entity under consideration. Properties can hold information about [Materials](../materials/overview.md) and [Workflows](../workflows/overview.md) as demonstrated [here]({{ guide_url }}/getting-started/concepts/)
 
 Exact set of properties that have to be supplied to, and can be extracted as a result of, a [Job](../jobs/overview.md) computation, can vary depending on the Workflow type and on the [models]({{ reference_url }}/models/overview/)/[methods]({{ reference_url }}/methods/overview/) included therein.
 
