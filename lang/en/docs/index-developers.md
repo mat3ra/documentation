@@ -21,4 +21,4 @@ Programmatic access to the Mat3ra platform.
 
 ## Miscellaneous
 
-- [Contribute new applications](/guide/tutorials/contribute-new-applications) — How to bring your own applications to the Mat3ra platform
+- [Contribute new applications]({{ guide_url }}/tutorials/contribute-new-application) — How to bring your own applications to the Mat3ra platform
