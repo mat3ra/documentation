@@ -160,6 +160,7 @@ Platform access, notebook environments, and software management.
 | Restart from previous job | Resume a calculation from the output of a prior job | [Link](tutorials/other/restart-job.md) |
 | TensorFlow (GPU)   | Run TensorFlow workloads on GPU-enabled compute nodes    | [Link](tutorials/general-functionality/tensorflow-gpu.md) |
 | Add new software   | Install custom packages via the CLI environment          | [Link]({{ cli_url }}/cli/actions/add-software/) |
+| Contribute new applications | Contribute new applications to the Mat3ra platform | [Link](tutorials/contribute-new-applications.md) |
 
 
 <!--
