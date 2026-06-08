@@ -2,15 +2,14 @@
 
 This page explains how developers and advanced users can contribute new
 application to the Mat3ra platform so that it becomes a first-class option in
-both the web-interface and the [Command Line Interface (CLI)](
-../../cli/overview.md).
+both the web-interface and the [Command Line Interface (CLI)](/cli/overview).
 
 This task involves adding necessary configurations to two repositories via pull
 requests. A basic understanding of container technologies (Apptainer,
 Singularity, or Docker), a GitHub account, Node.js installed locally, and a
 working Apptainer `.def` file are required before proceeding. If you need help
 with preparing Apptainer definition, please consult the [Add Software](
-../../cli/actions/add-software.md) page first.
+/cli/actions/add-software) page first.
 
 ![Application Selection in Web-Interface](../../../../images/tutorials/new-application/application-selection-web-ui.webp "Application Selection in Web-Interface")
 
@@ -393,7 +392,7 @@ application is also available via modulefile for CLI use.
 
 ## 5. References
 
-- Local recipe authoring: [Add Software](add-software.md)
+- Local recipe authoring: [Add Software](/cli/actions/add-software)
 - Container repository: [github.com/Exabyte-io/application-containers-public](https://github.com/Exabyte-io/application-containers-public)
 - Metadata repository: [github.com/Exabyte-io/standata](https://github.com/Exabyte-io/standata)
 - Published images: [Exabyte-io packages on GHCR](https://github.com/orgs/Exabyte-io/packages?repo_name=application-containers-public)
