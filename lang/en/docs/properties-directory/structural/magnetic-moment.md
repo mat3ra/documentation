@@ -8,15 +8,15 @@ The Magnetic Moment is a **[Vector and Physical](../../properties/classification
 
 ## Example
 
-The magnetic moment can be computed by inserting the corresponding [Workflow Modifier](../../workflow-designer/subworkflow-editor/overview-tab.md).
+The magnetic moment can be computed by inserting the corresponding [Workflow Modifier]({{ interface_url }}/workflow-designer/subworkflow-editor/overview-tab/).
 
-It is returned to the user as a set of vectors (one for each atom present in the material), as portrayed below, under the interface of the [Results Tab](../../jobs/ui/results-tab.md) of [Job Viewer](../../jobs/ui/viewer.md). Its final value is expressed in units of bohr magnetons.
+It is returned to the user as a set of vectors (one for each atom present in the material), as portrayed below, under the interface of the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/). Its final value is expressed in units of bohr magnetons.
 
 ![Magnetic Moment](../../images/properties-directory//magnetic-moment.png "Magnetic Moment")
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#magnetic-moments).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#magnetic-moments).
 
 ## Links 
 

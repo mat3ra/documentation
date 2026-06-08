@@ -1,6 +1,6 @@
 # Create an Organization
 
-New Organizations can be created by first navigating to [My Accounts](../../../accounts/ui/switcher.md) page using the [Account Menu](../../../ui/account-menu.md).
+New Organizations can be created by first navigating to [My Accounts](../../../accounts/ui/switcher.md) page using the [Account Menu]({{ interface_url }}/ui/account-menu/).
 
 ## Open "Create New Organization" Dialog
 
@@ -29,16 +29,16 @@ A promotional message might appear at this stage, as explained below. After clos
 
 ## Promotional Offer
 
-If this is the first time an Organization is created, a promotional message will appear. The benefits consist in 10 dollars that are offered as an initial [Account Balance](../../../accounts/balance.md), for running some preliminary tests.
+If this is the first time an Organization is created, a promotional message will appear. The benefits consist in 10 dollars that are offered as an initial [Account Balance]({{ reference_url }}/accounts/balance/), for running some preliminary tests.
 
  This promotion will expire after 30 days, or once the Account Balance has been depleted. Any further computational tasks will then require additional [payments](../../../accounts/accounting/increase-balance.md).
 
 ## Ownership
 
-The user who performed the above steps is appointed as the [owner](../../organizations/roles.md) of the Organization.
+The user who performed the above steps is appointed as the [owner]({{ reference_url }}/collaboration/organizations/roles/) of the Organization.
 
 !!!warning "Warning: change of Owner"
-    Please [contact us](../../../ui/support.md) if a member other than the creator needs to be appointed as the Owner.
+    Please [contact us]({{ interface_url }}/ui/support/) if a member other than the creator needs to be appointed as the Owner.
 
 ## Animation
 

@@ -164,6 +164,6 @@ The authentication process automatically configures the API client with:
 
 - [Accessing JupyterLite](accessing-jupyterlite.md) - How to launch JupyterLite
 - [Data Exchange](data-exchange.md) - Working with materials data
-- [REST API Authentication](../rest-api/authentication.md) - Alternative authentication for direct API calls
-- [API Client](../rest-api/api-client.md) - Using the Python API client
+- [REST API Authentication]({{ developers_url }}/rest-api/authentication/) - Alternative authentication for direct API calls
+- [API Client]({{ developers_url }}/rest-api/api-client/) - Using the Python API client
 

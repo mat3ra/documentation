@@ -39,24 +39,23 @@ accessed from this link.
 
 ## Projects
 
-Click "Projects" to navigate to the list of the [Projects](../jobs/projects.md).
+Click "Projects" to navigate to the list of the [Projects]({{ reference_url }}/jobs/projects/).
 
 ## Jobs, Materials and Workflows *Entities*
 
 The "Jobs", "Materials" and "Workflows" pages contain lists of the respective
 entities. Due to the numerous different aspect that these entities have in
-common, they are reviewed together starting from [this page](
-../entities-general/overview.md).
+common, they are reviewed together starting from [this page]({{ reference_url }}/entities-general/overview/).
 
 ## Bank
 
-Links to [Entity Bank](../entities-general/bank.md) pages for Materials and
+Links to [Entity Bank]({{ reference_url }}/entities-general/bank/) pages for Materials and
 Workflows are presented under the "Bank" menu.
 
 
 ## Dropbox
 
-[Dropbox](../data-in-objectstorage/dropbox.md), a central limited-capacity
+[Dropbox]({{ resources_url }}/data-in-objectstorage/dropbox/), a central limited-capacity
 cloud-based data storage, is available under this link.
 
 

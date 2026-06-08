@@ -1,48 +1,52 @@
 # Import Command Line Jobs to Web Interface
 
-The present tutorial page explains how to import the results of a [job](../../jobs-cli/overview.md) run via [command-line interface](../../cli/overview.md) to the main [Web Interface](../../ui/overview.md) of our platform. 
+This tutorial explains how to import the results of a [job]({{ cli_url }}/jobs-cli/overview/) run via [command-line interface]({{ cli_url }}/cli/overview/) to the main [Web Interface]({{ interface_url }}/ui/overview/).
 
-When this feature is employed, the user can see the job output files extracted and available for analysis in the web interface, under the [Files Tab](../../jobs/ui/files-tab.md) of [Job Viewer](../../jobs/ui/viewer.md).
+When this feature is employed, the job output files are extracted and available for analysis in the web interface under the [Files Tab]({{ interface_url }}/jobs/ui/files-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/).
 
-## Note about Job Scripts
 
-We use the content of the [job batch script file](../../jobs-cli/batch-scripts/overview.md) in order to collect job information and create an entry for it inside the web interface. Currently, only simple job scripts containing a single [execution command](../../jobs-cli/batch-scripts/general-structure.md#4.-commands) are supported. Hence, the user should make sure that the script's content is properly formatted and straightforward. 
+## 1. Understand job script requirements
 
-[In this page](../../jobs-cli/batch-scripts/sample-scripts.md), the reader can find **sample job script files** for running  [Job simulations via Command Line Interface](../../jobs-cli/overview.md) that can be used as template. The general structure of such scripts is instead explained [here](../../jobs-cli/batch-scripts/general-structure.md).
+The content of the [job batch script file]({{ cli_url }}/jobs-cli/batch-scripts/overview/) is used to collect job information and create an entry inside the web interface. Only simple job scripts containing a single [execution command]({{ cli_url }}/jobs-cli/batch-scripts/general-structure.md#4.-commands) are supported. The script content should be properly formatted and straightforward.
+
+[Sample job script files]({{ cli_url }}/jobs-cli/batch-scripts/sample-scripts/) for running [Job simulations via Command Line Interface]({{ cli_url }}/jobs-cli/overview/) can be used as templates. The general structure of such scripts is explained [here]({{ cli_url }}/jobs-cli/batch-scripts/general-structure/).
 
 !!!note "Keep job scripts simple"
-    Please avoid using complex formatting and extra indentations or spacing in the job script.
+    Complex formatting and extra indentations or spacing in the job script should be avoided.
 
-## Open Web Terminal
 
-First, [navigate](../../remote-connection/actions/open-terminal.md) to the [Web Terminal](../../remote-connection/web-terminal.md) for accessing the [command-line interface](../../cli/overview.md) of our platform.
+## 2. Open the Web Terminal
 
-## Import New Job Results
+[Navigate]({{ cli_url }}/remote-connection/actions/open-terminal/) to the [Web Terminal]({{ cli_url }}/remote-connection/web-terminal/) for accessing the [command-line interface]({{ cli_url }}/cli/overview/).
 
-In order to submit a new job through [command-line interface](../../cli/overview.md), and then view the corresponding output files under the [Web Interface](../../ui/overview.md), the following [directive](../../jobs-cli/batch-scripts/directives.md) should be added to the [job submission script](../../jobs-cli/batch-scripts/overview.md).
+
+## 3. Import new job results
+
+In order to submit a new job through the [command-line interface]({{ cli_url }}/cli/overview/) and view the corresponding output files under the [Web Interface]({{ interface_url }}/ui/overview/), the following [directive]({{ cli_url }}/jobs-cli/batch-scripts/directives/) should be added to the [job submission script]({{ cli_url }}/jobs-cli/batch-scripts/overview/):
 
 ```bash
 #PBS -R y
 ```
 
 !!!note "Default Behavior"
-    The `#PBS -R y` [directive](../../jobs-cli/batch-scripts/directives.md) is always enabled by default, but it can still be added manually as a failsafe. 
+    The `#PBS -R y` [directive]({{ cli_url }}/jobs-cli/batch-scripts/directives/) is always enabled by default, but can still be added manually as a failsafe.
 
-This directive instructs our software to automatically parse the output of the calculation, and send back the results to the web interface. After adding this directive, the job can then be [submitted](../../jobs-cli/actions/submit.md) as usual.
+This directive instructs the software to parse the output of the calculation and send back the results to the web interface. After adding this directive, the job can be [submitted]({{ cli_url }}/jobs-cli/actions/submit/) as usual.
 
-Once the job starts executing, the user should be able to see the job entry in the web interface under [Jobs Explorer](../../jobs/ui/explorer.md), and thus monitor the corresponding [status](../../jobs/status.md) of its execution.
+Once the job starts executing, the job entry is visible in the web interface under [Jobs Explorer]({{ interface_url }}/jobs/ui/explorer/), where the [status]({{ reference_url }}/jobs/status/) of its execution can be monitored.
 
-This feature can conversely be disabled by inserting the following other directive option in the [job submission script](../../jobs-cli/batch-scripts/overview.md).
+This feature can be disabled by inserting the following directive instead:
 
 ```bash
 #PBS -R n
 ```
 
-## Animation 
 
-In the below video, we first navigate to a directory under the [command-line interface](../../cli/overview.md) where we have copied the contents of the [VASP template Job](../../jobs-cli/batch-scripts/directories.md#job-templates). Here, we edit the [job submission script](../../jobs-cli/batch-scripts/overview.md) to insert the aforementioned `#PBS -R y` [directive](../../jobs-cli/batch-scripts/directives.md) for completeness, even though as explained earlier this directive is already enabled by default.
- 
-This allows us to monitor the job [status](../../jobs/status.md) under [Jobs Explorer](../../jobs/ui/explorer.md) in [Web Interface](../../ui/overview.md), which we inspect towards the end of the animation.
+## 4. Video walkthrough
+
+The animation below first navigates to a directory under the [command-line interface]({{ cli_url }}/cli/overview/) where the contents of the [VASP template Job]({{ cli_url }}/jobs-cli/batch-scripts/directories.md#job-templates) have been copied. The [job submission script]({{ cli_url }}/jobs-cli/batch-scripts/overview/) is edited to insert the `#PBS -R y` [directive]({{ cli_url }}/jobs-cli/batch-scripts/directives/) for completeness (though this directive is already enabled by default).
+
+The job [status]({{ reference_url }}/jobs/status/) is then monitored under [Jobs Explorer]({{ interface_url }}/jobs/ui/explorer/) in the [Web Interface]({{ interface_url }}/ui/overview/).
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/p7ex0V0husY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

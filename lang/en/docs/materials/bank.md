@@ -8,11 +8,11 @@ Materials [Mapping Function](../entities-general/bank.md#bank-mapping-function) 
 
 ## Advanced Search
 
-Advanced search functionality specific to Materials and available also for Materials Bank page are described [here](actions/advanced-search.md).
+Advanced search functionality specific to Materials and available also for Materials Bank page are described [here]({{ interface_url }}/materials/actions/advanced-search/).
 
 ## Copy from Bank
 
-The procedure of copying (or importing) Bank Materials into Account-owned Materials collection is described [here](actions/copy-bank.md).
+The procedure of copying (or importing) Bank Materials into Account-owned Materials collection is described [here]({{ interface_url }}/materials/actions/copy-bank/).
 
 ## Links
 

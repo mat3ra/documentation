@@ -7,9 +7,9 @@ described [in this page](units.md).
 Below, we show an example implementation for both the training and prediction version of a workflow.
 
 ```json tab="Train"
-{!example-json/machine-learning-train.json!}
+--8<-- "example-json/machine-learning-train.json"
 ```
 
 ```json tab="Predict"
-{!example-json/machine-learning-predict.json!}
+--8<-- "example-json/machine-learning-predict.json"
 ```

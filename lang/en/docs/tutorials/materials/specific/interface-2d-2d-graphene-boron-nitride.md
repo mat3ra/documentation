@@ -15,7 +15,7 @@ render_macros: true
 
 # Interfaces between 2D Materials: h-BN and Graphene.
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates the process of creating interfaces with different stacking configurations between 2D materials, specifically hexagonal boron nitride (h-BN) and graphene, based on the work presented in the following manuscript, where the electronic properties of h-BN-graphene interfaces are studied.
 
@@ -26,32 +26,32 @@ This tutorial demonstrates the process of creating interfaces with different sta
     [DOI: 10.1038/ncomms7308](https://doi.org/10.1038/ncomms7308) [@Jung2015; @Novoselov2016; @Gupta2024]
 
 
-We use the [Materials Designer](../../../materials-designer/overview.md) to create interfaces and shift the layers along the y-axis to achieve different stacking configurations.
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create interfaces and shift the layers along the y-axis to achieve different stacking configurations.
 
 The Figure 7 shows the different stacking configurations of graphene on h-BN.
 
 ![Graphene on Hexagonal Boron Nitride](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/0-figure-from-manuscript.webp   "Graphene on Hexagonal Boron Nitride, FIG. 7")
 
-## 1. Load and preview materials.
+## 2. Load and preview materials
 
-First, we navigate to [Materials Designer](../../../materials-designer/overview.md) and import the Graphene and Hexagonal BN materials from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the Graphene and Hexagonal BN materials from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 
 ![Standata Graphene and h-BN Import](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/1-standata-import-gr-hbn.webp "Standata Graphene and h-BN Import")
 
-Then we will use the [JupyterLite](../../../jupyterlite/overview.md) environment to create the target structures.
+Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create the target structures.
 
 
-## 2. Create interface between h-BN and Graphene.
+## 3. Create interface between h-BN and Graphene
 
-### 2.1 Launch JupyterLite Session.
+### 2.1 Launch JupyterLite Session
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
-### 2.2. Open and modify the notebook.
+### 3.2. Open and modify the notebook
 
 Select the input materials with first one being the substrate (h-BN) and the second one being the film (Graphene).
 
@@ -110,13 +110,13 @@ REDUCE_RESULT_CELL_TO_PRIMITIVE = True
 ![Notebook setup](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/2-jl-setup-notebook.webp "Notebook setup")
 
 
-### 2.3. Run the Notebook.
+### 3.3. Run the Notebook
 
 After setting the parameters, run the notebook to create the interface between h-BN and Graphene.
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
-### 2.4. View Results and shift the layers.
+### 3.4. View Results and shift the layers
 
 The generation might take some time.
 After that, the user can pass the material to the Materials Designer for further analysis.
@@ -150,16 +150,16 @@ Preview of interfaces with different stacking configurations is shown below.
 
 ![Shifted Interfaces](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/5-jl-result-preview.webp "Shifted Interfaces")
 
-## 3. Pass the Material to Materials Designer.
+## 4. Pass the Material to Materials Designer
 
 The user can pass the material with the interface in the current Materials Designer environment and save it.
 
 ![Final Material](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/6-wave-result.webp "Graphene on Hexagonal Boron Nitride Interface")
 
-Or the user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
 
-## Interactive JupyterLite Notebook.
+## 5. Interactive JupyterLite Notebook
 
 The interactive JupyterLite notebook for creating Gr/h-BN interface can be accessed below. To run the notebook, click on the "Run All" button.
 
@@ -172,5 +172,5 @@ The interactive JupyterLite notebook for creating Gr/h-BN interface can be acces
 {% endwith %}
 {% endwith %}
 
-## References.
+## 6. References
 

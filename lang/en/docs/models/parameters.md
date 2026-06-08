@@ -1,6 +1,6 @@
 # Model Parameters
 
-Our platform supports the following model parameters, which can be edited by the user within the "Overview" tab of the [Subworkflow Editor Interface](../workflow-designer/subworkflow-editor/overview-tab.md).
+Our platform supports the following model parameters, which can be edited by the user within the "Overview" tab of the [Subworkflow Editor Interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview-tab/).
  
 ## Type
   

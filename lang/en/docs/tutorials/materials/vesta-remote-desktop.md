@@ -1,77 +1,75 @@
-# Create Materials With VESTA under Remote Desktop
+# Create Materials with VESTA under Remote Desktop
 
-The present tutorial describes the steps necessary for connecting to our platform via a [Remote Desktop](../../remote-connection/remote-desktop.md), in order to create and manipulate a [material structure](../../materials/overview.md) through [VESTA](../../software-directory/analysis/vesta.md) graphical analysis and visualization software.
+This tutorial describes the steps necessary for connecting to the platform via a [Remote Desktop]({{ cli_url }}/remote-connection/remote-desktop/) in order to create and manipulate a [material structure]({{ reference_url }}/materials/overview/) through [VESTA]({{ reference_url }}/software-directory/analysis/vesta/) graphical analysis and visualization software.
 
-We demonstrate how this new crystal structure can be retrieved within the account-owned [collection](../../accounts/collections.md) of materials, accessible via the [Materials Explorer](../../materials/ui/explorer.md) of our [Web Interface](../../ui/overview.md). This transfer of the structure information is achieved through the help of the [Dropbox functionality](../../data-in-objectstorage/dropbox.md) of our platform.
- 
-Additional analysis software similar to VESTA can be retrieved under Remote Desktop, as introduced under the list presented [herein](../../software-directory/overview.md#analysis-tools). 
+The new crystal structure can be retrieved within the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials, accessible via the [Materials Explorer]({{ interface_url }}/materials/ui/explorer/) of the [Web Interface]({{ interface_url }}/ui/overview/). This transfer of the structure information is achieved through the [Dropbox functionality]({{ resources_url }}/data-in-objectstorage/dropbox/).
 
-## Accessing Remote Desktop
+Additional analysis software similar to VESTA can be retrieved under Remote Desktop, as listed [here]({{ reference_url }}/software-directory/overview/#analysis-tools).
 
-One must open a [Remote Desktop Connection](../../remote-connection/remote-desktop.md) via our [Web Interface](../../ui/overview.md) in order to run [graphical interface programs](../../software-directory/overview.md#analysis-tools) for material analysis and visualization purposes. 
 
-The instructions for opening and launching a Remote Desktop session can be found under [this page](../../remote-connection/actions/open-desktop.md).
+## 1. Access the Remote Desktop
 
-## Launching VESTA Visualization Software
+A [Remote Desktop Connection]({{ cli_url }}/remote-connection/remote-desktop/) must be opened via the [Web Interface]({{ interface_url }}/ui/overview/) in order to run [graphical interface programs]({{ reference_url }}/software-directory/overview/#analysis-tools) for material analysis and visualization.
 
-The user should now [follow this procedure](../../remote-connection/actions-rd/open-app.md) in order to start a session of the [VESTA](../../software-directory/analysis/vesta.md) graphical materials analysis software.
+The instructions for opening and launching a Remote Desktop session can be found [in this page]({{ cli_url }}/remote-connection/actions/open-desktop/).
 
-!!!warning "Avoid compute intensive visualization tasks"
-    We kindly ask users to avoid running excessively intensive visualization tasks when interacting with analysis software such as VESTA, as it may interfere with other users' operations during the course of their execution.
 
-## Use VESTA to Create a New Crystal Structure 
+## 2. Launch VESTA visualization software
 
-We use VESTA to create a new crystal structure consisting in **bcc Iron**, taken in its two-atom conventional unit cell representation. We remind the reader about the basic features of such a crystal structure.
+[Follow this procedure]({{ cli_url }}/remote-connection/actions-rd/open-app/) to start a session of the [VESTA]({{ reference_url }}/software-directory/analysis/vesta/) graphical materials analysis software.
+
+!!!warning "Avoid compute-intensive visualization tasks"
+    Running excessively intensive visualization tasks when interacting with analysis software such as VESTA should be avoided, as it may interfere with other operations on the platform.
+
+
+## 3. Create a new crystal structure with VESTA
+
+This example creates a **bcc Iron** structure in its two-atom conventional unit cell representation. The basic features of this crystal structure are:
 
 - Space Group: Im-3m
-
 - Bravais Lattice: body-centred cubic
-
-- Lattice Constant: 2.87 Angstrom
-
+- Lattice Constant: 2.87 Å
 - Atomic Positions of Fe atoms: (0,0,0); (1/2,1/2,1/2)
 
-A visual representation of the bcc Iron crystal structure is portrayed below.
+A visual representation of the bcc Iron crystal structure is shown below.
 
 ![bcc Iron Crystal Structure](../../images/tutorials/bcc-iron-crystal-structure.png "bcc Iron Crystal Structure")
 
-### Open New Structure Dialog
+### 3.1. Open the New Structure dialog
 
-In order to create a new material structure through VESTA, the user should click the "New Structure" option at the top of the File Menu, accessible at the top-left corner of the VESTA graphical user interface. 
+In order to create a new material structure through VESTA, click the "New Structure" option at the top of the File Menu. This opens a "New Data" dialog, where new crystal structures can be defined by entering their relevant crystallographic structural information and parameters.
 
-Doing this will open a "New Data" dialog, with which new crystal structures such as bcc Iron can be defined by entering their relevant crystallographic structural information and parameters.
- 
-### Insert Lattice Parameters and Atomic Positions
- 
-The user should first enter the aforementioned lattice parameters of the Iron body-centred cubic unit cell under the "Unit Cell" tab of the dialog. Here, the relevant cubic space group (Im-3m, number 229) can also be selected.
- 
-Secondly, the atomic positions and chemical identity of the atoms present within the crystal structure should be inserted within the "Structure Parameters" tab, by clicking on "New" button every time a new atom is added on top of those already listed under the central table in this tab. In our case, only a single Fe atom at the origin needs to be added, since the second atom at the centre of the unit cell is already related to it by the space group symmetry selected in the preceding step.
+### 3.2. Insert lattice parameters and atomic positions
 
-At the end of entering the appropriate crystallographic data for bcc Iron, the "New Data" dialog should be closed and the corresponding changes recorded by clicking the `OK` button at the bottom of the dialog. The view will hence be returned to the main VESTA interface, with which the crystal structure of bcc Iron can be visualized and manipulated graphically at will by the user.
+First, enter the lattice parameters of the Iron body-centred cubic unit cell under the "Unit Cell" tab of the dialog. Select the relevant cubic space group (Im-3m, number 229).
 
-## Save Structure as POSCAR to Dropbox
+Second, insert the atomic positions and chemical identity of the atoms under the "Structure Parameters" tab, clicking "New" to add each atom. Only a single Fe atom at the origin needs to be added, since the second atom at the centre of the unit cell is related to it by the space group symmetry.
 
-Following the creation of the bcc Iron crystal structure within VESTA, the associated structural data can then be exported under the POSCAR file format directly to the [Dropbox Folder](../../data-in-objectstorage/dropbox.md), affording for the simultaneous sharing of files between all [nodes of our platform](../../infrastructure/overview.md). This should be done by clicking the "Export Data" option under the top-left "File" menu of the VESTA interface.
+Close the "New Data" dialog and record the changes by clicking **OK**. The view returns to the main VESTA interface, where the crystal structure of bcc Iron can be visualized and manipulated.
 
-Under the resulting "Export Data" dialog, the [dropbox folder](../../data-on-disk/directories.md#dropbox) accessible via the user's [home folder](../../infrastructure/login/directories.md) should be selected, and the appropriate POSCAR file format should be chosen under the bottom-right menu of the dialog. A suitable filename can also be entered at the top for later easier retrieval of the file. The interface will finally allow the user to choose between saving the crystallographic atomic position data in fractional or Cartesian coordinates, and whether to convert the crystal structure to its Niggli reduced cell representation. 
 
-## Download Structure
+## 4. Save the structure as POSCAR to Dropbox
 
-The user can now exit the Remote Desktop session and return to the main [Web Interface](../../ui/overview.md) of our platform. The same crystallographic POSCAR file saved in the preceding step can now be retrieved again under the [Dropbox Page](../../data-in-objectstorage/ui/dropbox-page.md), accessible through the main [Left-hand Sidebar Menu](../../ui/left-sidebar.md) of the Web Interface.
+Following the creation of the bcc Iron crystal structure, the structural data can be exported under the POSCAR file format directly to the [Dropbox Folder]({{ resources_url }}/data-in-objectstorage/dropbox/). Click the "Export Data" option under the "File" menu.
 
-The POSCAR file should be downloaded to the local disk by following [these instructions](../../data-in-objectstorage/actions/download.md).
+In the resulting dialog, select the [dropbox folder]({{ resources_url }}/data-on-disk/directories/#dropbox) accessible via the [home folder]({{ resources_url }}/infrastructure/login/directories/), and choose the POSCAR file format. A suitable filename can be entered. The dialog allows choosing between fractional or Cartesian coordinates, and whether to convert to the Niggli reduced cell representation.
 
-## Upload Structure to Materials Collection
 
-After switching to the [Materials Explorer Page](../../materials/ui/explorer.md), this same POSCAR file can then be uploaded again into our platform, and thus added to the account-owned [collection](../../accounts/collections.md) of materials. Uploading a POSCAR structure file is accomplished as explained under [this page](../../materials/actions/upload.md).
+## 5. Download the structure
 
-## Animation 
+After exiting the Remote Desktop session, return to the [Web Interface]({{ interface_url }}/ui/overview/). The POSCAR file saved in the preceding step can be retrieved under the [Dropbox Page]({{ interface_url }}/data-in-objectstorage/ui/dropbox-page/), accessible through the [Left-hand Sidebar Menu]({{ interface_url }}/ui/left-sidebar/).
 
-The steps narrated in the preceding paragraphs of the present tutorial page are illustrated in the below video.
- 
-We begin with the creation and visualization of a new bcc Iron crystal structure through the [VESTA](../../software-directory/analysis/vesta.md) analysis software, incorporated into our [Remote Desktop Interface](../../remote-connection/remote-desktop.md).
- 
-We conclude this animation by saving the crystal structure data under the POSCAR format to the [Dropbox Folder](../../data-in-objectstorage/dropbox.md), and by later retrieving it under the Web Interface in order to upload it and inserting it into the account-owned [collection](../../accounts/collections.md) of materials. This new material entry is finally inspected under the [Materials Viewer Interface](../../materials/ui/viewer.md).
+The POSCAR file should be downloaded to the local disk following [these instructions]({{ interface_url }}/data-in-objectstorage/actions/download/).
+
+
+## 6. Upload the structure to the materials collection
+
+After switching to the [Materials Explorer Page]({{ interface_url }}/materials/ui/explorer/), the POSCAR file can be uploaded and added to the account-owned [collection]({{ reference_url }}/accounts/collections/) of materials, as explained [in this page]({{ interface_url }}/materials/actions/upload/).
+
+
+## 7. Video walkthrough
+
+The animation below demonstrates all steps in this tutorial: creating and visualizing a bcc Iron crystal structure through [VESTA]({{ reference_url }}/software-directory/analysis/vesta/) under the [Remote Desktop]({{ cli_url }}/remote-connection/remote-desktop/), saving the structure in POSCAR format to the [Dropbox Folder]({{ resources_url }}/data-in-objectstorage/dropbox/), and retrieving and uploading it to the materials [collection]({{ reference_url }}/accounts/collections/) via the Web Interface.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/F6WyEPKiRfY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

@@ -20,7 +20,7 @@ render_macros: true
 
 # Nitrogen vacancy and Mg substitution in GaN.
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates the process of creating material with nitrogen vacancies and magnesium substitution defects in GaN.
 
@@ -30,7 +30,7 @@ This tutorial demonstrates the process of creating material with nitrogen vacanc
     "Self-compensation due to point defects in Mg-doped GaN", Physical Review B, 2016.
     [DOI: 10.1103/PhysRevB.93.165207](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.93.165207){:target='_blank'}. [@Miceli2016]
 
-We use the [Materials Designer](../../../materials-designer/overview.md) to create a supercell of GaN, identify the crystal site positions for defects, and introduce nitrogen atoms and vacancies accordingly.
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create a supercell of GaN, identify the crystal site positions for defects, and introduce nitrogen atoms and vacancies accordingly.
 
 We will focus on creating GaN-nitrogen structures from the publication.
 Specifically, the material from FIG. 2. c) of the manuscript: 
@@ -39,17 +39,17 @@ Specifically, the material from FIG. 2. c) of the manuscript:
 ![Point Pair Defects: Mg Substitution and Vacancy in GaN](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/0-figure-from-manuscript.webp "Point Defect Pair: Substitution, Vacancy in GaN, FIG. 2.")
 
 
-## 1. Create GaN Supercell.
+## 2. Create GaN Supercell
 
-First, we navigate to [Materials Designer](../../../materials-designer/overview.md) and import the GaN material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the GaN material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Standata GaN Import](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/1-standata-GaN.webp "Standata GaN Import")
 
-We then use the [Advanced](../../../materials-designer/header-menu/advanced/supercell.md) menu to create a supercell of GaN with a size of 4x4x1.
+We then use the [Advanced]({{ interface_url }}/materials-designer/header-menu/advanced/supercell/) menu to create a supercell of GaN with a size of 4x4x1.
 
 ![Supercell Creation for GaN](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/2-advanced-supercell.webp "Supercell GaN")
 
-## 2. Identify Defect Sites.
+## 3. Identify Defect Sites
 
 Next, we can toggle the coordinates measurement in the editor to identify the crystal site positions for the defects.
 
@@ -62,21 +62,21 @@ Clicking on each atom will copy the coordinates of the atom to the clipboard as 
 
 `[1.608, 4.642, 5.240]` for the Mg substitution defect and `[1.608, 4.642, 7.210]` for the nitrogen vacancy.
 
-## 3. Create Nitrogen Defects and Vacancies.
+## 4. Create Nitrogen Defects and Vacancies
 
-For the defect creation, we will use the [JupyterLite](../../../jupyterlite/overview.md) environment with the corresponding notebook.
+For the defect creation, we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment with the corresponding notebook.
 
-### 3.1. Launch JupyterLite Session.
+### 4.1. Launch JupyterLite Session
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
-### 3.2. Open `create_point_defect_pair.ipynb` notebook.
+### 4.2. Open `create_point_defect_pair.ipynb` notebook
 
 Find `create_point_defect_pair.ipynb` in the list of notebooks and click/double-click open it.
 
-### 3.3. Open and modify the notebook.
+### 4.3. Open and modify the notebook
 
 Next, edit `create_point_defect_pair.ipynb` notebook to modify the parameters by adding a list of [defect configuration objects](https://github.com/Exabyte-io/made/blob/3d938b4d91a31323dca7a02acb12b646dbb26634/src/py/mat3ra/made/tools/build/defect/configuration.py#L257) containing the approximate coordinates of the atoms to replace.
 
@@ -111,28 +111,28 @@ Here's the visual of the updated content:
 
 ![Notebook setup](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/5-jl-setup.webp "Notebook setup")
 
-## 4. Run the Notebook.
+## 5. Run the Notebook
 
 Run the notebook by clicking `Run` > `Run All` in the top menu to run cells and wait for the results to appear.
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
-## 5. Analyze the Results.
+## 6. Analyze the Results
 
 After running the notebook, the user will be able to visualize the structure of GaN with substitution and vacancy defects.
 
 ![Review the Results](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/6-jl-result-preview.webp "Review the Results")
 
-## 6. Pass the Material to Materials Designer.
+## 7. Pass the Material to Materials Designer
 
 The user can pass the resulting material in the current Materials Designer environment and save it.
 
 ![Final Material](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/7-wave-result.webp "Vacancy and Mg Substitution in GaN")
 
-Or the user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
 
-## Interactive JupyterLite Notebook.
+## 8. Interactive JupyterLite Notebook
 
 The following JupyterLite notebook demonstrates the process of creating materials with substitution defects in GaN. Select "Run" > "Run All Cells".
 
@@ -144,4 +144,4 @@ The following JupyterLite notebook demonstrates the process of creating material
 {% endwith %}
 {% endwith %}
 
-## References.
+## 9. References

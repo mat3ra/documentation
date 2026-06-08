@@ -1,25 +1,46 @@
 # Machine Learning Tutorials
 
-In the present section, we introduce the basic functionality of the [Machine Learning (ML)](../../models-directory/machine-learning/overview.md) operations supported on our platform, implemented through the [Exabyte Machine Learning Engine](../../software-directory/machine-learning/exabyte/overview.md) component of our [software](../../software/classification/machine-learning.md).
-
-## Train ML Model
-
-We explain how a **ML model** can be **trained**, based on a set of results of band-gap computations, [in this tutorial page](train-ml-model.md).
-
-## Predict New Properties with ML
-
-The ML model trained in the above-mentioned initial tutorial can then be employed to statistically **predict** the band-gap of other similar materials, without the need for further computations. We explain how this can be achieved [in this other tutorial](predict-ml-properties.md).
+This section covers [Machine Learning]({{ reference_url }}/models-directory/machine-learning/overview/) (ML) workflows on the Mat3ra platform. The tutorials are organized by approach: universal force fields for atomistic simulation, custom potential training, and statistical property prediction.
 
 
-## Obtain force field with DeePMD to use in LAMMPS
+## Universal Machine-Learned Force Fields
 
-We explain how large scale molecular dynamics simulation can be performed in our
-platform using DFT, DeePMD and LAMMPS - [Molecular dynamics using DeePMD](
-deepmd-mlff-with-espresso-cp-and-lammps.md).
+Pre-trained interatomic potentials that predict energies, forces, and stresses across the periodic table without per-system training.
+
+| Tutorial | Model | Description |
+|----------|-------|-------------|
+| [MatterSim (Python MLFF)](run-mlff-python-workflows-mattersim.md) | MatterSim | Run pre-trained MatterSim for total energy, relaxation, and phonons — covers bank workflows, custom workflows, GPU execution, and multi-threading |
+
+!!!tip "Running other Python-based models"
+    Any Python-based MLFF that can be installed via `pip` (e.g. MACE, CHGNet, SevenNet) can be run using the general Python workflow template. See Section 3 of the [MatterSim tutorial](run-mlff-python-workflows-mattersim.md#3-using-the-general-python-template) for the general approach.
 
 
-## Run MatterSim and other Python-based Machine Learning Models
+## Custom Potential Training
 
-Run MatterSim and other Python-based Machine Learning Models for predicting
-various material properties -
-[Running MatterSim and other Python-based Machine Learning Models](mattersim.md).
+Training a neural network potential from first-principles data, then using it for large-scale molecular dynamics.
+
+| Tutorial | Pipeline | Description |
+|----------|----------|-------------|
+| [DeePMD (QE → DeePMD → LAMMPS)](deepmd-mlff-with-espresso-cp-and-lammps.md) | QE CP + DeePMD-kit + LAMMPS | End-to-end workflow: generate ab-initio MD data with Quantum ESPRESSO Car–Parrinello, train a DeePMD potential, and run production MD in LAMMPS |
+
+
+## Statistical Property Prediction (Python ML)
+
+Traditional ML models (regression, classification, clustering) using tabulated materials descriptors and [scikit-learn](https://scikit-learn.org/). These workflows use a dataset (CSV) rather than a crystal structure as input.
+
+| Tutorial | Task | Description |
+|----------|------|-------------|
+| [Train a regression model](../python-ml/train-regression-model.md) | Regression | Train a neural network regressor on adsorption energies |
+| [Predict with regression](../python-ml/predict-with-regression.md) | Prediction | Apply a trained regression model to new data |
+| [Unsupervised clustering](../python-ml/train-clustering-model.md) | Clustering | K-means and hierarchical clustering of materials descriptors |
+| [Train a classifier](../python-ml/train-classification-model.md) | Classification | Train a model to classify materials by category |
+| [Predict with a classifier](../python-ml/predict-with-classification.md) | Prediction | Apply a trained classifier to new data |
+
+
+## Legacy Tutorials
+
+!!!warning "Deprecated"
+    The following tutorial uses the legacy ML engine, which has been superseded by the Python ML infrastructure above.
+
+- [Train linear regression (legacy)](train-ml-model.md) — uses the older built-in ML engine with Si/Ge band gap data
+- [Predict with legacy model](predict-ml-properties.md) — applies a legacy-trained model to predict band gaps

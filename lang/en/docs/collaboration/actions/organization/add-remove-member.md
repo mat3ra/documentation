@@ -1,6 +1,6 @@
 # Add Members to Organization
 
-In order to share data and collaborate with colleagues, users should be added to the Organization. Newly added users initially have restricted permissions which can be elevated or granted through roles and [teams](../../organizations/teams.md). Information about entity-related permissions, and account-related roles, is available [here](../../../entities-general/permissions.md) and [here](../../../collaboration/organizations/roles.md) respectively.
+In order to share data and collaborate with colleagues, users should be added to the Organization. Newly added users initially have restricted permissions which can be elevated or granted through roles and [teams]({{ reference_url }}/collaboration/organizations/teams/). Information about entity-related permissions, and account-related roles, is available [here]({{ reference_url }}/entities-general/permissions/) and [here]({{ reference_url }}/collaboration/organizations/roles/) respectively.
 
 ## Open People Explorer
 

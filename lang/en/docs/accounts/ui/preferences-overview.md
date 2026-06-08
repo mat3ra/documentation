@@ -1,6 +1,6 @@
 # Account Preferences
 
-Under the `Preferences` tab <i class="zmdi zmdi-edit zmdi-hc-border"></i> of the general "Account Profile" interface, the user can set preferences and settings for the present account that he/she owns or administers. Alternatively, the same Account Preferences can be accessed from the [Account Menu](../../ui/account-menu.md) of the general User Interface, under the option labelled "Account Preferences" <i class="zmdi zmdi-settings zmdi-hc-border"></i>.
+Under the `Preferences` tab <i class="zmdi zmdi-edit zmdi-hc-border"></i> of the general "Account Profile" interface, the user can set preferences and settings for the present account that he/she owns or administers. Alternatively, the same Account Preferences can be accessed from the [Account Menu]({{ interface_url }}/ui/account-menu/) of the general User Interface, under the option labelled "Account Preferences" <i class="zmdi zmdi-settings zmdi-hc-border"></i>.
 
 ## [General Information](preferences/profile.md)
 

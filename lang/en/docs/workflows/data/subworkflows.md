@@ -1,6 +1,6 @@
 # Subworkflows: Structured Representation
 
-The JSON [structured representation](../../data-structured/overview.md) of [subworkflows](../components/subworkflows.md), together with an example, is contained below.
+The JSON [structured representation]({{ data_url }}/data-structured/overview/) of [subworkflows]({{ reference_url }}/workflows/components/subworkflows/), together with an example, is contained below.
 
 === "Schema"
     ```json

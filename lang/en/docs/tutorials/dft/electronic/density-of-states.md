@@ -1,45 +1,51 @@
 # Calculate Electronic Density of States
 
-This tutorial page explains how to calculate the [electronic density of states](../../../properties-directory/non-scalar/electronic-dos.md) using [Density Functional Theory](../../../models-directory/dft/overview.md). We study crystalline silicon in its standard equilibrium cubic-diamond crystal structure, and use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as our main simulation engine during the present tutorial.
+This tutorial explains how to calculate the [electronic density of states]({{ reference_url }}/properties-directory/non-scalar/electronic-dos/) (DOS) of crystalline silicon in its standard equilibrium cubic-diamond crystal structure, based on [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/) (DFT). [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) is used as the simulation engine.
 
-!!!note "Quantum ESPRESSO version considered in this tutorial"
-    The present tutorial is written for Quantum ESPRESSO at versions 5.2.1, 5.4.0, 6.0.0 or 6.3.
+!!!note "Quantum ESPRESSO version"
+    This tutorial applies to Quantum ESPRESSO versions 5.2.1, 5.4.0, 6.0.0, 6.3, and later.
 
 !!!warning "Accuracy of the results"
-    Please note that this calculation is performed using [Density Functional Theory](../../../models-directory/dft/overview.md) and the [Generalized Gradient Approximation](../../../models-directory/dft/parameters.md#subtype), which is known to under-estimate the energy of unoccupied electronic states.
+    This calculation uses DFT with the [Generalized Gradient Approximation]({{ reference_url }}/models-directory/dft/parameters/#subtype), which is known to underestimate the energy of unoccupied electronic states.
 
-## Create job
 
-Silicon in its cubic-diamond crystal structure is the [default material](../../../materials/default.md) that is shown on [new job creation](../../../jobs-designer/overview.md), unless this default was [changed](../../../entities-general/actions/set-default.md) by the user following [account](../../../accounts/overview.md) creation. If silicon is still the default choice, it will as such be automatically loaded at the moment of the [opening](../../../jobs/actions/create.md) of [Job Designer](../../../jobs-designer/overview.md).
+## 1. Create a job
 
-## Choose Workflow
+Silicon in its cubic-diamond crystal structure is the [default material]({{ reference_url }}/materials/default/) loaded on [new job creation]({{ interface_url }}/jobs-designer/overview/), unless the default was [changed]({{ interface_url }}/entities-general/actions/set-default/) after [account]({{ reference_url }}/accounts/overview/) creation. If silicon is still the default, it is automatically loaded when the [Job Designer]({{ interface_url }}/jobs-designer/overview/) is [opened]({{ interface_url }}/jobs/actions/create/).
 
-The Density of States in typically calculated in conjunction with the [electronic band structure](../../../properties-directory/non-scalar/bandstructure.md) of the material under investigation, whose computation is the object of a [separate tutorial](band-structure.md). 
 
-[Workflows](../../../workflows/overview.md) for calculating the band structure together with the Density of States through [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank](../../../workflows/bank.md) into the account-owned [collection](../../../accounts/collections.md). This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/workflow-tab.md).
+## 2. Select the workflow
 
-## Set Sampling in Reciprocal Space
+The DOS is typically calculated together with the [electronic band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/), whose computation is covered in a [separate tutorial](band-structure.md).
 
-It is critical to have a high [k-point density](../../../models/auxiliary-concepts/reciprocal-space/sampling.md) in order to calculate the density of states with sufficient accuracy. The method for treating [partial electronic occupancies](../../../models/auxiliary-concepts/reciprocal-space/electronic-occupations.md) is also important in establishing the quality of the computation: the **tetrahedron method**, for example, is more precise for Density of States calculations.
+[Workflows]({{ reference_url }}/workflows/overview/) for calculating the band structure together with the DOS through [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) can be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). The workflow can then be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 
-In [Quantum Espresso](../../../software-directory/modeling/quantum-espresso/overview.md), the band structure + Density of States [workflow](../../../workflows/overview.md) has five [units](../../../workflows/components/units.md) in total.  The first unit specifies the settings for the self-consistent calculation of the eigenvalues and wave functions.  The second unit calculation is a non self-consitent calculation using the wave functions and charge density of the previous calculation. Subsequent units calculate the density of states, and also the projection of those states for partial density of states analysis.
 
-We set the size of the grid of k-points to 18 x 18 x 18 in the first workflow unit. This provides a dense enough k-point sampling in order to resolve the fine features present within the output of the Density of States computation. The validity of this choice of k-grid size for yielding accurate results of order meV in the final energy can be verified by performing the relevant [convergence study](../../../models/auxiliary-concepts/reciprocal-space/convergence.md).
+## 3. Set sampling in reciprocal space
 
-## Submit job
+A high [k-point density]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) is critical for calculating the DOS with sufficient accuracy. The method for treating [partial electronic occupancies]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/electronic-occupations/) also affects the quality of the computation — the **tetrahedron method**, for example, is more precise for DOS calculations.
 
-Before [submitting](../../../jobs/actions/run.md) the [job](../../../jobs/overview.md), the user should click on the ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and examine the [compute parameters](../../../infrastructure/compute/parameters.md) included therein.  Silicon is a small structure, so four CPUs and one minute of calculation runtime should be sufficient.
+In [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/), the band structure + DOS [workflow]({{ reference_url }}/workflows/overview/) has five [units]({{ reference_url }}/workflows/components/units/) in total. The first unit performs a self-consistent field (SCF) calculation of the eigenvalues and wave functions. The second unit performs a non-self-consistent calculation using the wave functions and charge density from the first step. Subsequent units calculate the total DOS and partial DOS (projected onto individual atoms and orbital characters).
 
-## Examine results
+The k-point grid is set to 18 × 18 × 18 in the first workflow unit. This provides dense enough sampling to resolve the fine features of the DOS. The validity of this grid size for yielding meV-level accuracy can be verified by performing a [convergence study]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/convergence/).
 
-When all five [unit](../../../workflows/components/units.md) computations are complete at the end of Job execution, switching to the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md) will show the density of states for the silicon sample under investigation, together with the partial density of states due to each atom in the structure as well as their s and p electron-like character. Moving the mouse cursor along each data series will highlight the atom's electronic character that the data series corresponds to.
+
+## 4. Submit the job
+
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), the [Compute tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) should be reviewed to verify the [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/). Silicon is a small structure, so four CPUs and one minute of calculation runtime are sufficient.
+
+
+## 5. Examine the results
+
+Once all five [unit]({{ reference_url }}/workflows/components/units/) computations complete, the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/) displays the DOS for the silicon sample, together with the partial DOS due to each atom and their s- and p-electron-like character. Moving the mouse cursor along each data series highlights the atom and orbital character that the series corresponds to.
 
 !!!note "Partial contributions"
-    The numbers represent the order of the current orbital as included inside the pseudopotential, and **not** the principal quantum number.
-    
-## Animation
+    The numbers in the partial DOS legend represent the order of the current orbital as included inside the pseudopotential, **not** the principal quantum number.
 
-We demonstrate the above-mentioned steps involved in the creation and execution of a Density of States computation on silicon using the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) simulation engine in the following animation.
+
+## 6. Video walkthrough
+
+The animation below demonstrates the steps involved in the creation and execution of a DOS computation on silicon using Quantum ESPRESSO.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/WqltKbsPlqU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

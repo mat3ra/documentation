@@ -1,12 +1,12 @@
 # Check Account Quota and Balance
 
-This page explains how to retrieve [accounting information](../../accounts/overview.md) for users logged-in via the [Command Line Interface](../overview.md), including information about any [Organizational Accounts](../../collaboration/organizations/overview.md) that the user may be member of.
+This page explains how to retrieve [accounting information]({{ reference_url }}/accounts/overview/) for users logged-in via the [Command Line Interface](../overview.md), including information about any [Organizational Accounts]({{ reference_url }}/collaboration/organizations/overview/) that the user may be member of.
  
 Each of the commands outlined in what follows can accept keyword parameters as option flags, as listed by passing the `--help` flag to them. 
 
 ## Account Balance
 
-Information about the [Account Balance](../../accounts/balance.md) (in US dollars) is accessed using the `balance` command, as demonstrated in the example below.
+Information about the [Account Balance]({{ reference_url }}/accounts/balance/) (in US dollars) is accessed using the `balance` command, as demonstrated in the example below.
 
 `# > balance`
 
@@ -16,7 +16,7 @@ Id Name     Amount Reserved Balance CreditLimit Available
 1  steven  1000.00     10.00 990.00        0.00   990.00
 ```
 
-The entries returned by the above command are summarized in the table below, complementing their [general discussion](../../accounts/balance.md). We remind the reader that in order to perform computations on our platform, a positive balance is required.
+The entries returned by the above command are summarized in the table below, complementing their [general discussion]({{ reference_url }}/accounts/balance/). We remind the reader that in order to perform computations on our platform, a positive balance is required.
 
 
 | Entry  | Description |
@@ -30,7 +30,7 @@ The entries returned by the above command are summarized in the table below, com
 
 ## Itemized Account Statement
 
-We track the **usage** of our platform, or [balance](../../accounts/balance.md) spent on computations per each [account](../../accounts/overview.md) and each [project](../../jobs/projects.md). The usage statistics of each [cluster](../../infrastructure/clusters/overview.md), in terms of number of CPU hours consumed and charges incurred, is referred to as the **Account Statement**.
+We track the **usage** of our platform, or [balance]({{ reference_url }}/accounts/balance/) spent on computations per each [account]({{ reference_url }}/accounts/overview/) and each [project]({{ reference_url }}/jobs/projects/). The usage statistics of each [cluster]({{ resources_url }}/infrastructure/clusters/overview/), in terms of number of CPU hours consumed and charges incurred, is referred to as the **Account Statement**.
 
 This statement can be inspected with the `statement` command under CLI, as demonstrated in the example below.
 
@@ -78,11 +78,11 @@ It is often convenient to pass the `-s` (start) and `-e` (end) flags to the `sta
 
 ## Detailed List of Jobs
 
-Information about all jobs submitted by the user to date can be retrieved as explained [here](../../jobs-cli/put-link).
+Information about all jobs submitted by the user to date can be retrieved as explained [here](../../jobs-cli/overview.md).
 
 ## Storage Quota
 
-Information about the [Storage Quota](../../accounts/quota.md) within the available [computing clusters](../../infrastructure/clusters/overview.md) can be retrieved via the `quotas` command. An example of output of this command is shown below.
+Information about the [Storage Quota]({{ reference_url }}/accounts/quota/) within the available [computing clusters]({{ resources_url }}/infrastructure/clusters/overview/) can be retrieved via the `quotas` command. An example of output of this command is shown below.
 
 ```bash
 >>> quotas
@@ -94,4 +94,4 @@ USED    BSOFT    BHARD      BWARN  BGRACE    IUSED      ISOFT    IHARD    IWARN 
 This output contains information about the used storage space under the first column. We don't allow for "soft" quotas (under "BSOFT" column) for temporarily exceeding the maximum allowed limit, hence "soft" and "hard" quotas match to the same total limit value, and no "Grace" period is available. The remaining columns starting with "I" concern the compute nodes as opposed to the clusters.
 
 !!!warning "Authorization Required to Access Clusters via CLI"
-    In order to use the `quotas` command, the user needs to first access the clusters via SSH. Please [submit a support request](../../ui/support.md) for gaining the necessary permissions to do this.
+    In order to use the `quotas` command, the user needs to first access the clusters via SSH. Please [submit a support request]({{ interface_url }}/ui/support/) for gaining the necessary permissions to do this.

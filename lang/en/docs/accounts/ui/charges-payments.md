@@ -1,6 +1,6 @@
 # Charges, Payments, and Payment Methods
 
-Click `Billing and Payments` <i class="zmdi zmdi-card zmdi-hc-border"></i> in the [Account Menu](../../ui/account-menu.md) to review the list of charges incurred by the account, and the payments executed to address them. The possibility to view or add Payment Methods is also offered.
+Click `Billing and Payments` <i class="zmdi zmdi-card zmdi-hc-border"></i> in the [Account Menu]({{ interface_url }}/ui/account-menu/) to review the list of charges incurred by the account, and the payments executed to address them. The possibility to view or add Payment Methods is also offered.
 
 An example of a "Billing" page is exhibited below. We have highlighted in red the tabs for viewing charges, payments, and payments methods.
 
@@ -8,11 +8,11 @@ An example of a "Billing" page is exhibited below. We have highlighted in red th
 
 ## Charges
 
-Under the tab labelled "Charges" <i class="zmdi zmdi-file zmdi-hc-border"></i> the user can review the charges applied to the [Account Balance](../balance.md) while using our platform.
+Under the tab labelled "Charges" <i class="zmdi zmdi-file zmdi-hc-border"></i> the user can review the charges applied to the [Account Balance]({{ reference_url }}/accounts/balance/) while using our platform.
 
 ## Payments
 
-Under the "Payments" tab <i class="zmdi zmdi-file-text zmdi-hc-border"></i>, the user can review the money paid so far by crediting the [Account Balance](../balance.md).
+Under the "Payments" tab <i class="zmdi zmdi-file-text zmdi-hc-border"></i>, the user can review the money paid so far by crediting the [Account Balance]({{ reference_url }}/accounts/balance/).
 
 ## Actions
 
@@ -32,16 +32,16 @@ The following properties of Charges are available to be searched under the advan
 
 | Property    |   Description      |
 | :-------- |:----------- |
-| jobTitle |   Name of the Job, as defined at the moment of its [creation](../../jobs-designer/header-menu.md)   |
-| queue |  Type of [Queue](../../infrastructure/resource/queues.md) on the computing [cluster](../../pricing/service-levels.md#clusters-and-premium-hardware) used for the computational task |
+| jobTitle |   Name of the Job, as defined at the moment of its [creation]({{ interface_url }}/jobs-designer/header-menu/)   |
+| queue |  Type of [Queue]({{ resources_url }}/infrastructure/resource/queues/) on the computing [cluster]({{ guide_url }}/pricing/service-levels/#clusters-and-premium-hardware) used for the computational task |
 | jid | A combination of the job number assigned by the task scheduler, and the machine name, as explained below. For example "142.master-production-20160630-cluster-007.exabyte.io" refers to job no. 142 executed on the cluster 007 with the machine name "master-production-20160630-cluster-007.exabyte.io" |
-| machine  |  A [Fully Qualified Domain Name] [^1] of the [cluster](../../pricing/service-levels.md#clusters-and-premium-hardware) used for the computation, for example: "master-production-20160630-cluster-007.exabyte.io"  |
-| project |   [Slug](../../entities-general/data.md#Slug-Representation), or computer-friendly representation of the name of the project containing the Job, in the format "<username>-project-year-month-computation". For example "demo-project-2018-10-bandstructures"   |
+| machine  |  A [Fully Qualified Domain Name] [^1] of the [cluster]({{ guide_url }}/pricing/service-levels/#clusters-and-premium-hardware) used for the computation, for example: "master-production-20160630-cluster-007.exabyte.io"  |
+| project |   [Slug]({{ data_url }}/entities-general/data/#Slug-Representation), or computer-friendly representation of the name of the project containing the Job, in the format "<username>-project-year-month-computation". For example "demo-project-2018-10-bandstructures"   |
 | type |  The type of task being charged, for example "Job"  |
 | wallDuration  | Time duration of the computation  |
 | charge |  Charge amount incurred as part of the computational task   |
 | username | Name of the user that performed the computation  |
-| description | Short description of what the charge is for, assigned automatically by the accounting system. For example "charge for whole hour", relevant to the [fast queues](../../infrastructure/resource/queues.md) |
+| description | Short description of what the charge is for, assigned automatically by the accounting system. For example "charge for whole hour", relevant to the [fast queues]({{ resources_url }}/infrastructure/resource/queues/) |
 | startTime |  Date and time at which the Job was submitted, eg. "12-31-2017 22:33:00" |
 | endTime | Date and time of Job termination following its completion in a similar format as the startTime above |
 
@@ -60,4 +60,4 @@ New Payment Methods (ie. Credit Cards) can be added as it is explained [in this 
 [^1]: [Fully Qualified Domain Names, explanation, Indiana University Website](https://kb.iu.edu/d/aiuv)
 
 !!!warning "Restricted access"
-    The information contained under the present documentation page is relevant to Account [Owners or Administrators](../../collaboration/organizations/roles.md), since only they have sufficient rights to view and modify the content (a user is always the Owner and Administrator of his personal account).
+    The information contained under the present documentation page is relevant to Account [Owners or Administrators]({{ reference_url }}/collaboration/organizations/roles/), since only they have sufficient rights to view and modify the content (a user is always the Owner and Administrator of his personal account).

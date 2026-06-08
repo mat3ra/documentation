@@ -6,8 +6,8 @@ prediction. This page describes how to run MatterSim and other Python-based
 Machine Learning (ML) models on the Mat3ra platform, using three approaches of
 increasing customization:
 
-1. Using a pre-built [workflow](../../workflows/overview.md) from the
-[Mat3ra bank](../../workflows/bank.md).
+1. Using a pre-built [workflow]({{ reference_url }}/workflows/overview/) from the
+[Mat3ra bank]({{ reference_url }}/workflows/bank/).
 2. Creating a new workflow from one of the available MatterSim
 flavors/<wbr/>templates.
 3. Using the general Python flavor/<wbr/>template and supplying the
@@ -18,15 +18,13 @@ using multi-threading, and closes with a step-by-step video walkthrough.
 
 ## 1. Using a bank workflow
 
-A common approach is to import an existing workflow from the [Mat3ra bank](
-../../workflows/bank.md) into the user's account.
+A common approach is to import an existing workflow from the [Mat3ra bank]({{ reference_url }}/workflows/bank/) into the user's account.
 
 ### 1.1. Import a bank workflow
 
 First, navigate to the *Workflows Bank* page from the left sidebar. Then, search
 for `MatterSim` and click **Copy** in the *Action* column on the desired
-workflow (e.g. *MatterSim total energy*). See [Copy bank workflow](
-../../workflows/actions/copy-bank.md) for details.
+workflow (e.g. *MatterSim total energy*). See [Copy bank workflow]({{ interface_url }}/workflows/actions/copy-bank/) for details.
 
 ![Copy bank workflow](../../images/tutorials/mattersim/mattersim-bank-workflow.webp "Copy bank workflow")
 
@@ -34,8 +32,7 @@ The workflow then appears in the user's *Workflows* list and becomes available
 for selection during job creation. It can be opened for inspection or further
 modification.
 
-The *MatterSim total energy* workflow consists of three [units](
-../../workflows/components/units.md):
+The *MatterSim total energy* workflow consists of three [units]({{ reference_url }}/workflows/components/units/):
 
 - **I/O Material unit:** fetches the input materials from the job context. Its
 output is an array of materials.
@@ -53,12 +50,9 @@ the script can be added to `requirements.txt`.
 
 ### 1.2. Create and submit a job
 
-First, open the [Jobs Designer](../../jobs-designer/overview.md) from the left
-sidebar and click **Create New Job** (see [Create job](
-../../jobs/actions/create.md)). The page is organized in three sections:
-[material](../../jobs-designer/materials-tab.md), [workflow](
-../../jobs-designer/workflow-tab.md), and [compute parameters](
-../../jobs-designer/compute-tab.md).
+First, open the [Jobs Designer]({{ interface_url }}/jobs-designer/overview/) from the left
+sidebar and click **Create New Job** (see [Create job]({{ interface_url }}/jobs/actions/create/)). The page is organized in three sections:
+[material]({{ interface_url }}/jobs-designer/materials-tab/), [workflow]({{ interface_url }}/jobs-designer/workflow-tab/), and [compute parameters]({{ interface_url }}/jobs-designer/compute-tab/).
 
 In the **Select Job Actions** drop-down, choose the material and the workflow:
 
@@ -68,25 +62,25 @@ video walkthrough below uses a nickel slab.
 previous section.
 
 The job can be renamed (e.g. *MatterSim total energy*) and the
-[compute parameters](../../jobs-designer/compute-tab.md) (cluster, queue,
+[compute parameters]({{ interface_url }}/jobs-designer/compute-tab/) (cluster, queue,
 number of processors, time limit, and others) can be adjusted under the
 *Compute* section. Save and exit the Jobs Designer.
 
 ![MatterSim job creation](../../images/tutorials/mattersim/mattersim-job.webp "MatterSim job creation")
 
-Click **Run** in the *Actions* column to [submit](../../jobs/actions/run.md)
+Click **Run** in the *Actions* column to [submit]({{ interface_url }}/jobs/actions/run/)
 the job.
 
 ### 1.3. View the results
 
-Once the job completes, the [Job Viewer](../../jobs/ui/viewer.md) shows the
+Once the job completes, the [Job Viewer]({{ interface_url }}/jobs/ui/viewer/) shows the
 results:
 
-- The [*Results* tab](../../jobs/ui/results-tab.md) shows a summary of the
+- The [*Results* tab]({{ interface_url }}/jobs/ui/results-tab/) shows a summary of the
 predicted output properties.
 - The *Workflow* tab &rarr; *MatterSim* unit exposes the standard output (raw
 log).
-- The [*Files* tab](../../jobs/ui/files-tab.md) lists every input and output
+- The [*Files* tab]({{ interface_url }}/jobs/ui/files-tab/) lists every input and output
 file for preview or download.
 
 ![MatterSim total energy results](../../images/tutorials/mattersim/mattersim-results-total-energy.webp "MatterSim total energy results")
@@ -100,10 +94,10 @@ from an existing MatterSim flavor/<wbr/>template. The example below creates a
 
 ### 2.1. Open the Workflow Designer and Unit Editor
 
-First, open the [Workflows](../../workflows/overview.md) page and click
+First, open the [Workflows]({{ reference_url }}/workflows/overview/) page and click
 **Create** to start a new workflow. Expand the *Details* section and select
 **Python Script** as the application. Then, add an **Executable** unit and click
-**EDIT** to open the [Unit Editor](../../workflow-designer/unit-editor.md).
+**EDIT** to open the [Unit Editor]({{ interface_url }}/workflow-designer/unit-editor/).
 
 ![MatterSim add unit](../../images/tutorials/mattersim/mattersim-add-unit.webp "MatterSim add unit")
 
@@ -197,7 +191,7 @@ Just as in Sections 1 and 2 above, create and run a job using this workflow.
 Because MatterSim is a [PyTorch](https://pytorch.org/)-based model, it benefits
 significantly from GPU execution. To run a MatterSim job on GPU, it should be
 submitted to one of the platform's GPU queues, for example the `GOF` queue on
-the [Google Cloud cluster](../../clusters/google.md) (internal identifier
+the [Google Cloud cluster]({{ resources_url }}/infrastructure/clusters/google/) (internal identifier
 `Cluster-001`).
 
 ### 4.1. Confirm GPU availability

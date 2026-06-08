@@ -24,7 +24,7 @@ In this respect, templates are applied to many different [materials](../../mater
 
 We allow for using templates specifically inside the input of [units](../components/units.md) comprised in a [subworkflow](../components/subworkflows.md). In this way, we can decouple material-specific information from workflow-specific. The latter lets us apply a workflow for multiple materials at the same time, without having to adjust it extensively.
 
-The templates (input files) are rendered in two places, on [web interface](../../ui/overview.md) when workflows (or jobs) are designed and on [computing clusters](../../infrastructure/clusters/overview.md) when the job is executed, henceforth referred to as **Design-time Rendering** and **Runtime Rendering** respectively. The is necessary as some templates require data which is only available at runtime (e.g. `outdir` in Quantum Espresso PWScf input file)
+The templates (input files) are rendered in two places, on [web interface]({{ interface_url }}/ui/overview/) when workflows (or jobs) are designed and on [computing clusters]({{ resources_url }}/infrastructure/clusters/overview/) when the job is executed, henceforth referred to as **Design-time Rendering** and **Runtime Rendering** respectively. The is necessary as some templates require data which is only available at runtime (e.g. `outdir` in Quantum Espresso PWScf input file)
 
 ## Links
 

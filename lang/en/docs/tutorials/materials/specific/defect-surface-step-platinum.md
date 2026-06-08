@@ -17,7 +17,7 @@ render_macros: true
 
 # Terrace Steps on Platinum (111) Surface.
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates two different approaches to creating terrace steps on platinum surfaces, based on the work presented in the following manuscript:
 
@@ -33,29 +33,29 @@ We will demonstrate two methods:
 1. Creating a Pt(211) surface which inherently contains steps
 2. Creating a terrace step on a Pt(111) surface using the TerraceSlabDefectBuilder
 
-## 1. Method I: Create Pt(211) Surface.
+## 2. Method I: Create Pt(211) Surface
 
 - Creates a surface with inherent steps
 - Smaller unit cell
 - Fixed step geometry
 - Good for studying specific crystal faces
 
-### 1.1. Import Base Material.
+### 2.1. Import Base Material
 
 First, we need to import the platinum material from Standata:
 
-1. Navigate to [Materials Designer](../../../materials-designer/overview.md)
+1. Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/)
 2. Click on "Input/Output" menu
 3. Select "Import from Standata"
 4. Search for "Pt" and select the bulk platinum material
 
 ![Standata Import](../../../images/tutorials/materials/defects/defect_surface_step_platinum/1-standata-import-platinum.webp "Standata Import")
 
-### 1.2. Launch JupyterLite Environment.
+### 2.2. Launch JupyterLite Environment
 
-Select "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" to open JupyterLite.
+Select "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" to open JupyterLite.
 
-### 1.3. Configure Slab Parameters.
+### 2.3. Configure Slab Parameters
 
 Open a `create_slab.ipynb` notebook and set up the slab parameters in the "1.1. Set up notebook" cell:
 
@@ -85,24 +85,24 @@ These parameters will create a Pt(211) surface with:
 
 ![Pt(211) Surface Setup](../../../images/tutorials/materials/defects/defect_surface_step_platinum/2-jl-setup-nb-surface.webp "Pt(211) Surface Setup")
 
-### 1.4. Create the Slab.
+### 2.4. Create the Slab
 
 Run the notebook by clicking `Run` > `Run All` in the top menu. The notebook will generate the Pt(211) surface.
 
 ![Pt(211) Surface](../../../images/tutorials/materials/defects/defect_surface_step_platinum/3-wave-result-pt-211-surface.webp "Pt(211) Surface")
 
-## 2. Method II: Create Terrace Step Defect on Pt(111).
+## 3. Method II: Create Terrace Step Defect on Pt(111)
 
 - More flexible control over step placement
 - Larger surface area available
 - Customizable terrace height
 - Better for complex step arrangements
 
-### 2.1. Open Terrace Defect Notebook.
+### 3.1. Open Terrace Defect Notebook
 
 First, open `create_terrace_defect.ipynb`and select Pt as the input material.
 
-### 2.2. Configure Terrace Parameters.
+### 3.2. Configure Terrace Parameters
 
 `CUT_DIRECTION = [0, 1, 1]`  -- Normal vector for cutting plane, which will give a perfect periodic match along x and a match along y after rotation.
 `DEFAULT_SLAB_PARAMETERS["miller_indices"] = (1, 1, 1)`  -- Miller indices for Pt(111) surface
@@ -136,7 +136,7 @@ CELL_REPETITIONS_FOR_VISUALIZATION = [1, 1, 1]  # Structure repeat in view
 
 ![Terrace Parameters](../../../images/tutorials/materials/defects/defect_surface_step_platinum/4-jl-setup-nb-terrace.webp "Terrace Parameters")
 
-### 2.3. Create the Terrace.
+### 3.3. Create the Terrace
 
 Run the notebook to create the Pt(111) surface with a terrace step.
 
@@ -146,9 +146,9 @@ The same material with repetitions:
 
 ![Pt(111) Surface with Terrace Step with repetitions](../../../images/tutorials/materials/defects/defect_surface_step_platinum/6-wave-result-pt-terrace-repetitions.webp "Pt(111) Surface with Terrace Step with repetitions")
 
-The user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+The user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
-## Interactive JupyterLite Notebook.
+## 4. Interactive JupyterLite Notebook
 
 The following JupyterLite notebook demonstrates both approaches. Select "Run" > "Run All Cells" to execute the notebook.
 
@@ -160,4 +160,4 @@ The following JupyterLite notebook demonstrates both approaches. Select "Run" > 
 {% endwith %}
 {% endwith %}
 
-## References.
+## 5. References

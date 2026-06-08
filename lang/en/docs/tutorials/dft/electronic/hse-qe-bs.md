@@ -1,76 +1,62 @@
 # Band Structure with Quantum ESPRESSO (HSE)
 
-This tutorial page explains how to calculate the [electronic band structure](../../../properties-directory/non-scalar/bandstructure.md) based on [Density Functional Theory](../../../models-directory/dft/overview.md). We will be studying crystalline Silicon in the standard cubic-diamond crystal structure, and we will use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as our simulation engine.
+This tutorial explains how to calculate the [electronic band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) of crystalline silicon in its cubic-diamond crystal structure using the **HSE (Heyd–Scuseria–Ernzerhof)** [hybrid functional]({{ reference_url }}/models-directory/dft/parameters/#hybrid-functionals) with [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/).
 
-!!!note "Quantum ESPRESSO version considered in this tutorial"
-    The present tutorial is written for Quantum ESPRESSO at versions 5.2.1, 5.4.0, 6.0.0 or 6.3.
+!!!note "Quantum ESPRESSO version"
+    This tutorial applies to Quantum ESPRESSO versions 5.2.1, 5.4.0, 6.0.0, 6.3, and later.
 
-We discuss in the present tutorial those aspects of the band structure calculation which are specific to the implementation of the **HSE (Heyd-Scuseria-Ernzerhof)** [exchange-correlation functional](../../../models-directory/dft/parameters.md#functional), a special class of [Hybrid Functionals](../../../models-directory/dft/parameters.md#hybrid-functionals).
- 
-The instructions presented herein complement the general discussion introduced in a [separate tutorial](band-structure.md). The reader is referred to this latter page for an outline of the general procedure for band structure computations using DFT as performed on our platform, whereas only HSE-specific aspects will be reviewed throughout the remainder of the present page.
+The instructions here complement the general [band structure tutorial](band-structure.md). Only HSE-specific aspects are covered below.
 
-## Workflow for HSE Calculation with Quantum ESPRESSO
 
-A Quantum ESPRESSO [Workflow](../../../workflows/overview.md) to compute the band structure of [materials](../../../materials/overview.md) using HSE is composed of the following [subworkflow](../../../workflows/components/subworkflows.md) steps.
+## 1. Understand the HSE workflow
 
-### 1. Preliminary SCF Calculation
+A Quantum ESPRESSO [workflow]({{ reference_url }}/workflows/overview/) for computing the band structure with HSE is composed of three [subworkflow]({{ reference_url }}/workflows/components/subworkflows/) steps:
 
-The first subworkflow step involves a standard self-consistent field (scf) calculation of the ground-state energy eigenvalues and wave functions. This is necessary for defining the [grid of k-points](../../../models/auxiliary-concepts/reciprocal-space/sampling.md), which will later be extracted manually in the subsequent step.
+### 1.1. Preliminary SCF calculation
 
-### 2. Manual Extraction of k-points
+The first step is a standard self-consistent field (SCF) calculation of the ground-state energy eigenvalues and wave functions. This provides the [k-point grid]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) that is manually extracted in the next step.
 
-The traditional approach for computing the band structure in Quantum ESPRESSO, outlined in [this separate tutorial](band-structure.md), would have proceeded via a non self-consistent calculation using the wave functions and charge density of the previous scf calculation. However, within the HSE approach towards achieving the same objective, in order to get the Fock operator [^1] [^2] at a certain k-point, one requires the wavefunctions on a grid that is commensurate with it, and this can only be done self-consistently.
+### 1.2. Extract k-points
 
-A way around this problem is to manually extract the k-points generated automatically in the preceding step, together with their respective weights, and insert them individually as an explicit list inside the input script for the final HSE calculation described next. 
+Unlike the standard [band structure calculation](band-structure.md), which proceeds via a non-self-consistent calculation, the HSE approach requires self-consistent evaluation of the Fock operator [^1] [^2] at each k-point on a commensurate grid.
 
-The procedure to manually extract the k-points from the output of the previous scf calculation is performed automatically in the present subworkflow step via a [Python script](../../../software-directory/scripting/python/overview.md). This script extracts the list of k-points with their corresponding weights within the list under consideration, with the help of [Regular Expressions](../../../methods-directory/pseudopotential/actions.md#regular-expressions) (commonly referred to as "regex"). The resulting output is finally printed out as a JSON file.
+The k-points generated in the SCF step are automatically extracted via a [Python script]({{ reference_url }}/software-directory/scripting/python/overview/) that uses [Regular Expressions]({{ reference_url }}/methods-directory/pseudopotential/actions/#regular-expressions) to parse the output. The resulting list is saved as a JSON file for use in the next step.
 
-### 3. HSE Calculation
+### 1.3. HSE calculation
 
-The final subworkflow step in the HSE band structure computation workflow is composed of two units. The main HSE calculation is performed in the first one of these units. Apart from the specific elements described in what follows, the remainder of the main HSE input script conforms to the general standard conventions of an scf ground-state total energy calculation performed with Quantum ESPRESSO via its ["pw_scf" flavor](../../../software-directory/modeling/quantum-espresso/components.md#flavors), as implemented on our platform. The HSE-specific aspects and parameters of the scf calculation described below can be triggered by including the HSE [Refiner](../../../models-directory/dft/parameters.md#refiners), as set under the [Subworkflow Editor Interface](../../../workflow-designer/subworkflow-editor/overview-tab.md#refiners).
+The final step contains two units. The main HSE calculation is performed in the first unit. HSE-specific parameters are triggered by including the HSE [Refiner]({{ reference_url }}/models-directory/dft/parameters/#refiners), set under the [Subworkflow Editor]({{ interface_url }}/workflow-designer/subworkflow-editor/overview-tab/#refiners).
 
-#### Selecting the HSE Exchange-correlation Functional
+Key aspects of the HSE input configuration:
 
-The HSE method is activated via the addition of the `input_dft = 'hse'` input parameter within the main Quantum ESPRESSO input script, for explicitly selecting the HSE Exchange-correlation functional.
- 
-#### Defining the q-sampling of the Fock Operator
- 
-A second set of important input parameters in the context of HSE consists in the "nqx1, nqx2, nqx3" keywords. These parameters define the three-dimensional mesh for the q (k1-k2) sampling of the Fock operator. For basic bandstructure calculations such as those being considered in the present tutorial, these three mesh parameters can all be left to a size of one. However for an accurate estimate of the size of the band gap, such as narrated in a [separate tutorial](hse-qe-bg.md), a higher value for this q-mesh size should be considered and tested, which drastically improves the precision of the band structure computation at the price of a significantly higher computational cost. 
+- **Exchange-correlation functional:** Activated via `input_dft = 'hse'` in the Quantum ESPRESSO input script.
+- **q-grid for the Fock operator:** Defined via `nqx1`, `nqx2`, `nqx3`. For basic band structure calculations, a size of 1 is sufficient. For accurate band gap estimates, see the [HSE band gap tutorial](hse-qe-bg.md).
+- **k-point list:** Imported from the extracted JSON rather than auto-generated.
+- **k-path:** A second list of k-points defining the [path]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/paths/) for the band structure dispersion curve, customizable under [Important Settings]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/).
 
-#### Inserting the List of k-points
+!!!note "Weight of k-path points"
+    The k-path points are assigned very small weights (<1e-7) so they do not interfere with the HSE electronic structure computation — they are only needed for plotting the dispersion curve. The weights are not exactly zero because Quantum ESPRESSO requires non-zero values.
 
-Another aspect of the main HSE calculation unit worth noticing is how the grid of special [k-points](../../../models/auxiliary-concepts/reciprocal-space/sampling.md) is not generated automatically, as customarily done in ground state scf computations, but rather is defined manually in crystal coordinates by importing the list of k-points extracted in the preceding subworkflow.
- 
-#### Specifying the k-path
+The final band structure is computed via the [bands.x executable]({{ reference_url }}/software-directory/modeling/quantum-espresso/components/#executables).
 
-In addition to this list of k-points for sampling the Brillouin Zone of the crystal over a regular grid, a second list of k-points needs to be provided and inserted manually at the bottom of the Quantum ESPRESSO input script, consisting in the [path of k-points](../../../models/auxiliary-concepts/reciprocal-space/paths.md) to be followed across the Brillouin Zone for plotting the final band structure dispersion curves. This k-path can be customized by the user under the ["Important Settings" tab](../../../workflow-designer/subworkflow-editor/important-settings.md) of the [Subworkflow Editor interface](../../../workflow-designer/subworkflow-editor/overview.md). 
 
-!!!note "Weight of the k-path points"
-    It should be noticed that the reciprocal coordinates of these k-points along the path under consideration are inserted with a **very small weight**  (less than 1e-7), as opposed to the k-grid points which are instead entered with their normal weights. This is done to ensure that the k-path points do not interfere with the HSE electronic structure computation itself, since they are only needed for defining and plotting the final band structure dispersion curve. Such weights are not set to exactly zero in order for them to be applied correctly by Quantum ESPRESSO.
+## 2. Import the HSE workflow from the bank
 
-#### Calculating the Final Band Structure
+[Workflows]({{ reference_url }}/workflows/overview/) for the HSE band structure calculation with [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) can be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). The workflow can then be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [job being created]({{ interface_url }}/jobs-designer/overview/).
 
-The final band structure calculation based upon the results of the preceding steps is performed through the customary ["bands.x" executable](../../../software-directory/modeling/quantum-espresso/components.md#executables), a component of the Quantum ESPRESSO package distribution.
+!!!warning "Computational cost"
+    HSE calculations are significantly more expensive than standard [GGA-DFT]({{ reference_url }}/models-directory/dft/parameters/#subtype). More [CPU cores and/or walltime]({{ resources_url }}/infrastructure/compute/parameters/) should be allocated as appropriate.
 
-## Copy HSE Workflow from Bank
 
-[Workflows](../../../workflows/overview.md) for calculating the [band structure](../../../properties-directory/non-scalar/bandstructure.md) of [materials](../../../materials/overview.md) with [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) via the HSE approach being presently described can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank](../../../workflows/bank.md) into the account-owned [collection](../../../accounts/collections.md). 
+## 3. Video walkthrough
 
-This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/overview.md). The same procedure as in the [general band-structure computation tutorial](band-structure.md) based on Quantum ESPRESSO can otherwise be followed.
-
-!!!warning "Computational Cost"
-    The computational cost of HSE calculations is significantly higher than for more basic methods in [DFT](../../../models-directory/dft/overview.md) such as the [Generalized Gradient Approximation](../../../models-directory/dft/parameters.md#subtype). We thus recommend to allow for more [CPU cores and/or walltime](../../../infrastructure/compute/parameters.md) as appropriate for the material system under investigation.
-
-## Animation
-
-We demonstrate the steps involved in the creation and execution of a HSE Band Structure computation workflow on silicon, using the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) simulation engine, in the following animation. We conclude by inspecting the final band structure dispersion plot under the ["Results" Tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md).
+The animation below demonstrates the creation and execution of an HSE band structure computation on silicon using Quantum ESPRESSO, concluding with the dispersion plot in the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/).
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/Q-qPX6EY9Ok" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## Links
 
-[^1]: [Wikipedia Hartree-Fock method, Website](https://en.wikipedia.org/wiki/Hartree%E2%80%93Fock_method)
+## 4. Links
 
-[^2]: [Wikipedia Fock matrix, Website](https://en.wikipedia.org/wiki/Fock_matrix)
+[^1]: [Wikipedia Hartree-Fock method](https://en.wikipedia.org/wiki/Hartree%E2%80%93Fock_method)
+[^2]: [Wikipedia Fock matrix](https://en.wikipedia.org/wiki/Fock_matrix)

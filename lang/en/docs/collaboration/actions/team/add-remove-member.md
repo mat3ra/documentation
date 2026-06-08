@@ -23,7 +23,7 @@ We start from the profile page of an Organization called "Exabyte.io", and we th
 
 Members can be removed from a Team by first navigating to the [Team's People Explorer](../../ui/people-explorer.md), and then following the [standard "Delete" procedure](../../../entities-general/actions/delete.md). 
 
-When a member is removed, he/she will no longer have access to any of the team's [assigned entities](../../organizations/teams.md#entities), unless available in other Teams.
+When a member is removed, he/she will no longer have access to any of the team's [assigned entities]({{ reference_url }}/collaboration/organizations/teams/#entities), unless available in other Teams.
 
 ## Animation
 

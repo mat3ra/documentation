@@ -37,7 +37,7 @@ Explains how to transfer data between JupyterLite and Materials Designer, includ
 ## [File Storage and Synchronization](./file-storage-synchronization.md)
 Describes how JupyterLite stores files locally in the browser, discusses synchronization limitations across devices, and outlines steps for clearing the local cache when updates are available.
 
-## [Common Actions](./common-actions)
+## [Common Actions](./common-actions.md)
 Covers the available actions in JupyterLite, including how to open, run, upload, and copy notebooks, with instructions on executing these actions.
 
 ## Links

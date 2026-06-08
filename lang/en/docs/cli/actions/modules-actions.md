@@ -18,7 +18,7 @@ Currently Loaded Modulefiles:
 
 The user can **load a certain desired module** from the aforementioned list of available ones via the `module load <module name>` command, in order to make it available under the CLI. Conversely, modules can also be unloaded with `module unload <module name>`.
 
-For example, to use the [Quantum ESPRESSO](../../software-directory/modeling/quantum-espresso/overview.md) modelling application, the corresponding module can be loaded as follows. All other library dependencies of the desired module will also be loaded automatically in this way.
+For example, to use the [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) modelling application, the corresponding module can be loaded as follows. All other library dependencies of the desired module will also be loaded automatically in this way.
 
 
 ```bash

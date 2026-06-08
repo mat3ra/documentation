@@ -1,59 +1,71 @@
-# Mat3ra.com platform documentation
+# Documentation
 
-Mat3ra.com is an online platform for digital materials R&D. 
-We offer a cloud-based interface for designing new materials,
-managing modeling and simulation workflows, performing simulations, 
-and organizing results and data in a collaborative, accessible, and searchable way. 
-This documentation explains how to use the platform.
-
-## How to use this documentation
-
-The left sidebar is the global table of contents. Click any top-level item to
-expand sections. For a high-level tour of major features, see
-[Content highlights](getting-started/content-highlights.md).
-
-Please use the search box at the top to quickly find specific topics across the
-documentation.
+Mat3ra.com is an online platform for digital materials R&D. This documentation explains the main concepts and how to use the platform.
 
 
-## Quick start
+## Browse by Section
 
-New to Mat3ra.com? Start here:
+<div class="section-cards" markdown>
 
-- [Run your first simulation (web interface)](getting-started/run-first-simulation/web-interface.md)
-- [Run your first CLI job](getting-started/run-first-simulation/cli-job.md)
-- [Content highlights](getting-started/content-highlights.md)
+<a href="getting-started/first-steps/" class="grid-card">
+<strong>Getting Started</strong>
+<span>New to the platform? Start here for a quick onboarding walkthrough, key concepts, and useful links.</span>
+</a>
 
-## Popular topics
+<a href="/guide/" class="grid-card">
+<strong>Tutorials</strong>
+<span>Step-by-step tutorials for DFT, ML, materials construction, and simulation workflows.</span>
+</a>
 
-- **Access the platform**: [Platform access guide](tutorials/platform-access.md)
-- **Jobs via CLI**: [Overview](jobs-cli/overview.md) · Batch scripts
-  ([Overview](jobs-cli/batch-scripts/overview.md),
-  [General structure](jobs-cli/batch-scripts/general-structure.md),
-  [Directives](jobs-cli/batch-scripts/directives.md),
-  [Working directory](jobs-cli/batch-scripts/directories.md),
-  [Apptainer & Modules](jobs-cli/batch-scripts/apptainer.md),
-  [Samples](jobs-cli/batch-scripts/sample-scripts.md))
-- **Remote connection**: [SSH](remote-connection/ssh.md) · [Web Terminal](remote-connection/web-terminal.md) ·
-  [Remote Desktop](remote-connection/remote-desktop.md)
-- **Data locations and quotas**: [Data on disk: directories](data-on-disk/directories.md) ·
-  [Quotas](data-on-disk/quotas.md)
-- **Clusters**: [Overview](infrastructure/clusters/overview.md) ·
-  [Cluster-101 (free tier)](infrastructure/clusters/cluster-101.md) ·
-  [AWS](infrastructure/clusters/aws.md) · [Azure](infrastructure/clusters/azure.md) ·
-  [GCP](infrastructure/clusters/google.md)
-- **Materials**: [Overview](materials/overview.md) · [Import from files](materials/import-from-files.md)
-- **Models**: [DFT overview](models-directory/dft/overview.md)
-- **Properties**: [Overview](properties/overview.md) · [Band structure](properties-directory/non-scalar/bandstructure.md)
-- **Workflows**: [Overview](workflows/overview.md) · [Designer](workflow-designer/overview.md)
-- **REST API**: [Overview](rest-api/overview.md)
+<a href="/interface/" class="grid-card">
+<strong>User Interface</strong>
+<span>Interface components, entity management, designer tools, and platform actions reference.</span>
+</a>
+
+<a href="/command-line/" class="grid-card">
+<strong>Command Line</strong>
+<span>CLI environment, batch jobs, and remote connection methods.</span>
+</a>
+
+<a href="/reference/" class="grid-card">
+<strong>Concepts & Reference</strong>
+<span>In-depth explanations of models, methods, properties, software directory, and the science behind the platform.</span>
+</a>
+
+<a href="/resources/" class="grid-card">
+<strong>Resources / Infrastructure</strong>
+<span>Compute clusters, storage systems, queues, quotas, and resource management.</span>
+</a>
+
+<a href="/developers/" class="grid-card">
+<strong>Software Developers</strong>
+<span>REST API reference, authentication, endpoints, and contribution guides.</span>
+</a>
+
+<a href="/standards/" class="grid-card">
+<strong>Data Standards</strong>
+<span>JSON schemas, ESSE data convention, and structured data representations.</span>
+</a>
+
+</div>
+
+## Quick Links
+
+- **[Getting Started](getting-started/first-steps.md)** — content highlights, key concepts, terminology
+- **[Running First Simulations (Web)](getting-started/run-first-simulation/web-interface.md)** — new-user onboarding via the web interface
+- **[Running First Simulations (CLI)](getting-started/run-first-simulation/cli-job.md)** — new-user onboarding via the command line
+- **[Pricing](pricing/service-levels.md)** — service levels and storage plans
+- **[FAQ](other/faq.md)** — frequently asked questions
+- **[Supported Software](software-directory/overview.md)** — Quantum ESPRESSO, VASP, LAMMPS, CP2K, Python, and more
+- **[Properties Directory](properties-directory/overview.md)** — band structure, band gaps, phonons, surface energy, and more
+- **[REST API](rest-api/overview.md)** — programmatic access to the platform
+- **[Community Programs](other/community-programs.md)** — academic and research partnerships
 
 
 ## Support
 
-We respond to support requests within 24 hours during working hours (Pacific
-Time). See [Help & Support](other/support.md) for ways to get assistance.
+See [Help & Support](other/support.md) for ways to get assistance.
 
-!!! tip "Help us improve"
+!!! tip "Help improve the documentation"
     If something is missing or unclear, please open the [Help & Support](
     other/support.md) page and get in touch.

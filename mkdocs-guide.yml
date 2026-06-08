@@ -1,0 +1,273 @@
+INHERIT: mkdocs-base.yml
+
+# Platform Guide — tutorials, software directory, and CLI reference.
+# Deploy to: docs.mat3ra.com/guide/
+
+docs_dir: !!python/object/apply:os.getenv ["DOCS_DIR", "lang/en/docs"]
+
+# Exclude pages that belong to other sites.
+exclude_docs: |
+  # Concepts/Reference top-level dirs
+  benchmarks/
+  data/
+  data-structured/
+  methods/
+  methods-directory/
+  models/
+  models-directory/
+  properties-directory/
+  security/
+  site-policy/
+  software/
+  software-directory/
+
+  # Resources site top-level dirs
+  data-on-disk/
+  infrastructure/
+
+  # Developers site top-level dirs
+  rest-api/
+
+  other/terms-of-service.md
+
+  # Interface site top-level dirs
+  jobs-designer/
+  materials-designer/
+  ui/
+  workflow-designer/
+
+  # CLI site top-level dirs
+  /cli/
+  /jobs-cli/
+  /jupyterlite/
+  /remote-connection/
+
+  # Home site sections (linked from homepage)
+  getting-started/
+  pricing/
+  /other/
+
+  # Concepts-only pages in shared dirs
+  accounts/overview.md
+  accounts/users.md
+  accounts/balance.md
+  accounts/payments-charges.md
+  accounts/quota.md
+  accounts/service-levels.md
+  accounts/collections.md
+  collaboration/organizations/
+  entities-general/overview.md
+  entities-general/data.md
+  entities-general/sets.md
+  entities-general/bank.md
+  entities-general/permissions.md
+  entities-general/default.md
+  entities-general/lifecycle.md
+  entities-general/ownership.md
+  jobs/overview.md
+  jobs/projects.md
+  jobs/data.md
+  jobs/status.md
+  materials/overview.md
+  materials/data.md
+  materials/bank.md
+  materials/default.md
+  materials/classification/
+  properties/overview.md
+  properties/classification/
+  properties/lifecycle/
+  properties/data/
+  workflows/overview.md
+  workflows/bank.md
+  workflows/default.md
+  workflows/addons/
+  workflows/components/
+  workflows/data/
+  workflows/templating/
+  other/publications.md
+  other/documentation.md
+  other/citation.md
+
+  # Interface site pages in shared dirs
+  accounts/accounting/
+  accounts/ui/
+  collaboration/actions/
+  collaboration/sharing/
+  collaboration/ui/
+  entities-general/actions/
+  entities-general/ui/
+  jobs/actions/
+  jobs/ui/
+  materials/actions/
+  materials/ui/
+  properties/ui/
+  workflows/actions/
+  workflows/ui/
+  data-in-objectstorage/
+
+  # Dev-only pages in shared dirs
+  data-in-objectstorage/overview.md
+  data-in-objectstorage/files.md
+  data-in-objectstorage/security.md
+  data-in-objectstorage/dropbox.md
+
+  # Other sites' homepages
+  index.md
+  index-concepts.md
+  index-dev.md
+  index-resources.md
+  index-developers.md
+  index-standards.md
+  index-interface.md
+  index-cli.md
+
+  # Data Standards site pages
+  software-directory/modeling/vasp/data.md
+  software-directory/modeling/quantum-espresso/data.md
+  software-directory/scripting/python/data.md
+  software-directory/scripting/shell/data.md
+  software-directory/scripting/jupyter-lab/data.md
+  software-directory/machine-learning/python-ml/data.md
+  models/data.md
+  methods/data.md
+  software/data.md
+  models-directory/dft/data.md
+  models-directory/machine-learning/data.md
+  methods-directory/pseudopotential/data.md
+  methods-directory/linear-regression/data.md
+  materials/data.md
+  jobs/data.md
+
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+  links:
+    absolute_links: info
+
+site_name: "Tutorials"
+site_url: https://docs.mat3ra.com/guide
+site_description: "Step-by-step tutorials for DFT, ML, materials construction, and simulation workflows."
+dev_addr: "localhost:8001"
+
+theme:
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.footer
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - navigation.expand
+
+extra:
+    # Cross-site URL variables (resolved by macros plugin at build time)
+    guide_url: https://docs.mat3ra.com/guide
+    interface_url: https://docs.mat3ra.com/interface
+    reference_url: https://docs.mat3ra.com/reference
+    resources_url: https://docs.mat3ra.com/resources
+    developers_url: https://docs.mat3ra.com/developers
+    cli_url: https://docs.mat3ra.com/command-line
+    data_url: https://docs.mat3ra.com/standards
+
+
+
+
+nav:
+    - "← All Docs":                                      /
+    - Home:                                              /guide/
+
+# 1. Materials Design
+    - 1. Materials Design:
+        - 1.1. General:
+            - Import from Files:                                                tutorials/materials/import-from-files.md
+            - Combinatorial Sets:                                               tutorials/materials/combinatorial-screening.md
+            - Interpolated Sets:                                                tutorials/materials/interpolated-sets.md
+            - Molecule on a Surface:                                            tutorials/materials/molecule-surface.md
+            - Interface, quick setup (3D Editor):                               tutorials/materials/slabs-interface.md
+            - Interface, minimal strain (JupyterLite):                          tutorials/materials/jupyterlite-zsl.md
+            - VESTA via Remote Desktop:                                         tutorials/materials/vesta-remote-desktop.md
+        - 1.2. Reproducing Published Structures:
+            - Overview:                                                         tutorials/materials/specific/overview.md
+            - Substitutional Defects in Graphene:                               tutorials/materials/specific/defect-point-substitution-graphene.md
+            - Substitutional Defects in Graphene (Band Structure):              tutorials/materials/specific/defect-point-substitution-graphene-simulation.md
+            - Vacancy-Substitution Pair in GaN:                                 tutorials/materials/specific/defect-point-pair-gallium-nitride.md
+            - Vacancy Defect in h-BN:                                           tutorials/materials/specific/defect-point-vacancy-boron-nitride.md
+            - Interstitial Defect in SnO:                                       tutorials/materials/specific/defect-point-interstitial-tin-oxide.md
+            - Island Surface Defect in TiN:                                     tutorials/materials/specific/defect-surface-island-titanium-nitride.md
+            - Step Surface Defect on Pt(111):                                   tutorials/materials/specific/defect-surface-step-platinum.md
+            - Twisted Bilayer h-BN Nanoribbons:                                 tutorials/materials/specific/interface-bilayer-twisted-nanoribbons-boron-nitride.md
+            - Twisted Bilayer MoS2:                                             tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide.md
+            - Adatom Surface Defects on Graphene:                               tutorials/materials/specific/defect-surface-adatom-graphene.md
+            - H-Passivated Silicon Nanowire:                                    tutorials/materials/specific/passivation-edge-nanowire-silicon.md
+            - H-Passivated Silicon (100) Surface:                               tutorials/materials/specific/passivation-surface-silicon.md
+            - Gold Nanoclusters:                                                tutorials/materials/specific/nanocluster-gold.md
+            - SrTiO3 Slab:                                                      tutorials/materials/specific/slab-strontium-titanate.md
+            - Graphene / h-BN Interface:                                        tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride.md
+            - Cu / SiO2 Interface:                                              tutorials/materials/specific/interface-3d-3d-copper-silicon-dioxide.md
+            - Graphene / SiO2 Interface:                                        tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide.md
+            - High-k Metal Gate Stack:                                          tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md
+            - Ripple Perturbation in Graphene:                                  tutorials/materials/specific/perturbation-ripples-graphene.md
+            - Grain Boundary in Cu (FCC):                                       tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md
+            - Grain Boundary (2D) in h-BN:                                      tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride.md
+            - Gr/Ni(111) Interface Optimization:                                tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel.md
+            - Pt Adatoms Island on MoS2:                                        tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum.md
+
+# 2. Simulations
+    - 2. Simulations:
+        - 2.1. Density Functional Theory:
+            - Electronic Properties:
+                - Band Structure:                          tutorials/dft/electronic/band-structure.md
+                - Band Structure, HSE (QE):                tutorials/dft/electronic/hse-qe-bs.md
+                - Band Structure, HSE (VASP):              tutorials/dft/electronic/hse-vasp-bg.md
+                - Band Structure, GW Full Freq. (QE):      tutorials/dft/electronic/gw-qe-bs-fullfreq.md
+                - Band Structure, GW Plasmon P. (QE):      tutorials/dft/electronic/gw-qe-bs-plasmon.md
+                - Band Gap:                                tutorials/dft/electronic/band-gap.md
+                - Band Gap, HSE (QE):                      tutorials/dft/electronic/hse-qe-bg.md
+                - Band Gap, GW (VASP):                     tutorials/dft/electronic/gw-vasp-bg.md
+                - Density of States:                       tutorials/dft/electronic/density-of-states.md
+                - Density Mesh:                            tutorials/dft/electronic/electronic-density-mesh.md
+                - Fermi Surface:                           tutorials/dft/electronic/fermi-surface.md
+                - Valence Band Offset:                     tutorials/dft/electronic/valence-band-offset.md
+                - Effective Screening Medium:              tutorials/dft/electronic/esm-qe.md
+                - Hubbard U (QE):                          tutorials/dft/electronic/hubbard.md
+                - Magnetic Properties (QE):                tutorials/dft/electronic/spin-magnetic-qe.md
+                - Spin-Orbit Coupling (QE):                tutorials/dft/electronic/spin-orbit-coupling-qe.md
+            - Optical Properties:
+                - Dielectric Constant (QE):                tutorials/dft/optical/epsilon-optimal-basis.md
+            - Vibrational Properties:
+                - Zero Point Energy:                       tutorials/dft/vibrational/zero-point-energy.md
+                - Phonons:                                 tutorials/dft/vibrational/phonon-dispersion-dos.md
+                - Phonons on a Grid:                       tutorials/dft/vibrational/phonons-grid.md
+            - Thermodynamic Properties:
+                - Surface Energy:                          tutorials/dft/thermodynamic/surface-energy.md
+            - Chemical Properties:
+                - Reaction Energy Profile (QE):            tutorials/dft/chemical/reaction-profile-qe.md
+                - Reaction Energy Profile (VASP):          tutorials/dft/chemical/reaction-profile-vasp.md
+            - Workflow Add-ons:
+                - k-point Convergence:                     tutorials/dft/addons/kpt-convergence.md
+                - Structural Relaxation:                   tutorials/dft/addons/structural-relaxation.md
+        - 2.2. Machine Learning:
+            - Train a NN Potential (QE, DeePMD, LAMMPS):   tutorials/ml/deepmd-mlff-with-espresso-cp-and-lammps.md
+            - Python MLFF (MatterSim/GPU):                 tutorials/ml/run-mlff-python-workflows-mattersim.md
+
+# 3. Other
+    - 3. Other:
+        - 3.1. Command-Line Jobs:
+            - Create + Run a CLI Job:                      tutorials/jobs-cli/job-cli-example.md
+            - Import a CLI Job to Web Interface:           tutorials/jobs-cli/cli-job-import.md
+            - QE GPU Job:                                  tutorials/jobs-cli/qe-gpu.md
+        - 3.2. Templating:
+            - Flags by Elemental Composition:              tutorials/templating/set-flag-by-composition.md
+            - Magnetic Moment on Atoms by Specie:          tutorials/templating/set-magnetic-moment.md
+        - 3.3. Tools and Environments:
+            - Accessing the Platform:                      tutorials/platform-access.md
+            - Jupyter Notebook:                            tutorials/other/jupyter.md
+            - Restart from Previous Job:                   tutorials/other/restart-job.md
+            - TensorFlow (GPU):                            tutorials/general-functionality/tensorflow-gpu.md
+            - Add New Software:                            /command-line/cli/actions/add-software/
+
+

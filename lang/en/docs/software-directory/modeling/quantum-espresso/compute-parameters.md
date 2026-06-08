@@ -1,6 +1,6 @@
 # Quantum Espresso: Specific Compute Parameters 
 
-The [compute parameters](../../../infrastructure/compute/parameters.md) which are specific to Quantum ESPRESSO consist in the **[Advanced Options](../../../infrastructure/compute/parameters.md#advanced-options)**, which can be set from within the relevant [user interface](../../../infrastructure/compute/overview.md).
+The [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/) which are specific to Quantum ESPRESSO consist in the **[Advanced Options]({{ resources_url }}/infrastructure/compute/parameters/#advanced-options)**, which can be set from within the relevant [user interface]({{ resources_url }}/infrastructure/compute/overview/).
 
 These specific parameters allow for the **parallelization** of Quantum ESPRESSO computations, as explained in what follows. Detailed explanations on how to best set the values of such parallelization parameters can be found under Ref. [^1]. 
 
@@ -10,7 +10,7 @@ Processors can in general be divided into different **"images"**, each correspon
 
 ### k-point pools
 
-Each image can be subpartitioned into **"pools"**, each taking care of a group of [k-points](../../../models/auxiliary-concepts/reciprocal-space/sampling.md).
+Each image can be subpartitioned into **"pools"**, each taking care of a group of [k-points]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/).
 
 ### band pools 
 

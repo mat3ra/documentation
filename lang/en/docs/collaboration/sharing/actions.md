@@ -6,7 +6,7 @@ The following actions can be performed under the ["Sharing Settings" dialog](ui.
 
 Shared entities can have **Permissions** assigned to them, that affect the way they can be interacted with by users. Permission settings can be found on the top-right [actions toolbar](../../entities-general/ui/explorer.md#actions-toolbar), or equivalently under each entry's right-hand [actions drop-down](../../entities-general/ui/explorer.md#actions-dropdown).
  
-The [following page](../../entities-general/permissions.md) explains entity permissions in more detail.
+The [following page]({{ reference_url }}/entities-general/permissions/) explains entity permissions in more detail.
 
 ## Add Other Accounts
 

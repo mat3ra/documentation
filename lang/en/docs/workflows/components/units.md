@@ -8,7 +8,7 @@ The following types of units are available.
 
 ### Execution
 
-Used for computationally-heavy tasks, e.g. for a singular run of a physics-based simulation engine. For physics-based [modeling engines](../../software/components.md), the execution unit is the main one. It contains the information about the input parameters and runtime environment for the specific simulation engine.
+Used for computationally-heavy tasks, e.g. for a singular run of a physics-based simulation engine. For physics-based [modeling engines]({{ reference_url }}/software/components/), the execution unit is the main one. It contains the information about the input parameters and runtime environment for the specific simulation engine.
 
 ### Processing
 

@@ -32,7 +32,7 @@ H   -0.7493682    0.0000000    0.4424329
 ````
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#InChIKey).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#InChIKey).
 
 ## Links
 

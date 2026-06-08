@@ -1,10 +1,10 @@
 # Assign Entities to Team
 
-Entities of different [types](../../../entities-general/overview.md) can be assigned (or added) to a team. The procedure is explained in what follows.
+Entities of different [types]({{ reference_url }}/entities-general/overview/) can be assigned (or added) to a team. The procedure is explained in what follows.
 
 ## Open Entity Tabs
 
-Starting from the [Team Page](../../ui/team-page.md), [navigate](../../../ui/specific/tabs-navigator.md) to the appropriate entity tab among the ones highlighted below:
+Starting from the [Team Page](../../ui/team-page.md), [navigate]({{ interface_url }}/ui/specific/tabs-navigator/) to the appropriate entity tab among the ones highlighted below:
  
 ![Team Entities](../../../images/collaboration/team-entities.png "Team Entities")
 

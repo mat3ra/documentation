@@ -1,11 +1,11 @@
 # Structured Representations
 
-We provide below examples of JSON-based structured representation for an application, and for each of its possible [components](overview.md#applications) (executables and flavors) and [classification categories](classification/overview.md). This structured representation is based upon the [Exabyte Data Convention](../data-structured/overview.md) implemented throughout our platform.
+We provide below examples of JSON-based structured representation for an application, and for each of its possible [components]({{ reference_url }}/software/overview/#applications) (executables and flavors) and [classification categories]({{ reference_url }}/software/classification/overview/). This structured representation is based upon the [ESSE Data Convention](../data-structured/overview.md) implemented throughout our platform.
 
 !!! note "Work in progress"
-    Some applications are yet to be fully integrated into our platform to have a structured representation. These are only available via [Command Line Interface](../cli/overview.md).
+    Some applications are yet to be fully integrated into our platform to have a structured representation. These are only available via [Command Line Interface]({{ cli_url }}/cli/overview/).
 
-## [Application](components.md)
+## [Application]({{ reference_url }}/software/components/)
 
 === "Schema"
     ```json
@@ -17,7 +17,7 @@ We provide below examples of JSON-based structured representation for an applica
     --8<-- "data/esse/example/software/application.json"
     ```
 
-## [Executable](components.md#executables)
+## [Executable]({{ reference_url }}/software/components/#executables)
 
 === "Schema"
     ```json
@@ -29,7 +29,7 @@ We provide below examples of JSON-based structured representation for an applica
     --8<-- "data/esse/example/software/executable.json"
     ```
 
-## [Flavor](components.md#flavors)
+## [Flavor]({{ reference_url }}/software/components/#flavors)
 
 === "Schema"
     ```json

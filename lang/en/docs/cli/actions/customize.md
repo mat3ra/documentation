@@ -12,7 +12,7 @@ change_shell /bin/zsh
 
 ## Dot Files
 
-There exist several hidden system configuration files, or "dot-files", within the [Login Home](../../infrastructure/login/directories.md), such as the `.bashrc` and `.bash_profile` files. Caution is advised when modifying such files, since they can significantly affect the functionality of the shell environment. In case of uncertainty, we recommend the reader to consult relevant documentation manuals on the general Linux environment before implementing any change to these files.
+There exist several hidden system configuration files, or "dot-files", within the [Login Home]({{ resources_url }}/infrastructure/login/directories/), such as the `.bashrc` and `.bash_profile` files. Caution is advised when modifying such files, since they can significantly affect the functionality of the shell environment. In case of uncertainty, we recommend the reader to consult relevant documentation manuals on the general Linux environment before implementing any change to these files.
 
 !!!warning "NEVER remove the system content of the ".ssh" folder"
     We urge the user not to remove the default content of the files in the ".ssh" folder, since doing so can break the operations of the platform for the user. 
@@ -124,7 +124,7 @@ It should show a path pointing to your local directory: `~/.local/bin`
 
 <!-- TODO by MM: implement functionality and uncomment the below
 
-There exist several "standard" dot-files within the [Login Home](../../infrastructure/login/directories.md), including one for each shell type that we support, that represent symbolic links to read-only files controlled by the platform administrator. Thus, the user should **NEVER** attempt to modify these files. Examples include the .bash_profile, .bashrc, .cshrc, .kshrc, .login, .profile, or .zshrc files. 
+There exist several "standard" dot-files within the [Login Home]({{ resources_url }}/infrastructure/login/directories/), including one for each shell type that we support, that represent symbolic links to read-only files controlled by the platform administrator. Thus, the user should **NEVER** attempt to modify these files. Examples include the .bash_profile, .bashrc, .cshrc, .kshrc, .login, .profile, or .zshrc files. 
 
 Instead, the user should put his/her customizations to the shell environment into the corresponding files that have an ".ext" suffix, such as .bashrc.ext, .cshrc.ext, .kshrc.ext, .login.ext, .profile.ext, and .zshrc.ext (depending on the choice of shell).
 

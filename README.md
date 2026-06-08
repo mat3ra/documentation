@@ -18,8 +18,8 @@ For a quick installation:
 
     ```bash
     cd documentation
-    virtualenv venv
-    source venv/bin/activate
+    virtualenv .venv
+    source .venv/bin/activate
     pip install --no-deps -r requirements.txt
     ```
 
@@ -41,7 +41,137 @@ For a quick installation:
     mkdocs serve
     ```
 
-You should have the documentation up and running at `http://localhost:8000`
+This starts the legacy full site at `http://localhost:8000`. For the
+multi-site setup (Guide / Concepts / Dev), see the next section.
+
+### Multi-Site Build (Guide / Concepts / Dev)
+
+The documentation is split into three focused sites, each with its own MkDocs
+configuration. The original `mkdocs.yml` remains available for the full
+monolithic build.
+
+| Config file | Site | URL | Dev port |
+|-------------|------|-----|----------|
+| `mkdocs.yml` | Full (legacy) | `docs.mat3ra.com` | 8000 |
+| `mkdocs-guide.yml` | Platform Guide | `docs.mat3ra.com/guide/` | 8001 |
+| `mkdocs-concepts.yml` | Concepts & Reference | `docs.mat3ra.com/reference/` | 8002 |
+| `mkdocs-dev.yml` | Developer Guide | `docs.mat3ra.com/dev/` | 8003 |
+
+#### Serve a single site (quick editing)
+
+```bash
+source .venv/bin/activate
+mkdocs serve -f mkdocs-guide.yml       # localhost:8001
+mkdocs serve -f mkdocs-concepts.yml    # localhost:8002
+mkdocs serve -f mkdocs-dev.yml         # localhost:8003
+```
+
+Pages within the site work normally with live reload.
+Cross-site links navigate to `docs.mat3ra.com` (production).
+
+#### Build & serve all sites locally (full testing)
+
+```bash
+./scripts/serve-all.sh
+```
+
+This builds the legacy site plus all three subsites into `site/` and starts a
+local server on `http://localhost:8000`:
+
+- `http://localhost:8000/`           — legacy full site
+- `http://localhost:8000/guide/`     — Platform Guide
+- `http://localhost:8000/reference/` — Concepts & Reference
+- `http://localhost:8000/dev/`       — Developer Guide
+
+Cross-site links in Markdown use `{{ guide_url }}`, `{{ reference_url }}`, and
+`{{ dev_url }}` variables (resolved by the macros plugin at build time).
+The `serve-all.sh` script automatically overrides these to point to
+`http://localhost:8000/…`, so cross-site navigation works locally without any
+extra setup.
+
+#### Build only (CI / deploy)
+
+```bash
+mkdocs build -f mkdocs.yml                                           # legacy at /
+mkdocs build -f mkdocs-guide.yml    -d site/guide                    # /guide/
+mkdocs build -f mkdocs-concepts.yml -d site/reference                # /reference/
+mkdocs build -f mkdocs-dev.yml      -d site/dev                      # /dev/
+```
+
+#### Validate internal links
+
+After building, run the post-build link checker to catch broken internal
+links across all four sites:
+
+```bash
+.venv/bin/python scripts/links/check-links.py
+```
+
+This scans every `<a href>` in the built `site/` directory and verifies
+that the target file exists. Exit code 1 means broken links were found.
+Additional helper scripts live in `scripts/links/`.
+
+### Cross-Site Linking Convention
+
+Because each sub-site only contains a subset of pages, links between
+sites cannot use relative paths — the target file doesn't exist in the
+same build. The convention is:
+
+| Link target is…               | Use this form                                          |
+| ----------------------------- | ------------------------------------------------------ |
+| In the **same** sub-site      | Relative path: `[text](../path/to/page.md)`            |
+| In a **different** sub-site   | Macro link: `[text]({{ reference_url }}/path/to/page/)` |
+
+The macro variables (`guide_url`, `reference_url`, `dev_url`) are defined
+in the `extra:` section of each config file and resolved at build time by
+the `mkdocs-macros-plugin`.
+
+#### Which page belongs to which site?
+
+Each sub-site config has an `exclude_docs:` block listing directories and
+files that belong to other sites. If a page is excluded from a sub-site,
+any link **to** it from within that sub-site must use the appropriate
+macro instead of a relative path.
+
+| Top-level directory          | Site                         |
+| ---------------------------- | ---------------------------- |
+| `tutorials/`, `ui/`, `jobs-designer/`, `workflow-designer/`, `software-directory/`, `cli/`, `jobs-cli/`, `getting-started/`, `pricing/`, `jupyterlite/`, `remote-connection/`, `materials-designer/` | **Guide** (`guide_url`) |
+| `models/`, `models-directory/`, `methods/`, `methods-directory/`, `properties-directory/`, `software/`, `benchmarks/`, `data/`, `data-structured/`, `security/`, `site-policy/` | **Reference** (`reference_url`) |
+| `infrastructure/`, `data-on-disk/`, `rest-api/`  | **Dev** (`dev_url`) |
+| `accounts/`, `entities-general/`, `jobs/`, `materials/`, `properties/`, `workflows/`, `collaboration/`, `data-in-objectstorage/` | **Shared** (split by page — check `exclude_docs`) |
+
+For shared directories, individual pages are assigned to specific sites
+via the `exclude_docs` lists. For example, `jobs/overview.md` is in
+Reference, while `jobs/actions/` is in Guide.
+
+#### Pages with raw Jinja syntax
+
+Some pages (e.g., templating tutorials) contain raw Jinja2 code examples
+like `{{ input.RESTART_MODE }}` that would be consumed by the macros
+plugin. These pages use `{% raw %}…{% endraw %}` blocks around code
+examples to prevent the macros plugin from interpreting them:
+
+````markdown
+---
+render_macros: true
+---
+# Templating Example
+
+The [Jinja engine]({{ reference_url }}/workflows/templating/jinja/) renders variables.
+
+{% raw %}
+```jinja
+{{ input.NAT }}
+```
+{% endraw %}
+````
+
+The key rule: **never** set `render_macros: false` on a page that also
+contains cross-site macro links (`{{ guide_url }}`, etc.), because those
+macros will be left as literal text in the HTML output, producing broken
+links. Instead, set `render_macros: true` (or omit the front-matter key
+entirely) and wrap only the raw Jinja code blocks in `{% raw %}`.
+
 
 ## Development
 

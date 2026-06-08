@@ -24,11 +24,11 @@ The user can create and customize Anaconda environments for their projects, as e
 
 ## [List Clusters and Cluster Nodes](list-clusters.md)
 
-The [computing clusters and nodes](../../infrastructure/clusters/overview.md) available for use can be listed by entering the commands [explained here](list-clusters.md).
+The [computing clusters and nodes]({{ resources_url }}/infrastructure/clusters/overview/) available for use can be listed by entering the commands [explained here](list-clusters.md).
 
 ## [Accounting](balance-quota.md)
 
-We introduce the relevant commands for inspecting the [Account](../../accounts/overview.md) [Balance](../../accounts/balance.md) and [Quota](../../accounts/quota.md) via CLI [in this page](balance-quota.md). 
+We introduce the relevant commands for inspecting the [Account]({{ reference_url }}/accounts/overview/) [Balance]({{ reference_url }}/accounts/balance/) and [Quota]({{ reference_url }}/accounts/quota/) via CLI [in this page](balance-quota.md). 
 
 ## [Jobs Actions](../../jobs-cli/actions/overview.md)
 

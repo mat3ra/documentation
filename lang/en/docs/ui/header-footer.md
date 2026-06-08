@@ -32,7 +32,7 @@ The right-hand sidebar can be opened by clicking the [Account Badge](
 
 The Terminal and Remote Desktop functionality provide alternative methods for
 accessing Accounts. More information about such practices can be retrieved
-[here](../remote-connection/overview.md).
+[here]({{ cli_url }}/remote-connection/overview/).
 
 ## Footer
 

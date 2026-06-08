@@ -17,7 +17,7 @@ render_macros: true
 
 # Island Surface Defect Formation in TiN.
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates the process of creating material with island on the surface of TiN(001) based on the work presented in the following manuscript.
 
@@ -27,7 +27,7 @@ This tutorial demonstrates the process of creating material with island on the s
     **D. G. Sangiovanni, A. B. Mei, D. Edström, L. Hultman, V. Chirita, I. Petrov, and J. E. Greene**, 
     "Effects of surface vibrations on interlayer mass transport: Ab initio molecular dynamics investigation of Ti adatom descent pathways and rates from TiN/TiN(001) islands", Physical Review B, 2018. [DOI: 10.1103/PhysRevB.97.035406](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.97.035406){:target='_blank'}. [@Sangiovanni2018]
 
-We use the [Materials Designer](../../../materials-designer/overview.md) to create a slab of TiN, identify the cartesian coordinates for an island on the surface, and build it. 
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create a slab of TiN, identify the cartesian coordinates for an island on the surface, and build it. 
 
 We will focus on creating graphene-nitrogen structures from FIG. 2.
 Specifically, the material from FIG. 2. a) of the paper: 
@@ -36,23 +36,23 @@ Specifically, the material from FIG. 2. a) of the paper:
 ![Surface Defect](../../../images/tutorials/materials/defects/defect-creation-surface-island-titanium-nitride/0.png "Surface Defect, Island FIG. 2. a)")
 
 
-## 1. Create and preview TiN Slab.
+## 2. Create and preview TiN Slab
 
-First, we navigate to [Materials Designer](../../../materials-designer/overview.md) and import the graphene material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the graphene material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Standata Graphene Import](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/1-standata-graphene.webp "Standata Graphene Import")
 
 
-Then we will use the [JupyterLite](../../../jupyterlite/overview.md) environment to create a TiN slab.
+Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create a TiN slab.
 
-### 1.1. Launch JupyterLite Session.
+### 2.1. Launch JupyterLite Session
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
 
-### 1.2. Open and modify the notebook.
+### 2.2. Open and modify the notebook
 
 Next, edit `create_slab.ipynb` notebook to modify the parameters by adding the following content to the "1.1. Set up slab parameters" cell in the notebook:
 
@@ -73,13 +73,13 @@ SLAB_TERMINATION_FORMULA = None
 TERMINATION_INDEX = 0
 ```
 
-### 1.3. Run the Notebook.
+### 2.3. Run the Notebook
 
 Run the notebook by clicking `Run` > `Run All` in the top menu to run cells and wait for the results to appear.
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
-### 1.4. Analyze the Results.
+### 2.4. Analyze the Results
 
 After running the notebook, the user will be able to visualize the created TiN slab.
 
@@ -87,7 +87,7 @@ After running the notebook, the user will be able to visualize the created TiN s
 
 We don't need to save the material at this point, as we will recreate the slab with island on the surface in the next notebook. This step is needed to identify the coordinates of the island vertices.
 
-## 2. Identifying the Island vertices coordinates.
+## 3. Identifying the Island vertices coordinates
 
 We are creating an island defect that covers an area of 4.5x4.5 unit cells (which corresponds to 9x9 atoms). This island will be placed inside a 10x10 supercell (20x20 atoms). 
 To position the island correctly, we need to select coordinates that are `0.45` crystal units apart along both lattice directions (a and b), ensuring the island is centered. 
@@ -109,15 +109,15 @@ The final centered coordinates of the island are: `[0.25, 0.2, 0]` and `[0.65, 0
 
 These coordinates will be used in the next step to create the island on the surface.
 
-## 3. Create Island on the Surface.
+## 4. Create Island on the Surface
 
-### 3.1. Open `create_point_defect.ipynb` notebook.
+### 4.1. Open `create_point_defect.ipynb` notebook
 
 Close the current notebook. `Introduction` notebook should be open by default.
 
 Find `create_island_defect.ipynb` in the list of notebooks and double-click open it.
 
-### 3.2. Modify the notebook.
+### 4.2. Modify the notebook
 
 Next, edit `create_island_defect.ipynb` notebook to modify the parameters by adding a list of [defect configuration objects](https://github.com/Exabyte-io/made/blob/3d938b4d91a31323dca7a02acb12b646dbb26634/src/py/mat3ra/made/tools/build/defect/configuration.py#L191) containing the cartesian coordinates of the island vertices.
 
@@ -160,28 +160,28 @@ Here's the visual of the updated content:
 
 ![Notebook setup](../../../images/tutorials/materials/defects/defect-creation-surface-island-titanium-nitride/island-setup.png "Notebook setup")
 
-## 4. Run the Notebook.
+## 5. Run the Notebook
 
 Run the notebook by clicking `Run` > `Run All` in the top menu to run cells and wait for the results to appear.
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
-## 5. Analyze the Results.
+## 6. Analyze the Results
 
 After running the notebook, the user will be able to visualize the created material with the island on the surface.
 
 ![Review the Results](../../../images/tutorials/materials/defects/defect-creation-surface-island-titanium-nitride/original-result.png "Review the Results")
 
-## 6. Pass the Material to Materials Designer.
+## 7. Pass the Material to Materials Designer
 
 The user can pass the resulting material to the current Materials Designer environment and save it.
 
 <img data-gifffer="/images/tutorials/materials/defects/defect-creation-surface-island-titanium-nitride/final-material.gif" alt="Resulting Material: Island on the TiN Surface" />
 
-Or the user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
 
-## Interactive JupyterLite Notebook.
+## 8. Interactive JupyterLite Notebook
 
 The following JupyterLite notebook demonstrates the process of creating material with island. Select "Run" > "Run All Cells".
 
@@ -193,4 +193,4 @@ The following JupyterLite notebook demonstrates the process of creating material
 {% endwith %}
 {% endwith %}
 
-## References.
+## 9. References

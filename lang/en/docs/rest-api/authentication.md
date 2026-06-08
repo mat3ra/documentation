@@ -1,6 +1,6 @@
 # Authentication
 
-There are 2 ways to generate the authentication parameters: either through the Login endpoint of by using the account preferences as explained [elsewhere](../accounts/ui/preferences/api.md). We recommend using the second option.
+There are 2 ways to generate the authentication parameters: either through the Login endpoint of by using the account preferences as explained [elsewhere]({{ interface_url }}/accounts/ui/preferences/api/). We recommend using the second option.
 
 ## Login
 

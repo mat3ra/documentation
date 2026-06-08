@@ -22,11 +22,11 @@ The second button <i class="zmdi zmdi-more-vert zmdi-hc-border"></i> towards the
 
 ### [Select Materials](actions-header-menu/select-materials.md)
 
-**Multiple** [Materials](../materials/overview.md) can be selected from the account-owned [collection](../accounts/collections.md), and added to the Job under creation. This procedure is described separately [in this page](actions-header-menu/select-materials.md).
+**Multiple** [Materials]({{ reference_url }}/materials/overview/) can be selected from the account-owned [collection]({{ reference_url }}/accounts/collections/), and added to the Job under creation. This procedure is described separately [in this page](actions-header-menu/select-materials.md).
 
 ### [Select  Workflow](actions-header-menu/select-workflow.md)
 
-A **single** [Workflow](../workflows/overview.md) can also be selected and added to the Job, for performing computations on **all** materials selected in the above step. If the user wishes to execute multiple computational tasks sequentially, he/she should consider the possibility of creating a sequence of [Subworkflows](../workflow-designer/subworkflow-editor/overview-tab.md) within the same Workflow instead.
+A **single** [Workflow]({{ reference_url }}/workflows/overview/) can also be selected and added to the Job, for performing computations on **all** materials selected in the above step. If the user wishes to execute multiple computational tasks sequentially, he/she should consider the possibility of creating a sequence of [Subworkflows](../workflow-designer/subworkflow-editor/overview-tab.md) within the same Workflow instead.
 
 Instructions on how to select Workflows from the account-owned collection and add them to the Job being designed can be found [here](actions-header-menu/select-workflow.md).
 
@@ -38,7 +38,7 @@ The action of selecting a parent job is explained in detail [here](actions-heade
 
 ### Submit
 
-The `Submit` option is only present for the case of Jobs with a "Pre-submission" [status](../jobs/status.md), which have been opened in Designer directly from [Explorer](../jobs/ui/explorer.md). Pressing `Submit` first saves the Job to the account-owned collection, and then directly [submits](../jobs/actions/run.md) it for execution. 
+The `Submit` option is only present for the case of Jobs with a "Pre-submission" [status]({{ reference_url }}/jobs/status/), which have been opened in Designer directly from [Explorer](../jobs/ui/explorer.md). Pressing `Submit` first saves the Job to the account-owned collection, and then directly [submits](../jobs/actions/run.md) it for execution. 
 
 ## 4. Save Job
 
@@ -46,4 +46,4 @@ The Job being currently designed can finally be saved, after all appropriate cha
 
 When multiple materials are selected, by default (unless the workflow is multi-material in nature) a single job will be created per **each** material. The name of the resulting Job will have the material formula appended to it when more than one material is selected during its design phase.
 
-Once the new Job has been saved, the view is returned to the corresponding [Project page](../jobs/ui/project-page.md). Here, the new Job is now listed as a top entry under [Jobs Explorer](../jobs/ui/explorer.md) and has a "Pre-submission" [status](../jobs/status.md), indicating its readiness to be [submitted for execution](../jobs/actions/run.md).
+Once the new Job has been saved, the view is returned to the corresponding [Project page](../jobs/ui/project-page.md). Here, the new Job is now listed as a top entry under [Jobs Explorer](../jobs/ui/explorer.md) and has a "Pre-submission" [status]({{ reference_url }}/jobs/status/), indicating its readiness to be [submitted for execution](../jobs/actions/run.md).

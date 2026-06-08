@@ -1,3 +1,12 @@
 .md-typeset .md-typeset__table {
     padding: 0 0.5rem;
 }
+
+/* Clickable row hover feedback */
+.md-typeset table tbody tr[style*="cursor"] {
+    transition: background-color 0.15s ease;
+}
+
+.md-typeset table tbody tr[style*="cursor"]:hover {
+    background-color: var(--md-accent-fg-color--transparent);
+}

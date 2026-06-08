@@ -10,13 +10,13 @@ They are expressed as a set of vectors, one for each atom in the material, descr
 
 Atomic forces can be computed as part of any [Workflow](../../workflows/overview.md) executing a total energy self-consistent field calculation.
 
-Under the [Results Tab](../../jobs/ui/results-tab.md) within [Jobs Viewer](../../jobs/ui/viewer.md), the atomic forces are returned to the user as displayed in the example image below (exhibiting an ideal equilibrium situation with zero force components), expressed in units of eV/Angstroms.
+Under the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) within [Jobs Viewer]({{ interface_url }}/jobs/ui/viewer/), the atomic forces are returned to the user as displayed in the example image below (exhibiting an ideal equilibrium situation with zero force components), expressed in units of eV/Angstroms.
 
 ![Atomic forces](../../images/properties-directory//atomic_forces.png "Atomic forces")
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#atomic-forces).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#atomic-forces).
 
 ## Links
 

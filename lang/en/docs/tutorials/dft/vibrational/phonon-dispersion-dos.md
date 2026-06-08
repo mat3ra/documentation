@@ -1,45 +1,48 @@
 # Phonon Dispersions and Density of States Calculation
 
-This tutorial page explains how to calculate the [Phonon Dispersion Curves](../../../properties-directory/non-scalar/phonon-dispersions.md) and [Phonon Density of States](../../../properties-directory/non-scalar/phonon-dos.md) of materials based on [Density Functional Theory](../../../models-directory/dft/overview.md). We will be studying crystalline Silicon in the standard cubic-diamond crystal structure, and we will use [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) as our simulation engine.
+This tutorial explains how to calculate the [Phonon Dispersion Curves]({{ reference_url }}/properties-directory/non-scalar/phonon-dispersions/) and [Phonon Density of States]({{ reference_url }}/properties-directory/non-scalar/phonon-dos/) of crystalline silicon in its cubic-diamond crystal structure using [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/) (DFT) with [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/).
 
-!!!note "Quantum ESPRESSO version considered in this tutorial"
-    The present tutorial is written for Quantum ESPRESSO at versions 5.2.1, 5.4.0, 6.0.0 or 6.3.
+!!!note "Quantum ESPRESSO version"
+    This tutorial applies to Quantum ESPRESSO versions 5.2.1, 5.4.0, 6.0.0, 6.3, and later.
 
-## Create Job
 
-Silicon in its cubic-diamond crystal structure is the [default material](../../../materials/default.md) that is shown on [new job creation](../../../jobs-designer/overview.md), unless this default was [changed](../../../entities-general/actions/set-default.md) by the user following [account](../../../accounts/overview.md) creation. If silicon is still the default choice, it will as such be automatically loaded at the moment of the [opening](../../../jobs/actions/create.md) of [Job Designer](../../../jobs-designer/overview.md).
+## 1. Create the job
 
-## Choose Workflow
+Silicon in its cubic-diamond crystal structure is the [default material]({{ reference_url }}/materials/default/) loaded on [new job creation]({{ interface_url }}/jobs-designer/overview/), unless the default was [changed]({{ interface_url }}/entities-general/actions/set-default/) after [account]({{ reference_url }}/accounts/overview/) creation.
 
-[Workflows](../../../workflows/overview.md) for calculating the [Phonon Dispersion Curves](../../../properties-directory/non-scalar/phonon-dispersions.md) and [Density of States](../../../properties-directory/non-scalar/phonon-dos.md) of [materials](../../../materials/overview.md) with [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) can readily be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank](../../../workflows/bank.md) into the account-owned [collection](../../../accounts/collections.md). This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/workflow-tab.md).
 
-## Set Sampling in Reciprocal Space
+## 2. Select the workflow
 
-It is critical to have a high [q-point density](../../../models/auxiliary-concepts/reciprocal-space/sampling.md#other-types-of-reciprocal-space-grids) in order to resolve enough details for the phonon dispersion plot.
+[Workflows]({{ reference_url }}/workflows/overview/) for phonon calculations with [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) can be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). The workflow can then be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 
-The Phonon calculation workflow based on Quantum ESPRESSO is composed of multiple [units](../../../workflows/components/units.md). The first unit specifies the settings for the self-consistent calculation of the energy eigenvalues and wave functions. The subsequent units are narrated in detail in the theoretical explanation contained in Ref. [^1] of [this page](../../../models/auxiliary-concepts/reciprocal-space/sampling.md).
 
-We set the size of the [grid of q-points (q-grid)](../../../models/auxiliary-concepts/reciprocal-space/sampling.md#other-types-of-reciprocal-space-grids) to 3 x 3 x 3 under the [Important Settings](../../../workflow-designer/subworkflow-editor/important-settings.md) of [Workflow Designer](../../../workflow-designer/overview.md). This provides a dense enough q-point sampling in order to resolve the fine features present within the output of the phonon dispersion computation. In order to make the q- and k-point grids commensurate and make the phonon calculation less computationally demanding, we also reduce the size of the grid of electronic k-points from its original default value to 6 x 6 x 6.
+## 3. Set sampling in reciprocal space
 
-In addition, the associated "interpolated" grid or [i-grid](../../../models/auxiliary-concepts/reciprocal-space/sampling.md#other-types-of-reciprocal-space-grids) necessary for performing the transformation to and from the reciprocal and real space, and subsequent interpolation, should be set to 18 x 18 x 18.
+A high [q-point density]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/#other-types-of-reciprocal-space-grids) is critical for resolving phonon dispersion details.
 
-Finally, we also apply the recommended [q-point path](../../../models/auxiliary-concepts/reciprocal-space/paths.md) to effectively sample the vibrational states throughout the Brillouin Zone of the crystal, based on the crystal symmetry.
+The phonon workflow contains multiple [units]({{ reference_url }}/workflows/components/units/). The first unit configures the self-consistent calculation of energy eigenvalues and wave functions. Subsequent units are described in the theoretical explanation in Ref. [^1] of [this page]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/).
 
-## Submit Job
+Set the [q-point grid]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/#other-types-of-reciprocal-space-grids) to 3 × 3 × 3 under [Important Settings]({{ interface_url }}/workflow-designer/subworkflow-editor/important-settings/). Also reduce the k-point grid from its default to 6 × 6 × 6 to make the q- and k-point grids commensurate and reduce computational cost.
 
-Before [submitting](../../../jobs/actions/run.md) the [job](../../../jobs/overview.md), the user should click on the ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and examine the [compute parameters](../../../infrastructure/compute/parameters.md) included therein. 
+The associated [i-grid]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/#other-types-of-reciprocal-space-grids) for reciprocal/real-space transformation and interpolation should be set to 18 × 18 × 18. The recommended [q-point path]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/paths/) should also be applied to sample the vibrational states across the Brillouin Zone.
 
-Phonon calculations are quite computationally expensive and therefore, despite Silicon being a small structure, with the aforementioned settings for the sampling grids the user should account for at least 45 minutes of calculation runtime executed on 16 compute cores for example.
 
-## Examine Final Results
+## 4. Submit the job
 
-When all [unit](../../../workflows/components/units.md) computations are complete at the end of Job execution, switching to the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md) will show the [phonon lattice vibrations](../../../properties-directory/non-scalar/phonon-dispersions.md) of silicon, plotted as a dispersion curve on the [q-point path](../../../models/auxiliary-concepts/reciprocal-space/paths.md) chosen in the preceding steps.
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), review the [Compute tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) to verify the [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/).
 
-The plot for the [Phonon Density of States](../../../properties-directory/non-scalar/phonon-dos.md) can also be retrieved in the [Results tab](../../../jobs/ui/results-tab.md), directly above the dispersion curve. 
+!!!tip "Computational cost"
+    Phonon calculations are computationally demanding. Despite silicon being a small structure, the settings above require at least 45 minutes on 16 compute cores.
 
-## Animation
 
-We demonstrate the above-mentioned steps involved in the creation and execution of a phonon lattice vibration calculation for silicon, using the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) simulation engine, in the following animation.
+## 5. Examine the results
+
+Once all [units]({{ reference_url }}/workflows/components/units/) complete, the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/) displays the [phonon dispersion curves]({{ reference_url }}/properties-directory/non-scalar/phonon-dispersions/) and the [Phonon Density of States]({{ reference_url }}/properties-directory/non-scalar/phonon-dos/) (directly above the dispersion curve).
+
+
+## 6. Video walkthrough
+
+The animation below demonstrates the full phonon calculation workflow on silicon using Quantum ESPRESSO.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/41uropwrb0k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

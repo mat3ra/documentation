@@ -1,6 +1,6 @@
 # Boundary Conditions
 
-Boundary conditions specify how the system under investigation (referred to as "Slab" for the case of interfaces) can interact or is related to its surroundings. Such customization of boundary conditions can be especially resourceful in the case of [Effective Screening Medium](../../../models/auxiliary-concepts/esm.md) calculations.
+Boundary conditions specify how the system under investigation (referred to as "Slab" for the case of interfaces) can interact or is related to its surroundings. Such customization of boundary conditions can be especially resourceful in the case of [Effective Screening Medium]({{ reference_url }}/models/auxiliary-concepts/esm/) calculations.
 
 ## Set Boundary Conditions Dialog
 
@@ -10,7 +10,7 @@ Open the "Set Boundary Conditions" dialog via the ["Advanced" menu](../advanced.
 
 ## Boundary Conditions Types
 
-The dialog features a drop down menu on the left, where the **type** of boundary condition can be chosen and applied perpendicularly to the central slab under consideration. We offer the possibility to choose between the following distinct types, which are also reviewed in Ref. [7] cited [in this page](../../../software-directory/modeling/quantum-espresso/components.md):
+The dialog features a drop down menu on the left, where the **type** of boundary condition can be chosen and applied perpendicularly to the central slab under consideration. We offer the possibility to choose between the following distinct types, which are also reviewed in Ref. [7] cited [in this page]({{ reference_url }}/software-directory/modeling/quantum-espresso/components/):
 
 - Periodic Boundary Conditions (pbc): the system is completely surrounded by identical replicas of itself in all three dimensions [^1].
 - Vacuum-Slab-Vacuum (bc1): immerse the slab between two semi-infinite vacuum regions.

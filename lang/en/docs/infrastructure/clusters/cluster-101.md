@@ -12,7 +12,7 @@ This cluster is hosted on [Microsoft Azure][^1] infrastructure and is intended t
 
 The list of currently enabled queues is given below. 
 
-The price factor is shown in relation to the [relative unit price](../../pricing/service-levels.md#comparison-table).
+The price factor is shown in relation to the [relative unit price]({{ guide_url }}/pricing/service-levels/#comparison-table).
 
 The price factor if 10E-4 means that the cost of using this queue is 0.0001 times the cost of using the base queue (OR).
 This is intended to provide free compute resources and keep the accounting of resource usage.

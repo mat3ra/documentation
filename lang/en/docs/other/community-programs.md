@@ -12,7 +12,7 @@ enable the community to explore the capabilities of our platform.
 
 The program is targeted for users with current academic affiliations; however, we welcome private parties as well.
 
-The free tier access is available through [cluster-101](../infrastructure/clusters/cluster-101.md) only.
+The free tier access is available through [cluster-101]({{ resources_url }}/infrastructure/clusters/cluster-101/) only.
 
 ### 1.1. Free Compute Eligibility.
 
@@ -56,7 +56,7 @@ As below:
 |   Available Resources   | "cluster-101" only |
 |   Default Disk Quota   |       10 Gb        |
 
-For more information, please see [cluster-101](../infrastructure/clusters/cluster-101.md).
+For more information, please see [cluster-101]({{ resources_url }}/infrastructure/clusters/cluster-101/).
 
 ## 2. Acknowledgements
 

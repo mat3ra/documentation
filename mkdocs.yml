@@ -1,139 +1,62 @@
+INHERIT: mkdocs-base.yml
+
 # get docs dir from the environment. Defaults to lang/en/docs.
 docs_dir: !!python/object/apply:os.getenv ["DOCS_DIR", "lang/en/docs"]
 
-site_name: Platform Documentation
+exclude_docs: |
+  index-guide.md
+  index-interface.md
+  index-concepts.md
+  index-dev.md
+  index-resources.md
+  index-developers.md
+  index-cli.md
+  index-standards.md
+  # Schema data pages (live in Data Standards sub-site)
+  entities-general/data.md
+  materials/data.md
+  jobs/data.md
+  models/data.md
+  methods/data.md
+  software/data.md
+  workflows/data/
+  properties/data/
+  models-directory/dft/data.md
+  models-directory/machine-learning/data.md
+  methods-directory/pseudopotential/data.md
+  methods-directory/linear-regression/data.md
+  software-directory/modeling/vasp/data.md
+  software-directory/modeling/quantum-espresso/data.md
+  software-directory/scripting/python/data.md
+  software-directory/scripting/shell/data.md
+  software-directory/scripting/jupyter-lab/data.md
+  software-directory/machine-learning/python-ml/data.md
+
+site_name: Documentation
 site_url: https://docs.mat3ra.com
 site_description: Mat3ra platform documentation.
 dev_addr: "localhost:8000"
 
-repo_name: 'exabyte-io/documentation'
-repo_url: 'https://github.com/exabyte-io/documentation'
-edit_uri: 'edit/main/lang/en/docs/'
-extra_css:
-    - https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css
-    - extra/css/general.css
-    - extra/css/tables.css
-    - extra/css/images.css
-    - extra/css/super-fences.css
-    - extra/css/properties.css
-    - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css
-
-extra_javascript:
-    - extra/js/giffer.js
-    - extra/js/ga.js
-    - extra/js/url_parameters.js
-    - extra/js/katex.js
-    - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js
-    - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js
-    - 'https://www.googletagmanager.com/gtag/js?id=UA-69270713-5'
-
-copyright: <a target="_blank" href="https://mat3ra.com">Exabyte Inc</a>. All rights reserved. | <a target="_blank" href="https://platform.mat3ra.com">Back to platform</a>
-
 extra:
-    version: "2026.4.23"
-    preload_javascript:
-        - /extra/js/preload_hotjar.js
-        - /extra/js/preload.js
-    social:
-        - icon: fontawesome/brands/github
-          link: https://github.com/exabyte-io
-        - icon: fontawesome/brands/youtube
-          link: https://www.youtube.com/c/Mat3ra/videos
-        - icon: fontawesome/brands/linkedin
-          link: https://www.linkedin.com/company/mat3ra/
-        - icon: fontawesome/brands/x-twitter
-          link: https://x.com/mat3ra_com
-    analytics:
-        provider: google
-        property: UA-69270713-5
-    jupyterlite:
-        origin_url: https://jupyterlite.mat3ra.com/retro/notebooks
-        origin_url_lab: https://jupyterlite.mat3ra.com/lab/tree
-        notebooks_path_root: made
-
-markdown_extensions:
-    - admonition
-    - attr_list
-    - def_list
-    # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/?h=footnotes#footnotes
-    - footnotes:
-        PLACE_MARKER: "///FOOTNOTES GO HERE///"
-    - markdown.extensions.def_list
-    - md_in_html
-    - toc:
-        permalink: true
-    # https://facelessuser.github.io/pymdown-extensions/
-    - pymdownx.arithmatex:          # Render Latex Formulas
-        generic: true
-    - pymdownx.betterem             # Better bold/italic text
-    - pymdownx.details              # Allow admonition-type collapsible <details>
-    # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/?h=code+hi#highlighting-inline-code-blocks
-    - pymdownx.highlight:
-        pygments_lang_class: true
-        linenums: true
-    - pymdownx.snippets
-    - pymdownx.striphtml            # Strip html comments before processing
-    - pymdownx.superfences:         # Allow for code blocks "fencing"
-        custom_fences:
-            - name: mermaid
-              class: mermaid
-              format: !!python/name:pymdownx.superfences.fence_code_format
-    - pymdownx.tabbed:
-        alternate_style: true
-
-theme:
-    name: material
-    custom_dir: theme
-    palette:
-        primary: deep purple
-        accent: deep purple
-    logo: "images/logo/logo-white.png"
-    favicon: "images/logo/favicon.svg"
-    icon:
-        edit: material/pencil
-        repo: fontawesome/brands/github
-    font:
-        text: Roboto
-        code: Roboto Mono
-    features:
-        - announce.dismiss
-        - content.action.edit
-        - content.code.annotate
-        - content.code.copy
-        - content.tooltips
-        - navigation.footer
-        - navigation.top
-        - search.highlight
-        - search.suggest
-
-plugins:
-    # https://timvink.github.io/mkdocs-git-revision-date-localized-plugin/options/
-    - git-revision-date-localized:
-        type: date
-        enable_creation_date: false
-    - search
-    - tags
-    - macros:
-        include_dir: "lang/en/docs/includes/"
-        render_by_default: false
-        # add header from https://mkdocs-macros-plugin.readthedocs.io/en/stable/rendering/#opt-in-through-the-config-file to enable in the specific markdown
-    - bibtex:
-        bib_file: "lang/en/docs/includes/references.bib"
-        citation_template: "{{author}} ({{year}})"
-        bibliography_template: "{{author}} ({{year}}). {{title}}. {{journal}}. {{volume}}. {{pages}}."
+    # Cross-site URL variables (resolved by macros plugin at build time).
+    # In the legacy build all content is at the root, so these point to root paths.
+    guide_url: https://docs.mat3ra.com
+    interface_url: https://docs.mat3ra.com
+    reference_url: https://docs.mat3ra.com
+    resources_url: https://docs.mat3ra.com
+    developers_url: https://docs.mat3ra.com
+    cli_url: https://docs.mat3ra.com/command-line
+    data_url: https://docs.mat3ra.com/standards
 
 nav:
     - Home:                                              index.md
-    - Migrating to New Platform:                         migrating-to-new-platform.md
 
 # INTRODUCTION
     - Getting Started:
-        - Content highlights:                            getting-started/content-highlights.md
-        - Important Concepts:                            getting-started/important-concepts.md
-        - Terminology:                                   getting-started/terminology.md
-        - Useful Links:                                  getting-started/useful-links.md
-        - Frequently Asked Questions:                    other/faq.md
-        - Run first simulation:
+        - First Steps:                                   getting-started/first-steps.md
+        - Content Highlights:                            getting-started/content-highlights.md
+        - Key Concepts:                                  getting-started/concepts.md
+        - Running First Simulations:
             - Web Interface:                             getting-started/run-first-simulation/web-interface.md
             - Command Line:                              getting-started/run-first-simulation/cli-job.md
 
@@ -308,7 +231,7 @@ nav:
             - People Explorer:                           collaboration/ui/people-explorer.md
         - Entity Sharing:
             - User Interface:                            collaboration/sharing/ui.md
-            - Actions:                                   collaboration/sharing/common-actions.md
+            - Actions:                                   collaboration/sharing/actions.md
             - Account Access Levels:                     collaboration/sharing/access-levels.md
         - Actions:
             - Organization > Overview:                  collaboration/actions/organization/overview.md
@@ -327,7 +250,7 @@ nav:
     - Models:
         - Overview:                                     models/overview.md
         - Accuracy:                                     models/accuracy.md
-        - Data:                                         models/data.md
+
         - Parameters:                                   models/parameters.md
         - Auxiliary Concepts:
             - Nudged Elastic Band:                       models/auxiliary-concepts/nudged-elastic-band.md
@@ -342,7 +265,7 @@ nav:
         - Overview:                                     models-directory/overview.md
         - Density Functional Theory:
             - Overview:                                 models-directory/dft/overview.md
-            - Data:                                     models-directory/dft/data.md
+
             - Parameters:                               models-directory/dft/parameters.md
             - Accuracy:                                 models-directory/dft/accuracy.md
             - Special Notes:                            models-directory/dft/notes.md
@@ -351,13 +274,13 @@ nav:
             - Overview:                                 models-directory/machine-learning/overview.md
             - Parameters:                               models-directory/machine-learning/parameters.md
             - Units:                                    models-directory/machine-learning/units.md
-            - Data:                                     models-directory/machine-learning/data.md
+
             - Example Workflow:                         models-directory/machine-learning/example-workflow.md
             - Accuracy:                                 models-directory/machine-learning/accuracy.md
 
     - Methods:
         - Overview:                                     methods/overview.md
-        - Data:                                         methods/data.md
+
         - Parameters:                                   methods/parameters.md
         - Precision:                                    methods/precision.md
         - Auxiliary Concepts:
@@ -368,20 +291,20 @@ nav:
         - Plane-waves and Pseudopotentials:
             - Overview:                                 methods-directory/pseudopotential/overview.md
             - Default:                                  methods-directory/pseudopotential/default.md
-            - Data:                                     methods-directory/pseudopotential/data.md
+
             - Parameters:                               methods-directory/pseudopotential/parameters.md
             - Precision:                                methods-directory/pseudopotential/precision.md
             - Important Settings:                       methods-directory/pseudopotential/important-settings.md
-            - Actions:                                  methods-directory/pseudopotential/common-actions.md
+            - Actions:                                  methods-directory/pseudopotential/actions.md
         - Linear Regression:
             - Overview:                                 methods-directory/linear-regression/overview.md
             - Parameters:                               methods-directory/linear-regression/parameters.md
-            - Data:                                     methods-directory/linear-regression/data.md
+
 
     - Software:
         - Overview:                                     software/overview.md
         - Components:                                   software/components.md
-        - Data:                                         software/data.md
+
         - Classification:
             - Overview:                                 software/classification/overview.md
             - Analysis:                                 software/classification/analysis.md
@@ -397,12 +320,12 @@ nav:
             - Quantum ESPRESSO:
                 - Overview:                             software-directory/modeling/quantum-espresso/overview.md
                 - Components:                           software-directory/modeling/quantum-espresso/components.md
-                - Data:                                 software-directory/modeling/quantum-espresso/data.md
+
                 - Compute Parameters:                   software-directory/modeling/quantum-espresso/compute-parameters.md
             - VASP:
                 - Overview:                             software-directory/modeling/vasp/overview.md
                 - Components:                           software-directory/modeling/vasp/components.md
-                - Data:                                 software-directory/modeling/vasp/data.md
+
                 - Compute Parameters:                   software-directory/modeling/vasp/compute-parameters.md
             - TurboMole:                                software-directory/modeling/turbomole.md
             - LAMMPS:                                   software-directory/modeling/lammps.md
@@ -413,23 +336,21 @@ nav:
         - Scripting:
             - Shell:
                 - Overview:                             software-directory/scripting/shell/overview.md
-                - Data:                                 software-directory/scripting/shell/data.md
+
             - Python:
                 - Overview:                             software-directory/scripting/python/overview.md
-                - Data:                                 software-directory/scripting/python/data.md
+
             - Jupyter Lab:
                 - Overview:                             software-directory/scripting/jupyter-lab/overview.md
-                - Data:                                 software-directory/scripting/jupyter-lab/data.md
+
         - Machine Learning (ML):
             - TensorFlow:                               software-directory/machine-learning/tensorflow.md
-            - Exabyte ML:
-                - Overview:                             software-directory/machine-learning/exabyte/overview.md
-                - Data:                                 software-directory/machine-learning/exabyte/data.md
+
             - Python ML:
                 - Overview:                             software-directory/machine-learning/python-ml/overview.md
                 - Components:                           software-directory/machine-learning/python-ml/components.md
                 - Workflow Structure:                   software-directory/machine-learning/python-ml/workflow-structure.md
-                - Data:                                 software-directory/machine-learning/python-ml/data.md
+
         - Analysis & Visualization:
             - VESTA:                                    software-directory/analysis/vesta.md
             - XCRYSDEN:                                 software-directory/analysis/xcrysden.md
@@ -447,7 +368,7 @@ nav:
         - Lifecycle:                                    entities-general/lifecycle.md
         - Ownership:                                    entities-general/ownership.md
         - Permissions:                                  entities-general/permissions.md
-        - Data:                                         entities-general/data.md
+
         - Sets:                                         entities-general/sets.md
         - Bank:                                         entities-general/bank.md
         - Default:                                      entities-general/default.md
@@ -478,7 +399,7 @@ nav:
 # ENTITIES - SPECIFIC
     - Materials:
         - Overview:                                     materials/overview.md
-        - Data:                                         materials/data.md
+
         - Bank:                                         materials/bank.md
         - Default:                                      materials/default.md
         - Classification:
@@ -543,11 +464,7 @@ nav:
             - Subworkflows:                             workflows/components/subworkflows.md
             - Units:                                    workflows/components/units.md
             - Maps:                                     workflows/components/maps.md
-        - Data:
-            - Overview:                                 workflows/data/overview.md
-            - Workflows:                                workflows/data/workflows.md
-            - Subworkflows:                             workflows/data/subworkflows.md
-            - Units:                                    workflows/data/units.md
+
         - Templating:
             - Overview:                                 workflows/templating/overview.md
             - Concept:                                  workflows/templating/concept.md
@@ -594,7 +511,7 @@ nav:
     - Jobs:
         - Overview:                                     jobs/overview.md
         - Projects:                                     jobs/projects.md
-        - Data:                                         jobs/data.md
+
         - Status:                                       jobs/status.md
         - User Interface:
             - Explorer:                                 jobs/ui/explorer.md
@@ -651,11 +568,7 @@ nav:
             - Extractors:                               properties/lifecycle/extractor.md
             - Refinement:                               properties/lifecycle/refinement.md
             - Retrieval:                                properties/lifecycle/retrieval.md
-        - Data:
-            - Overview:                                 properties/data/overview.md
-            - Core:                                     properties/data/core.md
-            - List of Schemas:                          properties/data/list.md
-            - Periodic Table:                           properties/data/periodic-table.md
+
         - Classification:
             - Overview:                                 properties/classification/overview.md
             - General:                                  properties/classification/general.md
@@ -787,7 +700,7 @@ nav:
         - Accounting:                                   cli/accounting.md
         - Actions:
             - Overview:                                 cli/actions/overview.md
-            - Load / Unload Modules:                    cli/actions/modules-common-actions.md
+            - Load / Unload Modules:                    cli/actions/modules-actions.md
             - Customize Environment:                    cli/actions/customize.md
             - Add new software:                         cli/actions/add-software.md
             - Create Python Environment:                cli/actions/create-python-env.md
@@ -810,8 +723,9 @@ nav:
       - Authentication:                              rest-api/authentication.md
       - Query structure:                             rest-api/query-structure.md
       - Endpoints:                                   rest-api/endpoints.md
-      - Exabyte API client:                          rest-api/api-client.md
-      - Exabyte API examples:                        rest-api/api-examples.md
+      - API Explorer:                              rest-api/api-explorer.md
+      - API client:                          rest-api/api-client.md
+      - API examples:                        rest-api/api-examples.md
 
 
 # TODO: refactor/re-implement and re-enable
@@ -833,7 +747,6 @@ nav:
         - Community Programs:                           other/community-programs.md
         - Terms of Service:                             other/terms-of-service.md  # duplicate through link
         - Restricted Content:                           other/restricted.md
-        - Account Registration:                         other/registration.md
 
     - Benchmarks:
         - Overview:                      benchmarks/overview.md

@@ -15,7 +15,7 @@ render_macros: true
 
 # Passivation of Silicon Nanowire.
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates the process of creating passivated silicon nanowires based on the work presented in the following manuscript, where the chemical gap tuning in silicon nanowires is studied.
 
@@ -34,25 +34,25 @@ Specifically, the material from FIG. 1. of the publication:
 ![Passivated Silicon nanowire](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/0-figure-from-manuscript.webp "Passivated Silicon nanowire, FIG. 1.")
 
 
-## 1. Create Silicon Nanowire.
+## 2. Create Silicon Nanowire
 
-### 1.1. Load Silicon Material.
+### 2.1. Load Silicon Material
 
 Since we're using Silicon, it can be already loaded as the default material and we can skip this step.
 
-Otherwise, we navigate to [Materials Designer](../../../materials-designer/overview.md) and import the silicon material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+Otherwise, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the silicon material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
-### 1.2. Launch JupyterLite Session.
+### 2.2. Launch JupyterLite Session
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
-### 1.3. Open `create_nanowire_custom_shapeipynb` notebook.
+### 2.3. Open `create_nanowire_custom_shapeipynb` notebook
 
 Find `create_nanowire_custom_shape.ipynb` in the list of notebooks and click/double-click open it.
 
-### 1.4. Open and modify the notebook.
+### 2.4. Open and modify the notebook
 
 Next, we need to create a nanowire wit ha custom shape.
 
@@ -129,7 +129,7 @@ vertices = [
 condition = CustomCoordinateCondition(vertices=vertices).condition
 ```
 
-## 1.5. Run the Notebook and use the Material.
+## 3. 1.5. Run the Notebook and use the Material
 
 Run the notebook by clicking `Run` > `Run All` in the top menu to run cells and wait for the results to appear.
 
@@ -139,9 +139,9 @@ After running the notebook and submitting the material, the user will be able to
 
 ![Silicon Nanowire](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/3-silicon-nanowire.webp "Silicon Nanowire")
 
-## 2. Passivate with Hydrogen.
+## 4. Passivate with Hydrogen
 
-### 2.1. Setup the Passivation.
+### 4.1. Setup the Passivation
 
 Open JupyterLite Session again and select Silicon Nanowire material for Input Materials.
 
@@ -186,22 +186,22 @@ Here's the visual of the updated content:
 
 ![Notebook setup](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/5-jl-setup.webp "Notebook setup")
 
-### 2.2. Run the notebook and analyze the results.
+### 4.2. Run the notebook and analyze the results
 
 After running the notebook, the user will be able to visualize the structure of Silicon Nanowire with substitution defects.
 
 ![Review the Results](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/6-jl-result-preview.webp "Review the Results")
 
-## 3. Pass the Material to Materials Designer.
+## 5. Pass the Material to Materials Designer
 
 The user can pass the material with substitution defects in the current Materials Designer environment and save it.
 
 ![Final Material](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/7-wave-result.webp "H-Passivated Silicon Nanowire")
 
-Or the user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
 
-## Interactive JupyterLite Notebook.
+## 6. Interactive JupyterLite Notebook
 
 The following JupyterLite notebook demonstrates the process of creating materials with hydrogen passivation of silicon nanowire. Select "Run" > "Run All Cells".
 
@@ -213,5 +213,5 @@ The following JupyterLite notebook demonstrates the process of creating material
 {% endwith %}
 {% endwith %}
 
-## References.
+## 7. References
 

@@ -16,7 +16,7 @@ render_macros: true
 
 # Ripple perturbation of a Graphene sheet.
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates the process of creating edge induced ripples in graphene nanosheet based on the work presented in the following manuscript, where the mechanical properties of graphene edges were studied.
 
@@ -30,25 +30,25 @@ We will focus on creating graphene with edge-induced ripples that match the patt
 
 ![Rippled Graphene](../../../images/tutorials/materials/defects/perturbation_ripple_graphene/0-figure-from-manuscript.webp "Rippled Graphene, FIG. 1.")
 
-## 1. Create Graphene Nanoribbon.
+## 2. Create Graphene Nanoribbon
 
-### 1.1. Load Graphene Material.
+### 2.1. Load Graphene Material
 
-Navigate to [Materials Designer](../../../materials-designer/overview.md) and import the graphene material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the graphene material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Standata Graphene Import](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/1-standata-graphene.webp "Standata Graphene Import")
 
-### 1.2. Launch JupyterLite Session.
+### 2.2. Launch JupyterLite Session
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
-### 1.3. Open `create_nanoribbon.ipynb` notebook.
+### 2.3. Open `create_nanoribbon.ipynb` notebook
 
 Find `create_nanoribbon.ipynb` in the list of notebooks and click/double-click to open it.
 
-### 1.4. Set up nanoribbon parameters.
+### 2.4. Set up nanoribbon parameters
 
 Edit notebook to set the nanoribbon parameters:
 
@@ -66,19 +66,19 @@ EDGE_TYPE = "zigzag" # "zigzag" or "armchair"
 
 ![Setup Nanoribbon Parameters](../../../images/tutorials/materials/defects/perturbation_ripple_graphene/2-jl-setup-nb-nanoribbon.webp "Setup Nanoribbon Parameters")
 
-### 1.5. Run the notebook.
+### 2.5. Run the notebook
 
 After setting the parameters, run the notebook by selecting "Run > Run All Cells" from the menu. This will create a graphene nanoribbon with the specified dimensions.
 
 ![Nanoribbon Result](../../../images/tutorials/materials/defects/perturbation_ripple_graphene/3-wave-result-nanoribbon.webp "Graphene Nanoribbon")
 
-## 2. Create Ripples in the Nanoribbon.
+## 3. Create Ripples in the Nanoribbon
 
-### 2.1. Open `create_perturbation_custom.ipynb` notebook.
+### 3.1. Open `create_perturbation_custom.ipynb` notebook
 
 Find `create_perturbation_custom.ipynb` in the list of notebooks and click/double-click to open it.
 
-### 2.2. Set up perturbation parameters.
+### 3.2. Set up perturbation parameters
 
 Next, we need to set up the parameters for creating rippled graphene.
 
@@ -174,13 +174,13 @@ Key parameters explained:
 - `EDGE_WIDTH` Controls how far the ripples extend from the edges (0.25 in crystal coordinates)
 - `PHASE_X`/`PHASE_Y` Controls the phase shift of the ripple pattern
 
-### 2.3. Run the notebook.
+### 3.3. Run the notebook
 
 After setting the parameters, run the notebook by selecting "Run > Run All Cells" from the menu.
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
-## 3. Pass the Material to Materials Designer.
+## 4. Pass the Material to Materials Designer
 
 The rippled graphene structure will be automatically passed back to the current Materials Designer environment where user can save it.
 
@@ -192,9 +192,9 @@ Graphene with edge-induced ripples with amplitude of 0.27 crystal units.
 
 ![Final Material](../../../images/tutorials/materials/defects/perturbation_ripple_graphene/6-wave-result-final-2.webp "Final Rippled Graphene, amplitude 0.27 crystal units")
 
-Or user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+Or user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
-## Interactive JupyterLite Notebook.
+## 5. Interactive JupyterLite Notebook
 
 The following JupyterLite notebook demonstrates the process of creating rippled graphene. Select "Run" > "Run All Cells".
 
@@ -206,7 +206,7 @@ The following JupyterLite notebook demonstrates the process of creating rippled 
 {% endwith %}
 {% endwith %}
 
-## Parameters Fine-tuning.
+## 6. Parameters Fine-tuning
 
 If user need to adjust the ripple pattern, user can modify these key parameters:
 
@@ -222,4 +222,4 @@ If user need to adjust the ripple pattern, user can modify these key parameters:
 4. To change the ripple pattern:
    - Adjust PHASE_X and PHASE_Y to modify the wave interference pattern
 
-## References.
+## 7. References

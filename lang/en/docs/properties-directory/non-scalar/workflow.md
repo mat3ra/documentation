@@ -28,4 +28,4 @@ which has generated a workflow named `workflow:pyml_predict`.
 
 ## Schema
 
-The JSON schema and an example implementation can be found [here](../../properties/data/list.md#workflow)
+The JSON schema and an example implementation can be found [here]({{ data_url }}/properties/data/list/#workflow)

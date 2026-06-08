@@ -33,6 +33,6 @@ We explain how to perform file transfers via the [SCP protocol](../../remote-con
 
 Finally, we provide [these instructions](copy-paste.md) on how text can be copied and pasted into the remote connection interfaces, with the help of the above-mentioned [Sidebar](sidebar.md). 
 
-## [Access data in Web Platform](../../ui/overview.md)
+## [Access data in Web Platform]({{ interface_url }}/ui/overview/)
 
-Finally, we review the procedure for exchanging data back and forth between the remote connection interfaces and the [Web Interface](../../ui/overview.md) of our platform, through the use of [Dropbox](../../data-in-objectstorage/dropbox.md).
+Finally, we review the procedure for exchanging data back and forth between the remote connection interfaces and the [Web Interface]({{ interface_url }}/ui/overview/) of our platform, through the use of [Dropbox]({{ resources_url }}/data-in-objectstorage/dropbox/).

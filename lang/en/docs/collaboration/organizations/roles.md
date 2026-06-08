@@ -6,7 +6,7 @@ The conduct of members in an Organization is governed through the user **Roles**
 
 The user who initially created the organization is automatically appointed as its sole **Owner**, which attributes to him certain administrative privileges over the other members. 
 
-This title may be relinquished to other users. In order to do that, a special [request](../../ui/support.md) needs to be made to our support staff.
+This title may be relinquished to other users. In order to do that, a special [request]({{ interface_url }}/ui/support/) needs to be made to our support staff.
 
 ## Administrators
 
@@ -18,7 +18,7 @@ All other non-administrative users belonging to a certain organization are class
 
 ## People
 
-Members of both regular and administrative level are collectively referred to as the **People** of the Organization, which are listed under the corresponding [Explorer Interface](../ui/people-explorer.md).
+Members of both regular and administrative level are collectively referred to as the **People** of the Organization, which are listed under the corresponding [Explorer Interface]({{ interface_url }}/collaboration/ui/people-explorer/).
 
 ## Organizations vs. Personal Accounts
 

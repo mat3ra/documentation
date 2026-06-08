@@ -1,18 +1,18 @@
 # Subworkflow
 
-We define a **Subworkflow** as a set of distinct **units** (elementary calculations) combined together in a flowchart (algorithm), in order to extract one or more [properties](../../properties/overview.md). A subworkflow must be specific to a particular simulation engine [application](../../software/components.md), [model](../../models/overview.md) and [method](../../methods/overview.md).
+We define a **Subworkflow** as a set of distinct **units** (elementary calculations) combined together in a flowchart (algorithm), in order to extract one or more [properties](../../properties/overview.md). A subworkflow must be specific to a particular simulation engine [application]({{ reference_url }}/software/components/), [model]({{ reference_url }}/models/overview/) and [method]({{ reference_url }}/methods/overview/).
 
 ## Model
 
-A **Model** is an entity that contains **scientifically valuable information** about the approximations used for a **simulation**. Models are the object of a [separate discussion](../../models/overview.md).
+A **Model** is an entity that contains **scientifically valuable information** about the approximations used for a **simulation**. Models are the object of a [separate discussion]({{ reference_url }}/models/overview/).
 
 ## Method
 
-A model may have multiple numerical **Methods**, or computational implementations, which are described in detail [here](../../methods/overview.md). A method is implemented inside a [simulation engine](#simulation-engine) (or application), and a single simulation engine can also use one or more methods.
+A model may have multiple numerical **Methods**, or computational implementations, which are described in detail [here]({{ reference_url }}/methods/overview/). A method is implemented inside a [simulation engine](#simulation-engine) (or application), and a single simulation engine can also use one or more methods.
 
 ## Simulation Engine
 
-A **Simulation Engine** is an implementation of a simulation algorithm in software. The engines available on our platform are reviewed [in this section](../../software/components.md) of the documentation.
+A **Simulation Engine** is an implementation of a simulation algorithm in software. The engines available on our platform are reviewed [in this section]({{ reference_url }}/software/components/) of the documentation.
 
 ## Subworkflow Add-ons
 

@@ -1,3 +1,3 @@
-## [Security Policies](../security/security-policies.md)
+## [Security Policies]({{ reference_url }}/security/security-policies/)
 
-We refer the reader to [security policies](../security/security-policies.md) page for more information.
+We refer the reader to [security policies]({{ reference_url }}/security/security-policies/) page for more information.
