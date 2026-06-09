@@ -1,17 +1,6 @@
 # Contribute New Application to Mat3ra Platform
 
-This page explains how developers and advanced users can contribute new
-application to the Mat3ra platform so that it becomes a first-class option in
-both the web-interface and the [Command Line Interface (CLI)](/cli/overview).
-
-This task involves adding necessary configurations to two repositories via pull
-requests. A basic understanding of container technologies (Apptainer,
-Singularity, or Docker), a GitHub account, Node.js installed locally, and a
-working Apptainer `.def` file are required before proceeding. If you need help
-with preparing Apptainer definition, please consult the [Add Software](
-/cli/actions/add-software) page first.
-
-!!!note "TL;DR: How to Contribute a New Application"
+!!!abstract "TL;DR: How to Contribute a New Application"
     Bringing your own application to the Mat3ra platform is a two-step process:
 
     1. **Build the Image:** Package your application into an Apptainer
@@ -23,6 +12,17 @@ with preparing Apptainer definition, please consult the [Add Software](
     and executables, ensuring your image tag matches Step 1 exactly. Create a PR
     to the `standata` repository. Once merged and deployed, the application will
     be available on both the web-interface and the CLI.
+
+This page explains how developers and advanced users can contribute new
+application to the Mat3ra platform so that it becomes a first-class option in
+both the web-interface and the [Command Line Interface (CLI)](/cli/overview).
+
+This task involves adding necessary configurations to two repositories via pull
+requests. A basic understanding of container technologies (Apptainer,
+Singularity, or Docker), a GitHub account, Node.js installed locally, and a
+working Apptainer `.def` file are required before proceeding. If you need help
+with preparing Apptainer definition, please consult the [Add Software](
+/cli/actions/add-software) page first.
 
 
 ![Application Selection in Web-Interface](../../../../images/tutorials/new-application/application-selection-web-ui.webp "Application Selection in Web-Interface")
