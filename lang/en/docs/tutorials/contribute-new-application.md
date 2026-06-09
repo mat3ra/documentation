@@ -160,8 +160,8 @@ apptainer pull oras://ghcr.io/exabyte-io/application-containers-public/espresso:
 
 The image name, and tag are needed in the next section.
 
-### 2.5. Example Pull Requests
-- [GNU build of Quantum ESPRESSO 7.5](https://github.com/Exabyte-io/application-containers-public/pull/7/files)
+### 2.5. Example Pull Request
+- [GNU build of Quantum ESPRESSO 7.5](https://github.com/Exabyte-io/application-containers-public/pull/7/changes)
 - [Intel build of LAMMPS](https://github.com/Exabyte-io/application-containers-public/pull/9/changes)
 
 
@@ -351,7 +351,7 @@ Open a pull request against `standata` only after the container pull request
 has been merged and the image is live in GHCR. Commit the generated files under
 `data/` and `dist/` produced by the build step above.
 
-### 3.8. Example Pull Requests
+### 3.8. Example Pull Request
 - [Quantum ESPRESSO 7.5](https://github.com/Exabyte-io/standata/pull/109/changes)
 - [LAMMPS](https://github.com/Exabyte-io/standata/pull/91/changes)
 
@@ -364,13 +364,13 @@ directories while reviewing the PR changes.
 Merge order is mandatory: the container pull request must be merged first so
 that the image tag referenced in `standata` is valid when that PR is reviewed.
 
-### 4.1. "`application-containers-public` PR" Checklist
+### 4.1. `application-containers-public` PR Checklist
   ✅ `.def` file added under the correct application directory <br/>
   ✅ `manifest.yml` entry with correct name, path, and tag <br/>
   ✅ CI passes (dry-run build succeeds) <br/>
   ✅ Merged first
 
-### 4.2. "`standata` PR" Checklist
+### 4.2. `standata` PR Checklist
   ✅ `applications/myapp.yml` with matching `imageName` and `imageTag` <br/>
   ✅ `!include` added to `application_data.yml` <br/>
   ✅ `executables/myapp/myapp.yml` with at least one flavor <br/>
