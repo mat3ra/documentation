@@ -364,13 +364,13 @@ directories while reviewing the PR changes.
 Merge order is mandatory: the container pull request must be merged first so
 that the image tag referenced in `standata` is valid when that PR is reviewed.
 
-### 4.1. `application-containers-public` PR Checklist
+### 4.1. "`application-containers-public` PR" Checklist
   ✅ `.def` file added under the correct application directory <br/>
   ✅ `manifest.yml` entry with correct name, path, and tag <br/>
   ✅ CI passes (dry-run build succeeds) <br/>
   ✅ Merged first
 
-### 4.2. `standata` PR Checklist
+### 4.2. "`standata` PR" Checklist
   ✅ `applications/myapp.yml` with matching `imageName` and `imageTag` <br/>
   ✅ `!include` added to `application_data.yml` <br/>
   ✅ `executables/myapp/myapp.yml` with at least one flavor <br/>
