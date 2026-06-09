@@ -11,6 +11,20 @@ working Apptainer `.def` file are required before proceeding. If you need help
 with preparing Apptainer definition, please consult the [Add Software](
 /cli/actions/add-software) page first.
 
+!!!note "TL;DR: How to Contribute a New Application"
+    Bringing your own application to the Mat3ra platform is a two-step process:
+
+    1. **Build the Image:** Package your application into an Apptainer
+    container. Create a PR to the `application-containers-public` repository
+    with the Apptainer `.def` file and register it in `manifest.yml`. Merge this
+    PR first so the container image is built and published to the registry.
+
+    2. **Update the Metadata:** Add the application's YAML metadata, templates,
+    and executables, ensuring your image tag matches Step 1 exactly. Create a PR
+    to the `standata` repository. Once merged and deployed, the application will
+    be available on both the web-interface and the CLI.
+
+
 ![Application Selection in Web-Interface](../../../../images/tutorials/new-application/application-selection-web-ui.webp "Application Selection in Web-Interface")
 
 
