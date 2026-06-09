@@ -1,17 +1,20 @@
 # Contribute New Application to Mat3ra Platform
 
-!!!abstract "TL;DR: How to Contribute a New Application"
+!!!abstract "TL;DR"
     Bringing your own application to the Mat3ra platform is a two-step process:
 
     1. **Build the Image:** Package your application into an Apptainer
-    container. Create a PR to the `application-containers-public` repository
+    container. Create a PR to the [application-containers-public](
+    https://github.com/Exabyte-io/application-containers-public) repository
     with the Apptainer `.def` file and register it in `manifest.yml`. Merge this
-    PR first so the container image is built and published to the registry.
+    PR first so the container image is built and published to the GitHub
+    Container Registry (GHCR).
 
     2. **Update the Metadata:** Add the application's YAML metadata, templates,
     and executables, ensuring your image tag matches Step 1 exactly. Create a PR
-    to the `standata` repository. Once merged and deployed, the application will
-    be available on both the web-interface and the CLI.
+    to the [standata](https://github.com/Exabyte-io/standata) repository. Once
+    merged and deployed, the application will be available on both the
+    web-interface and the CLI.
 
 This page explains how developers and advanced users can contribute new
 application to the Mat3ra platform so that it becomes a first-class option in
