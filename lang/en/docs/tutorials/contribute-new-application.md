@@ -160,7 +160,7 @@ apptainer pull oras://ghcr.io/exabyte-io/application-containers-public/espresso:
 
 The image name, and tag are needed in the next section.
 
-### 2.5. Example Pull Request
+### 2.5. Example Pull Requests
 - [GNU build of Quantum ESPRESSO 7.5](https://github.com/Exabyte-io/application-containers-public/pull/7/changes)
 - [Intel build of LAMMPS](https://github.com/Exabyte-io/application-containers-public/pull/9/changes)
 
@@ -351,7 +351,7 @@ Open a pull request against `standata` only after the container pull request
 has been merged and the image is live in GHCR. Commit the generated files under
 `data/` and `dist/` produced by the build step above.
 
-### 3.8. Example Pull Request
+### 3.8. Example Pull Requests
 - [Quantum ESPRESSO 7.5](https://github.com/Exabyte-io/standata/pull/109/changes)
 - [LAMMPS](https://github.com/Exabyte-io/standata/pull/91/changes)
 
