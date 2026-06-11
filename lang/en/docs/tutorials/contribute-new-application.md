@@ -21,11 +21,12 @@ application to the Mat3ra platform so that it becomes a first-class option in
 both the web-interface and the [Command Line Interface (CLI)](/cli/overview).
 
 This task involves adding necessary configurations to two repositories via pull
-requests. A basic understanding of container technologies (Apptainer,
-Singularity, or Docker), a GitHub account, Node.js installed locally, and a
-working Apptainer `.def` file are required before proceeding. If you need help
-with preparing Apptainer definition, please consult the [Add Software](
-/cli/actions/add-software) page first.
+requests. A basic understanding of container technologies (such as Apptainer,
+Singularity, or Docker), a GitHub account, [Node.js](https://nodejs.org)
+installed in local development machine, and a working Apptainer `.def` file are
+required before proceeding. If you need help with preparing Apptainer
+definition, please consult the [Add Software](/cli/actions/add-software) page
+first.
 
 
 ![Application Selection in Web-Interface](../../../../images/tutorials/new-application/application-selection-web-ui.webp "Application Selection in Web-Interface")
@@ -83,8 +84,9 @@ flowchart TB
 
 ### 2.1. Fork and clone the repository
 
-First, fork `github.com/Exabyte-io/application-containers-public` on GitHub,
-then clone the fork locally. The top-level layout is:
+First, fork [github.com/Exabyte-io/application-containers-public](
+https://github.com/Exabyte-io/application-containers-public) on GitHub, then
+clone the fork locally. The top-level layout is:
 
 ```
 application-containers-public/
@@ -158,8 +160,8 @@ The three fields are:
 - `path` → location of the `.def` file relative to the repository root.
 - `tag` → follows the convention `<version>-<toolchain>-<N>` where `N` is a
   build iteration starting from `0`. Bump `N` whenever the recipe changes
-  without a version change; the CI treats tags as immutable and skips a build
-  if the tag already exists.
+  without a version change for the application; the CI treats tags as immutable
+  and skips a build if the tag already exists.
 
 ### 2.4. Open the pull request and verify the build
 
@@ -193,7 +195,8 @@ The image name, and tag are needed in the next section.
 
 ### 3.1. Fork and clone the repository
 
-Fork `github.com/Exabyte-io/standata` and clone locally. The relevant subtree is:
+Fork [github.com/Exabyte-io/standata](https://github.com/Exabyte-io/standata)
+and clone locally. The relevant subtree is:
 
 ```
 assets/applications/
@@ -409,7 +412,7 @@ application is also available via modulefile for CLI use.
 
 ## 5. References
 
-- Local recipe authoring: [Add Software](/cli/actions/add-software)
+- Apptainer Definition and container building: [Adding New Software](/cli/actions/add-software)
 - Container repository: [github.com/Exabyte-io/application-containers-public](https://github.com/Exabyte-io/application-containers-public)
 - Metadata repository: [github.com/Exabyte-io/standata](https://github.com/Exabyte-io/standata)
 - Published images: [Exabyte-io packages on GHCR](https://github.com/orgs/Exabyte-io/packages?repo_name=application-containers-public)
