@@ -1,6 +1,6 @@
 {
     "descriptionLinks": [
-        "Running Python-based ML workflows in Mat3ra platform: https://docs.mat3ra.com/tutorials/ml/mattersim/"
+        "Running Python-based ML workflows in Mat3ra platform: https://docs.mat3ra.com/tutorials/ml/run-mlff-python-workflows-mattersim/"
     ],
     "description": "How to run Python-based ML workflows in Mat3ra platform.",
     "tags": [

@@ -48,9 +48,6 @@ extra:
     cli_url: https://docs.mat3ra.com/command-line
     data_url: https://docs.mat3ra.com/standards
 
-
-
-
 nav:
     - Home:                                              index.md
 

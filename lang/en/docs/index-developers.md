@@ -18,3 +18,7 @@ Programmatic access to the Mat3ra platform.
 - [Endpoints](rest-api/endpoints.md) — available resources
 - [API client library](rest-api/api-client.md)
 - [API examples](rest-api/api-examples.md) — common usage patterns
+
+## Miscellaneous
+
+- [Contribute new applications]({{ guide_url }}/tutorials/contribute-new-application) — How to bring your own applications to the Mat3ra platform
