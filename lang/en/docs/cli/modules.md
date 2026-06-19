@@ -99,7 +99,7 @@ modules, by partially inserting the module's name. This functionality is
 demonstrated in the example below.
 
 ```text
-[mat3ra@master-production-20250821-cluster-001:~]$ $ module avail espresso
+[mat3ra@master-production-20250821-cluster-001:~]$ module avail espresso
 --------------------------- /export/compute/modulefiles/applications ---------------------------
 espresso/6.3-gnu        espresso/7.5-gnu
 espresso/7.5-cuda-12.8  espresso/7.5-host-intel-2023.1-libxc-7.0
