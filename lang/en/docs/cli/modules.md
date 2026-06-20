@@ -76,13 +76,22 @@ for an introduction to the codes, libraries and software packages listed here.
 ```text
 mat3ra@master-production-20250821-cluster-001:~$ module avail
 --------------------------- /export/compute/modulefiles/applications ---------------------------
-deepmd/3.1.2-cpu        espresso/7.5-host-intel-2023.1-libxc-7.0    nwchem/7.0.2-gnu
-espresso/6.3-gnu        lammps/2025.07.22.2-gnu                     vasp/5.4.4-gnu
-espresso/7.5-cuda-12.8  lammps/2025.07.22.2-intel-2023.1
-espresso/7.5-gnu        lammps/2025.07.22.2-intel-2023.1-cuda-12.8
+deepmd/3.1.2-cpu
+espresso/6.3-gnu
+espresso/7.5-cuda-12.8
+espresso/7.5-gnu
+espresso/7.5-host-intel-2023.1-libxc-7.0
+lammps/2025.07.22.2-gnu
+lammps/2025.07.22.2-intel-2023.1
+lammps/2025.07.22.2-intel-2023.1-cuda-12.8
+nwchem/7.0.2-gnu
+vasp/5.4.4-gnu
 
 ---------------------------- /export/compute/modulefiles/libraries -----------------------------
-cuda/12.4-cudnn-9.6  intel/oneapi-2023.1.0  mpi/ompi-4.1.1  nvhpc/25.3-cuda-12.8
+cuda/12.4-cudnn-9.6
+intel/oneapi-2023.1.0
+mpi/ompi-4.1.1
+nvhpc/25.3-cuda-12.8
 
 ---------------------------- /export/compute/modulefiles/compilers -----------------------------
 gcc/11.2.0
@@ -101,8 +110,10 @@ demonstrated in the example below.
 ```text
 [mat3ra@master-production-20250821-cluster-001:~]$ module avail espresso
 --------------------------- /export/compute/modulefiles/applications ---------------------------
-espresso/6.3-gnu        espresso/7.5-gnu
-espresso/7.5-cuda-12.8  espresso/7.5-host-intel-2023.1-libxc-7.0
+espresso/6.3-gnu
+espresso/7.5-cuda-12.8
+espresso/7.5-gnu
+espresso/7.5-host-intel-2023.1-libxc-7.0
 
 Key:
 modulepath  default-version
