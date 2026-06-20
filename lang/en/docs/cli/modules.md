@@ -98,9 +98,6 @@ gcc/11.2.0
 
 ---------------------------- /export/compute/modulefiles/languages -----------------------------
 python/3.10.13
-
-Key:
-modulepath  default-version
 ```
 
 Through the `module avail` command, the user can also **search** for available
@@ -114,9 +111,6 @@ espresso/6.3-gnu
 espresso/7.5-cuda-12.8
 espresso/7.5-gnu
 espresso/7.5-host-intel-2023.1-libxc-7.0
-
-Key:
-modulepath  default-version
 ```
 
 ## Actions
