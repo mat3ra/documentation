@@ -1,4 +1,4 @@
-# Contribute New Application to Mat3ra Platform
+# Contribute New Applications to Mat3ra
 
 !!!abstract "TL;DR"
     Bringing your own application to the Mat3ra platform is a two-step process:
