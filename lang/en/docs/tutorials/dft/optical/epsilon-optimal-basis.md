@@ -2,7 +2,7 @@
 
 This tutorial demonstrates how to calculate the dielectric function of silicon using the SIMPLE.x program in Quantum ESPRESSO, which employs optimal basis functions for optical property calculations. The detailed physics behind this method is described in: [SIMPLE code: Optical properties with optimal basis functions, Prandini, G., Galante, M., Marzari, N., & Umari, P., Computer Physics Communications, **240**, 106 (2019)](https://doi.org/10.1016/j.cpc.2019.02.016).
 
-The workflow below replicates [example 5 from the Quantum ESPRESSO GWW directory](https://gitlab.com/QEF/q-e/-/tree/qe-7.3/GWW/examples/). Input and reference output files are also available in the [CLI-job-examples repository](https://github.com/Exabyte-io/cli-job-examples/tree/main/espresso/simple.x).
+The workflow below replicates [example 5 from the Quantum ESPRESSO GWW directory](https://gitlab.com/QEF/q-e/-/tree/qe-7.3/GWW/examples/). Input and reference output files are also available in the [CLI-job-examples repository](https://github.com/mat3ra/cli-job-examples/tree/main/espresso/simple.x).
 
 
 ## 1. Create the workflow

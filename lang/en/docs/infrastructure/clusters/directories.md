@@ -6,7 +6,7 @@ The following directories are present under the home folder of each cluster (ref
 .
 ├── data
 ├── dropbox              => /dropbox/gmogni
-├── exabyte-io           => /cluster-001-share/groups/exabyte-io
+├── mat3ra           => /cluster-001-share/groups/mat3ra
 └── job_script_templates => /export/compute/job_script_templates
 ```
 
@@ -33,9 +33,9 @@ The "dropbox" and "job_script_templates" folders are present under both Cluster 
     
 ## Shared Folders for Organizations
 
-Simulations data for [Organizations]({{ reference_url }}/collaboration/organizations/overview/) (collaborative [accounts]({{ reference_url }}/accounts/overview/)) is stored in a dedicated **shared folder** accessible by its **members only**. This shared folder bears the same name as the Organization itself: for example, "exabyte-io" in the visual above.  Simulation files present under this data are organized according to the Project/Job based directory naming explained below.
+Simulations data for [Organizations]({{ reference_url }}/collaboration/organizations/overview/) (collaborative [accounts]({{ reference_url }}/accounts/overview/)) is stored in a dedicated **shared folder** accessible by its **members only**. This shared folder bears the same name as the Organization itself: for example, "mat3ra" in the visual above.  Simulation files present under this data are organized according to the Project/Job based directory naming explained below.
 
-Each organization of which the user is member has its own corresponding shared directory. For example, organization `exabyte-io` has its folder under the path `/share/groups/exabyte-io/`.
+Each organization of which the user is member has its own corresponding shared directory. For example, organization `mat3ra` has its folder under the path `/share/groups/mat3ra/`.
 
 ## Temporary Data
  

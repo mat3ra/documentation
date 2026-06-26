@@ -1,6 +1,6 @@
 # ESSE Data Convention
 
-Our approach towards storing and organizing structured data is based on the **ESSE Data Convention (EDC)** explained in the present documentation. ESSE stands for Essential Source of Schemas and Examples. The corresponding schema implementations are open-source and available in the [GitHub repository](https://github.com/Exabyte-io/esse) and as a package on [PyPI](https://pypi.org/project/mat3ra-esse/).
+Our approach towards storing and organizing structured data is based on the **ESSE Data Convention (EDC)** explained in the present documentation. ESSE stands for Essential Source of Schemas and Examples. The corresponding schema implementations are open-source and available in the [GitHub repository](https://github.com/mat3ra/esse) and as a package on [PyPI](https://pypi.org/project/mat3ra-esse/).
 
 We use this convention to store and organize the information associated with the [Entities]({{ reference_url }}/entities-general/overview/) present across our platform, and their corresponding [Accounts]({{ reference_url }}/accounts/overview/) and [Permissions]({{ reference_url }}/entities-general/permissions/). The convention is designed with the aim of facilitating both the access and collaboration with regards to such entities. The fundamental practices are further elucidated in the sections below.
 

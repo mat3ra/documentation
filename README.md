@@ -11,7 +11,7 @@ For a quick installation:
 2. Clone this repository:
 
     ```bash
-    git clone https://github.com/Exabyte-io/documentation.git
+    git clone https://github.com/mat3ra/documentation.git
     ```
 
 3. Setup virtual environment
@@ -457,7 +457,7 @@ Including a clickable image map is done as follows. Note that absolute paths to 
 
 Including resolved JSON schemas and associated examples should be done within dedicated `data.md` pages for each concept being explained.
 
-The [markdown_include](https://github.com/Exabyte-io/markdown-include) package is used to include JSON content into markdown documents, by putting direct links to pages inside the [ESSE repository](https://github.com/Exabyte-io/exabyte-esse) instead of copying their contents in the main documentation.
+The [markdown_include](https://github.com/mat3ra/markdown-include) package is used to include JSON content into markdown documents, by putting direct links to pages inside the [ESSE repository](https://github.com/mat3ra/exabyte-esse) instead of copying their contents in the main documentation.
 
 ```text
     === "Schema"

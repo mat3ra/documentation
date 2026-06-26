@@ -19,10 +19,10 @@ Connect to the login node via [SSH client]({{ cli_url }}/remote-connection/ssh/)
 
 ## 2. Clone the example repository
 
-The example job is available in the git repository [exabyte-io/cli-job-examples](https://github.com/exabyte-io/cli-job-examples). Clone the repository to the working directory:
+The example job is available in the git repository [mat3ra/cli-job-examples](https://github.com/mat3ra/cli-job-examples). Clone the repository to the working directory:
 
 ```bash
-git clone https://github.com/exabyte-io/cli-job-examples
+git clone https://github.com/mat3ra/cli-job-examples
 cd cli-job-examples
 git lfs pull
 cd espresso/gpu
