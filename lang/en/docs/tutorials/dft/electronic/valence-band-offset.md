@@ -42,9 +42,9 @@ Three materials are required, corresponding to the MoS<sub>2</sub>/WS<sub>2</sub
 
 The initial interface structure was taken from [materialsproject.org](https://materialsproject.org/materials/mp-1023954) and optimized via variable-cell relaxation of the x- and y-components. The monolayer structures were extracted from the interface and optimized in the same way. The final structures are available on the Mat3ra platform:
 
-- [MoS2/WS2 heterostructure](https://platform.mat3ra.com/exabyte-io/materials/cxgeoQwPJQJbgA2aD)
-- [WS<sub>2</sub> monolayer](https://platform.mat3ra.com/exabyte-io/materials/5JcsfbBPKFWjxGXkX)
-- [MoS<sub>2</sub> monolayer](https://platform.mat3ra.com/exabyte-io/materials/Cyr7Y6sefZsmZo6bH)
+- [MoS2/WS2 heterostructure](https://platform.mat3ra.com/mat3ra/materials/cxgeoQwPJQJbgA2aD)
+- [WS<sub>2</sub> monolayer](https://platform.mat3ra.com/mat3ra/materials/5JcsfbBPKFWjxGXkX)
+- [MoS<sub>2</sub> monolayer](https://platform.mat3ra.com/mat3ra/materials/Cyr7Y6sefZsmZo6bH)
 
 !!!warning "Material order"
     The VBO workflow assumes the interface structure corresponds to the first material. The interface structure must be loaded first.
@@ -54,7 +54,7 @@ The initial interface structure was taken from [materialsproject.org](https://ma
 
 The [workflow]({{ reference_url }}/workflows/overview/) for calculating the VBO can be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). The workflow can then be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 
-A [representation of this workflow](https://github.com/Exabyte-io/wode.js/blob/2022.11.16-0/assets/workflows/espresso/valence_band_offset.yml) is also available in the Mat3ra workflow definitions repository ([wode.js](https://github.com/Exabyte-io/wode.js)).
+A [representation of this workflow](https://github.com/mat3ra/wode.js/blob/2022.11.16-0/assets/workflows/espresso/valence_band_offset.yml) is also available in the Mat3ra workflow definitions repository ([wode.js](https://github.com/mat3ra/wode.js)).
 
 [![Valence Band Offset Workflow](../../../images/tutorials/valence-band-offset-workflow.png "Valence Band Offset Workflow")](../../../images/tutorials/valence-band-offset-workflow.png)
 

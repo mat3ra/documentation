@@ -21,7 +21,7 @@ To access JupyterLite directly, navigate to the following URL:
 https://jupyterlite.mat3ra.com/lab/index.html
 ```
 
-To access the Introduction notebook summarizing the functionality available in [mat3ra-made](https://github.com/Exabyte-io/made):
+To access the Introduction notebook summarizing the functionality available in [mat3ra-made](https://github.com/mat3ra/made):
 
 ```
 https://jupyterlite.mat3ra.com/lab/tree?path=made/Introduction.ipynb

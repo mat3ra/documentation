@@ -5,14 +5,14 @@
 
     1. **Build the Image:** Package your application into an Apptainer
     container. Create a PR to the [application-containers-public](
-    https://github.com/Exabyte-io/application-containers-public) repository
+    https://github.com/mat3ra/application-containers-public) repository
     with the Apptainer `.def` file and register it in `manifest.yml`. Merge this
     PR first so the container image is built and published to the GitHub
     Container Registry (GHCR).
 
     2. **Update the Metadata:** Add the application's YAML metadata, templates,
     and executables, ensuring your image tag matches Step 1 exactly. Create a PR
-    to the [standata](https://github.com/Exabyte-io/standata) repository. Once
+    to the [standata](https://github.com/mat3ra/standata) repository. Once
     merged and deployed, the application will be available on both the
     web-interface and the CLI.
 
@@ -40,12 +40,12 @@ Contributing a new application involves creating Pull Requests (PRs) to two
 repositories:
 
 [**application-containers-public**](
-https://github.com/Exabyte-io/application-containers-public) holds the Apptainer
+https://github.com/mat3ra/application-containers-public) holds the Apptainer
 definition files and a `manifest.yml` that drives a GitHub Actions (GHA)
 workflow. On merge, GHA builds each image and pushes it to the GitHub Container
 Registry (GHCR).
 
-[**standata**](https://github.com/Exabyte-io/standata) holds the platform
+[**standata**](https://github.com/mat3ra/standata) holds the platform
 metadata, including application name, version, build flavor, the GHCR image tag
 to pull, and the runtime environment variables. The platform reads this
 repository to populate the application dropdown in the web-interface. Necessary
@@ -84,8 +84,8 @@ flowchart TB
 
 ### 2.1. Fork and clone the repository
 
-First, fork [github.com/Exabyte-io/application-containers-public](
-https://github.com/Exabyte-io/application-containers-public) on GitHub, then
+First, fork [github.com/mat3ra/application-containers-public](
+https://github.com/mat3ra/application-containers-public) on GitHub, then
 clone the fork locally. The top-level layout is:
 
 ```
@@ -113,7 +113,7 @@ possible:
 
 ```singularity
 Bootstrap: oras
-From: ghcr.io/exabyte-io/application-containers-public/almalinux-apptainer-gnu:9.7-2
+From: ghcr.io/mat3ra/application-containers-public/almalinux-apptainer-gnu:9.7-2
 ```
 
 This reuses tested toolchains and keeps build times short.
@@ -174,14 +174,14 @@ checks whether each tag already exists in GHCR, and if not, runs
 After merge, the image is available at:
 
 ```bash
-apptainer pull oras://ghcr.io/exabyte-io/application-containers-public/espresso:7.5-gnu-1
+apptainer pull oras://ghcr.io/mat3ra/application-containers-public/espresso:7.5-gnu-1
 ```
 
 The image name, and tag are needed in the next section.
 
 ### 2.5. Example Pull Requests
-- [GNU build of Quantum ESPRESSO 7.5](https://github.com/Exabyte-io/application-containers-public/pull/7/changes)
-- [Intel build of LAMMPS](https://github.com/Exabyte-io/application-containers-public/pull/9/changes)
+- [GNU build of Quantum ESPRESSO 7.5](https://github.com/mat3ra/application-containers-public/pull/7/changes)
+- [Intel build of LAMMPS](https://github.com/mat3ra/application-containers-public/pull/9/changes)
 
 
 ## 3. `standata` repository
@@ -195,7 +195,7 @@ The image name, and tag are needed in the next section.
 
 ### 3.1. Fork and clone the repository
 
-Fork [github.com/Exabyte-io/standata](https://github.com/Exabyte-io/standata)
+Fork [github.com/mat3ra/standata](https://github.com/mat3ra/standata)
 and clone locally. The relevant subtree is:
 
 ```
@@ -372,8 +372,8 @@ has been merged and the image is live in GHCR. Commit the generated files under
 `data/` and `dist/` produced by the build step above.
 
 ### 3.8. Example Pull Requests
-- [Quantum ESPRESSO 7.5](https://github.com/Exabyte-io/standata/pull/109/changes)
-- [LAMMPS](https://github.com/Exabyte-io/standata/pull/91/changes)
+- [Quantum ESPRESSO 7.5](https://github.com/mat3ra/standata/pull/109/changes)
+- [LAMMPS](https://github.com/mat3ra/standata/pull/91/changes)
 
 One may ignore the auto-generated files under `data/`, `dist/`, and `src/`
 directories while reviewing the PR changes.
@@ -413,6 +413,6 @@ application is also available via modulefile for CLI use.
 ## 5. References
 
 - Apptainer Definition and container building: [Adding New Software](/cli/actions/add-software)
-- Container repository: [github.com/Exabyte-io/application-containers-public](https://github.com/Exabyte-io/application-containers-public)
-- Metadata repository: [github.com/Exabyte-io/standata](https://github.com/Exabyte-io/standata)
-- Published images: [Exabyte-io packages on GHCR](https://github.com/orgs/Exabyte-io/packages?repo_name=application-containers-public)
+- Container repository: [github.com/mat3ra/application-containers-public](https://github.com/mat3ra/application-containers-public)
+- Metadata repository: [github.com/mat3ra/standata](https://github.com/mat3ra/standata)
+- Published images: [Mat3ra packages on GHCR](https://github.com/orgs/mat3ra/packages?repo_name=application-containers-public)

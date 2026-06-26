@@ -1,5 +1,5 @@
-repo_name: 'exabyte-io/documentation'
-repo_url: 'https://github.com/exabyte-io/documentation'
+repo_name: 'mat3ra/documentation'
+repo_url: 'https://github.com/mat3ra/documentation'
 edit_uri: 'edit/main/lang/en/docs/'
 
 extra_css:
@@ -31,7 +31,7 @@ extra:
         - /extra/js/preload.js
     social:
         - icon: fontawesome/brands/github
-          link: https://github.com/exabyte-io
+          link: https://github.com/mat3ra
         - icon: fontawesome/brands/youtube
           link: https://www.youtube.com/c/Mat3ra/videos
         - icon: fontawesome/brands/linkedin

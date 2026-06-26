@@ -165,7 +165,7 @@ Platform access, notebook environments, and software management.
 
 <!--
 TODOs:
-- add noteebooks from https://github.com/Exabyte-io/api-examples/tree/main/other/materials_designer
+- add noteebooks from https://github.com/mat3ra/api-examples/tree/main/other/materials_designer
 - add notebooks for workflows from api-examples
 - add mention of "experiments" from api-examples
 -->

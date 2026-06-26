@@ -119,7 +119,7 @@ Find `create_island_defect.ipynb` in the list of notebooks and double-click open
 
 ### 4.2. Modify the notebook
 
-Next, edit `create_island_defect.ipynb` notebook to modify the parameters by adding a list of [defect configuration objects](https://github.com/Exabyte-io/made/blob/3d938b4d91a31323dca7a02acb12b646dbb26634/src/py/mat3ra/made/tools/build/defect/configuration.py#L191) containing the cartesian coordinates of the island vertices.
+Next, edit `create_island_defect.ipynb` notebook to modify the parameters by adding a list of [defect configuration objects](https://github.com/mat3ra/made/blob/3d938b4d91a31323dca7a02acb12b646dbb26634/src/py/mat3ra/made/tools/build/defect/configuration.py#L191) containing the cartesian coordinates of the island vertices.
 
 With the same TiN material selected in the materials input and coordinates for the island vertices from the previous step, the user can create the island on the surface.
 

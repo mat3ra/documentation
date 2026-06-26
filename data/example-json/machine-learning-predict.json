@@ -8,7 +8,7 @@
     },
     "owner": {
         "_id": "5b143a4ecd313f405b314224",
-        "slug": "exabyte-io",
+        "slug": "mat3ra",
         "cls": "Account"
     },
     "schemaVersion": "0.2.0",
@@ -219,7 +219,7 @@
                                 "CONTAINER": "production-20160630-cluster-001",
                                 "PROVIDER": "aws",
                                 "REGION": "us-east-1",
-                                "NAME": "/cluster-001-share/groups/exabyte-io/exabyte-io-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/target.pkl"
+                                "NAME": "/cluster-001-share/groups/mat3ra/mat3ra-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/target.pkl"
                             }
                         },
                         {
@@ -230,7 +230,7 @@
                                 "CONTAINER": "production-20160630-cluster-001",
                                 "PROVIDER": "aws",
                                 "REGION": "us-east-1",
-                                "NAME": "/cluster-001-share/groups/exabyte-io/exabyte-io-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/workflow_context_file_mapping"
+                                "NAME": "/cluster-001-share/groups/mat3ra/mat3ra-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/workflow_context_file_mapping"
                             }
                         },
                         {
@@ -241,7 +241,7 @@
                                 "CONTAINER": "production-20160630-cluster-001",
                                 "PROVIDER": "aws",
                                 "REGION": "us-east-1",
-                                "NAME": "/cluster-001-share/groups/exabyte-io/exabyte-io-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/descriptors.pkl"
+                                "NAME": "/cluster-001-share/groups/mat3ra/mat3ra-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/descriptors.pkl"
                             }
                         },
                         {
@@ -252,7 +252,7 @@
                                 "CONTAINER": "production-20160630-cluster-001",
                                 "PROVIDER": "aws",
                                 "REGION": "us-east-1",
-                                "NAME": "/cluster-001-share/groups/exabyte-io/exabyte-io-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/target_scaler.pkl"
+                                "NAME": "/cluster-001-share/groups/mat3ra/mat3ra-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/target_scaler.pkl"
                             }
                         },
                         {
@@ -263,7 +263,7 @@
                                 "CONTAINER": "production-20160630-cluster-001",
                                 "PROVIDER": "aws",
                                 "REGION": "us-east-1",
-                                "NAME": "/cluster-001-share/groups/exabyte-io/exabyte-io-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/descriptor_scaler.pkl"
+                                "NAME": "/cluster-001-share/groups/mat3ra/mat3ra-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/descriptor_scaler.pkl"
                             }
                         },
                         {
@@ -274,7 +274,7 @@
                                 "CONTAINER": "production-20160630-cluster-001",
                                 "PROVIDER": "aws",
                                 "REGION": "us-east-1",
-                                "NAME": "/cluster-001-share/groups/exabyte-io/exabyte-io-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/sklearn_mlp.pkl"
+                                "NAME": "/cluster-001-share/groups/mat3ra/mat3ra-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/sklearn_mlp.pkl"
                             }
                         },
                         {
@@ -285,7 +285,7 @@
                                 "CONTAINER": "production-20160630-cluster-001",
                                 "PROVIDER": "aws",
                                 "REGION": "us-east-1",
-                                "NAME": "/cluster-001-share/groups/exabyte-io/exabyte-io-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/predictions.pkl"
+                                "NAME": "/cluster-001-share/groups/mat3ra/mat3ra-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/predictions.pkl"
                             }
                         },
                         {
@@ -296,7 +296,7 @@
                                 "CONTAINER": "production-20160630-cluster-001",
                                 "PROVIDER": "aws",
                                 "REGION": "us-east-1",
-                                "NAME": "/cluster-001-share/groups/exabyte-io/exabyte-io-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/RMSE.pkl"
+                                "NAME": "/cluster-001-share/groups/mat3ra/mat3ra-2021-ml-work/checking-ml-file-property-ec8ToqKwpWDGiyNCS/.job_context/RMSE.pkl"
                             }
                         }
                     ],

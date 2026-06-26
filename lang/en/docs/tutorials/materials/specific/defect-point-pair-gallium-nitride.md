@@ -78,7 +78,7 @@ Find `create_point_defect_pair.ipynb` in the list of notebooks and click/double-
 
 ### 4.3. Open and modify the notebook
 
-Next, edit `create_point_defect_pair.ipynb` notebook to modify the parameters by adding a list of [defect configuration objects](https://github.com/Exabyte-io/made/blob/3d938b4d91a31323dca7a02acb12b646dbb26634/src/py/mat3ra/made/tools/build/defect/configuration.py#L257) containing the approximate coordinates of the atoms to replace.
+Next, edit `create_point_defect_pair.ipynb` notebook to modify the parameters by adding a list of [defect configuration objects](https://github.com/mat3ra/made/blob/3d938b4d91a31323dca7a02acb12b646dbb26634/src/py/mat3ra/made/tools/build/defect/configuration.py#L257) containing the approximate coordinates of the atoms to replace.
 
 Copy the below content and edit the "1.1. Set up defect parameters" cell in the notebook as follows:
 

@@ -98,15 +98,15 @@ JavaScript packages are available on [npm](https://www.npmjs.com/search?q=%40mat
 
 ### 6.2. Open-Source Repositories
 
-- [Exabyte-io GitHub organization](https://github.com/Exabyte-io/){:target='_blank'} — data structures for materials, workflows, and properties
-- [Materials Designer](https://github.com/Exabyte-io/materials-designer){:target='_blank'} — JavaScript library for web-based materials design
-- [API examples](https://github.com/Exabyte-io/api-examples){:target='_blank'} — Jupyter notebooks demonstrating REST API usage
+- [Mat3ra GitHub organization](https://github.com/mat3ra/){:target='_blank'} — data structures for materials, workflows, and properties
+- [Materials Designer](https://github.com/mat3ra/materials-designer){:target='_blank'} — JavaScript library for web-based materials design
+- [API examples](https://github.com/mat3ra/api-examples){:target='_blank'} — Jupyter notebooks demonstrating REST API usage
 
 ### 6.3. Programmatic Access (REST API)
 
-- [Upload materials](https://github.com/Exabyte-io/api-examples/blob/main/examples/material/create_material.ipynb){:target='_blank'}
-- [Run simulations and extract properties as JSON](https://github.com/Exabyte-io/api-examples/blob/main/examples/job/run-simulations-and-extract-properties.ipynb){:target='_blank'}
-- [All API examples (GitHub)](https://github.com/Exabyte-io/api-examples){:target='_blank'}
+- [Upload materials](https://github.com/mat3ra/api-examples/blob/main/examples/material/create_material.ipynb){:target='_blank'}
+- [Run simulations and extract properties as JSON](https://github.com/mat3ra/api-examples/blob/main/examples/job/run-simulations-and-extract-properties.ipynb){:target='_blank'}
+- [All API examples (GitHub)](https://github.com/mat3ra/api-examples){:target='_blank'}
 
 
 ## 7. Learning Resources
