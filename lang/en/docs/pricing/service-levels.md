@@ -35,7 +35,7 @@ Readers are referred to [Service Levels]({{ reference_url }}/accounts/service-le
 [^1]: For organizational accounts that opt for [wire-based electronic payments]({{ reference_url }}/accounts/payments-charges/#wire-based-payments).
 
 !!! note "Contact us for detailed pricing"
-    For detailed pricing or a quotation please contact us at <a href="mailto:sales@exabyte.io" target="_blank">sales@exabyte.io</a>.
+    For detailed pricing or a quotation please contact us at <a href="mailto:sales@mat3ra.com" target="_blank">sales@mat3ra.com</a>.
 
 ## Category-based pricing
 
@@ -49,7 +49,7 @@ The compute price above refers to the **Ordinary** [cost category]({{ resources_
 
 ## Queue- and Cluster-dependent pricing
 
-As the type of hardware and scheduling policies vary for different submission queues, the pricing is also different. For, example, GPU-enabled nodes are available within a certain subset of queues and are generally priced higher.
+As the type of hardware and scheduling policies vary for different submission queues, the pricing is also different. For example, GPU-enabled nodes are available within a certain subset of queues and are generally priced higher.
 
 Detailed description of submission queues is available [here]({{ resources_url }}/infrastructure/resource/queues/). Clusters and associated hardware and pricing are explained in [this section]({{ resources_url }}/infrastructure/clusters/overview/)
 
