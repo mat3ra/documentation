@@ -54,6 +54,4 @@ Review the [Compute tab]({{ interface_url }}/jobs-designer/compute-tab/) to ensu
 
 Once the job completes, navigate to the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of the [Job Viewer]({{ interface_url }}/jobs/ui/viewer/). The **Formation Energy** property will be displayed. More negative values indicate greater thermodynamic stability relative to the elemental standard states.
 
-## Notebook Alternative
 
-You can also run this workflow programmatically using the JupyterLite notebook. See the `formation_energy.ipynb` tutorial in the `materials_designer/workflows/` directory of the API Examples repository.

@@ -11,9 +11,6 @@ $$
 $$	
  
  `E_fmt` and `E_tot`, `E_zpe` are the formation energy, total energy and zero point energy for the compound and lowest energy elemental structures, correspondingly.
-  
-  !!!note "Zero Point Energy"
-     The inclusion of Zero Point Energy ($E_{zpe}$) is optional and depends on the specific computational workflow. The standard Quantum ESPRESSO workflow uses only the ground-state total energy ($E_{tot}$).
 
 ## Tutorials
 
