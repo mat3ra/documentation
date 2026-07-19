@@ -7,24 +7,30 @@ this way be based upon the Parent, and thus re-utilize its final results for
 further computation. These results are therefore "recycled", with the aim of
 optimizing the performance and computational time of the child Job.
 
-In order to do so, the user should select the `Select Parent` option under the
-drop-down menu <i class="zmdi zmdi-more-vert zmdi-hc-border"></i> of the main
-[header bar](../header-menu.md) of Jobs Designer.
+In order to do so, the user should select the "Select Parent" option under the
+"Select Job Actions" drop-down menu of the main [header bar](../header-menu.md)
+of Jobs Designer.
 
 ## "Select Parent" Dialog
 
-The "Select Parent" dialog is now available under the "Select Job Actions"
-dropdown list, which is based on [Jobs Explorer](../../jobs/ui/explorer.md) and
-thus supporting the corresponding [filter/search](
+The "Select Parent" dialog is based on [Jobs Explorer](../../jobs/ui/explorer.md)
+and thus supporting the corresponding [filter/search](
 ../../entities-general/actions/search.md) functionality.
 
 ![Select Parent](../../images/jobs-designer/select-parent-job-dialog.webp "Select Parent")
 
 !!! warning "Criteria for Parent Job selection"
-    Only Jobs that satisfy both of the following criteria are available for selection as "parents".
+    Only Jobs that satisfy both of the following criteria are available for
+    selection as "parents".
 
-    - The parent Job must be under either a "Finished" <span class="btn badge b-success border-50">F</span> or "Terminated" <span class="btn badge b-default border-50">T</span> [status]({{ reference_url }}/jobs/status/).
-    - The parent Job must have been executed on a [cluster]({{ resources_url }}/infrastructure/clusters/overview/) which is still available for use by the Account under consideration at the moment of the new Job creation.
+    - The parent Job must be under either a "Finished"
+    <span class="btn badge b-success border-50">F</span> or "Terminated"
+    <span class="btn badge b-default border-50">T</span>
+    [status]({{ reference_url }}/jobs/status/).
+    - The parent Job must have been executed on a
+    [cluster]({{ resources_url }}/infrastructure/clusters/overview/) which is
+    still available for use by the Account under consideration at the moment of
+    the new Job creation.
 
 ## Add Parent Job
 
