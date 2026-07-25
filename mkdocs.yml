@@ -628,7 +628,6 @@ nav:
             - Overview:                                 infrastructure/clusters/overview.md
             - Directory Structure:                      infrastructure/clusters/directories.md
             - Hardware Specifications:                  infrastructure/clusters/hardware.md
-            - Google Clusters:                          infrastructure/clusters/google.md
             - AWS Clusters:                             infrastructure/clusters/aws.md
             - Azure Clusters:                           infrastructure/clusters/azure.md
             - Google Clusters:                          infrastructure/clusters/google.md
