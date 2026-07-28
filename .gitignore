@@ -16,6 +16,9 @@ service-account-key.json
 scripts/*.mp3
 scripts/*.mp4
 
+# RAG demo generated index
+scripts/rag/chunks.jsonl
+
 # Pyenv
 .python-version
 # Agents workdir
