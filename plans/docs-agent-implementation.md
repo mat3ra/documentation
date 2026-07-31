@@ -5,8 +5,9 @@ The companion documents hold the reasoning; this one holds the work: milestones,
 file-level work items, acceptance criteria, and the decisions still open.
 
 - **Status:** Active, living document — §3 is the initiative's progression
-  tracker. Phase 1 (core package, evaluation harness) is complete; Phase 2
-  (the docs launch) is next.
+  tracker. Phase 1 is complete and Phase 2 is under way: the service and the
+  widget are built and verified end to end locally; deployment (M5) and
+  launch hardening (M6) remain.
 - **Last updated:** 2026-07-31
 - **Companion plans:** [`docs-agent-rag.md`](docs-agent-rag.md) (retrieval and
   evaluation strategy), [`docs-agent-web-delivery.md`](docs-agent-web-delivery.md)
@@ -52,7 +53,7 @@ authority):
 | --- | --- | --- | --- |
 | 0 | Prototypes | BM25 demo in `scripts/rag/`; desktop automation experiment in the platform repository ([`web-app#2894`](https://github.com/mat3ra/web-app/pull/2894)) | **Done** |
 | 1 | Foundations | M1 core package, M2 evaluation harness | **Done 2026-07-31** |
-| 2 | Docs launch | M3 service, M4 widget, M5 deployment, M6 hardening | Planned |
+| 2 | Docs launch | M3 service, M4 widget, M5 deployment, M6 hardening | In progress — M3 and M4 done 2026-07-31; M5 next |
 | 3 | Retrieval quality | M7 upgrades, evaluation-gated | Planned, post-launch |
 | 4 | Platform embed | M8, stages M8.1–M8.3 | Planned, post-launch |
 | 5 | Platform actions | Stages A1–A4 in [`docs-agent-platform-actions.md`](docs-agent-platform-actions.md) | Proposed |
@@ -74,8 +75,8 @@ must pass before M6.
 | --- | --- | --- | --- |
 | M1 Shared core package | 1 | Delivery | **Done 2026-07-31** |
 | M2 Evaluation harness + golden set | 1 | Quality | **Done 2026-07-31** |
-| M3 Backend service | 2 | Delivery | 2–4 days |
-| M4 Documentation widget | 2 | Delivery | 3–5 days |
+| M3 Backend service | 2 | Delivery | **Done 2026-07-31** |
+| M4 Documentation widget | 2 | Delivery | **Done 2026-07-31** |
 | M5 Deployment + index pipeline | 2 | Delivery | 2–3 days |
 | M6 Launch hardening | 2 | Both | 1–2 days |
 | M7 Retrieval upgrades | 3 | Quality | 1–2 weeks |
@@ -415,16 +416,20 @@ Strategy risks live in the companions ([RAG plan §8](docs-agent-rag.md),
 
 ## 7. Immediate next actions
 
-Phase 1 is complete; Phase 2 (docs launch) is next.
+M1–M4 are built and verified locally. What stands between here and a public
+beta is deployment and the launch gate, not features.
 
-1. **Tighten the system prompt** against the two defects M2 found — the
-   refusal rule and the ban on inventing UI element names — and re-measure.
-   This is the first pass through the tuning loop and it now has numbers to
-   beat, so it comes before new features.
-2. **Merge the open pull requests** — `documentation-agent` #1 (M1) then #2
-   (M2); `documentation` #391 (plans) after #389.
-3. **M3, the backend service:** FastAPI `/chat` with SSE streaming, the
-   guards from §M3, reusing the core package.
+1. **Merge the open pull requests.** They are stacked and merge in order:
+   `documentation-agent` #1 (M1) → #2 (M2) → #3 (M3); `documentation` #391
+   (plans) and the widget branch after #389.
+2. **M5, deployment.** The one remaining piece with unknowns in it: the
+   Cloud Run service, Workload Identity Federation for both repositories,
+   the documentation-merge trigger, and the rollback drill. The widget's
+   endpoint constant points at a host that does not exist yet, which is
+   safe — the launcher stays hidden — but it is the last wire to connect.
+3. **Settle the faithfulness measurement** before M6 can gate on it. One run
+   cannot separate a prompt change from sampling noise (§M2), so either
+   repeat the run or grow the set.
 4. **Retire the superseded demo** in `scripts/rag/` so there is one
    implementation rather than two.
 5. **Owner, when convenient:** enable the Claude models in Model Garden on
