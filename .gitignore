@@ -24,3 +24,6 @@ scripts/rag/chunks.jsonl
 # Agents workdir
 tmp
 .local-mkdocs*.yml
+
+# Local clone of the documentation-agent service repo (see plans/)
+reference/

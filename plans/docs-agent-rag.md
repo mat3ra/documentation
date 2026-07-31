@@ -3,10 +3,16 @@
 Plan for an assistant that answers user questions from the content of this
 repository (docs.mat3ra.com), grounded with Retrieval-Augmented Generation (RAG).
 
-- **Status:** Phase 1 in progress — a working demo is committed in
-  [`scripts/rag/`](../scripts/rag/).
-- **Last updated:** 2026-07-28
-- **Companion plan:** [`docs-agent-web-app.md`](docs-agent-web-app.md) (browser delivery)
+- **Status:** Active — the strategy reference for retrieval and evaluation.
+  Of its content, Phase 0 (prototypes) is complete — a working demo is
+  committed in [`scripts/rag/`](../scripts/rag/) and since rebuilt in the
+  [`documentation-agent`](https://github.com/mat3ra/documentation-agent)
+  repository (D6) — while evaluation (§5) and
+  retrieval upgrades (§4.3) are still ahead. Phase numbering and live
+  progression: [implementation plan](docs-agent-implementation.md) §3.
+- **Last updated:** 2026-07-31
+- **Companion plan:** [`docs-agent-web-delivery.md`](docs-agent-web-delivery.md) (browser delivery)
+- **Implementation plan:** [`docs-agent-implementation.md`](docs-agent-implementation.md)
 
 ---
 
@@ -25,7 +31,7 @@ Claude on Vertex AI.
 | Contextual retrieval (chunk situating) | Not started |
 | `get_page` tool (fetch a whole page) | Not started |
 | Evaluation harness | Not started |
-| Any web interface | Not started — see the [web app plan](docs-agent-web-app.md) |
+| Any web interface | Not started — see the [web delivery plan](docs-agent-web-delivery.md) |
 
 Verified behaviour: asked how to import a material from a POSCAR file, the agent
 issued four searches (including section-filtered reformulations) and produced a
@@ -34,12 +40,17 @@ two-method answer citing `materials/actions/upload/` and
 
 ### What changed from the original proposal
 
-1. **Phase 0 was skipped.** The original plan proposed a "whole corpus in the
-   context window" baseline before building retrieval. Retrieval turned out to be
-   cheap enough to build directly, so the baseline was never needed. It remains
-   useful as a *quality ceiling* for evaluation (§5) and can still be run later.
-2. **The platform is Google Vertex AI, not the Claude API directly**, using
-   `claude-opus-4-6`. This constrains some of the original design — see §3.2.
+1. **The full-corpus baseline was skipped.** The original plan proposed a
+   "whole corpus in the context window" baseline before building retrieval.
+   Retrieval turned out to be cheap enough to build directly, so the baseline
+   was never needed. It remains useful as a *quality ceiling* for evaluation
+   (§5) and can still be run later.
+2. **The platform is Google Vertex AI, not the Claude API directly.** This
+   constrains some of the original design — see §3.2. The model is no longer
+   fixed: as of 2026-07-31 the agent runs behind a provider abstraction with
+   **Gemini as the default** (Claude on Vertex additionally requires Model
+   Garden enablement) and Claude selectable by configuration. Which one ships
+   is an evaluation question (§5), not a preference.
 3. **Retrieval is lexical (BM25), not vector-based.** This was a deliberate
    scope cut, not an oversight: it removes all index infrastructure from the
    demo while still exercising the full agent loop. Its limits are known and
@@ -69,8 +80,8 @@ User question
      │
      ▼
 ┌─────────────────────────────┐        ┌──────────────────────────┐
-│  Agent (scripts/rag/agent.py)│  tool  │  Retrieval               │
-│  claude-opus-4-6 on Vertex   │───────▶│  BM25 over doc chunks    │
+│  Agent (mat3ra_docs_agent)   │  tool  │  Retrieval               │
+│  Gemini or Claude on Vertex  │───────▶│  BM25 over doc chunks    │
 │  system prompt (cached)      │◀───────│  (→ hybrid, later)       │
 │  tool: search_docs           │ chunks └──────────────────────────┘
 └─────────────┬───────────────┘
@@ -88,8 +99,8 @@ Design decisions as implemented:
 
 | Decision | Choice | Rationale |
 | --- | --- | --- |
-| Model | `claude-opus-4-6` (Vertex) | Strong tool use and grounding |
-| Region | `us-east5` | Confirmed working for this project; `global` also valid |
+| Model | Gemini by default, Claude behind the same interface | Both do grounded tool use; Gemini needs no Model Garden step, so it unblocks work |
+| Region | Per provider: Gemini `global`, Claude `us-east5` | Model availability is region-specific — Gemini 3.x is not served from `us-east5` |
 | Loop | Hand-written | The SDK `tool_runner` helper is not available on `AnthropicVertex` (verified against SDK 0.116) |
 | Caching | `cache_control` on the system prompt | Stable prefix, re-read on every turn |
 | Tool-loop bound | 8 iterations per user turn | Prevents a runaway loop from billing indefinitely |
@@ -189,7 +200,7 @@ The index is currently rebuilt by hand (`python ingest.py`). The generated
 
 For production: rebuild on merge to `main` in CI, and version the artifact with
 the documentation commit it was built from, so an answer can always be traced to
-a documentation snapshot. See the [web app plan](docs-agent-web-app.md) for how
+a documentation snapshot. See the [web delivery plan](docs-agent-web-delivery.md) for how
 that artifact reaches the deployed service.
 
 ---
@@ -214,8 +225,8 @@ prompt parameters. It is the highest-leverage unbuilt piece of this plan.
 4. **Tuning levers**, iterated against the golden set: chunk size, top-k, fusion
    weights, reranking, the contextual-retrieval prompt, system prompt wording,
    and model tier.
-5. **Regression gate:** run the evaluation in CI when `scripts/rag/` or the
-   system prompt changes.
+5. **Regression gate:** run the evaluation in CI on every change to the
+   agent repository — retrieval, prompt, or model configuration.
 
 Note the Vertex constraint from §3.2: no Batch API, so evaluation runs are
 billed at standard rates.
@@ -224,14 +235,21 @@ billed at standard rates.
 
 ## 6. Roadmap
 
+The phase numbering is shared by all four plans; the
+[implementation plan](docs-agent-implementation.md) §3 maps each phase to
+concrete milestones.
+
 | Phase | Scope | State |
 | --- | --- | --- |
-| 0 | Full-corpus-in-context baseline | Skipped — optional, as an evaluation ceiling |
-| 1 | Ingestion, BM25 retrieval, agentic loop, CLI | **Done** |
-| 2 | Golden set + evaluation harness | Next — everything below is tuned against it |
-| 3 | Contextual retrieval, embeddings, hybrid search, `get_page` | Planned (§4.3) |
-| 4 | Web delivery | See [`docs-agent-web-app.md`](docs-agent-web-app.md) |
-| 5 | Platform actions — tools generated from `rest-api/` docs, authenticated per user | Later; needs its own security review |
+| 0 | Prototypes: this repository's demo (ingestion, BM25 retrieval, agentic loop, CLI) and the platform repository's desktop automation experiment | **Done** |
+| 1 | Foundations: shared core package, golden set + evaluation harness | In progress — the package is done and now lives in the `documentation-agent` repository; the harness is next |
+| 2 | Docs launch: service, widget, deployment, hardening | Planned — see the [web delivery plan](docs-agent-web-delivery.md) |
+| 3 | Retrieval quality: contextual retrieval, embeddings, hybrid search, `get_page` (§4.3) | Planned, evaluation-gated |
+| 4 | Platform embed: the same widget inside platform.mat3ra.com | Planned |
+| 5 | Platform actions — the agent performs documented procedures in the user's session | Proposed in [`docs-agent-platform-actions.md`](docs-agent-platform-actions.md) (UI steps via the test framework; REST-API tools deferred); needs its own security review |
+
+The full-corpus-in-context baseline (the corpus fits a 1M-token window)
+remains available outside the numbering as an evaluation ceiling (§5).
 
 ---
 
@@ -259,7 +277,7 @@ current rates should be confirmed against Vertex pricing before committing.
 - **Stale answers after documentation edits** — CI re-indexing on merge (§4.4).
 - **Runaway tool loops** — bounded at 8 iterations per turn.
 - **Prompt injection and abuse** — relevant once the agent is exposed publicly;
-  covered in the [web app plan](docs-agent-web-app.md).
+  covered in the [web delivery plan](docs-agent-web-delivery.md).
 - **Query privacy** — user questions may contain proprietary research context. A
   logging and retention policy is required before any public deployment.
 - **Machine-translated pages** — `lang/ja/` is never indexed; multilingual
