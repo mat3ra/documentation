@@ -5,7 +5,8 @@ The companion documents hold the reasoning; this one holds the work: milestones,
 file-level work items, acceptance criteria, and the decisions still open.
 
 - **Status:** Active, living document — §3 is the initiative's progression
-  tracker. Nothing beyond Phase 0 (the prototypes) is built.
+  tracker. Phase 1 (core package, evaluation harness) is complete; Phase 2
+  (the docs launch) is next.
 - **Last updated:** 2026-07-31
 - **Companion plans:** [`docs-agent-rag.md`](docs-agent-rag.md) (retrieval and
   evaluation strategy), [`docs-agent-web-delivery.md`](docs-agent-web-delivery.md)
@@ -15,9 +16,10 @@ file-level work items, acceptance criteria, and the decisions still open.
 
 ## 1. Scope and definition of done
 
-Shipped means: an "Ask AI" launcher on every page of all four documentation
-sites opens a chat that streams grounded, cited answers from a production
-service, with abuse limits, spend controls, and an evaluation gate in CI.
+Shipped means: an "Ask AI" launcher on every page of every documentation site
+(eight as of 2026-07-31 — see M4) opens a chat that streams grounded, cited
+answers from a production service, with abuse limits, spend controls, and an
+evaluation gate in CI.
 
 Out of scope for v1: hybrid/vector retrieval beyond an eval-gated upgrade
 (M7), the in-platform "Ask AI" surface (specified in M8, scheduled
@@ -39,7 +41,7 @@ later milestone but nothing before it.
 | D5 | Model | Provider abstraction over Vertex: **Gemini by default** (`gemini-3.6-flash`, `global`), Claude (`claude-opus-4-6`, `us-east5`) behind the same interface once Model Garden is enabled. Tier changes only through the evaluation harness | **Revised 2026-07-31** — Gemini needs no Model Garden step, so it unblocks work today; the abstraction keeps the choice reversible |
 | D6 | Core package location | The agent core (ingestion, retrieval, prompt, loop) lives in the **`documentation-agent` repository**; this repository provides the corpus only. Ingestion reads a documentation checkout via `--docs-root` | **Revised 2026-07-31** — supersedes the earlier "core stays in `scripts/rag/`" split; one repository owns all agent code, so there is no cross-repository package dependency to keep in step |
 | D7 | Logging and retention | Store question, tool trace, answer, and token counts for 30 days to seed the golden set; no IP addresses joined to content; disclosed in the widget footer | Needs sign-off before launch |
-| D8 | Launch quality bar | Regression gate set just below the measured BM25 baseline: **recall@5 ≥ 0.65, MRR ≥ 0.45** (baseline 0.688 / 0.494), plus zero hallucinated URLs and correct refusal on the unanswerable subset | **Set 2026-07-31** from measurement, not aspiration |
+| D8 | Launch quality bar | Regression gate set just below the measured BM25 baseline: **recall@5 ≥ 0.65, MRR ≥ 0.50** (baseline 0.688 / 0.543), plus zero hallucinated URLs. Refusal on the unanswerable subset is **0.80 today and must reach 1.00 before launch** | **Set 2026-07-31** from measurement, not aspiration |
 
 ## 3. Phases and workstreams
 
@@ -136,19 +138,19 @@ The tuning loop from [RAG plan §5](docs-agent-rag.md), in the
 retrieval harness, a paid answer harness, and a README carrying the
 baseline.
 
-The golden set holds 38 questions — 33 answerable and 5 the documentation
+The golden set holds 37 questions — 32 answerable and 5 the documentation
 deliberately cannot answer, scored separately, because an assistant that
 scores well elsewhere and improvises on those is worse than useless.
 Questions are phrased as a user would ask them rather than as the pages are
 written. Expected pages are validated against the index before every run, so
 a renamed page fails the run instead of quietly depressing the metrics.
 
-**Recorded BM25 baseline** (33 answerable questions, 534 pages / 2,554
+**Recorded BM25 baseline** (32 answerable questions, 534 pages / 2,554
 chunks):
 
 | recall@1 | recall@3 | recall@5 | recall@10 | MRR |
 | --- | --- | --- | --- | --- |
-| 0.344 | 0.562 | 0.688 | 0.875 | 0.494 |
+| 0.406 | 0.594 | 0.688 | 0.906 | 0.543 |
 
 For about a third of questions the top hit is already right; for about a
 third the right page is not in the top five. The failures are precisely the
@@ -170,6 +172,30 @@ Two things this measurement establishes:
 CI gates every pull request on the retrieval metrics at the D8 thresholds;
 the answer harness runs on demand (no Batch API on Vertex) and is where the
 Gemini/Claude and model-tier comparison gets settled (D5).
+
+**The answer baseline found two real defects on its first run**, neither
+visible from spot-checking, and both now the immediate tuning work:
+
+| Hallucinated URLs | Cited an expected page | Faithful | Citations support | Completeness | Refused correctly |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 0.906 | 0.892 | 0.973 | 0.959 | **0.800** |
+
+- **Refusal, 4 of 5.** Asked whether the platform is faster than VASP on a
+  64 GB laptop, the agent answered that it is "significantly faster",
+  justified with real hardware specifications. The specifications are
+  documented; the comparative claim is not and cannot be. The dangerous
+  shape is a question *adjacent* to documented material, where retrieval
+  returns something plausible and the model completes the argument itself —
+  which no amount of retrieval improvement fixes.
+- **Faithfulness 0.892.** Four answers invented interface details (a
+  dropdown, a submit button, walltime advice). No URL was ever invented, so
+  half the grounding rule holds and the half covering UI element names does
+  not.
+
+Both are prompt problems, not retrieval problems, and the harness now makes
+the fix measurable rather than a matter of opinion. This is the tuning loop
+working as designed: §8 listed hallucinated UI paths as a risk to be
+"verified by the evaluation judge rather than assumed", and it now has been.
 
 ### M3. Backend service (`documentation-agent` repository, D2)
 
@@ -391,12 +417,16 @@ Strategy risks live in the companions ([RAG plan §8](docs-agent-rag.md),
 
 Phase 1 is complete; Phase 2 (docs launch) is next.
 
-1. **Merge the open pull requests** — `documentation-agent` #1 (M1) then #2
+1. **Tighten the system prompt** against the two defects M2 found — the
+   refusal rule and the ban on inventing UI element names — and re-measure.
+   This is the first pass through the tuning loop and it now has numbers to
+   beat, so it comes before new features.
+2. **Merge the open pull requests** — `documentation-agent` #1 (M1) then #2
    (M2); `documentation` #391 (plans) after #389.
-2. **M3, the backend service:** FastAPI `/chat` with SSE streaming, the
+3. **M3, the backend service:** FastAPI `/chat` with SSE streaming, the
    guards from §M3, reusing the core package.
-3. **Retire the superseded demo** in `scripts/rag/` so there is one
+4. **Retire the superseded demo** in `scripts/rag/` so there is one
    implementation rather than two.
-4. **Owner, when convenient:** enable the Claude models in Model Garden on
+5. **Owner, when convenient:** enable the Claude models in Model Garden on
    `mat3ra-documentation` to unblock the `anthropic` backend for the D5
    comparison. Nothing is blocked on it — Gemini is the default and works.
