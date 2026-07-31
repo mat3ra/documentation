@@ -39,7 +39,7 @@ later milestone but nothing before it.
 | D5 | Model | Provider abstraction over Vertex: **Gemini by default** (`gemini-3.6-flash`, `global`), Claude (`claude-opus-4-6`, `us-east5`) behind the same interface once Model Garden is enabled. Tier changes only through the evaluation harness | **Revised 2026-07-31** — Gemini needs no Model Garden step, so it unblocks work today; the abstraction keeps the choice reversible |
 | D6 | Core package location | The agent core (ingestion, retrieval, prompt, loop) lives in the **`documentation-agent` repository**; this repository provides the corpus only. Ingestion reads a documentation checkout via `--docs-root` | **Revised 2026-07-31** — supersedes the earlier "core stays in `scripts/rag/`" split; one repository owns all agent code, so there is no cross-repository package dependency to keep in step |
 | D7 | Logging and retention | Store question, tool trace, answer, and token counts for 30 days to seed the golden set; no IP addresses joined to content; disclosed in the widget footer | Needs sign-off before launch |
-| D8 | Launch quality bar | Thresholds set from the measured BM25 baseline (M2), not chosen aspirationally | Set during M2 |
+| D8 | Launch quality bar | Regression gate set just below the measured BM25 baseline: **recall@5 ≥ 0.65, MRR ≥ 0.45** (baseline 0.688 / 0.494), plus zero hallucinated URLs and correct refusal on the unanswerable subset | **Set 2026-07-31** from measurement, not aspiration |
 
 ## 3. Phases and workstreams
 
@@ -49,7 +49,7 @@ authority):
 | Phase | Name | Contents | State |
 | --- | --- | --- | --- |
 | 0 | Prototypes | BM25 demo in `scripts/rag/`; desktop automation experiment in the platform repository ([`web-app#2894`](https://github.com/mat3ra/web-app/pull/2894)) | **Done** |
-| 1 | Foundations | M1 core package, M2 evaluation harness | In progress — M1 done 2026-07-31, M2 next |
+| 1 | Foundations | M1 core package, M2 evaluation harness | **Done 2026-07-31** |
 | 2 | Docs launch | M3 service, M4 widget, M5 deployment, M6 hardening | Planned |
 | 3 | Retrieval quality | M7 upgrades, evaluation-gated | Planned, post-launch |
 | 4 | Platform embed | M8, stages M8.1–M8.3 | Planned, post-launch |
@@ -71,7 +71,7 @@ must pass before M6.
 | Milestone | Phase | Track | Estimate |
 | --- | --- | --- | --- |
 | M1 Shared core package | 1 | Delivery | **Done 2026-07-31** |
-| M2 Evaluation harness + golden set | 1 | Quality | 2–3 days |
+| M2 Evaluation harness + golden set | 1 | Quality | **Done 2026-07-31** |
 | M3 Backend service | 2 | Delivery | 2–4 days |
 | M4 Documentation widget | 2 | Delivery | 3–5 days |
 | M5 Deployment + index pipeline | 2 | Delivery | 2–3 days |
@@ -129,35 +129,47 @@ Two findings worth carrying forward:
   output budget starves the call and produces an empty turn, so
   `MAX_OUTPUT_TOKENS` is 8192.
 
-### M2. Evaluation harness and golden set (`documentation-agent` repository)
+### M2. Evaluation harness and golden set — **done 2026-07-31**
 
-The tuning loop from [RAG plan §5](docs-agent-rag.md). Layout:
+The tuning loop from [RAG plan §5](docs-agent-rag.md), in the
+`documentation-agent` repository under `eval/`: `golden.yaml`, a free
+retrieval harness, a paid answer harness, and a README carrying the
+baseline.
 
-```
-eval/
-  golden.yaml          # question, expected page URL(s), key facts, answerable: bool
-  eval_retrieval.py    # recall@5, MRR — no model calls
-  eval_answers.py      # model-as-judge: faithfulness, citation validity, completeness
-  README.md            # how to run; the recorded BM25 baseline
-```
+The golden set holds 38 questions — 33 answerable and 5 the documentation
+deliberately cannot answer, scored separately, because an assistant that
+scores well elsewhere and improvises on those is worse than useless.
+Questions are phrased as a user would ask them rather than as the pages are
+written. Expected pages are validated against the index before every run, so
+a renamed page fails the run instead of quietly depressing the metrics.
 
-Work items:
+**Recorded BM25 baseline** (33 answerable questions, 534 pages / 2,554
+chunks):
 
-1. Seed `golden.yaml` with ~30 entries (tutorial steps rephrased, pricing and
-   accounts FAQs, REST API usage, plus 5 unanswerable questions); grow toward
-   75–100 using logged real questions after launch (D7).
-2. `eval_retrieval.py` runs in seconds and prints per-question hits; record
-   the BM25 baseline in the eval README and set D8 thresholds from it.
-   Evaluate against the full index — never a toy corpus (M1 finding).
-3. `eval_answers.py` runs on demand (Vertex has no Batch API — standard
-   rates, so it is not a per-PR gate; retrieval metrics are). It is also
-   where the Gemini/Claude and model-tier comparison gets settled (D5).
-4. CI: retrieval evaluation runs on every pull request; a threshold
-   regression fails the check. It needs the index, so the workflow ingests
-   from a documentation checkout first.
+| recall@1 | recall@3 | recall@5 | recall@10 | MRR |
+| --- | --- | --- | --- | --- |
+| 0.344 | 0.562 | 0.688 | 0.875 | 0.494 |
 
-Acceptance: baseline numbers committed; a deliberate retrieval regression
-(e.g. top-k = 1) fails CI.
+For about a third of questions the top hit is already right; for about a
+third the right page is not in the top five. The failures are precisely the
+paraphrase weakness §4.3 predicted — "How does authentication work for the
+REST API?" ranks the *JupyterLite* authentication page first — which is the
+concrete case hybrid retrieval (M7) has to beat.
+
+Two things this measurement establishes:
+
+- **The numbers are a lower bound on the agent, not a verdict on it.** The
+  agent reformulates and re-searches, so a page at rank 8 for the user's
+  original phrasing is often still cited correctly — verified on the REST API
+  question. Retrieval recall is a leading indicator.
+- **Answer evaluation separates the deterministic from the judged.** Every
+  cited URL must exist in the corpus; that check cannot itself hallucinate,
+  so it is reported on its own and any failure fails the run, independent of
+  a judge's opinion.
+
+CI gates every pull request on the retrieval metrics at the D8 thresholds;
+the answer harness runs on demand (no Batch API on Vertex) and is where the
+Gemini/Claude and model-tier comparison gets settled (D5).
 
 ### M3. Backend service (`documentation-agent` repository, D2)
 
@@ -377,12 +389,14 @@ Strategy risks live in the companions ([RAG plan §8](docs-agent-rag.md),
 
 ## 7. Immediate next actions
 
-1. **Commit and push M1** to `documentation-agent` (built and verified
-   locally 2026-07-31, not yet pushed).
-2. **M2 harness** in the same repository: the ~30-question seed, the
-   recorded BM25 baseline, D8 thresholds.
-3. **Retire the superseded demo** in `scripts/rag/` once M1 is pushed, so
-   there is one implementation rather than two.
+Phase 1 is complete; Phase 2 (docs launch) is next.
+
+1. **Merge the open pull requests** — `documentation-agent` #1 (M1) then #2
+   (M2); `documentation` #391 (plans) after #389.
+2. **M3, the backend service:** FastAPI `/chat` with SSE streaming, the
+   guards from §M3, reusing the core package.
+3. **Retire the superseded demo** in `scripts/rag/` so there is one
+   implementation rather than two.
 4. **Owner, when convenient:** enable the Claude models in Model Garden on
    `mat3ra-documentation` to unblock the `anthropic` backend for the D5
    comparison. Nothing is blocked on it — Gemini is the default and works.
