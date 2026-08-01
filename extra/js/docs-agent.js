@@ -104,8 +104,11 @@
         var anchor = document.createElement("a");
         anchor.href = href;
         anchor.textContent = label;
-        anchor.target = "_blank";
-        anchor.rel = "noopener noreferrer";
+        // Navigate in place: a documentation link is the continuation of the
+        // answer, not a detour, and opening tabs behind the reader is a habit
+        // the documentation itself does not have. The conversation is held in
+        // memory, so leaving the page ends it — the browser's back button
+        // returns to the documentation, not to the exchange.
         return anchor;
     }
 
