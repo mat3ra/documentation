@@ -21,6 +21,13 @@
     // Beta runs on the default Cloud Run hostname; a mat3ra.com subdomain
     // replaces this before general availability.
     var DEFAULT_ENDPOINT = "https://docs-agent-mmrcocqy3a-uc.a.run.app";
+    var SESSION_KEY = "docsAgentSession";
+    // Following a source link is a normal part of reading an answer, and the
+    // page reloads when it happens. The conversation therefore has to outlive
+    // the page, or every citation would end the exchange that produced it.
+    var SESSION_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
+    var SESSION_MAX_MESSAGES = 20; // matches the service's own conversation cap
+    var SESSION_MAX_CHARS = 40000;
     var ENDPOINT_OVERRIDE_KEY = "docsAgentEndpoint"; // localStorage, for local development
     var MAX_QUESTION_CHARS = 4000;
 
@@ -106,9 +113,8 @@
         anchor.textContent = label;
         // Navigate in place: a documentation link is the continuation of the
         // answer, not a detour, and opening tabs behind the reader is a habit
-        // the documentation itself does not have. The conversation is held in
-        // memory, so leaving the page ends it — the browser's back button
-        // returns to the documentation, not to the exchange.
+        // the documentation itself does not have. The conversation survives the
+        // navigation because it is stored — see the session functions below.
         return anchor;
     }
 
@@ -264,13 +270,22 @@
         var header = document.createElement("header");
         var title = document.createElement("h2");
         title.appendChild(brandedLabel("Ask AI"));
+        // A conversation that survives navigation also has to be endable.
+        var clear = document.createElement("button");
+        clear.type = "button";
+        clear.className = "docs-agent-clear";
+        clear.textContent = "New chat";
         var close = document.createElement("button");
         close.type = "button";
         close.className = "docs-agent-close";
         close.setAttribute("aria-label", "Close");
         close.textContent = "×";
+        var controls = document.createElement("div");
+        controls.className = "docs-agent-controls";
+        controls.appendChild(clear);
+        controls.appendChild(close);
         header.appendChild(title);
-        header.appendChild(close);
+        header.appendChild(controls);
 
         var log = document.createElement("div");
         log.className = "docs-agent-log";
@@ -292,7 +307,9 @@
         var footer = document.createElement("p");
         footer.className = "docs-agent-footer";
         footer.textContent =
-            "Answers are generated from the documentation and can be wrong. Questions are logged to improve the assistant.";
+            "Answers are generated from the documentation and can be wrong. Questions are " +
+            "logged to improve the assistant, and this conversation is kept in your browser " +
+            "until you start a new chat.";
 
         panel.appendChild(header);
         panel.appendChild(log);
@@ -313,7 +330,6 @@
         this.input = input;
         this.send = send;
         this.launcher = launcher;
-        this.loadGlossary();
 
         launcher.addEventListener("click", function () {
             self.toggle(panel.hidden);
@@ -332,13 +348,24 @@
         panel.addEventListener("keydown", function (event) {
             if (event.key === "Escape") self.toggle(false);
         });
+        clear.addEventListener("click", function () {
+            self.clearSession();
+            self.log.textContent = "";
+            self.greet();
+            self.saveSession();
+            self.input.focus();
+        });
 
-        this.greet();
+        // Redraw the stored conversation once the glossary is available, so
+        // restored answers get the same links a fresh one would.
+        this.loadGlossary().then(function () {
+            self.restoreSession();
+        });
     };
 
     /** Fetch the term-to-page map once. Answers render fine without it. */
     DocsAgentWidget.prototype.loadGlossary = function () {
-        fetch(this.endpoint + "/glossary")
+        return fetch(this.endpoint + "/glossary")
             .then(function (response) {
                 return response.ok ? response.json() : null;
             })
@@ -350,11 +377,92 @@
             });
     };
 
+    // ------------------------------------------------------------------ session
+
+    /**
+     * The conversation, kept in the browser so it survives navigation.
+     *
+     * Answers cite documentation pages and those links now open in place, so
+     * without this every citation would discard the exchange that produced it.
+     * Nothing is sent anywhere by storing it: this is the same text the page
+     * already displays, on the reader's own machine, and the panel offers a way
+     * to clear it.
+     */
+    DocsAgentWidget.prototype.saveSession = function () {
+        try {
+            var messages = this.messages.slice(-SESSION_MAX_MESSAGES);
+            while (
+                messages.length &&
+                messages.reduce(function (total, m) {
+                    return total + m.content.length;
+                }, 0) > SESSION_MAX_CHARS
+            ) {
+                messages.shift();
+            }
+            global.localStorage.setItem(
+                SESSION_KEY,
+                JSON.stringify({
+                    version: 1,
+                    updated: Date.now(),
+                    open: !this.panel.hidden,
+                    messages: messages,
+                })
+            );
+        } catch (error) {
+            /* Storage full or disabled: the widget still works for this page. */
+        }
+    };
+
+    DocsAgentWidget.prototype.readSession = function () {
+        try {
+            var stored = JSON.parse(global.localStorage.getItem(SESSION_KEY) || "null");
+            if (!stored || stored.version !== 1 || !Array.isArray(stored.messages)) return null;
+            if (Date.now() - (stored.updated || 0) > SESSION_MAX_AGE_MS) {
+                this.clearSession();
+                return null;
+            }
+            return stored;
+        } catch (error) {
+            return null;
+        }
+    };
+
+    DocsAgentWidget.prototype.clearSession = function () {
+        this.messages = [];
+        try {
+            global.localStorage.removeItem(SESSION_KEY);
+        } catch (error) {
+            /* Nothing to clear. */
+        }
+    };
+
+    /** Redraw a stored conversation and reopen the panel if it was open. */
+    DocsAgentWidget.prototype.restoreSession = function () {
+        var stored = this.readSession();
+        if (!stored || !stored.messages.length) {
+            this.greet();
+            return;
+        }
+        this.messages = stored.messages;
+        var self = this;
+        stored.messages.forEach(function (message) {
+            if (message.role === "user") {
+                self.bubble("user", message.content);
+            } else {
+                renderMarkdown(self.bubble("assistant", ""), message.content);
+            }
+        });
+        this.scroll();
+        if (stored.open) this.toggle(true);
+    };
+
     DocsAgentWidget.prototype.toggle = function (open) {
         this.panel.hidden = !open;
         this.launcher.setAttribute("aria-expanded", String(open));
         if (open) this.input.focus();
         else this.launcher.focus();
+        // Remember whether it was open, so following a link does not close it.
+        this.saveSession();
     };
 
     DocsAgentWidget.prototype.greet = function () {
@@ -386,6 +494,7 @@
         this.send.disabled = true;
         this.bubble("user", question);
         this.messages.push({ role: "user", content: question });
+        this.saveSession();
 
         var answerNode = this.bubble("assistant", "");
         var statusNode = document.createElement("p");
@@ -444,6 +553,7 @@
             })
             .then(function () {
                 if (answer) self.messages.push({ role: "assistant", content: answer });
+                self.saveSession();
                 self.busy = false;
                 self.send.disabled = false;
                 self.input.focus();

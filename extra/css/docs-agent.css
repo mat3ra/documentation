@@ -221,3 +221,24 @@
 .docs-agent-term:focus {
     text-decoration: underline;
 }
+
+/* Header controls: ending a conversation and closing the panel. */
+.docs-agent-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.docs-agent-clear {
+    border: none;
+    background: none;
+    padding: 0;
+    font-size: 0.68rem;
+    cursor: pointer;
+    color: var(--md-default-fg-color--light, #666);
+}
+
+.docs-agent-clear:hover,
+.docs-agent-clear:focus {
+    text-decoration: underline;
+}
