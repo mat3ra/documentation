@@ -26,9 +26,16 @@
 
     // ---------------------------------------------------------------- markdown
 
-    var INLINE_PATTERN = /(`[^`]+`)|(\*\*[^*]+\*\*)|(\[[^\]]+\]\([^)\s]+\))/;
+    // Bare URLs are matched too: the model lists its sources as plain URLs, and
+    // a source you cannot click is not much of a citation.
+    var INLINE_PATTERN =
+        /(`[^`]+`)|(\*\*[^*]+\*\*)|(\[[^\]]+\]\([^)\s]+\))|(https:\/\/[^\s)\],<>"']+)/;
 
-    /** Append inline Markdown (code, bold, links) to a parent node. */
+    // Product term -> documentation page, fetched from the service. Built from
+    // the index there, so it can only ever name a page that exists.
+    var glossary = {};
+
+    /** Append inline Markdown (code, bold, links, bare URLs) to a parent node. */
     function renderInline(parent, text) {
         while (text) {
             var match = INLINE_PATTERN.exec(text);
@@ -45,17 +52,44 @@
                 code.textContent = token.slice(1, -1);
                 parent.appendChild(code);
             } else if (token.charAt(0) === "*") {
-                var strong = document.createElement("strong");
-                strong.textContent = token.slice(2, -2);
-                parent.appendChild(strong);
-            } else {
+                parent.appendChild(renderEmphasis(token.slice(2, -2)));
+            } else if (token.charAt(0) === "[") {
                 var split = token.indexOf("](");
-                var label = token.slice(1, split);
-                var href = token.slice(split + 2, -1);
-                parent.appendChild(safeLink(href, label));
+                parent.appendChild(safeLink(token.slice(split + 2, -1), token.slice(1, split)));
+            } else {
+                // A bare URL. Trailing sentence punctuation is not part of it.
+                var url = token.replace(/[.,;:]+$/, "");
+                parent.appendChild(safeLink(url, url));
+                text = text.slice(match.index + url.length);
+                continue;
             }
             text = text.slice(match.index + token.length);
         }
+    }
+
+    /**
+     * Emphasised text, linked to the page that defines it when the glossary
+     * knows the term.
+     *
+     * Answers name platform features in bold — Materials Bank, Materials
+     * Designer — and those are exactly the things a reader wants to open. The
+     * mapping comes from the service's index rather than from the model, so a
+     * link here can never point at a page that does not exist.
+     */
+    function renderEmphasis(label) {
+        var href = glossary[label.trim().toLowerCase()];
+        if (!href) {
+            var strong = document.createElement("strong");
+            strong.textContent = label;
+            return strong;
+        }
+        var link = safeLink(href, label);
+        if (link.tagName !== "A") return link;
+        link.className = "docs-agent-term";
+        link.title = "Open the documentation for " + label;
+        var bold = document.createElement("strong");
+        bold.appendChild(link);
+        return bold;
     }
 
     /**
@@ -182,6 +216,29 @@
         return pump();
     }
 
+    // ---------------------------------------------------------------- branding
+
+    // The Mat3ra mark, inlined and drawn in currentColor so it works on the
+    // purple launcher and on the panel header without shipping two assets or
+    // depending on a path that only exists on the documentation site.
+    var LOGO =
+        '<svg class="docs-agent-logo" viewBox="0 0 512 512" width="14" height="14" aria-hidden="true" focusable="false">' +
+        '<circle cx="256" cy="256" r="80" fill="currentColor"/>' +
+        '<path fill="currentColor" d="M334 100.056C334 50.8718 373.847 11 423 11C472.153 11 512 50.8718 512 100.056C512 130.306 480.115 171.982 480.115 171.982C480.115 171.982 427.327 236.133 427.327 256.326C427.327 276.516 456.851 312.743 480.115 341.285C497.341 362.431 512 383.184 512 411.944C512 461.128 472.153 501 423 501C373.847 501 334 461.128 334 411.944C334 384.78 349.322 361.543 365.887 341.285C389.152 312.74 418.674 276.516 418.674 256.326C418.674 236.289 366.784 171.982 366.784 171.982C366.784 171.982 334 131.672 334 100.056Z"/>' +
+        '<path fill="currentColor" d="M0 100.056C0 50.8718 39.8467 11 89 11C138.153 11 178 50.8718 178 100.056C178 130.306 146.115 171.982 146.115 171.982C146.115 171.982 93.3276 236.133 93.3276 256.326C93.3276 276.516 122.851 312.743 146.115 341.285C163.341 362.431 178 383.184 178 411.944C178 461.128 138.153 501 89 501C39.8467 501 0 461.128 0 411.944C0 384.78 15.3226 361.543 31.8867 341.285C55.1519 312.74 84.6738 276.516 84.6738 256.326C84.6738 236.289 32.7845 171.982 32.7845 171.982C32.7845 171.982 0 131.672 0 100.056Z"/>' +
+        "</svg>";
+
+    /** A label preceded by the mark. Built as nodes; the SVG is our own markup. */
+    function brandedLabel(text) {
+        var fragment = document.createDocumentFragment();
+        var holder = document.createElement("span");
+        holder.className = "docs-agent-mark";
+        holder.innerHTML = LOGO; // trusted constant above, never model output
+        fragment.appendChild(holder);
+        fragment.appendChild(document.createTextNode(text));
+        return fragment;
+    }
+
     // ------------------------------------------------------------------ widget
 
     function DocsAgentWidget(root, options) {
@@ -203,7 +260,7 @@
 
         var header = document.createElement("header");
         var title = document.createElement("h2");
-        title.textContent = "Ask AI";
+        title.appendChild(brandedLabel("Ask AI"));
         var close = document.createElement("button");
         close.type = "button";
         close.className = "docs-agent-close";
@@ -242,7 +299,7 @@
         var launcher = document.createElement("button");
         launcher.type = "button";
         launcher.className = "docs-agent-launcher";
-        launcher.textContent = "Ask AI";
+        launcher.appendChild(brandedLabel("Ask AI"));
         launcher.setAttribute("aria-expanded", "false");
 
         root.appendChild(launcher);
@@ -253,6 +310,7 @@
         this.input = input;
         this.send = send;
         this.launcher = launcher;
+        this.loadGlossary();
 
         launcher.addEventListener("click", function () {
             self.toggle(panel.hidden);
@@ -273,6 +331,20 @@
         });
 
         this.greet();
+    };
+
+    /** Fetch the term-to-page map once. Answers render fine without it. */
+    DocsAgentWidget.prototype.loadGlossary = function () {
+        fetch(this.endpoint + "/glossary")
+            .then(function (response) {
+                return response.ok ? response.json() : null;
+            })
+            .then(function (data) {
+                if (data && data.terms) glossary = data.terms;
+            })
+            .catch(function () {
+                /* Terms simply stay unlinked. */
+            });
     };
 
     DocsAgentWidget.prototype.toggle = function (open) {

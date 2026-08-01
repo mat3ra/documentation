@@ -185,3 +185,41 @@
         width: auto;
     }
 }
+
+/* The Mat3ra mark next to the "Ask AI" label, in both the launcher and the
+ * panel header. Drawn in currentColor, so it inherits whatever it sits on. */
+.docs-agent-mark {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 0.4rem;
+    vertical-align: -0.1em;
+}
+
+.docs-agent-launcher .docs-agent-mark svg {
+    width: 0.85rem;
+    height: 0.85rem;
+}
+
+.docs-agent-panel > header h2 {
+    display: flex;
+    align-items: center;
+}
+
+/* Product terms the answer emphasised, linked to the page that defines them.
+ * Kept looking like emphasis rather than a link so the answer still reads as
+ * prose, with the underline appearing on hover. */
+.docs-agent-term {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted currentColor;
+}
+
+.docs-agent-term:hover,
+.docs-agent-term:focus {
+    text-decoration: underline;
+}
+
+/* Source URLs are long; let them wrap rather than widen the panel. */
+.docs-agent-message a {
+    word-break: break-word;
+}
