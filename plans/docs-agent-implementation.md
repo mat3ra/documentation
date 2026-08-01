@@ -5,9 +5,8 @@ The companion documents hold the reasoning; this one holds the work: milestones,
 file-level work items, acceptance criteria, and the decisions still open.
 
 - **Status:** Active, living document — §3 is the initiative's progression
-  tracker. Phase 1 is complete and Phase 2 is under way: the service and the
-  widget are built and verified end to end locally; deployment (M5) and
-  launch hardening (M6) remain.
+  tracker. M1–M5 are done: the agent is deployed and answering on Cloud Run.
+  Only the launch gate (M6) stands between here and a public beta.
 - **Last updated:** 2026-07-31
 - **Companion plans:** [`docs-agent-rag.md`](docs-agent-rag.md) (retrieval and
   evaluation strategy), [`docs-agent-web-delivery.md`](docs-agent-web-delivery.md)
@@ -37,12 +36,12 @@ later milestone but nothing before it.
 | --- | --- | --- | --- |
 | D1 | Runtime | Cloud Run, same project as Vertex access ([web delivery plan §5](docs-agent-web-delivery.md), Option A) | Adopted |
 | D2 | Service code location | Private repository [`mat3ra/documentation-agent`](https://github.com/mat3ra/documentation-agent), pinned into the platform stack later if wanted | **Adopted** — repository created 2026-07-31 |
-| D3 | Google Cloud project | Dedicated project `mat3ra-documentation` with spend controls per M5.1 | **Adopted** — project created with budget and native spend cap (2026-07-31); Vertex AI API + Claude Model Garden enablement to confirm end-to-end |
+| D3 | Google Cloud project | Dedicated project `mat3ra-documentation` with spend controls per M5.1 | **Done 2026-07-31** — project, budget and native spend cap in place; Vertex AI enabled and confirmed end to end from Cloud Run. Claude Model Garden enablement is still outstanding and blocks only the D5 comparison |
 | D4 | Public endpoint | Default `*.run.app` URL for beta; a `mat3ra.com` subdomain before general availability | Beta default adopted |
 | D5 | Model | Provider abstraction over Vertex: **Gemini by default** (`gemini-3.6-flash`, `global`), Claude (`claude-opus-4-6`, `us-east5`) behind the same interface once Model Garden is enabled. Tier changes only through the evaluation harness | **Revised 2026-07-31** — Gemini needs no Model Garden step, so it unblocks work today; the abstraction keeps the choice reversible |
 | D6 | Core package location | The agent core (ingestion, retrieval, prompt, loop) lives in the **`documentation-agent` repository**; this repository provides the corpus only. Ingestion reads a documentation checkout via `--docs-root` | **Revised 2026-07-31** — supersedes the earlier "core stays in `scripts/rag/`" split; one repository owns all agent code, so there is no cross-repository package dependency to keep in step |
 | D7 | Logging and retention | Store question, tool trace, answer, and token counts for 30 days to seed the golden set; no IP addresses joined to content; disclosed in the widget footer | Needs sign-off before launch |
-| D8 | Launch quality bar | Regression gate set just below the measured BM25 baseline: **recall@5 ≥ 0.65, MRR ≥ 0.50** (baseline 0.688 / 0.543), plus zero hallucinated URLs. Refusal on the unanswerable subset is **0.80 today and must reach 1.00 before launch** | **Set 2026-07-31** from measurement, not aspiration |
+| D8 | Launch quality bar | Regression gate set just below the measured BM25 baseline: **recall@5 ≥ 0.65, MRR ≥ 0.50** (baseline 0.688 / 0.543), plus zero hallucinated URLs. Refusal on the unanswerable subset must be **1.00**, reached 2026-07-31 after the prompt revision | **Set 2026-07-31** from measurement, not aspiration |
 
 ## 3. Phases and workstreams
 
@@ -53,7 +52,7 @@ authority):
 | --- | --- | --- | --- |
 | 0 | Prototypes | BM25 demo in `scripts/rag/`; desktop automation experiment in the platform repository ([`web-app#2894`](https://github.com/mat3ra/web-app/pull/2894)) | **Done** |
 | 1 | Foundations | M1 core package, M2 evaluation harness | **Done 2026-07-31** |
-| 2 | Docs launch | M3 service, M4 widget, M5 deployment, M6 hardening | In progress — M3 and M4 done 2026-07-31; M5 next |
+| 2 | Docs launch | M3 service, M4 widget, M5 deployment, M6 hardening | In progress — M3–M5 done 2026-07-31; M6 (launch gate) remains |
 | 3 | Retrieval quality | M7 upgrades, evaluation-gated | Planned, post-launch |
 | 4 | Platform embed | M8, stages M8.1–M8.3 | Planned, post-launch |
 | 5 | Platform actions | Stages A1–A4 in [`docs-agent-platform-actions.md`](docs-agent-platform-actions.md) | Proposed |
@@ -77,7 +76,7 @@ must pass before M6.
 | M2 Evaluation harness + golden set | 1 | Quality | **Done 2026-07-31** |
 | M3 Backend service | 2 | Delivery | **Done 2026-07-31** |
 | M4 Documentation widget | 2 | Delivery | **Done 2026-07-31** |
-| M5 Deployment + index pipeline | 2 | Delivery | 2–3 days |
+| M5 Deployment + index pipeline | 2 | Delivery | **Done 2026-07-31** |
 | M6 Launch hardening | 2 | Both | 1–2 days |
 | M7 Retrieval upgrades | 3 | Quality | 1–2 weeks |
 | M8 In-platform surface | 4 | Delivery | ~1 week, staged |
@@ -268,7 +267,44 @@ from any page of all four sites; `scripts/links/check-links.py` still passes;
 widget absent-but-silent when the service is down; the module also mounts in
 a bare HTML page with a single `mount()` call (the M8 embeddability check).
 
-### M5. Deployment and index pipeline
+### M5. Deployment and index pipeline — **done 2026-07-31**
+
+Live at `https://docs-agent-mmrcocqy3a-uc.a.run.app` (D4: the default Cloud
+Run hostname for the beta). The Cloud Run choice paid off exactly where §5
+said it would — the attached service account supplies Vertex credentials, so
+the pasted access token that development needed is not managed, it is gone.
+
+Two identities, deliberately separate: the runtime holds only Vertex access,
+and the deploy identity may act as it without inheriting anything from it.
+CI authenticates through Workload Identity Federation, so no service-account
+key exists in either place.
+
+A revision deploys with **no traffic** behind a `candidate` tag, is
+smoke-tested on its own URL for health and one real end-to-end question, and
+only then takes traffic. A broken revision never gets the chance to serve.
+
+Verified against the deployed service, not locally: health reports the
+documentation commit its index was built from; an anonymous request streams a
+grounded answer; the CORS allowlist admits the documentation origin and
+refuses another; an oversized body is rejected; and the rollback drill ran end
+to end — promote, roll back to the previous revision, roll forward — with the
+traffic split confirmed at each step.
+
+Three things worth carrying forward:
+
+- **`git clone --branch` cannot take a commit SHA.** Pinning the index to a
+  documentation commit failed outright until the build was changed to fetch
+  the ref and check out `FETCH_HEAD`. Pinning is the whole point of the
+  artifact, so this would have silently degraded to "whatever `main` was".
+- **`builds submit --tag` cannot pass a build argument**, which the pinned
+  build needs; an explicit build config replaces it.
+- **A brand-new project needs a moment.** The first `run deploy --source`
+  failed with a bare permission error that resolved itself once the freshly
+  created Artifact Registry repository and its permissions had propagated —
+  worth knowing before chasing an org policy that is not the cause.
+
+The original plan for this milestone follows, for the reasoning behind the
+shape above.
 
 Cloud Run runtime plus the two decoupled triggers from
 [web delivery plan §5.1](docs-agent-web-delivery.md).
@@ -416,22 +452,28 @@ Strategy risks live in the companions ([RAG plan §8](docs-agent-rag.md),
 
 ## 7. Immediate next actions
 
-M1–M4 are built and verified locally. What stands between here and a public
-beta is deployment and the launch gate, not features.
+M1–M5 are done and the agent is deployed and answering. Only the launch gate
+remains, and most of what is left is judgement rather than code.
 
 1. **Merge the open pull requests.** They are stacked and merge in order:
-   `documentation-agent` #1 (M1) → #2 (M2) → #3 (M3); `documentation` #391
-   (plans) and the widget branch after #389.
-2. **M5, deployment.** The one remaining piece with unknowns in it: the
-   Cloud Run service, Workload Identity Federation for both repositories,
-   the documentation-merge trigger, and the rollback drill. The widget's
-   endpoint constant points at a host that does not exist yet, which is
-   safe — the launcher stays hidden — but it is the last wire to connect.
+   `documentation-agent` #1 (M1) → #2 (M2) → #3 (M3) → #4 (M5);
+   `documentation` #391 after #389.
+2. **D7, the retention decision** (owner). It gates M6 and nothing else is
+   blocking it. The widget footer already discloses that questions are
+   logged, so the text and the policy need to agree before anyone sees it.
 3. **Settle the faithfulness measurement** before M6 can gate on it. One run
    cannot separate a prompt change from sampling noise (§M2), so either
    repeat the run or grow the set.
-4. **Retire the superseded demo** in `scripts/rag/` so there is one
+4. **Two secrets to add:** `DOCS_AGENT_DISPATCH_TOKEN` in this repository, so
+   a documentation merge triggers a rebuild; the pipeline skips with a
+   message until then, rather than failing the build.
+5. **Retire the superseded demo** in `scripts/rag/` so there is one
    implementation rather than two.
-5. **Owner, when convenient:** enable the Claude models in Model Garden on
+6. **Owner, when convenient:** enable the Claude models in Model Garden on
    `mat3ra-documentation` to unblock the `anthropic` backend for the D5
    comparison. Nothing is blocked on it — Gemini is the default and works.
+
+Note what merging does and does not do. The widget only appears once the
+service answers its health check, and the service is already live, so
+**merging the widget to `main` is the launch** — which is why it waits on
+M6 rather than on anything technical.
