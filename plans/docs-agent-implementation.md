@@ -487,13 +487,19 @@ remains, and most of what is left is judgement rather than code.
 4. **Two secrets to add:** `DOCS_AGENT_DISPATCH_TOKEN` in this repository, so
    a documentation merge triggers a rebuild; the pipeline skips with a
    message until then, rather than failing the build.
-5. **Upgrade the local Google Cloud SDK.** It is still 437.0.1 (June 2023),
-   and Google rejects that client's token refresh: a fresh `gcloud auth
-   login` works for about an hour and then every call fails with
-   `ACCESS_TOKEN_TYPE_UNSUPPORTED`. Re-authenticating treats the symptom
-   hourly; `brew upgrade` fixes it. Nothing deployed depends on it — Cloud
-   Run uses its own service account — but no deploy can be run from a laptop
-   in this state.
+5. **The build machine's gcloud is sorted — the story is worth recording.**
+   The failures were three stacked causes, not one: the machine driving
+   builds (Mat3rium) is a different computer from the laptop whose logins
+   kept "not helping"; its 2023-era gcloud minted tokens Google began
+   rejecting outright on 2026-08-01; and its account session now demands
+   interactive reauthentication, which no non-interactive shell can
+   satisfy. Current state: a current SDK runs from a local directory, fed
+   tokens minted from application-default credentials
+   (`CLOUDSDK_AUTH_ACCESS_TOKEN`), which refresh fine — no user action
+   needed per deploy. A proper `gcloud auth login` on Mat3rium plus a brew
+   upgrade there would retire the workaround; deploys through CI (federated
+   identity) bypass all of it, which is one more reason to merge the
+   pipeline.
 5. **Retire the superseded demo** in `scripts/rag/` so there is one
    implementation rather than two.
 6. **Owner, when convenient:** enable the Claude models in Model Garden on
