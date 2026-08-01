@@ -42,6 +42,16 @@
     // the index there, so it can only ever name a page that exists.
     var glossary = {};
 
+    var CANONICAL_DOCS_ORIGIN = "https://docs.mat3ra.com";
+    // When the widget runs on a documentation build that is not production — a
+    // deploy preview, or a local server — citations should stay on the build
+    // being read. The corpus stores canonical production URLs, so following one
+    // otherwise leaves the preview entirely, which loses the conversation with
+    // it: storage is per-origin. Set only where the widget mounts itself onto a
+    // documentation site; the platform shell serves no documentation and must
+    // keep sending readers to the real thing.
+    var docsOrigin = "";
+
     /** Append inline Markdown (code, bold, links, bare URLs) to a parent node. */
     function renderInline(parent, text) {
         while (text) {
@@ -99,6 +109,13 @@
         return bold;
     }
 
+    /** Point a canonical documentation URL at the build currently being read. */
+    function localDocsUrl(href) {
+        if (!docsOrigin || docsOrigin === CANONICAL_DOCS_ORIGIN) return href;
+        if (href.indexOf(CANONICAL_DOCS_ORIGIN + "/") !== 0) return href;
+        return docsOrigin + href.slice(CANONICAL_DOCS_ORIGIN.length);
+    }
+
     /**
      * A link the model asked for. Only https targets become anchors; anything
      * else (javascript:, data:, a relative path) is rendered as plain text, so
@@ -109,7 +126,7 @@
             return document.createTextNode(label + " (" + href + ")");
         }
         var anchor = document.createElement("a");
-        anchor.href = href;
+        anchor.href = localDocsUrl(href);
         anchor.textContent = label;
         // Navigate in place: a documentation link is the continuation of the
         // answer, not a detour, and opening tabs behind the reader is a habit
@@ -253,6 +270,7 @@
     function DocsAgentWidget(root, options) {
         this.endpoint = (options && options.endpoint) || resolveEndpoint();
         this.tokenProvider = (options && options.tokenProvider) || null;
+        if (options && options.docsOrigin) docsOrigin = options.docsOrigin;
         this.messages = []; // conversation, in memory only
         this.busy = false;
         this.build(root);
@@ -617,7 +635,9 @@
                 var host = document.createElement("div");
                 host.className = "docs-agent";
                 document.body.appendChild(host);
-                DocsAgent.mount(host, { endpoint: endpoint });
+                // Self-mounting means this page *is* a documentation build, so
+                // citations should stay on it rather than jumping to production.
+                DocsAgent.mount(host, { endpoint: endpoint, docsOrigin: global.location.origin });
             })
             .catch(function () {
                 /* Service unavailable: leave the page exactly as it was. */
