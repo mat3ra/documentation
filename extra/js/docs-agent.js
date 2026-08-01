@@ -18,7 +18,9 @@
 (function (global) {
     "use strict";
 
-    var DEFAULT_ENDPOINT = "https://docs-agent.mat3ra.com";
+    // Beta runs on the default Cloud Run hostname; a mat3ra.com subdomain
+    // replaces this before general availability.
+    var DEFAULT_ENDPOINT = "https://docs-agent-mmrcocqy3a-uc.a.run.app";
     var ENDPOINT_OVERRIDE_KEY = "docsAgentEndpoint"; // localStorage, for local development
     var MAX_QUESTION_CHARS = 4000;
 
