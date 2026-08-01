@@ -41,7 +41,7 @@ later milestone but nothing before it.
 | D5 | Model | Provider abstraction over Vertex: **Gemini by default** (`gemini-3.6-flash`, `global`), Claude (`claude-opus-4-6`, `us-east5`) behind the same interface once Model Garden is enabled. Tier changes only through the evaluation harness | **Revised 2026-07-31** — Gemini needs no Model Garden step, so it unblocks work today; the abstraction keeps the choice reversible |
 | D6 | Core package location | The agent core (ingestion, retrieval, prompt, loop) lives in the **`documentation-agent` repository**; this repository provides the corpus only. Ingestion reads a documentation checkout via `--docs-root` | **Revised 2026-07-31** — supersedes the earlier "core stays in `scripts/rag/`" split; one repository owns all agent code, so there is no cross-repository package dependency to keep in step |
 | D7 | Logging and retention | Store question, tool trace, answer, and token counts for 30 days to seed the golden set; no IP addresses joined to content; disclosed in the widget footer | Needs sign-off before launch |
-| D8 | Launch quality bar | Regression gate set just below the measured BM25 baseline: **recall@5 ≥ 0.65, MRR ≥ 0.50** (baseline 0.688 / 0.543), plus zero hallucinated URLs. Refusal on the unanswerable subset must be **1.00**, reached 2026-07-31 after the prompt revision | **Set 2026-07-31** from measurement, not aspiration |
+| D8 | Launch quality bar | Regression gate set just below the measured BM25 baseline: **recall@5 ≥ 0.65, MRR ≥ 0.50** (baseline 0.688 / 0.543), plus zero hallucinated URLs. Refusal on the unanswerable subset must be **1.00** | **Met with replication 2026-08-01**: refusal 1.00 in four consecutive runs; faithfulness 1.00 in both runs after the judge was corrected to see exactly what the model saw (earlier 0.892 figures were the judge's truncated view, not the agent); zero hallucinated URLs in every run ever made |
 
 ## 3. Phases and workstreams
 
@@ -481,9 +481,11 @@ remains, and most of what is left is judgement rather than code.
 2. **D7, the retention decision** (owner). It gates M6 and nothing else is
    blocking it. The widget footer already discloses that questions are
    logged, so the text and the policy need to agree before anyone sees it.
-3. **Settle the faithfulness measurement** before M6 can gate on it. One run
-   cannot separate a prompt change from sampling noise (§M2), so either
-   repeat the run or grow the set.
+3. ~~Settle the faithfulness measurement~~ — **settled 2026-08-01.** Repeated
+   runs exposed a judge defect (it scored against a truncated view of the
+   evidence); with the corrected judge, faithfulness is 1.00 in both runs.
+   The quality half of the M6 gate is met; what remains of M6 is D7 and the
+   merge itself.
 4. **Two secrets to add:** `DOCS_AGENT_DISPATCH_TOKEN` in this repository, so
    a documentation merge triggers a rebuild; the pipeline skips with a
    message until then, rather than failing the build.
