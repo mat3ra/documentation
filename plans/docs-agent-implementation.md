@@ -75,7 +75,7 @@ must pass before M6.
 | M1 Shared core package | 1 | Delivery | **Done 2026-07-31** |
 | M2 Evaluation harness + golden set | 1 | Quality | **Done 2026-07-31** |
 | M3 Backend service | 2 | Delivery | **Done 2026-07-31** |
-| M4 Documentation widget | 2 | Delivery | **Done 2026-07-31** |
+| M4 Documentation widget | 2 | Delivery | **Done 2026-08-01** |
 | M5 Deployment + index pipeline | 2 | Delivery | **Done 2026-07-31** |
 | M6 Launch hardening | 2 | Both | 1–2 days |
 | M7 Retrieval upgrades | 3 | Quality | 1–2 weeks |
@@ -224,11 +224,31 @@ Acceptance: `docker run` locally with ADC answers a question end-to-end with
 visible streaming; a scripted client verifies each guard (rejected origin,
 rate-limit 429, oversized body 413).
 
-### M4. Documentation widget (this repository)
+### M4. Documentation widget — **done 2026-08-01**
 
-Embeddable chat on every page of the documentation sites, per
-[web delivery plan §3.2](docs-agent-web-delivery.md). Note the site count has
-grown past the four in `AGENTS.md`: CI now builds eight (adding Interface,
+Live on the deploy preview and covered by 17 Playwright tests
+(`tests/widget/`) that run in CI in under three seconds without cloud access
+or a model call — the widget is real, only the service is faked at the
+network boundary.
+
+Four things the first real use taught, each now a test:
+
+- **Citations must be clickable and same-tab.** The model lists sources as
+  bare URLs, which the renderer did not recognise, so every citation arrived
+  as dead text.
+- **Emphasised product terms should link**, from a glossary the service
+  derives from its own index — never from the model. Terms that more than one
+  page claims are dropped: a confident link to the wrong product's page is
+  worse than bold text.
+- **Citations must stay on the build being read.** The corpus stores
+  canonical production URLs, so following one from a preview left the preview
+  — and the conversation with it, storage being per-origin.
+- **The conversation has to outlive the page.** Once links open in place,
+  every citation ended the exchange that produced it. It is now stored,
+  bounded and expiring, with "New chat" to end it.
+
+The remaining scope note stands: the site count has grown past the four in
+`AGENTS.md` — CI now builds eight (adding Interface,
 Resources, Developers, Command Line, Standards), so verify the widget against
 the workflow's list rather than a remembered number.
 
@@ -467,6 +487,13 @@ remains, and most of what is left is judgement rather than code.
 4. **Two secrets to add:** `DOCS_AGENT_DISPATCH_TOKEN` in this repository, so
    a documentation merge triggers a rebuild; the pipeline skips with a
    message until then, rather than failing the build.
+5. **Upgrade the local Google Cloud SDK.** It is still 437.0.1 (June 2023),
+   and Google rejects that client's token refresh: a fresh `gcloud auth
+   login` works for about an hour and then every call fails with
+   `ACCESS_TOKEN_TYPE_UNSUPPORTED`. Re-authenticating treats the symptom
+   hourly; `brew upgrade` fixes it. Nothing deployed depends on it — Cloud
+   Run uses its own service account — but no deploy can be run from a laptop
+   in this state.
 5. **Retire the superseded demo** in `scripts/rag/` so there is one
    implementation rather than two.
 6. **Owner, when convenient:** enable the Claude models in Model Garden on
