@@ -205,21 +205,19 @@
     align-items: center;
 }
 
-/* Product terms the answer emphasised, linked to the page that defines them.
- * Kept looking like emphasis rather than a link so the answer still reads as
- * prose, with the underline appearing on hover. */
+/* Anything clickable reads as a link: the documentation's own link colour where
+ * the theme defines one, and a conventional blue anywhere else the widget is
+ * embedded. Source URLs are long, so they wrap rather than widen the panel. */
+.docs-agent-message a,
 .docs-agent-term {
-    color: inherit;
+    color: var(--md-typeset-a-color, #1a73e8);
     text-decoration: none;
-    border-bottom: 1px dotted currentColor;
+    word-break: break-word;
 }
 
+.docs-agent-message a:hover,
+.docs-agent-message a:focus,
 .docs-agent-term:hover,
 .docs-agent-term:focus {
     text-decoration: underline;
-}
-
-/* Source URLs are long; let them wrap rather than widen the panel. */
-.docs-agent-message a {
-    word-break: break-word;
 }
