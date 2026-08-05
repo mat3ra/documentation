@@ -24,13 +24,13 @@ The interfacial energy [workflow]({{ reference_url }}/workflows/overview/) is co
 - Loads the standalone substrate material into the workflow to be used as a reference.
 
 ### 3. Fetch Total Energy for Substrate Material
-- Queries the platform for the total energy of the substrate material and extracts it using `io-bulk-te-job` and `io-te-bulk`.
+- Looks up the substrate material's own most recently finished Total Energy job and extracts its highest-precision `total_energy` property using `io-bulk-te-job` and `io-te-bulk`. Unlike the Formation Energy and Defect Formation Energy workflows, there is no Group or Source assignment unit to configure here — the lookup is tied directly to the substrate material you submitted, not to a property group or an owner filter.
 
 ### 4. Load Film Material
 - Loads the standalone film material into the workflow.
 
 ### 5. Fetch Total Energy for Film Material
-- Queries the platform for the total energy of the film material and extracts it.
+- Same lookup as above, applied to the film material.
 
 ### 6. Compute Interfacial Energy
 - **pw_scf**: Performs a self-consistent field (SCF) calculation to determine the total energy of the combined interface structure.
@@ -40,20 +40,24 @@ The interfacial energy [workflow]({{ reference_url }}/workflows/overview/) is co
 
 ## 3. Select the workflow and create the job
 
-1. Open the [Job Designer]({{ interface_url }}/jobs-designer/overview/) and select your combined interface material.
-![Material Selection](./images/interfacial-energy-material-selection.png)
+This is a **multi-material** workflow: the job must be submitted with exactly three materials, in this order:
+
+1. **Interface** (position 0) — its total energy is computed by the job itself.
+2. **Substrate** (position 1) — its total energy is fetched from that material's own most recently finished Total Energy job.
+3. **Film** (position 2) — same as the substrate.
+
+Both the substrate's and film's Total Energy jobs must already exist on the platform before you submit this job (see [step 1](#1-create-the-materials)).
+
+1. Open the [Job Designer]({{ interface_url }}/jobs-designer/overview/) and add the interface material first, then the substrate, then the film, so they occupy positions 0, 1, and 2 respectively.
+![Material Selection](/images/tutorials/interfacial_energy/interfacial-energy-material-selection.png)
 2. [Workflows]({{ reference_url }}/workflows/overview/) for interfacial energy calculations with [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) can be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/).
 3. Once imported, [select]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) the Interfacial Energy workflow and add it to your job.
-![Workflow Selection](./images/interfacial-energy-workflow-selection.png)
+![Workflow Selection](/images/tutorials/interfacial_energy/interfacial-energy-workflow-selection.png)
 
-## 4. Set Group and Source of Properties
-
-Inside the subworkflows that fetch the substrate and film total energies, make sure the property owner groups are set correctly to match the group under which you calculated the individual total energies (e.g., your account).
-
-## 5. Submit the job
+## 4. Submit the job
 
 Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), review the [Compute tab]({{ interface_url }}/jobs-designer/compute-tab/) to verify the compute parameters. Ensure that the K-point grid and cutoffs match those used for the substrate and film reference calculations.
 
-## 6. Examine the results
+## 5. Examine the results
 
 Once the job completes, navigate to the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of the [Job Viewer]({{ interface_url }}/jobs/ui/viewer/). The **Interfacial Energy** property will be displayed.

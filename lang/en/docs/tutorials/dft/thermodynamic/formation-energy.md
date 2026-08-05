@@ -11,9 +11,9 @@ The formation energy of a compound is calculated with respect to its constituent
 
 Before running the formation energy workflow for a compound (e.g., Silicon Carbide, SiC), you must first calculate the [Total Energy]({{ reference_url }}/properties-directory/scalar/total-energy/) for each of its constituent elements:
 1. **Get Elemental Materials**: Navigate to your Materials collection and import the relevant elemental reference materials from Standata, saving them to your account.
-2. **Calculate Total Energy**: For each elemental material, run a Total Energy calculation by following the [Total Energy tutorial](total-energy.md). 
+2. **Calculate Total Energy**: For each elemental material, run a standard SCF [Total Energy]({{ reference_url }}/properties-directory/scalar/total-energy/) job on it. 
    - **Crucial**: The precision settings (e.g., KPPRA, kinetic energy cutoffs) used for the elements must exactly match the settings you will use for the compound material's calculation.
-   - **Crucial**: Ensure you note the **Group** under which these elemental properties are saved, as you will need to specify this group in the Formation Energy workflow.
+   - **Crucial**: Ensure you note the property **Group** (e.g., `qe:dft:gga:pbe`) under which the elemental Total Energies were calculated, as you will need to specify this group in the Formation Energy workflow.
 
 ## 1. Create a job
 
@@ -30,15 +30,15 @@ Under the *Choose A Material* section, select the compound material for which yo
 
 The [workflow]({{ reference_url }}/workflows/overview/) is composed of the following key [units]({{ reference_url }}/workflows/components/units/):
 
-**pw_scf** — Performs a self-consistent field (SCF) calculation to determine the total energy of the compound material.
+**pw_scf** (in the **Compute Total Energy** subworkflow) — Performs a self-consistent field (SCF) calculation to determine the total energy of the compound material.
 
-**assign-compound-precision** — Evaluates the grid precision (e.g., KPPRA) used in the SCF calculation to ensure consistent precision matching when retrieving elemental energies.
+**assign-source-of-te-for-an-element** / **assign-group-for-material** (in the **Resolve Total Energies for Elemental Materials** subworkflow) — Set which elemental reference records to search for: the **Source** is the record's owner (`public` by default, `my_account`, or `curators`), and the **Group** is the computational-method slug (e.g., `qe:dft:gga:pbe`) the elemental Total Energies were calculated under.
 
-**init-element-index** / **check-elemental-te-loop** / **assign-current-element** — A loop construct that iterates over each unique element present in the compound.
+**init-element-index** / **check-te-for-elemental-materials-loop** / **assign-current-element** — A loop construct that iterates over each unique element present in the compound.
 
-**io-elemental-energy** — An [I/O unit]({{ reference_url }}/workflows/components/units/#i/o) that queries the platform's REST API to retrieve the pre-calculated `total_energy` property for the current element's standard state reference material. It filters by owner (e.g., public, curators, or my account) and sorts by precision to find the most appropriate reference value.
+**io-te-for-an-element** — An [I/O unit]({{ reference_url }}/workflows/components/units/#i/o) that queries the platform's REST API to retrieve the pre-calculated `total_energy` property for the current element's standard state reference material, filtered by the Group and Source set above, and sorts by precision to find the most appropriate reference value.
 
-**assign-formation-energy** — Uses [Python]({{ reference_url }}/software-directory/scripting/python/overview/) logic to subtract the sum of the elemental reference energies (scaled by stoichiometry) from the compound's total energy, yielding the final formation energy.
+**assign-formation-energy** (in the **Calculate Formation Energy** subworkflow) — Uses [Python]({{ reference_url }}/software-directory/scripting/python/overview/) logic to subtract the sum of the elemental reference energies (scaled by stoichiometry) from the compound's total energy, yielding the final formation energy.
 
 </details>
 
@@ -52,26 +52,30 @@ In the Job Designer, [select]({{ interface_url }}/jobs-designer/actions-header-m
 
 ## 4. Set Group and Source of Properties
 
-Inside the **Get Elemental Materials** subworkflow, switch to the **Detailed view** tab. There are two critical [assignment units]({{ reference_url }}/workflows/components/units/#assignment) that must be configured correctly:
+Inside the **Resolve Total Energies for Elemental Materials** subworkflow (not the earlier **Get Elemental Materials** subworkflow, which only resolves the elemental reference *materials* — not their total energies), switch to the **Detailed view** tab. There are two critical [assignment units]({{ reference_url }}/workflows/components/units/#assignment) that must be configured correctly:
 
-**assign-group-for-material**: This unit sets the [group]({{ reference_url }}/accounts/groups/) (e.g. public, curators, or your account) where the platform will search for the elemental Total Energy results. The group selected here must match the owner group of the elemental properties you wish to use.
+**assign-source-of-te-for-an-element**: This unit sets who owns the elemental Total Energy record to search for — `'public'` by default, or `'my_account'`/`'curators'` if you calculated the elemental references yourself or want curated results only. This is unrelated to Standata: Standata is only where the elemental reference *materials* (structures) come from; the Source setting is about who calculated the *total energy property* on those materials.
 
-![Job Designer group assignment for Formation Energy](/images/tutorials/formation_energy/formation-energy-group.png)
+![Job Designer source assignment for Formation Energy](/images/tutorials/formation_energy/formation-energy-assign-te-source-unit.png)
 
-**assign-source-of-te-for-an-element**: This unit specifies the source of the property. By default, it queries Standata for elemental energies.
+![Unit settings for assign-source-of-te-for-an-element](/images/tutorials/formation_energy/formation-energy-assign-te-source.png)
+
+**assign-group-for-material**: This unit sets the property group (e.g., `qe:dft:gga:pbe`) to filter the elemental Total Energy results by computational method. The group selected here must match the property group of the elemental total energies you calculated previously.
 
 ## 5. Set parameters
 
 In the workflow unit settings, ensure the [k-point grid]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/) is sufficiently dense for your desired accuracy. A high KPPRA (k-points per reciprocal atom) is typically required for accurate formation energies. 
 
 !!!important "Precision Consistency"
-    The precision settings (e.g., KPPRA, kinetic energy cutoff) used for the compound material's SCF calculation must match the precision settings used to calculate the elemental reference energies. The `io-elemental-energy` unit will attempt to find a reference material matching the target precision.
+    The precision settings (e.g., KPPRA, kinetic energy cutoff) used for the compound material's SCF calculation must match the precision settings used to calculate the elemental reference energies. The `io-te-for-an-element` unit does not verify this for you — it simply picks the highest-precision matching reference it finds, so a mismatch will silently produce an incorrect formation energy.
 
 ![Job Designer parameter configuration for Formation Energy](/images/tutorials/formation_energy/formation-energy-parameters.png)
 
 ## 6. Submit the job
 
 Once all parameters are set, navigate to the [Compute tab]({{ interface_url }}/jobs-designer/compute-tab/) to verify the compute resource allocation, then [submit]({{ interface_url }}/jobs/actions/run/) the job.
+
+![Job Designer compute tab for Formation Energy](/images/tutorials/formation_energy/formation-energy-compute-tab.png)
 
 ## 7. Examine the results
 
