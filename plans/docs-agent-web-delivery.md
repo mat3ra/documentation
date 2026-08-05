@@ -1,11 +1,18 @@
-# Documentation Agent — Web App Plan
+# Documentation Agent — Web Delivery Plan
 
-Plan for turning the working command-line agent
-([`scripts/rag/agent.py`](../scripts/rag/agent.py)) into a browser-based chat.
+Plan for turning the working command-line agent (the `mat3ra_docs_agent`
+package in the
+[`documentation-agent`](https://github.com/mat3ra/documentation-agent)
+repository) into a browser-based chat.
+"Web delivery" here means shipping the documentation agent to browsers — not
+to be confused with the platform application, whose repository is named
+`web-app`.
 
-- **Status:** proposal — nothing built yet.
-- **Last updated:** 2026-07-28
+- **Status:** Active — the architecture reference for Phase 2 (docs launch);
+  nothing built yet.
+- **Last updated:** 2026-07-31
 - **Companion plan:** [`docs-agent-rag.md`](docs-agent-rag.md) (agent and retrieval strategy)
+- **Implementation plan:** [`docs-agent-implementation.md`](docs-agent-implementation.md)
 
 ---
 
@@ -49,10 +56,11 @@ retrieval plan's own schedule.
 
 ## 2. Where the service should live
 
-### 2.1. Not inside the platform web application
+### 2.1. Not inside the platform application
 
-The platform user interface is a large Meteor application. It is the wrong home
-for a public documentation assistant:
+The platform (platform.mat3ra.com) is a large Meteor application maintained
+in the `web-app` repository. It is the wrong home for a public documentation
+assistant:
 
 | | Standalone service | Inside the platform application |
 | --- | --- | --- |
@@ -129,17 +137,21 @@ launcher appears on every documentation page.
 The documentation repository is **public**. The service's operational
 configuration should not be. Split by what each part is coupled to:
 
+> **Revised 2026-07-31 (decision D6).** The split below was reconsidered: the
+> agent core now lives with the service rather than here. The reasoning about
+> what must stay private is unchanged; only the boundary moved.
+
 | Concern | Repository | Reason |
 | --- | --- | --- |
-| Corpus, ingestion, retrieval core, prompt | **This (public) repository**, in `scripts/rag/` | Coupled to the documentation; contains nothing sensitive; stays a runnable reference |
-| Service: HTTP layer, container, deployment manifests, access policy, rate limiting | **Separate private repository** | Coupled to infrastructure; matches the existing convention of one repository per service, aggregated into the platform stack as a submodule |
-| Built index | **Published artifact**, not committed | Generated content; versioned by the documentation commit it was built from |
+| Corpus (the Markdown itself) | **This (public) repository** | It is the documentation |
+| Ingestion, retrieval core, prompt, agent loop, HTTP service, container, deployment | **`documentation-agent` (private)** | One repository owns all agent code, so there is no cross-repository package version to keep in step; ingestion reads a documentation checkout at a pinned commit |
+| Built index | **Baked into the service image**, not committed | Generated content; versioned by the documentation commit it was built from |
 
-To avoid duplicating the retrieval core across two repositories, keep the
-dependency one-way: this repository publishes a small installable package that
-the private service depends on. That is preferable to the service vendoring the
-documentation repository, which would drag a large Git LFS history into a
-service image.
+The rejected alternative was a one-way package dependency (this repository
+publishing an installable core that the service imports). It works, but it
+splits one codebase across two release cadences for no gain now that the
+service is the only consumer. The service checks out the documentation at a
+specific SHA rather than vendoring it, so no Git LFS history enters the image.
 
 ---
 
@@ -213,14 +225,18 @@ for a demonstration; weaker as a foundation.
 
 ## 7. Roadmap
 
-| Step | Scope | Estimate |
+Milestone identifiers and phase numbering follow the
+[implementation plan](docs-agent-implementation.md) §3, which supersedes
+this table for sequencing.
+
+| Milestone (phase) | Scope | Estimate |
 | --- | --- | --- |
-| W0 | Extract `rag_core.py`; command-line wrapper imports it | 0.5 day |
-| W1 | FastAPI `/chat` with streaming and the tool loop; CORS; local run | 2–4 days |
-| W2 | Embeddable widget in the MkDocs theme; streamed Markdown and citations | 3–5 days |
-| W3 | Container, deployment pipeline, service-account auth, rate limiting, spend alerts | 2–3 days |
-| W4 | Hybrid retrieval behind the same interface; evaluation gate; latency tuning | 1–2 weeks |
-| Later | In-platform surface; authenticated action tools (separate security review) | As prioritised |
+| M1 (Phase 1) | Extract the shared core package; command-line wrapper imports it | 0.5–1 day |
+| M3 (Phase 2) | FastAPI `/chat` with streaming and the tool loop; CORS; local run | 2–4 days |
+| M4 (Phase 2) | Embeddable widget in the MkDocs theme; streamed Markdown and citations | 3–5 days |
+| M5 (Phase 2) | Container, deployment pipeline, service-account auth, rate limiting, spend alerts | 2–3 days |
+| M7 (Phase 3) | Hybrid retrieval behind the same interface; evaluation gate; latency tuning | 1–2 weeks |
+| Phases 4–5 | In-platform surface (M8); platform actions ([`docs-agent-platform-actions.md`](docs-agent-platform-actions.md), separate security review) | As prioritised |
 
 ## 8. Cost
 

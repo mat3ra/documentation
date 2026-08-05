@@ -24,3 +24,11 @@ scripts/rag/chunks.jsonl
 # Agents workdir
 tmp
 .local-mkdocs*.yml
+
+# Local clone of the documentation-agent service repo (see plans/)
+reference/
+
+# Widget browser tests
+tests/widget/node_modules/
+tests/widget/test-results/
+tests/widget/playwright-report/

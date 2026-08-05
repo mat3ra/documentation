@@ -1,8 +1,17 @@
-# Docs RAG Agent — Minimal Demo
+# Docs RAG Agent — Minimal Demo (superseded)
+
+> **Superseded as of 2026-07-31.** This Phase-0 prototype has been rebuilt as
+> an installable package with a provider abstraction, tests, and CI in the
+> [`documentation-agent`](https://github.com/mat3ra/documentation-agent)
+> repository (decision D6 in
+> [`plans/docs-agent-implementation.md`](../../plans/docs-agent-implementation.md)).
+> It is kept here only until that work is pushed, then removed. New work goes
+> in the new repository.
+
 
 A grounded question-answering agent over the Mat3ra documentation. It retrieves
 relevant doc sections with BM25 and answers using **Claude Opus 4.6 on Google
-Vertex AI**, citing `docs.mat3ra.com` URLs. This is the Phase-1 minimal build
+Vertex AI**, citing `docs.mat3ra.com` URLs. This is the Phase-0 prototype
 from [`plans/docs-agent-rag.md`](../../plans/docs-agent-rag.md).
 
 ## What it does
