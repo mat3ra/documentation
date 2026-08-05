@@ -9,6 +9,7 @@ extra_css:
     - extra/css/images.css
     - extra/css/super-fences.css
     - extra/css/properties.css
+    - extra/css/docs-agent.css
     - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css
 
 extra_javascript:
@@ -18,6 +19,9 @@ extra_javascript:
     - extra/js/katex.js
     - extra/js/clickable-rows.js
     - extra/js/search-hint.js
+    # Self-mounting; hides itself when the agent service is unreachable, so a
+    # documentation page never shows a launcher that leads nowhere.
+    - extra/js/docs-agent.js
     - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js
     - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js
     - 'https://www.googletagmanager.com/gtag/js?id=UA-69270713-5'
