@@ -85,3 +85,5 @@ Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ referenc
 ## 7. Examine the results
 
 Once the job completes, navigate to the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of the [Job Viewer]({{ interface_url }}/jobs/ui/viewer/). The **Defect Formation Energy** property will be displayed.
+
+![Job Viewer results for Defect Formation Energy](/images/tutorials/defect_formation_energy/defect-formation-energy-result.png)

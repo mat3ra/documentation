@@ -58,6 +58,10 @@ Both the substrate's and film's Total Energy jobs must already exist on the plat
 
 Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), review the [Compute tab]({{ interface_url }}/jobs-designer/compute-tab/) to verify the compute parameters. Ensure that the K-point grid and cutoffs match those used for the substrate and film reference calculations.
 
+![Job Designer compute tab for Interfacial Energy](/images/tutorials/interfacial_energy/interfacial-energy-parameters.png)
+
 ## 5. Examine the results
 
 Once the job completes, navigate to the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of the [Job Viewer]({{ interface_url }}/jobs/ui/viewer/). The **Interfacial Energy** property will be displayed.
+
+![Job Viewer results for Interfacial Energy](/images/tutorials/interfacial_energy/interfacial-energy-result.png)
