@@ -42,7 +42,7 @@ Mat3ra.com is an online platform for digital materials R&D. This documentation e
 <span>REST API reference, authentication, endpoints, and contribution guides.</span>
 </a>
 
-<a href="https://docs.mat3ra.com/standards/" class="grid-card">
+<a href="/standards/" class="grid-card">
 <strong>Data Standards</strong>
 <span>JSON schemas, ESSE data convention, and structured data representations.</span>
 </a>
