@@ -295,7 +295,6 @@ To regenerate the screenshots for a tutorial:
 
 - **Headless Mode and Incomplete UI Rendering**: When running Cypress in headless mode (e.g., via the default Electron browser in CI), complex UI widgets like `ag-grid`, dropdown menus, and workflow designer canvases may fail to render fully before the screenshot is taken. This results in empty or incorrect images. **Workaround**: Run Cypress in **headed mode** for screenshot generation, or ensure you have robust assertions (e.g., waiting for specific network requests to complete or using `cy.wait()`) prior to calling `cy.screenshot()`.
 - **Uncaught Exceptions Breaking Tests**: Sometimes, the application may throw benign console errors (e.g., `ResizeObserver loop limit exceeded`) that cause Cypress to fail the test prematurely before taking the screenshot. **Workaround**: These exceptions can be suppressed in `cypress/support/e2e.ts` by intercepting the `uncaught:exception` event and returning `false`.
-- **Correct Terminology (Group vs. Property Group)**: When documenting thermodynamic workflows (Formation Energy, Defect Formation, Interfacial Energy) that use the `assign-group-for-material` unit, be clear that **Group** in this context refers to the **property calculation group** (the DFT methodology, e.g., `dft:qe:gga:pbe`), *not* the user's account or organization group.
 
 
 ## Working with the Repo
