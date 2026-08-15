@@ -11,6 +11,7 @@ $$
 $$	
  
  `E_fmt` and `E_tot`, `E_zpe` are the formation energy, total energy and zero point energy for the compound and lowest energy elemental structures, correspondingly.
- 
- !!!note "Note: feature under development"
-    The calculation of Formation energies is not yet available as a Workflow computation on our platform.
+
+## Tutorials
+
+- [Calculate Formation Energy]({{ reference_url }}/tutorials/dft/thermodynamic/formation-energy/)

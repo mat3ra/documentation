@@ -126,6 +126,9 @@ nav:
                 - Phonons on Grid:                       tutorials/dft/vibrational/phonons-grid.md
             - Thermodynamic Prop.:
                 - Surface Energy:                        tutorials/dft/thermodynamic/surface-energy.md
+                - Interfacial Energy:                    tutorials/dft/thermodynamic/interfacial-energy.md
+                - Formation Energy:                      tutorials/dft/thermodynamic/formation-energy.md
+                - Defect Formation Energy:               tutorials/dft/thermodynamic/defect-formation-energy.md
             - Chemical Prop.:
                 - Reaction Energy Profile (QE):          tutorials/dft/chemical/reaction-profile-qe.md
                 - Reaction Energy Profile (VASP):        tutorials/dft/chemical/reaction-profile-vasp.md
@@ -584,8 +587,7 @@ nav:
         - Scalar:
             - Total Energy:                             properties-directory/scalar/total-energy.md
             - Fermi Energy:                             properties-directory/scalar/fermi-energy.md
-#              TODO: re-enable when implemented
-#            - Formation Energy:                         properties-directory/scalar/formation-energy.md
+            - Formation Energy:                         properties-directory/scalar/formation-energy.md
             - Surface Energy:                           properties-directory/scalar/surface-energy.md
             - Zero Point Energy:                        properties-directory/scalar/zero-point-energy.md
             - Pressure:                                 properties-directory/scalar/pressure.md
