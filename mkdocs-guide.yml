@@ -194,6 +194,7 @@ nav:
             - Overview:                                                         tutorials/materials/specific/overview.md
             - Substitutional Defects in Graphene:                               tutorials/materials/specific/defect-point-substitution-graphene.md
             - Substitutional Defects in Graphene (Band Structure):              tutorials/materials/specific/defect-point-substitution-graphene-simulation.md
+            - Twisted Bilayer MoS2 Band Structure:                          tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide-simulation.md
             - Vacancy-Substitution Pair in GaN:                                 tutorials/materials/specific/defect-point-pair-gallium-nitride.md
             - Vacancy Defect in h-BN:                                           tutorials/materials/specific/defect-point-vacancy-boron-nitride.md
             - Interstitial Defect in SnO:                                       tutorials/materials/specific/defect-point-interstitial-tin-oxide.md
