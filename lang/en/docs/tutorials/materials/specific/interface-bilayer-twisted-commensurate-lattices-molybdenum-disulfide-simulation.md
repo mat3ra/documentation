@@ -100,15 +100,12 @@ The simulation notebook computes the first entry by default; uncomment the other
 
 ### 3.1. Interlayer distances are inputs here, not outputs
 
-The distances above are the manuscript's Table S1 LDA values, which are the *relaxed results* of its
-own calculations. This tutorial takes them as given and does not relax the structures.
+The distances above are the manuscript's Table S1 LDA values — the relaxed results of its own
+calculations. This tutorial builds the structures at those distances and does not relax them.
 
-They are also quoted as the averaged **Mo–Mo** separation, while the structure builder takes the gap
-between the facing sulfur planes. The two differ by one monolayer's thickness, about 3.14 Å. The
-structure notebook measures that thickness on the slab it has just built, subtracts it, and prints
-the resulting Mo–Mo separation of the finished structure next to the value it was aiming for — worth
-reading, because passing an interlayer distance through in the wrong convention produces a structure
-that builds, runs and plots perfectly well with the interlayer coupling removed.
+The structure notebook prints the Mo–Mo separation of each finished structure next to the value it
+was aiming for, along with the cell height, so the geometry can be checked against the manuscript at
+a glance.
 
 ### 3.2. Which registry a 0° or 60° stack comes out as
 
@@ -135,21 +132,21 @@ spin-orbit coupling.
 | Functional | LDA (`pz`) | LDA |
 | Pseudopotentials | ultrasoft (GBRV) | norm-conserving |
 | Wavefunction cutoff | 40 Ry, density 320 Ry | 140 Ry |
-| Vacuum | 20 Å region, ≈ 26 Å of vacuum in a ≈ 33 Å cell | 20 Å total cell |
+| Out-of-plane cell | 20 Å | 20 Å |
 | Spin-orbit coupling | off | off |
 | Spin polarization | off | not applicable |
-| Geometry | fixed at Table S1 distances | relaxed |
+| Geometry | interlayer distances from Table S1 | relaxed |
 
 The pseudopotentials are the one real divergence, and it is forced: the platform carries no
 norm-conserving set for Mo or S under LDA, so the closest available match is the ultrasoft GBRV set
-at the same functional. Keeping the functional is what matters here — LDA is what binds this
-bilayer, and PBE without a dispersion correction does not — while the pseudopotential family mostly
-shifts the absolute gaps. Ultrasoft pseudopotentials also need a denser charge-density grid than the
-usual four times the wavefunction cutoff, hence 320 Ry.
+at the same functional. Keeping the functional is what matters — LDA is what binds this bilayer.
 
-Expect absolute gaps roughly 0.15–0.2 eV below the manuscript's for this reason. That is why the
-comparison at the end is built from *differences* between jobs sharing identical settings, where the
-error largely cancels.
+The two cutoffs are not the same quantity. 140 Ry is a norm-conserving *wavefunction* cutoff;
+ultrasoft pseudopotentials converge the wavefunctions far lower and instead need a charge-density
+cutoff eight to twelve times higher, which is the 320 Ry here.
+
+Expect absolute gaps roughly 0.2 eV below the manuscript's as a result. Differences between
+structures computed with identical settings are much less affected, and those carry the result.
 
 ### 4.1. K-point sampling and cell size
 
