@@ -97,7 +97,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 2.1.4.1. Twisted Bilayer MoS2 Commensurate Lattices <span class="btn badge b-info border-50">C-2D-INT-C</span>
 
 **Structure**: [Create Twisted MoS2 Commensurate Lattices](interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide.md)  
-**Properties**: Calculate band gaps and band structure (Coming Soon)  
+**Properties**: [Calculate Band Structure of Twisted MoS2 Bilayers](interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide-simulation.md)  
 **DOI**: [10.1038/ncomms5966](https://doi.org/10.1038/ncomms5966){:target='_blank'} [@Liu2014; @Zhang2016; @Cao2018]
 
 ![Twisted Bilayer Molybdenum Disulfide](../../../images/tutorials/materials/interfaces/twisted-bilayer-molybdenum-disulfide/MoS2-twisted-bilayers.png "Twisted Bilayer Molybdenum Disulfide"){ style="max-height:500px;width:auto;" }
