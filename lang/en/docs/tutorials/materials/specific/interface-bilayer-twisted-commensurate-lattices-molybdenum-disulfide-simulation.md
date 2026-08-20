@@ -214,9 +214,11 @@ Select *Run* > *Run All*. The notebook will
 the materials, build one workflow per material, create and submit one job each, wait for them, and
 then print the results.
 
-The 42-atom job dominates the cost. Raising `PPN` or moving to a larger queue is the sensible lever;
-reducing `INTERFACE_VACUUM` in the structure notebook is the other one, though it should not go
-below the manuscript's ≈ 10 Å of vacuum, and it has to be the same for every job in the comparison.
+The 42-atom job dominates the cost. Raising `PPN` or moving to a larger queue is the sensible lever.
+Shrinking the cell is the other one, but there is little room: `TOTAL_CELL_HEIGHT` is already at the
+manuscript's 20 Å, which leaves about 11 Å of vacuum above a bilayer roughly 9 Å thick. Going lower
+departs from the manuscript, and whatever value is used has to be the same for every job in the
+comparison.
 
 
 ## 6. Expected results
