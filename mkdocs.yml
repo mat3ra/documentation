@@ -161,6 +161,7 @@ nav:
             - Step Surface Defect on Pt(111):                               tutorials/materials/specific/defect-surface-step-platinum.md
             - Twisted Bilayer h-BN nanoribbons:                             tutorials/materials/specific/interface-bilayer-twisted-nanoribbons-boron-nitride.md
             - Twisted Bilayer MoS2 commensurate lattices:                   tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide.md
+            - Twisted Bilayer MoS2 commensurate lattices (Band Structure):  tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide-simulation.md
             - Adatom Surface Defects on Graphene:                           tutorials/materials/specific/defect-surface-adatom-graphene.md
             - H-Passivated Silicon Nanowire:                                tutorials/materials/specific/passivation-edge-nanowire-silicon.md
             - H-Passivated Silicon (100) Surface:                           tutorials/materials/specific/passivation-surface-silicon.md

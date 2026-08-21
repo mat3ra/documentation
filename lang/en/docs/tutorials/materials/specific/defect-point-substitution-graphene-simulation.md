@@ -85,7 +85,7 @@ In production mode, the structure is relaxed before the band structure calculati
 Navigate to the API examples repository and open the band structure calculation notebook:
 
 ```
-other/materials_designer/specific_examples/defect_point_substitution_graphene_simulation.ipynb
+other/materials_designer/specific_examples/defect_point_substitution_graphene_SIMULATION.ipynb
 ```
 
 ### 5.2. Configure parameters
@@ -225,7 +225,7 @@ The following JupyterLite notebook demonstrates the workflow for calculating the
 
 {% with origin_url=config.extra.jupyterlite.origin_url_lab %}
 {% with notebooks_path_root=config.extra.jupyterlite.notebooks_path_root %}
-{% with notebook_name='specific_examples/defect_point_substitution_graphene_simulation.ipynb' %}
+{% with notebook_name='specific_examples/defect_point_substitution_graphene_SIMULATION.ipynb' %}
 {% include 'jupyterlite_embed.html' %}
 {% endwith %}
 {% endwith %}
