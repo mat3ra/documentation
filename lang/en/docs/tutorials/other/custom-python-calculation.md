@@ -38,17 +38,25 @@ import math
 
 material = json.load(open("material.json"))
 
+# The platform stores the unit cell as lengths and angles, so the volume comes from those.
 lattice = material["lattice"]
 a, b, c = lattice["a"], lattice["b"], lattice["c"]
 cos_alpha, cos_beta, cos_gamma = (math.cos(math.radians(lattice[key])) for key in ("alpha", "beta", "gamma"))
 volume = (
-    a * b * c
+    a
+    * b
+    * c
     * math.sqrt(1 - cos_alpha**2 - cos_beta**2 - cos_gamma**2 + 2 * cos_alpha * cos_beta * cos_gamma)
 )
 
 elements = [element["value"] for element in material["basis"]["elements"]]
 
-print(json.dumps({"elements": sorted(set(elements)), "n_atoms": len(elements), "volume": round(volume, 4)}))
+print(json.dumps({
+    "elements": sorted(set(elements)),
+    "n_atoms": len(elements),
+    "volume": round(volume, 4),
+    "atoms_per_volume": round(len(elements) / volume, 4),
+}))
 ```
 
 This is the default script in the notebook, and it serves as the starting point
@@ -57,7 +65,7 @@ for a custom one.
 ### 1.2. Print the results
 
 The standard output of the script is the result. The notebook parses each line
-that contains a JSON object and renders the parsed values as a table, one row
+that is a JSON object and renders the parsed values as a table, one row
 per material, so a script that prints a single JSON object per run needs no
 further formatting. Lines that are not JSON are shown as printed, which makes
 `print()` usable for progress messages and debugging.
