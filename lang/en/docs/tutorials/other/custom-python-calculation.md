@@ -79,6 +79,10 @@ browser, and named in the `USER_ASSET_FILES` parameter. The notebook then
 uploads them next to the script, and the workflow fetches them into the same
 working directory, where the script opens them by name.
 
+An upload travels as a string inside a JSON request body, so the files named
+here are UTF-8 text. The notebook refuses anything else with a message pointing
+at the route described in Section 5 below, which is where binary data belongs.
+
 !!!warning "Reserved file names"
     The names `script.py`, `requirements.txt` and `material.json` are written by
     the workflow itself. An upload under one of those names is refused, since it
@@ -186,10 +190,13 @@ without any change to the workflow itself.
 
 An upload travels inside the request body, which the platform caps at 50 MB, and
 the JupyterLite session holds the file contents in memory before sending them.
-Anything larger is uploaded through the
+Anything larger, and anything that is not UTF-8 text, goes to the same folder
+through the
 [Dropbox page]({{ interface_url }}/data-in-objectstorage/ui/dropbox-page/) of
-the web interface instead, into the same folder, and named in
-`USER_ASSET_FILES` all the same.
+the web interface instead. Such a file is not covered by `USER_ASSET_FILES`,
+which names local files for the notebook to upload; the notebook's upload cell
+carries the two lines that add an already-stored object to the list the workflow
+fetches.
 
 The script is given one material per job, as `material.json`. A calculation over
 a set of materials at once is a different shape of workflow, and is not what this
