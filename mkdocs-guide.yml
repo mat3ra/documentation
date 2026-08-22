@@ -266,6 +266,7 @@ nav:
             - Magnetic Moment on Atoms by Specie:          tutorials/templating/set-magnetic-moment.md
         - 3.3. Tools and Environments:
             - Accessing the Platform:                      tutorials/platform-access.md
+            - Custom Python Calculation:                   tutorials/other/custom-python-calculation.md
             - Jupyter Notebook:                            tutorials/other/jupyter.md
             - Restart from Previous Job:                   tutorials/other/restart-job.md
             - TensorFlow (GPU):                            tutorials/general-functionality/tensorflow-gpu.md

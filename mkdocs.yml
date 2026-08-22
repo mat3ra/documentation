@@ -137,6 +137,7 @@ nav:
                 - Structural Relaxation:                 tutorials/dft/addons/structural-relaxation.md
         - General Functionality:
             - Accessing the Platform:                tutorials/platform-access.md
+            - Custom Python Calculation:             tutorials/other/custom-python-calculation.md
             - Jupyter Notebook:                      tutorials/other/jupyter.md
             - Restart from Previous Job:             tutorials/other/restart-job.md
             - TensorFlow (GPU):                      tutorials/general-functionality/tensorflow-gpu.md
