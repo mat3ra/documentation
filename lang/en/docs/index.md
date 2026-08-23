@@ -12,32 +12,32 @@ Mat3ra.com is an online platform for digital materials R&D. This documentation e
 <span>New to the platform? Start here for a quick onboarding walkthrough, key concepts, and useful links.</span>
 </a>
 
-<a href="tutorials/overview/" class="grid-card">
+<a href="/guide/" class="grid-card">
 <strong>Tutorials</strong>
 <span>Step-by-step tutorials for DFT, ML, materials construction, and simulation workflows.</span>
 </a>
 
-<a href="ui/overview/" class="grid-card">
+<a href="/interface/" class="grid-card">
 <strong>User Interface</strong>
 <span>Interface components, entity management, designer tools, and platform actions reference.</span>
 </a>
 
-<a href="cli/overview/" class="grid-card">
+<a href="/command-line/" class="grid-card">
 <strong>Command Line</strong>
 <span>CLI environment, batch jobs, and remote connection methods.</span>
 </a>
 
-<a href="models/overview/" class="grid-card">
+<a href="/reference/" class="grid-card">
 <strong>Concepts & Reference</strong>
 <span>In-depth explanations of models, methods, properties, software directory, and the science behind the platform.</span>
 </a>
 
-<a href="infrastructure/overview/" class="grid-card">
+<a href="/resources/" class="grid-card">
 <strong>Resources / Infrastructure</strong>
 <span>Compute clusters, storage systems, queues, quotas, and resource management.</span>
 </a>
 
-<a href="rest-api/overview/" class="grid-card">
+<a href="/developers/" class="grid-card">
 <strong>Software Developers</strong>
 <span>REST API reference, authentication, endpoints, and contribution guides.</span>
 </a>
