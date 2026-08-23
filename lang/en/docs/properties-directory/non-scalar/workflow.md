@@ -8,7 +8,7 @@ workflow being generated and placed in the user's account.
 ## Creation during ML Jobs
 
 If any unit in the workflow has the `workflow:pyml_predict` property,
-[Express will be called](https://github.com/Exabyte-io/express/blob/dev/express/properties/workflow.py) to construct
+[Express will be called](https://github.com/mat3ra/express/blob/dev/express/properties/workflow.py) to construct
 the new predict workflow. The following process is performed to convert a workflow from "Train" to "Predict" mode:
 
 - The `IS_WORKFLOW_RUNNING_TO_PREDICT` flag is set to `True`
@@ -28,4 +28,4 @@ which has generated a workflow named `workflow:pyml_predict`.
 
 ## Schema
 
-The JSON schema and an example implementation can be found [here](../../properties/data/list.md#workflow)
+The JSON schema and an example implementation can be found [here]({{ data_url }}/properties/data/list/#workflow)

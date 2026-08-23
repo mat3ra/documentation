@@ -40,7 +40,7 @@ More advanced search functionality is available for some particular types of ent
 
 ## [Copy from Bank](copy-bank.md)
 
-[Bankable entities](../bank.md) can be copied (or imported) from their respective [Banks](../bank.md) into the [Account-owned collections](../../accounts/collections.md), following the general instructions contained [here](copy-bank.md).
+[Bankable entities]({{ reference_url }}/entities-general/bank/) can be copied (or imported) from their respective [Banks]({{ reference_url }}/entities-general/bank/) into the [Account-owned collections]({{ reference_url }}/accounts/collections/), following the general instructions contained [here](copy-bank.md).
 
 ## [Create / Delete Sets](create-sets.md)
 
@@ -52,4 +52,4 @@ Entities can be moved into Sets as outlined in [this page](move-to-sets.md).
 
 ## [Sharing](../../collaboration/sharing/ui.md)
 
-Entities can be [shared between accounts](../../collaboration/sharing/actions.md), or made [publicly](../../collaboration/sharing/access-levels.md) visible on the world wide web, by following [these instructions](../../collaboration/sharing/ui.md).
+Entities can be [shared between accounts](../../collaboration/sharing/actions.md), or made [publicly]({{ reference_url }}/collaboration/sharing/access-levels/) visible on the world wide web, by following [these instructions](../../collaboration/sharing/ui.md).

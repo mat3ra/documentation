@@ -15,7 +15,7 @@ MW H<sub>2</sub>O = 15.999 g/mol + 1.001 g/mol 1.001 g/mol = 18.001 g/mol.
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#molecular-weight).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#molecular-weight).
 
 ## Links
 

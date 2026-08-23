@@ -11,12 +11,12 @@ The primitive schemas are derived from the default JSON primitives and do not ha
 Series is an array of arrays containing numbers or strings. It is used to store data
 
 === "Schema"
-    ``` json
+    ```json
     --8<-- "data/esse/schema/core/primitive/1d_data_series.json"
     ```
 
 === "Example"
-    ``` json
+    ```json
     --8<-- "data/esse/example/core/primitive/1d_data_series.json"
     ```
 
@@ -26,12 +26,12 @@ Holds the information about the three-dimensional periodic lattice specified thr
 
 
 === "Schema"
-    ``` json
+    ```json
     --8<-- "data/esse/schema/core/primitive/3d_lattice.json"
     ```
 
 === "Example"
-    ``` json
+    ```json
     --8<-- "data/esse/example/core/primitive/3d_lattice.json"
     ```
 
@@ -40,12 +40,12 @@ Holds the information about the three-dimensional periodic lattice specified thr
 Used for plotting. It has a label to describe the type of data on the axis and units to describe the units of the data.
 
 === "Schema"
-    ``` json
+    ```json
     --8<-- "data/esse/schema/core/primitive/axis.json"
     ```
 
 === "Example"
-    ``` json
+    ```json
     --8<-- "data/esse/example/core/primitive/axis.json"
     ```
 
@@ -59,12 +59,12 @@ Data prepared for a two-dimensional plot.
 
 
 === "Schema"
-    ``` json
+    ```json
     --8<-- "data/esse/schema/core/abstract/2d_data.json"
     ```
 
 === "Example"
-    ``` json
+    ```json
     --8<-- "data/esse/example/core/abstract/2d_data.json"
     ```
 
@@ -73,12 +73,12 @@ Data prepared for a two-dimensional plot.
 Two-dimensional data object, defined in conjunction with two axes.
 
 === "Schema"
-    ``` json
+    ```json
     --8<-- "data/esse/schema/core/abstract/2d_plot.json"
     ```
 
 === "Example"
-    ``` json
+    ```json
     --8<-- "data/esse/example/core/abstract/2d_plot.json"
     ```
 
@@ -87,12 +87,12 @@ Two-dimensional data object, defined in conjunction with two axes.
 A tensor which can be represented as a 3x3 matrix (for example the stress tensor).
 
 === "Schema"
-    ``` json
+    ```json
     --8<-- "data/esse/schema/core/abstract/3d_tensor.json"
     ```
 
 === "Example"
-    ``` json
+    ```json
     --8<-- "data/esse/example/core/abstract/3d_tensor.json"
     ```
 
@@ -101,7 +101,7 @@ A tensor which can be represented as a 3x3 matrix (for example the stress tensor
 Three non-collinear vectors in three-dimensional space that form a basis set.
 
 === "Schema"
-    ``` json
+    ```json
     --8<-- "data/esse/schema/core/abstract/3d_vector_basis.json"
     ```
 
@@ -115,12 +115,12 @@ Three non-collinear vectors in three-dimensional space that form a basis set.
 Point is a generic data type that is expected to be used by many different aspects of the database. It is an array holding three numbers.
 
 === "Schema"
-    ``` json
+    ```json
     --8<-- "data/esse/schema/core/abstract/point.json"
     ```
 
 === "Example"
-    ``` json
+    ```json
     --8<-- "data/esse/example/core/abstract/point.json"
     ```
 
@@ -129,11 +129,11 @@ Point is a generic data type that is expected to be used by many different aspec
 Vector is a generic data type that is expected to be used by many different aspects of the database. It is an array holding three numbers.
 
 === "Schema"
-    ``` json
+    ```json
     --8<-- "data/esse/schema/core/abstract/vector.json"
     ```
 
 === "Example"
-    ``` json
+    ```json
     --8<-- "data/esse/example/core/abstract/vector.json"
     ```

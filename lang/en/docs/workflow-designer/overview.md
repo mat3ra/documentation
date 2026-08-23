@@ -20,4 +20,4 @@ The Workflow Designer is structured into three main building blocks, and has the
 
 ## Add-ons
 
-When creating a new workflow, important preliminary controls are typically required at the beginning of the workflow, and can be implemented in the context of the Workflow Designer interface in the form of [**add-on** subworkflow modules](../workflows/addons/overview.md).
+When creating a new workflow, important preliminary controls are typically required at the beginning of the workflow, and can be implemented in the context of the Workflow Designer interface in the form of [**add-on** subworkflow modules]({{ reference_url }}/workflows/addons/overview/).

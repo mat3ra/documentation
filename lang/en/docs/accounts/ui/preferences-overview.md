@@ -1,6 +1,6 @@
 # Account Preferences
 
-Under the `Preferences` tab <i class="zmdi zmdi-edit zmdi-hc-border"></i> of the general "Account Profile" interface, the user can set preferences and settings for the present account that he/she owns or administers. Alternatively, the same Account Preferences can be accessed from the [right-hand sidebar](../../ui/right-sidebar.md) of the general User Interface, under the option labelled "Account Preferences" <i class="zmdi zmdi-settings zmdi-hc-border"></i>. 
+Under the `Preferences` tab <i class="zmdi zmdi-edit zmdi-hc-border"></i> of the general "Account Profile" interface, the user can set preferences and settings for the present account that he/she owns or administers. Alternatively, the same Account Preferences can be accessed from the [Account Menu]({{ interface_url }}/ui/account-menu/) of the general User Interface, under the option labelled "Account Preferences" <i class="zmdi zmdi-settings zmdi-hc-border"></i>.
 
 ## [General Information](preferences/profile.md)
 
@@ -8,7 +8,7 @@ This first aspect of the Account Preferences allows the user to insert account-w
 
 ## [User Settings](preferences/settings.md)
 
-Under this section, the user is allowed to enter a suffix which will be appended to each job that is cloned via the jobs explorer page, as explained in detail [here](preferences/settings.md). 
+Under this section, the user is allowed to enter a suffix which will be appended to each job that is cloned via the jobs explorer page, as explained in detail [here](preferences/settings.md).
 
 ## [API Tokens](preferences/api.md)
 

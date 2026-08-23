@@ -1,8 +1,8 @@
 # Tutorials
 
-The sub-pages under this section contain detailed tutorials. You can find
-specific tutorial from the index below or locate the corresponding entry in the
-sidebar navigation.
+The sub-pages under this section contain detailed tutorials. A specific tutorial
+can be found from the index below or via the corresponding entry in the sidebar
+navigation.
 
 ## Table of Contents
 <!-- this index is generated using scripts/generate_index_of_sub_section.py -->
@@ -17,9 +17,6 @@ sidebar navigation.
     - [Magnetic Moment on Atoms by Specie](templating/set-magnetic-moment.md)
 - Machine Learning (ML)
     - [Overview](ml/overview.md)
-    - ExabyteML (legacy)
-        - [Train ML Model](ml/train-ml-model.md)
-        - [Predict New Properties](ml/predict-ml-properties.md)
     - Python ML
         - [Training a Regression Model](python-ml/train-regression-model.md)
         - [Predictions with Regression](python-ml/predict-with-regression.md)
@@ -65,7 +62,6 @@ sidebar navigation.
     - [Accessing the Platform](platform-access.md)
     - [Jupyter Notebook](other/jupyter.md)
     - [Restart from Previous Job](other/restart-job.md)
-    - [Upload External Job Data](other/external-upload.md)
     - [TensorFlow (GPU)](general-functionality/tensorflow-gpu.md)
 - Materials
     - [Overview](materials/overview.md)

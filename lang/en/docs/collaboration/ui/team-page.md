@@ -8,13 +8,13 @@ The user can [open](../../entities-general/actions/open-edit.md) any entry liste
 
 ## Summary
 
-Team name, description and current [permissions levels](../../entities-general/permissions.md) are displayed on top, as highlighted in the above image. 
+Team name, description and current [permissions levels]({{ reference_url }}/entities-general/permissions/) are displayed on top, as highlighted in the above image. 
 
 ## Tabs
 
 ### Entities Tabs
 
-All the [assigned](../actions/team/add-remove-entity.md) entities of different [types](../../entities-general/overview.md) can be viewed under the relevant tab.
+All the [assigned](../actions/team/add-remove-entity.md) entities of different [types]({{ reference_url }}/entities-general/overview/) can be viewed under the relevant tab.
 
 ### People Tab
 

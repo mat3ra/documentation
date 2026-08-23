@@ -4,7 +4,7 @@ A scripting language [^1] is a programming language that supports **scripts**, o
 
 ## Implementation
 
-We provide support for several scripting languages on our platform, which are introduced [in this section](../../software-directory/overview.md) of the documentation.
+We provide support for several scripting languages on our platform, which are introduced [in this section]({{ reference_url }}/software-directory/overview/) of the documentation.
 
 ## Links
 

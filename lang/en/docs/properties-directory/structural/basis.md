@@ -14,7 +14,7 @@ A typical example of an atomic arrangement within a material is given by the cub
 
 ## Atomic Positions
 
-The atomic positions, defining the atom's geometric arrangement within the structure, can be defined and entered in the [basis editor](../../materials-designer/source-editor/basis.md) of [Materials Designer](../../materials-designer/overview.md), as separate three-dimensional vectors. Each vector labels the position of the corresponding atom within the unit cell of the crystal, expressed under either a fractional or Cartesian coordinate system. 
+The atomic positions, defining the atom's geometric arrangement within the structure, can be defined and entered in the [basis editor]({{ interface_url }}/materials-designer/source-editor/basis/) of [Materials Designer]({{ interface_url }}/materials-designer/overview/), as separate three-dimensional vectors. Each vector labels the position of the corresponding atom within the unit cell of the crystal, expressed under either a fractional or Cartesian coordinate system. 
 
 Depending on these atomic coordinates, finite [inter-atomic forces](atomic-forces.md) might arise.
 
@@ -24,11 +24,11 @@ The ratio of an element in a compound or alloy describes the fraction of all ato
 
 ## Atomic Constraints
 
-The Atomic Constraints or Selective Dynamics, specifying the constraints on the movement of atoms, can be set in the [basis editor](../../materials-designer/source-editor/basis.md) of [Materials Designer](../../materials-designer/overview.md), as three-dimensional boolean vector appending to the atom position. For example, "Si 0.25 0.25 0.25 1 0 1" freezes the movement of "Si" along the "Y" direction.
+The Atomic Constraints or Selective Dynamics, specifying the constraints on the movement of atoms, can be set in the [basis editor]({{ interface_url }}/materials-designer/source-editor/basis/) of [Materials Designer]({{ interface_url }}/materials-designer/overview/), as three-dimensional boolean vector appending to the atom position. For example, "Si 0.25 0.25 0.25 1 0 1" freezes the movement of "Si" along the "Y" direction.
 
 ## Schema 
 
-The JSON schema and an example representation for the properties described in this page can be found for each of the [basis](../../properties/data/list.md#basis), [atomic elements](../../properties/data/list.md#atomic-elements), [atomic positions](../../properties/data/list.md#atomic-coordinates) and [elemental ratio](../../properties/data/list.md#elemental-ratio).
+The JSON schema and an example representation for the properties described in this page can be found for each of the [basis]({{ data_url }}/properties/data/list/#basis), [atomic elements]({{ data_url }}/properties/data/list/#atomic-elements), [atomic positions]({{ data_url }}/properties/data/list/#atomic-coordinates) and [elemental ratio]({{ data_url }}/properties/data/list/#elemental-ratio).
 
 ## Links
 

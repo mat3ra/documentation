@@ -1,6 +1,6 @@
 # Materials Tab
 
-Opening the Materials Tab within the [Jobs Designer](overview.md) presents the user with the following interface, which can be used to inspect and review the materials [added](actions-header-menu/select-materials.md) to the [Job](../jobs/overview.md) being created.
+Opening the Materials Tab within the [Jobs Designer](overview.md) presents the user with the following interface, which can be used to inspect and review the materials [added](actions-header-menu/select-materials.md) to the [Job]({{ reference_url }}/jobs/overview/) being created.
 
 ![Materials Tab](../images/jobs-designer/materials-tab.png "Materials Tab")
 
@@ -10,7 +10,7 @@ The interface under Materials Tab largely mirrors the general [Materials Viewer]
 
 ![Materials Tab Toolbar](../images/jobs-designer/materials-tab-toolbar.png "Materials Tab Toolbar")
 
-Another important difference of Materials Tab from [Materials Viewer](../materials/ui/viewer.md) is that **no adjustments** are allowed to the [material](../materials/overview.md) being currently inspected.
+Another important difference of Materials Tab from [Materials Viewer](../materials/ui/viewer.md) is that **no adjustments** are allowed to the [material]({{ reference_url }}/materials/overview/) being currently inspected.
 
 ## 1. Pager for Switching Materials
 
@@ -24,7 +24,7 @@ In the animation shown here, we demonstrate how to cycle through materials by us
 
 ## 2. Add / Delete Materials
 
-Pressing the "Plus" icon <i class="zmdi zmdi-plus zmdi-hc-border"></i> allows the user to select and add new materials from the account-owned [collection](../accounts/collections.md) into the Job under creation, in an analogous fashion to the action described [here](actions-header-menu/select-materials.md).
+Pressing the "Plus" icon <i class="zmdi zmdi-plus zmdi-hc-border"></i> allows the user to select and add new materials from the account-owned [collection]({{ reference_url }}/accounts/collections/) into the Job under creation, in an analogous fashion to the action described [here](actions-header-menu/select-materials.md).
 
 Conversely, the "Minus" icon <i class="zmdi zmdi-minus zmdi-hc-border"></i> initiates for the removal of the material under current inspection. Note that at least one material has to be present at all times in Jobs Designer, which prevents the deletion of the last remaining entry. 
 

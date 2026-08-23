@@ -1,6 +1,6 @@
 # Tutorials on Templating
 
-In the present section we provide some examples of how [templates](../../workflows/templating/overview.md) for generating simulation input files, can be written and customized by using the [template engine](../../workflows/templating/jinja.md) implemented on our platform.
+In the present section we provide some examples of how [templates]({{ reference_url }}/workflows/templating/overview/) for generating simulation input files, can be written and customized by using the [template engine]({{ reference_url }}/workflows/templating/jinja/) implemented on our platform.
 
 
 ## [Setting Input Parameter Based on Elemental Composition](set-magnetic-moment.md)

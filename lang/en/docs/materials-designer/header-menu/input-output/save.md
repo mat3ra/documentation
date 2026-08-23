@@ -22,7 +22,7 @@ In this dialog the user can also choose, through the top slider, whether to save
 
 ### Public
 
-In the lower slider, the user can adjust the access level for the materials to be saved (see the explanation of system-wide permission levels [here](../../../site-policy/sharing-policy.md/#special-system-wide-permissions)).
+In the lower slider, the user can adjust the access level for the materials to be saved (see the explanation of system-wide permission levels [here]({{ reference_url }}/site-policy/sharing-policy/#special-system-wide-permissions)).
 
 
 ### Select Set

@@ -1,49 +1,55 @@
-# Import Materials from files in various formats
+# Import Materials from Files in Various Formats
 
-This tutorial explains how to import materials from files in various formats into the Materials Designer interface. With the help of notebook that uses ASE python package to extract structural information from files in multiple formats (CIF, POSCAR, etc., as supported by ASE). Some formats, like espresso-in and espresso-out can be inferred from the file content.
+This tutorial explains how to import materials from files in various formats into the Materials Designer interface. A JupyterLite notebook using the ASE Python package extracts structural information from files in multiple formats (CIF, POSCAR, etc., as supported by ASE). Some formats, such as espresso-in and espresso-out, can be inferred from the file content.
 
-## Step 0: Open Materials Designer
 
-Start by opening an instance of the [Materials Designer Interface](../../materials-designer/overview.md) for creating and designing new [Materials structures](../../materials/overview.md) on our platform.
+## 1. Open Materials Designer
 
-## Step 1: Open JupyterLite Environment
+[Open]({{ interface_url }}/entities-general/actions/create/) an instance of the [Materials Designer Interface]({{ interface_url }}/materials-designer/overview/).
 
-Open the [JupyterLite Environment](../../materials-designer/header-menu/advanced/jupyterlite-dialog.md) by navigating to "Advanced" > "JupyterLite Transformation" menu item in the Materials Designer interface.
 
-## Step 2: Open the Notebook
+## 2. Open the JupyterLite environment
 
-Open the "Materials import from files in ASE-supported formats" in the Introduction.ipynb notebook.
+Open the [JupyterLite Environment]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/) by navigating to *Advanced* > *JupyterLite Transformation* in the Materials Designer interface.
+
+
+## 3. Open the notebook
+
+Open "Materials import from files in ASE-supported formats" in the Introduction.ipynb notebook.
 
 ![JupyterLite session with Introduction notebook](../../images/tutorials/import_from_files/open_notebook.webp "Open Notebook")
 
-## Step 3: Upload files
 
-Double-click the `uploads` folder in the File Browser tab on the left to open it. Drag and drop the files you want to import into the field.
+## 4. Upload files
+
+Double-click the `uploads` folder in the File Browser tab on the left to open it. Drag and drop the files to be imported into the field.
 
 ![JupyterLite session with uploaded files in the files browser](../../images/tutorials/import_from_files/upload_files.webp "Upload Files")
 
-## Step 4: Run the Notebook
 
-Run the notebook by clicking the "Run All Cells" button in the toolbar or execute each cell by pressing "Shift + Enter" if you want to review results or change the code in the process.
+## 5. Run the notebook
+
+Run the notebook by clicking the **Run All Cells** button in the toolbar, or execute each cell individually by pressing **Shift + Enter** to review results or modify the code in the process.
 
 ![JupyterLite session with Run menu open](../../images/tutorials/import_from_files/run_notebook.webp "Run Notebook")
 
-## Step 5: Review the Results and Submit
 
-Materials should appear in the "Materials Out" dropdown at the bottom of the dialog. Select the material you want to work with and click "Submit" to load it into the Materials Designer.
+## 6. Review the results and submit
 
-In case ASE is unable to read the file, an error message will be printed stating the unreadable files and a table of available formats.
-In this case, you can try to fix the issue and re-run the notebook. The error with some files does not prevent other files from being read.
+Materials should appear in the "Materials Out" dropdown at the bottom of the dialog. Select the material to work with and click **Submit** to load it into the Materials Designer.
+
+If ASE is unable to read a file, an error message is printed stating the unreadable files and a table of available formats. The issue can be fixed and the notebook re-run. Errors with some files do not prevent other files from being read.
 
 ![JupyterLite Transformation dialog with materials_out dropdown populated](../../images/tutorials/import_from_files/submit_results.webp "Review Results and Submit")
 
-## Additional Information
 
-### ASE
+## 7. Additional information
 
-The information about ASE IO can be found [here](https://wiki.fysik.dtu.dk/ase/ase/io/io.html). The version of ASE used in the JupyterLite environment is 3.22.1 (as of 2024-04-05).
+### 7.1. ASE
 
-### Supported Formats
+Information about ASE IO can be found [here](https://wiki.fysik.dtu.dk/ase/ase/io/io.html). The version of ASE used in the JupyterLite environment is 3.22.1 (as of 2024-04-05).
+
+### 7.2. Supported formats
 
 `ase.io.formats.ioformats` provides the list of supported formats:
 

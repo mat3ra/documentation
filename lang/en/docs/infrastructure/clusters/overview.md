@@ -34,15 +34,15 @@ The architecture of a cluster is explained in the diagram below, comprising a **
 
 ## [Storage](../storage.md)
 
-Clusters also offer a certain amount of **storage space** for [storing](../storage.md) simulation files as [unstructured data](../../data-on-disk/overview.md), subject to certain **quotas** as explained [here](../../data-on-disk/quotas.md).
+Clusters also offer a certain amount of **storage space** for [storing](../storage.md) simulation files as [unstructured data]({{ reference_url }}/data-on-disk/overview/), subject to certain **quotas** as explained [here]({{ reference_url }}/data-on-disk/quotas/).
 
 ### [Directory Structure](directories.md)
 
 We discuss the directory structure which can be found inside the home folder of each cluster [in this section](directories.md) of the documentation.
 
-## [Performance Benchmarks](../../benchmarks/overview.md)
+## [Performance Benchmarks]({{ reference_url }}/benchmarks/overview/)
 
-The clusters offered as part of the [infrastructure of our platform](../overview.md) have been subject to an extensive set of **tests and benchmarks**, in order to measure their reliability and performance for different [hardware types](hardware.md) and for the [simulation engines](../../software/components.md) used. They are reviewed and assessed in a [separate section](../../benchmarks/overview.md) of the present documentation.
+The clusters offered as part of the [infrastructure of our platform](../overview.md) have been subject to an extensive set of **tests and benchmarks**, in order to measure their reliability and performance for different [hardware types](hardware.md) and for the [simulation engines]({{ reference_url }}/software/components/) used. They are reviewed and assessed in a [separate section]({{ reference_url }}/benchmarks/overview/) of the present documentation.
 
 ### Cloud Providers
 

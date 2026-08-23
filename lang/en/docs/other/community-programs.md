@@ -1,97 +1,105 @@
 # Community Programs
 
-> Last updated: Nov 3, 2019
+> Last updated: Apr 11, 2026
 
-<!--
+## 1. Free Compute Tier for the Platform Users.
 
-# VASP On-demand
+In collaboration with our cloud provider partners, we are offering a Limited Free Compute program for our platform
+users.
 
-From Oct 2017 we are conducting an experimental program for academic users of VASP. Exabyte.io users that hold up-to-date license for VASP can access the software free of charge. In return, we would like to make results available in a form of a case study after the program ends.
+The primary goal of this program is to support academic research and education in the field of materials science and
+enable the community to explore the capabilities of our platform.
 
-> Without any promise, we may consider advocating for the interested people with a well formulated intent for accessing VASP who do not fit the current eligibility criteria in front of the original developers.
+The program is targeted for users with current academic affiliations; however, we welcome private parties as well.
 
-**In order to apply**:
+The free tier access is available through [cluster-101]({{ resources_url }}/infrastructure/clusters/cluster-101/) only.
 
-- send an email to support@exabyte.io with a subject containing "VASP-On-demand"
-- include the following information about yourself:
-    - Full name
-    - Institutional Affiliation
-    - Contact information of the VASP license holder: email, license number
-    - Title of the proposed project (200 characters max)
-    - Importance of the proposed project (2000 characters max)
-    - Execution plan, including approximate amount of computing required (2000 characters max)
-    - Whether you are interested in purchasing on-demand per core-hour access to VASP in the future
+### 1.1. Free Compute Eligibility.
 
--->
+To be eligible for the Limited Free Compute program, users must meet the following criteria:
 
-## Limited Free Access for Academic Users
+- Be a registered user of the platform.
+- Have a valid academic affiliation (eg. student, faculty, researcher) or be a private party interested in exploring the
+  platform capabilities.
+- If affiliated with an academic institution, use an email address associated with the institution (ie. hosted on a "
+  .edu" domain) during the registration.
+- (Optional) Provide information about the nature of the anticipated work (eg. research topic, educational purpose,
+  etc.)
+- Agree to the conditions outlined below.
 
-!!!note "The Free Access Program completed in May of 2020."
-    The last Free Access Program completed as of 2020/05. Users are still welcome to submit their information for any future similar programs.
+### 1.2. Applying for Free Compute.
 
-For users with current academic affiliation we can provide computational resources free of charge on a case-by-case basis.
+As of now, no separate application is needed. If you meet the eligibility criteria above, you can start using the
+platform and its resources right away.
 
-### Applying for Limited Free Access
+We will review the user base periodically and reach out to the users who meet the eligibility criteria to inform them
+about the program and its benefits.
+
+And consequently, we will screen out the users who do not meet the criteria.
+
+
+### 1.3. Free Compute Conditions.
+
+Free access is limited to certain compute resources and is subject to the following limitations.
+
+#### 1.3.1. Limitations
 
 As below:
 
-1. Fill in <a href="https://docs.google.com/forms/d/12S-Phn7Wr3dy_8yjVh4908VGDtkD0zrl7x0n2TSXXk4" target="_blank">this online form</a>
-2. For new users - submit a registration request using an email address associated with your academic institution include the information requested in **3**.
-3. For existing users - if you use a personal email address during the registration, send an email to "support@exabyte.io" from the email address associated with your academic institution (ie. hosted on a ".edu" domain) with a subject containing "Free Access for Academic Users" 
-    
-we will review and enable access as appropriate. We will prioritize applications providing detailed information about the applicants (ie. Google Scholar, ResearchGate profile(s), links to prior publications) and the nature of the anticipated work.
- 
-### Conditions
+|         Feature         |    Explanation     |
+|:-----------------------:|:------------------:|
+|    Max nodes per job    |         1          |
+|    Max cores per job    |  Per Queue Policy  |
+|    Max job walltime     |  Per Queue Policy  |
+| Max job queued per user |         10         |
+|    Available Queues     |      "D" only      |
+|   Available Resources   | "cluster-101" only |
+|   Default Disk Quota   |       10 Gb        |
 
-Free access is limited to certain compute resources only and is subject to other limitations as below. We will consider adjusting the limitations according to the user feedback received. Contact "support@exabyte.io" for this.
- 
-#### Limitations
+For more information, please see [cluster-101]({{ resources_url }}/infrastructure/clusters/cluster-101/).
 
-| Feature  | Explanation  |
-| :------: | :----------: |
-| Max nodes per job   | 1     |
-| Max cores per job   | 4     |
-| Max job walltime  | 24 hours  |
-| Max job queued per user  | 4  |
-| Available Queues   | "D" only     |
-| Available Resources   | "cluster-009" only     |
-| Included Disk Quota   | 10 Gb     |
+## 2. Acknowledgements
 
-#### Acknowledgements
+Any/all published work derived from any of the Community Programs listed here must include the following acknowledgement
+and citation.
 
-Any/all published work derived from the Limited Free Access program must include the following Acknowledgement text and citation below.
-
-**Acknowledgement text**
+**Acknowledgment text**
 
 ```text
-The authors performed this work partially or in full using the Exabyte.io 
-platform, a web-based computational ecosystem for the development of new 
-materials and chemicals [REFERENCE TO THE BELOW CITATION]. 
+The authors performed this work partially or in full using the Mat3ra.com 
+platform [REFERENCE TO THE BELOW CITATION]. 
 ``` 
 
 **Citation**
 
 ```text
-Timur Bazhirov, "Data-centric online ecosystem for digital materials science", 
-arxiv.org preprint, 2019, https://arxiv.org/abs/1902.10838 
+Vsevolod Biryukov, Kamal Choudhary, Timur Bazhirov, "AI-ready design of realistic 2D materials and interfaces with Mat3ra-2D.", 
+arxiv.org preprint, 2026, https://arxiv.org/abs/2603.27886
 ``` 
 
-In Bibtex format:
+In BibTeX format:
 
 ```bibtex
-@article{Exabyte.io-Platform-Reference,
-    title={Data-centric online ecosystem for digital materials science},
-    author={Bazhirov, Timur},
-    journal={arxiv.org/abs/1902.10838},
-    year={2019},
+@article{2026-mat3ra-2d,
+    title={AI-ready design of realistic 2D materials and interfaces with Mat3ra-2D},
+    author={Biryukov, Vsevolod, and Choudhary, Kamal, and Bazhirov, Timur},
+    journal={arxiv.org/abs/2603.27886},
+    year={2026},
 }
 ```
 
-#### Publicity
+## 3. Publicity.
 
-We plan to select some of the work performed under the Limited Free Access program to be highlighted in the online publication sources together with the cloud provider(s) enabling the computational infrastructure.
+We plan to select some of the work performed under the Free Compute Tier to be highlighted in the online
+publication sources, similar to the following:
 
- 
-## Reach out to us
+- [Enabling new Science through Accessible Cloud HPC](https://www.mat3ra.com/news-and-blog-posts/enabling-new-science-through-accessible-modeling-and-simulations)
+- [Scientific Computing on Cloud Infrastructure](https://blogs.oracle.com/cloud-infrastructure/post/exabyteio-for-scientific-computing-on-oracle-cloud-infrastructure-hpc)
 
-We are friendly people like you, why not reach out to us with your suggestions and ideas? You may contact us at info@exabyte.io. If you are interested in joining our team, write to hi@exabyte.io with your resume and cover letter.
+We will contact select users in advance to request permission for this. If you are interested in having your work
+highlighted, please let us know by sending an email to `support@mat3ra.com`.
+
+## 4. Feedback.
+
+We welcome feedback from the users of the Community Programs listed here. Please send your feedback, suggestions, and
+any issues you encounter to `support@mat3ra.com`.

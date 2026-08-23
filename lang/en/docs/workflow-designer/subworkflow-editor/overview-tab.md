@@ -8,7 +8,7 @@ The general appearance of the typical content of the "Overview" tab is presented
 
 The first line in the "Overview" tab, labeled "Properties", contains a summary of the physical properties that will be computed during the course of the present calculation. These can be selected from a list of properties on the "Detailed View" tab, which is described [here](detailed-view.md).
 
-For a complete list of physical properties available for calculation, the reader is referred to [this page](../../properties/overview.md).
+For a complete list of physical properties available for calculation, the reader is referred to [this page]({{ reference_url }}/properties/overview/).
 
 ### Low-fidelity Runs
 
@@ -16,11 +16,11 @@ Optionally, the check-box "Draft" on the left can be selected. In this case the 
 
 ## The "Application" Section
 
-The subsequent "Application" section in the "Overview" tab allows the user to choose the computational engine (otherwise known as [application](../../software/components.md)) to apply under the present Workflow.
+The subsequent "Application" section in the "Overview" tab allows the user to choose the computational engine (otherwise known as [application]({{ reference_url }}/software/components/)) to apply under the present Workflow.
 
 ## The "Model" Section
 
-The concept of "Model" is documented extensively in its own dedicated [documentation section](../../models/overview.md).
+The concept of "Model" is documented extensively in its own dedicated [documentation section]({{ reference_url }}/models/overview/).
 
 ### Refiners
 
@@ -34,4 +34,4 @@ Several modifiers can also be included as part of the subworkflow under consider
 
 ## The "Method" Section
 
-Methods are also the object of a [dedicated section](../../methods/overview.md) of the documentation.
+Methods are also the object of a [dedicated section]({{ reference_url }}/methods/overview/) of the documentation.

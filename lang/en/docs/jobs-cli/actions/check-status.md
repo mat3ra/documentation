@@ -10,7 +10,7 @@ JOBID                                                  USERNAME    QUEUE    JOBN
 815.master-production-20160630-cluster-007.exabyte.io  steve       OR       my_job     R        1235kb    00:00:10    00:10:00          1      1
 ```
 
-The complete manual page for this command listing all its possible option flags can be found in the reference containing the information about the Resource Management System [in the corresponding page of the present documentation](../../infrastructure/resource/overview.md#links) (page 364).
+The complete manual page for this command listing all its possible option flags can be found in the reference containing the information about the Resource Management System [in the corresponding page of the present documentation]({{ resources_url }}/infrastructure/resource/overview/#links) (page 364).
 
 ## Job ID in CLI
 
@@ -28,4 +28,4 @@ The possible job statuses indicated under the "STATE" column of the `qstat` comm
 - "R": Job is currently **Running**.
 - "C": Job execution is **Complete**. This can include the possibility of jobs interrupted prematurely because of errors.
 
-Consult the reference containing the information about the Resource Management System [in the corresponding page of the present documentation](../../infrastructure/resource/overview.md#links) for more information.
+Consult the reference containing the information about the Resource Management System [in the corresponding page of the present documentation]({{ resources_url }}/infrastructure/resource/overview/#links) for more information.

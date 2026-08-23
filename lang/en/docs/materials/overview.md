@@ -4,25 +4,25 @@ This section contains information about how we define, organize, store and inter
 
 ## User Interface
 
-### [Materials Explorer](ui/explorer.md)
+### [Materials Explorer]({{ interface_url }}/materials/ui/explorer/)
 
-The implementation of the [Explorer Interface](../entities-general/ui/explorer.md) for Materials is explained [here](ui/explorer.md). 
+The implementation of the [Explorer Interface]({{ interface_url }}/entities-general/ui/explorer/) for Materials is explained [here]({{ interface_url }}/materials/ui/explorer/). 
 
-### [Materials Designer](../materials-designer/overview.md)
+### [Materials Designer]({{ interface_url }}/materials-designer/overview/)
 
-**Materials Designer** is introduced [here](../materials-designer/overview.md), 
+**Materials Designer** is introduced [here]({{ interface_url }}/materials-designer/overview/), 
 
-### [Materials Viewer](ui/viewer.md)
+### [Materials Viewer]({{ interface_url }}/materials/ui/viewer/)
 
-The **Viewer** interface and its differences from Designer are highlighted [separately](ui/viewer.md).
+The **Viewer** interface and its differences from Designer are highlighted [separately]({{ interface_url }}/materials/ui/viewer/).
 
-## [Actions](actions/overview.md)
+## [Actions]({{ interface_url }}/materials/actions/overview/)
 
-The Actions section explains and provides visual examples of actions that users can perform on materials. These actions are introduced [in the following page](actions/overview.md).
+The Actions section explains and provides visual examples of actions that users can perform on materials. These actions are introduced [in the following page]({{ interface_url }}/materials/actions/overview/).
 
-## [Data](data.md)
+## [Data]({{ data_url }}/materials/data/)
 
-The [Data](data.md) section contains an example of JSON representation of a material, with its detailed explanation.
+The [Data]({{ data_url }}/materials/data/) section contains an example of JSON representation of a material, with its detailed explanation.
 
 ## [Bank](bank.md)
 

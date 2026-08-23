@@ -45,7 +45,7 @@ share in common, is labelled by the symbol "Fd-3m".
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#symmetry).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#symmetry).
 
 ## Links
 

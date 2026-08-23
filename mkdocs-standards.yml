@@ -1,0 +1,260 @@
+# Data Standards — JSON schemas, data convention, and structured representations.
+# Consolidates all ESSE schema content and data structure documentation.
+# Deploy to: docs.mat3ra.com/standards/
+
+INHERIT: mkdocs-base.yml
+
+docs_dir: !!python/object/apply:os.getenv ["DOCS_DIR", "lang/en/docs"]
+
+# Exclude pages that belong to other sites.
+# Only include data-related pages: data/, data-structured/, and
+# data.md schema pages from entity/directory sections.
+exclude_docs: |
+  # --- Entire directories belonging to other sites ---
+  accounts/
+  benchmarks/
+  cli/
+  collaboration/
+  data-in-objectstorage/
+  data-on-disk/
+  getting-started/
+  images/accounts/
+  images/benchmarks/
+  images/cli/
+  images/collaboration/
+  images/data-in-objectstorage/
+  images/getting-started/
+  images/infrastructure/
+  images/jobs/
+  images/jobs-cli/
+  images/jobs-designer/
+  images/jupyterlite/
+  images/materials/
+  images/materials-designer/
+  images/methods/
+  images/models/
+  images/notebooks/
+  images/properties/
+  images/properties-directory/
+  images/remote-connection/
+  images/rest-api/
+  images/software-directory/
+  images/tutorials/
+  images/ui/
+  images/workflow-designer/
+  images/workflows/
+  infrastructure/
+  /jobs-cli/
+  jobs-designer/
+  jupyterlite/
+  materials-designer/
+  other/
+  pricing/
+  properties-directory/
+  remote-connection/
+  rest-api/
+  security/
+  site-policy/
+  tutorials/
+  ui/
+  workflow-designer/
+
+  # --- Entity sections: exclude everything except data.md ---
+  entities-general/actions/
+  entities-general/bank.md
+  entities-general/default.md
+  entities-general/lifecycle.md
+  entities-general/overview.md
+  entities-general/ownership.md
+  entities-general/permissions.md
+  entities-general/sets.md
+  entities-general/ui/
+
+  materials/actions/
+  materials/bank.md
+  materials/classification/
+  materials/default.md
+  materials/overview.md
+  materials/ui/
+
+  jobs/actions/
+  jobs/overview.md
+  jobs/projects.md
+  jobs/status.md
+  jobs/ui/
+
+  models/accuracy.md
+  models/auxiliary-concepts/
+  models/overview.md
+  models/parameters.md
+
+  methods/auxiliary-concepts/
+  methods/overview.md
+  methods/parameters.md
+  methods/precision.md
+
+  software/classification/
+  software/components.md
+  software/overview.md
+
+  workflows/actions/
+  workflows/addons/
+  workflows/bank.md
+  workflows/components/
+  workflows/default.md
+  workflows/overview.md
+  workflows/templating/
+  workflows/ui/
+
+  properties/classification/
+  properties/lifecycle/
+  properties/overview.md
+
+  # --- Directory sections: exclude everything except data.md ---
+  models-directory/overview.md
+  models-directory/dft/accuracy.md
+  models-directory/dft/notes.md
+  models-directory/dft/overview.md
+  models-directory/dft/parameters.md
+  models-directory/dft/references.md
+  models-directory/machine-learning/accuracy.md
+  models-directory/machine-learning/actions.md
+  models-directory/machine-learning/example-workflow.md
+  models-directory/machine-learning/overview.md
+  models-directory/machine-learning/parameters.md
+  models-directory/machine-learning/units.md
+
+  methods-directory/overview.md
+  methods-directory/pseudopotential/actions.md
+  methods-directory/pseudopotential/default.md
+  methods-directory/pseudopotential/important-settings.md
+  methods-directory/pseudopotential/overview.md
+  methods-directory/pseudopotential/parameters.md
+  methods-directory/pseudopotential/precision.md
+  methods-directory/linear-regression/overview.md
+  methods-directory/linear-regression/parameters.md
+
+  # Software directory: exclude everything except data.md files
+  software-directory/analysis/
+  software-directory/development/
+  software-directory/overview.md
+  software-directory/modeling/cp2k/
+  software-directory/modeling/deepmd/
+  software-directory/modeling/espresso-pw/
+  software-directory/modeling/exciting/
+  software-directory/modeling/gromacs/
+  software-directory/modeling/lammps/
+  software-directory/modeling/nwchem/
+  software-directory/modeling/turbomole/
+  software-directory/modeling/turbomole.md
+  software-directory/modeling/vasp/overview.md
+  software-directory/modeling/vasp/components.md
+  software-directory/modeling/vasp/compute-parameters.md
+  software-directory/modeling/quantum-espresso/overview.md
+  software-directory/modeling/quantum-espresso/components.md
+  software-directory/modeling/quantum-espresso/compute-parameters.md
+  software-directory/scripting/python/overview.md
+  software-directory/scripting/python/components.md
+  software-directory/scripting/shell/overview.md
+  software-directory/scripting/jupyter-lab/overview.md
+  software-directory/machine-learning/python-ml/overview.md
+  software-directory/machine-learning/python-ml/components.md
+  software-directory/machine-learning/tensorflow.md
+
+  # Other sites' homepages
+  index.md
+  index-guide.md
+  index-interface.md
+  index-concepts.md
+  index-dev.md
+  index-resources.md
+  index-developers.md
+  index-cli.md
+  migrating-to-new-platform.md
+
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+  links:
+    absolute_links: info
+
+site_name: "Data Standards"
+site_url: https://docs.mat3ra.com/standards
+site_description: "JSON schemas, data convention, and structured data representations for the Mat3ra platform."
+dev_addr: "localhost:8007"
+
+theme:
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.footer
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - navigation.expand
+
+extra:
+    # Cross-site URL variables (resolved by macros plugin at build time)
+    guide_url: https://docs.mat3ra.com/guide
+    interface_url: https://docs.mat3ra.com/interface
+    reference_url: https://docs.mat3ra.com/reference
+    resources_url: https://docs.mat3ra.com/resources
+    developers_url: https://docs.mat3ra.com/developers
+    cli_url: https://docs.mat3ra.com/command-line
+    data_url: https://docs.mat3ra.com/standards
+
+
+
+
+nav:
+    - "← All Docs":                                      /
+    - Home:                                              index-standards.md
+
+# OVERVIEW & CONVENTION
+    - Overview & Convention:
+        - Structured Data:                               data-structured/overview.md
+        - ESSE Data Convention:                           data-structured/convention.md
+        - Data Classification:                           data/classification.md
+        - Data Lifecycle:                                data/lifecycle.md
+
+# ENTITY SCHEMAS
+    - Entity Schemas:
+        - Overview:                                      data/overview.md
+        - General Entity:                                entities-general/data.md
+        - Materials:                                     materials/data.md
+        - Jobs:                                          jobs/data.md
+        - Workflows:
+            - Overview:                                  workflows/data/overview.md
+            - Workflows:                                 workflows/data/workflows.md
+            - Subworkflows:                              workflows/data/subworkflows.md
+            - Units:                                     workflows/data/units.md
+        - Models:                                        models/data.md
+        - Methods:                                       methods/data.md
+        - Software:                                      software/data.md
+
+# PROPERTY SCHEMAS
+    - Property Schemas:
+        - Overview:                                      properties/data/overview.md
+        - Core Types:                                    properties/data/core.md
+        - Full List:                                     properties/data/list.md
+        - Periodic Table:                                properties/data/periodic-table.md
+
+# ENTITY DIRECTORIES
+    - Entity Directories:
+        - Models:
+            - DFT:                                       models-directory/dft/data.md
+            - Machine Learning:                          models-directory/machine-learning/data.md
+        - Methods:
+            - Pseudopotential:                           methods-directory/pseudopotential/data.md
+            - Linear Regression:                         methods-directory/linear-regression/data.md
+        - Software:
+            - VASP:                                      software-directory/modeling/vasp/data.md
+            - Quantum ESPRESSO:                          software-directory/modeling/quantum-espresso/data.md
+            - Python:                                    software-directory/scripting/python/data.md
+            - Python ML:                                 software-directory/machine-learning/python-ml/data.md
+            - Shell:                                     software-directory/scripting/shell/data.md
+            - JupyterLab:                                software-directory/scripting/jupyter-lab/data.md

@@ -2,11 +2,11 @@
 
 We support uploading structural data in the file formats containing the lattice geometry and the ionic positions of the crystal structure under investigation. 
 
-At present CIF, POSCAR and XYZ formats are supported [^1], [^2], [^3]. POSCAR format represents a standard way of defining and inputting crystal structure information to [VASP code](../../software-directory/modeling/vasp/overview.md), one of the simulations engines incorporated into our platform. XYZ files are a common format for defining and inputting non-periodic molecular structures into simulation engines, such as NWChem[^4].
+At present CIF, POSCAR and XYZ formats are supported [^1], [^2], [^3]. POSCAR format represents a standard way of defining and inputting crystal structure information to [VASP code]({{ reference_url }}/software-directory/modeling/vasp/overview/), one of the simulations engines incorporated into our platform. XYZ files are a common format for defining and inputting non-periodic molecular structures into simulation engines, such as NWChem[^4].
 
 ## Open Upload Dialog
 
-Open the [Account Profile](../../accounts/ui/profile-page.md) page and [navigate](../../ui/specific/tabs-navigator.md) to "Materials" tab. Then choose upload tool <i class="zmdi zmdi-upload zmdi-hc-border"></i> in the top right [actions toolbar](../../entities-general/ui/explorer.md#actions-toolbar).
+Open the [Account Profile](../../accounts/ui/profile-page.md) page and [navigate]({{ interface_url }}/ui/specific/tabs-navigator/) to "Materials" tab. Then choose upload tool <i class="zmdi zmdi-upload zmdi-hc-border"></i> in the top right [actions toolbar](../../entities-general/ui/explorer.md#actions-toolbar).
 
 ## Select Files
 
@@ -59,7 +59,7 @@ Next, the [selected](../../entities-general/actions/select.md) files can be uplo
 
 ## View Materials
 
-Once the files have been imported, they are added as entries to the Materials [collection](../../accounts/collections.md). The name of the material is read from the imported file, if possible. Chemical formula is used as a backup option.  
+Once the files have been imported, they are added as entries to the Materials [collection]({{ reference_url }}/accounts/collections/). The name of the material is read from the imported file, if possible. Chemical formula is used as a backup option.  
 
 ## Animation
 

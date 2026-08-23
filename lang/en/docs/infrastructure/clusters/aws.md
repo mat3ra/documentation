@@ -4,37 +4,32 @@ This page contains information about clusters hosted on Amazon Web Services[^1] 
 
 ## Clusters
 
-The following table provides information about available clusters on Amazon Web Services (AWS) cloud computing platform. The latest cluster status can be found on <a href="https://platform.mat3ra.com/clusters" target="_blank">Clusters</a> page in web application.
+The following table provides information about available clusters on Amazon Web Services (AWS) cloud computing platform.
+The latest cluster status can be found on <a href="https://platform.mat3ra.com/clusters" target="_blank">Clusters</a>
+page in web application.
 
-| Name        | Master Hostname                                   | Location |
-| :---:       | :---:                                             | :---:    |
-| cluster-001 | master-production-20160630-cluster-001.exabyte.io | West US  |
+|     Name      |                   Master Hostname                   | Location |
+|:-------------:|:---------------------------------------------------:|:--------:|
+| `cluster-002` | `master-production-20250821-cluster-001.mat3ra.com` | West US  |
 
 ## Queues
 
-The list of currently enabled queues is given below. Price per core hour is shown in relation to the [relative unit price](../../pricing/service-levels.md#comparison-table) and is subject to change at any time. Total number of nodes can be increased upon [request](../../ui/support.md).
+The list of currently enabled queues is given below. Price per core hour is shown in relation to
+the [relative unit price]({{ guide_url }}/pricing/service-levels/#comparison-table) and is subject to change at any time. Total
+number of nodes can be increased upon [request]({{ interface_url }}/ui/support/).
 
-| Name  | Category[^2] | Mode[^3] | Charge Policy[^4] | Price | Max Nodes per Job<sup>+</sup> | Max Nodes Total |
-| :---: | :---:        | :---:    | :---:             | :---:                   | :---:     | :---:     |
-| D     | debug        | debug    | core-seconds      | 2.251                   | 1         | 10        |
-| OR    | ordinary     | regular  | core-seconds      | 1.000                   | 1         | 10        |
-| OR4   | ordinary     | regular  | core-seconds      | 1.126                   | 1         | 20        |
-| OR8   | ordinary     | regular  | core-seconds      | 1.126                   | 1         | 20        |
-| OR16  | ordinary     | regular  | core-seconds      | 1.126                   | 1         | 20        |
-| OF    | ordinary     | fast     | core-hours        | 1.000                   | &le;5    | 100       |
-| OFplus| ordinary     | fast     | core-hours        | 0.962                   | &le;5    | 10        |
-| SR    | saving       | regular  | core-seconds      | 0.200                   | 1         | 10        |
-| SR4   | saving       | regular  | core-seconds      | 0.225                   | 1         | 20        |
-| SR8   | saving       | regular  | core-seconds      | 0.225                   | 1         | 20        |
-| SR16  | saving       | regular  | core-seconds      | 0.225                   | 1         | 20        |
-| SF    | saving       | fast     | core-hours        | 0.200                   | &le;5    | 100       |
-| SFplus| saving       | fast     | core-hours        | 0.379                   | &le;5    | 10        |
-| GOF   | ordinary     | fast     | core-hours        | 8.655                   | &le;5    | 10        |
-| G4OF  | ordinary     | fast     | core-hours        | 8.655                   | &le;5    | 10        |
-| G8OF  | ordinary     | fast     | core-hours        | 8.655                   | &le;5    | 10        |
-| GSF   | saving       | fast     | core-hours        | 3.370                   | &le;5    | 10        |
-| G4SF  | saving       | fast     | core-hours        | 4.158                   | &le;5    | 10        |
-| G8SF  | saving       | fast     | core-hours        | 4.335                   | &le;5    | 10        |
+|  Name  | Category[^2] | Mode[^3] | Charge Policy[^4] | Price | Max Nodes per Job<sup>+</sup> | Max Nodes Total |
+|:------:|:------------:|:--------:|:-----------------:|:-----:|:-----------------------------:|:---------------:|
+|   D    |    debug     |  debug   |   core-seconds    | 2.251 |               1               |       10        |
+|   OR   |   ordinary   | regular  |   core-seconds    | 1.000 |               1               |       10        |
+|   OF   |   ordinary   |   fast   |    core-hours     | 1.000 |              10               |       100       |
+| OFplus |   ordinary   |   fast   |    core-hours     | 0.962 |               5               |       10        |
+|   SR   |    saving    | regular  |   core-seconds    | 0.200 |               1               |       10        |
+|   SF   |    saving    |   fast   |    core-hours     | 0.200 |              10               |       100       |
+| SFplus |    saving    |   fast   |    core-hours     | 0.379 |               5               |       10        |
+|  GOF   |   ordinary   |   fast   |    core-hours     | 8.655 |               5               |       10        |
+|  GSF   |    saving    |   fast   |    core-hours     | 1.731 |               5               |       10        |
+|  G4OF  |   ordinary   |   fast   |    core-hours     | 8.655 |               5               |       10        |
 
 <sup>+</sup> please contact support to inquire about attempting a larger node count per job
 
@@ -42,31 +37,22 @@ The list of currently enabled queues is given below. Price per core hour is show
 
 The following table contains hardware specifications for the above queues.
 
-| Name  | CPU[^5]  | Cores per Node | GPU[^6] | GPU per Node | Memory (GB) | Bandwidth (Gbps) |
-| :---: | :---:        | :---:      | :---:        | :---:    | :---:       | :---:            |
-| D     | c-3          | 8          | -            | -        | 15          | &le;10           |
-| OR    | c-3          | 36         | -            | -        | 60          | &le;10           |
-| OR4   | c-3          | 4          | -            | -        | 7.5         | &le;10           |
-| OR8   | c-3          | 8          | -            | -        | 15          | &le;10           |
-| OR16  | c-3          | 16         | -            | -        | 30          | &le;10           |
-| OF    | c-3          | 36         | -            | -        | 60          | 10               |
-| OFplus| c-5          | 72         | -            | -        | 144         | 25               |
-| SR    | c-3          | 36         | -            | -        | 60          | 10               |
-| SR4   | c-3          | 4          | -            | -        | 7.5         | &le;10           |
-| SR8   | c-3          | 8          | -            | -        | 15          | &le;10           |
-| SR16  | c-3          | 16         | -            | -        | 30          | &le;10           |
-| SF    | c-3          | 36         | -            | -        | 60          | 10               |
-| SFplus| c-5          | 72         | -            | -        | 144         | 25               |
-| GOF   | c-4          | 8          | g-1          | 1        | 61          | 10               |
-| G4OF  | c-4          | 32         | g-1          | 4        | 244         | 10               |
-| G8OF  | c-4          | 64         | g-1          | 8        | 488         | 25               |
-| GSF   | c-4          | 8          | g-1          | 1        | 61          | 10               |
-| G4SF  | c-4          | 32         | g-1          | 4        | 244         | 10               |
-| G8SF  | c-4          | 64         | g-1          | 8        | 488         | 25               |
-
+|  Name  | CPU[^5] | Cores per Node | GPU[^6] | GPU per Node | Memory (GB) | Bandwidth (Gbps) |    Instance Type    |
+|:------:|:-------:|:--------------:|:-------:|:------------:|:-----------:|:----------------:|:-------------------:|
+|   D    |   c-3   |       4        |    -    |      -       |     15      |      &le;10      |     c4.2xlarge      |
+|   OR   |   c-3   |       36       |    -    |      -       |     60      |      &le;10      |     c4.8xlarge      |
+|   OF   |   c-3   |       36       |    -    |      -       |     60      |        10        |     c4.8xlarge      |
+| OFplus |   c-5   |       72       |    -    |      -       |     192     |       100        |    c5n.18xlarge     |
+|   SR   |   c-3   |       36       |    -    |      -       |     60      |        10        |     c4.8xlarge      |
+|   SF   |   c-3   |       36       |    -    |      -       |     60      |        10        |     c4.8xlarge      |
+| SFplus |   c-5   |       72       |    -    |      -       |     192     |       100        |    c5n.18xlarge     |
+|  GOF   |   c-8   |       8        |   g-3   |      8       |    1152     |       400        |    p4d.24xlarge     |
+|  GSF   |   c-8   |       8        |   g-3   |      8       |    1152     |       400        |    p4d.24xlarge     |
+|  G4OF  |   c-4   |       32       |   g-4   |      1       |     256     |        10        |     p5.4xlarge      |
 
 !!! note "Hyper-threading"
-    Hyper-threading[^7] is enabled on all AWS compute nodes by default. It is recommended to use half of available cores on each compute node (e.g 18 cores on OF queue) if the application does not benefit from the extra virtual cores.
+Hyper-threading[^7] is enabled on all AWS compute nodes by default. It is recommended to use half of available cores on
+each compute node (e.g. 18 cores on OF queue) if the application does not benefit from the extra virtual cores.
 
 ## Links
 

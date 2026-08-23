@@ -1,8 +1,8 @@
 # Open / Close Remote Desktop
 
-The [Remote Desktop](../remote-desktop.md) connection method for accessing our platform is accessible under the corresponding `Remote Desktop` option available in the [right-hand sidebar menu](../../ui/right-sidebar.md) of the [Web Interface](../../ui/overview.md).
+The [Remote Desktop](../remote-desktop.md) connection method for accessing our platform is accessible under the corresponding `Remote Desktop` option available in the [Account Menu menu]({{ interface_url }}/ui/account-menu/) of the [Web Interface]({{ interface_url }}/ui/overview/).
 
-The Remote Desktop can subsequently be closed by clicking the ✕ button at its top-right corner, which reverts the entire screen to its previous appearance. 
+The Remote Desktop can subsequently be closed by clicking the ✕ button at its top-right corner, which reverts the entire screen to its previous appearance.
 
 ## Animation
 

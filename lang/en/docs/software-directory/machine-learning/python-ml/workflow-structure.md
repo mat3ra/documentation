@@ -15,7 +15,7 @@ A diagram of an example workflow can be found below, based on the bank workflow 
 
 This subworkflow facilitates setting up the PythonML job. Users should not need to edit this workflow. The configuration
 of this workflow is handled automatically on the
-when [the predict workflow is generated](../../../properties-directory/non-scalar/workflow.md).
+when [the predict workflow is generated]({{ reference_url }}/properties-directory/non-scalar/workflow/).
 
 ### Subworkflow: Machine Learning
 

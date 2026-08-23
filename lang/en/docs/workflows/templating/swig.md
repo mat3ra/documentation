@@ -1,11 +1,16 @@
+---
+render_macros: true
+---
+
 # Swig
 
-As mentioned in [the concept explanation](concept.md) we make use of **Swig** to render the templates on the [Web Interface](../../ui/overview.md). We introduce in this page the content specific to Swig. The reader is also referred to Swig official documentation for further reading [^1].
+As mentioned in [the concept explanation](concept.md) we make use of **Swig** to render the templates on the [Web Interface]({{ interface_url }}/ui/overview/). We introduce in this page the content specific to Swig. The reader is also referred to Swig official documentation for further reading [^1].
 
 ## Javascript Native Prototypes
 
 All Javascript-related prototypes such as *Array* and *Object* [^2] are supported by Swig, as long as the function does not require a callback (function) as one of its arguments. For example `Array.prototype.find()` is not supported by Swig as it needs a callback, however it can be implemented by pure templating features as below.
 
+{% raw %}
 ```jinja
 {% set elements = [
   {"id": 0, "value": "Si"},
@@ -21,12 +26,13 @@ All Javascript-related prototypes such as *Array* and *Object* [^2] are supporte
 {% endfor %}
 element = {{ element["value"] }}
 ```
+{% endraw %}
 
 ## Specific Statements
 
 ### Spaceless
 
-`{% spaceless %}` statement ensures that the text is rendered with no extra white spaces or empty lines added to it, and has to be terminated by `{% endspaceless %}`.
+`{% raw %}{% spaceless %}{% endraw %}` statement ensures that the text is rendered with no extra white spaces or empty lines added to it, and has to be terminated by `{% raw %}{% endspaceless %}{% endraw %}`.
 
 ## Links
 

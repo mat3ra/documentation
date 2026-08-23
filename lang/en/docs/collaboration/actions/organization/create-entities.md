@@ -4,7 +4,7 @@ Creation of a new entity under an organizational account is exactly the same as 
 
 ## Permissions
 
-Any member of an Organization can create an entity of any [type](../../../entities-general/overview.md), as long as he/she has ["Edit" permissions](../../../entities-general/permissions.md) in at least one Team.
+Any member of an Organization can create an entity of any [type]({{ reference_url }}/entities-general/overview/), as long as he/she has ["Edit" permissions]({{ reference_url }}/entities-general/permissions/) in at least one Team.
 
 ## Team Assignment 
 

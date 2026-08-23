@@ -20,6 +20,14 @@ Follow the below instructions to upload/update a tutorial video:
    ```
    whereby `PATH_TO_SAVE_AUDIO` and `PATH_TO_SAVE_NEW_VIDEO` should have the file extension `.mp3` and `.mp4`, respectively.
 
+   Voiceover audio alone (without an accompanying video file) can be generated
+   by omitting the `--file` and `--output` options.
+
+   The Google Cloud Text-to-Speech API has a limit of about 4 minutes of audio
+   per request. Audio longer than this must be split into multiple requests
+   using the `--skip` and `--until` options. The exact end time of a segment
+   should be used as the `skip` and/or `until` value.
+
 5. Retry step 4 with adjusted `youTubeCaptions` data until the optimal outcome is achieved.
 
 6. Before uploading, make sure that the timings of the `youTubeCaptions` sentences in the metadata file match exactly the duration of their pronunciations in the voiceover. This ensures that the subtitles will be synced correctly to the voice in the final online video version.

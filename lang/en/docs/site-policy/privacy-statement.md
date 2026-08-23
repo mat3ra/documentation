@@ -136,7 +136,7 @@ Exabyte.io may disclose personally-identifying information or other information 
 
 In complying with court orders and similar legal processes, Exabyte.io strives for transparency. When permitted, we will make a reasonable effort to notify users of any disclosure of their information, unless we are prohibited by law or court order from doing so, or in rare, exigent circumstances.
 
-For more information, see our [Guidelines for Legal Requests of User Data](../articles/guidelines-for-legal-requests-of-user-data/).
+For more information, see the Guidelines for Legal Requests of User Data.
 
 ## How you can access and control the information we collect
 

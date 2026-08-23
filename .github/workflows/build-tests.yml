@@ -3,10 +3,10 @@ name: Build tests and GitHub release
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+    - main
 
 jobs:
   run-py-tests:
@@ -16,42 +16,87 @@ jobs:
         os: ["ubuntu-24.04"]
         python-version:
           - "3.10"
-          - "3.11"
-          - "3.12"
-          - "3.13"
+          # No need to run with many Py versions - as long as one is passing, we should be OK
+          # - "3.11"
+          # - "3.12"
+          # - "3.13"
 
     steps:
       - name: Checkout repository and submodules
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           lfs: true
           submodules: true
 
       - name: Setup python 3
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Build documentation
-        uses: Exabyte-io/action-mkdocs-build@main
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Build documentation (legacy)
+        run: |
+          python -m mkdocs build -f mkdocs.yml
+
+      - name: Build split sites
+        run: |
+          python -m mkdocs build -f mkdocs-guide.yml      -d site/guide
+          python -m mkdocs build -f mkdocs-interface.yml  -d site/interface
+          python -m mkdocs build -f mkdocs-concepts.yml   -d site/reference
+          python -m mkdocs build -f mkdocs-resources.yml  -d site/resources
+          python -m mkdocs build -f mkdocs-developers.yml -d site/developers
+          python -m mkdocs build -f mkdocs-cli.yml        -d site/command-line
+          python -m mkdocs build -f mkdocs-standards.yml  -d site/standards
+          
+          # Fix and copy subsite homepages to root of each subsite
+          fix_homepage() {
+            local src="$1"
+            local dst="$2"
+            if [ -f "$src" ]; then
+              sed \
+                -e 's|"base": ".."|"base": "."|' \
+                -e 's|"\.\./assets/|"./assets/|g' \
+                -e 's|"\.\./search/|"./search/|g' \
+                -e 's|"\.\./extra/|"./extra/|g' \
+                -e 's|"\.\./images/|"./images/|g' \
+                -e 's|href="\.\./|href="./|g' \
+                -e 's|src="\.\./|src="./|g' \
+                "$src" > "$dst"
+            fi
+          }
+          fix_homepage site/guide/index-guide/index.html              site/guide/index.html
+          fix_homepage site/interface/index-interface/index.html       site/interface/index.html
+          fix_homepage site/reference/index-concepts/index.html       site/reference/index.html
+          fix_homepage site/resources/index-resources/index.html      site/resources/index.html
+          fix_homepage site/developers/index-developers/index.html    site/developers/index.html
+          fix_homepage site/command-line/index-cli/index.html                  site/command-line/index.html
+          fix_homepage site/standards/index-standards/index.html      site/standards/index.html
+
+
+
+      - name: Check for broken internal links
+        run: python scripts/links/check-links.py site
 
   publish-py-package:
     needs:
       - run-py-tests
     runs-on: ubuntu-24.04
-    if: (github.repository != 'Exabyte-io/template-definitions-js-py') && (github.ref_name == 'master')
+    if: (github.ref_name == 'main')
 
     steps:
       - name: Checkout this repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           lfs: true
 
       - name: Checkout actions repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          repository: Exabyte-io/actions
+          repository: mat3ra/actions
           token: ${{ secrets.BOT_GITHUB_TOKEN }}
           path: actions
 

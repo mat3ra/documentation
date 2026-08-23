@@ -1,11 +1,11 @@
 # Non-Periodic Materials
 
 The complete **structure** of a **non-periodic chemical system** is obtained from a
-[set of atoms](../../properties-directory/structural/basis.md), known as the **basis atoms**, that describe
+[set of atoms]({{ reference_url }}/properties-directory/structural/basis/), known as the **basis atoms**, that describe
 a set of non-repeating atoms that are held together by covalent or non-covalent interactions.  
 
 This results in a structure with a specific geometry which gives it a defined
-[point-group](../../properties-directory/structural/symmetry.md#point-group)[^1] symmetry assignment.
+[point-group]({{ reference_url }}/properties-directory/structural/symmetry/#point-group)[^1] symmetry assignment.
 
 Examples of **non-periodic structures** include **molecules**[^2], like **methane**[^3].
 

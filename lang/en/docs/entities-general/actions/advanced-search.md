@@ -1,6 +1,6 @@
 # Advanced Entity Search
 
- In order to perform a comprehensive search, and filter the Entities in the corresponding [collection](../../accounts/collections.md), the Advanced Search feature can be used.. The explanation contained in this page is relevant to [Materials](../../materials/overview.md). Advanced Search functionality is also available is for [Account Charges](../../accounts/ui/charges-payments.md).
+ In order to perform a comprehensive search, and filter the Entities in the corresponding [collection]({{ reference_url }}/accounts/collections/), the Advanced Search feature can be used.. The explanation contained in this page is relevant to [Materials]({{ reference_url }}/materials/overview/). Advanced Search functionality is also available is for [Account Charges](../../accounts/ui/charges-payments.md).
 
 ## Activate Advanced Search
 

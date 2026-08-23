@@ -2,7 +2,7 @@
 
 ## Summary
 
-[Properties](../overview.md) are classified according to the below. We explain the terms contained in the table throughout the remainder of the present documentation page. These classification criteria complement the more general ones introduced [here](../../data/classification.md).
+[Properties](../overview.md) are classified according to the below. We explain the terms contained in the table throughout the remainder of the present documentation page. These classification criteria complement the more general ones introduced [here]({{ data_url }}/data/classification/).
 
 | By refinement status |  By data type | By relation to Workflow  | By Uniqueness   | By Physical Meaning      |
 |:--------:|:-------------:|:------------------------:|:---------------:|:------------------------:|
@@ -27,7 +27,7 @@ We can subdivide properties based on how they are presented to the user into the
 - **Scalar**: can be expressed as a single numerical value with an associated measurement unit.
 - **Non-Scalar**: cannot be expressed as above.
 
-We review the scalar and non-scalar classes of Materials properties in [this documentation section](../../properties-directory/overview.md).
+We review the scalar and non-scalar classes of Materials properties in [this documentation section]({{ reference_url }}/properties-directory/overview/).
 
 > NOTE: non-scalar properties may be further subdivided into other groups like 1-dimensional arrays or matrices, for example.
 
@@ -46,7 +46,7 @@ For atomistic simulations, a descriptive property can be for example the initial
 
 ## By Relation to Uniqueness
 
-An effective way of organizing the data consists in identifying the materials themselves, rather than their properties. We do so by considering **Identifiers**, a special subset of *Descriptive* properties that helps associating each material with its ["exabyteId" keyword](../../entities-general/data.md). 
+An effective way of organizing the data consists in identifying the materials themselves, rather than their properties. We do so by considering **Identifiers**, a special subset of *Descriptive* properties that helps associating each material with its ["exabyteId" keyword]({{ data_url }}/entities-general/data/). 
 
 ### Example 
 
@@ -69,4 +69,4 @@ In the context of data obtained by simulations, it could happen that the value o
 
 ### Example 
 
-For atomistic simulations done using the [plane-wave pseudopotential method](../../methods-directory/pseudopotential/overview.md) we can extract the Fermi energy. However, there is no physical meaning to its numerical value, as it is heavily dependent on the pseudization scheme. Conversely the electronic band gap, or the difference between electronic energies below the Fermi level and above it, has physical meaning and can be directly compared with experimental measurements. 
+For atomistic simulations done using the [plane-wave pseudopotential method]({{ reference_url }}/methods-directory/pseudopotential/overview/) we can extract the Fermi energy. However, there is no physical meaning to its numerical value, as it is heavily dependent on the pseudization scheme. Conversely the electronic band gap, or the difference between electronic energies below the Fermi level and above it, has physical meaning and can be directly compared with experimental measurements. 

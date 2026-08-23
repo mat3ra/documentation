@@ -180,21 +180,40 @@ def insert_caption(youtube_, youtube_id_, name, content):
     return request.execute()
 
 
-def create_SSML_text(metadata_):
+def create_SSML_text(metadata_, skip=None, until=None):
     """
     Creates SSML text from metadata.
 
     See https://cloud.google.com/text-to-speech/docs/ssml for more information.
+
+    The optional `skip` and `until` arguments allow generating the voiceover
+    in parts to stay within the Google TextToSpeech API's per-request limits.
+    Captions whose `startTime` is before `skip` are dropped, and iteration
+    stops once a caption's `startTime` reaches `until`. Leading silence on
+    the resulting audio is shortened to the gap between `skip` and the first
+    kept caption, so each part can be aligned back to the original timeline
+    with `ffmpeg -itsoffset <skip>`. Please use exact end times of a segment as
+    `skip` and `until` values.
+
     Args:
         metadata_ (dict): video metadata.
+        skip (str|None): caption timestamp (`HH:MM:SS.MS`) to start from.
+        until (str|None): caption timestamp (`HH:MM:SS.MS`) to stop at.
 
     Returns:
         str
     """
+    skip_ms = caption_time_to_milliseconds(skip) if skip else 0
+    until_ms = caption_time_to_milliseconds(until) if until else None
     text = ""
-    previous_end = 0
+    previous_end = skip_ms
     for caption in metadata_["youTubeCaptions"]:
-        silence = caption_time_to_milliseconds(caption["startTime"]) - previous_end
+        start_ms = caption_time_to_milliseconds(caption["startTime"])
+        if start_ms < skip_ms:
+            continue
+        if until_ms is not None and start_ms >= until_ms:
+            break
+        silence = start_ms - previous_end
         text = "".join((text, f"<break time='{silence}ms'/>", caption["text"]))
         previous_end = caption_time_to_milliseconds(caption["endTime"])
     return "".join(("<speak>", text, "</speak>"))
@@ -230,15 +249,24 @@ if __name__ == '__main__':
     update.add_argument('--privacyStatus', default="unlisted", help='video privacy status')
 
     voiceover = subparsers.add_parser('voiceover')
-    voiceover.add_argument('--file', required=True, help='video file path')
+    voiceover.add_argument('--file', help='video file path (required only when --output is set)')
     voiceover.add_argument('--metadata', required=True, help='video metadata file path')
-    voiceover.add_argument('--audio', help='path to store audio file')
+    voiceover.add_argument('--audio', required=True, help='path to store audio file')
     voiceover.add_argument('--output', help='path to store voiceover video file')
     voiceover.add_argument('--privacyStatus', default="unlisted", help='video privacy status')
+    voiceover.add_argument(
+        '--skip', default=None,
+        help='skip captions before this timestamp, e.g. 00:05:30.500 (HH:MM:SS.MS)',
+    )
+    voiceover.add_argument(
+        '--until', default=None,
+        help='stop at captions at/after this timestamp, e.g. 00:10:00.000 (HH:MM:SS.MS)',
+    )
 
     args = argparser.parse_args()
 
-    if not os.path.exists(args.file):
+    video_file = getattr(args, "file", None)
+    if video_file and not os.path.exists(video_file):
         exit("video file does not exist!")
     if not os.path.exists(args.metadata):
         exit("metadata file does not exist!")
@@ -268,6 +296,9 @@ if __name__ == '__main__':
         update_metadata(args.metadata, {"youTubeId": youtube_id})
 
     if args.command == "voiceover":
-        ssml_text = create_SSML_text(metadata)
+        ssml_text = create_SSML_text(metadata, skip=args.skip, until=args.until)
         convert_text_to_speech(ssml_text, args.audio)
-        os.system(FFMPEG_COMMAND_TMPL.format(args.file, args.audio, args.output))
+        if args.output:
+            if not args.file:
+                exit("--file is required when --output is set")
+            os.system(FFMPEG_COMMAND_TMPL.format(args.file, args.audio, args.output))

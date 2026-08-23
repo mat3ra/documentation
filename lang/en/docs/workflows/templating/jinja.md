@@ -1,3 +1,7 @@
+---
+render_macros: false
+---
+
 # Template Engines
 
 We introduce in this page the basics of Jinja2 syntax used by templating on our platform. The reader is referred to the official documentations for further information [^1][^2].

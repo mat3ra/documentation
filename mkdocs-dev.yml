@@ -1,0 +1,141 @@
+# Developer Guide — under-the-hood documentation for power users and developers.
+# Covers REST API, infrastructure, and data storage internals.
+# Deploy to: docs.mat3ra.com/dev/
+
+INHERIT: mkdocs-base.yml
+
+docs_dir: !!python/object/apply:os.getenv ["DOCS_DIR", "lang/en/docs"]
+
+# Exclude pages that belong to other sites (Guide or Concepts).
+# Cross-site links use absolute URLs instead.
+exclude_docs: |
+  accounts/
+  benchmarks/
+  cli/
+  collaboration/
+  data/
+  data-structured/
+  entities-general/
+  getting-started/
+  jobs/
+  jobs-cli/
+  jobs-designer/
+  jupyterlite/
+  materials/
+  materials-designer/
+  methods/
+  methods-directory/
+  models/
+  models-directory/
+  other/
+  pricing/
+  properties/
+  properties-directory/
+  remote-connection/
+  security/
+  site-policy/
+  software/
+  software-directory/
+  tutorials/
+  ui/
+  workflow-designer/
+  workflows/
+  migrating-to-new-platform.md
+
+  # Guide-only pages in shared dirs
+  data-in-objectstorage/actions/
+  data-in-objectstorage/ui/
+
+  # Other sites' homepages
+  index.md
+  index-guide.md
+  index-interface.md
+  index-concepts.md
+  index-standards.md
+
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+  links:
+    absolute_links: info
+
+site_name: "Developer Guide"
+site_url: https://docs.mat3ra.com/dev
+site_description: "Developer-focused documentation for the Mat3ra platform: REST API, infrastructure, and data storage."
+dev_addr: "localhost:8003"
+
+theme:
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.footer
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - navigation.expand
+
+extra:
+    # Cross-site URL variables (resolved by macros plugin at build time)
+    guide_url: https://docs.mat3ra.com/guide
+    interface_url: https://docs.mat3ra.com/interface
+    reference_url: https://docs.mat3ra.com/reference
+    dev_url: https://docs.mat3ra.com/dev
+    data_url: https://docs.mat3ra.com/standards
+
+
+
+
+nav:
+    - "← All Docs":                                      /
+    - Home:                                              index-dev.md
+
+# REST API
+    - REST API:
+        - Overview:                                    rest-api/overview.md
+        - Authentication:                              rest-api/authentication.md
+        - Query structure:                             rest-api/query-structure.md
+        - Endpoints:                                   rest-api/endpoints.md
+        - API Explorer:                                rest-api/api-explorer.md
+        - API client:                          rest-api/api-client.md
+        - API examples:                        rest-api/api-examples.md
+
+# INFRASTRUCTURE
+    - General Infrastructure:
+        - Overview:                                     infrastructure/overview.md
+        - Storage System:                               infrastructure/storage.md
+        - Login Node:
+            - Overview:                                 infrastructure/login/overview.md
+            - Directory Structure:                      infrastructure/login/directories.md
+        - Clusters:
+            - Overview:                                 infrastructure/clusters/overview.md
+            - Directory Structure:                      infrastructure/clusters/directories.md
+            - Hardware Specifications:                  infrastructure/clusters/hardware.md
+            - Google Clusters:                          infrastructure/clusters/google.md
+            - AWS Clusters:                             infrastructure/clusters/aws.md
+            - Azure Clusters:                           infrastructure/clusters/azure.md
+        - Resource Management:
+            - Overview:                                 infrastructure/resource/overview.md
+            - Category:                                 infrastructure/resource/category.md
+            - Queues:                                   infrastructure/resource/queues.md
+        - Compute:
+            - Overview:                                 infrastructure/compute/overview.md
+            - Parameters:                               infrastructure/compute/parameters.md
+            - Data:                                     infrastructure/compute/data.md
+
+# DATA ON DISK
+    - Data on Disk:
+        - Overview:                                     data-on-disk/overview.md
+        - Directory Structure:                          data-on-disk/directories.md
+        - Quotas:                                       data-on-disk/quotas.md
+        - Security:                                     data-on-disk/security.md
+
+# DATA IN OBJECT STORAGE — Concepts
+    - Data in Object Storage:
+        - Overview:                                     data-in-objectstorage/overview.md
+        - Files:                                        data-in-objectstorage/files.md
+        - Security:                                     data-in-objectstorage/security.md
+        - Dropbox:                                      data-in-objectstorage/dropbox.md

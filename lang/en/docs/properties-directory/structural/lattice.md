@@ -10,7 +10,7 @@ $$
   
 where $n_i$ are any integers, and $a_i$ are known as the **lattice vectors** spanning the lattice in three-dimensional space. The defining characteristic of a Bravais lattice is that, for any choice of position vector $R$, the lattice has to look exactly the same when viewed from any equivalent lattice point.
 
-Information about the Bravais Lattice can be entered within the [lattice editor](../../materials-designer/source-editor/lattice.md) of [Materials Designer](../../materials-designer/overview.md), when a new material is being created.
+Information about the Bravais Lattice can be entered within the [lattice editor]({{ interface_url }}/materials-designer/source-editor/lattice/) of [Materials Designer]({{ interface_url }}/materials-designer/overview/), when a new material is being created.
 
 ## Lattice types
   
@@ -34,7 +34,7 @@ $$
 
 ## Schema 
 
-The JSON schema and an example representation for the properties described in this page can be found for each of the [Bravais Lattice](../../properties/data/list.md#bravais-lattice), [lattice vectors](../../properties/data/list.md#lattice-vectors), [volume](../../properties/data/list.md#volume) and [density](../../properties/data/list.md#density).
+The JSON schema and an example representation for the properties described in this page can be found for each of the [Bravais Lattice]({{ data_url }}/properties/data/list/#bravais-lattice), [lattice vectors]({{ data_url }}/properties/data/list/#lattice-vectors), [volume]({{ data_url }}/properties/data/list/#volume) and [density]({{ data_url }}/properties/data/list/#density).
 
 ## Links
 

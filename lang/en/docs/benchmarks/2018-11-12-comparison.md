@@ -1,3 +1,7 @@
+---
+render_macros: false
+---
+
 # 2018-11 Cloud-based Materials Modeling Benchmarks
 
 ## Overview

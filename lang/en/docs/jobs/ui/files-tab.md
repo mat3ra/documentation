@@ -8,6 +8,6 @@ A review of the [actions](../../data-in-objectstorage/actions/overview.md) and [
 
 ## Example Appearance
 
-An example of appearance of the Files tab is portrayed below, for a bandstructure run performed using the [VASP](../../software-directory/modeling/vasp/overview.md) code. The user is referred to the [code-specific documentation](../../software-directory/modeling/vasp/overview.md) for an explanation of the contents of the files displayed in this example.
+An example of appearance of the Files tab is portrayed below, for a bandstructure run performed using the [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) code. The user is referred to the [code-specific documentation]({{ reference_url }}/software-directory/modeling/vasp/overview/) for an explanation of the contents of the files displayed in this example.
 
 ![Files Tab](../../images/jobs/files-tab.png "Files Tab")
