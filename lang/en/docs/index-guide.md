@@ -43,6 +43,7 @@ Step-by-step recipes reproducing structures from the literature. The [full overv
 | Adatom surface defects    | Graphene            | Chan et al. (2008)       | [Link](tutorials/materials/specific/defect-surface-adatom-graphene.md) |
 | Twisted bilayer           | h-BN nanoribbons    | Xian et al. (2019)       | [Link](tutorials/materials/specific/interface-bilayer-twisted-nanoribbons-boron-nitride.md) |
 | Twisted bilayer           | MoS2                | Liu et al. (2014)        | [Link](tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide.md) |
+| Twisted bilayer (band structure)       | MoS2     | Liu et al. (2014)        | [Link](tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide-simulation.md) |
 | 2D–2D interface           | Graphene / h-BN     | Jung et al. (2015)       | [Link](tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride.md) |
 | 3D–3D interface           | Cu / SiO2           | Shan et al. (2011)       | [Link](tutorials/materials/specific/interface-3d-3d-copper-silicon-dioxide.md) |
 | 2D–3D interface           | Graphene / SiO2     | Kang et al. (2008)       | [Link](tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide.md) |
