@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
     with open(config_path, "r", encoding="utf8") as stream:
         try:
-            config = yaml.load(stream, Loader=yaml.CLoader)
+            config = yaml.safe_load(stream)
         except yaml.YAMLError as exc:
             raise SystemError("Error: something went wrong while loading yaml file.") from exc
 
