@@ -186,16 +186,16 @@ names in the same folder. An edited script therefore reaches a saved workflow
 without any change to the workflow itself.
 
 
-## 5. Feed an uploaded file to another application
+## 5. The shell twin: run any node-side application
 
-An upload is an ordinary platform file, so it is not limited to the custom script's workflow —
-any workflow can fetch it. The notebook closes with a worked example: a pseudopotential
-(`Si.upf` ships in the `uploads` folder) goes up through the same upload call, an `io` unit at
-the head of the standard Quantum ESPRESSO band structure workflow downloads it into the job's
-`pseudo` directory — where `pseudo_dir` in the inputs points — and the `ATOMIC_SPECIES` card of
-each pw.x input is pointed at the file. The final cells print the cards the calculation consumed
-and plot the band structure. The same upload can also be registered as a first-class
-pseudopotential through the web interface, as described in
+A sibling notebook, `custom_shell_calculation.ipynb`, carries the same flow with a shell script
+in place of the Python one. A shell script runs in a `module`-capable shell, so it can invoke any
+application installed on the compute node. Its default example uploads a pseudopotential
+(`Si.upf` ships in the `uploads` folder) through the same upload call, builds Quantum ESPRESSO
+inputs from `material.json` with `pseudo_dir` set to the working directory, and runs an SCF and a
+band structure step — Quantum ESPRESSO's own log then names the uploaded file as the
+pseudopotential it read. The same upload can also be registered as a first-class pseudopotential
+through the web interface, as described in
 [Upload a custom pseudopotential](../dft/upload-pseudopotential.md).
 
 
