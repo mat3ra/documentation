@@ -190,7 +190,7 @@ nav:
             - Interface, quick setup (3D Editor):                               tutorials/materials/slabs-interface.md
             - Interface, minimal strain (JupyterLite):                          tutorials/materials/jupyterlite-zsl.md
             - VESTA via Remote Desktop:                                         tutorials/materials/vesta-remote-desktop.md
-        - 1.2. Reproducing Published Structures:
+        - 1.2. Reproducing Publications:
             - Overview:                                                         tutorials/materials/specific/overview.md
             - Substitutional Defects in Graphene:                               tutorials/materials/specific/defect-point-substitution-graphene.md
             - Substitutional Defects in Graphene (Band Structure):              tutorials/materials/specific/defect-point-substitution-graphene-simulation.md

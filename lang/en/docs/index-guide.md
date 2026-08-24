@@ -27,36 +27,34 @@ Designing and constructing [material structures]({{ reference_url }}/materials/o
 | Interface (JupyterLite) | Construct a minimal-strain interface via the ZSL algorithm | [Link](tutorials/materials/jupyterlite-zsl.md) |
 | VESTA via Remote Desktop| Visualize structures in VESTA through a remote desktop session | [Link](tutorials/materials/vesta-remote-desktop.md) |
 
-### 1.2. Reproducing Published Structures
+### 1.2. Reproducing Publications
 
-Step-by-step recipes reproducing structures from the literature. The [full overview](tutorials/materials/specific/overview.md) page contains figures and additional context for each entry.
+Step-by-step recipes reproducing published work, one row per publication: the structure each recipe builds, and the properties calculated from that structure. A Properties cell reading Coming Soon means no simulation tutorial exists yet. The [full overview](tutorials/materials/specific/overview.md) page contains figures and additional context for each entry.
 
-| Structure Type            | Material            | Reference                | Link |
-|:--------------------------|:--------------------|:-------------------------|:-----|
-| Substitutional defect     | Graphene            | Fujimoto et al. (2011)   | [Link](tutorials/materials/specific/defect-point-substitution-graphene.md) |
-| Substitutional defect (band structure) | Graphene | Fujimoto et al. (2011)   | [Link](tutorials/materials/specific/defect-point-substitution-graphene-simulation.md) |
-| Vacancy-substitution pair | GaN                 | Miceli et al. (2016)     | [Link](tutorials/materials/specific/defect-point-pair-gallium-nitride.md) |
-| Vacancy defect            | h-BN                | Bertoldo et al. (2022)   | [Link](tutorials/materials/specific/defect-point-vacancy-boron-nitride.md) |
-| Interstitial defect       | SnO                 | Togo et al. (2006)       | [Link](tutorials/materials/specific/defect-point-interstitial-tin-oxide.md) |
-| Island surface defect     | TiN                 | Sangiovanni et al. (2018)| [Link](tutorials/materials/specific/defect-surface-island-titanium-nitride.md) |
-| Step surface defect       | Pt(111)             | Šljivančanin et al. (2002)| [Link](tutorials/materials/specific/defect-surface-step-platinum.md) |
-| Adatom surface defects    | Graphene            | Chan et al. (2008)       | [Link](tutorials/materials/specific/defect-surface-adatom-graphene.md) |
-| Twisted bilayer           | h-BN nanoribbons    | Xian et al. (2019)       | [Link](tutorials/materials/specific/interface-bilayer-twisted-nanoribbons-boron-nitride.md) |
-| Twisted bilayer           | MoS2                | Liu et al. (2014)        | [Link](tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide.md) |
-| Twisted bilayer (band structure)       | MoS2     | Liu et al. (2014)        | [Link](tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide-simulation.md) |
-| 2D–2D interface           | Graphene / h-BN     | Jung et al. (2015)       | [Link](tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride.md) |
-| 3D–3D interface           | Cu / SiO2           | Shan et al. (2011)       | [Link](tutorials/materials/specific/interface-3d-3d-copper-silicon-dioxide.md) |
-| 2D–3D interface           | Graphene / SiO2     | Kang et al. (2008)       | [Link](tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide.md) |
-| Interface optimization    | Graphene / Ni(111)  | Dahal et al. (2014)      | [Link](tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel.md) |
-| Adatom island             | Pt on MoS2          | Saidi et al. (2015)      | [Link](tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum.md) |
-| H-passivated nanowire     | Si                  | Aradi et al. (2007)      | [Link](tutorials/materials/specific/passivation-edge-nanowire-silicon.md) |
-| H-passivated surface      | Si(100)             | Hansen et al. (1998)     | [Link](tutorials/materials/specific/passivation-surface-silicon.md) |
-| Nanoclusters              | Au                  | Larsen et al. (2011)     | [Link](tutorials/materials/specific/nanocluster-gold.md) |
-| Slab                      | SrTiO3              | Eglitis et al. (2008)    | [Link](tutorials/materials/specific/slab-strontium-titanate.md) |
-| High-k metal gate stack   | Si/SiO2/HfO2/TiN   | Muller et al. (1999)     | [Link](tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md) |
-| Ripple perturbation       | Graphene            | Thompson-Flagg et al. (2009) | [Link](tutorials/materials/specific/perturbation-ripples-graphene.md) |
-| Grain boundary (3D)       | Cu (FCC)            | Frolov et al. (2013)     | [Link](tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md) |
-| Grain boundary (2D)       | h-BN                | Li et al. (2015)         | [Link](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride.md) |
+| Reference                         | Structure Type            | Material           | Structure | Properties |
+|:----------------------------------|:--------------------------|:-------------------|:----------|:-----------|
+| Fujimoto et al. (2011)[^1]        | Substitutional defect     | Graphene           | [Create](tutorials/materials/specific/defect-point-substitution-graphene.md) | [Band structure](tutorials/materials/specific/defect-point-substitution-graphene-simulation.md) |
+| Miceli et al. (2016)[^2]          | Vacancy-substitution pair | GaN                | [Create](tutorials/materials/specific/defect-point-pair-gallium-nitride.md) | Defect formation energies (Coming Soon) |
+| Bertoldo et al. (2022)[^3]        | Vacancy defect            | h-BN               | [Create](tutorials/materials/specific/defect-point-vacancy-boron-nitride.md) | Formation energies (Coming Soon) |
+| Togo et al. (2006)[^4]            | Interstitial defect       | SnO                | [Create](tutorials/materials/specific/defect-point-interstitial-tin-oxide.md) | Formation energies, band structure (Coming Soon) |
+| Sangiovanni et al. (2018)[^5]     | Island surface defect     | TiN                | [Create](tutorials/materials/specific/defect-surface-island-titanium-nitride.md) | Island formation energy (Coming Soon) |
+| Šljivančanin et al. (2002)[^6]    | Step surface defect       | Pt(111)            | [Create](tutorials/materials/specific/defect-surface-step-platinum.md) | Energy of dissociation (Coming Soon) |
+| Chan et al. (2008)[^7]            | Adatom surface defects    | Graphene           | [Create](tutorials/materials/specific/defect-surface-adatom-graphene.md) | Adsorption energy, density of states, diffusion barriers (Coming Soon) |
+| Xian et al. (2019)[^8]            | Twisted bilayer           | h-BN nanoribbons   | [Create](tutorials/materials/specific/interface-bilayer-twisted-nanoribbons-boron-nitride.md) | Band structure, total energies versus twist angle (Coming Soon) |
+| Liu et al. (2014)[^9]             | Twisted bilayer           | MoS2               | [Create](tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide.md) | [Band structure](tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide-simulation.md) |
+| Jung et al. (2015)[^10]           | 2D–2D interface           | Graphene / h-BN    | [Create](tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride.md) | Band structure, total energies (Coming Soon) |
+| Shan et al. (2011)[^11]           | 3D–3D interface           | Cu / SiO2          | [Create](tutorials/materials/specific/interface-3d-3d-copper-silicon-dioxide.md) | Band structure (Coming Soon) |
+| Kang et al. (2008)[^12]           | 2D–3D interface           | Graphene / SiO2    | [Create](tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide.md) | Band structure (Coming Soon) |
+| Dahal et al. (2014)[^13]          | Interface optimization    | Graphene / Ni(111) | [Create](tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel.md) | Total energies versus lateral shift, band structure (Coming Soon) |
+| Saidi et al. (2015)[^14]          | Adatom island             | Pt on MoS2         | [Create](tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum.md) | Binding energy per Pt atom, density of states (Coming Soon) |
+| Aradi et al. (2007)[^15]          | H-passivated nanowire     | Si                 | [Create](tutorials/materials/specific/passivation-edge-nanowire-silicon.md) | Band gap, density of states, formation energy (Coming Soon) |
+| Hansen et al. (1998)[^16]         | H-passivated surface      | Si(100)            | [Create](tutorials/materials/specific/passivation-surface-silicon.md) | Diffusion, reaction and desorption barriers (Coming Soon) |
+| Larsen et al. (2011)[^17]         | Nanoclusters              | Au                 | [Create](tutorials/materials/specific/nanocluster-gold.md) | Total energy per atom, density of states (Coming Soon) |
+| Eglitis et al. (2008)[^18]        | Slab                      | SrTiO3             | [Create](tutorials/materials/specific/slab-strontium-titanate.md) | Surface energy (Coming Soon) |
+| Muller et al. (1999)[^19]         | High-k metal gate stack   | Si/SiO2/HfO2/TiN   | [Create](tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md) | Band structure, valence band offset (Coming Soon) |
+| Thompson-Flagg et al. (2009)[^20] | Ripple perturbation       | Graphene           | [Create](tutorials/materials/specific/perturbation-ripples-graphene.md) | Coming Soon |
+| Frolov et al. (2013)[^21]         | Grain boundary (3D)       | Cu (FCC)           | [Create](tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md) | Defect energy per atom (Coming Soon) |
+| Li et al. (2015)[^22]             | Grain boundary (2D)       | h-BN               | [Create](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride.md) | Band gap, local density of states (Coming Soon) |
 
 [^1]: Fujimoto et al., Phys. Rev. B 84, 245446 (2011). [DOI](https://doi.org/10.1103/PhysRevB.84.245446){:target='_blank'}
 [^2]: Miceli et al., Phys. Rev. B 93, 165207 (2016). [DOI](https://doi.org/10.1103/PhysRevB.93.165207){:target='_blank'}
