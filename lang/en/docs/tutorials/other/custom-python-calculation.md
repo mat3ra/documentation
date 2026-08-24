@@ -186,7 +186,20 @@ names in the same folder. An edited script therefore reaches a saved workflow
 without any change to the workflow itself.
 
 
-## 5. Limits
+## 5. Feed an uploaded file to another application
+
+An upload is an ordinary platform file, so it is not limited to the custom script's workflow —
+any workflow can fetch it. The notebook closes with a worked example: a pseudopotential
+(`Si.upf` ships in the `uploads` folder) goes up through the same upload call, an `io` unit at
+the head of the standard Quantum ESPRESSO band structure workflow downloads it into the job's
+`pseudo` directory — where `pseudo_dir` in the inputs points — and the `ATOMIC_SPECIES` card of
+each pw.x input is pointed at the file. The final cells print the cards the calculation consumed
+and plot the band structure. The same upload can also be registered as a first-class
+pseudopotential through the web interface, as described in
+[Upload a custom pseudopotential](../dft/upload-pseudopotential.md).
+
+
+## 6. Limits
 
 An upload travels inside the request body, which the platform caps at 50 MB, and
 the JupyterLite session holds the file contents in memory before sending them.
@@ -203,7 +216,7 @@ a set of materials at once is a different shape of workflow, and is not what thi
 notebook builds.
 
 
-## 6. Links
+## 7. Links
 
 The pages below cover the platform features this notebook builds on.
 
