@@ -30,33 +30,15 @@ The job's material is written to `material.json` before the script starts, in
 the [representation]({{ reference_url }}/materials/overview/) the platform
 stores it in — a `lattice` object holding the cell lengths and angles, and a
 `basis` object holding the elements and their coordinates. A script that reports
-the number of atoms and the cell volume reads it as follows:
+the number of atoms and the elements present reads it as follows:
 
 ```python title="USER_SCRIPT"
 import json
-import math
 
 material = json.load(open("material.json"))
-
-# The platform stores the unit cell as lengths and angles, so the volume comes from those.
-lattice = material["lattice"]
-a, b, c = lattice["a"], lattice["b"], lattice["c"]
-cos_alpha, cos_beta, cos_gamma = (math.cos(math.radians(lattice[key])) for key in ("alpha", "beta", "gamma"))
-volume = (
-    a
-    * b
-    * c
-    * math.sqrt(1 - cos_alpha**2 - cos_beta**2 - cos_gamma**2 + 2 * cos_alpha * cos_beta * cos_gamma)
-)
-
 elements = [element["value"] for element in material["basis"]["elements"]]
 
-print(json.dumps({
-    "elements": sorted(set(elements)),
-    "n_atoms": len(elements),
-    "volume": round(volume, 4),
-    "atoms_per_volume": round(len(elements) / volume, 4),
-}))
+print(json.dumps({"n_atoms": len(elements), "elements": sorted(set(elements))}))
 ```
 
 This is the default script in the notebook, and it serves as the starting point
