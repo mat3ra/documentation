@@ -61,9 +61,9 @@ browser, and named in the `USER_ASSET_FILES` parameter. The notebook then
 uploads them next to the script, and the workflow fetches them into the same
 working directory, where the script opens them by name.
 
-An upload travels as a string inside a JSON request body, so the files named
-here are UTF-8 text. The notebook refuses anything else with a message pointing
-at the route described in Section 5 below, which is where binary data belongs.
+A data file may be of any type — a table, a pseudopotential, a model checkpoint.
+Its size is what decides the route it takes, which
+[Section 6](#6-file-size) covers.
 
 !!!warning "Reserved file names"
     The names `script.py`, `requirements.txt` and `material.json` are written by
@@ -186,7 +186,7 @@ pseudopotential through the web interface, as described in
 
 A file uploaded from the notebook or the web interface travels inside the request that carries it,
 encoded as text, so its size is bounded: roughly 75 MB through the web interface and 37 MB through
-the API. Anything larger is not sent through the platform at all — the platform signs a short-lived
+the API — the same bound for a text file and a binary one. Anything larger is not sent through the platform at all — the platform signs a short-lived
 upload URL and the file goes straight to object storage, with no size limit. The notebook chooses
 between the two, so a script, a pseudopotential and a several-hundred-megabyte model checkpoint are
 all listed the same way in `USER_ASSET_FILES`.
