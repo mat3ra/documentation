@@ -184,15 +184,10 @@ pseudopotential through the web interface, as described in
 
 ## 6. Limits
 
-An upload travels inside the request body, which the platform caps at 50 MB, and
-the JupyterLite session holds the file contents in memory before sending them.
-Anything larger, and anything that is not UTF-8 text, goes to the same folder
-through the
-[Dropbox page]({{ interface_url }}/data-in-objectstorage/ui/dropbox-page/) of
-the web interface instead. Such a file is not covered by `USER_ASSET_FILES`,
-which names local files for the notebook to upload; the notebook's upload cell
-carries the two lines that add an already-stored object to the list the workflow
-fetches.
+Text files travel inside the request body. Anything else — a model checkpoint, an archive, a file
+too large for a request — is sent to a URL the platform signs for it and lands in storage directly,
+so the only bound is what the browser can hold in memory while uploading. The `uploads` folder of
+the JupyterLite session is the staging area in both cases.
 
 The script is given one material per job, as `material.json`. A calculation over
 a set of materials at once is a different shape of workflow, and is not what this
