@@ -182,12 +182,14 @@ pseudopotential through the web interface, as described in
 [Upload a custom pseudopotential](../dft/upload-pseudopotential.md).
 
 
-## 6. Limits
+## 6. File size
 
-Text files travel inside the request body. Anything else — a model checkpoint, an archive, a file
-too large for a request — is sent to a URL the platform signs for it and lands in storage directly,
-so the only bound is what the browser can hold in memory while uploading. The `uploads` folder of
-the JupyterLite session is the staging area in both cases.
+A file uploaded from the notebook or the web interface travels inside the request that carries it,
+encoded as text, so its size is bounded: roughly 75 MB through the web interface and 37 MB through
+the API. Anything larger is not sent through the platform at all — the platform signs a short-lived
+upload URL and the file goes straight to object storage, with no size limit. The notebook chooses
+between the two, so a script, a pseudopotential and a several-hundred-megabyte model checkpoint are
+all listed the same way in `USER_ASSET_FILES`.
 
 The script is given one material per job, as `material.json`. A calculation over
 a set of materials at once is a different shape of workflow, and is not what this
