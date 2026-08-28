@@ -172,12 +172,13 @@ without any change to the workflow itself.
 
 A sibling notebook, `custom_shell_calculation.ipynb`, carries the same flow with a shell script
 in place of the Python one. A shell script runs in a `module`-capable shell, so it can invoke any
-application installed on the compute node. Its default example uploads a pseudopotential
-(`Si.upf` ships in the `uploads` folder) through the same upload call, builds Quantum ESPRESSO
-inputs from `material.json` with `pseudo_dir` set to the working directory, and runs an SCF and a
-band structure step — Quantum ESPRESSO's own log then names the uploaded file as the
-pseudopotential it read. The same upload can also be registered as a first-class pseudopotential
-through the web interface, as described in
+application installed on the compute node. Its default example builds Quantum ESPRESSO inputs
+from `material.json` and runs an SCF and a band structure step for silicon with a pseudopotential
+from the platform's library. A pseudopotential of the user's own goes up through the same upload
+call as any data file — placed in the `uploads` folder, listed in `USER_ASSET_FILES`, with the
+script's `PSEUDO_DIR` pointed at the working directory — and Quantum ESPRESSO's own log then names
+the uploaded file as the one it read. Such a file can also be registered as a first-class
+pseudopotential through the web interface, as described in
 [Upload a custom pseudopotential](../dft/upload-pseudopotential.md).
 
 
