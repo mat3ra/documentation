@@ -117,9 +117,10 @@ verifies that placement rather than trusting it.
 | Fast tier | MACE-MP-0 (large, float64) + D3, rigid film | — |
 | DFT functional | PBE (`pbe`) | collated vdW-corrected results |
 | Pseudopotentials | ultrasoft (GBRV) | varies by cited study |
-| Cutoffs | 40 Ry wavefunction, 320 Ry density | varies |
+| Cutoffs | 40 Ry wavefunction, 200 Ry density | varies |
 | k-grid | 12x12x1 on the 1x1 cell | varies |
-| Spin | collinear, starting moment 0.7 on Ni, `degauss = 0.01` Ry | ferromagnetic Ni |
+| Spin | collinear, started near Ni's bulk moment (0.7 μB) | ferromagnetic Ni |
+| Smearing | Marzari-Vanderbilt cold, `degauss = 0.01` Ry | varies |
 | Dispersion | D3 (`vdw_corr = "grimme-d3"`) | method-dependent |
 | Geometry | film rigid at the MACE-optimized separation | relaxed |
 
@@ -127,6 +128,19 @@ Nickel is ferromagnetic, so every DFT job runs spin-polarized. The D3 correction
 QE input because the separation of the hollow registry is a dispersion-bound minimum — without it
 the physisorbed state does not bind at all. The in-plane k-grid divisions stay multiples of three so
 the K point of the hexagonal cell is sampled exactly.
+
+Every value in that table is either a platform default, the value the pseudopotential set is
+published with, or something this system's physics requires. The cutoffs are the 40/200 Ry pair GBRV
+publishes for its ultrasoft set. The in-plane k-point divisions are a multiple of three so that K,
+at (1/3, 1/3), lies on the grid, and dense enough for a metal's Fermi surface.
+
+A spin-polarized metal slab is the hard case for the SCF, and the platform defaults do not converge
+it — a first attempt stopped at *convergence NOT achieved after 100 iterations*, with the total
+energy oscillating in its fourth decimal, which is charge sloshing rather than divergence. Three
+changes address that and nothing else: cold smearing, which is the standard metal choice because it
+leaves the free energy insensitive to `degauss`; `local-TF` mixing, built for the long-wavelength
+charge oscillation a slab supports; and a smaller mixing fraction with more iterations so the
+magnetic moment can settle.
 
 The MACE model size matters more than it looks: the **large** model at `float64` resolves the shallow
 chemisorbed minimum, while the medium model at `float32` misses it entirely and reports every
