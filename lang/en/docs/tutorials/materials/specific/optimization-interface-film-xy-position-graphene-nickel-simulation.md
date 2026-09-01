@@ -85,26 +85,30 @@ The comparison runs in two tiers:
    activating the others in the notebook's `DFT_REGISTRY_NAMES` cell computes the full DFT
    comparison and the DFT-tier verdict.
 
-   Two further jobs compute the **bare Ni slab** and the **free-standing graphene sheet** *in the
-   same cell*, which turns the interface energies into an adsorption energy per carbon atom:
-   `E_ads = [E(interface) − E(Ni slab) − E(graphene)] / N_C`. Because all three share the cell,
-   k-grid, cutoffs and smearing, those cancel out of the difference. Set
-   `COMPUTE_ADSORPTION_ENERGY = False` to skip them. The result is a PBE+D3 number: the review
-   collates adsorption energies from several methods, so compare the ordering and the magnitude
-   rather than the digits.
+   Setting `COMPUTE_ADSORPTION_ENERGY = True` adds two further jobs — the **bare Ni slab** and the
+   **free-standing graphene sheet**, both *in the same cell* — which turn the interface energies into
+   an adsorption energy per carbon atom:
+   `E_ads = [E(interface) − E(Ni slab) − E(graphene)] / N_C`. Sharing the cell, k-grid, cutoffs and
+   smearing removes the cell- and sampling-dependent part of the error from the difference; basis-set
+   and smearing errors are system-specific and do not cancel exactly, so the number is good to tens
+   of meV rather than to the digit. It is off by default because it triples the job count. The result
+   is a PBE+D3 value, and the review collates adsorption energies from several methods, so compare
+   the ordering and magnitude rather than the digits.
 
 | registry | Fig. 1 | carbon sublattices | expected |
 |---|---|---|---|
 | `atop_fcc` | (b) | atop first-layer Ni + fcc hollow | favourable; chemisorbed near 2.1 Å |
 | `atop_hcp` | (c) | atop first-layer Ni + hcp hollow | degenerate with atop/fcc at this level of theory |
-| `bridge` | (d) | one carbon on the Ni–Ni midpoint | chemisorbed but clearly higher in energy |
+| `bridge` | (d) | the C–C bond straddles a first-layer Ni | chemisorbed, a little above the atop registries |
 | `hollow` | (a) | fcc hollow + hcp hollow | not chemisorbed; only a dispersion-bound minimum |
 
 The notebook derives these from the structure itself: the surface sites are located from the
 substrate's top three Ni layers, and the three site-pair registries are labelled by measuring which
 site the second carbon sublattice lands on — refusing to label a carbon that is equidistant from two
-sites rather than picking one. The bridge registry is defined by its own geometry instead, since only
-one of its carbons sits on a named site.
+sites rather than picking one. The bridge registry is defined by its own geometry instead: neither
+carbon is on a site, and what fixes it is that a first-layer Ni sits directly under the midpoint of a
+C–C bond — the vertical bonds in Fig. 1d run through the centres of the surface atoms. The notebook
+verifies that placement rather than trusting it.
 
 ## 4. Calculation parameters
 
@@ -113,7 +117,7 @@ one of its carbons sits on a named site.
 | Fast tier | MACE-MP-0 (large, float64) + D3, rigid film | — |
 | DFT functional | PBE (`pbe`) | collated vdW-corrected results |
 | Pseudopotentials | ultrasoft (GBRV) | varies by cited study |
-| Cutoffs | 50 Ry wavefunction, 400 Ry density | varies |
+| Cutoffs | 40 Ry wavefunction, 320 Ry density | varies |
 | k-grid | 12x12x1 on the 1x1 cell | varies |
 | Spin | collinear, starting moment 0.7 on Ni, `degauss = 0.01` Ry | ferromagnetic Ni |
 | Dispersion | D3 (`vdw_corr = "grimme-d3"`) | method-dependent |
@@ -156,8 +160,9 @@ separations with MACE, and print the equilibrium distance and relative energy of
 ### 5.4. Run the DFT tier
 
 Section 5 authenticates against the platform and submits one `Total Energy` job for the first
-registry in `DFT_REGISTRY_NAMES`. Uncomment the other registries in that cell to submit all three;
-the notebook then waits for the jobs and prints the DFT comparison.
+registry in `DFT_REGISTRY_NAMES`. Uncomment the other registries in that cell to submit all four; the
+notebook then waits for the jobs and prints the DFT comparison. Enabling
+`COMPUTE_ADSORPTION_ENERGY` adds two more jobs on top of whatever is active.
 
 ### 5.5. Read the verdict
 
@@ -168,7 +173,7 @@ prints a verdict per tier:
 Reproduces Dahal & Batzill (2014) [MACE tier]: yes
 ```
 
-The DFT-tier line appears once all three registries have finished — one job cannot evaluate an
+The DFT-tier line appears once all four registries have finished — one job cannot evaluate an
 ordering, so a default run names the registries still to activate instead.
 
 ## 6. Troubleshooting
