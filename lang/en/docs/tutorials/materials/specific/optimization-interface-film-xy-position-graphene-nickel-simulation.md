@@ -46,9 +46,8 @@ carbon sits further out. The review's computed values come from Lahiri *et al.*,
 | hcp (atop + hcp hollow) | 0.77 | 2.17 |
 | hollow (fcc + hcp hollows) | 0.31 | 3.26 |
 
-The review's text quotes the hollow as 0.38 J/m²; the source paper's Table 1 says 0.31, and the
-notebook targets the source. The bridge registry (Fig. 1d of the review) is not quantified in
-either paper and is computed as an extra point beyond the published set.
+The bridge registry (Fig. 1d of the review) is not quantified in either paper and is computed as
+an extra point beyond the published set.
 
 ![The four registries of graphene on a close-packed metal surface](../../../images/tutorials/materials/optimization/optimization_interface_film_xy_position_graphene_nickel/0-figure-from-manuscript.webp "Registries of graphene on a close-packed metal surface")
 
