@@ -215,6 +215,7 @@ nav:
             - Grain Boundary in Cu (FCC):                                       tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md
             - Grain Boundary (2D) in h-BN:                                      tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride.md
             - Gr/Ni(111) Interface Optimization:                                tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel.md
+            - Gr/Ni(111) Registry and Separation:                                tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel-simulation.md
             - Pt Adatoms Island on MoS2:                                        tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum.md
 
 # 2. Simulations
