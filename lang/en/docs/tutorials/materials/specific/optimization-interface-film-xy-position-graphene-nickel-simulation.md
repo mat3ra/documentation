@@ -76,8 +76,10 @@ Two tiers, both relaxed.
 
 **Fast tier — MACE-MP, run where the notebook runs.** Each registry is placed (the surface sites are
 measured from the substrate's own top layers, and each registry label is re-verified after
-relaxation; a structure that slid into a neighbouring registry is dropped rather than reported
-under the wrong name), bracketed by a rigid scan, then relaxed with positions free along z only and
+relaxation — a no-op here, since the z-only constraint holds every atom's xy fixed and no film can
+slide; the check matters in the precise tier below, where the platform relaxes every coordinate
+freely and a structure that lands in a different registry is dropped rather than reported under the
+wrong name), bracketed by a rigid scan, then relaxed with positions free along z only and
 the bottom substrate layers fixed — equivalent to a full relaxation at the paper's symmetric
 registries, where in-plane forces vanish by symmetry, and the constraint that keeps the bridge
 registry's in-plane saddle point defined. Same-cell relaxed references (bare Ni slab, free-standing
