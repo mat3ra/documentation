@@ -77,9 +77,12 @@ Two tiers, both relaxed.
 **Fast tier — MACE-MP, run where the notebook runs.** Each registry is placed (the surface sites are
 measured from the substrate's own top layers, and each registry label is re-verified after
 relaxation; a structure that slid into a neighbouring registry is dropped rather than reported
-under the wrong name), bracketed by a rigid scan, then relaxed with the bottom substrate layers
-fixed — the paper's scheme. Same-cell relaxed references (bare Ni slab, free-standing graphene) turn
-the energies into works of adhesion: `W = [E(slab) + E(graphene) − E(interface)] / A`.
+under the wrong name), bracketed by a rigid scan, then relaxed with positions free along z only and
+the bottom substrate layers fixed — equivalent to a full relaxation at the paper's symmetric
+registries, where in-plane forces vanish by symmetry, and the constraint that keeps the bridge
+registry's in-plane saddle point defined. Same-cell relaxed references (bare Ni slab, free-standing
+graphene), relaxed under the same z-only constraint, turn the energies into works of adhesion:
+`W = [E(slab) + E(graphene) − E(interface)] / A`.
 
 The fast tier does not reproduce the paper, and says so. MACE-MP is PBE-trained, and PBE-level
 physics is what the paper rejects for this interface. Run natively with D3 dispersion, it gives
@@ -112,7 +115,7 @@ work of adhesion. This tier carries the reproduction claim.
 |---|---|---|---|
 | Method | MACE-MP-0 (large, float64) + D3 | LDA (`pz`), GBRV ultrasoft | LDA, all-electron LCAO (DMol) |
 | Spin | via training data | collinear, moment started at 0.7 μB on Ni; graphene reference unpolarized | spin-polarized (bulk Ni: 0.56 μB) |
-| Relaxation | BFGS, bottom 2 Ni layers fixed | fixed-cell relaxation (`pw_relax`, `calculation = 'relax'`) | bottom 2 of 5 Ni layers fixed |
+| Relaxation | BFGS, z-only, bottom 2 Ni layers fixed | fixed-cell relaxation (`pw_relax`, `calculation = 'relax'`) | bottom 2 of 5 Ni layers fixed |
 | Cutoffs | — | 40 / 200 Ry (GBRV's published pair) | all-electron |
 | k-grid | — | 12×12×1 (multiple of 3, so K is on the mesh) | converged, not stated |
 | Smearing | — | Marzari-Vanderbilt cold, `degauss = 0.01` Ry | not stated |
