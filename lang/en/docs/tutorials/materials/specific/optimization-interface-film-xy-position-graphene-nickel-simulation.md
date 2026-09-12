@@ -146,8 +146,7 @@ other/materials_designer/specific_examples/optimization_interface_film_xy_positi
 ### 5.3. Run the fast tier
 
 *Run* > *Run All Cells*. Sections 2–4 need no platform account: they load the interface, derive and
-verify the registries, relax each one with MACE, and print the comparison against Lahiri Table 1 —
-including the honest `[MACE tier]` verdict.
+verify the registries, relax each one with MACE, and print the comparison against Lahiri Table 1.
 
 ### 5.4. Run the precise tier
 
@@ -156,12 +155,12 @@ paper's LDA, plus the two reference jobs. A default run selects one registry —
 `DFT_REGISTRY_NAMES` **empty** skips the platform tier entirely; the automated test does exactly
 that, because relaxation jobs outlast what a browser test may wait for.
 
-### 5.5. Read the verdict
+### 5.5. Read the final table
 
-The final cell restates the published targets and prints one verdict line per tier, of the form
-`Reproduces Lahiri et al. Table 1 [<tier>]: yes|no`. The fast tier's line reads `no` — the physics
-working as documented, see section 3. The DFT-tier line is printed once the selected registries and
-both references have finished, over whatever was selected; the ordering check needs all three.
+The final cell prints the computed values beside the published ones: work of adhesion, separation
+and buckling for each registry, in paper / MACE / DFT columns, with `—` wherever a tier did not run
+or the paper gives no value. The fast tier's numbers are the results from section 3; the DFT tier's
+populate once the selected registries and both references have finished.
 
 ## 6. Troubleshooting
 
