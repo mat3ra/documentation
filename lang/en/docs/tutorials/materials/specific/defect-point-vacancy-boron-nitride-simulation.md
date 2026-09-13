@@ -73,15 +73,15 @@ precision this comparison is being made at.
 |---|---|---|
 | Code | Quantum ESPRESSO | GPAW |
 | Functional | PBE | PBE |
-| Pseudopotentials | PAW (PseudoDojo JTH) | PAW (GPAW setups) |
-| Plane-wave cutoff | 40 Ry (544 eV) wavefunction, 320 Ry density — from the PseudoDojo JTH "high" hints for B and N, identical for every job | 800 eV |
+| Pseudopotentials | ultrasoft (GBRV) | PAW (GPAW setups) |
+| Plane-wave cutoff | 40 Ry (≈ 544 eV) wavefunction, 200 Ry density, identical for every job | 800 eV |
 | k-point sampling | density 6 Å⁻¹, converted to a grid per cell — 3 × 5 × 1 for the defect cell | 6 Å⁻¹ (relaxation), 12 Å⁻¹ (ground state) |
 | Geometry | as built by the structure notebook, not relaxed | relaxed to 0.01 eV/Å |
 | Spin | polarized (nspin = 2) on the defect cell | polarized |
 | Cell | 48 atoms, 15.05 × 8.69 Å, 8.69 Å defect spacing, 20 Å vacuum | 84 atoms (symmetry-broken), 15.06 Å defect spacing, 15 Å vacuum |
 
-Boron and nitrogen have no ultrasoft pseudopotential under PBE on the platform, so both elements
-use PAW here — the same family GPAW itself is built on, though not the same set of files. The
+This tutorial uses ultrasoft (GBRV) pseudopotentials under PBE; QPOD used PAW, GPAW's own setups.
+The pseudopotential family is one of the differences the 0.5 eV tolerance below covers. The
 notebook submits Total Energy jobs for the pristine cell, α-boron and nitrogen with the same
 functional, pseudopotentials and cutoff as the defect job, unless the account already holds a
 Total Energy for that material — then that one is reused. Rerunning from a clean project is the
