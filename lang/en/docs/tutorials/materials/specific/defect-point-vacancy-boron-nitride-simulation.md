@@ -74,24 +74,29 @@ precision this comparison is being made at.
 | Code | Quantum ESPRESSO | GPAW |
 | Functional | PBE | PBE |
 | Pseudopotentials | ultrasoft (GBRV) | PAW (GPAW setups) |
-| Plane-wave cutoff | 40 Ry (≈ 544 eV) wavefunction, 200 Ry density, identical for every job | 800 eV |
+| Plane-wave cutoff | 40 Ry / 200 Ry (GBRV's recommended pair for ultrasoft sets), identical for every job | 800 eV |
 | k-point sampling | density 6 Å⁻¹, converted to a grid per cell — 3 × 5 × 1 for the defect cell | 6 Å⁻¹ (relaxation), 12 Å⁻¹ (ground state) |
 | Geometry | as built by the structure notebook, not relaxed | relaxed to 0.01 eV/Å |
 | Spin | polarized (nspin = 2) on the defect cell | polarized |
 | Cell | 48 atoms, 15.05 × 8.69 Å, 8.69 Å defect spacing, 20 Å vacuum | 84 atoms (symmetry-broken), 15.06 Å defect spacing, 15 Å vacuum |
 
 This tutorial uses ultrasoft (GBRV) pseudopotentials under PBE; QPOD used PAW, GPAW's own setups.
-The pseudopotential family is one of the differences the 0.5 eV tolerance below covers. The
-notebook submits Total Energy jobs for the pristine cell, α-boron and nitrogen with the same
-functional, pseudopotentials and cutoff as the defect job, unless the account already holds a
-Total Energy for that material — then that one is reused. Rerunning from a clean project is the
-way to be sure all four energies share one model.
+Plane-wave cutoffs of a PAW and an ultrasoft calculation are not comparable numbers, so the 800 eV
+and the 40 Ry / 200 Ry pair above cannot be read as one converging faster than the other. The
+pseudopotential family and cutoff together are one of the differences the 0.5 eV tolerance below
+covers. The notebook submits Total Energy jobs for the pristine cell, α-boron and nitrogen with
+the same functional, pseudopotentials and cutoff as the defect job, unless the account already
+holds a Total Energy for that material — then that one is reused. The results cell recomputes E_f
+from the notebook's own three total energies — the defect cell, the pristine cell and boron per
+atom — and prints it next to the workflow's value; if the two differ, it warns that the workflow
+resolved a different reference energy, and the verdict should not be trusted until the stale Total
+Energy jobs are removed or a fresh account is used.
 
 Two further offsets are quantified for the cell used here, estimated with a machine-learned
 potential: the smaller supercell shifts the neutral formation energy by 0.02 eV relative to
 QPOD's cell, and skipping relaxation costs a further 0.04 eV. Both are small; the 0.5 eV tolerance
-below covers pseudopotential-set and reference-phase differences, which are not estimated. The
-cell's defect-defect spacing, 8.69 Å, is below the >15 Å minimum QPOD applies when choosing a
+below covers pseudopotential-set, cutoff and reference-phase differences, which are not estimated.
+The cell's defect-defect spacing, 8.69 Å, is below the >15 Å minimum QPOD applies when choosing a
 supercell — the 0.02 eV estimate says the neutral vacancy tolerates the smaller cell.
 
 A result within 0.5 eV of 10.18 eV counts as reproducing the manuscript.
@@ -113,8 +118,9 @@ Running the notebook end to end submits at most four jobs: the defect calculatio
 three reference Total Energy calculations, for the pristine cell, α-boron and elemental nitrogen.
 Nitrogen does not enter the formation energy — its change in atom count is zero — but the
 workflow resolves a reference energy for every element in the cell and stops if one is missing,
-so the nitrogen job is required. On a rerun, jobs already finished are reused rather than
-resubmitted.
+so the nitrogen job is required. The defect job is created and submitted on every run; only the
+three reference Total Energy jobs are reused when the account already has one, and skipped
+otherwise.
 
 The jobs run on `cluster-001`, queue OF, 40 cores, with a four-hour time limit — long enough for
 the spin-polarized defect cell. If that cluster is not found under the account, the notebook falls
