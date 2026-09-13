@@ -25,7 +25,7 @@ tutorial, reproducing a result from the following manuscript.
 
 !!!note "Manuscript"
     Fabian Bertoldo, Sajid Ali, Simone Manti & Kristian S. Thygesen, "Quantum point defects in 2D
-    materials - the QPOD database", Nature Computational Materials, 2022.
+    materials - the QPOD database", npj Computational Materials, 2022.
     [DOI:10.1038/s41524-022-00730-w](https://doi.org/10.1038/s41524-022-00730-w){:target='_blank'}.
     [@Bertoldo2022]
 
@@ -46,12 +46,15 @@ different material.
 
 The formation energy of a point defect X in charge state q follows QPOD's Eq. (3):
 
-E_f = E_tot[defect] − E_tot[pristine] − Σ n_i μ_i + q E_F
+$$
+E_f[X^q] = E_{\text{tot}}[X^q] - E_{\text{tot}}[\text{pristine}] - \sum_i n_i \mu_i + q E_F
+$$
 
-where μ_i is the total energy of the standard state of element i, per atom, and n_i is the number
-of atoms of that element removed from the pristine cell to build the defect. A vacancy removes a
-single element, so only its μ enters the sum — for V_B, only μ_B; the nitrogen reference plays no
-part in the number.
+where $\mu_i$ is the total energy of the standard state of element $i$, per atom, and $n_i$ is the
+*change* in the number of atoms of that element between the defective and the pristine cell —
+negative when an atom is removed. A vacancy changes a single element, so only its $\mu$ enters the
+sum; for V_B, $n_B = -1$, and the formula reduces to $E_f = E_{\text{tot}}[\text{defect}] -
+E_{\text{tot}}[\text{pristine}] + \mu_B$.
 
 That is also why the standard-state and "N-poor" rows of QPOD's table agree: both fix μ_B at the
 same value, the total energy per atom of α-boron. Only the "B-poor" (nitrogen-rich) limit moves
@@ -71,24 +74,25 @@ precision this comparison is being made at.
 | Code | Quantum ESPRESSO | GPAW |
 | Functional | PBE | PBE |
 | Pseudopotentials | PAW (PseudoDojo JTH) | PAW (GPAW setups) |
-| Plane-wave cutoff | set from the pseudopotential files, identical for every job | 800 eV |
-| k-point sampling | one density, converted to a grid per cell | 6 Å⁻¹ (relaxation), 12 Å⁻¹ (ground state) |
+| Plane-wave cutoff | 40 Ry (544 eV) wavefunction, 320 Ry density — from the PseudoDojo JTH "high" hints for B and N, identical for every job | 800 eV |
+| k-point sampling | density 6 Å⁻¹, converted to a grid per cell — 3 × 5 × 1 for the defect cell | 6 Å⁻¹ (relaxation), 12 Å⁻¹ (ground state) |
 | Geometry | as built by the structure notebook, not relaxed | relaxed to 0.01 eV/Å |
 | Spin | polarized (nspin = 2) on the defect cell | polarized |
 | Cell | 48 atoms, 15.05 × 8.69 Å, 8.69 Å defect spacing, 20 Å vacuum | 84 atoms (symmetry-broken), 15.06 Å defect spacing, 15 Å vacuum |
 
 Boron and nitrogen have no ultrasoft pseudopotential under PBE on the platform, so both elements
 use PAW here — the same family GPAW itself is built on, though not the same set of files. The
-pristine cell and the two elemental references (α-boron and elemental nitrogen) are computed in
-the same run, with the same functional, pseudopotential set and cutoff as the defect job, so the
-formation energy is a difference between consistent energies rather than a mix of this
-calculation and someone else's.
+notebook submits Total Energy jobs for the pristine cell, α-boron and nitrogen with the same
+functional, pseudopotentials and cutoff as the defect job, unless the account already holds a
+Total Energy for that material — then that one is reused. Rerunning from a clean project is the
+way to be sure all four energies share one model.
 
 Two further offsets are quantified for the cell used here, estimated with a machine-learned
 potential: the smaller supercell shifts the neutral formation energy by 0.02 eV relative to
-QPOD's cell, and skipping relaxation costs a further 0.04 eV. Both are small next to the
-tolerance below, which is set by the difference in pseudopotential sets and reference phases
-rather than by the cell size or the relaxation.
+QPOD's cell, and skipping relaxation costs a further 0.04 eV. Both are small; the 0.5 eV tolerance
+below covers pseudopotential-set and reference-phase differences, which are not estimated. The
+cell's defect-defect spacing, 8.69 Å, is below the >15 Å minimum QPOD applies when choosing a
+supercell — the 0.02 eV estimate says the neutral vacancy tolerates the smaller cell.
 
 A result within 0.5 eV of 10.18 eV counts as reproducing the manuscript.
 
@@ -107,9 +111,15 @@ either functional.
 
 Running the notebook end to end submits at most four jobs: the defect calculation, and up to
 three reference Total Energy calculations, for the pristine cell, α-boron and elemental nitrogen.
-The references are computed here rather than taken from elsewhere, so that every energy in the
-sum shares the same functional and pseudopotential set. On a rerun, jobs already finished are
-reused rather than resubmitted.
+Nitrogen does not enter the formation energy — its change in atom count is zero — but the
+workflow resolves a reference energy for every element in the cell and stops if one is missing,
+so the nitrogen job is required. On a rerun, jobs already finished are reused rather than
+resubmitted.
+
+The jobs run on `cluster-001`, queue OF, 40 cores, with a four-hour time limit — long enough for
+the spin-polarized defect cell. If that cluster is not found under the account, the notebook falls
+back to whichever cluster is listed first; the printed "Using cluster" line says which one was
+used.
 
 The last cell prints one line, `Reproduces Bertoldo et al. (2022): yes` or `no`, next to the
 calculated formation energy.
