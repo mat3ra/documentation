@@ -21,7 +21,7 @@ render_macros: true
 This tutorial demonstrates the process of creating materials with vacancy point defects, based on the work presented in the following manuscript:
 
 !!!note "Manuscript"
-    Fabian Bertoldo, Sajid Ali, Simone Manti & Kristian S. Thygesen, "Quantum point defects in 2D materials - the QPOD database", Nature, 2022. [DOI:10.1038/s41524-022-00730-w](https://doi.org/10.1038/s41524-022-00730-w){:target='_blank'}. [@Bertoldo2022; @Kohan2000]
+    Fabian Bertoldo, Sajid Ali, Simone Manti & Kristian S. Thygesen, "Quantum point defects in 2D materials - the QPOD database", npj Computational Materials, 2022. [DOI:10.1038/s41524-022-00730-w](https://doi.org/10.1038/s41524-022-00730-w){:target='_blank'}. [@Bertoldo2022; @Kohan2000]
 
 We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) and JupyterLite environment to create a nanoribbon of hexagonal boron nitride (h-BN) and introduce vacancy defects. The process combines the capabilities of nanoribbon creation and point defect introduction.
 
@@ -126,7 +126,7 @@ Click `Run` > `Run All` in the top menu to run the notebook and preview the resu
 
 ## 5. Save the Material
 
-After running both notebooks, user can visualize the structure of h-BN with the vacancy defect in the Materials Designer 3D viewer.
+After running both notebooks, user can visualize the structure of h-BN with the vacancy defect in the Materials Designer 3D viewer. Both the pristine supercell and the defective structure are named and saved — `h-BN supercell` and `B-vacancy h-BN` — so a later tutorial can load each by name.
 
 ![Vacancy in h-BN](../../../images/tutorials/materials/defects/defect_point_vacancy_boron_nitride/6-wave-result.webp "Vacancy in h-BN")
 
