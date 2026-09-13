@@ -126,7 +126,7 @@ Click `Run` > `Run All` in the top menu to run the notebook and preview the resu
 
 ## 5. Save the Material
 
-After running both notebooks, user can visualize the structure of h-BN with the vacancy defect in the Materials Designer 3D viewer. Both the pristine supercell and the defective structure are named and saved — `h-BN supercell` and `B-vacancy h-BN` — so a later tutorial can load each by name.
+After running both notebooks, user can visualize the structure of h-BN with the vacancy defect in the Materials Designer 3D viewer. The combined notebook embedded in section 6 below names and saves both structures — the pristine supercell as `h-BN supercell` and the defective one as `B-vacancy h-BN` — so a later tutorial can load each by name.
 
 ![Vacancy in h-BN](../../../images/tutorials/materials/defects/defect_point_vacancy_boron_nitride/6-wave-result.webp "Vacancy in h-BN")
 

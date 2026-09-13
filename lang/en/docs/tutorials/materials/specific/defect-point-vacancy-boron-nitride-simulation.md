@@ -29,18 +29,18 @@ tutorial, reproducing a result from the following manuscript.
     [DOI:10.1038/s41524-022-00730-w](https://doi.org/10.1038/s41524-022-00730-w){:target='_blank'}.
     [@Bertoldo2022]
 
-The manuscript's QPOD database tabulates formation energies for point defects in 2D materials,
+The manuscript's Quantum Point Defects Database (QPOD) tabulates formation energies for point defects in 2D materials,
 computed at every accessible charge state and chemical-potential limit. This tutorial reproduces
 one entry of that table: the neutral boron vacancy in h-BN at the standard-state chemical
 potentials, [QPOD entry `1BN-1.2d.v_B.0.1`](https://qpod.fysik.dtu.dk/material/1BN-1.2d.v_B.0.1).
 
 ## 2. Prerequisites
 
-Run the [Vacancy Point Defect in h-BN](defect-point-vacancy-boron-nitride.md) tutorial first. Its
-notebook saves two materials into the `uploads` folder, the pristine supercell as `h-BN supercell`
-and the defective structure as `B-vacancy h-BN`, and this notebook loads both back by those exact
-names. A name that does not resolve stops the notebook rather than silently substituting a
-different material.
+Run the [Vacancy Point Defect in h-BN](defect-point-vacancy-boron-nitride.md) tutorial first, using
+the `defect_point_vacancy_boron_nitride.ipynb` notebook embedded in its last section: that notebook
+saves two materials into the `uploads` folder, the pristine supercell as `h-BN supercell` and the
+defective structure as `B-vacancy h-BN`. This notebook loads both back by name. A name that does
+not resolve stops the notebook rather than silently substituting a different material.
 
 ## 3. What is reproduced
 
@@ -71,9 +71,9 @@ precision this comparison is being made at.
 
 | | this tutorial | QPOD |
 |---|---|---|
-| Code | Quantum ESPRESSO | GPAW |
-| Functional | PBE | PBE |
-| Pseudopotentials | ultrasoft (GBRV) | PAW (GPAW setups) |
+| Code | Quantum ESPRESSO | GPAW (Grid-based Projector-Augmented Wave method) |
+| Functional | PBE (Perdew-Burke-Ernzerhof) | PBE |
+| Pseudopotentials | ultrasoft (GBRV) | PAW (Projector-Augmented Wave; GPAW setups) |
 | Plane-wave cutoff | 40 Ry / 200 Ry (GBRV's recommended pair for ultrasoft sets), identical for every job | 800 eV |
 | k-point sampling | density 6 Å⁻¹, converted to a grid per cell — 3 × 5 × 1 for the defect cell | 6 Å⁻¹ (relaxation), 12 Å⁻¹ (ground state) |
 | Geometry | as built by the structure notebook, not relaxed | relaxed to 0.01 eV/Å |
@@ -85,14 +85,17 @@ Plane-wave cutoffs of a PAW and an ultrasoft calculation are not comparable numb
 and the 40 Ry / 200 Ry pair above cannot be read as one converging faster than the other. The
 pseudopotential family and cutoff together are one of the differences the 0.5 eV tolerance below
 covers. The notebook submits Total Energy jobs for the pristine cell, α-boron and nitrogen with
-the same functional, pseudopotentials and cutoff as the defect job. Each reference job is named
-for its material and model, and a job is reused only when an earlier finished job of this account
-carries that exact name — changing the cutoff or the pseudopotential type produces fresh
-references rather than silently reusing the old ones. The workflow resolves the elemental
-reference energies by material and account rather than by job name, so the results cell
-recomputes E_f from the notebook's own three total energies — the defect cell, the pristine cell
-and boron per atom — and prints it next to the workflow's value; when the two differ, it warns
-that the workflow resolved a different reference energy, and the verdict line says so as well.
+the same functional, pseudopotentials and cutoff as the defect job. The elemental references are
+the platform's own seeded elemental materials, selected by element tag — which is why μ_B is
+specifically α-boron's total energy — and on an account where those are not seeded, the notebook
+stops before submitting anything. Each reference job is named for its material and model, and a
+job is reused only when an earlier finished job of this account carries that exact name —
+changing the cutoff or the pseudopotential type produces fresh references rather than silently
+reusing the old ones. The workflow resolves the elemental reference energies by material and
+account rather than by job name, so the results cell recomputes E_f from the notebook's own three
+total energies — the defect cell, the pristine cell and boron per atom — and prints it next to the
+workflow's value; when the two differ, it warns that the workflow resolved a different reference
+energy, and the verdict line says so as well.
 
 Two further offsets are quantified for the cell used here, estimated with a machine-learned
 potential: the smaller supercell shifts the neutral formation energy by 0.02 eV relative to
@@ -126,14 +129,15 @@ three reference Total Energy jobs are reused when the account already holds a ma
 created and submitted otherwise.
 
 The jobs run on `cluster-001`, queue OF, 40 cores, with a four-hour time limit; the default one
-hour is not enough for the spin-polarized defect cell. Leaving `CLUSTER_NAME` unset uses the first
-cluster listed for the account; setting it to a name that is not available makes the notebook stop
-and list the clusters that are, so that `CLUSTER_NAME` in the parameters cell can be set to one of
-them — it does not silently move the calculation onto a different machine.
+hour is not enough for the spin-polarized defect cell. Setting `CLUSTER_NAME = None` uses the first
+cluster listed for the account; leaving it at `cluster-001`, or any other name that is not
+available under the account, makes the notebook stop and list the clusters that are, so that
+`CLUSTER_NAME` in the parameters cell can be set to one of them — it does not silently move the
+calculation onto a different machine.
 
 The last cell prints one line, `Reproduces Bertoldo et al. (2022): yes` or `no`, next to the
 calculated formation energy; when the consistency check above failed, the same line carries
-`— reference mismatch, see warning above`, and the verdict should not be read until that is
+`-- reference mismatch, see warning above`, and the verdict should not be read until that is
 resolved.
 
 ## 7. Interactive JupyterLite notebook
