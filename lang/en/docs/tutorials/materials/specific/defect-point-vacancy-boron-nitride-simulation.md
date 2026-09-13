@@ -126,10 +126,10 @@ three reference Total Energy jobs are reused when the account already holds a ma
 created and submitted otherwise.
 
 The jobs run on `cluster-001`, queue OF, 40 cores, with a four-hour time limit; the default one
-hour is not enough for the spin-polarized defect cell. If that cluster is not available under the
-account, the notebook stops and lists the clusters that are, so that `CLUSTER_NAME` in the
-parameters cell can be set to one of them — it does not silently move the calculation onto a
-different machine.
+hour is not enough for the spin-polarized defect cell. Leaving `CLUSTER_NAME` unset uses the first
+cluster listed for the account; setting it to a name that is not available makes the notebook stop
+and list the clusters that are, so that `CLUSTER_NAME` in the parameters cell can be set to one of
+them — it does not silently move the calculation onto a different machine.
 
 The last cell prints one line, `Reproduces Bertoldo et al. (2022): yes` or `no`, next to the
 calculated formation energy; when the consistency check above failed, the same line carries
