@@ -29,15 +29,15 @@ tutorial, reproducing a result from the following manuscript.
     [DOI:10.1038/s41524-022-00730-w](https://doi.org/10.1038/s41524-022-00730-w){:target='_blank'}.
     [@Bertoldo2022]
 
-The manuscript's Quantum Point Defects Database (QPOD) tabulates formation energies for point defects in 2D materials,
-computed at every accessible charge state and chemical-potential limit. This tutorial reproduces
-one entry of that table: the neutral boron vacancy in h-BN at the standard-state chemical
-potentials, [QPOD entry `1BN-1.2d.v_B.0.1`](https://qpod.fysik.dtu.dk/material/1BN-1.2d.v_B.0.1).
+The manuscript's Quantum Point Defect (QPOD) database tabulates formation energies for point defects
+in 2D materials, computed at every accessible charge state and chemical-potential limit. This
+tutorial reproduces one entry of that table: the neutral boron vacancy in h-BN at the standard-state
+chemical potentials, [QPOD entry `1BN-1.2d.v_B.0.1`](https://qpod.fysik.dtu.dk/material/1BN-1.2d.v_B.0.1).
 
 ## 2. Prerequisites
 
 Run the [Vacancy Point Defect in h-BN](defect-point-vacancy-boron-nitride.md) tutorial first, using
-the `defect_point_vacancy_boron_nitride.ipynb` notebook embedded in its last section: that notebook
+the `defect_point_vacancy_boron_nitride.ipynb` notebook embedded in its section 6: that notebook
 saves two materials into the `uploads` folder, the pristine supercell as `h-BN supercell` and the
 defective structure as `B-vacancy h-BN`. This notebook loads both back by name. A name that does
 not resolve stops the notebook rather than silently substituting a different material.
@@ -73,7 +73,7 @@ precision this comparison is being made at.
 |---|---|---|
 | Code | Quantum ESPRESSO | GPAW (Grid-based Projector-Augmented Wave method) |
 | Functional | PBE (Perdew-Burke-Ernzerhof) | PBE |
-| Pseudopotentials | ultrasoft (GBRV) | PAW (Projector-Augmented Wave; GPAW setups) |
+| Pseudopotentials | ultrasoft (GBRV, Garrity-Bennett-Rabe-Vanderbilt) | PAW (Projector-Augmented Wave; GPAW setups) |
 | Plane-wave cutoff | 40 Ry / 200 Ry (GBRV's recommended pair for ultrasoft sets), identical for every job | 800 eV |
 | k-point sampling | density 6 Å⁻¹, converted to a grid per cell — 3 × 5 × 1 for the defect cell | 6 Å⁻¹ (relaxation), 12 Å⁻¹ (ground state) |
 | Geometry | as built by the structure notebook, not relaxed | relaxed to 0.01 eV/Å |
