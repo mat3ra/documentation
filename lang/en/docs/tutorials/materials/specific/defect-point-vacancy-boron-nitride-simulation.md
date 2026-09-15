@@ -77,13 +77,16 @@ precision this comparison is being made at.
 | Plane-wave cutoff | 40 Ry / 200 Ry (GBRV's recommended pair for ultrasoft sets), identical for every job | 800 eV |
 | k-point sampling | density 6 Å⁻¹, converted to a grid per cell — 3 × 5 × 1 for the defect cell | 6 Å⁻¹ (relaxation), 12 Å⁻¹ (ground state) |
 | Geometry | as built by the structure notebook, not relaxed | relaxed to 0.01 eV/Å |
-| Spin | fixed total magnetization, 1 μB (doublet), on the defect cell | polarized, 1.018 μB (doublet) |
+| Spin | fixed total magnetization, 1 Bohr magneton (doublet, one unpaired electron), on the defect cell | polarized, 1.018 Bohr magnetons (doublet) |
 | Cell | 48 → 47 atoms, 15.05 × 8.69 Å, 8.69 Å defect spacing, 20 Å vacuum | 84 → 83 atoms (symmetry-broken), 15.06 Å defect spacing, 15 Å vacuum |
 
-The defect cell's magnetization is fixed to 1 μB, the doublet QPOD reports, rather than left to
-converge on its own: an unconstrained spin-polarized calculation of this cell finds a quartet
-(3 μB) instead, 0.22 eV lower in energy (formation energy 10.24 eV against the doublet's 10.46 eV,
-both unrelaxed). The doublet is the state compared with QPOD below.
+The defect cell's magnetization is fixed to 1 Bohr magneton, the doublet QPOD reports, rather than
+left to converge on its own: an unconstrained spin-polarized calculation of this cell finds a
+quartet (three unpaired electrons) instead, 0.22 eV lower in energy (formation energy 10.24 eV
+against the doublet's 10.46 eV, both unrelaxed). The comparison is only like-for-like in the same
+spin state, and this ordering is for unrelaxed cells: QPOD's entry is the *relaxed* doublet, and
+whether the quartet stays below the doublet after relaxation is not determined by this run. The
+doublet is the state compared with QPOD below.
 
 This tutorial uses ultrasoft (GBRV) pseudopotentials under PBE; QPOD used PAW, GPAW's own setups.
 Plane-wave cutoffs of a PAW and an ultrasoft calculation are not comparable numbers, so the 800 eV
@@ -102,13 +105,14 @@ total energies — the defect cell, the pristine cell and boron per atom — and
 workflow's value; when the two differ, it warns that the workflow resolved a different reference
 energy, and the verdict line says so as well.
 
-Two further offsets are quantified for the cell used here, estimated with a machine-learned
-potential without spin polarization: the smaller supercell shifts the neutral formation energy by
-0.02 eV relative to QPOD's cell, and skipping relaxation costs a further 0.04 eV. Both are small
-next to the measured 0.28 eV gap between this SCF-only run and QPOD, which is dominated by the
-doublet's relaxation energy — QPOD's cell includes it, and this workflow does not. The 0.5 eV
-tolerance below covers that relaxation energy along with the pseudopotential-set, cutoff,
-k-point density and reference-phase differences, none of which are estimated here. The cell's
+One offset is quantified for the cell used here, estimated with a machine-learned potential: the
+smaller supercell shifts the neutral formation energy by 0.02 eV relative to QPOD's cell. The same
+estimate put the cost of skipping relaxation at 0.04 eV, but it was made without spin polarization
+and does not apply to the doublet — the forces left in the unrelaxed doublet cell are 2.0 eV/Å on
+each nitrogen neighbour of the vacancy, against 0.01 eV/Å in the pristine cell and QPOD's 0.01 eV/Å
+relaxation threshold, so the doublet's relaxation energy is the largest single contributor to the
+measured 0.28 eV gap and is not estimated here. The 0.5 eV tolerance below covers it along with the
+pseudopotential-set, cutoff, k-point density and reference-phase differences. The cell's
 defect-defect spacing, 8.69 Å, is below the >15 Å minimum QPOD applies when choosing a supercell —
 the 0.02 eV estimate says the neutral vacancy tolerates the smaller cell.
 
@@ -147,9 +151,11 @@ calculated formation energy; when the consistency check above failed, the same l
 `-- reference mismatch, see warning above`, and the verdict should not be read until that is
 resolved.
 
-On a production run, the four jobs took 2–6 minutes each on a 40-core node. The measured formation
-energy was 10.46 eV against QPOD's 10.18 eV, a difference of +0.28 eV — inside the 0.5 eV tolerance,
-so the notebook printed `Reproduces Bertoldo et al. (2022): yes`.
+On the production run that produced this result, the doublet defect job took about 8 minutes on a
+40-core node (6 minutes 10 seconds of it running `pw.x`, the rest queueing and staging); the three
+reference jobs were reused from an earlier run, where they took 2–4 minutes each to compute. The
+measured formation energy was 10.46 eV against QPOD's 10.18 eV, a difference of +0.28 eV — inside
+the 0.5 eV tolerance, so the notebook printed `Reproduces Bertoldo et al. (2022): yes`.
 
 ## 7. Interactive JupyterLite notebook
 
