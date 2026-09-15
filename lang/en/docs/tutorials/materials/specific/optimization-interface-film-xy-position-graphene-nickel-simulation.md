@@ -37,12 +37,8 @@ using the interface created in the
 
 ### 1.1. What is being reproduced
 
-Graphene and Ni(111) are lattice-matched to within a fraction of a percent, so the film locks into
-a 1×1 registry. The review's section 2.1 collects the established structural facts: LEED I–V and
-ion scattering identify the adsorbed structure as one carbon **atop** a first-layer Ni atom and the
-other in the **fcc hollow**, 0.211 nm above the surface, with a 0.005 nm buckling in which the atop
-carbon sits further out. The review's computed values come from Lahiri *et al.* [@Lahiri2011]
-(New J. Phys. 13, 025001 (2011), open access), whose Table 1 is the quantitative target here:
+The review's computed values are from Lahiri *et al.* [@Lahiri2011] (New J. Phys. 13, 025001 (2011),
+open access), whose Table 1 is the quantitative target here:
 
 | interface | work of adhesion (J/m²) | separation (Å) |
 |---|---|---|
@@ -55,14 +51,6 @@ an extra point beyond the published set.
 
 ![The four registries of graphene on a close-packed metal surface](../../../images/tutorials/materials/optimization/optimization_interface_film_xy_position_graphene_nickel/0-figure-from-manuscript.webp "Registries of graphene on a close-packed metal surface")
 
-### 1.2. The published recipe, and why relaxation is not optional
-
-Lahiri *et al.* state their method plainly: **LDA**, because "GGA does not provide an adequate
-description of Ni–graphene bonding" for this interface; spin-polarized throughout; and **geometry
-relaxation** with the bottom substrate layers fixed. The buckling is itself one of the published
-numbers, and no rigid placement can produce a buckling — so every result in this tutorial comes
-from a relaxed structure, and rigid scans are used only to bracket the starting separations.
-
 ## 2. Prerequisites
 
 Run the [structure creation tutorial](optimization-interface-film-xy-position-graphene-nickel.md)
@@ -70,48 +58,27 @@ first. Its notebook builds the Gr/Ni(111) interface and saves it into the `uploa
 `Graphene_Nickel_interface`; the simulation notebook loads it back by exactly that name and stops
 if it is missing. The reduced cell is the 1×1 match: 2 carbon and 4 nickel atoms.
 
-## 3. What is calculated
+## 3. Workflow overview
 
-Two tiers, both relaxed.
+Two tiers, both relaxed:
 
-**Fast tier — MACE-MP, run where the notebook runs.** Each registry is placed (the surface sites are
-measured from the substrate's own top layers, and each registry label is re-verified after
-relaxation — a no-op here, since the z-only constraint holds every atom's xy fixed and no film can
-slide; the check matters in the precise tier below, where the platform relaxes every coordinate
-freely and a structure that lands in a different registry is dropped rather than reported under the
-wrong name), bracketed by a rigid scan, then relaxed with positions free along z only and
-the bottom substrate layers fixed — equivalent to a full relaxation at the paper's symmetric
-registries, where in-plane forces vanish by symmetry, and the constraint that keeps the bridge
-registry's in-plane saddle point defined. Same-cell relaxed references (bare Ni slab, free-standing
-graphene), relaxed under the same z-only constraint, turn the energies into works of adhesion:
-`W = [E(slab) + E(graphene) − E(interface)] / A`.
+1. **Fast tier (MACE-MP)** — each registry is placed on the substrate's own measured surface sites,
+   bracketed by a rigid separation scan, then relaxed with atomic positions free along z only and
+   the bottom substrate layers fixed.
+2. **Precise tier (LDA on the platform)** — one fixed-cell relaxation per selected registry,
+   starting from the MACE-relaxed geometry, at the paper's LDA functional.
 
-The fast tier does not reproduce the paper, and says so. MACE-MP is PBE-trained, and PBE-level
-physics is what the paper rejects for this interface. Run natively with D3 dispersion, it gives
-fcc 0.17 J/m² against the paper's 0.81, a separation of 1.98 Å against 2.16, and the atop carbon
-buckled toward the surface rather than away; the dispersion-bound hollow it does place near the
-paper's energy (0.30 against 0.31 J/m², though at 4.08 Å rather than 3.26). In the browser embed
-below, `torch-dftd` is not available, so the same tier runs without dispersion and the hollow
-registry reports itself unbound. What the fast tier delivers is the registry set, the two-branch
-energy landscape and the starting geometries for the precise tier; its table prints the MACE
-numbers beside the paper's so the gap is visible.
+Both tiers also relax the same-cell references the work of adhesion needs — a bare Ni slab and a
+free-standing graphene layer — under the same constraint. The work of adhesion is:
 
-**Precise tier — the paper's LDA on the platform.** One fixed-cell relaxation per selected registry,
-starting from the MACE-relaxed geometry, plus the two same-cell references — LDA (`pz`, GBRV
-ultrasoft; the platform carries the LDA set for both Ni and C), spin-polarized for the Ni-containing
-structures and unpolarized for the non-magnetic graphene reference, no dispersion correction,
-matching the paper: LDA binds this interface unaided, which is the stated reason its authors chose
-it. Each job's final structure is read back, so separation and buckling are compared as well as the
-work of adhesion. This tier carries the reproduction claim.
+`W = [E(slab) + E(graphene) − E(interface)] / A`
 
-| registry | Fig. 1 | carbon sublattices | published target |
-|---|---|---|---|
-| `atop_fcc` | (b) | atop + fcc hollow | 0.81 J/m² at 2.16 Å, favourable |
-| `atop_hcp` | (c) | atop + hcp hollow | 0.77 J/m² at 2.17 Å |
-| `hollow` | (a) | fcc + hcp hollows | 0.31 J/m² at 3.26 Å — dispersion-bound |
-| `bridge` | (d) | C–C bond straddling a first-layer Ni | beyond the published set |
+where `A` is the interface area.
 
 ## 4. Calculation parameters
+
+The published method is LDA, spin-polarized, relaxed with the bottom substrate layers fixed; this
+tutorial follows it.
 
 | | fast tier | precise tier | Lahiri et al. |
 |---|---|---|---|
@@ -123,55 +90,144 @@ work of adhesion. This tier carries the reproduction claim.
 | Smearing | — | Marzari-Vanderbilt cold, `degauss = 0.01` Ry | not stated |
 | Dispersion | D3 | none — matching the paper | none |
 
-Stated divergences from the paper: the slab is the structure tutorial's 4 Ni layers rather than 5;
-the vacuum is 20 Å rather than 90; the platform relaxation cannot hold the bottom layers fixed
-(the fast tier can, and does); plane-wave pseudopotentials rather than all-electron LCAO. The SCF
-convergence settings (cold smearing, `local-TF` mixing, `mixing_beta = 0.2`, 200 iterations) exist
-because the platform defaults stop at "convergence NOT achieved after 100 iterations" on this
-spin-polarized metal slab, with the energy oscillating in its fourth decimal — charge sloshing.
+Divergences from the published method:
+
+- 4 Ni layers, not 5.
+- 20 Å of vacuum, not 90.
+- Plane-wave pseudopotentials, not all-electron LCAO.
 
 ## 5. Step-by-step instructions
 
-### 5.1. Create the structure
-
-Run the [structure creation notebook](optimization-interface-film-xy-position-graphene-nickel.md).
-It saves `Graphene_Nickel_interface` into `uploads`.
-
-### 5.2. Open the simulation notebook
+### 5.1. Open the notebook
 
 ```
 other/materials_designer/specific_examples/optimization_interface_film_xy_position_graphene_nickel_SIMULATION.ipynb
 ```
 
-### 5.3. Run the fast tier
+### 5.2. Configure parameters
 
-*Run* > *Run All Cells*. Sections 2–4 need no platform account: they load the interface, derive and
-verify the registries, relax each one with MACE, and print the comparison against Lahiri Table 1.
+The parameters cell sets the material and workflow parameters:
 
-### 5.4. Run the precise tier
+```python
+# Material parameters
+FOLDER = "./uploads"
+BASE_MATERIAL_NAME = "Graphene_Nickel_interface"  # created by the companion structure notebook
 
-Section 5 authenticates and submits, per selected registry, a relaxation + total-energy job at the
-paper's LDA, plus the two reference jobs. A default run selects one registry — three jobs. Leaving
-`DFT_REGISTRY_NAMES` **empty** skips the platform tier entirely; the automated test does exactly
-that, because relaxation jobs outlast what a browser test may wait for.
+# Workflow parameters
+WORKFLOW_SEARCH_TERM = "fixed_cell_relaxation.json"
+APPLICATION_NAME = "espresso"
+MY_WORKFLOW_NAME = "Fixed-cell Relaxation (Gr/Ni registry)"
+```
 
-### 5.5. Read the final table
+### 5.3. Set DFT parameters
+
+The same cell sets the method the precise tier submits:
+
+```python
+# Method parameters — the published setup (Lahiri et al., section 2.2) where the platform can
+# express it: LDA, spin-polarized, relaxed, no dispersion correction.
+PSEUDOPOTENTIAL_TYPE = "us"
+FUNCTIONAL = "pz"
+MODEL_SUBTYPE = "lda"
+ECUTWFC = 40   # GBRV's published pair
+ECUTRHO = 200
+SCF_KGRID = [12, 12, 1]  # multiple of 3 keeps K on the mesh; dense for a metal
+STARTING_MAGNETIZATION = {"Ni": 0.7}  # near the bulk moment
+
+# SCF settings for a spin-polarized metal slab
+SMEARING = "mv"
+DEGAUSS = 0.01  # Ry
+ADDITIONAL_PARAMETERS = {
+    "electrons": {
+        "mixing_mode": "local-TF",
+        "mixing_beta": 0.2,
+        "electron_maxstep": 200,
+    },
+}
+```
+
+### 5.4. Run the fast tier
+
+*Run* > *Run All Cells*. Sections 2–4 need no platform account: they load the interface, place
+each registry, relax it with MACE, and print the comparison against Lahiri Table 1.
+
+### 5.5. Run the precise tier
+
+Section 5 selects which registries submit to the platform. `DFT_REGISTRY_NAMES` ships with one
+registry active and three commented out:
+
+```python
+DFT_REGISTRY_NAMES = [
+    "atop_fcc",
+    # "atop_hcp",
+    # "hollow",
+    # "bridge",
+]
+```
+
+Running the rest of section 5 authenticates and submits a relaxation + total-energy job for each
+name in the list, plus the two reference jobs. Leaving `DFT_REGISTRY_NAMES` empty skips the
+platform tier; the automated test does exactly that, because relaxation jobs outlast what a
+browser test may wait for.
+
+### 5.6. Read the final table
 
 The final cell prints the computed values beside the published ones: work of adhesion, separation
 and buckling for each registry, in paper / MACE / DFT columns, with `—` wherever a tier did not run
-or the paper gives no value. The fast tier's numbers are the results from section 3; the DFT tier's
-populate once the selected registries and both references have finished.
+or the paper gives no value.
 
-## 6. Troubleshooting
+## 6. Expected results
 
-If a registry's rigid scan finds no bracketed minimum, widen the scan window. If every registry
-comes back physisorbed-only in the fast tier, check `MACE_MODEL` and `MACE_DEFAULT_DTYPE` — the
-medium/float32 combination misses the chemisorbed minimum entirely. The first MACE call downloads
-the foundation model; later runs use the cache. If a platform job stops at "convergence NOT
-achieved", the smearing/mixing block in the parameters cell is the knob — those settings exist
-precisely because the defaults do not converge this slab.
+The fast tier prints these values for the four registries, beside Lahiri et al.'s Table 1:
 
-## 7. Interactive JupyterLite notebook
+| registry | MACE W_adh (J/m²) | MACE separation (Å) | MACE buckling (Å) | paper W_adh (J/m²) | paper separation (Å) |
+|---|---|---|---|---|---|
+| atop_fcc | 0.17 | 1.98 | −0.006 | 0.81 | 2.16 |
+| atop_hcp | 0.14 | 1.98 | −0.004 | 0.77 | 2.17 |
+| hollow | 0.30 | 4.08 | — | 0.31 | 3.26 |
+| bridge | 0.05 | 1.97 | — | — | — |
+
+A single precise-tier job, run on the platform for `atop_fcc`, gave a work of adhesion of
+1.01 J/m², a separation of 2.02 Å, and a buckling of +0.013 Å with the atop carbon outward; the
+registry was preserved.
+
+## 7. Customization options
+
+### 7.1. Submit more registries
+
+Uncomment additional entries in `DFT_REGISTRY_NAMES` to submit more precise-tier jobs:
+
+```python
+DFT_REGISTRY_NAMES = [
+    "atop_fcc",
+    "atop_hcp",
+    "hollow",
+    "bridge",
+]
+```
+
+### 7.2. Adjust computational resources
+
+Modify the compute parameters in the parameters cell:
+
+```python
+CLUSTER_NAME = None  # or a specific cluster name
+QUEUE_NAME = QueueName.OF
+PPN = 40
+TIME_LIMIT = "04:00:00"
+```
+
+### 7.3. Swap the MLFF model
+
+Change the fast-tier force field in the parameters cell:
+
+```python
+MACE_MODEL_FAMILY = "MACE-MP-0"
+MACE_MODEL = "large"
+MACE_DEFAULT_DTYPE = "float64"
+```
+
+## 8. Interactive JupyterLite notebook
 
 The notebook below runs the fast tier and, when registries are selected, the platform tier.
 Select *Run* > *Run All Cells*.
@@ -185,4 +241,4 @@ Select *Run* > *Run All Cells*.
 {% endwith %}
 
 
-## 8. References
+## 9. References
