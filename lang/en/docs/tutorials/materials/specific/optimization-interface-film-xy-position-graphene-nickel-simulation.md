@@ -77,8 +77,9 @@ where `A` is the interface area.
 
 ## 4. Calculation parameters
 
-The published method is LDA, spin-polarized, relaxed with the bottom substrate layers fixed; this
-tutorial follows it.
+The published method is LDA, spin-polarized, with geometry relaxation in which the bottom two of
+five substrate layers are held fixed. This tutorial's fast tier holds the bottom two layers fixed;
+the platform tier relaxes every atom.
 
 | | fast tier | precise tier | Lahiri et al. |
 |---|---|---|---|
@@ -95,6 +96,7 @@ Divergences from the published method:
 - 4 Ni layers, not 5.
 - 20 Å of vacuum, not 90.
 - Plane-wave pseudopotentials, not all-electron LCAO.
+- The platform tier relaxes every atom, where the paper held the bottom two layers fixed.
 
 ## 5. Step-by-step instructions
 
