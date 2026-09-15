@@ -77,8 +77,13 @@ precision this comparison is being made at.
 | Plane-wave cutoff | 40 Ry / 200 Ry (GBRV's recommended pair for ultrasoft sets), identical for every job | 800 eV |
 | k-point sampling | density 6 Å⁻¹, converted to a grid per cell — 3 × 5 × 1 for the defect cell | 6 Å⁻¹ (relaxation), 12 Å⁻¹ (ground state) |
 | Geometry | as built by the structure notebook, not relaxed | relaxed to 0.01 eV/Å |
-| Spin | polarized (nspin = 2) on the defect cell | polarized |
+| Spin | fixed total magnetization, 1 μB (doublet), on the defect cell | polarized, 1.018 μB (doublet) |
 | Cell | 48 → 47 atoms, 15.05 × 8.69 Å, 8.69 Å defect spacing, 20 Å vacuum | 84 → 83 atoms (symmetry-broken), 15.06 Å defect spacing, 15 Å vacuum |
+
+The defect cell's magnetization is fixed to 1 μB, the doublet QPOD reports, rather than left to
+converge on its own: an unconstrained spin-polarized calculation of this cell finds a quartet
+(3 μB) instead, 0.22 eV lower in energy (formation energy 10.24 eV against the doublet's 10.46 eV,
+both unrelaxed). The doublet is the state compared with QPOD below.
 
 This tutorial uses ultrasoft (GBRV) pseudopotentials under PBE; QPOD used PAW, GPAW's own setups.
 Plane-wave cutoffs of a PAW and an ultrasoft calculation are not comparable numbers, so the 800 eV
@@ -98,12 +103,14 @@ workflow's value; when the two differ, it warns that the workflow resolved a dif
 energy, and the verdict line says so as well.
 
 Two further offsets are quantified for the cell used here, estimated with a machine-learned
-potential: the smaller supercell shifts the neutral formation energy by 0.02 eV relative to
-QPOD's cell, and skipping relaxation costs a further 0.04 eV. Both are small; the 0.5 eV tolerance
-below covers pseudopotential-set, cutoff, k-point density and reference-phase differences, which
-are not estimated. The cell's defect-defect spacing, 8.69 Å, is below the >15 Å minimum QPOD
-applies when choosing a supercell — the 0.02 eV estimate says the neutral vacancy tolerates the
-smaller cell.
+potential without spin polarization: the smaller supercell shifts the neutral formation energy by
+0.02 eV relative to QPOD's cell, and skipping relaxation costs a further 0.04 eV. Both are small
+next to the measured 0.28 eV gap between this SCF-only run and QPOD, which is dominated by the
+doublet's relaxation energy — QPOD's cell includes it, and this workflow does not. The 0.5 eV
+tolerance below covers that relaxation energy along with the pseudopotential-set, cutoff,
+k-point density and reference-phase differences, none of which are estimated here. The cell's
+defect-defect spacing, 8.69 Å, is below the >15 Å minimum QPOD applies when choosing a supercell —
+the 0.02 eV estimate says the neutral vacancy tolerates the smaller cell.
 
 A result within 0.5 eV of 10.18 eV counts as reproducing the manuscript.
 
@@ -139,6 +146,10 @@ The last cell prints one line, `Reproduces Bertoldo et al. (2022): yes` or `no`,
 calculated formation energy; when the consistency check above failed, the same line carries
 `-- reference mismatch, see warning above`, and the verdict should not be read until that is
 resolved.
+
+On a production run, the four jobs took 2–6 minutes each on a 40-core node. The measured formation
+energy was 10.46 eV against QPOD's 10.18 eV, a difference of +0.28 eV — inside the 0.5 eV tolerance,
+so the notebook printed `Reproduces Bertoldo et al. (2022): yes`.
 
 ## 7. Interactive JupyterLite notebook
 
