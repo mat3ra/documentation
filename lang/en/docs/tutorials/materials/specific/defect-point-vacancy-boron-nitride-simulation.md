@@ -91,8 +91,8 @@ The defect formation energy calculation consists of the following steps:
 By default (`RELAX = False`), the calculation uses the structure as given. Setting `RELAX = True`
 relaxes the defective cell first, to 0.01 eV/Å — QPOD's own threshold, and the one QPOD applies to
 every structure; only the defective cell is relaxed here. The notebook first looks for an
-already-relaxed structure matched by content hash and model, and reuses it if found, so the
-relaxation itself runs only once.
+already-relaxed structure matched by the structure's hash together with the model and relaxation
+settings, and reuses it if found, so the relaxation itself runs only once.
 
 ## 5. Step-by-step instructions
 
@@ -184,9 +184,8 @@ B-poor value for context.
 ### 7.1. Relax the defective cell
 
 Set `RELAX = True` in the parameters cell to use the relaxed defective cell — closer to the paper.
-The first run relaxes it and saves the result as a material named `B-vacancy h-BN relaxed`; later
-runs, in this notebook or any other, find that material by content hash and reuse it instead of
-relaxing again:
+The first run relaxes it and saves the result in your materials collection under
+`B-vacancy h-BN relaxed`, reused by later runs of this notebook (and loadable by name elsewhere):
 
 ```python
 RELAX = True
@@ -194,7 +193,8 @@ RELAX = True
 
 To use a structure already relaxed elsewhere, set `DEFECTIVE_NAME = "B-vacancy h-BN relaxed"`
 (the name the relaxation saves) with `RELAX = False`; the notebook finds it in your materials
-collection.
+collection. The verdict line labels the run by the structure it used, so this prints
+`(relaxed defect)`, not `(unrelaxed SCF)`.
 
 ### 7.2. Adjust computational resources
 
