@@ -147,9 +147,8 @@ The notebook will:
 
 The notebook includes automatic job monitoring with status updates. The default run
 (`RELAX = False`) completes in about 15 minutes the first time, or about 6 minutes once the
-reference jobs are reused. With `RELAX = True`, the first run takes about 70 minutes while it
-relaxes the defective cell; once that relaxed structure exists, later runs find it and take about
-6 minutes, the same as the default.
+reference jobs are reused. With `RELAX = True`, relaxing the defective cell takes about 52
+minutes; once that relaxed structure exists, later runs find it and skip the relaxation.
 
 ### 5.5. Analyze results
 
@@ -190,9 +189,6 @@ relaxing again:
 ```python
 RELAX = True
 ```
-
-To use an already-relaxed structure directly, set `DEFECTIVE_NAME` to its name and leave
-`RELAX = False`.
 
 ### 7.2. Adjust computational resources
 
