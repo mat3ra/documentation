@@ -113,8 +113,7 @@ changing the cutoff or the pseudopotential type produces fresh references rather
 reusing the old ones. The workflow resolves the elemental reference energies by material and
 account rather than by job name, so the results cell recomputes E_f from the notebook's own three
 total energies — the defect cell, the pristine cell and boron per atom — and prints it next to the
-workflow's value; when the two differ, it warns that the workflow resolved a different reference
-energy, and the verdict line says so as well.
+workflow's value, so the reader can see the two agree.
 
 The cell's defect-defect spacing, 8.69 Å, is below the >15 Å minimum QPOD applies when choosing a
 supercell; the finite-size effect this introduces is estimated at 0.02 eV (machine-learned
@@ -157,9 +156,7 @@ set to one of them — it does not silently move the calculation onto a differen
 
 The last cell prints one line naming the configuration:
 `Reproduces Bertoldo et al. (2022): no (unrelaxed SCF)` by default, or
-`yes (relaxed defect)` when `RELAX_DEFECT = True`; the same line also carries a trailing
-`-- reference mismatch, see warning above` when the consistency check above failed, and the
-verdict should not be read until that is resolved.
+`yes (relaxed defect)` when `RELAX_DEFECT = True`.
 
 By default, the run stays with the SCF-only jobs: about 15 minutes of compute the first time
 (2–4 minutes per reference job plus about 6 for the defect job), or about 6 minutes on a rerun
