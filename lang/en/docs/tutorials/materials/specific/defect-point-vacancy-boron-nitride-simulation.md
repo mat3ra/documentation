@@ -65,7 +65,8 @@ The defect formation energy calculation consists of the following steps:
    reference materials
 4. **Submit prerequisite jobs**: Compute (or reuse) the pristine, boron and nitrogen Total Energy
    jobs
-5. **Relax the defective cell** (optional): Only if `RELAX_DEFECT` is set
+5. **Relax the defective cell** (optional): Only if `RELAX` is set, reusing an existing relaxed
+   structure if one is found
 6. **Create and submit the defect job**: Assemble and run the formation energy workflow
 7. **Monitor job status**: Wait for completion
 8. **Retrieve and compare results**: Print the formation energy and the comparison with QPOD
@@ -86,9 +87,11 @@ The defect formation energy calculation consists of the following steps:
 
 ### 4.2. Relaxation settings
 
-By default (`RELAX_DEFECT = False`), the calculation is SCF only. Setting `RELAX_DEFECT = True`
+By default (`RELAX = False`), the calculation uses the structure as given. Setting `RELAX = True`
 relaxes the defective cell first, to 0.01 eV/Å — QPOD's own threshold, and the one QPOD applies to
-every structure; only the defective cell is relaxed here.
+every structure; only the defective cell is relaxed here. The notebook first looks for an
+already-relaxed structure matched by content hash and model, and reuses it if found, so the
+relaxation itself runs only once.
 
 ## 5. Step-by-step instructions
 
@@ -109,8 +112,9 @@ The parameters cells set the material names, the DFT model, and the compute reso
 PRISTINE_NAME = "h-BN supercell"
 DEFECTIVE_NAME = "B-vacancy h-BN"
 
-# False: SCF only. True: relax the defective cell first, for the paper's result.
-RELAX_DEFECT = False
+# False: use the structure as given, fast. True: use the relaxed structure, running the
+# relaxation once if it does not exist yet.
+RELAX = False
 
 CLUSTER_NAME = "cluster-001"
 QUEUE_NAME = QueueName.OF
@@ -135,15 +139,17 @@ The notebook will:
    initialize the API client
 2. Load the two materials and resolve the elemental reference materials
 3. Submit the prerequisite Total Energy jobs, reusing any that already match
-4. Relax the defective cell first, if `RELAX_DEFECT` is set
+4. Relax the defective cell first, if `RELAX` is set and no matching relaxed structure exists yet
 5. Create, submit and monitor the defect formation energy job
 6. Print the result and the comparison with QPOD
 
 ### 5.4. Monitor progress
 
 The notebook includes automatic job monitoring with status updates. The default run
-(`RELAX_DEFECT = False`) completes in about 15 minutes the first time, or about 6 minutes once the
-reference jobs are reused. Setting `RELAX_DEFECT = True` adds the relaxation job, about 52 minutes.
+(`RELAX = False`) completes in about 15 minutes the first time, or about 6 minutes once the
+reference jobs are reused. With `RELAX = True`, the first run takes about 70 minutes while it
+relaxes the defective cell; once that relaxed structure exists, later runs find it and take about
+6 minutes, the same as the default.
 
 ### 5.5. Analyze results
 
@@ -154,7 +160,7 @@ prints the comparison:
 Reproduces Bertoldo et al. (2022): no (unrelaxed SCF)
 ```
 
-or, with `RELAX_DEFECT = True`:
+or, with `RELAX = True`:
 
 ```
 Reproduces Bertoldo et al. (2022): yes (relaxed defect)
@@ -176,12 +182,17 @@ B-poor value for context.
 
 ### 7.1. Relax the defective cell
 
-Set `RELAX_DEFECT = True` in the parameters cell to relax the defective cell before computing its
-formation energy — closer to the paper, at the cost of a longer run:
+Set `RELAX = True` in the parameters cell to use the relaxed defective cell — closer to the paper.
+The first run relaxes it and saves the result as a material named `B-vacancy h-BN relaxed`; later
+runs, in this notebook or any other, find that material by content hash and reuse it instead of
+relaxing again:
 
 ```python
-RELAX_DEFECT = True
+RELAX = True
 ```
+
+To use an already-relaxed structure directly, set `DEFECTIVE_NAME` to its name and leave
+`RELAX = False`.
 
 ### 7.2. Adjust computational resources
 
