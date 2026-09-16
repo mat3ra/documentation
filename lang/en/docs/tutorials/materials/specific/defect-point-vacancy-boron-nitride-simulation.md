@@ -52,7 +52,8 @@ Before starting this tutorial, one of the following steps should be completed:
 1. Complete the [Vacancy Point Defect in h-BN](defect-point-vacancy-boron-nitride.md) tutorial,
    using the `defect_point_vacancy_boron_nitride.ipynb` notebook embedded in its section 6, to
    create and save `h-BN supercell` and `B-vacancy h-BN`, OR
-2. Have both material files saved in the `uploads` folder
+2. Have both materials saved in the `uploads` folder or in your materials collection on the
+   platform
 
 ## 3. Workflow overview
 
@@ -137,7 +138,8 @@ The notebook will:
 
 1. [Authenticate with the platform]({{ interface_url }}/jupyterlite/authentication.md) and
    initialize the API client
-2. Load the two materials and resolve the elemental reference materials
+2. Load the two materials from the uploads folder or your materials collection, and resolve the
+   elemental reference materials
 3. Submit the prerequisite Total Energy jobs, reusing any that already match
 4. Relax the defective cell first, if `RELAX` is set and no matching relaxed structure exists yet
 5. Create, submit and monitor the defect formation energy job
@@ -189,6 +191,10 @@ relaxing again:
 ```python
 RELAX = True
 ```
+
+To use a structure already relaxed elsewhere, set `DEFECTIVE_NAME = "B-vacancy h-BN relaxed"`
+(the name the relaxation saves) with `RELAX = False`; the notebook finds it in your materials
+collection.
 
 ### 7.2. Adjust computational resources
 
