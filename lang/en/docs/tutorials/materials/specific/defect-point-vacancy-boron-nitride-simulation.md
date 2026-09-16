@@ -76,7 +76,8 @@ precision this comparison is being made at.
 | Pseudopotentials | ultrasoft (GBRV, Garrity-Bennett-Rabe-Vanderbilt) | PAW (Projector-Augmented Wave; GPAW setups) |
 | Plane-wave cutoff | 40 Ry / 200 Ry (GBRV's recommended pair for ultrasoft sets), identical for every job | 800 eV |
 | k-point sampling | density 6 Å⁻¹, converted to a grid per cell — 3 × 5 × 1 for the defect cell | 6 Å⁻¹ (relaxation), 12 Å⁻¹ (ground state) |
-| Geometry | as built by the structure notebook, not relaxed | relaxed to 0.01 eV/Å |
+| Geometry | as built by the structure notebook by default | relaxed to 0.01 eV/Å |
+| Relaxation | optional (`RELAX_DEFECT`), fixed cell, forces to 0.01 eV/Å | yes, to 0.01 eV/Å |
 | Spin | fixed total magnetization, 1 Bohr magneton (doublet, one unpaired electron), on the defect cell | polarized, 1.018 Bohr magnetons (doublet) |
 | Cell | 48 → 47 atoms, 15.05 × 8.69 Å, 8.69 Å defect spacing, 20 Å vacuum | 84 → 83 atoms (symmetry-broken), 15.06 Å defect spacing, 15 Å vacuum |
 
@@ -88,10 +89,16 @@ spin state, and this ordering is for unrelaxed cells: QPOD's entry is the *relax
 whether the quartet stays below the doublet after relaxation is not determined by this run. The
 doublet is the state compared with QPOD below.
 
+Relaxing the defective cell (fixed lattice, doublet state) moves the three nitrogens around the
+vacancy 0.07–0.13 Å outward — the N–N distance across the hole goes from 2.51 Å in the unrelaxed
+cell to 2.69, 2.69 and 2.55 Å, a small Jahn-Teller distortion of the doublet — while the sheet
+stays flat. That roughly 0.1 Å of relaxation is worth 0.35 eV: the vacancy's dangling bonds
+settling into a lower-energy arrangement.
+
 This tutorial uses ultrasoft (GBRV) pseudopotentials under PBE; QPOD used PAW, GPAW's own setups.
 Plane-wave cutoffs of a PAW and an ultrasoft calculation are not comparable numbers, so the 800 eV
 and the 40 Ry / 200 Ry pair above cannot be read as one converging faster than the other. The
-pseudopotential family and cutoff together are one of the differences the 0.5 eV tolerance below
+pseudopotential family and cutoff together are one of the differences the 0.2 eV tolerance below
 covers. The notebook submits Total Energy jobs for the pristine cell, α-boron and nitrogen with
 the same functional, pseudopotentials and cutoff as the defect job. The elemental references are
 the platform's own seeded elemental materials, selected by element tag — which is why μ_B is
@@ -105,18 +112,12 @@ total energies — the defect cell, the pristine cell and boron per atom — and
 workflow's value; when the two differ, it warns that the workflow resolved a different reference
 energy, and the verdict line says so as well.
 
-One offset is quantified for the cell used here, estimated with a machine-learned potential: the
-smaller supercell shifts the neutral formation energy by 0.02 eV relative to QPOD's cell. The same
-estimate put the cost of skipping relaxation at 0.04 eV, but it was made without spin polarization
-and does not apply to the doublet — the forces left in the unrelaxed doublet cell are 2.0 eV/Å on
-each nitrogen neighbour of the vacancy, against 0.01 eV/Å in the pristine cell and QPOD's 0.01 eV/Å
-relaxation threshold, so the doublet's relaxation energy is the largest single contributor to the
-measured 0.28 eV gap and is not estimated here. The 0.5 eV tolerance below covers it along with the
-pseudopotential-set, cutoff, k-point density and reference-phase differences. The cell's
-defect-defect spacing, 8.69 Å, is below the >15 Å minimum QPOD applies when choosing a supercell —
-the 0.02 eV estimate says the neutral vacancy tolerates the smaller cell.
+The cell's defect-defect spacing, 8.69 Å, is below the >15 Å minimum QPOD applies when choosing a
+supercell, but the finite-size effect of the 48-atom cell is small compared with the relaxation
+energy above. With the relaxed formation energy 0.07 eV from QPOD, the 0.2 eV tolerance below
+covers the pseudopotential-set and cell-size differences.
 
-A result within 0.5 eV of 10.18 eV counts as reproducing the manuscript.
+A result within 0.2 eV of 10.18 eV counts as reproducing the manuscript.
 
 ## 5. Theory and experiment
 
@@ -137,25 +138,30 @@ Nitrogen does not enter the formation energy — its change in atom count is zer
 workflow resolves a reference energy for every element in the cell and stops if one is missing,
 so the nitrogen job is required. The defect job is created and submitted on every run; only the
 three reference Total Energy jobs are reused when the account already holds a matching one, and
-created and submitted otherwise.
+created and submitted otherwise. Setting `RELAX_DEFECT = True` adds one more job: a fixed-cell
+relaxation of the defective cell in the doublet state, whose final structure is used for the
+defect calculation in place of the unrelaxed one; like the reference jobs, a finished relaxation
+is reused by name on a rerun.
 
-The jobs run on `cluster-001`, queue OF, 40 cores, with a four-hour time limit; the default one
-hour is not enough for the spin-polarized defect cell. Setting `CLUSTER_NAME = None` uses the first
-cluster listed for the account; leaving it at `cluster-001`, or any other name that is not
-available under the account, makes the notebook stop and list the clusters that are, so that
-`CLUSTER_NAME` in the parameters cell can be set to one of them — it does not silently move the
-calculation onto a different machine.
+The jobs run on `cluster-001`, queue OF, 40 cores, with a twelve-hour time limit — long enough for
+the optional relaxation's BFGS steps; the platform's default one hour is not enough even for the
+unrelaxed defect cell. Setting `CLUSTER_NAME = None` uses the first cluster listed for the account;
+leaving it at `cluster-001`, or any other name that is not available under the account, makes the
+notebook stop and list the clusters that are, so that `CLUSTER_NAME` in the parameters cell can be
+set to one of them — it does not silently move the calculation onto a different machine.
 
-The last cell prints one line, `Reproduces Bertoldo et al. (2022): yes` or `no`, next to the
-calculated formation energy; when the consistency check above failed, the same line carries
-`-- reference mismatch, see warning above`, and the verdict should not be read until that is
-resolved.
+The last cell prints one line naming the configuration:
+`Reproduces Bertoldo et al. (2022): no (unrelaxed SCF)` by default, or
+`yes (relaxed defect)` when `RELAX_DEFECT = True`; when the consistency check above failed instead,
+the line carries `-- reference mismatch, see warning above`, and the verdict should not be read
+until that is resolved.
 
-On the production run that produced this result, the doublet defect job took about 8 minutes on a
-40-core node (6 minutes 10 seconds of it running `pw.x`, the rest queueing and staging); the three
-reference jobs were reused from an earlier run, where they took 2–4 minutes each to compute. The
-measured formation energy was 10.46 eV against QPOD's 10.18 eV, a difference of +0.28 eV — inside
-the 0.5 eV tolerance, so the notebook printed `Reproduces Bertoldo et al. (2022): yes`.
+By default, the run stays to the SCF-only jobs — about 7 minutes of compute — and gives a
+formation energy of 10.46 eV against QPOD's 10.18 eV, +0.28 eV, outside the 0.2 eV tolerance:
+`Reproduces Bertoldo et al. (2022): no (unrelaxed SCF)`. Setting `RELAX_DEFECT = True` relaxes the
+defective cell first (14 BFGS steps, about 52 minutes on 40 cores) and gives 10.12 eV, −0.07 eV,
+inside the tolerance: `Reproduces Bertoldo et al. (2022): yes (relaxed defect)`. Run without
+relaxation for a quick check of the pipeline; run with it to get closest to the paper.
 
 ## 7. Interactive JupyterLite notebook
 
