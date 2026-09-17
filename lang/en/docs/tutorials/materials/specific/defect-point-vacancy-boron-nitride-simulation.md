@@ -89,10 +89,11 @@ The defect formation energy calculation consists of the following steps:
 
 By default (`RELAX = False`), the calculation uses the structure as given. Setting `RELAX = True`
 relaxes the defective cell first, to 0.01 eV/Å — QPOD's own threshold, and the one QPOD applies to
-every structure; only the defective cell is relaxed here. If this structure has already been
-relaxed with these settings, the notebook reuses that structure instead of relaxing again; if a
-relaxation is still running, it waits for that job rather than starting a second one. A relaxation
-is only repeated when the model, spin, k-point density or relaxation settings change.
+every structure; only the defective cell is relaxed here. If the account already holds a relaxed
+version of this structure, the notebook reuses it whatever settings produced it, and prints which
+structure and job it came from; changing the model, spin or k-point density therefore does not
+trigger a fresh relaxation, so a run that needs one must remove or rename the existing relaxed
+structure (or use a different project/account).
 
 ## 5. Step-by-step instructions
 
@@ -141,7 +142,7 @@ The notebook will:
 2. Load the two materials from the uploads folder or the account's materials collection, and
    resolve the elemental reference materials
 3. Submit the prerequisite Total Energy jobs, reusing any that already match
-4. Relax the defective cell first, if `RELAX` is set and no matching relaxed structure exists yet
+4. Relax the defective cell first, if `RELAX` is set and no relaxed structure exists yet
 5. Create, submit and monitor the defect formation energy job
 6. Print the result and the comparison with QPOD
 
