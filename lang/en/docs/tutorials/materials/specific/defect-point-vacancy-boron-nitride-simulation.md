@@ -90,9 +90,10 @@ The defect formation energy calculation consists of the following steps:
 
 By default (`RELAX = False`), the calculation uses the structure as given. Setting `RELAX = True`
 relaxes the defective cell first, to 0.01 eV/Å — QPOD's own threshold, and the one QPOD applies to
-every structure; only the defective cell is relaxed here. The notebook first looks for an
-already-relaxed structure matched by the structure's hash together with the model and relaxation
-settings, and reuses it if found, so the relaxation itself runs only once.
+every structure; only the defective cell is relaxed here. If this structure has already been
+relaxed with these settings, the notebook reuses that structure instead of relaxing again; if a
+relaxation is still running, it waits for that job rather than starting a second one. A relaxation
+is only repeated when the model, spin or relaxation settings change.
 
 ## 5. Step-by-step instructions
 
