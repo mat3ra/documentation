@@ -194,8 +194,8 @@ RELAX = True
 
 To use a structure already relaxed elsewhere, set `DEFECTIVE_NAME = "B-vacancy h-BN relaxed"`
 (the name the relaxation saves) with `RELAX = False`; the notebook finds it in your materials
-collection. The verdict line labels the run by the structure it used, so this prints
-`(relaxed defect)`, not `(unrelaxed SCF)`.
+collection, though the verdict line still reads `(unrelaxed SCF)` — the provenance lines above the
+results name the structure that was actually used.
 
 ### 7.2. Adjust computational resources
 
