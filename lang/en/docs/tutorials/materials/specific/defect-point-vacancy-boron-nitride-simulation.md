@@ -198,7 +198,9 @@ lines above the results name the structure that was actually used.
 
 ### 7.2. Adjust computational resources
 
-Modify the compute parameters in the parameters cell:
+Modify the compute parameters in the parameters cell. The default is
+`CLUSTER_NAME = "cluster-001"`; setting it to `None` instead uses the first cluster listed for the
+account:
 
 ```python
 CLUSTER_NAME = None  # or a specific cluster name
@@ -230,8 +232,8 @@ submitting anything — seed one for the missing element first.
 
 ### 8.3. Job errors or time limit
 
-The optional relaxation needs the full 12-hour time limit; increase `TIME_LIMIT` if a job runs out
-of time before finishing.
+The 12-hour time limit is the notebook's default ceiling; the measured relaxation took about 52
+minutes on 40 cores. Increase `TIME_LIMIT` if a job runs out of time before finishing.
 
 ## 9. Interactive JupyterLite notebook
 
