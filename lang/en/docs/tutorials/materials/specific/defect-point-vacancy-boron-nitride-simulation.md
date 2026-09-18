@@ -73,8 +73,6 @@ The defect formation energy calculation consists of the following steps:
 
 ## 4. Calculation parameters
 
-### 4.1. DFT parameters
-
 | | this tutorial | QPOD |
 |---|---|---|
 | Code | Quantum ESPRESSO | GPAW |
@@ -84,8 +82,6 @@ The defect formation energy calculation consists of the following steps:
 | k-points | density 6 Å⁻¹ (3×5×1 for the defect cell) | 6 Å⁻¹ (relaxation), 12 Å⁻¹ (ground state) |
 | Spin | fixed total magnetization, 1 μB (doublet) | 1.018 μB (doublet) |
 | Cell | 48 → 47 atoms, 8.69 Å defect spacing, 20 Å vacuum | 84 → 83 atoms, 15.06 Å defect spacing, 15 Å vacuum |
-
-### 4.2. Relaxation settings
 
 By default (`RELAX = False`), the calculation uses the structure as given. Setting `RELAX = True`
 relaxes the defective cell first, to 0.01 eV/Å — QPOD's own threshold, and the one QPOD applies to
@@ -118,7 +114,7 @@ DEFECTIVE_NAME = "B-vacancy h-BN"
 # relaxation once if it does not exist yet.
 RELAX = False
 
-CLUSTER_NAME = "cluster-001"
+CLUSTER_NAME = None  # or a specific cluster name
 QUEUE_NAME = QueueName.OF
 PPN = 40
 TIME_LIMIT = "12:00:00"
@@ -199,9 +195,9 @@ lines above the results name the structure that was actually used.
 
 ### 7.2. Adjust computational resources
 
-Modify the compute parameters in the parameters cell. The default is
-`CLUSTER_NAME = "cluster-001"`; setting it to `None` instead uses the first cluster listed for the
-account:
+Modify the compute parameters in the parameters cell. The default, `CLUSTER_NAME = None`, uses the
+account's first listed cluster; setting a specific name picks that cluster instead, and a name
+that is not available makes the notebook stop and list the ones that are:
 
 ```python
 CLUSTER_NAME = None  # or a specific cluster name
