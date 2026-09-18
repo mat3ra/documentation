@@ -20,7 +20,7 @@ render_macros: true
 ## 1. Introduction
 
 This tutorial calculates the formation energy of the neutral V_Sn-O_i defect pair in tin monoxide
-(SnO), reproducing results from the following manuscript:
+(SnO), and compares it with the value reported in the following manuscript:
 
 !!!note "Manuscript"
     A. Togo, F. Oba, and I. Tanaka, "First-principles calculations of native defects in tin
@@ -32,7 +32,7 @@ This tutorial builds upon the [Oxygen Interstitial Defect in SnO](defect-point-i
 tutorial, where the defective structure is created. Here, the formation energy is calculated using
 Quantum ESPRESSO and compared with Togo et al.'s value for the same defect.
 
-### 1.1. What is being reproduced
+### 1.1. What is being compared
 
 Table II of the manuscript gives the neutral formation energies with the Fermi level at the valence
 band maximum:
@@ -43,7 +43,7 @@ band maximum:
 | V_Sn-O_i pair, model (c) | 3.9 |
 | V_Sn and O_i, independent | 2.3 |
 
-Model (a) is the pair built by the structure tutorial, and the one reproduced here. Table II does
+Model (a) is the pair built by the structure tutorial, and the one compared here. Table II does
 not state which chemical-potential limit it uses. Only the neutral (q = 0) defect is compared; its
 charged states need a finite-size correction this workflow does not apply.
 
@@ -70,7 +70,7 @@ The defect formation energy calculation consists of the following steps:
 5. **Submit prerequisite jobs**: Compute (or reuse) the pristine supercell and α-Sn Total Energy jobs
 6. **Relax the pair cell** (optional): Only if `RELAX` is set, reusing an existing relaxed structure
    if one is found
-7. **Create and submit the Density of States job**: On the pair cell, supplying its total energy and
+7. **Create and submit the Density of States job**: On the pair cell, producing its total energy and
    its density of states
 8. **Retrieve and compare results**: Print the chemical potentials, the formation energy, the
    density of states and the comparison with Togo et al.
@@ -89,10 +89,9 @@ The defect formation energy calculation consists of the following steps:
 | Chemical potentials | Sn-rich limit, μ_Sn = E(α-Sn)/2 from Standata α-Sn | Sn-rich and O-rich limits |
 | Relaxation | none by default, 0.05 eV/Å with `RELAX = True` | all atoms to 0.05 eV/Å |
 
-By default (`RELAX = False`), the calculation uses the structures as given. Setting `RELAX = True`
-relaxes the pair cell first, to 0.05 eV/Å — Togo et al.'s own threshold. If the account already
-holds a relaxed version of this structure, the notebook reuses it whatever settings produced it,
-and prints its name and id; a settings change therefore does not trigger a fresh relaxation.
+By default (`RELAX = False`) the calculation uses the structures as given. `RELAX = True` relaxes the
+pair cell first to 0.05 eV/Å, Togo et al.'s own threshold, at fixed cell: the atoms move, the Standata
+lattice is held. A relaxed version already on the account is reused, whatever settings produced it.
 
 ## 5. Step-by-step instructions
 
@@ -150,10 +149,10 @@ The notebook will:
 ### 5.4. Monitor progress
 
 The notebook includes automatic job monitoring with status updates, polling every 60 seconds
-(`POLL_INTERVAL`). Jobs that already exist for the same material and workflow name are reused
-instead of resubmitted, and the notebook prints `♻️` for each one. Measured on cluster-001 with 40
-cores: the pristine supercell about 4 minutes of active time, α-Sn 13 seconds, the Density of States
-job about 6 minutes, and the optional relaxation about 48 minutes.
+(`POLL_INTERVAL`). Jobs that already exist for the same material and workflow name are reused instead
+of resubmitted, and the notebook prints `♻️` for each one. Measured on cluster-001, OF queue, 40 cores:
+the pristine supercell about 3.5 minutes of active time (about 11 minutes with the queue), α-Sn 13
+seconds, the Density of States job about 5 minutes (about 7 with the queue), the relaxation about 48 minutes.
 
 ### 5.5. Analyze results
 
@@ -166,7 +165,7 @@ Reproduces Togo et al. (2006): no (unrelaxed SCF)
 
 ## 6. Expected results
 
-The Density of States job supplies the pair's total energy, and the two prerequisite jobs the
+The Density of States job produces the pair's total energy, and the two prerequisite jobs the
 chemical potentials at the Sn-rich limit (μ_Sn = −2166.540 eV/atom, μ_O = −439.994 eV/atom).
 
 ### 6.1. Comparison with published results
@@ -176,11 +175,10 @@ chemical potentials at the Sn-rich limit (μ_Sn = −2166.540 eV/atom, μ_O = �
 | unrelaxed SCF | 7.381 | +5.081 | `no (unrelaxed SCF)` |
 | relaxed defect | 3.081 | +0.781 | `no (relaxed defect)` |
 
-A difference of at most 0.5 eV makes the verdict read `yes`. The relaxation converged in 17 BFGS
-steps to a maximum force of 0.036 eV/Å and lowered the energy by 4.30 eV, the oxygen interstitial
-moving 0.74 Å to the apex of a tin pyramid (Sn-O 1.93 Å). Table II does not state its
-chemical-potential limit, and only the Sn-rich limit is computed here: SnO₂, the O-rich reference,
-is not in Standata.
+A difference of at most 0.5 eV makes the verdict read `yes`. The relaxation converged in 17 BFGS steps
+to a maximum force of 0.036 eV/Å and lowered the energy by 4.30 eV, the oxygen interstitial moving
+0.74 Å to the apex of a tin pyramid (Sn-O 1.93 Å). Table II does not state its chemical-potential limit,
+and only the Sn-rich limit is computed here: SnO₂, the O-rich reference, is not in Standata.
 
 The pair cell's density of states is plotted, and its band gaps printed, in section 9.2 of the
 notebook: 0.000 eV in both configurations, the cell being metallic in PBE. Togo et al. report no
@@ -191,10 +189,10 @@ the notebook applies no threshold to it.
 
 ### 7.1. Relax the pair cell
 
-Set `RELAX = True` in the parameters cell to use the relaxed pair cell — closer to the paper. The
-first run relaxes it and saves the result in the account's materials collection under
-`SnO 2x2x2 V_Sn-O_i pair (Togo Fig 4a) relaxed`, reused by later runs of this notebook (and
-loadable by name elsewhere):
+Set `RELAX = True` in the parameters cell to use the relaxed pair cell — closer to the paper. When this
+notebook runs the relaxation, it saves the result in the account's materials collection under
+`SnO 2x2x2 V_Sn-O_i pair (Togo Fig 4a) relaxed`; a relaxed structure found from an earlier job keeps its
+platform name. Later runs reuse either:
 
 ```python
 RELAX = True
@@ -232,10 +230,12 @@ If a material is not found in the `uploads` folder, run the
 check that its `uploads` folder holds both files, saved under the exact names
 `SnO 2x2x2 supercell` and `SnO 2x2x2 V_Sn-O_i pair (Togo Fig 4a)`.
 
-### 8.2. No cluster available
+### 8.2. Jobs end in `error` and the results cell raises `IndexError`
 
-The notebook lists the account's clusters before creating the compute configuration. An empty list
-means no cluster is registered for the account; register one before running the notebook.
+The default `CLUSTER_NAME = None` takes the account's first listed cluster. If the prerequisite jobs
+end in `error` and the results cell raises `IndexError: list index out of range`, open one of them in
+the platform UI: an output ending in `MPI_Init` errors means that cluster cannot start it. Set
+`CLUSTER_NAME` to another cluster — cluster-001 ran every job here — and re-run; finished jobs are reused.
 
 ### 8.3. No formation energy on the first `RELAX = True` run
 
