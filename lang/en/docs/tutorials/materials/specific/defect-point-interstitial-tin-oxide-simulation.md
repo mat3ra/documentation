@@ -43,9 +43,9 @@ band maximum:
 | V_Sn-O_i pair, model (c) | 3.9 |
 | V_Sn and O_i, independent | 2.3 |
 
-Model (a) is the pair built by the structure tutorial, and the one compared here. Table II does
-not state which chemical-potential limit it uses. Only the neutral (q = 0) defect is compared; its
-charged states need a finite-size correction this workflow does not apply.
+Model (a) is the pair built by the structure tutorial, and the one compared here. Table II does not name
+the chemical-potential limit it uses, so the formation energy is computed at both of them. Only the neutral
+(q = 0) defect is compared; its charged states need a finite-size correction this workflow does not apply.
 
 ## 2. Prerequisites
 
@@ -57,6 +57,8 @@ Before starting this tutorial, one of the following steps should be completed:
    `SnO 2x2x2 V_Sn-O_i pair (Togo Fig 4a)`, OR
 2. Have both materials saved in the `uploads` folder or in the account's materials collection
 
+The chemical-potential references, α-Sn for the Sn-rich limit and SnO₂ for the O-rich one, are loaded from Standata.
+
 ## 3. Workflow overview
 
 The defect formation energy calculation consists of the following steps:
@@ -64,16 +66,16 @@ The defect formation energy calculation consists of the following steps:
 1. **Set up the environment and parameters**: Configure material names, the DFT model, and compute
    resources
 2. **Authenticate and initialize API client**: Connect to the platform
-3. **Load materials**: Import the pristine supercell and the pair, load α-Sn from Standata, print
-   the provenance and the V_Sn-O_i distance
+3. **Load materials**: Import the pristine supercell and the pair, load α-Sn and SnO₂ from Standata,
+   print the provenance of all four and the V_Sn-O_i distance
 4. **Configure the model and k-grid**: One DFT model and a per-material k-grid for every job below
-5. **Submit prerequisite jobs**: Compute (or reuse) the pristine supercell and α-Sn Total Energy jobs
+5. **Submit prerequisite jobs**: Compute (or reuse) the Total Energy jobs of the pristine supercell, α-Sn and SnO₂
 6. **Relax the pair cell** (optional): Only if `RELAX` is set, reusing an existing relaxed structure
    if one is found
 7. **Create and submit the Density of States job**: On the pair cell, producing its total energy and
    its density of states
-8. **Retrieve and compare results**: Print the chemical potentials, the formation energy, the
-   density of states and the comparison with Togo et al.
+8. **Retrieve and compare results**: Print the chemical potentials, the formation energy at each
+   limit, the density of states and the comparison with Togo et al.
 
 ## 4. Calculation parameters
 
@@ -86,7 +88,7 @@ The defect formation energy calculation consists of the following steps:
 | k-points | density 4 Å⁻¹ (4×4×3 for the 32-atom cells) | Γ-point only |
 | Cell | 2×2×2, 32 atoms (Sn16O16 → Sn15O17) | 4×4×3, 192 atoms |
 | Lattice | a 3.814 Å, c 4.887 Å (Standata SnO) | a 3.855 Å, c 4.983 Å |
-| Chemical potentials | Sn-rich limit, μ_Sn = E(α-Sn)/2 from Standata α-Sn | Sn-rich and O-rich limits |
+| Chemical potentials | Sn-rich and O-rich limits, from Standata α-Sn and SnO₂ (rutile, mp-856) | Sn-rich and O-rich limits |
 | Relaxation | none by default, 0.05 eV/Å with `RELAX = True` | all atoms to 0.05 eV/Å |
 
 By default (`RELAX = False`) the calculation uses the structures as given. `RELAX = True` relaxes the
@@ -111,7 +113,8 @@ The parameters cells set the material names, the DFT model, and the compute reso
 # Names saved by defect_point_interstitial_tin_oxide.ipynb.
 PRISTINE_NAME = "SnO 2x2x2 supercell"
 DEFECTIVE_NAME = "SnO 2x2x2 V_Sn-O_i pair (Togo Fig 4a)"
-SN_REFERENCE_NAME = "Sn, Tin, FCC (Fd-3m) 3D (Bulk), mp-117"  # Standata, α-Sn, 2 atoms -- Togo's Sn-rich reference
+SN_REFERENCE_NAME = "Sn, Tin, FCC (Fd-3m) 3D (Bulk), mp-117"
+SNO2_REFERENCE_NAME = "SnO2, Tin Dioxide, TET (P4_2/mnm) 3D (Bulk), mp-856"
 
 # False: use the structure as given, fast. True: use the relaxed pair, running the
 # relaxation once if it does not exist yet.
@@ -140,19 +143,19 @@ The notebook will:
 1. [Authenticate with the platform]({{ interface_url }}/jupyterlite/authentication.md) and
    initialize the API client
 2. Load the pristine supercell and the pair from the uploads folder or the account's materials
-   collection, load α-Sn from Standata, and print the V_Sn-O_i distance
+   collection, load α-Sn and SnO₂ from Standata, and print the V_Sn-O_i distance
 3. Submit the prerequisite Total Energy jobs, reusing any that already match
 4. Relax the pair cell first, if `RELAX` is set and no relaxed structure exists yet
 5. Create, submit and monitor the Density of States job on the pair cell
-6. Print the chemical potentials, the formation energy, the density of states and the verdict
+6. Print the chemical potentials, the formation energy at both limits, the density of states and the verdict
 
 ### 5.4. Monitor progress
 
 The notebook includes automatic job monitoring with status updates, polling every 60 seconds
 (`POLL_INTERVAL`). Jobs that already exist for the same material and workflow name are reused instead
 of resubmitted, and the notebook prints `♻️` for each one. Measured on cluster-001, OF queue, 40 cores:
-the pristine supercell about 3.5 minutes of active time (about 11 minutes with the queue), α-Sn 13
-seconds, the Density of States job about 5 minutes (about 7 with the queue), the relaxation about 48 minutes.
+the pristine supercell about 3.5 minutes of active time (about 11 minutes with the queue), α-Sn 13 seconds,
+SnO₂ about 1 minute, the Density of States job about 5 minutes (about 7 with the queue), the relaxation 48 minutes.
 
 ### 5.5. Analyze results
 
@@ -160,30 +163,31 @@ Once the jobs complete, the formation energy is displayed next to Togo et al.'s 
 cell prints the comparison, with `relaxed defect` in place of `unrelaxed SCF` when `RELAX` is set:
 
 ```
-Reproduces Togo et al. (2006): no (unrelaxed SCF)
+Reproduces Togo et al. (2006): no (unrelaxed SCF, O-rich)
 ```
 
 ## 6. Expected results
 
-The Density of States job produces the pair's total energy, and the two prerequisite jobs the
-chemical potentials at the Sn-rich limit (μ_Sn = −2166.540 eV/atom, μ_O = −439.994 eV/atom).
+The Density of States job produces the pair's total energy, and the three prerequisite jobs the chemical
+potentials at both limits: Sn-rich μ_Sn = −2166.540, μ_O = −439.994 eV/atom; O-rich μ_Sn = −2166.756,
+μ_O = −439.779 eV/atom. The two limits differ in μ_Sn by 0.216 eV, against the 0.23 eV of the manuscript.
 
 ### 6.1. Comparison with published results
 
-| configuration | E_f (eV) | vs Togo et al. 2.3 eV | verdict |
-|---|---|---|---|
-| unrelaxed SCF | 7.381 | +5.081 | `no (unrelaxed SCF)` |
-| relaxed defect | 3.081 | +0.781 | `no (relaxed defect)` |
+| configuration | E_f Sn-rich (eV) | E_f O-rich (eV) | O-rich vs Togo et al. 2.3 eV | verdict |
+|---|---|---|---|---|
+| unrelaxed SCF | 7.381 | 6.949 | +4.649 | `no (unrelaxed SCF, O-rich)` |
+| relaxed defect | 3.081 | 2.649 | +0.349 | `yes (relaxed defect, O-rich)` |
 
-A difference of at most 0.5 eV makes the verdict read `yes`. The relaxation converged in 17 BFGS steps
-to a maximum force of 0.036 eV/Å and lowered the energy by 4.30 eV, the oxygen interstitial moving
-0.74 Å to the apex of a tin pyramid (Sn-O 1.93 Å). Table II does not state its chemical-potential limit,
-and only the Sn-rich limit is computed here: SnO₂, the O-rich reference, is not in Standata.
+The verdict reads `yes` when the O-rich difference is at most 0.5 eV. Togo et al.'s 2.3 eV matches the O-rich limit
+of the relaxed defect, 2.649 eV; the remaining 0.349 eV is the cell size (32 atoms against 192) and the
+pseudopotentials (GBRV ultrasoft PBE against PAW PW91). The relaxation converged in 17 BFGS steps to a maximum force
+of 0.036 eV/Å, lowering the energy by 4.30 eV, the oxygen interstitial moving 0.74 Å to the apex of a tin pyramid
+(Sn-O 1.93 Å).
 
-The pair cell's density of states is plotted, and its band gaps printed, in section 9.2 of the
-notebook: 0.000 eV in both configurations, the cell being metallic in PBE. Togo et al. report no
-defect transition level of O_i inside the calculated band gap; this comparison is qualitative, and
-the notebook applies no threshold to it.
+The pair cell's density of states is plotted, and its band gaps printed, in section 9.2 of the notebook: 0.000 eV in
+both configurations, the cell being metallic in PBE. Togo et al. report no defect transition level of O_i inside the
+calculated band gap; this comparison is qualitative, and the notebook applies no threshold to it.
 
 ## 7. Customization options
 
@@ -228,7 +232,8 @@ saves, by name. Togo et al.'s own 4×4×3, 192-atom cell is reached by changing 
 If a material is not found in the `uploads` folder, run the
 [Oxygen Interstitial Defect in SnO](defect-point-interstitial-tin-oxide.md) tutorial first, and
 check that its `uploads` folder holds both files, saved under the exact names
-`SnO 2x2x2 supercell` and `SnO 2x2x2 V_Sn-O_i pair (Togo Fig 4a)`.
+`SnO 2x2x2 supercell` and `SnO 2x2x2 V_Sn-O_i pair (Togo Fig 4a)`. If `SnO2, Tin Dioxide, TET (P4_2/mnm) 3D
+(Bulk), mp-856` is not found, update `mat3ra-standata` to a release that includes the entry.
 
 ### 8.2. Jobs end in `error` and the results cell raises `IndexError`
 
