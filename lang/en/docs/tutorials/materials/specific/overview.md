@@ -195,7 +195,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 3.3.3.1. Vacancy Point Defect in h-BN <span class="btn badge b-info border-50">D-0D-VAC</span>
 
 **Structure**: [Create Vacancy Defect in h-BN](defect-point-vacancy-boron-nitride.md)  
-**Properties**: Calculate formation energies (Coming Soon)  
+**Properties**: [Calculate Formation Energy of a Boron Vacancy in h-BN](defect-point-vacancy-boron-nitride-simulation.md)  
 **DOI**: [10.1038/s41524-022-00730-w](https://doi.org/10.1038/s41524-022-00730-w){:target='_blank'}
 
 ![Vacancy in h-BN](../../../images/tutorials/materials/defects/defect_point_vacancy_boron_nitride/0-figure-from-manuscript.webp "Vacancy in h-BN"){ style="max-height:500px;width:auto;" }
