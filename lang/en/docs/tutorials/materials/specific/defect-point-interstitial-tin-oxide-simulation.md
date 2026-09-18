@@ -120,7 +120,7 @@ SNO2_REFERENCE_NAME = "SnO2, Tin Dioxide, TET (P4_2/mnm) 3D (Bulk), mp-856"
 RELAX = False
 
 CLUSTER_NAME = None
-QUEUE_NAME = QueueName.OF
+QUEUE_NAME = QueueName.OR
 PPN = 40
 TIME_LIMIT = "12:00:00"  # covers the optional relaxation
 
@@ -152,7 +152,7 @@ The notebook will:
 
 The notebook includes automatic job monitoring with status updates, polling every 60 seconds
 (`POLL_INTERVAL`). Jobs that already exist for the same material and workflow name are reused instead
-of resubmitted, and the notebook prints `♻️` for each one. Measured on cluster-001, OF queue, 40 cores:
+of resubmitted, and the notebook prints `♻️` for each one. Measured on cluster-001, 40 cores:
 the pristine supercell about 3.5 minutes of active time (about 11 minutes with the queue), α-Sn 13 seconds,
 SnO₂ about 1 minute, the Density of States job about 5 minutes (about 7 with the queue), the relaxation 48 minutes.
 
@@ -209,13 +209,13 @@ the structure that was actually used.
 
 ### 7.2. Adjust computational resources
 
-Modify the compute parameters in the parameters cell. The default, `CLUSTER_NAME = None`, uses the
-account's first listed cluster; setting a specific name picks that cluster instead, and a name
-that is not available makes the notebook stop and list the ones that are:
+Modify the compute parameters in the parameters cell. The default, `CLUSTER_NAME = None`, uses the account's first
+listed cluster; setting a specific name picks that cluster instead, and a name that is not available makes the
+notebook stop and list the ones that are. `QueueName.OR` gives one node, charged by core-seconds with no flat fee:
 
 ```python
 CLUSTER_NAME = None
-QUEUE_NAME = QueueName.OF
+QUEUE_NAME = QueueName.OR
 PPN = 40
 TIME_LIMIT = "12:00:00"
 ```
