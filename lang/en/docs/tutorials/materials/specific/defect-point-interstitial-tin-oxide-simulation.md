@@ -147,7 +147,7 @@ The notebook will:
 3. Submit the prerequisite Total Energy jobs, reusing any that already match
 4. Relax the pair cell first, if `RELAX` is set and no relaxed structure exists yet
 5. Create, submit and monitor the Density of States job on the pair cell
-6. Print the chemical potentials, the formation energy at both limits, the density of states and the verdict
+6. Print the chemical potentials, the formation energy and the density of states, and a verdict line per limit
 
 ### 5.4. Monitor progress
 
@@ -159,31 +159,31 @@ SnO₂ about 1 minute, the Density of States job about 5 minutes (about 7 with t
 
 ### 5.5. Analyze results
 
-Once the jobs complete, the formation energy is displayed next to Togo et al.'s value, and the last
-cell prints the comparison, with `relaxed defect` in place of `unrelaxed SCF` when `RELAX` is set:
+The last cell prints the formation energy, its difference from Togo et al.'s value and one verdict line per limit:
 
 ```
+Reproduces Togo et al. (2006): no (unrelaxed SCF, Sn-rich)
 Reproduces Togo et al. (2006): no (unrelaxed SCF, O-rich)
 ```
 
 ## 6. Expected results
 
-The Density of States job produces the pair's total energy, and the three prerequisite jobs the chemical
-potentials at both limits: Sn-rich μ_Sn = −2166.540, μ_O = −439.994 eV/atom; O-rich μ_Sn = −2166.756,
-μ_O = −439.779 eV/atom. The two limits differ in μ_Sn by 0.216 eV, against the 0.23 eV of the manuscript.
+The chemical potentials come out of the three prerequisite jobs: Sn-rich μ_Sn = −2166.540, μ_O = −439.994 eV/atom;
+O-rich μ_Sn = −2166.756, μ_O = −439.779 eV/atom — 0.216 eV apart in μ_Sn, against the manuscript's 0.23 eV.
 
 ### 6.1. Comparison with published results
 
-| configuration | E_f Sn-rich (eV) | E_f O-rich (eV) | O-rich vs Togo et al. 2.3 eV | verdict |
+| configuration | limit | E_f (eV) | vs Togo et al. 2.3 eV | verdict |
 |---|---|---|---|---|
-| unrelaxed SCF | 7.381 | 6.949 | +4.649 | `no (unrelaxed SCF, O-rich)` |
-| relaxed defect | 3.081 | 2.649 | +0.349 | `yes (relaxed defect, O-rich)` |
+| unrelaxed SCF | Sn-rich | 7.381 | +5.081 | `no (unrelaxed SCF, Sn-rich)` |
+| unrelaxed SCF | O-rich | 6.949 | +4.649 | `no (unrelaxed SCF, O-rich)` |
+| relaxed defect | Sn-rich | 3.081 | +0.781 | `no (relaxed defect, Sn-rich)` |
+| relaxed defect | O-rich | 2.649 | +0.349 | `yes (relaxed defect, O-rich)` |
 
-The verdict reads `yes` when the O-rich difference is at most 0.5 eV. Togo et al.'s 2.3 eV matches the O-rich limit
-of the relaxed defect, 2.649 eV; the remaining 0.349 eV is the cell size (32 atoms against 192) and the
-pseudopotentials (GBRV ultrasoft PBE against PAW PW91). The relaxation converged in 17 BFGS steps to a maximum force
-of 0.036 eV/Å, lowering the energy by 4.30 eV, the oxygen interstitial moving 0.74 Å to the apex of a tin pyramid
-(Sn-O 1.93 Å).
+A limit reads `yes` when its difference is at most 0.5 eV. Togo et al.'s 2.3 eV matches the O-rich limit of the
+relaxed defect, 2.649 eV; the remaining 0.349 eV is the cell size (32 atoms against 192) and the pseudopotentials
+(GBRV ultrasoft PBE against PAW PW91). The relaxation converged in 17 BFGS steps to a maximum force of 0.036 eV/Å,
+lowering the energy by 4.30 eV, the oxygen interstitial moving 0.74 Å to the apex of a tin pyramid (Sn-O 1.93 Å).
 
 The pair cell's density of states is plotted, and its band gaps printed, in section 9.2 of the notebook: 0.000 eV in
 both configurations, the cell being metallic in PBE. Togo et al. report no defect transition level of O_i inside the
