@@ -34,8 +34,7 @@ Quantum ESPRESSO and compared with Togo et al.'s value for the same defect.
 
 ### 1.1. What is being compared
 
-Table II of the manuscript gives the neutral formation energies with the Fermi level at the valence
-band maximum:
+Table II of the manuscript gives the neutral formation energies with the Fermi level at the valence band maximum:
 
 | | E_f (eV) |
 |---|---|
@@ -159,11 +158,13 @@ SnO₂ about 1 minute, the Density of States job about 5 minutes (about 7 with t
 
 ### 5.5. Analyze results
 
-The last cell prints the formation energy, its difference from Togo et al.'s value and one verdict line per limit:
+The last cell prints E_f, its difference from Togo et al.'s value and a verdict, per limit; with `RELAX = True`:
 
 ```
-Reproduces Togo et al. (2006): no (unrelaxed SCF, Sn-rich)
-Reproduces Togo et al. (2006): no (unrelaxed SCF, O-rich)
+E_f (this notebook, Sn-rich): 3.081 eV, difference +0.781 eV
+Reproduces Togo et al. (2006): no (relaxed defect, Sn-rich)
+E_f (this notebook, O-rich): 2.649 eV, difference +0.349 eV
+Reproduces Togo et al. (2006): yes (relaxed defect, O-rich)
 ```
 
 ## 6. Expected results
@@ -265,6 +266,5 @@ and the density of states of the V_Sn-O_i pair in SnO. Select *Run* > *Run All C
 {% endwith %}
 {% endwith %}
 {% endwith %}
-
 
 ## 10. References
