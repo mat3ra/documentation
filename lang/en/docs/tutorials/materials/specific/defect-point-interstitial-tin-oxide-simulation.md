@@ -189,10 +189,10 @@ the notebook applies no threshold to it.
 
 ### 7.1. Relax the pair cell
 
-Set `RELAX = True` in the parameters cell to use the relaxed pair cell — closer to the paper. When this
-notebook runs the relaxation, it saves the result in the account's materials collection under
-`SnO 2x2x2 V_Sn-O_i pair (Togo Fig 4a) relaxed`; a relaxed structure found from an earlier job keeps its
-platform name. Later runs reuse either:
+Set `RELAX = True` in the parameters cell to use the relaxed pair cell — closer to the paper. When this notebook
+runs the relaxation, it saves the result in the account's materials collection under `SnO 2x2x2 V_Sn-O_i pair (Togo
+Fig 4a) relaxed`; a relaxed structure found from an earlier job keeps its platform name. Later runs reuse that
+relaxed structure, found by content hash, or a relaxation job still running under the same name:
 
 ```python
 RELAX = True
@@ -234,14 +234,14 @@ check that its `uploads` folder holds both files, saved under the exact names
 
 The default `CLUSTER_NAME = None` takes the account's first listed cluster. If the prerequisite jobs
 end in `error` and the results cell raises `IndexError: list index out of range`, open one of them in
-the platform UI: an output ending in `MPI_Init` errors means that cluster cannot start it. Set
+the platform UI: if `pw_scf.out` ends in `MPI_Init` errors, that cluster cannot start it. Set
 `CLUSTER_NAME` to another cluster — cluster-001 ran every job here — and re-run; finished jobs are reused.
 
 ### 8.3. No formation energy on the first `RELAX = True` run
 
-With `RELAX = True`, the first run adds a relaxation job before the Density of States job, and waits
-for both. If the session ends before they finish, re-run the notebook later: it finds the relaxed
-structure and the finished jobs, and prints the formation energy without recomputing anything.
+With `RELAX = True`, the first run adds a relaxation job before the Density of States job, and waits for both. If
+the session ends before they finish, re-run the notebook later: it finds the relaxed structure and any finished
+jobs; the relaxation is not repeated, and a Density of States job that does not yet exist is created then.
 
 ### 8.4. Formation energy far from the published value
 
