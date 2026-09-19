@@ -205,7 +205,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 3.3.4.1. Interstitial Point Defect in SnO <span class="btn badge b-info border-50">D-0D-INT</span>
 
 **Structure**: [Create Interstitial Defect in SnO](defect-point-interstitial-tin-oxide.md)  
-**Properties**: Calculate formation energies and band structure (Coming Soon)  
+**Properties**: [Calculate Formation Energy and Density of States of the V_Sn-O_i Pair in SnO](defect-point-interstitial-tin-oxide-simulation.md)  
 **DOI**: [10.1103/PhysRevB.74.195128](https://doi.org/10.1103/PhysRevB.74.195128){:target='_blank'} [@Togo2006; @Wang2014; @Na-Phattalung2006]
 
 ![SnO O-interstitial](../../../images/tutorials/materials/defects/defect_point_interstitial_tin_oxide/0-figure-from-manuscript.webp "O-interstitial defect in SnO"){ style="max-height:500px;width:auto;" }
