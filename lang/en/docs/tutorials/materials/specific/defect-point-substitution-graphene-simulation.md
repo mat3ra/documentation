@@ -195,7 +195,7 @@ Modify the compute parameters in cell 1.3:
 ```python
 CLUSTER_NAME = "001"  # specify full or partial name i.e. "cluster-001" to select
 QUEUE_NAME = QueueName.OR
-PPN = 40
+PPN = 16  # queue OR on cluster-001 allows at most 16 cores per node
 TIME_LIMIT = "12:00:00"  # covers the optional relaxation (~1 h)
 ```
 
