@@ -115,8 +115,7 @@ DEFECTIVE_NAME = "SnO 2x2x2 V_Sn-O_i pair (Togo Fig 4a)"
 SN_REFERENCE_NAME = "Sn, Tin, FCC (Fd-3m) 3D (Bulk), mp-117"
 SNO2_REFERENCE_NAME = "SnO2, Tin Dioxide, TET (P4_2/mnm) 3D (Bulk), mp-856"
 
-# False: use the structure as given, fast. True: use the relaxed pair, running the
-# relaxation once if it does not exist yet.
+# NOTE: set to True for results close to the manuscript (relaxes the pair once, ~50 min).
 RELAX = False
 
 CLUSTER_NAME = None
