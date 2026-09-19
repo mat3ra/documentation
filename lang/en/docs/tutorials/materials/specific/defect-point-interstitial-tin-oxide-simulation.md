@@ -90,9 +90,9 @@ The defect formation energy calculation consists of the following steps:
 | Chemical potentials | Sn-rich and O-rich limits, from Standata α-Sn and SnO₂ (rutile, mp-856) | Sn-rich and O-rich limits |
 | Relaxation | none by default, 0.05 eV/Å with `RELAX = True` | all atoms to 0.05 eV/Å |
 
-By default (`RELAX = False`) the calculation uses the structures as given. `RELAX = True` relaxes the
-pair cell first to 0.05 eV/Å, Togo et al.'s own threshold, at fixed cell: the atoms move, the Standata
-lattice is held. A relaxed version already on the account is reused, whatever settings produced it.
+The settings here run in minutes; the manuscript's number needs its settings: PAW/PW91, 500 eV, a 4×4×3 cell, Γ-point.
+By default (`RELAX = False`) the calculation uses the structures as given. `RELAX = True` relaxes the pair cell first
+to 0.05 eV/Å, Togo et al.'s own threshold, at fixed cell: the atoms move, the Standata lattice is held.
 
 ## 5. Step-by-step instructions
 
@@ -109,7 +109,7 @@ other/materials_designer/specific_examples/defect_point_interstitial_tin_oxide_S
 The parameters cells set the material names, the DFT model, and the compute resources:
 
 ```python
-# Names saved by defect_point_interstitial_tin_oxide.ipynb.
+# Names saved by defect_point_interstitial_tin_oxide.ipynb; 2x2x2 (32 atoms) runs in minutes, Togo's cell is 4x4x3 (192).
 PRISTINE_NAME = "SnO 2x2x2 supercell"
 DEFECTIVE_NAME = "SnO 2x2x2 V_Sn-O_i pair (Togo Fig 4a)"
 SN_REFERENCE_NAME = "Sn, Tin, FCC (Fd-3m) 3D (Bulk), mp-117"
@@ -146,7 +146,7 @@ The notebook will:
 3. Submit the prerequisite Total Energy jobs, reusing any that already match
 4. Relax the pair cell first, if `RELAX` is set and no relaxed structure exists yet
 5. Create, submit and monitor the Density of States job on the pair cell
-6. Print the chemical potentials, the formation energy, the density of states and the deviation per limit
+6. Print the chemical potentials, the formation energy at each limit and the density of states
 
 ### 5.4. Monitor progress
 
@@ -158,13 +158,13 @@ SnO₂ about 1 minute, the Density of States job about 5 minutes (about 7 with t
 
 ### 5.5. Analyze results
 
-The last cell prints the regime and, per limit, E_f and its difference from Togo et al.'s value in eV and percent:
+The last cell prints the regime and, per limit, E_f beside Togo et al.'s value:
 
 ```
 Regime: relaxed defect
 E_f (Togo et al., 2006):      2.300 eV
-E_f (this notebook, Sn-rich): 3.081 eV, difference +0.781 eV (+34.0 %)
-E_f (this notebook, O-rich):  2.649 eV, difference +0.349 eV (+15.2 %)
+E_f (this notebook, Sn-rich): 3.081 eV
+E_f (this notebook, O-rich):  2.649 eV
 ```
 
 ## 6. Expected results
