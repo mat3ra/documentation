@@ -115,12 +115,12 @@ DEFECTIVE_NAME = "SnO 2x2x2 V_Sn-O_i pair (Togo Fig 4a)"
 SN_REFERENCE_NAME = "Sn, Tin, FCC (Fd-3m) 3D (Bulk), mp-117"
 SNO2_REFERENCE_NAME = "SnO2, Tin Dioxide, TET (P4_2/mnm) 3D (Bulk), mp-856"
 
-# NOTE: set to True for results close to the manuscript (relaxes the pair once, ~50 min).
+# NOTE: set to True for results close to the manuscript (relaxes the pair once, ~2 h).
 RELAX = False
 
 CLUSTER_NAME = None
 QUEUE_NAME = QueueName.OR
-PPN = 40
+PPN = 16  # OR allows 16 cores per job
 TIME_LIMIT = "12:00:00"  # covers the optional relaxation
 
 # DFT model
@@ -153,7 +153,7 @@ The notebook includes automatic job monitoring with status updates, polling ever
 (`POLL_INTERVAL`). Jobs that already exist for the same material and workflow name are reused instead
 of resubmitted, and the notebook prints `♻️` for each one. Measured on cluster-001, 40 cores:
 the pristine supercell about 3.5 minutes of active time (about 11 minutes with the queue), α-Sn 13 seconds,
-SnO₂ about 1 minute, the Density of States job about 5 minutes (about 7 with the queue), the relaxation 48 minutes.
+SnO₂ about 1 minute, the Density of States job about 5 minutes (about 7 with the queue), the relaxation 48 minutes; on OR at 16 cores expect roughly 2.5× longer (the relaxation ≈ 2 h).
 
 ### 5.5. Analyze results
 
@@ -210,12 +210,12 @@ the structure that was actually used.
 
 Modify the compute parameters in the parameters cell. The default, `CLUSTER_NAME = None`, uses the account's first
 listed cluster; setting a specific name picks that cluster instead, and a name that is not available makes the
-notebook stop and list the ones that are. `QueueName.OR` gives one node, charged by core-seconds with no flat fee:
+notebook stop and list the ones that are. `QueueName.OR` gives one node, charged by core-seconds with no flat fee; OR allows 16 cores per job:
 
 ```python
 CLUSTER_NAME = None
 QUEUE_NAME = QueueName.OR
-PPN = 40
+PPN = 16
 TIME_LIMIT = "12:00:00"
 ```
 
