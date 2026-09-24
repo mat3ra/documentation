@@ -15,6 +15,7 @@ Below is the list of currently supported endpoints with links to the detailed do
 - [Workflow](https://api-explorer.mat3ra.com/?url=https://platform.mat3ra.com/api/2018-10-01/swagger.json/#!/Workflow/get_workflows)
 - [Job](https://api-explorer.mat3ra.com/?url=https://platform.mat3ra.com/api/2018-10-01/swagger.json/#!/Job/get_jobs)
 - [Project](https://api-explorer.mat3ra.com/?url=https://platform.mat3ra.com/api/2018-10-01/swagger.json/#!/Project/get_projects)
+- [File](https://api-explorer.mat3ra.com/?url=https://platform.mat3ra.com/api/2018-10-01/swagger.json/#!/File/post_files)
 - [Bank Material](https://api-explorer.mat3ra.com/?url=https://platform.mat3ra.com/api/2018-10-01/swagger.json/#!/BankMaterial/get_bank_materials)
 - [Bank Workflow](https://api-explorer.mat3ra.com/?url=https://platform.mat3ra.com/api/2018-10-01/swagger.json/#!/BankWorkflow/get_bank_workflows)
 - [Property](https://api-explorer.mat3ra.com/?url=https://platform.mat3ra.com/api/2018-10-01/swagger.json/#!/Property/get_refined_properties) (RefinedProperty)
