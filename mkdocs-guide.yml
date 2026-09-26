@@ -198,6 +198,7 @@ nav:
             - Vacancy Defect in h-BN:                                           tutorials/materials/specific/defect-point-vacancy-boron-nitride.md
             - Vacancy Defect in h-BN (Formation Energy):                        tutorials/materials/specific/defect-point-vacancy-boron-nitride-simulation.md
             - Interstitial Defect in SnO:                                       tutorials/materials/specific/defect-point-interstitial-tin-oxide.md
+            - Interstitial Defect in SnO (Formation Energy and DOS):            tutorials/materials/specific/defect-point-interstitial-tin-oxide-simulation.md
             - Island Surface Defect in TiN:                                     tutorials/materials/specific/defect-surface-island-titanium-nitride.md
             - Step Surface Defect on Pt(111):                                   tutorials/materials/specific/defect-surface-step-platinum.md
             - Twisted Bilayer h-BN Nanoribbons:                                 tutorials/materials/specific/interface-bilayer-twisted-nanoribbons-boron-nitride.md

@@ -118,7 +118,8 @@ After creating the defect, examine the structure to verify:
 
 ## 5. Save Defect Structure
 
-The defect structure will be automatically passed back to Materials Designer where you can:
+The notebook saves two materials, `SnO 2x2x2 supercell` and `SnO 2x2x2 V_Sn-O_i pair (Togo Fig 4a)`.
+Each structure is automatically passed back to Materials Designer where you can:
 
 1. Save it in your workspace
 2. Export it in various formats
