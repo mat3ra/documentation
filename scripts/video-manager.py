@@ -3,6 +3,7 @@
 import os
 import re
 import json
+import subprocess
 import googleapiclient.discovery
 
 from pathlib import Path
@@ -35,7 +36,7 @@ VOICE_NAME = LANGUAGE_CODE + '-' + 'Studio-Q'
 # en-US-Studio-O (female)
 
 # instructs ffmpeg to get video from first input (-map 0:v) and audio from second one (-map 1:a) and combine them.
-FFMPEG_COMMAND_TMPL = "ffmpeg -y -v 0 -i {} -i {} -map 0:v -map 1:a -vcodec copy {}"
+FFMPEG_COMMAND_ARGS_TMPL = ["ffmpeg", "-y", "-v", "0", "-i", "{}", "-i", "{}", "-map", "0:v", "-map", "1:a", "-vcodec", "copy", "{}"]
 
 
 def get_oauth_credentials():
@@ -301,4 +302,5 @@ if __name__ == '__main__':
         if args.output:
             if not args.file:
                 exit("--file is required when --output is set")
-            os.system(FFMPEG_COMMAND_TMPL.format(args.file, args.audio, args.output))
+            ffmpeg_args = [arg.format(args.file, args.audio, args.output) for arg in FFMPEG_COMMAND_ARGS_TMPL]
+            subprocess.run(ffmpeg_args, check=True)
