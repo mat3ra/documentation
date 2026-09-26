@@ -32,6 +32,10 @@ This tutorial builds upon the [Vacancy Point Defect in h-BN](defect-point-vacanc
 tutorial, where the defective structure is created. Here, the formation energy is calculated using
 Quantum ESPRESSO and compared with QPOD's value for the same defect.
 
+The figure below shows the boron vacancy in h-BN from the manuscript (Figure 6):
+
+![Vacancy in h-BN](../../../images/tutorials/materials/defects/defect_point_vacancy_boron_nitride/0-figure-from-manuscript.webp "Vacancy in h-BN")
+
 ### 1.1. What is being reproduced
 
 QPOD's [entry `1BN-1.2d.v_B.0.1`](https://qpod.fysik.dtu.dk/material/1BN-1.2d.v_B.0.1) gives the
