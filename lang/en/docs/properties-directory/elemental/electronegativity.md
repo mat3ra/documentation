@@ -6,11 +6,11 @@ Electronegativity of an element is a chemical property that describes the tenden
 
 The most common way of quantifying the Electronegativity is that due to Pauling. This gives a dimensionless quantity, on a relative scale running from around 0.7 to 3.98 (hydrogen = 2.20). This is known as an electronegativity in Pauling units, which is what we use.
 
-Values for the Pauling Electronegativity can be found tabulated for all elements in the [Periodic Table](../../properties/data/periodic-table.md).
+Values for the Pauling Electronegativity can be found tabulated for all elements in the [Periodic Table]({{ data_url }}/properties/data/periodic-table/).
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#electronegativity).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#electronegativity).
 
 ## Links
 

@@ -1,42 +1,71 @@
-# Mat3ra Documentation
+# Documentation
 
-[**Mat3ra**](https://platform.mat3ra.com) is a cloud-native accessible and collaborative platform for materials modeling from the atomic scale. Our platform makes it easier for scientists, engineers, and researchers to **design new materials** and **predict their properties** using *first-principles* approaches and *AI/ML* techniques. 
-
-First-principles approach does not require any knowledge of experimental observations, instead solely takes into account the atomistic description of material (e.g., constituent atoms, crystal structure, lattice constant, etc.) to compute desired properties thanks to [Density Functional Theory](https://en.wikipedia.org/wiki/Density_functional_theory){:target='_blank'} and its numerical implementations. When enough data is present, the AI/ML techniques can be applied to discover trends and accelerate predictions. Our platform also helps users collaborate, share and gather obtained knowledge with others. 
-
-The present documentation explains how the platform works in detail.
+Mat3ra.com is an online platform for digital materials R&D. This documentation explains the main concepts and how to use the platform.
 
 
-## Quick start
+## Browse by Section
 
-You can skip straight to our tutorial summarizing [first steps](getting-started/run-first-simulation/web-interface.md). There you will learn how to set up and run [density functional theory](models-directory/dft/overview.md) calculation to obtain [electronic band structure](properties-directory/non-scalar/bandstructure.md) of silicon, a semiconducting material widely used in making electronic chips.
+<div class="section-cards" markdown>
 
+<a href="getting-started/first-steps/" class="grid-card">
+<strong>Getting Started</strong>
+<span>New to the platform? Start here for a quick onboarding walkthrough, key concepts, and useful links.</span>
+</a>
 
-## Searching
+<a href="/guide/" class="grid-card">
+<strong>Tutorials</strong>
+<span>Step-by-step tutorials for DFT, ML, materials construction, and simulation workflows.</span>
+</a>
 
-If you are looking for a specific topic of interest, please use the search box on top to quickly locate relevant pages.
+<a href="/interface/" class="grid-card">
+<strong>User Interface</strong>
+<span>Interface components, entity management, designer tools, and platform actions reference.</span>
+</a>
 
-The [Links](#links) section below lists resources containing more in-depth explanations about what we are building and why[^1] and example case studies[^2].
+<a href="/command-line/" class="grid-card">
+<strong>Command Line</strong>
+<span>CLI environment, batch jobs, and remote connection methods.</span>
+</a>
 
+<a href="/reference/" class="grid-card">
+<strong>Concepts & Reference</strong>
+<span>In-depth explanations of models, methods, properties, software directory, and the science behind the platform.</span>
+</a>
 
-## Contents
+<a href="/resources/" class="grid-card">
+<strong>Resources / Infrastructure</strong>
+<span>Compute clusters, storage systems, queues, quotas, and resource management.</span>
+</a>
 
-The navigation bar on the left serves as the table of contents for the whole documentation while the table of contents on the right lists content headers under the current page. You may click on any top-level items on the left sidebar to expand the corresponding section. The [content highlights page](getting-started/content-highlights.md) has a brief overview of various features available in Mat3ra platform and links to them.
+<a href="/developers/" class="grid-card">
+<strong>Software Developers</strong>
+<span>REST API reference, authentication, endpoints, and contribution guides.</span>
+</a>
+
+<a href="/standards/" class="grid-card">
+<strong>Data Standards</strong>
+<span>JSON schemas, ESSE data convention, and structured data representations.</span>
+</a>
+
+</div>
+
+## Quick Links
+
+- **[Getting Started](getting-started/first-steps.md)** — content highlights, key concepts, terminology
+- **[Running First Simulations (Web)](getting-started/run-first-simulation/web-interface.md)** — new-user onboarding via the web interface
+- **[Running First Simulations (CLI)](getting-started/run-first-simulation/cli-job.md)** — new-user onboarding via the command line
+- **[Pricing](pricing/service-levels.md)** — service levels and storage plans
+- **[FAQ](other/faq.md)** — frequently asked questions
+- **[Supported Software](software-directory/overview.md)** — Quantum ESPRESSO, VASP, LAMMPS, CP2K, Python, and more
+- **[Properties Directory](properties-directory/overview.md)** — band structure, band gaps, phonons, surface energy, and more
+- **[REST API](rest-api/overview.md)** — programmatic access to the platform
+- **[Community Programs](other/community-programs.md)** — academic and research partnerships
 
 
 ## Support
 
-We reply to support requests within 24 hours. Our team can be contacted during working hours Pacific Time through:
+See [Help & Support](other/support.md) for ways to get assistance.
 
-- Email: <a href="mailto:support@mat3ra.com" target="_blank">support@mat3ra.com</a>
-- Phone: +1 (510) 473-7770
-- Via web widget: click **Support** button at the bottom of our <a href="https://platform.mat3ra.com" target="_blank">web application</a>.
-
-!!! tip "Let us hear your feedback"
-    In case you find that something is missing or if you still have questions after reading this documentation, please <a class="text-muted" href="mailto:support@mat3ra.com" target="_blank">contact us</a>.
-
-
-## Links
-
-[^1]: [What is materials discovery cloud, article](https://www.linkedin.com/pulse/how-we-design-world-tomorrow-what-materials-discovery-timur-bazhirov)
-[^2]: [Mat3ra: case studies](https://mat3ra.com/case-studies)
+!!! tip "Help improve the documentation"
+    If something is missing or unclear, please open the [Help & Support](
+    other/support.md) page and get in touch.

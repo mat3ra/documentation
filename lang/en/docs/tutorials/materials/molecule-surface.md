@@ -1,10 +1,11 @@
-# Create Molecule on a Surface
+# Create a Molecule on a Surface
 
-In this tutorial, the user will learn about how the [Material Designer Interface](../../materials-designer/overview.md) of our platform can be used to create a geometry for modeling a **surface chemical reaction**, whereby a **molecule interacts with a surface**, and undergoes for example a chemical **adsorption** process [^1].
+This tutorial demonstrates how the [Material Designer Interface]({{ interface_url }}/materials-designer/overview/) can be used to create a geometry for modeling a **surface chemical reaction**, where a **molecule interacts with a surface** and undergoes, for example, a chemical **adsorption** process [^1].
 
-We consider the example of a **benzene molecule** adsorbed on a **gold (Au) (211) surface** throughout the present tutorial. The chemical structure of the benzene molecule is given in the expandable section below for reference purposes, in the POSCAR input data format.
+The example system is a **benzene molecule** adsorbed on a **gold (Au) (211) surface**. The chemical structure of the benzene molecule is given in the expandable section below in the POSCAR input data format.
 
-## Structures
+
+## 1. Reference structures
 
 <details markdown="1">
   <summary>
@@ -35,84 +36,95 @@ Direct
 
 </details>
 
-Alternatively, the above benzene molecular structure can also be retrieved from the **Pubchem** public repository [^2], and then converted to the POSCAR format for uploading on our platform through any online converter, such as the **OpenBabel** Open Source Chemistry Toolbox [^3], which allows to convert between nearly all the chemical data formats. 
+Alternatively, the benzene molecular structure can be retrieved from the **Pubchem** public repository [^2] and converted to POSCAR format using any online converter such as the **OpenBabel** Open Source Chemistry Toolbox [^3].
 
-## Create Benzene Molecule Entry in Materials Collection
 
-The chemical structure for Benzene can readily be [imported](../../materials/actions/copy-bank.md) from the [Materials Bank](../../materials/bank.md) into the account-owned [collection](../../accounts/collections.md), if it is not already present there. 
+## 2. Create the benzene molecule entry in the materials collection
 
-Alternatively, the above-mentioned POSCAR structure can be manually [uploaded](../../materials/actions/upload.md) by the user into the materials collection, after saving its data contents into a new file on the local disk.
- 
-## Open Materials Designer 
+The chemical structure for benzene can be [imported]({{ interface_url }}/materials/actions/copy-bank/) from the [Materials Bank]({{ reference_url }}/materials/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/), if not already present.
 
-We start with [opening](../../entities-general/actions/create.md) an instance of the [Materials Designer Interface](../../materials-designer/overview.md) for creating and designing new [Materials structures](../../materials/overview.md) on our platform. 
+Alternatively, the above-mentioned POSCAR structure can be manually [uploaded]({{ interface_url }}/materials/actions/upload/) into the materials collection after saving its data contents to a new file on the local disk.
 
-## Create a Gold Surface 
 
-In order to create a gold surface, the user should first [import](../../materials-designer/header-menu/input-output/import.md) a sample crystalline structure of pure gold into the current Materials Designer session, from the account-owned [collection](../../accounts/collections.md) of materials. 
+## 3. Open Materials Designer
 
-The instructions contained [in this page](../../materials-designer/header-menu/advanced/surface-slab.md) should then be followed in order to create a surface of Gold, with normal vector oriented along the [211] axis, using our surface creator in Materials Designer, starting from the original gold crystalline sample. 
+[Open]({{ interface_url }}/entities-general/actions/create/) an instance of the [Materials Designer Interface]({{ interface_url }}/materials-designer/overview/).
+
+
+## 4. Create the gold surface
+
+In order to create a gold surface, first [import]({{ interface_url }}/materials-designer/header-menu/input-output/import/) a sample crystalline structure of pure gold into the current Materials Designer session from the account-owned [collection]({{ reference_url }}/accounts/collections/).
+
+Follow the instructions [in this page]({{ interface_url }}/materials-designer/header-menu/advanced/surface-slab/) to create a surface of gold with normal vector oriented along the [211] axis.
 
 !!!warning "Order of structures is important"
-    The gold surface has to be created first in order for it to appear first in the list of materials shown on the [left-had items list sidebar](../../materials-designer/sidebar-items.md) of the Materials Designer interface, so that its cell is used when later combining the two materials together.
+    The gold surface must be created first so that it appears first in the [left-hand sidebar]({{ interface_url }}/materials-designer/sidebar-items/), ensuring its cell is used when later combining the two materials together.
 
-## Import the Benzene Molecule into Materials Designer
 
-The Benzene molecule should now be [imported](../../materials-designer/header-menu/input-output/import.md) into the current Materials Designer session, from the account-owned [collection](../../accounts/collections.md) of materials. 
+## 5. Import the benzene molecule into Materials Designer
 
-Once imported into Materials Designer, the benzene molecule will appear as a new distinct entry item within the list of structures shown on the [left-had items list sidebar](../../materials-designer/sidebar-items.md) of the Designer interface, besides the previously-generated gold surface.
- 
-Care should be taken by the user to [remove](../../materials-designer/sidebar-items.md#delete-item) any other material structure entry listed in the sidebar, besides benzene and the gold surface being considered here, that may have been loaded by [default](../../materials/default.md) initially at the moment of the opening of Materials Designer.
+The benzene molecule should be [imported]({{ interface_url }}/materials-designer/header-menu/input-output/import/) into the current Materials Designer session from the account-owned [collection]({{ reference_url }}/accounts/collections/).
 
-## Open Multi-Materials 3D Editor
+Once imported, the benzene molecule appears as a distinct entry in the [left-hand sidebar]({{ interface_url }}/materials-designer/sidebar-items/), alongside the previously-generated gold surface.
 
-After both the benzene molecule and the gold surface have been created as two separate structural items in the current session of Materials Designer, the user should now open an instance of the [Multi-Materials 3D Editor](../../materials-designer/3d-editor/edit.md) via the ["View" Menu](../../materials-designer/header-menu/view.md#multi-material-3d-editor), located within the [header bar](../../materials-designer/header-menu/header-menu-intro.md) of the Materials Deigner Interface.
+Any other material structure entries listed in the sidebar — aside from benzene and the gold surface — should be [removed]({{ interface_url }}/materials-designer/sidebar-items/#delete-item).
 
-## Combine the Two Materials
 
-The Multi-Materials 3D Editor allows the two materials under investigation, the benzene molecule and the gold surface, to be **combined** together into a new unified materials entity. 
+## 6. Open the Multi-Materials 3D Editor
 
-Care should be taken by the user to place the molecule on top of the surface in as "symmetrical" a way as possible, for example by positioning the center of the benzene ring on the central portion of the surface. Relocation of the benzene molecule position can be done by following the instructions contained [in this page](../../materials-designer/3d-editor/editor-actions/move-rotate-atoms.md), after selecting the benzene atom components under the ["Scene" sidebar list](../../materials-designer/3d-editor/edit.md#3.-scene) of the 3D Editor interface.
+After both the benzene molecule and the gold surface are listed as separate structural items, open the [Multi-Materials 3D Editor]({{ interface_url }}/materials-designer/3d-editor/edit/) via the [View Menu]({{ interface_url }}/materials-designer/header-menu/view/#multi-material-3d-editor).
 
-Since in this example the plane of the 2D benzene molecule and the gold (211) surface are already parallel to each other, a simple [translation](../../materials-designer/3d-editor/editor-actions/move-rotate-atoms.md#translation) of the benzene atoms on top of the surface should suffice.
 
-## Exit Multi-Materials 3D Editor
+## 7. Combine the two materials
 
-After the correct desired positioning of the benzene molecule on top of the gold surface, the user should now [exit](../../materials-designer/3d-editor/edit.md#exit-the-editor) the Multi-Materials 3D Editor, and return to the original Materials Designer interface.
+The Multi-Materials 3D Editor allows the two materials to be **combined** into a new unified entity.
 
-The user will notice that a new material entry, called "New Material" by default, has now been created automatically and is listed within the [left-had items list sidebar](../../materials-designer/sidebar-items.md) of the Materials Designer interface. It contains the combined benzene-gold surface crystallographic structure, as a new single material entity.
+The molecule should be positioned on top of the surface in as "symmetrical" a way as possible, for example by placing the center of the benzene ring over the central portion of the surface. Relocation of the benzene molecule position can be done following the instructions [in this page]({{ interface_url }}/materials-designer/3d-editor/editor-actions/move-rotate-atoms/), after selecting the benzene atom components under the [Scene sidebar list]({{ interface_url }}/materials-designer/3d-editor/edit/#3.-scene).
+
+Since in this example the plane of the 2D benzene molecule and the gold (211) surface are already parallel, a [translation]({{ interface_url }}/materials-designer/3d-editor/editor-actions/move-rotate-atoms/#translation) of the benzene atoms onto the surface is sufficient.
+
+
+## 8. Exit the Multi-Materials 3D Editor
+
+After correct positioning of the benzene molecule on top of the gold surface, [exit]({{ interface_url }}/materials-designer/3d-editor/edit/#exit-the-editor) the Multi-Materials 3D Editor.
+
+A new material entry, called "New Material" by default, is created and listed in the [left-hand sidebar]({{ interface_url }}/materials-designer/sidebar-items/). It contains the combined benzene-gold surface crystallographic structure as a single material entity.
 
 !!!tip "Toggling of Orthographic Camera"
-    The user is recommended to toggle the use of the [Orthographic camera](../../materials-designer/3d-editor/view.md#toggle-orthographic-camera) functionality, accessible via the [3D Editor interface](../../materials-designer/3d-editor.md) of Materials Designer, in order to verify the correct alignment and centrality of the benzene molecule over the surface.
+    Toggling the [Orthographic camera]({{ interface_url }}/materials-designer/3d-editor/view/#toggle-orthographic-camera) via the [3D Editor]({{ interface_url }}/materials-designer/3d-editor/) helps verify the correct alignment and centrality of the benzene molecule over the surface.
 
-This new entry should first be [renamed](../../materials-designer/sidebar-items.md#edit-name-of-item) to a more memorable form, and should finally be [saved](../../materials-designer/header-menu/input-output/save.md) via the ["Input/Output" Menu](../../materials-designer/header-menu/input-output.md) located at the top-left corner into the account-owned materials [collection](../../accounts/collections.md), as a new material structure entry which is distinct from both the original isolated benzene molecule and gold structure.
+This new entry should be [renamed]({{ interface_url }}/materials-designer/sidebar-items/#edit-name-of-item) to a more memorable form and [saved]({{ interface_url }}/materials-designer/header-menu/input-output/save/) into the account-owned materials [collection]({{ reference_url }}/accounts/collections/).
 
-## Resulting Material
+
+## 9. View the resulting material
 
 An animation of the final combined benzene molecule-gold surface structure can be viewed below.
 
 <img data-gifffer="/images/tutorials/molecule-surface-sample.gif" />
 
-## Run Further Analysis
 
-The user is now free to use the newly generated benzene-gold surface system, in order to perform its further analysis, such as studying the adsorption energy.
+## 10. Run further analysis
 
-The [Nudged Elastic Band (NEB)](../../models/auxiliary-concepts/nudged-elastic-band.md) method can be used for reaction energy profile calculations. We offer two alternative approaches for implementing the NEB method on our platform, based on the use of the [VASP](../../software-directory/modeling/vasp/overview.md) or [Quantum ESPRESSO](../../software-directory/modeling/quantum-espresso/overview.md) modeling engines, which are narrated in two separate tutorials accessible [here](../dft/chemical/reaction-profile-vasp.md) and [here](../dft/chemical/reaction-profile-qe.md) respectively.
+The newly generated benzene-gold surface system can be used for further analysis, such as studying the adsorption energy.
 
-## Animation
+The [Nudged Elastic Band (NEB)]({{ reference_url }}/models/auxiliary-concepts/nudged-elastic-band/) method can be used for reaction energy profile calculations. Two alternative approaches for implementing NEB are available, based on [VASP](../dft/chemical/reaction-profile-vasp.md) and [Quantum ESPRESSO](../dft/chemical/reaction-profile-qe.md) respectively.
 
-We demonstrate the above-mentioned steps which lead to the creation of a combined benzene molecule/gold surface crystallographic system, made possible via the functionalities of the [Materials Designer Interface](../../materials-designer/overview.md) of our platform, in the following animation. 
 
-In this example, we consider a 3x3x3 slab supercell of the primitive unit cell of gold as a surface approximation (larger supercell dimensions should be envisaged for a more realistic surface representation). We also place the benzene molecule over the gold surface such that the molecule-surface distance is approximately 3.6 Angstroms, as measured by the difference in the z coordinates of the positions of the benzene atoms and gold surface atoms.
+## 11. Video walkthrough
+
+The animation below demonstrates the creation of a combined benzene molecule/gold surface crystallographic system using the [Materials Designer Interface]({{ interface_url }}/materials-designer/overview/).
+
+In this example, a 3×3×3 slab supercell of the primitive unit cell of gold is used as a surface approximation (larger supercell dimensions should be used for a more realistic surface representation). The benzene molecule is placed over the gold surface at a molecule-surface distance of approximately 3.6 Å, as measured by the difference in z coordinates of the benzene and gold surface atoms.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/aCjapKJ0y9c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-## Links
 
-[^1]: [Wikipedia Adsorption, Website](https://en.wikipedia.org/wiki/Adsorption)
+## 12. Links
 
-[^2]: [Pubchem Benzene Datasheet, Official Website](https://pubchem.ncbi.nlm.nih.gov/compound/241)
+[^1]: [Wikipedia Adsorption](https://en.wikipedia.org/wiki/Adsorption)
 
-[^3]: [OpenBabel Web Interface, ChemInfo Website](http://www.cheminfo.org/Chemistry/Cheminformatics/FormatConverter/index.html)
+[^2]: [Pubchem Benzene Datasheet](https://pubchem.ncbi.nlm.nih.gov/compound/241)
+
+[^3]: [OpenBabel Web Interface, ChemInfo](http://www.cheminfo.org/Chemistry/Cheminformatics/FormatConverter/index.html)

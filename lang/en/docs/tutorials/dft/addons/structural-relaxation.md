@@ -1,63 +1,66 @@
-# Perform Structural Relaxation 
+# Perform Structural Relaxation
 
-This tutorial explains how to run a [structural relaxation](../../../workflows/addons/structural-relaxation.md) using [Density Functional Theory](../../../models-directory/dft/overview.md). Variable-cell relaxation consist in simultaneously minimizing the inter-atomic forces, whilst also optimizing the overall lattice geometry by minimizing its corresponding potential energy together with the components of its internal [stress tensor](../../../properties-directory/non-scalar/stress-tensor.md). 
+This tutorial explains how to run a [structural relaxation]({{ reference_url }}/workflows/addons/structural-relaxation/) using [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/) (DFT). Variable-cell relaxation simultaneously minimizes inter-atomic forces while optimizing the lattice geometry by minimizing its potential energy and [stress tensor]({{ reference_url }}/properties-directory/non-scalar/stress-tensor/) components.
 
-## Accessing the Functionality
+Relaxation can be run either as a stand-alone [workflow]({{ reference_url }}/workflows/overview/) or prepended as a [Workflow Add-on]({{ reference_url }}/workflows/addons/overview/) to another [property calculation]({{ reference_url }}/properties/overview/).
 
-Relaxation can be run either as a stand-alone [workflow](../../../workflows/overview.md), or prepended as a [Workflow Add-on](../../../workflows/addons/overview.md) to another [property calculation](../../../properties/overview.md).
+The example system is crystalline silicon distorted from its equilibrium cubic-diamond crystal structure, using [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) as the simulation engine for a [Total Energy]({{ reference_url }}/properties-directory/scalar/total-energy/) computation. Relaxation prior to a property calculation is a critical step for ensuring accurate final results.
 
-## Summary
+!!!info "General applicability"
+    Despite referencing [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/), the instructions here apply to all [modeling engines]({{ reference_url }}/software-directory/overview/#modeling-applications) supported on the platform.
 
-In the present tutorial, we study the crystalline silicon distorted from its equilibrium cubic-diamond crystal structure and make use of the [VASP](../../../software-directory/modeling/vasp/overview.md) simulation engine. We will investigate how to optimize the crystal structure geometry and atomic positions in the context of a [Total Energy](../../../properties-directory/scalar/total-energy.md) computation. Relaxation prior to a property calculation is generally-speaking a critical precaution to take in order to ensure an accurate final result in the material property being sought.
+!!!note "VASP version"
+    This tutorial applies to VASP versions 5.3.5, 5.4.4, and later.
 
-!!!info "Generality of tutorial instructions"
-    Despite making explicit references to [VASP](../../../software-directory/modeling/vasp/overview.md), the instructions presented herein are of general applicability to all [modeling engines](../../../software-directory/overview.md#modeling-applications) supported on our platform.
-    
-!!!note "VASP version considered in this tutorial"
-    The present tutorial is written for VASP at versions 5.3.5 or 5.4.4.
 
-## Create Job
+## 1. Create the job
 
-Silicon in its cubic-diamond crystal structure is the [default material](../../../materials/default.md) shown on [new job creation](../../../jobs-designer/overview.md), unless this default was [changed](../../../entities-general/actions/set-default.md) by the user following [account](../../../accounts/overview.md) creation. If silicon is still the default choice, it will be automatically loaded at the moment of the [opening](../../../jobs/actions/create.md) of [Job Designer](../../../jobs-designer/overview.md).
+Silicon in its cubic-diamond crystal structure is the [default material]({{ reference_url }}/materials/default/) loaded on [new job creation]({{ interface_url }}/jobs-designer/overview/), unless the default was [changed]({{ interface_url }}/entities-general/actions/set-default/) after [account]({{ reference_url }}/accounts/overview/) creation.
 
-## Choose Workflow
 
-[Workflows](../../../workflows/overview.md) for calculating the Total Energy can be [imported](../../../workflows/actions/copy-bank.md) from the [Workflows Bank](../../../workflows/bank.md) into the account-owned [collection](../../../accounts/collections.md). This workflow can later be [selected](../../../jobs-designer/actions-header-menu/select-workflow.md) and added to the [Job being created](../../../jobs-designer/workflow-tab.md).
+## 2. Select the workflow and add the relaxation add-on
 
-Thereafter, in order to add structural relaxation as an [Add-on](../../../workflows/addons/overview.md) to the total energy calculation workflow, the user should [click the appropriate button](../../../workflow-designer/header-menu.md#inserting-add-ons) within the [Header Menu](../../../workflow-designer/header-menu.md) of [Workflow Designer](../../../workflow-designer/overview.md). The corresponding "Relaxation" option under this button should thus be chosen. 
+[Workflows]({{ reference_url }}/workflows/overview/) for the Total Energy calculation can be [imported]({{ interface_url }}/workflows/actions/copy-bank/) from the [Workflows Bank]({{ reference_url }}/workflows/bank/) into the account-owned [collection]({{ reference_url }}/accounts/collections/). The workflow can then be [selected]({{ interface_url }}/jobs-designer/actions-header-menu/select-workflow/) and added to the [job being created]({{ interface_url }}/jobs-designer/workflow-tab/).
 
-At the end of the insertion of the relaxation Add-on to the Total Energy Workflow, the user will notice that an additional "Variable-cell Relaxation" [Subworkflow](../../../workflows/components/subworkflows.md) has been prepended to the overall [computation order flowchart](../../../workflow-designer/sidebar.md) exhibited on the left-hand side of the [Workflow Designer Interface](../../../workflow-designer/overview.md).
+In order to add structural relaxation as an [Add-on]({{ reference_url }}/workflows/addons/overview/), [click the appropriate button]({{ interface_url }}/workflow-designer/header-menu/#inserting-add-ons) within the [Header Menu]({{ interface_url }}/workflow-designer/header-menu/) of [Workflow Designer]({{ interface_url }}/workflow-designer/overview/) and select "Relaxation".
 
-## Examine Unit Input Files
+After insertion, an additional "Variable-cell Relaxation" [Subworkflow]({{ reference_url }}/workflows/components/subworkflows/) is prepended to the [computation order flowchart]({{ interface_url }}/workflow-designer/sidebar/) on the left side of the [Workflow Designer]({{ interface_url }}/workflow-designer/overview/).
 
-The user can now try to open the main "vc-relax" [Execution Unit](../../../workflows/components/units.md) within the "Variable-cell Relaxation" [Subworkflow](../../../workflows/components/subworkflows.md) by clicking it. The contents of the input files used for the structural relaxation study can in this way be inspected, towards the bottom of the [unit editor interface](../../../workflow-designer/unit-editor.md#unit-input-templates). 
 
-The type of relaxation calculation performed is always by default a variable-cell including the relaxation of the [atomic positions](../../../properties-directory/structural/basis.md) as well as of the [unit cell shape and size](../../../properties-directory/structural/lattice.md).
+## 3. Examine the unit input files
 
-Please note that the second total energy subworkflow reads the structural information output by the preliminary relaxation, instead of the parameters in its own input.
- 
-!!!note "Specific example for VASP"
-    The POSCAR file employed in the ensuing Total Energy subworkflow computation is just a placeholder, and during the course of its execution will be overwritten by a CONTCAR file obtained from the results of the relaxation. This behavior is triggered by the "prepare_restart" post-processor.
+Open the main "vc-relax" [Execution Unit]({{ reference_url }}/workflows/components/units/) within the "Variable-cell Relaxation" [Subworkflow]({{ reference_url }}/workflows/components/subworkflows/) by clicking it. The input files can be inspected towards the bottom of the [unit editor]({{ interface_url }}/workflow-designer/unit-editor/#unit-input-templates).
 
-## Submit Job
+The relaxation type is variable-cell by default, including both [atomic positions]({{ reference_url }}/properties-directory/structural/basis/) and [unit cell shape and size]({{ reference_url }}/properties-directory/structural/lattice/).
 
-Before [submitting](../../../jobs/actions/run.md) the [Job](../../../jobs/overview.md), the user should click the ["Compute" tab](../../../jobs-designer/compute-tab.md) of [Job Designer](../../../jobs-designer/overview.md) and inspect the [compute parameters](../../../infrastructure/compute/parameters.md) included therein. Silicon is a small structure, so four CPU cores and one minute of calculation runtime should be sufficient.
+The second total energy subworkflow reads the structural information output by the preliminary relaxation, rather than the parameters in its own input.
 
-## Examine Results
+!!!note "VASP-specific behavior"
+    The POSCAR file in the ensuing Total Energy subworkflow is a placeholder that is overwritten during execution by the CONTCAR file from the relaxation results. This behavior is triggered by the "prepare_restart" post-processor.
 
-Once the Job execution is finished, switching to the [Results tab](../../../jobs/ui/results-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md) will show the results of the computation, including the final optimized value of the total energy as well as additional information about each execution unit.
 
-## Optimized Structural Parameters
+## 4. Submit the job
 
-Finally, the user can also browse the actual output and input files that are part of the calculation under the [Files tab](../../../jobs/ui/files-tab.md) of [Job Viewer](../../../jobs/ui/viewer.md). In order to determine the structure geometry for which relaxation was achieved in the end, the POSCAR file can be [downloaded and inspected](../../../data-in-objectstorage/actions/download.md). 
+Before [submitting]({{ interface_url }}/jobs/actions/run/) the [job]({{ reference_url }}/jobs/overview/), review the [Compute tab]({{ interface_url }}/jobs-designer/compute-tab/) of [Job Designer]({{ interface_url }}/jobs-designer/overview/) to verify the [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/). Silicon is a small structure, so 4 CPUs and 1 minute of runtime are sufficient.
 
-The structural data contained in this file can readily be visualized graphically under the [Materials Viewer](../../../materials/ui/viewer.md) instance contained within the [Results tab](../../../jobs/ui/results-tab.md).
 
-## Animation
+## 5. Examine the results
 
-We demonstrate the above-mentioned steps involved in the creation and execution of a [structural relaxation](../../../workflows/addons/structural-relaxation.md) study on a [Total Energy](../../../properties-directory/scalar/total-energy.md) workflow computation under the following animation, where we make use of the [Quantum ESPRESSO](../../../software-directory/modeling/quantum-espresso/overview.md) simulation engine. The starting point is a crystal structure of silicon which has been slightly distorted from its equilibrium cubic-diamond lattice parameters and atomic positions.
+Once the job completes, the [Results tab]({{ interface_url }}/jobs/ui/results-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/) displays the optimized total energy and additional information about each execution unit.
 
-As expected, the components of both the atomic forces and [stress tensor](../../../properties-directory/non-scalar/stress-tensor.md) shown at the end of the structural relaxation computation, under the interface of [Results tab](../../../jobs/ui/results-tab.md), have low values in proximity to zero, signalling successful relaxation and geometry optimization.
+
+## 6. Inspect the optimized structure
+
+The output and input files are available under the [Files tab]({{ interface_url }}/jobs/ui/files-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/). The POSCAR file can be [downloaded and inspected]({{ interface_url }}/data-in-objectstorage/actions/download/) to determine the relaxed geometry.
+
+The structural data can also be visualized graphically in the [Materials Viewer]({{ interface_url }}/materials/ui/viewer/) within the [Results tab]({{ interface_url }}/jobs/ui/results-tab/).
+
+
+## 7. Video walkthrough
+
+The animation below demonstrates the creation and execution of a [structural relaxation]({{ reference_url }}/workflows/addons/structural-relaxation/) study on a [Total Energy]({{ reference_url }}/properties-directory/scalar/total-energy/) workflow using [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/). The starting point is a silicon crystal slightly distorted from its equilibrium lattice parameters and atomic positions.
+
+As expected, the force and [stress tensor]({{ reference_url }}/properties-directory/non-scalar/stress-tensor/) components shown at the end of the relaxation approach zero, indicating successful geometry optimization.
 
 <div class="video-wrapper">
 <iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/vHmId3iU_Ik" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

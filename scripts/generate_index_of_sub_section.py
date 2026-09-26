@@ -123,7 +123,6 @@ if __name__ == "__main__":
 # - General Functionality
 #     - [Jupyter Notebook](other/jupyter.md)
 #     - [Restart from Previous Job](other/restart-job.md)
-#     - [Upload External Job Data](other/external-upload.md)
 #     - [TensorFlow (GPU)](general-functionality/tensorflow-gpu.md)
 # - Materials
 #     - [Overview](materials/overview.md)

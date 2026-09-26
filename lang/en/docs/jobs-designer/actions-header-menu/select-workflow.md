@@ -1,8 +1,8 @@
 # Select Workflow
 
-[Workflows](../../workflows/overview.md) define the computational tasks to be executed and applied to the Material(s) [added](select-materials.md) to the Job being currently [designed](../overview.md).
+[Workflows]({{ reference_url }}/workflows/overview/) define the computational tasks to be executed and applied to the Material(s) [added](select-materials.md) to the Job being currently [designed](../overview.md).
 
-After opening the drop-down menu <i class="zmdi zmdi-more-vert zmdi-hc-border"></i> on the right-hand side of the [main header menu](../header-menu.md), the `Select workflow` option should be chosen in order to add Workflows present in the [account-owned collection](../../accounts/collections.md) to the Job being created. 
+After opening the drop-down menu <i class="zmdi zmdi-more-vert zmdi-hc-border"></i> on the right-hand side of the [main header menu](../header-menu.md), the `Select workflow` option should be chosen in order to add Workflows present in the [account-owned collection]({{ reference_url }}/accounts/collections/) to the Job being created. 
 
 ## "Select Workflow" Dialog
 

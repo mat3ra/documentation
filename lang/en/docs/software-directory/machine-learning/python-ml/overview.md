@@ -1,13 +1,13 @@
 # Python-Based Machine Learning
 
-We provide a proof-of-concept support for [Machine Learning](../../../models-directory/machine-learning/overview.md)
+We provide a proof-of-concept support for [Machine Learning]({{ reference_url }}/models-directory/machine-learning/overview/)
 based in [Python](../../scripting/python/overview.md) and Scikit-Learn [^1].
 
 ## Accessibility
 
 This machine learning implementation is accessible via the
-[subworkflow editor interface](../../../workflow-designer/subworkflow-editor/overview.md).
-Pre-assembled ML workflows can be imported directly from the [Workflows Bank](../../../workflows/bank.md).
+[subworkflow editor interface]({{ interface_url }}/workflow-designer/subworkflow-editor/overview/).
+Pre-assembled ML workflows can be imported directly from the [Workflows Bank]({{ reference_url }}/workflows/bank/).
 
 ## Workflow Structure
 

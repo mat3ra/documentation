@@ -1,6 +1,6 @@
 # Items List Sidebar
 
-Each workflow may contain multiple **subworkflows**, which are reviewed in the corresponding [documentation page](../workflows/components/subworkflows.md). The complete workflow can be visualized as a list of items in the sidebar on the left-hand side of the Workflow Designer interface. Here, the current workflow under consideration is presented in the form of a **flowchart**, with the modules executing different operations listed sequentially in logical order. This flowchart of subworkflows initially defaults to a single entry named "Empty Subworkflow" when a new workflow is being created from scratch.
+Each workflow may contain multiple **subworkflows**, which are reviewed in the corresponding [documentation page]({{ reference_url }}/workflows/components/subworkflows/). The complete workflow can be visualized as a list of items in the sidebar on the left-hand side of the Workflow Designer interface. Here, the current workflow under consideration is presented in the form of a **flowchart**, with the modules executing different operations listed sequentially in logical order. This flowchart of subworkflows initially defaults to a single entry named "Empty Subworkflow" when a new workflow is being created from scratch.
 
 ## Selecting Active Items
 

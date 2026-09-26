@@ -1,9 +1,9 @@
 # Dropbox
 
-Dropbox is a general-utility cloud-based data **storage system** that is **mounted on all nodes** of our computational [infrastructure](../infrastructure/overview.md), and is accessible everywhere under the same filesystem path. It can therefore be used to conveniently **share** [files](files.md) everywhere across the platform, as it is often necessary when dealing with the auxiliary files required for the simulations (for example, [pseudopotentials](../methods-directory/pseudopotential/overview.md)).
+Dropbox is a general-utility cloud-based data **storage system** that is **mounted on all nodes** of our computational [infrastructure](../infrastructure/overview.md), and is accessible everywhere under the same filesystem path. It can therefore be used to conveniently **share** [files](files.md) everywhere across the platform, as it is often necessary when dealing with the auxiliary files required for the simulations (for example, [pseudopotentials]({{ reference_url }}/methods-directory/pseudopotential/overview/)).
 
 !!!warning "Warning: limited capacity"
-    Dropbox is meant for non-bulky data and has a storage capacity administratively limited to **1 Gb** per [user](../accounts/users.md).
+    Dropbox is meant for non-bulky data and has a storage capacity administratively limited to **1 Gb** per [user]({{ reference_url }}/accounts/users/).
 
 ## Implementation
 
@@ -11,7 +11,7 @@ Dropbox is implemented through the [Object Storage](overview.md), and effectivel
 
 ## User Interface
 
-Interface, its file contents can be inspected from within its [dedicated page](ui/dropbox-page.md).
+Interface, its file contents can be inspected from within its [dedicated page]({{ interface_url }}/data-in-objectstorage/ui/dropbox-page/).
 
 ## Accessible From 
 
@@ -19,9 +19,9 @@ In the table below, we list the parts of our [infrastructure](../infrastructure/
 
 | Dropbox is Accessible From |
 |------------|
-| [Web Interface](../ui/overview.md) |
-| [Remote Desktop](../remote-connection/remote-desktop.md) |
-| [Command Line Interface](../cli/overview.md) |
+| [Web Interface]({{ interface_url }}/ui/overview/) |
+| [Remote Desktop]({{ cli_url }}/remote-connection/remote-desktop/) |
+| [Command Line Interface]({{ cli_url }}/cli/overview/) |
 | [Data on Disks](../data-on-disk/overview.md) |
 
 ## Notes

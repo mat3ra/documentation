@@ -1,0 +1,39 @@
+name: Refresh the documentation agent index
+
+# The agent answers from a snapshot of this repository's content, baked into
+# its container image. When the content changes, the snapshot is stale until
+# the service is rebuilt.
+#
+# This workflow does no ingestion of its own: all agent logic lives in the
+# documentation-agent repository, which checks this repository out at the
+# commit below and builds its own index. The two pipelines stay decoupled —
+# this one only says "the documentation moved, here is where".
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "lang/en/docs/**"
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Tell the agent repository to rebuild
+        # A token with `repo` scope on mat3ra/documentation-agent. The default
+        # GITHUB_TOKEN cannot dispatch across repositories.
+        env:
+          TOKEN: ${{ secrets.DOCS_AGENT_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "DOCS_AGENT_DISPATCH_TOKEN is not set; skipping the rebuild trigger." >&2
+            exit 0
+          fi
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/mat3ra/documentation-agent/dispatches \
+            -d "{\"event_type\":\"documentation-updated\",\"client_payload\":{\"sha\":\"${GITHUB_SHA}\"}}"
+          echo "Requested a rebuild from documentation@${GITHUB_SHA}"

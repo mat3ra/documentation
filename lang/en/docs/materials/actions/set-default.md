@@ -4,4 +4,4 @@ The initial default material for a new Exabyte account is set to FCC Silicon [^1
 
 ## Links
 
-[^1]: [Example Si FCC material, Exabyte Platform Website](https://platform.mat3ra.com/exabyte-io/materials/cMK8Z5hZMo23iDb9Z)
+[^1]: [Example Si FCC material, Exabyte Platform Website](https://platform.mat3ra.com/mat3ra/materials/cMK8Z5hZMo23iDb9Z)

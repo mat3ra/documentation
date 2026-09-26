@@ -1,0 +1,221 @@
+{
+    "descriptionLinks": [
+        "Build containerized applications with GPU support: https://docs.mat3ra.com/cli/actions/add-software/"
+    ],
+    "description": "How to build containerized applications with GPU support using Apptainer.",
+    "tags": [
+        {
+            "...": "../../metadata/general.json#/tags"
+        },
+        "apptainer",
+        "container",
+        "containerization",
+        "gpu",
+        "nvidia",
+        "singularity"
+    ],
+    "title": "Mat3ra Tutorial: Build containerized applications with GPU support",
+    "youTubeCaptions": [
+        {
+            "text": "In this tutorial, <break time='0.15'/> we will learn, how we can build containerized applications with Apptainer.",
+            "startTime": "00:00:00.150",
+            "endTime": "00:00:06.000"
+        },
+        {
+            "text": "We will also discuss how you can enable GPU support for such containers.",
+            "startTime": "00:00:06.500",
+            "endTime": "00:00:15.000"
+        },
+        {
+            "text": "The detailed steps of this tutorial are available on our documentation site.",
+            "startTime": "00:00:16.000",
+            "endTime": "00:00:21.000"
+        },
+        {
+            "text": "The documentation link can be found in the description below.",
+            "startTime": "00:00:21.500",
+            "endTime": "00:00:25.000"
+        },
+        {
+            "text": "Now, let's head over to platform dot matera dot com and launch the web terminal.",
+            "startTime": "00:00:25.500",
+            "endTime": "00:00:30.000"
+        },
+        {
+            "text": "Alternatively, you can connect to the login node using SSH.",
+            "startTime": "00:00:30.500",
+            "endTime": "00:00:34.000"
+        },
+        {
+            "text": "Let's verify that the Apptainer is installed, and check its version.",
+            "startTime": "00:00:34.500",
+            "endTime": "00:00:39.000"
+        },
+        {
+            "text": "First, <break time='0.15'/> we can use the Apptainer sandbox mode to test and fine tune the build steps interactively.",
+            "startTime": "00:00:39.500",
+            "endTime": "00:00:45.000"
+        },
+        {
+            "text": "Once the build steps are finalized, we can package the sandbox folder into a final image.",
+            "startTime": "00:00:45.500",
+            "endTime": "00:00:51.000"
+        },
+        {
+            "text": "Or, <break time='0.15'/> we can create a definition file with finalized build steps and build the container from it.",
+            "startTime": "00:00:51.500",
+            "endTime": "00:00:55.000"
+        },
+        {
+            "text": "Let's call our sandbox folder GCC sandbox.",
+            "startTime": "00:00:55.500",
+            "endTime": "00:01:00.000"
+        },
+        {
+            "text": "And initialize the sandbox with Alma Linux 9 base-image from the Docker registry.",
+            "startTime": "00:01:00.500",
+            "endTime": "00:01:06.000"
+        },
+        {
+            "text": "Notice the warning messages, we first need to set appropriate file permissions for the sandbox folder to be able to delete it later.",
+            "startTime": "00:01:06.500",
+            "endTime": "00:01:13.000"
+        },
+        {
+            "text": "Next, we can enter the sandbox container in the shell mode with write permission and as root user.",
+            "startTime": "00:01:13.500",
+            "endTime": "00:01:19.000"
+        },
+        {
+            "text": "Now, we can install packages in the sandbox container as you would normally do.",
+            "startTime": "00:01:19.500",
+            "endTime": "00:01:24.000"
+        },
+        {
+            "text": "Once the installation is complete, we can exit the sandbox container.",
+            "startTime": "00:01:24.500",
+            "endTime": "00:01:28.000"
+        },
+        {
+            "text": "We can package the sandbox folder into a final image with the build command.",
+            "startTime": "00:01:28.500",
+            "endTime": "00:01:33.000"
+        },
+        {
+            "text": "Now, we can verify that the container is working by running the GCC compiler.",
+            "startTime": "00:01:33.500",
+            "endTime": "00:01:38.000"
+        },
+        {
+            "text": "There is a second way to build the container, by creating a definition file with the build steps.",
+            "startTime": "00:01:38.500",
+            "endTime": "00:01:45.000"
+        },
+        {
+            "text": "An example definition file is available in our documentation site, let's copy it to clipboard.",
+            "startTime": "00:01:45.500",
+            "endTime": "00:01:51.000"
+        },
+        {
+            "text": "To transfer the clipboard content from the host machine to the web terminal, we can open the Remote-connection Sidebar by pressing Control Alt Shift <break time='0.15'/> in Windows and Linux <break time='0.15'/> or Control Option Shift in Mac.",
+            "startTime": "00:01:51.500",
+            "endTime": "00:02:03.000"
+        },
+        {
+            "text": "We can open vim editor, press i to enter insert mode, and right click to paste the clipboard content.",
+            "startTime": "00:02:03.500",
+            "endTime": "00:02:08.000"
+        },
+        {
+            "text": "Press the escape key, and type colon <break time='0.15'/> w q to save and exit the file.",
+            "startTime": "00:02:08.500",
+            "endTime": "00:02:14.000"
+        },
+        {
+            "text": "Now, we can run apptainer build command <break time='0.15'/> with the image name followed by the definition file name.",
+            "startTime": "00:02:14.500",
+            "endTime": "00:02:19.000"
+        },
+        {
+            "text": "However note that computationally intensive builds should not be directly run on the login node.",
+            "startTime": "00:02:19.500",
+            "endTime": "00:02:25.000"
+        },
+        {
+            "text": "Instead they should be submitted as a job to the batch system as described in our documentation.",
+            "startTime": "00:02:25.500",
+            "endTime": "00:02:30.000"
+        },
+        {
+            "text": "If you need GPU support, please use the dash dash NV flag with apptainer exec command.",
+            "startTime": "00:02:30.500",
+            "endTime": "00:02:37.000"
+        },
+        {
+            "text": "This will map the necessary drivers from the host to the container and set the necessary environment variables.",
+            "startTime": "00:02:37.500",
+            "endTime": "00:02:44.000"
+        },
+        {
+            "text": "Note that it is not necessary to install all dependencies inside the container.",
+            "startTime": "00:02:44.500",
+            "endTime": "00:02:49.000"
+        },
+        {
+            "text": "Especially large libraries like NVIDIA HPC SDK or Intel OneAPI.",
+            "startTime": "00:02:49.500",
+            "endTime": "00:02:55.000"
+        },
+        {
+            "text": "Instead, you can map such libraries from the host to the container using the bind directive.",
+            "startTime": "00:02:55.500",
+            "endTime": "00:03:01.000"
+        },
+        {
+            "text": "Commonly used libraries are available in our clusters under /export or /cluster-share directories.",
+            "startTime": "00:03:01.500",
+            "endTime": "00:03:06.000"
+        },
+        {
+            "text": "You may visit our open source container registry at GitHub to inspect the definition files.",
+            "startTime": "00:03:06.500",
+            "endTime": "00:03:11.000"
+        },
+        {
+            "text": "You are also welcome to contribute to our container registry by submitting a pull request.",
+            "startTime": "00:03:11.500",
+            "endTime": "00:03:16.000"
+        },
+        {
+            "text": "And build containers automatically via GitHub Actions workflow.",
+            "startTime": "00:03:16.500",
+            "endTime": "00:03:22.000"
+        },
+        {
+            "text": "Once the images are built, they are listed under the packages.",
+            "startTime": "00:03:022.500",
+            "endTime": "00:03:27.000"
+        },
+        {
+            "text": "First select the application name, then select appropriate image tag and copy its URL.",
+            "startTime": "00:03:27.500",
+            "endTime": "00:03:32.000"
+        },
+        {
+            "text": "We can go back to the web terminal and download the image using apptainer pull command.",
+            "startTime": "00:03:32.500",
+            "endTime": "00:03:38.000"
+        },
+        {
+            "text": "Now, visit platform dot matera dot com and try building your own containers.",
+            "startTime": "00:03:38.500",
+            "endTime": "00:03:44.000"
+        },
+        {
+            "text": "Thank you for watching this tutorial and using our platform.",
+            "startTime": "00:03:44.500",
+            "endTime": "00:03:46.000"
+        }
+    ],
+    "youTubeId": "G1hfW_kS8oY"
+}

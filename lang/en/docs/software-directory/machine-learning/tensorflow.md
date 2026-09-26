@@ -1,7 +1,7 @@
 # TensorFlow
 [TensorFlow](https://www.tensorflow.org/) is a powerful open-source machine learning platform geared towards neural networks.
 
-Currently, our support for TensorFlow is primarily through the [command-line interface](../../cli/overview.md),
+Currently, our support for TensorFlow is primarily through the [command-line interface]({{ cli_url }}/cli/overview/),
 although we note that a custom [PythoML](python-ml/overview.md) workflow could be used to run TensorFlow workflows
 through our web app (e.g. for hyperparameter tuning).
 

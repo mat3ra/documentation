@@ -24,4 +24,4 @@ Copying Materials from the Bank is mostly equivalent to the procedure explained 
 
 ## [Visualize Sets](visualize.md)
 
-[Sets](../../entities-general/sets.md) of materials can be visualized by performing the relevant [action](visualize.md).
+[Sets]({{ reference_url }}/entities-general/sets/) of materials can be visualized by performing the relevant [action](visualize.md).

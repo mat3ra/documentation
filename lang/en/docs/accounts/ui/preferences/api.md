@@ -1,6 +1,6 @@
 # API Tokens
 
-The concept of API authorization tokens in the context of the Rest-API of our platform are thoroughly explained in a [separate section](../../../rest-api/overview.md) of this documentation manual. For the moment, we will confine ourselves to simply showing how such tokens can be generated or deleted under the Account Preferences.
+The concept of API authorization tokens in the context of the Rest-API of our platform are thoroughly explained in a [separate section]({{ developers_url }}/rest-api/overview/) of this documentation manual. For the moment, we will confine ourselves to simply showing how such tokens can be generated or deleted under the Account Preferences.
 
 ## Generate New Token
 

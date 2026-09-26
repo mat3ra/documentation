@@ -16,7 +16,7 @@ Enter the information about the name and description of the new team in the corr
 
 ## Entity-related Permissions
 
-The entity [permissions](../../../entities-general/permissions.md) can then be set under the bottom drop-down menu. They are granted to future team members in relation to the team entities. One or multiple permissions can be selected this way. These options can be modified at any moment following team creation [as explained here](../team/edit-permissions.md).
+The entity [permissions]({{ reference_url }}/entities-general/permissions/) can then be set under the bottom drop-down menu. They are granted to future team members in relation to the team entities. One or multiple permissions can be selected this way. These options can be modified at any moment following team creation [as explained here](../team/edit-permissions.md).
 
 ## Finalize Creation
 

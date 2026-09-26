@@ -1,6 +1,6 @@
 # Why Update Workflows?
 
-As explained [here](../bank.md#pre-built-bank-workflows), some commonly encountered types of calculations are **pre-packaged** in the workflows "Bank". They can as such be imported directly by the user into the Account-owned collection. When this happens, the link between the Bank and Account-owned item is retained. Sometimes the *Pre-built Bank Workflows* are updated by our personnel. The user who had already imported a previous version of one of such workflows can then "Pull" the updates to his/her account-owned entry. 
+As explained [here]({{ reference_url }}/workflows/bank/#pre-built-bank-workflows), some commonly encountered types of calculations are **pre-packaged** in the workflows "Bank". They can as such be imported directly by the user into the Account-owned collection. When this happens, the link between the Bank and Account-owned item is retained. Sometimes the *Pre-built Bank Workflows* are updated by our personnel. The user who had already imported a previous version of one of such workflows can then "Pull" the updates to his/her account-owned entry. 
 
 ## How to Spot Outdated Workflows?
 

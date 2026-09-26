@@ -1,10 +1,10 @@
 # Entity Explorer Interface
 
-The Explorer Interface allows users to interact with entity [collections](../../accounts/collections.md) and is composed of the following sub-components: 
+The Explorer Interface allows users to interact with entity [collections]({{ reference_url }}/accounts/collections/) and is composed of the following sub-components: 
 
 ## Entity Items List
 
-The "Entity Items List" displays the contents of the corresponding [Account-owned entity collection](../../accounts/collections.md), in a table form. It allows users to execute [actions](../../entities-general/actions/overview.md) on multiple entities at once. This component is shown below for the case of Materials.
+The "Entity Items List" displays the contents of the corresponding [Account-owned entity collection]({{ reference_url }}/accounts/collections/), in a table form. It allows users to execute [actions](../../entities-general/actions/overview.md) on multiple entities at once. This component is shown below for the case of Materials.
 
 ![Entity Items List](../../images/entities-general/materials-list.png "Entity Items List")
 
@@ -54,7 +54,7 @@ The Actions Toolbar allows users to execute [actions](../actions/overview.md) on
 
 The actions Dropdown menu, accessible under the three-dot-icon at the right end of each entry <i class="zmdi zmdi-more-vert zmdi-hc-border"></i>, allows one to execute the above-mentioned actions on that specific entry *only*. 
 
-The set of allowed actions is filtered per each entry according to its [type](../../entities-general/overview.md) and [permissions](../../entities-general/permissions.md).
+The set of allowed actions is filtered per each entry according to its [type]({{ reference_url }}/entities-general/overview/) and [permissions]({{ reference_url }}/entities-general/permissions/).
 
 ### Visual
 

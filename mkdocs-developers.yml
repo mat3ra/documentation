@@ -1,0 +1,117 @@
+# Developers — REST API reference and contribution guides.
+# Deploy to: docs.mat3ra.com/developers/
+
+INHERIT: mkdocs-base.yml
+
+docs_dir: !!python/object/apply:os.getenv ["DOCS_DIR", "lang/en/docs"]
+
+# Exclude pages that belong to other sites.
+exclude_docs: |
+  accounts/
+  benchmarks/
+  cli/
+  collaboration/
+  data/
+  data-structured/
+  data-in-objectstorage/
+  data-on-disk/
+  entities-general/
+  getting-started/
+  infrastructure/
+  jobs/
+  /jobs-cli/
+  jobs-designer/
+  jupyterlite/
+  materials/
+  materials-designer/
+  methods/
+  methods-directory/
+  models/
+  models-directory/
+  other/
+  pricing/
+  properties/
+  properties-directory/
+  remote-connection/
+  security/
+  site-policy/
+  software/
+  software-directory/
+  tutorials/
+  ui/
+  workflow-designer/
+  workflows/
+  migrating-to-new-platform.md
+
+  # Other sites' homepages
+  index.md
+  index-guide.md
+  index-interface.md
+  index-concepts.md
+  index-dev.md
+  index-resources.md
+  index-cli.md
+  index-standards.md
+
+  # Data Standards site pages
+  models/data.md
+  methods/data.md
+  software/data.md
+  models-directory/dft/data.md
+  models-directory/machine-learning/data.md
+  methods-directory/pseudopotential/data.md
+  methods-directory/linear-regression/data.md
+  materials/data.md
+  jobs/data.md
+
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+  links:
+    absolute_links: info
+
+site_name: "Developers"
+site_url: https://docs.mat3ra.com/developers
+site_description: "REST API reference and contribution guides for the Mat3ra platform."
+dev_addr: "localhost:8006"
+
+theme:
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.footer
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - navigation.expand
+
+extra:
+    # Cross-site URL variables (resolved by macros plugin at build time)
+    guide_url: https://docs.mat3ra.com/guide
+    interface_url: https://docs.mat3ra.com/interface
+    reference_url: https://docs.mat3ra.com/reference
+    resources_url: https://docs.mat3ra.com/resources
+    developers_url: https://docs.mat3ra.com/developers
+    cli_url: https://docs.mat3ra.com/command-line
+    data_url: https://docs.mat3ra.com/standards
+
+
+
+
+nav:
+    - "← All Docs":                                      /
+    - Home:                                              index-developers.md
+
+# REST API
+    - REST API:
+        - Overview:                                    rest-api/overview.md
+        - Authentication:                              rest-api/authentication.md
+        - Query structure:                             rest-api/query-structure.md
+        - Endpoints:                                   rest-api/endpoints.md
+        - API Explorer:                                rest-api/api-explorer.md
+        - API client:                          rest-api/api-client.md
+        - API examples:                        rest-api/api-examples.md

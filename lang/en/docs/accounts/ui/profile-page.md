@@ -2,9 +2,9 @@
 
 The "Account Profile" page represents the "command center" of any Account present on our platform. It encompasses all User Interface components which are essential to operate and manage the Account, and the entities that it contains.
 
-This page can be subdivided into several components, related to either [management](overview.md) or [Entities](../../entities-general/overview.md).
+This page can be subdivided into several components, related to either [management](overview.md) or [Entities]({{ reference_url }}/entities-general/overview/).
  
-These components are highlighted in the image below. The position of the **"Account Summary"**, displaying information about its name, username and date of creation, is also exhibited. In the case of [Organizational Accounts](../../accounts/overview.md#types-of-accounts), some of these interface components are visible only to the [Owners and Administrators](../../collaboration/organizations/roles.md). 
+These components are highlighted in the image below. The position of the **"Account Summary"**, displaying information about its name, username and date of creation, is also exhibited. In the case of [Organizational Accounts]({{ reference_url }}/accounts/overview/#types-of-accounts), some of these interface components are visible only to the [Owners and Administrators]({{ reference_url }}/collaboration/organizations/roles/). 
 
 ![Account UI components](../../images/accounts/account-profile.png "Account UI components")
 
@@ -26,4 +26,4 @@ General Account Preferences and Settings, such as the biographical information a
 
 ## Entity Components
 
-The Profile page also allows the Account-owned Entity Collections to be accessed from their associated ["Entity Tabs"](../../ui/specific/tabs-navigator.md), located at the top of the page. Each tab leads to the ["Explorer Interface"](../../entities-general/ui/explorer.md) for the corresponding [entity type](../../entities-general/overview.md). 
+The Profile page also allows the Account-owned Entity Collections to be accessed from their associated ["Entity Tabs"]({{ interface_url }}/ui/specific/tabs-navigator/), located at the top of the page. Each tab leads to the ["Explorer Interface"](../../entities-general/ui/explorer.md) for the corresponding [entity type]({{ reference_url }}/entities-general/overview/). 

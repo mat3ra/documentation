@@ -5,6 +5,7 @@ tags:
   - metal
   - surface
   - defect
+  - D-2D-ADA
 
 hide:
   - tags
@@ -14,7 +15,7 @@ render_macros: true
 
 # Adatom on Graphene Surface.
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates the process of creating a graphene structure with an adatom on the surface based on the work presented in the following manuscript.
 
@@ -23,29 +24,29 @@ This tutorial demonstrates the process of creating a graphene structure with an 
     "First-principles study of metal adatom adsorption on graphene" Phys. Rev. B 77, 235430, 2008
     [DOI: 10.1103/PhysRevB.77.235430](https://doi.org/10.1103/PhysRevB.77.235430){:target='_blank'}. [@Chan2008]
 
-We use the [Materials Designer](../../../materials-designer/overview.md) to create a graphene structure with a metal adatom on the surface.
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create a graphene structure with a metal adatom on the surface.
 
 The image shows the adatom on the graphene surface.
 
 ![Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/me_adatom_on_hollow_graphene.webp "Fig. 1. Adatom on Graphene Surface")
 
-## 1. Load and preview Graphene structure.
+## 2. Load and preview Graphene structure
 
-First, we navigate to [Materials Designer](../../../materials-designer/overview.md) and import the Graphene material from the [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the Graphene material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Standata Graphene Import](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/1-standata-graphene.webp "Standata Graphene Import")
 
-Then we will use the [JupyterLite](../../../jupyterlite/overview.md) environment to create a graphene structure with an adatom on the surface.
+Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create a graphene structure with an adatom on the surface.
 
-## 2. Add Li adatom.
+## 3. Add Li adatom
 
-### 2.1 Launch JupyterLite Session.
+### 2.1 Launch JupyterLite Session
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
-### 2.2. Open and modify the notebook.
+### 3.2. Open and modify the notebook
 
 Next, edit `create_adatom_defect.ipynb` notebook to modify the parameters by changing values:
 
@@ -64,27 +65,39 @@ Next, edit `create_adatom_defect.ipynb` notebook to modify the parameters by cha
 Copy the content below and adjust the "1.1. Set up slab parameters" cell in the notebook:
 
 ```python
-DEFECT_TYPE = "adatom"  
-PLACEMENT_METHOD = "equidistant"
-CHEMICAL_ELEMENT = "Li"  
-APPROXIMATE_POSITION_ON_SURFACE = [0.5, 0.5]  
-USE_CARTESIAN_COORDINATES = False 
-DISTANCE_Z = 1.71
+# Index in the list of materials, to access as materials[MATERIAL_INDEX]
+MATERIAL_INDEX = 0
+ELEMENT = "Li"  # Chemical element of the adatom
+
+# Dictionaries are validated and converted to AdatomDefectDict objects below
+DEFECT_CONFIGS = [
+    {
+        "type": "adatom",
+        "coordinate_2d": [0.5, 0.5], # Crystal coordinates on the surface (x, y)
+        "distance_z": 1.71,  # Method to place the adatom
+        "element": ELEMENT,
+    }
+]
+
+
+PLACEMENT_METHOD = "equidistant"  # Method to place the adatom, e.g., "new_crystal_site", "exact_coordinate", "equidistant"
+
 
 # Slab parameters
-MILLER_INDICES = (0, 0, 1)  
-SLAB_THICKNESS = 1  
-VACUUM = 6 
-SUPERCELL_MATRIX = [[4, 0, 0], [0, 4, 0], [0, 0, 1]] 
+MILLER_INDICES = (0, 0, 1)  # Miller indices of the surface
+SLAB_THICKNESS = 1  # Thickness of the slab in unit cells
+VACUUM = 6.0  # Vacuum thickness in Angstrom
+XY_SUPERCELL_MATRIX = [[4, 0], [0, 4]]  # Supercell matrix for the slab
+TERMINATION_FORMULA = None  # Stoichiometric formula of the slab termination to be used.
 ```
 
-### 2.3. Run the notebook.
+### 3.3. Run the notebook
 
 Run the notebook by selecting "Run > Run All Cells" from the menu.
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
-### 2.4. Analyze the Results.
+### 3.4. Analyze the Results
 
 After running the notebook, the Graphene structure with a Li adatom on the surface will be created.
 
@@ -92,17 +105,17 @@ The user will be able to visualize the created structure and download the corres
 
 ![Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-li.webp "Li Adatom on Graphene Surface")
 
-### 2.5. Pass the Material to the Materials Designer.
+### 3.5. Pass the Material to the Materials Designer
 
 After reviewing the results, the user can pass the material to Materials Designer for further analysis.
 
 ![Final Material](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/wave-result-li.webp "Li Adatom on Graphene Surface")
 
-Or the user can [save or download](../../../materials-designer/header-menu/input-output.md) the material in Material JSON format or POSCAR format.
+Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
-## 3. Add other metal adatoms.
+## 4. Add other metal adatoms
 
-### 3.1. Repeat the steps above.
+### 4.1. Repeat the steps above
 
 To create a Graphene structure with other metal adatoms, repeat the steps above by changing the `CHEMICAL_ELEMENT`, `APPORXIMATE_POSITION_ON_SURFACE`, and `DISTANCE_Z` parameters according to he values in the table 1 of the manuscript.
 Notice, that some of the adatoms have more favorable position on top or bridge sites.
@@ -111,7 +124,7 @@ For example, to create a Graphene structure with a Na adatom, adjust the paramet
 
 ```python
 CHEMICAL_ELEMENT = "Na"
-APPROXIMATE_POSITION_ON_SURFACE = [0.5, 0.5]
+COORDINATE_2D = [0.5, 0.5]
 DISTANCE_Z = 2.28
 ```
 
@@ -120,7 +133,7 @@ DISTANCE_Z = 2.28
 For K adatom on hollow site:
 ```python
 CHEMICAL_ELEMENT = "K"
-APPROXIMATE_POSITION_ON_SURFACE = [0.5, 0.5]
+COORDINATE_2D = [0.5, 0.5]
 DISTANCE_Z = 2.60
 ```
 
@@ -130,7 +143,7 @@ DISTANCE_Z = 2.60
 For Ca adatom on hollow site:
 ```python
 CHEMICAL_ELEMENT = "Ca"
-APPROXIMATE_POSITION_ON_SURFACE = [0.5, 0.5]
+COORDINATE_2D = [0.5, 0.5]
 DISTANCE_Z = 2.29
 ```
 
@@ -140,7 +153,7 @@ DISTANCE_Z = 2.29
 For Al adatom on hollow site:
 ```python
 CHEMICAL_ELEMENT = "Al"
-APPROXIMATE_POSITION_ON_SURFACE = [0.5, 0.5]
+COORDINATE_2D = [0.5, 0.5]
 DISTANCE_Z = 2.13
 ```
 
@@ -150,7 +163,7 @@ DISTANCE_Z = 2.13
 For Ga adatom on hollow site:
 ```python
 CHEMICAL_ELEMENT = "Ga"
-APPROXIMATE_POSITION_ON_SURFACE = [0.5, 0.5]
+COORDINATE_2D = [0.5, 0.5]
 DISTANCE_Z = 2.20
 ```
 
@@ -160,7 +173,7 @@ DISTANCE_Z = 2.20
 For In adatom on hollow site:
 ```python
 CHEMICAL_ELEMENT = "In"
-APPROXIMATE_POSITION_ON_SURFACE = [0.5, 0.5]
+COORDINATE_2D = [0.5, 0.5]
 DISTANCE_Z = 2.45
 ```
 
@@ -170,7 +183,7 @@ DISTANCE_Z = 2.45
 For Sn adatom on top site:
 ```python
 CHEMICAL_ELEMENT = "Sn"
-APPROXIMATE_POSITION_ON_SURFACE = [7/12, 5/12]
+COORDINATE_2D = [7/12, 5/12]
 DISTANCE_Z = 2.82
 ```
 
@@ -216,7 +229,7 @@ DISTANCE_Z = 2.69
 
 ![Au Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-au.webp "Au Adatom on Graphene Surface")
 
-## Interactive JupiterLite Notebook.
+## 5. Interactive JupiterLite Notebook
 
 The interactive JupyterLite notebook for creating Graphene structures with metal adatoms can be accessed below. To run the notebook, click on the "Run All" button.
 
@@ -228,4 +241,4 @@ The interactive JupyterLite notebook for creating Graphene structures with metal
 {% endwith %}
 {% endwith %}
 
-## References.
+## 6. References

@@ -1,6 +1,6 @@
 # Account Biographical Information
 
-The page under the `Bio` tab button <i class="zmdi zmdi-eye zmdi-hc-border"></i> of the general User Interface shows general biographical information about the account's profile, and information about the [organizations](../../collaboration/organizations/overview.md) or [teams](../../collaboration/organizations/teams.md) that the user is member of. This information can be set as [private or public](../../collaboration/sharing/access-levels.md) depending on the account's service level, as explained [here](../service-levels.md). The layout of this "Bio" page is as portrayed in the example image below, with component panels highlighted:
+The page under the `Bio` tab button <i class="zmdi zmdi-eye zmdi-hc-border"></i> of the general User Interface shows general biographical information about the account's profile, and information about the [organizations]({{ reference_url }}/collaboration/organizations/overview/) or [teams]({{ reference_url }}/collaboration/organizations/teams/) that the user is member of. This information can be set as [private or public]({{ reference_url }}/collaboration/sharing/access-levels/) depending on the account's service level, as explained [here]({{ reference_url }}/accounts/service-levels/). The layout of this "Bio" page is as portrayed in the example image below, with component panels highlighted:
 
 ![Bio Panels](../../images/accounts/bio-panels.png "Bio Panels")
 
@@ -24,7 +24,7 @@ In case a personal account is currently employed, the user will see a list of al
 
 ### List of Users and Teams
 
-If an [Organizational Account](../../collaboration/organizations/overview.md) is employed, the user will instead see a list of all members of Organization, including information about their [roles](../../collaboration/organizations/roles.md). In a second instance, the user will also be able to view a list of all [Teams](../../collaboration/organizations/teams.md) of the Organization, including information on how many members and projects are present in each of them.
+If an [Organizational Account]({{ reference_url }}/collaboration/organizations/overview/) is employed, the user will instead see a list of all members of Organization, including information about their [roles]({{ reference_url }}/collaboration/organizations/roles/). In a second instance, the user will also be able to view a list of all [Teams]({{ reference_url }}/collaboration/organizations/teams/) of the Organization, including information on how many members and projects are present in each of them.
 
 Both Lists of Members and Teams are presented in the standard [Explorer-type interface](../../entities-general/ui/explorer.md) commonly encountered across our platform, as demonstrated in the following image example:
 
@@ -32,4 +32,4 @@ Both Lists of Members and Teams are presented in the standard [Explorer-type int
 
 ## Storage Quota Information
 
-The information regarding the consumed and available storage space affecting the account under consideration can be inspected in the bottom panel of the "Bio" page. This information is displayed subdivided across each of the available supercomputing nodes. Complete descriptions of the concepts revolving around Storage Quotas can be found [here](../quota.md).
+The information regarding the consumed and available storage space affecting the account under consideration can be inspected in the bottom panel of the "Bio" page. This information is displayed subdivided across each of the available supercomputing nodes. Complete descriptions of the concepts revolving around Storage Quotas can be found [here]({{ reference_url }}/accounts/quota/).

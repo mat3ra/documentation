@@ -13,7 +13,7 @@ We make use of the "pseudo-dojo" repository of norm-conserving pseudopotentials 
 
 ### VASP
 
-For [VASP](../../software-directory/modeling/vasp/overview.md) we provide the sets of `paw` pseudopotential for each supported version.
+For [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/) we provide the sets of `paw` pseudopotential for each supported version.
 
 ## Other Sources
 

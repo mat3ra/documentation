@@ -6,4 +6,4 @@ More information about NWChem can be retrieved under its official website [^1].
 
 ## Links
 
-[^1]: [NWChem, Official Website](http://www.nwchem-sw.org/index.php/Main_Page)
+[^1]: [NWChem, Official Website](https://nwchemgit.github.io)

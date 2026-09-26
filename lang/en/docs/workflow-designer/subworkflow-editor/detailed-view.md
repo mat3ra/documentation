@@ -11,9 +11,9 @@ For each Unit listed in the "Detailed View" tab, under the label "Properties", a
 
 As explained in the initial part of the [Overview tab page](overview-tab.md), the check-box "Draft" can optionally be ticked in each unit separately, at the top of each unit's "Properties" section. This option is suitable when only preliminary superficial tests of new prototypical subworkflows need to be performed. 
 
-The complete list of quantities available to be computed within the Subworkflow Editor interface are presented [in this page](../../properties/overview.md).
+The complete list of quantities available to be computed within the Subworkflow Editor interface are presented [in this page]({{ reference_url }}/properties/overview/).
 
 ## The "Monitors" section
 
-The second lower section of each unit's entry in the "Detailed View" tab, under the label "Monitors", offers the user the possibility to choose which output information to monitor during the course of the execution of the current subworkflow calculation. The options [listed in this page](../../properties/overview.md) are available.
+The second lower section of each unit's entry in the "Detailed View" tab, under the label "Monitors", offers the user the possibility to choose which output information to monitor during the course of the execution of the current subworkflow calculation. The options [listed in this page]({{ reference_url }}/properties/overview/) are available.
  

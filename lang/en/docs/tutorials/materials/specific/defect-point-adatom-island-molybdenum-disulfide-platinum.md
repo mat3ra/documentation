@@ -9,6 +9,7 @@ tags:
   - Mo
   - S
   - Pt
+  - D-2D-ISL
 
 hide:
   - tags
@@ -18,7 +19,7 @@ render_macros: true
 
 # Pt Nanoparticles on MoS2(001) Surface via Adatoms.
 
-## Introduction.
+## 1. Introduction
 
 This tutorial demonstrates how to create a platinum island on MoS2 by sequentially adding Pt adatoms, following the methodology described in the literature.
 
@@ -32,68 +33,69 @@ We will recreate the Pt island structure shown in Figure 4b:
 
 ![Pt Island on MoS2](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/0-figure-from-manuscript.webp "Pt island formation on MoS2")
 
-## 1. Create MoS2 Substrate.
+## 2. Create MoS2 Substrate
 
-### 1.1. Load Base Material.
+### 2.1. Load Base Material
 
-Navigate to [Materials Designer](../../../materials-designer/overview.md) and import the MoS2 2D material from [Standata](../../../materials-designer/header-menu/input-output/standata-import.md).
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the MoS2 2D material from [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
-### 1.2. Launch JupyterLite Session.
+### 2.2. Launch JupyterLite Session
 
-Select the "Advanced > [JupyterLite Transformation](../../../materials-designer/header-menu/advanced/jupyterlite-dialog.md)" menu item to launch the JupyterLite environment.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
-### 1.3. Open `create_adatom_defect.ipynb` Notebook.
+### 2.3. Open `create_adatom_defect.ipynb` Notebook
 
 Find and open the `create_adatom_defect.ipynb` notebook. Select MoS2 as input material.
 
-## 2. Configure and Create Structure.
+## 3. Configure and Create Structure
 
-### 2.1. Set Parameters.
+### 3.1. Set Parameters
 
 Set up the slab and defect parameters in the notebook:
 
 ```python
-# Slab parameters
-MILLER_INDICES = (0, 0, 1)  # MoS2 basal plane
-SLAB_THICKNESS = 1  # Single layer
-VACUUM = 10.0  # in Angstrom
-SUPERCELL_MATRIX = [[3, 0, 0], [0, 3, 0], [0, 0, 1]]  # 3x3 supercell
+# Index in the list of materials, to access as materials[MATERIAL_INDEX]
+MATERIAL_INDEX = 0
+ELEMENT = "Pt"  # Chemical element of the adatom
 
-# Defect configurations for all Pt atoms
+# Dictionaries are validated and converted to AdatomDefectDict objects below
 DEFECT_CONFIGS = [
     {
-        "defect_type": "adatom",
-        "placement_method": "coordinate",
-        "chemical_element": "Pt",
-        "position_on_surface": [5/9, 4/9],  # First Pt: atop central Mo
-        "distance_z": 1.2, # Distance from surface S atoms
-        "use_cartesian_coordinates": False
+        "type": "adatom",
+        "coordinate_2d": [5/9, 4/9], # Crystal coordinates on the surface (x, y)
+        "distance_z": 1.2,  # Method to place the adatom
+        "element": ELEMENT,
     },
     {
-        "defect_type": "adatom",
-        "placement_method": "coordinate",
-        "chemical_element": "Pt",
-        "position_on_surface": [2/9, 4/9],  # Second Pt: next clockwise atop Mo
-        "distance_z": 1.2, # Distance from surface S atoms
-        "use_cartesian_coordinates": False
+        "type": "adatom",
+        "coordinate_2d": [2/9, 4/9], # Crystal coordinates on the surface (x, y)
+        "distance_z": 1.2,  # Method to place the adatom
+        "element": ELEMENT,
     },
     {
-        "defect_type": "adatom",
-        "placement_method": "coordinate",
-        "chemical_element": "Pt",
-        "position_on_surface": [5/9, 7/9],  # Third Pt: next clockwise atop Mo
-        "distance_z": 1.2, # Distance from surface S atoms
-        "use_cartesian_coordinates": False
+        "type": "adatom",
+        "coordinate_2d": [5/9, 7/9], # Crystal coordinates on the surface (x, y)
+        "distance_z": 1.2,  # Method to place the adatom
+        "element": ELEMENT,
     },
     {
-        "defect_type": "adatom",
-        "placement_method": "coordinate",
-        "chemical_element": "Pt",
-        "position_on_surface": [4/9, 5/9],  # Fourth Pt: centered atop S
-        "distance_z": 1.6,  # Distance between Pt atom layers, in Angstrom
-        "use_cartesian_coordinates": False
-    }
+        "type": "adatom",
+        "coordinate_2d": [4/9, 5/9], # Crystal coordinates on the surface (x, y)
+        "distance_z": 1.6,  # Method to place the adatom
+        "element": ELEMENT,
+    },
 ]
+
+
+PLACEMENT_METHOD = "new_crystal_site"  # Method to place the adatom, e.g., "new_crystal_site", "exact_coordinate", "equidistant"
+
+
+# Slab parameters
+MILLER_INDICES = (0, 0, 1)  # Miller indices of the surface
+SLAB_THICKNESS = 1  # Thickness of the slab in unit cells
+VACUUM = 10.0  # Vacuum thickness in Angstrom
+XY_SUPERCELL_MATRIX = [[3, 0], [0, 3]]  # Supercell matrix for the slab
+TERMINATION_FORMULA = None  # Stoichiometric formula of the slab termination to be used.
 ```
 
 Key parameters explained:
@@ -111,13 +113,13 @@ Key parameters explained:
 
 ![Adatoms Setup](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/1-jl-setup-nb.webp "Pt adatoms setup")
 
-### 2.2. Run the Notebook.
+### 3.2. Run the Notebook
 
 Execute the notebook to create the Pt island structure on MoS2 by selecting "Run" > "Run All Cells" from the JupyterLite menu.
 
 ![Results Preview](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/2-jl-result-preview.webp "Pt island results preview")
 
-### 2.3. Pass the Result to Materials Designer.
+### 3.3. Pass the Result to Materials Designer
 
 The result can be passed to Materials Designer for visualization and viewed from the top:
 
@@ -127,24 +129,24 @@ And from the side:
 
 ![Complete Island, side view](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/5-wave-result-side.webp "Complete Pt island structure, side view")
 
-## 3. Analyze the Structure.
+## 4. Analyze the Structure
 
 After adding all Pt atoms, verify the following:
 
-### 3.1. Base Layer Geometry.
+### 4.1. Base Layer Geometry
 
 - Three Pt atoms should form a triangular base
 - Each base Pt should be positioned atop Mo atoms
 - Distance from surface S atoms should be ~1.2 Å
 - Relaxation is needed to achieve the exact geometry from the publication, can be performed elsewhere
 
-### 3.2. Top Atom Position.
+### 4.2. Top Atom Position
 
 - Fourth Pt should be centered above the triangle
 - Position should be approximately above a surface S atom
 - Height should be ~2.8 Å from surface (1.6 Å from base Pt atoms)
 
-## 4. Save the Structure.
+## 5. Save the Structure
 
 The final structure will be automatically passed back to Materials Designer where user can:
 
@@ -152,7 +154,7 @@ The final structure will be automatically passed back to Materials Designer wher
 2. Export it in various formats
 3. Use it for further transformations
 
-## Interactive JupyterLite Notebook.
+## 6. Interactive JupyterLite Notebook
 
 The following embedded notebook demonstrates the complete process. Select "Run" > "Run All Cells".
 
@@ -164,7 +166,7 @@ The following embedded notebook demonstrates the complete process. Select "Run" 
 {% endwith %}
 {% endwith %}
 
-## Parameter Fine-tuning.
+## 7. Parameter Fine-tuning
 
 To adjust the island structure:
 
@@ -176,5 +178,5 @@ To adjust the island structure:
    - Adjust position to change island shape
    - Modify height to change Pt-Pt spacing
 
-## References.
+## 8. References
 

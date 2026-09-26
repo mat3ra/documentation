@@ -4,4 +4,3 @@
 
 [build.environment]
   PYTHON_VERSION = "3.10"
-  NODE_VERSION = "20"

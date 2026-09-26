@@ -8,6 +8,6 @@ This method is widely used as an effective algorithmic implementation of the [Ma
 
 [This page](parameters.md) contains a list of the fundamental computational parameters involved in the Linear Regression Method.
 
-## [Structured Representation](data.md)
+## [Structured Representation]({{ data_url }}/methods-directory/linear-regression/data/)
 
-[This page](data.md) contains an example [structured representation](../../data-structured/overview.md) for the method.
+[This page]({{ data_url }}/methods-directory/linear-regression/data/) contains an example [structured representation]({{ data_url }}/data-structured/overview/) for the method.

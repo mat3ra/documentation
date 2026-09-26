@@ -67,7 +67,7 @@ In the user interface the system-wide sharing status for the entities is be show
 
 ## Service levels and private data
 
-As the page explaining the [service levels](../pricing/service-levels.md) has it, the ability to create entities that are private to an account is a premium feature and requires an elevated service level type. For the newly created accounts that use promotional credits to try our platform all created entities are public. 
+As the page explaining the [service levels]({{ guide_url }}/pricing/service-levels/) has it, the ability to create entities that are private to an account is a premium feature and requires an elevated service level type. For the newly created accounts that use promotional credits to try our platform all created entities are public. 
 
 ### Other notes
 

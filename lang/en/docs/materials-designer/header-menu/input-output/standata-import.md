@@ -23,4 +23,4 @@ Materials (Graphene and Ni in this case) should now be available in the material
 
 ## Links
 
-1. Standata repository on <a href="https://github.com/Exabyte-io/standata" target="_blank">GitHub</a>. 
+1. Standata repository on <a href="https://github.com/mat3ra/standata" target="_blank">GitHub</a>. 

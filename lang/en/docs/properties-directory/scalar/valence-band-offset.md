@@ -11,11 +11,11 @@ Regarding conduction band edges $\varepsilon_{c}$ there exists an equivalent pro
 The VBO plays an important role for the transport properties of charge
 carriers in heterojunction devices (e.g. hole injection efficiency). Using first principles calculations, the VBO can be
 determined through the potential lineup method [^1][^2][^3] or via the local density of states (LDOS) [^3]. For more details
-regarding the potential lineup method, see also the [valence band offset tutorial](../../tutorials/dft/electronic/valence-band-offset.md)
+regarding the potential lineup method, see also the [valence band offset tutorial]({{ guide_url }}/tutorials/dft/electronic/valence-band-offset/)
 
 ## Example
 
-Its value can be estimated using the valence band offset [workflow](../../workflows/overview.md), and it is returned under the [Results Tab](../../jobs/ui/results-tab.md) interface with the following appearance (in eV).
+Its value can be estimated using the valence band offset [workflow](../../workflows/overview.md), and it is returned under the [Results Tab]({{ interface_url }}/jobs/ui/results-tab/) interface with the following appearance (in eV).
 
 <div class="clearfix" style="text-align:center">
     <div class="chart"><i class="zmdi zmdi-unfold-less zmdi-hc-3x"></i></div>
@@ -28,7 +28,7 @@ Its value can be estimated using the valence band offset [workflow](../../workfl
 
 ## Schema 
 
-The JSON schema and an example representation for this property can be found [here](../../properties/data/list.md#valence-band-offset).
+The JSON schema and an example representation for this property can be found [here]({{ data_url }}/properties/data/list/#valence-band-offset).
 
 ## Links
 

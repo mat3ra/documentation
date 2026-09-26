@@ -1,27 +1,27 @@
 # Quantum ESPRESSO: Structured Data
 
-We present in this page the [structured representations](../../../data-structured/overview.md) for the [Quantum ESPRESSO modeling application](overview.md), and for its [specific compute parameters](compute-parameters.md).
+We present in this page the [structured representations]({{ data_url }}/data-structured/overview/) for the [Quantum ESPRESSO modeling application]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/), and for its [specific compute parameters]({{ reference_url }}/software-directory/modeling/quantum-espresso/compute-parameters/).
 
 ## Application
 
 === "Schema"
-    ``` json
+    ```json
     --8<-- "data/esse/schema/software_directory/modeling/espresso.json"
     ```
 
 === "Example"
-    ``` json
+    ```json
     --8<-- "data/esse/example/software_directory/modeling/espresso.json"
     ```
 
 ## Compute Parameters
 
 === "Schema"
-    ``` json
+    ```json
     --8<-- "data/esse/schema/software_directory/modeling/espresso/arguments.json"
     ```
 
 === "Example"
-    ``` json
+    ```json
     --8<-- "data/esse/example/software_directory/modeling/espresso/arguments.json"
     ```

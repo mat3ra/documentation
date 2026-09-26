@@ -11,9 +11,9 @@ In computational science, theoretical models are typically coupled with their co
 
 We review the parameters affecting the formulation of models [in this page](parameters.md).
 
-## [Structured Representation](data.md)
+## [Structured Representation]({{ data_url }}/models/data/)
 
-We offer an example of JSON structured representation for a model [here](data.md).
+We offer an example of JSON structured representation for a model [here]({{ data_url }}/models/data/).
 
 ## [Accuracy](accuracy.md)
 

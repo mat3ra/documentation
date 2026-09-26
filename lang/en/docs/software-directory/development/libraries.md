@@ -1,6 +1,6 @@
 # Libraries
 
-We provide the following development libraries, accessible within the [Command Line Interface environment](../../cli/environment.md) of our platform through the loading of the corresponding [modules](../../cli/modules.md).
+We provide the following development libraries, accessible within the [Command Line Interface environment]({{ cli_url }}/cli/environment/) of our platform through the loading of the corresponding [modules]({{ cli_url }}/cli/modules/).
 
 | Name      |  Version(s) | 
 | :-------- | ----------- |

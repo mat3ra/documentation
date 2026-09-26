@@ -25,8 +25,8 @@ Below we show an example JSON structured representation for the compute paramete
     
 | Keyword                                        |  
 |:-----------------------------------------------|
-| [ppn](parameters.md#nodes-/-ppn)               |
-| [nodes](parameters.md#nodes-/-ppn)             |  
+| [ppn](parameters.md#nodes-ppn)               |
+| [nodes](parameters.md#nodes-ppn)             |  
 | [queue](parameters.md#queue)                   |
 | [timeLimit](parameters.md#time-limit)          |  
 | [timeLimitType](parameters.md#time-limit-type) |  

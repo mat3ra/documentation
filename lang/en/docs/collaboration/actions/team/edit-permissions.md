@@ -1,6 +1,6 @@
 # Edit Team Permissions
 
-[Permissions](../../../entities-general/permissions.md) allow members of a Team to view and/or manipulate its  [assigned entities](../../organizations/teams.md#entities). Such permissions can be modified at any time after the [team creation](../organization/create-delete-team.md).
+[Permissions]({{ reference_url }}/entities-general/permissions/) allow members of a Team to view and/or manipulate its  [assigned entities]({{ reference_url }}/collaboration/organizations/teams/#entities). Such permissions can be modified at any time after the [team creation](../organization/create-delete-team.md).
  
 ## Open Preferences tab 
  

@@ -1,0 +1,161 @@
+# Command-Line Interface — CLI environment, batch jobs, and remote access.
+# Deploy to: docs.mat3ra.com/cli/
+
+INHERIT: mkdocs-base.yml
+
+docs_dir: !!python/object/apply:os.getenv ["DOCS_DIR", "lang/en/docs"]
+
+# Exclude pages that belong to other sites.
+exclude_docs: |
+  accounts/
+  benchmarks/
+  collaboration/
+  data/
+  data-in-objectstorage/
+  data-on-disk/
+  data-structured/
+  entities-general/
+  getting-started/
+  infrastructure/
+  jobs/
+  jobs-designer/
+  materials/
+  materials-designer/
+  methods/
+  methods-directory/
+  models/
+  models-directory/
+  other/
+  pricing/
+  properties/
+  properties-directory/
+  rest-api/
+  security/
+  site-policy/
+  software/
+  software-directory/
+  tutorials/
+  jupyterlite/
+  ui/
+  workflow-designer/
+  workflows/
+  migrating-to-new-platform.md
+
+  # Other sites' homepages
+  index.md
+  index-guide.md
+  index-interface.md
+  index-concepts.md
+  index-dev.md
+  index-resources.md
+  index-developers.md
+  index-standards.md
+
+  # Data Standards site pages
+  models/data.md
+  methods/data.md
+  software/data.md
+  models-directory/dft/data.md
+  models-directory/machine-learning/data.md
+  methods-directory/pseudopotential/data.md
+  methods-directory/linear-regression/data.md
+  materials/data.md
+  jobs/data.md
+
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+  links:
+    absolute_links: info
+
+site_name: "Command-Line Interface"
+site_url: https://docs.mat3ra.com/command-line
+site_description: "CLI environment, batch jobs, and remote connection for the Mat3ra platform."
+dev_addr: "localhost:8008"
+
+theme:
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+    - navigation.footer
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - navigation.expand
+
+extra:
+    # Cross-site URL variables (resolved by macros plugin at build time)
+    guide_url: https://docs.mat3ra.com/guide
+    interface_url: https://docs.mat3ra.com/interface
+    reference_url: https://docs.mat3ra.com/reference
+    resources_url: https://docs.mat3ra.com/resources
+    developers_url: https://docs.mat3ra.com/developers
+    cli_url: https://docs.mat3ra.com/command-line
+    data_url: https://docs.mat3ra.com/standards
+
+
+
+
+nav:
+    - "← All Docs":                                      /
+    - Home:                                              index-cli.md
+
+# COMMAND LINE INTERFACE
+    - CLI Environment:
+        - Overview:                                     cli/overview.md
+        - Environment:                                  cli/environment.md
+        - Environment Modules:                          cli/modules.md
+        - Accounting:                                   cli/accounting.md
+        - Actions:
+            - Overview:                                 cli/actions/overview.md
+            - Load / Unload Modules:                    cli/actions/modules-actions.md
+            - Customize Environment:                    cli/actions/customize.md
+            - Add new software:                         cli/actions/add-software.md
+            - Create Python Environment:                cli/actions/create-python-env.md
+            - Create Anaconda Environment:              cli/actions/create-anaconda-env.md
+            - List Clusters and Nodes:                  cli/actions/list-clusters.md
+            - Check Balance and Quota:                  cli/actions/balance-quota.md
+
+# JOBS VIA COMMAND LINE
+    - Jobs via Command Line:
+        - Overview:                                     jobs-cli/overview.md
+        - Accounting:                                   jobs-cli/accounting.md
+        - Batch Scripts:
+            - Overview:                                 jobs-cli/batch-scripts/overview.md
+            - General Structure:                        jobs-cli/batch-scripts/general-structure.md
+            - Directives:                               jobs-cli/batch-scripts/directives.md
+            - Working Directory:                        jobs-cli/batch-scripts/directories.md
+            - Apptainer & Environment Modules:          jobs-cli/batch-scripts/apptainer.md
+            - Sample Scripts:                           jobs-cli/batch-scripts/sample-scripts.md
+        - Actions:
+            - Overview:                                 jobs-cli/actions/overview.md
+            - Create:                                   jobs-cli/actions/create.md
+            - Submit:                                   jobs-cli/actions/submit.md
+            - Check status:                             jobs-cli/actions/check-status.md
+            - Terminate:                                jobs-cli/actions/terminate.md
+            - View Jobs List:                           jobs-cli/actions/view-job-list.md
+
+# REMOTE CONNECTION
+    - Remote Connection:
+        - Overview:                                     remote-connection/overview.md
+        - SSH Terminal (SSH):                           remote-connection/ssh.md
+        - Web Terminal (WT):                            remote-connection/web-terminal.md
+        - Remote Desktop (RD):                          remote-connection/remote-desktop.md
+        - Actions > (WT) & (RD):
+            - Overview:                                 remote-connection/actions/overview.md
+            - Open Web Terminal:                        remote-connection/actions/open-terminal.md
+            - Open Remote Desktop:                      remote-connection/actions/open-desktop.md
+            - Open Sidebar:                             remote-connection/actions/sidebar.md
+            - Upload:                                   remote-connection/actions/upload.md
+            - Download:                                 remote-connection/actions/download.md
+            - Transfer Files via SCP:                   remote-connection/actions/transfer-files-scp.md
+            - Copy / Paste Text:                        remote-connection/actions/copy-paste.md
+            - Access data in Web Platfrom:              remote-connection/actions/access-data.md
+        - Actions > Remote Desktop:
+            - Overview:                                 remote-connection/actions-rd/overview.md
+            - Browse Directories:                       remote-connection/actions-rd/browse.md
+            - Open Applications:                        remote-connection/actions-rd/open-app.md

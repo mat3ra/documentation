@@ -4,4 +4,4 @@ Development tools are comprised of **compilers** and **libraries**, necessary in
 
 ## Implementation
 
-We provide support for several development libraries and compilers on our platform, which are introduced [in this section](../../software-directory/overview.md) of the documentation.
+We provide support for several development libraries and compilers on our platform, which are introduced [in this section]({{ reference_url }}/software-directory/overview/) of the documentation.

@@ -21,7 +21,7 @@ To access JupyterLite directly, navigate to the following URL:
 https://jupyterlite.mat3ra.com/lab/index.html
 ```
 
-To access the Introduction notebook summarizing the functionality available in [mat3ra-made](https://github.com/Exabyte-io/made):
+To access the Introduction notebook summarizing the functionality available in [mat3ra-made](https://github.com/mat3ra/made):
 
 ```
 https://jupyterlite.mat3ra.com/lab/tree?path=made/Introduction.ipynb
@@ -33,5 +33,5 @@ In the below tutorial, we present how we can use JupyterLite session in Mat3ra
 platform to postprocess or analyze data.
 
 <div class="video-wrapper">
-<iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/PXosTghiAzs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="gifffer" width="100%" height="100%" src="https://www.youtube.com/embed/PXosTghiAzs?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>

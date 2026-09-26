@@ -38,6 +38,22 @@ The following list of words should be avoided:
 - Automatically
 - Finally
 
+## Multi-Site Link Conventions
+
+The documentation is split into Guide, Reference, and Dev sub-sites.
+Links within the same sub-site use relative paths. Links to a page in a
+different sub-site use macro variables:
+
+- `{{ guide_url }}` — Platform Guide (tutorials, UI, how-tos)
+- `{{ reference_url }}` — Concepts & Reference (models, methods,
+  properties)
+- `{{ dev_url }}` — Developer Guide (REST API, infrastructure, storage)
+
+Pages that contain raw Jinja2 code examples (e.g., `{{ input.NAT }}`)
+must wrap those blocks in `{% raw %}…{% endraw %}` so the macros plugin
+does not consume them. Do not set `render_macros: false` if the page
+also contains cross-site macro links.
+
 ## Extra Styles and Sources
 
 The default [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) theme is extended, with additional css and javascript inside [extra](extra) folder. Any new files shall go into the same folder and shall be added to the corresponding section of [mkdocs.yml](mkdocs.yml).

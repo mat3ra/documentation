@@ -1,6 +1,6 @@
 # Check Account Balance and Storage Quota
 
-Any user (including those with non-administrative privileges for [organizational accounts](../overview.md)) can check the [balance](../balance.md) and storage [quota](../quota.md) associated with the present account, to verify, for example, that their respective levels of consumption are not approaching their total limiting amounts. We explain how to do so [in this page](check-balance-quota.md).
+Any user (including those with non-administrative privileges for [organizational accounts]({{ reference_url }}/accounts/overview/)) can check the [balance]({{ reference_url }}/accounts/balance/) and storage [quota]({{ reference_url }}/accounts/quota/) associated with the present account, to verify, for example, that their respective levels of consumption are not approaching their total limiting amounts. We explain how to do so [in this page](check-balance-quota.md).
 
 ## [Increase Balance](increase-balance.md)
 

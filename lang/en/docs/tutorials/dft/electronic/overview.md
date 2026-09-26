@@ -1,55 +1,39 @@
 # Electronic Properties Tutorials
 
-In the present section, we introduce the most common operations supported on our platform for performing **electronic structure** computations on materials, implemented through the [Density Functional Theory model](../../../models-directory/dft/overview.md).
+This section covers electronic structure calculations on the Mat3ra platform, implemented through [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/) (DFT). The tutorials demonstrate how to compute band structures, band gaps, density of states, and related properties using [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/) and [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/).
 
-## [Band Structure](band-structure.md)
 
-We review the procedure for computing the [electronic band structure](../../../properties-directory/non-scalar/bandstructure.md) of crystalline samples [in this tutorial](band-structure.md).
+## Standard DFT Calculations
 
-## [Band Gap](band-gap.md)
+| Tutorial | Property | Software |
+|----------|----------|----------|
+| [Band structure](band-structure.md) | [Electronic band structure]({{ reference_url }}/properties-directory/non-scalar/bandstructure/) | QE |
+| [Band gap](band-gap.md) | [Band gap]({{ reference_url }}/properties-directory/non-scalar/band-gaps/) | VASP |
+| [Density of states](density-of-states.md) | [Electronic DOS]({{ reference_url }}/properties-directory/non-scalar/electronic-dos/) | QE |
+| [Charge density mesh](electronic-density-mesh.md) | Charge density | QE |
+| [Fermi surface](fermi-surface.md) | [Fermi surface]({{ reference_url }}/properties-directory/scalar/fermi-energy/) | QE |
+| [Valence band offset](valence-band-offset.md) | [Valence band offset]({{ reference_url }}/properties-directory/scalar/valence-band-offset/) | QE |
+| [Effective screening medium](esm-qe.md) | ESM potential/charge profiles | QE |
 
-The calculation of the [band gap](../../../properties-directory/non-scalar/band-gaps.md) is explained [here](band-gap.md).
 
-## [Density of States](density-of-states.md)
+## Beyond Standard DFT
 
-We also offer instructions on how to evaluate the [electronic Density of States](../../../properties-directory/non-scalar/electronic-dos.md) under [this other tutorial page](density-of-states.md).
+These tutorials use advanced functionals or many-body methods for improved accuracy, particularly for band gap predictions.
 
-## [Charge Density Mesh](electronic-density-mesh.md)
+| Tutorial | Method | Software |
+|----------|--------|----------|
+| [HSE band gap (VASP)](hse-vasp-bg.md) | Hybrid HSE functional | VASP |
+| [HSE band gap (QE)](hse-qe-bg.md) | Hybrid HSE functional | QE |
+| [HSE band structure (QE)](hse-qe-bs.md) | Hybrid HSE functional | QE |
+| [GW band gap (VASP)](gw-vasp-bg.md) | [GW approximation]({{ reference_url }}/models-directory/dft/notes/#the-gw-approximation) | VASP |
+| [GW band structure, full freq. (QE)](gw-qe-bs-fullfreq.md) | GW full frequency | QE |
+| [GW band structure, plasmon pole (QE)](gw-qe-bs-plasmon.md) | GW plasmon pole | QE |
 
-Finally, we conclude our review of the electronic properties of materials by covering [a tutorial page](electronic-density-mesh.md) dedicated to the computation of the Electronic Charge Density Mesh.
 
-## [Fermi Surface](fermi-surface.md)
+## Spin and Magnetic Properties
 
-We review the steps involved in the calculation and visualization of the [Fermi Surface](../../../properties-directory/scalar/fermi-energy.md) of metallic crystalline samples such as copper [under this page](fermi-surface.md).
-
-## [HSE Calculations](hse-vasp-bg.md)
-
-[In other tutorial](hse-vasp-bg.md), we demonstrate how the use of the hybrid HSE functional can yield more accurate results for the example case of a band-gap computation with [VASP](../../../software-directory/modeling/vasp/overview.md).
-
-A similar Band Gap calculation with Quantum ESPRESSO is [available here](hse-qe-bg.md). And for the Band Structure - in [this tutorial](hse-qe-bs.md).
-
-## GW Calculations
-
-This [tutorial](gw-vasp-bg.md) illustrates how the results for the Band Gap can be more accurate through the use of the [GW Approximation](../../../models-directory/dft/notes.md#the-gw-approximation).
-
-## Valence Band Offset
-
-We show how to calculate the [valence band offset](../../../properties-directory/scalar/valence-band-offset.md) for a
-heterostructure using the potential lineup method in [this tutorial](valence-band-offset.md).
-
-## DFT+U calculation and Hubbard Parameters
-
-In [this tutorial](hubbard.md) we show how to perform DFT+U calculation in
-Quantum Espresso. We also show calculation of Hubbard parameters from the
-*first principles*.
-
-## Spin-magnetic bandstructure calculation
-
-[This tutorial](spin-magnetic-qe.md) describes spin-magnetic bandstructure
-calculation of nickel using Quantum Espresso.
-
-## Spin-orbit coupling calculation using QE
-
-In [this tutorial](spin-orbit-coupling-qe.md), we present bandstructure
-calculation of topological insulating Bi<sub>2</sub>Se<sub>3</sub> with
-incorporating spin-orbit coupling effect using Quantum ESPRESSO.
+| Tutorial | Method | Software |
+|----------|--------|----------|
+| [Hubbard U correction](hubbard.md) | DFT+U | QE |
+| [Spin-magnetic band structure](spin-magnetic-qe.md) | Spin-polarized DFT | QE |
+| [Spin-orbit coupling](spin-orbit-coupling-qe.md) | SOC | QE |

@@ -1,6 +1,6 @@
 # Organizations
 
-Organizations refer to **collaborative Accounts** comprising multiple **[Users](../../accounts/users.md)**. They provide an environment for users to collaborate together, and to [mutually share](../sharing/ui.md) entities under the respect of a set of [permissions](../../entities-general/permissions.md).
+Organizations refer to **collaborative Accounts** comprising multiple **[Users](../../accounts/users.md)**. They provide an environment for users to collaborate together, and to [mutually share]({{ interface_url }}/collaboration/sharing/ui/) entities under the respect of a set of [permissions](../../entities-general/permissions.md).
 
 ## [User Roles](roles.md)
 
@@ -10,10 +10,10 @@ The various users belonging to an Organization can have different **Roles** attr
 
 The Organization's members can be grouped together into **Teams**, which are the object of a [separate discussion](teams.md).
 
-## [User Interface](../ui/overview.md)
+## [User Interface]({{ interface_url }}/collaboration/ui/overview/)
 
-The list of all users and entities contained in an organization and its Teams can be viewed through the corresponding [components of the User Interface](../ui/overview.md).
+The list of all users and entities contained in an organization and its Teams can be viewed through the corresponding [components of the User Interface]({{ interface_url }}/collaboration/ui/overview/).
 
-## [Organization Actions](../actions/organization/overview.md)
+## [Organization Actions]({{ interface_url }}/collaboration/actions/organization/overview/)
 
-Administrative actions which may need to be performed within an Organization are reviewed in a [dedicated section](../actions/organization/overview.md).
+Administrative actions which may need to be performed within an Organization are reviewed in a [dedicated section]({{ interface_url }}/collaboration/actions/organization/overview/).

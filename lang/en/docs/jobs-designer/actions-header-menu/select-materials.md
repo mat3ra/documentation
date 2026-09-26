@@ -1,6 +1,9 @@
+---
+render_macros: true
+---
 # Select Materials to Jobs
 
-The user may select one or multiple [materials](../../materials/overview.md) present in the account-owned [collection](../../accounts/collections.md) during [Job creation](../overview.md). Within the [header menu](../header-menu.md) of Jobs Designer, the relevant button <i class="zmdi zmdi-more-vert zmdi-hc-border"></i> on the right-hand side should be clicked, and the `Select materials` option chosen from the resulting drop-down menu.
+The user may select one or multiple [materials]({{ reference_url }}/materials/overview/) present in the account-owned [collection]({{ reference_url }}/accounts/collections/) during [Job creation](../overview.md). Within the [header menu](../header-menu.md) of Jobs Designer, the relevant button <i class="zmdi zmdi-more-vert zmdi-hc-border"></i> on the right-hand side should be clicked, and the `Select materials` option chosen from the resulting drop-down menu.
 
 ## "Select Materials" Dialog
 
@@ -20,7 +23,7 @@ Once the desired material(s) have been selected, they can be selected for the Jo
 
 This returns the view to the main Jobs Designer page, where the structures of the imported materials can be inspected within the [Materials Tab](../materials-tab.md). It is worth noticing that the original default material which was present when the Jobs Designer was first opened is replaced with the newly selected material(s). 
 
-When multiple materials are selected the [Job Name Field](../header-menu.md#1-job-name) can have a `{{ FORMULA }}` text added to it indicating that one separate job will be created per each selected material appending its formula to the name as explained [here](../header-menu.md#4-save-job).
+When multiple materials are selected the [Job Name Field](../header-menu.md#1-job-name) can have a `{% raw %}{{ FORMULA }}{% endraw %}` text added to it indicating that one separate job will be created per each selected material appending its formula to the name as explained [here](../header-menu.md#4-save-job).
 
 ## Animation
 

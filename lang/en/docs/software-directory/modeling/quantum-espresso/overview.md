@@ -4,8 +4,8 @@ Quantum ESPRESSO (QE, also referred to as "espresso" in our platform) [^1] [^2]
 is a software suite for ab-initio quantum methods performing general
 electronic-structure calculations and materials modeling. It is distributed for
 free under the GNU General Public License. Quantum ESPRESSO is based on
-[Density Functional Theory](../../../models-directory/dft/overview.md),
-[plane wave basis sets and pseudopotentials](../../../methods-directory/pseudopotential/overview.md)
+[Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/),
+[plane wave basis sets and pseudopotentials]({{ reference_url }}/methods-directory/pseudopotential/overview/)
 (both norm-conserving and ultrasoft).
 
 ## Supported Versions
@@ -15,19 +15,19 @@ We support `5.2.1`, `5.4.0`, `6.0.0`, `6.3.0`, `6.4.1`, `6.5.0`, `6.6.0`,
 
 ## [Components](components.md)
 
-We introduce the different [components](../../../software/components.md) which
+We introduce the different [components]({{ reference_url }}/software/components/) which
 are part of the Quantum ESPRESSO software distribution [in this page](components.md).
 
 ## [Compute Parameters](compute-parameters.md)
 
-We explain which [compute parameters](../../../infrastructure/compute/parameters.md)
+We explain which [compute parameters]({{ resources_url }}/infrastructure/compute/parameters/)
 are specific to Quantum ESPRESSO [here](compute-parameters.md).
 
-## [Data](data.md)
+## [Data]({{ data_url }}/software-directory/modeling/quantum-espresso/data/)
 
-The [structured representation](../../../data-structured/overview.md) for
+The [structured representation]({{ reference_url }}/data-structured/overview/) for
 Quantum ESPRESSO, and for its specific compute parameters, is explained
-[in this page](data.md).
+[in this page]({{ data_url }}/software-directory/modeling/quantum-espresso/data/).
 
 ## Links
 

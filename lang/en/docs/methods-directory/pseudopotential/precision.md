@@ -1,6 +1,6 @@
 # Precision of Plane-Wave Pseudopotential Method
 
-At present, we limit the estimation of the [numerical precision](../../methods/precision.md) of plane-wave pseudopotential computations to the following list of parameters, as contained within the [data structure](../../methods/data.md) for methods.
+At present, we limit the estimation of the [numerical precision](../../methods/precision.md) of plane-wave pseudopotential computations to the following list of parameters, as contained within the [data structure]({{ data_url }}/methods/data/) for methods.
 
 ## Plane-wave
 

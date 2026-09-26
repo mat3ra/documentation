@@ -1,6 +1,6 @@
 # Data Lifecycle
 
-We now explain the general evolution of data. This evolution spans the duration of events from the moment the data is sent to the computing resources for the execution of simulation tasks, to the moment it is stored as [objects](../data-in-objectstorage/overview.md) or [structured data](../data-structured/overview.md) in the [database](../data-structured/overview.md#database) to be read by the Web Interface. We refer to this evolution flow as the **Data Lifecycle**.
+We now explain the general evolution of data. This evolution spans the duration of events from the moment the data is sent to the computing resources for the execution of simulation tasks, to the moment it is stored as [objects]({{ resources_url }}/data-in-objectstorage/overview/) or [structured data](../data-structured/overview.md) in the [database](../data-structured/overview.md#database) to be read by the Web Interface. We refer to this evolution flow as the **Data Lifecycle**.
 
 ## Flowchart
 
@@ -12,22 +12,22 @@ The Data Lifecycle is composed primarily of the following three steps. The reade
 
 ## 1. Entity Structured Data Creation
 
-The [actions](../entities-general/actions/overview.md) performed by the user in the Web Interface lead to the creation of entity-related [structured data](../data-structured/overview.md) in the corresponding [account-owned collections](../accounts/collections.md), stored within the database. [Jobs](../jobs/overview.md) corresponding to the simulation tasks provide one such example.
+The [actions]({{ interface_url }}/entities-general/actions/overview/) performed by the user in the Web Interface lead to the creation of entity-related [structured data](../data-structured/overview.md) in the corresponding [account-owned collections]({{ reference_url }}/accounts/collections/), stored within the database. [Jobs]({{ data_url }}/jobs/data/) corresponding to the simulation tasks provide one such example.
                 
 ## 2. Execution of Simulation
 
-The structured data describing such Entities is then sent from the database to the [computing clusters](../infrastructure/clusters/overview.md), the core component of the overall [computational infrastructure](../infrastructure/overview.md). Here, the relevant simulations are executed, which creates non-structured data in the form of output files.
+The structured data describing such Entities is then sent from the database to the [computing clusters]({{ resources_url }}/infrastructure/clusters/overview/), the core component of the overall [computational infrastructure]({{ resources_url }}/infrastructure/overview/). Here, the relevant simulations are executed, which creates non-structured data in the form of output files.
                 
 ## 3. Data Retrieval                
                 
-Following simulation completion, the output data produced by the simulation engine is stored on disk as [unstructured files](../data-on-disk/overview.md). 
+Following simulation completion, the output data produced by the simulation engine is stored on disk as [unstructured files]({{ resources_url }}/data-on-disk/overview/). 
 
 ### 3a. Extraction of Properties as Structured Data
 
-The [properties](../properties/overview.md) (and/or other information) contained in the output data are subsequently [extracted](../properties/lifecycle/extractor.md) through the processing of simulation output. 
+The [properties]({{ reference_url }}/properties/overview/) (and/or other information) contained in the output data are subsequently [extracted]({{ reference_url }}/properties/lifecycle/extractor/) through the processing of simulation output. 
 
-This information is further stored as [structured data](../data-structured/overview.md) in the database, and can be [retrieved](../properties/lifecycle/retrieval.md), for example, from the Web Interface as part of the [account-owned collections](../accounts/collections.md) of entities.
+This information is further stored as [structured data](../data-structured/overview.md) in the database, and can be [retrieved]({{ reference_url }}/properties/lifecycle/retrieval/), for example, from the Web Interface as part of the [account-owned collections]({{ reference_url }}/accounts/collections/) of entities.
 
 ### 3b. Storage of Output Files as Objects
 
-All simulation output files are additionally stored in the [Object storage](../data-in-objectstorage/overview.md), in order to make them accessible to the Web Interface. This can be accomplished under the [Files Tab](../jobs/ui/files-tab.md) of [Job Viewer](../jobs/ui/viewer.md), for example.
+All simulation output files are additionally stored in the [Object storage]({{ resources_url }}/data-in-objectstorage/overview/), in order to make them accessible to the Web Interface. This can be accomplished under the [Files Tab]({{ interface_url }}/jobs/ui/files-tab/) of [Job Viewer]({{ interface_url }}/jobs/ui/viewer/), for example.

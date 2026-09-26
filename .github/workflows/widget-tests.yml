@@ -1,0 +1,56 @@
+name: Ask AI widget tests
+
+# The widget ships to every documentation page, so a regression in it is a
+# regression on the whole site. These tests need no cloud access and no model
+# calls: the agent service is faked at the network boundary.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "extra/js/docs-agent.js"
+      - "extra/css/docs-agent.css"
+      - "tests/widget/**"
+      - ".github/workflows/widget-tests.yml"
+  pull_request:
+    paths:
+      - "extra/js/docs-agent.js"
+      - "extra/css/docs-agent.css"
+      - "tests/widget/**"
+      - ".github/workflows/widget-tests.yml"
+
+jobs:
+  playwright:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: tests/widget
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install
+        run: npm ci || npm install
+
+      - name: Install the browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run the tests
+        run: npx playwright test
+
+      - name: Upload the report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: tests/widget/playwright-report
+          retention-days: 7
