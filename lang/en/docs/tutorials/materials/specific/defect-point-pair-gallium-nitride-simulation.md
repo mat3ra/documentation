@@ -133,9 +133,10 @@ then runs the steps listed in section 3.
 ### 5.4. Monitor progress
 
 The notebook polls the jobs every 60 seconds (`POLL_INTERVAL`) and marks each reused structure or job
-`♻️`. Measured on cluster-001, 16 cores in the OR queue: from scratch about 2 h 10 min (default
-`ENERGY_KGRID`) and 1 h 50 min (`[1, 1, 1]`), longer than one login lasts (section 8.3); with the
-relaxations reused, about 35 and 12 min; with every job finished, about a minute.
+`♻️`. Measured on cluster-001, 16 cores in the OR queue, as job time without the queue: from scratch about
+2 h 10 min (default `ENERGY_KGRID`) and 1 h 50 min (`[1, 1, 1]`), longer than one login lasts (section
+8.3); with the relaxations reused, about 35 and 12 min (the default run took 42 min with the queue);
+with every job finished, about a minute.
 
 ### 5.5. Analyze results
 
@@ -222,7 +223,9 @@ another cluster — cluster-001 ran every job here — and re-run; finished jobs
 
 The platform's access token lasts one hour and expires during the Mg₃N₂ relaxation: on a first run from
 scratch, the wait in section 6 of the notebook stops with `HTTPError 401: You must be logged in`. The jobs
-keep running. Re-run the notebook later: it authenticates again and picks up the running and finished jobs.
+keep running. About 1 h 40 min after the start, restart the kernel and run all cells again (*Kernel* >
+*Restart Kernel and Run All Cells*): the notebook asks for a new login and picks up the running and
+finished jobs.
 
 ### 8.4. Formation energy far from the published value
 
