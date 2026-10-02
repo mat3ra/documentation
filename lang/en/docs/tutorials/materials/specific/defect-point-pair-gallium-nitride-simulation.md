@@ -46,8 +46,8 @@ Before starting this tutorial, one of the following steps should be completed:
    save `GaN 3x3x2 Mg_Ga-V_N axial pair`, OR
 2. Have the material saved in the `uploads` folder or in the account's materials collection
 
-The pristine reference, the GaN unit cell, and the chemical-potential references, Ga (mp-142), solid N₂
-(mp-154) and Mg₃N₂ (mp-1559), are loaded from Standata.
+The GaN unit cell (the pristine reference) and the chemical-potential references Ga (mp-142), solid N₂
+(mp-154) and Mg₃N₂ (mp-1559) are loaded from Standata.
 
 ## 3. Workflow overview
 
@@ -59,10 +59,11 @@ The defect formation energy calculation consists of the following steps:
 3. **Load materials**: Import the pair and the four Standata references, print their compositions and the
    Mg-N distances
 4. **Configure the model and k-grids**: One DFT model, a relaxation and an energy k-grid per material
-5. **Relax every cell**: At fixed cell, reusing a relaxed structure if one is found
-6. **Compute total energies**: One Total Energy job on each relaxed structure
-7. **Retrieve and compare results**: Print the chemical potentials, the formation enthalpy of GaN, the
-   formation energy at each limit, and the comparison with Miceli & Pasquarello
+5. **Configure compute resources**: Select the cluster, queue, and processor settings
+6. **Relax every cell**: At fixed cell, reusing a relaxed structure if one is found
+7. **Compute total energies**: One Total Energy job on each relaxed structure
+8. **Retrieve results**: Print the chemical potentials, the formation enthalpy of GaN, and E_f at each limit
+9. **Compare with the manuscript**: Print the comparison with Miceli & Pasquarello and the verdict
 
 ## 4. Calculation parameters
 
@@ -73,10 +74,10 @@ The defect formation energy calculation consists of the following steps:
 | Pseudopotentials | ultrasoft (GBRV), Ga 3d in valence | norm-conserving, Ga 3d in core |
 | Cutoff | 40 / 200 Ry | 45 Ry |
 | Cell | 3×3×2, 71 atoms with the pair; pristine as 18 GaN unit cells | 96 atoms |
-| k-points | Γ for the relaxation, `ENERGY_KGRID` for the energy | Γ for the relaxation, 2×2×2 for the energy |
+| k-points, pair | Γ for the relaxation, `ENERGY_KGRID` for the energy | Γ for the relaxation, 2×2×2 for the energy |
 | μ_N, N-rich limit | solid N₂ (mp-154) | N₂ molecule |
 | μ_Mg | Mg₃N₂ equilibrium, Mg₃N₂ (mp-1559) | Mg₃N₂ equilibrium |
-| Relaxation | atoms only, fixed cell, 0.05 eV/Å | full, threshold not stated |
+| Relaxation | atoms only, fixed cell, 0.05 eV/Å | "fully relaxed"; cell and threshold not stated |
 | Spin | spin-restricted, the neutral pair being closed-shell (0.00 μB) | spin-unrestricted where unpaired electrons occur |
 
 A relaxed structure already in the account is reused whatever model produced it, and its name is printed;
@@ -129,7 +130,14 @@ Execute all cells by selecting *Run* > *Run All* from the menu.
 The notebook first [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md),
 then runs the steps listed in section 3.
 
-### 5.4. Analyze results
+### 5.4. Monitor progress
+
+The notebook polls the jobs every 60 seconds (`POLL_INTERVAL`) and marks each reused structure or job
+`♻️`. Measured on cluster-001, 16 cores in the OR queue: from scratch about 2 h 10 min (default
+`ENERGY_KGRID`) and 1 h 50 min (`[1, 1, 1]`), longer than one login lasts (section 8.3); with the
+relaxations reused, about 35 and 12 min; with every job finished, about a minute.
+
+### 5.5. Analyze results
 
 The last cell prints E_f at each limit and the formation enthalpy |ΔH_f(GaN)| beside the manuscript's
 values, then the verdict, here for the default and for `ENERGY_KGRID = [1, 1, 1]`:
@@ -152,24 +160,18 @@ is compared. The formation enthalpy, |ΔH_f(GaN)| = 1.4 eV, is Table I's V_N row
 
 ### 6.1. Comparison with published results
 
-Measured on 16 cores in the OR queue:
-
-| | E_f, N-rich (eV) | E_f, Ga-rich (eV) | \|ΔH_f(GaN)\| (eV) | run time, from scratch / rerun |
-|---|---|---|---|---|
-| Miceli & Pasquarello, HSE | 2.1 | 1.2 | 1.4 | |
-| `ENERGY_KGRID = [4, 4, 3]` (default) | 2.185 (+4 %) | 1.570 (+31 %) | 0.922 (−34 %) | ~2 h 10 min / ~35 min |
-| `ENERGY_KGRID = [1, 1, 1]` (fast) | 1.066 (−49 %) | 0.550 (−54 %) | 0.773 (−45 %) | ~1 h 50 min / ~12 min |
-
-A rerun reuses the relaxations. The Ga-rich/N-rich spread equals (2/3)·|ΔH_f(GaN)|, 0.615 eV here against
-the manuscript's 0.9 eV, and PBE's |ΔH_f(GaN)| is below the manuscript's HSE value.
+| | E_f, N-rich (eV) | E_f, Ga-rich (eV) | \|ΔH_f(GaN)\| (eV) |
+|---|---|---|---|
+| Miceli & Pasquarello, HSE | 2.1 | 1.2 | 1.4 |
+| `ENERGY_KGRID = [4, 4, 3]` (default) | 2.185 (+4 %) | 1.570 (+31 %) | 0.922 (−34 %) |
+| `ENERGY_KGRID = [1, 1, 1]` (fast) | 1.066 (−49 %) | 0.550 (−54 %) | 0.773 (−45 %) |
 
 ## 7. Customization options
 
 ### 7.1. Choose the energy k-grid
 
 `ENERGY_KGRID` is the k-grid of the pair's total energy; the GaN unit cell's follows it, multiplied by
-`SUPERCELL_KGRID`. The default `[4, 4, 3]` gives E_f(N-rich) within 4 % of the manuscript; `[1, 1, 1]` is
-faster and gives it 49 % low:
+`SUPERCELL_KGRID`. `[1, 1, 1]` is faster and not converged:
 
 ```python
 ENERGY_KGRID = [1, 1, 1]
@@ -182,20 +184,21 @@ jobs. The manuscript's own mesh, 2×2×2 on its 96-atom cell, is untested here.
 
 The default, `CLUSTER_NAME = None`, uses the account's first listed cluster; setting a specific name picks
 that cluster instead, and a name that is not available makes the notebook stop and list the ones that are.
-`TIME_LIMIT` applies to every job; the default `"04:00:00"` covers the longest, the Mg₃N₂ relaxation.
 
 ### 7.3. Use the manuscript's settings
 
 The functional stays PBE: HSE on these cells exceeded the platform's time and memory. The other settings
 can be moved toward the manuscript's in the parameters cells:
 
-- **Pseudopotentials**: set `PSEUDOPOTENTIAL_TYPE = "nc"`, at that set's converged cutoff. The
-  manuscript's 45 Ry belongs to its own pseudopotentials and does not transfer: PseudoDojo norm-conserving
-  at 45 Ry gave forces up to 0.7 eV/Å on the perfect crystal
-- **Cell**: build a 96-atom cell in the [structure notebook](defect-point-pair-gallium-nitride.md) and
-  fold its k-grid in `SUPERCELL_KGRID`
-- **Spin**: patch `{"nspin": 2, "starting_magnetization(2)": 0.5}` (species 2 = N) into the pair's
-  `&SYSTEM` in order to check the closed-shell result
+- **Pseudopotentials**: set `PSEUDOPOTENTIAL_TYPE = "nc"`, at a cutoff untested here; the manuscript's 45 Ry
+  does not transfer, an HSE job with PseudoDojo norm-conserving at 45 Ry giving forces up to 0.68 eV/Å on
+  the perfect crystal. The platform's norm-conserving Ga keeps 3d in valence, unlike the manuscript's
+- **Cell**: build a 96-atom cell with `SUPERCELL_MATRIX` in the
+  [structure notebook](defect-point-pair-gallium-nitride.md) and save the pair under a new name there;
+  here, set `DEFECTIVE_NAME` to that name and fold the cell's k-grid in `SUPERCELL_KGRID`
+- **Spin**: in section 7 of the notebook, patch `{"nspin": 2, "starting_magnetization(2)": 0.5}`
+  (species 2 = N) into the pair's `&SYSTEM` with `patch_workflow_qe_input` and change its `workflow.name`:
+  the name does not carry `nspin`, so under the old name the finished `nspin = 1` job is reused
 
 ## 8. Troubleshooting
 
@@ -203,18 +206,23 @@ can be moved toward the manuscript's in the parameters cells:
 
 If `GaN 3x3x2 Mg_Ga-V_N axial pair` is not found in the `uploads` folder or the account's materials
 collection, run the [Vacancy-Substitution Pair Defects in GaN](defect-point-pair-gallium-nitride.md)
-tutorial first, and check that its `uploads` folder holds the pair under that exact name.
+tutorial first, and check that its `uploads` folder holds the pair under that exact name. If
+`Mg3N2-[Magnesium_Nitride]-BCC_[Ia-3]_3D_[Bulk]-[mp-1559]` is not found, update `mat3ra-standata` to a
+release that includes the entry.
 
-### 8.2. No cluster available
+### 8.2. No cluster available, or jobs end in `error`
 
 If section 5.1 of the notebook prints an empty list of clusters, there is nothing to submit to, and
 section 5.2 stops with `IndexError: list index out of range`. A cluster has to be available to the
-account before the notebook can run.
+account before the notebook can run. If the relaxations end in `error` on the default cluster, section 7
+of the notebook stops with `RuntimeError: Job … reported no 'final_structure'`. Set `CLUSTER_NAME` to
+another cluster — cluster-001 ran every job here — and re-run; finished jobs are reused.
 
-### 8.3. Job stopped at the time limit
+### 8.3. No formation energy on the first run
 
-A job still running at `TIME_LIMIT` is stopped. The Mg₃N₂ relaxation is the longest, about 1 h 40 min on
-16 cores; keep `TIME_LIMIT` above it, and re-run after raising it: finished jobs are reused.
+The platform's access token lasts one hour and expires during the Mg₃N₂ relaxation: on a first run from
+scratch, the wait in section 6 of the notebook stops with `HTTPError 401: You must be logged in`. The jobs
+keep running. Re-run the notebook later: it authenticates again and picks up the running and finished jobs.
 
 ### 8.4. Formation energy far from the published value
 
@@ -225,9 +233,6 @@ Mg 1, with three Mg-N bonds at 1.968 Å:
 GaN 3x3x2 Mg_Ga-V_N axial pair: Ga35Mg1N35, 71 atoms, cell 9.65 x 9.65 x 10.48 Å
 Mg-N distances: 1.968, 1.968, 1.968, 3.270 Å
 ```
-
-A 73-atom pair means the structure notebook still used the old `create_defect_pair`; re-run its current
-version, which saves the 71-atom pair.
 
 ## 9. Interactive JupyterLite notebook
 
