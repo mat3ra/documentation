@@ -25,8 +25,8 @@ number of nodes can be increased upon [request]({{ interface_url }}/ui/support/)
 |   SR   |   regular    |  saving  |   core-seconds    | 0.379 |               1               |       10        |
 |   OF   |     fast     | ordinary |    core-hours     | 1.275 |               5               |       100       |
 |   SF   |     fast     |  saving  |    core-hours     | 0.379 |               5               |       100       |
-|  GOF  |     fast     | ordinary |    core-hours     | 6.110 |               5               |       10        |
-|  GSF  |     fast     |  saving  |    core-hours     | 1.222 |               5               |       10        |
+|  GOF   |     fast     | ordinary |    core-hours     | 6.110 |               5               |       10        |
+|  GSF   |     fast     |  saving  |    core-hours     | 1.222 |               5               |       10        |
 
 <sup>+</sup> please contact support to inquire about attempting a larger node count per job
 
@@ -41,8 +41,8 @@ The following table contains hardware specifications for the above queues.
 |   OF   |       44       |      -       |     352     |        100         |     Standard_HC44rs      |
 |   SR   |       44       |      -       |     352     |        100         |     Standard_HC44rs      |
 |   SF   |       44       |      -       |     352     |        100         |     Standard_HC44rs      |
-|  GOF  |       40       |      1       |     320     |         40         | Standard_NC40ads_H100_v5 |
-|  GSF  |       40       |      1       |     320     |         40         | Standard_NC40ads_H100_v5 |
+|  GOF   |       40       |      1       |     320     |         40         | Standard_NC40ads_H100_v5 |
+|  GSF   |       40       |      1       |     320     |         40         | Standard_NC40ads_H100_v5 |
 
 ## Links
 
