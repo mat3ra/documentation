@@ -185,7 +185,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 3.3.2.1. Vacancy-Substitution Pair Defects in GaN <span class="btn badge b-info border-50">D-0D-DFP</span>
 
 **Structure**: [Create Vacancy-Substitution Pair in GaN](defect-point-pair-gallium-nitride.md)  
-**Properties**: Calculate defect formation energies (Coming Soon)  
+**Properties**: [Calculate Formation Energy of the Mg_Ga-V_N Pair in GaN](defect-point-pair-gallium-nitride-simulation.md)  
 **DOI**: [10.1103/PhysRevB.93.165207](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.93.165207){:target='_blank'} [@Miceli2016]
 
 ![Point Pair Defects: Mg Substitution and Vacancy in GaN](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/0-figure-from-manuscript.webp "Point Defect Pair: Substitution, Vacancy in GaN, FIG. 2."){ style="max-height:500px;width:auto;" }

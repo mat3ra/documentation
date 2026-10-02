@@ -195,6 +195,7 @@ nav:
             - Substitutional Defects in Graphene:                               tutorials/materials/specific/defect-point-substitution-graphene.md
             - Substitutional Defects in Graphene (Band Structure):              tutorials/materials/specific/defect-point-substitution-graphene-simulation.md
             - Vacancy-Substitution Pair in GaN:                                 tutorials/materials/specific/defect-point-pair-gallium-nitride.md
+            - Vacancy-Substitution Pair in GaN (Formation Energy):              tutorials/materials/specific/defect-point-pair-gallium-nitride-simulation.md
             - Vacancy Defect in h-BN:                                           tutorials/materials/specific/defect-point-vacancy-boron-nitride.md
             - Vacancy Defect in h-BN (Formation Energy):                        tutorials/materials/specific/defect-point-vacancy-boron-nitride-simulation.md
             - Interstitial Defect in SnO:                                       tutorials/materials/specific/defect-point-interstitial-tin-oxide.md

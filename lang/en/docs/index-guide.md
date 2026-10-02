@@ -34,7 +34,7 @@ Step-by-step recipes reproducing published work, one row per publication: the st
 | Reference                         | Structure Type            | Material | Properties |
 |:----------------------------------|:--------------------------|:---------|:-----------|
 | Fujimoto et al. (2011)[^1]        | Substitutional defect     | [Graphene](tutorials/materials/specific/defect-point-substitution-graphene.md) | [Band structure](tutorials/materials/specific/defect-point-substitution-graphene-simulation.md) |
-| Miceli et al. (2016)[^2]          | Vacancy-substitution pair | [GaN](tutorials/materials/specific/defect-point-pair-gallium-nitride.md) | Defect formation energies (Coming Soon) |
+| Miceli et al. (2016)[^2]          | Vacancy-substitution pair | [GaN](tutorials/materials/specific/defect-point-pair-gallium-nitride.md) | [Formation energy](tutorials/materials/specific/defect-point-pair-gallium-nitride-simulation.md) |
 | Bertoldo et al. (2022)[^3]        | Vacancy defect            | [h-BN](tutorials/materials/specific/defect-point-vacancy-boron-nitride.md) | [Formation energy](tutorials/materials/specific/defect-point-vacancy-boron-nitride-simulation.md) |
 | Togo et al. (2006)[^4]            | Interstitial defect       | [SnO](tutorials/materials/specific/defect-point-interstitial-tin-oxide.md) | [Formation energy and DOS](tutorials/materials/specific/defect-point-interstitial-tin-oxide-simulation.md) |
 | Sangiovanni et al. (2018)[^5]     | Island surface defect     | [TiN](tutorials/materials/specific/defect-surface-island-titanium-nitride.md) | Island formation energy (Coming Soon) |
