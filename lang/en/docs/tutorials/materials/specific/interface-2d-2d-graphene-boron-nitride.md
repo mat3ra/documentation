@@ -116,7 +116,7 @@ After setting the parameters, run the notebook to create the interface between h
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
-### 3.4. View Results and shift the layers
+### 3.4. View Results
 
 The generation might take some time.
 After that, the user can pass the material to the Materials Designer for further analysis.
@@ -125,23 +125,60 @@ Interface between h-BN and Graphene with the specified parameters is shown below
 
 ![Gr/h-BN Interface ](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/3-jl-result-preview.webp "Gr/h-BN Interface")
 
+### 3.5. Set the cell to the standard hexagonal setting
+
+The ZSL interface cell comes out with γ = 60°, but the symbolic K point used by the simulation notebook assumes the standard 120° hexagonal cell. The cell is therefore re-set with a unimodular supercell matrix, and each shifted interface is typed `HEX`:
+
+```python
+from mat3ra.made.tools.helpers import create_supercell
+
+interface = create_supercell(interface, supercell_matrix=[[1, 0, 0], [-1, 1, 0], [0, 0, 1]])
+```
+
+### 3.6. Shift the layers to generate stacking configurations
+
 To shift graphene layer along the y-axis, the user can modify the last cell in the notebook to achieve different stacking configurations.
 
-As mentioned in the publication, the vector to slide the layers between AA, AB and BB configurations is `a/sqrt(3)`.
+As mentioned in the publication, the vector to slide the layers between AA, AB and BA configurations is `a/sqrt(3)`. The notebook builds seven interfaces at half-steps of this vector, with `n` running from `2` to `8`.
 
-One can achieve any multiples of shift vector by changing the value of `n` in the following code snippet using the `interface_displace_part()` function from the `mat3ra.made.tools.modify` module.
+The parameters cell sets the names used by the loop below and by the simulation notebook:
+
+```python
+# One name per shift (n = 2..8); the three symmetric registries carry their Jung 2015 / Giovannetti 2007 label,
+# n = 8 repeats n = 2 one period later.
+INTERFACE_NAMES = [
+    "Gr/hBN d3.4 shift 0of6 BA",
+    "Gr/hBN d3.4 shift 1of6",
+    "Gr/hBN d3.4 shift 2of6 AA",
+    "Gr/hBN d3.4 shift 3of6",
+    "Gr/hBN d3.4 shift 4of6 AB",
+    "Gr/hBN d3.4 shift 5of6",
+    "Gr/hBN d3.4 shift 6of6 BA",
+]
+```
+
+The loop below builds the seven interfaces and names them from `INTERFACE_NAMES`, using the `interface_displace_part()` function from the `mat3ra.made.tools.modify` module.
 
 ```python
 import numpy as np
+from mat3ra.made.tools.analyze.other import get_average_interlayer_distance
+from mat3ra.made.tools.convert.interface_parts_enum import InterfacePartsEnum
 from mat3ra.made.tools.modify import interface_displace_part
 
-n = 1
-a = selected_interface.lattice.a
-shifted_interface = interface_displace_part(
-    interface=selected_interface, 
-    displacement=[0, n * a / np.sqrt(3), 0],
-    use_cartesian_coordinates=True,
-)
+a = interface.lattice.a
+shifted_interfaces = []
+for index, n in enumerate(range(2, 9)):
+    shifted_interface = interface_displace_part(
+        interface=interface,
+        displacement=[0, n * a / np.sqrt(3) / 2, 0],
+        use_cartesian_coordinates=True)
+    shifted_interface.name = INTERFACE_NAMES[index]
+    shifted_interface.lattice.type = "HEX"
+    shifted_interfaces.append(shifted_interface)
+    interlayer_distance = get_average_interlayer_distance(
+        shifted_interface, InterfacePartsEnum.SUBSTRATE.value, InterfacePartsEnum.FILM.value)
+    print(f"{shifted_interface.name}: {len(shifted_interface.basis.elements.ids)} atoms, "
+          f"gamma = {shifted_interface.lattice.gamma:.1f}°, interlayer distance = {interlayer_distance:.3f} Å")
 ```
 
 ![Shift Interface](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/4-jl-setup-shift.webp "Shift Interface")
@@ -157,6 +194,20 @@ The user can pass the material with the interface in the current Materials Desig
 ![Final Material](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/6-wave-result.webp "Graphene on Hexagonal Boron Nitride Interface")
 
 Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
+
+The shift loop names the seven interfaces as follows, and the simulation notebook loads materials by these exact names:
+
+- `Gr/hBN d3.4 shift 0of6 BA`
+- `Gr/hBN d3.4 shift 1of6`
+- `Gr/hBN d3.4 shift 2of6 AA`
+- `Gr/hBN d3.4 shift 3of6`
+- `Gr/hBN d3.4 shift 4of6 AB`
+- `Gr/hBN d3.4 shift 5of6`
+- `Gr/hBN d3.4 shift 6of6 BA`
+
+Three of the seven are the symmetric stackings: AA (carbon over both boron and nitrogen), AB (carbon over nitrogen and over a hexagon centre) and BA (carbon over boron and over a hexagon centre); `0of6` and `6of6` are both BA, the same structure one period apart.
+
+Once the structures exist, the [simulation tutorial](interface-2d-2d-graphene-boron-nitride-simulation.md) loads them by name and reproduces the manuscript's stacking energies and band gaps.
 
 
 ## 5. Interactive JupyterLite Notebook

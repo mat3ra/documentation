@@ -170,6 +170,7 @@ nav:
             - Gold Nanoclusters:                                            tutorials/materials/specific/nanocluster-gold.md
             - SrTiO3 Slab:                                                  tutorials/materials/specific/slab-strontium-titanate.md
             - Interface between Graphene and h-BN:                          tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride.md
+            - Graphene on h-BN (Stacking Energy and Band Gap):              tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride-simulation.md
             - Interface between Copper and SiO2 (Cristobalite):             tutorials/materials/specific/interface-3d-3d-copper-silicon-dioxide.md
             - Interface between Graphene and SiO2 (alpha-quartz):           tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide.md
             - High-k Metal Gate Stack (Si/SiO2/HfO2/TiN):                   tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md
