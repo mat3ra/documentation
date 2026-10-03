@@ -30,15 +30,7 @@ Jung et al. (2015) model the same system; its Fig. 7(a) is an RPA-parameterised 
 
 ## 2. Prerequisites
 
-Run the [structure creation tutorial](interface-2d-2d-graphene-boron-nitride.md) first. Its notebook creates and names the seven stacking configurations this notebook loads:
-
-- `Gr/hBN d3.4 shift 0of6 BA`
-- `Gr/hBN d3.4 shift 1of6`
-- `Gr/hBN d3.4 shift 2of6 AA`
-- `Gr/hBN d3.4 shift 3of6`
-- `Gr/hBN d3.4 shift 4of6 AB`
-- `Gr/hBN d3.4 shift 5of6`
-- `Gr/hBN d3.4 shift 6of6 BA`
+Run the [structure creation tutorial](interface-2d-2d-graphene-boron-nitride.md) first. Its `interface_2d_2d_boron_nitride_graphene.ipynb` notebook names the seven stacking configurations (listed on that page) that this notebook loads.
 
 An account with a cluster is also required.
 
@@ -91,19 +83,19 @@ Cell 1.3 sets the DFT parameters:
 MODEL_SUBTYPE = "lda"
 FUNCTIONAL = "pz"  # Giovannetti et al. 2007 use LDA: GGA gives essentially no interlayer binding
 PSEUDOPOTENTIAL_TYPE = "us"  # GBRV ultrasoft, the only LDA family the platform publishes for B, C and N
-ECUTWFC = 50   # Ry
-ECUTRHO = 400  # Ry, 8x for ultrasoft pseudopotentials
+ECUTWFC = 40   # Ry, GBRV's tested cutoff
+ECUTRHO = 200  # Ry, GBRV's tested charge-density cutoff
 
 KGRID = [36, 36, 1]  # Giovannetti et al. 2007; a multiple of 3 keeps K on the mesh
 SMEARING_SETTINGS = {"degauss": 0.001}  # Ry; the gaps compared are 30-80 meV
-MODEL_TAG = f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry k{KGRID[0]} g{SMEARING_SETTINGS['degauss']}"
+KPATH_STEPS = 40
+MODEL_TAG = f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry k{KGRID[0]} p{KPATH_STEPS} g{SMEARING_SETTINGS['degauss']}"
 
 SCF_UNIT = "pw_scf"
 NSCF_UNIT = "pw_nscf"
 BANDS_UNIT = "pw_bands"
-N_OCCUPIED_BANDS = 8  # 16 valence electrons: C 4 + 4, B 3, N 5
+NUMBER_OF_OCCUPIED_BANDS = 8  # 16 valence electrons: C 4 + 4, B 3, N 5
 
-KPATH_STEPS = 40
 KPATH = [
     {"point": "Γ", "steps": KPATH_STEPS},
     {"point": "K", "steps": KPATH_STEPS},
@@ -115,7 +107,7 @@ KPATH = [
 | paper | this notebook |
 |---|---|
 | LDA | LDA |
-| VASP, plane waves, 600 eV | GBRV ultrasoft, 50/400 Ry |
+| VASP, plane waves, 600 eV | GBRV ultrasoft, 40/200 Ry |
 | 36×36×1 | 36×36×1 |
 | tetrahedron | Gaussian 0.001 Ry |
 | cell a = 2.445 Å (graphene LDA, h-BN compressed) | 2.509 Å (h-BN unstrained, graphene +1.79%) |
@@ -147,19 +139,21 @@ Running the notebook again finds the seven jobs already finished by material and
 
 ## 6. Expected results
 
-At d = 3.4 Å, Giovannetti et al. (Fig. 4) give gaps at K of AA ≈ 80 meV, AB ≈ 45 meV, BA ≈ 30 meV (±5 meV read off the axis), and Fig. 2 gives the energy ordering E(BA) < E(AB) < E(AA), with Fig. 2 read at 3.4 Å as BA ≈ −0.055, AB ≈ −0.045, AA ≈ −0.035 eV per cell.
+![Gap at K vs interlayer distance for the three stackings](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/giovannetti2007-fig4-gap-vs-distance.webp "Gap at K vs interlayer distance for the three stackings (Giovannetti et al. 2007, Fig. 4; a = AA, b = AB, c = BA)")
 
-| shift | stacking | ΔE (meV) | gap (meV) | paper gap (meV) |
+At d = 3.4 Å, Giovannetti et al. (Fig. 4) give gaps at K of AA ≈ 80 and BA ≈ 30 meV read off Fig. 4 (±5 meV), AB = 46 meV, the paper's value at its 3.40 Å equilibrium, and Fig. 2 gives the energy ordering E(BA) < E(AB) < E(AA), with Fig. 2 read at 3.4 Å as BA ≈ −0.055, AB ≈ −0.045, AA ≈ −0.035 eV per cell.
+
+| shift | stacking | ΔE vs 0of6 (meV) | gap (meV) | paper gap (meV) |
 |---|---|---|---|---|
 | 0 | BA | TODO(live run) | TODO(live run) | 30 |
 | 1 | bridge | TODO(live run) | TODO(live run) | |
 | 2 | AA | TODO(live run) | TODO(live run) | 80 |
 | 3 | bridge | TODO(live run) | TODO(live run) | |
-| 4 | AB | TODO(live run) | TODO(live run) | 45 |
+| 4 | AB | TODO(live run) | TODO(live run) | 46 |
 | 5 | bridge | TODO(live run) | TODO(live run) | |
 | 6 | BA | TODO(live run) | TODO(live run) | 30 |
 
-At its own equilibrium distances the paper reports larger gaps, quoted here for reference and not compared: AA 56 meV at 3.50 Å, AB 46 meV at 3.40 Å, BA 53 meV at 3.22 Å.
+The paper's gaps at its own equilibrium distances are AA 56 meV at 3.50 Å, AB 46 meV at 3.40 Å and BA 53 meV at 3.22 Å.
 
 The notebook's final cell prints four clauses and a verdict:
 
@@ -167,7 +161,7 @@ The notebook's final cell prints four clauses and a verdict:
 E(BA) < E(AB) < E(AA): {energy_ordering}
 Minimum at BA, maximum at AA: {energy_extrema}
 Gap AA > AB > BA: {gap_ordering}
-Each gap within 15 meV of Fig. 4: {gaps_within_tolerance}
+Each gap within 15 meV of the paper: {gaps_within_tolerance}
 ```
 
 ```
@@ -176,7 +170,7 @@ Reproduces Giovannetti et al. (2007): yes|no
 
 ## 7. Customization options
 
-`KGRID` and `KPATH_STEPS` control the k-point sampling of the SCF/NSCF grid and the band-structure path; `ECUTWFC` (with `ECUTRHO` at 8×) controls the plane-wave cutoff; `SMEARING_SETTINGS["degauss"]` controls the Gaussian smearing width. `MODEL_TAG` is built from these and is part of every workflow's name, so changing any of them creates new jobs rather than reusing the ones already run.
+`KGRID` and `KPATH_STEPS` control the k-point sampling of the SCF/NSCF grid and the band-structure path; `ECUTWFC` and `ECUTRHO` set the plane-wave cutoffs; `SMEARING_SETTINGS["degauss"]` controls the Gaussian smearing width. `MODEL_TAG` is built from these and is part of every workflow's name, so changing any of them creates new jobs rather than reusing the ones already run.
 
 To add a material, add a name to `MATERIALS` with its shift index and stacking label (`"AA"`, `"AB"`, `"BA"` or `None` for a bridge point); the name must match one saved by the structure notebook.
 
@@ -196,7 +190,7 @@ If a printed gap is around 1 eV or larger, the provenance line's `gamma` is not 
 
 ### 8.4. Provenance print fails
 
-The provenance print in cell 3.1 depends on labels that are not stored when a material is saved to the platform. Run the structure notebook so that the materials exist in `uploads/` rather than being loaded from the platform.
+`ValueError: zero-size array to reduction operation` in cell 3.1 means the material came from the platform rather than from `uploads/`, so the labels the provenance print depends on are not stored. Run the structure notebook so that the materials exist in `uploads/` rather than being loaded from the platform.
 
 ## 9. Interactive JupyterLite notebook
 

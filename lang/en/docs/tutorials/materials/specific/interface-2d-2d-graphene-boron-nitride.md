@@ -141,6 +141,22 @@ To shift graphene layer along the y-axis, the user can modify the last cell in t
 
 As mentioned in the publication, the vector to slide the layers between AA, AB and BA configurations is `a/sqrt(3)`. The notebook builds seven interfaces at half-steps of this vector, with `n` running from `2` to `8`.
 
+The parameters cell sets the names used by the loop below and by the simulation notebook:
+
+```python
+# One name per shift (n = 2..8); the three symmetric registries carry their Jung 2015 / Giovannetti 2007 label,
+# n = 8 repeats n = 2 one period later.
+INTERFACE_NAMES = [
+    "Gr/hBN d3.4 shift 0of6 BA",
+    "Gr/hBN d3.4 shift 1of6",
+    "Gr/hBN d3.4 shift 2of6 AA",
+    "Gr/hBN d3.4 shift 3of6",
+    "Gr/hBN d3.4 shift 4of6 AB",
+    "Gr/hBN d3.4 shift 5of6",
+    "Gr/hBN d3.4 shift 6of6 BA",
+]
+```
+
 The loop below builds the seven interfaces and names them from `INTERFACE_NAMES`, using the `interface_displace_part()` function from the `mat3ra.made.tools.modify` module.
 
 ```python
