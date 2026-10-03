@@ -1,0 +1,213 @@
+---
+tags:
+  - 2D
+  - graphene
+  - boron-nitride
+  - interface
+  - band-structure
+  - stacking
+  - C-2D-INT-Z
+
+hide:
+  - tags
+# YAML header
+render_macros: true
+---
+
+# Graphene on h-BN (Stacking Energy and Band Gap)
+
+## 1. Introduction
+
+This tutorial calculates the total energy and band structure of the seven stacking configurations of graphene on h-BN created in the structure tutorial, at a fixed interlayer distance of 3.4 Å, reproducing results from the following manuscript.
+
+!!!note "Manuscript"
+    **Gianluca Giovannetti, Petr A. Khomyakov, Geert Brocks, Paul J. Kelly and Jeroen van den Brink**
+    **Substrate-induced band gap in graphene on hexagonal boron nitride: Ab initio density functional calculations**
+    Physical Review B 76, 073103 (2007)
+    [DOI: 10.1103/PhysRevB.76.073103](https://doi.org/10.1103/PhysRevB.76.073103){:target='_blank'} [@Giovannetti2007]
+
+Jung et al. (2015) model the same system; its Fig. 7(a) is an RPA-parameterised curve, not an independent DFT calculation, so the DFT numbers reproduced here are Giovannetti's [@Jung2015].
+
+## 2. Prerequisites
+
+Run the [structure creation tutorial](interface-2d-2d-graphene-boron-nitride.md) first. Its notebook creates and names the seven stacking configurations this notebook loads:
+
+- `Gr/hBN d3.4 shift 0of6 BA`
+- `Gr/hBN d3.4 shift 1of6`
+- `Gr/hBN d3.4 shift 2of6 AA`
+- `Gr/hBN d3.4 shift 3of6`
+- `Gr/hBN d3.4 shift 4of6 AB`
+- `Gr/hBN d3.4 shift 5of6`
+- `Gr/hBN d3.4 shift 6of6 BA`
+
+An account with a cluster is also required.
+
+## 3. Workflow overview
+
+The notebook runs the Standata `band_structure_dos.json` workflow, which chains `pw_scf` (total energy), `pw_bands` (band structure), `pw_nscf` and `projwfc` (density of states, left on the job and not plotted).
+
+One workflow is created per material, so seven jobs run in total. The jobs run one after another: the notebook waits for each job to finish before submitting the next. Re-running the notebook finds each already-finished job by its material and workflow name and reuses it instead of resubmitting.
+
+Both sheets are held rigid at 3.4 Å; the workflow includes no relaxation step, matching the paper's own fixed-distance calculation.
+
+## 4. Calculation parameters
+
+Cell 1.2 sets the materials, the cluster and the workflow name:
+
+```python
+from datetime import datetime
+from mat3ra.ide.compute import QueueName
+
+ORGANIZATION_NAME = None  # set to your organization name (full or partial); otherwise, your default one is used
+FOLDER = "./uploads"
+
+# Names saved by the structure notebook; the symmetric stackings carry their Jung 2015 / Giovannetti 2007 label
+MATERIALS = {
+    "Gr/hBN d3.4 shift 0of6 BA": {"shift": 0, "stacking": "BA"},
+    "Gr/hBN d3.4 shift 1of6": {"shift": 1, "stacking": None},
+    "Gr/hBN d3.4 shift 2of6 AA": {"shift": 2, "stacking": "AA"},
+    "Gr/hBN d3.4 shift 3of6": {"shift": 3, "stacking": None},
+    "Gr/hBN d3.4 shift 4of6 AB": {"shift": 4, "stacking": "AB"},
+    "Gr/hBN d3.4 shift 5of6": {"shift": 5, "stacking": None},
+    "Gr/hBN d3.4 shift 6of6 BA": {"shift": 6, "stacking": "BA"},
+}
+
+WORKFLOW_SEARCH_TERM = "band_structure_dos.json"
+MY_WORKFLOW_NAME = "Band Structure + DOS"
+APPLICATION_NAME = "espresso"
+
+CLUSTER_NAME = "001"  # specify full or partial name i.e. "cluster-001" to select
+QUEUE_NAME = QueueName.OR
+PPN = 16  # queue OR on cluster-001 allows at most 16 cores per node
+TIME_LIMIT = "02:00:00"
+
+timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+POLL_INTERVAL = 60  # seconds
+```
+
+Cell 1.3 sets the DFT parameters:
+
+```python
+MODEL_SUBTYPE = "lda"
+FUNCTIONAL = "pz"  # Giovannetti et al. 2007 use LDA: GGA gives essentially no interlayer binding
+PSEUDOPOTENTIAL_TYPE = "us"  # GBRV ultrasoft, the only LDA family the platform publishes for B, C and N
+ECUTWFC = 50   # Ry
+ECUTRHO = 400  # Ry, 8x for ultrasoft pseudopotentials
+
+KGRID = [36, 36, 1]  # Giovannetti et al. 2007; a multiple of 3 keeps K on the mesh
+SMEARING_SETTINGS = {"degauss": 0.001}  # Ry; the gaps compared are 30-80 meV
+MODEL_TAG = f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry k{KGRID[0]} g{SMEARING_SETTINGS['degauss']}"
+
+SCF_UNIT = "pw_scf"
+NSCF_UNIT = "pw_nscf"
+BANDS_UNIT = "pw_bands"
+N_OCCUPIED_BANDS = 8  # 16 valence electrons: C 4 + 4, B 3, N 5
+
+KPATH_STEPS = 40
+KPATH = [
+    {"point": "Γ", "steps": KPATH_STEPS},
+    {"point": "K", "steps": KPATH_STEPS},
+    {"point": "M", "steps": KPATH_STEPS},
+    {"point": "Γ", "steps": 1},
+]
+```
+
+| paper | this notebook |
+|---|---|
+| LDA (both) | LDA (both) |
+| VASP 600 eV / PAW-type potentials | GBRV ultrasoft, 50/400 Ry |
+| 36×36×1 (both) | 36×36×1 (both) |
+| tetrahedron | Gaussian 0.001 Ry |
+| cell a = 2.445 Å (graphene LDA, h-BN compressed) | 2.509 Å (h-BN unstrained, graphene +1.79%) |
+| 4 h-BN layers | 1 |
+| dipole correction | none |
+| vacuum 12–15 Å | 23.4 Å |
+
+## 5. Step-by-step instructions
+
+### 5.1. Open the notebook
+
+Navigate to the API examples repository and open:
+
+```
+other/materials_designer/specific_examples/interface_2d_2d_boron_nitride_graphene_SIMULATION.ipynb
+```
+
+### 5.2. Configure parameters
+
+In cell 1.2, set `ORGANIZATION_NAME` and `CLUSTER_NAME` to the account's organization and cluster. `MATERIALS` already lists the seven names the structure notebook saves; leave it unchanged unless a material was renamed.
+
+### 5.3. Run the notebook
+
+Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), loads the seven materials and prints their provenance, saves them to the platform, configures one workflow per material, creates the compute configuration, then submits the seven jobs one at a time. Each job blocks the notebook until it finishes, a few minutes for a four-atom cell. Once all seven have finished, the notebook retrieves the band structures, total energies and gaps at K, and prints the comparison table.
+
+### 5.4. Re-run the notebook
+
+Running the notebook again finds the seven jobs already finished by material and workflow name and reuses them rather than resubmitting.
+
+## 6. Expected results
+
+At d = 3.4 Å, Giovannetti et al. (Fig. 4) give gaps at K of AA ≈ 80 meV, AB ≈ 45 meV, BA ≈ 30 meV (±5 meV read off the axis), and Fig. 2 gives the energy ordering E(BA) < E(AB) < E(AA), with values at 3.4 Å of c ≈ −0.055 eV, b ≈ −0.045 eV, a ≈ −0.035 eV per cell for BA, AB, AA respectively.
+
+| shift | stacking | ΔE (meV) | gap (meV) | paper gap (meV) |
+|---|---|---|---|---|
+| 0 | BA | TODO(live run) | TODO(live run) | 30 |
+| 1 | bridge | TODO(live run) | TODO(live run) | |
+| 2 | AA | TODO(live run) | TODO(live run) | 80 |
+| 3 | bridge | TODO(live run) | TODO(live run) | |
+| 4 | AB | TODO(live run) | TODO(live run) | 45 |
+| 5 | bridge | TODO(live run) | TODO(live run) | |
+| 6 | BA | TODO(live run) | TODO(live run) | 30 |
+
+![Graphene on Hexagonal Boron Nitride](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/0-figure-from-manuscript.webp "Graphene on Hexagonal Boron Nitride, FIG. 7")
+
+At its own equilibrium distances the paper reports larger gaps, quoted here for reference and not compared: AA 56 meV at 3.50 Å, AB 46 meV at 3.40 Å, BA 53 meV at 3.22 Å.
+
+The notebook's final cell prints four clauses and a verdict:
+
+```
+E(BA) < E(AB) < E(AA): {energy_ordering}
+Minimum at BA, maximum at AA: {energy_extrema}
+Gap AA > AB > BA: {gap_ordering}
+Each gap within 15 meV of Fig. 4: {gaps_within_tolerance}
+```
+
+```
+Reproduces Giovannetti et al. (2007): yes|no
+```
+
+## 7. Customization options
+
+`KGRID` and `KPATH_STEPS` control the k-point sampling of the SCF/NSCF grid and the band-structure path; `ECUTWFC` (with `ECUTRHO` at 8×) controls the plane-wave cutoff; `SMEARING_SETTINGS["degauss"]` controls the Gaussian smearing width. `MODEL_TAG` is built from these and is part of every workflow's name, so changing any of them creates new jobs rather than reusing the ones already run.
+
+To add a material, add a name to `MATERIALS` with its shift index and stacking label (`"AA"`, `"AB"`, `"BA"` or `None` for a bridge point); the name must match one saved by the structure notebook.
+
+## 8. Troubleshooting
+
+### 8.1. Material not found
+
+`ValueError: No material named …` means the structure notebook has not been run, or the name in `MATERIALS` does not match. Run the [structure tutorial](interface-2d-2d-graphene-boron-nitride.md) first; the names must match cell 1.2 exactly.
+
+### 8.2. Cluster not found
+
+`Cluster '001' not found` means no cluster matching `CLUSTER_NAME` is registered on the account. Register a cluster, or set `CLUSTER_NAME` to one that is.
+
+### 8.3. Gap near 1 eV
+
+If a printed gap is around 1 eV or larger, the provenance line's `gamma` is not 120.000°. The structure notebook's cell 3.5 re-setting of the cell to the hexagonal setting did not run.
+
+### 8.4. Provenance print fails
+
+The provenance print in cell 3.1 depends on labels that are not stored when a material is saved to the platform. Run the structure notebook so that the materials exist in `uploads/` rather than being loaded from the platform.
+
+## 9. Interactive JupyterLite notebook
+
+{% with origin_url=config.extra.jupyterlite.origin_url %}
+{% with notebooks_path_root=config.extra.jupyterlite.notebooks_path_root %}
+{% with notebook_name='specific_examples/interface_2d_2d_boron_nitride_graphene_SIMULATION.ipynb' %}
+{% include 'jupyterlite_embed.html' %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+
+## 10. References

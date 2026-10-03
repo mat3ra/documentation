@@ -139,9 +139,9 @@ interface = create_supercell(interface, supercell_matrix=[[1, 0, 0], [-1, 1, 0],
 
 To shift graphene layer along the y-axis, the user can modify the last cell in the notebook to achieve different stacking configurations.
 
-As mentioned in the publication, the vector to slide the layers between AA, AB and BB configurations is `a/sqrt(3)`. The notebook builds seven interfaces at half-steps of this vector, with `n` running from `2` to `8`.
+As mentioned in the publication, the vector to slide the layers between AA, AB and BA configurations is `a/sqrt(3)`. The notebook builds seven interfaces at half-steps of this vector, with `n` running from `2` to `8`.
 
-One can achieve any multiples of shift vector by changing the value of `n` in the following code snippet using the `interface_displace_part()` function from the `mat3ra.made.tools.modify` module.
+The loop below builds the seven interfaces and names them from `INTERFACE_NAMES`, using the `interface_displace_part()` function from the `mat3ra.made.tools.modify` module.
 
 ```python
 import numpy as np
