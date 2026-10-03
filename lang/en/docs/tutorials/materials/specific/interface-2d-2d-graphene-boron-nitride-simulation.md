@@ -114,9 +114,9 @@ KPATH = [
 
 | paper | this notebook |
 |---|---|
-| LDA (both) | LDA (both) |
-| VASP 600 eV / PAW-type potentials | GBRV ultrasoft, 50/400 Ry |
-| 36×36×1 (both) | 36×36×1 (both) |
+| LDA | LDA |
+| VASP, plane waves, 600 eV | GBRV ultrasoft, 50/400 Ry |
+| 36×36×1 | 36×36×1 |
 | tetrahedron | Gaussian 0.001 Ry |
 | cell a = 2.445 Å (graphene LDA, h-BN compressed) | 2.509 Å (h-BN unstrained, graphene +1.79%) |
 | 4 h-BN layers | 1 |
@@ -147,7 +147,7 @@ Running the notebook again finds the seven jobs already finished by material and
 
 ## 6. Expected results
 
-At d = 3.4 Å, Giovannetti et al. (Fig. 4) give gaps at K of AA ≈ 80 meV, AB ≈ 45 meV, BA ≈ 30 meV (±5 meV read off the axis), and Fig. 2 gives the energy ordering E(BA) < E(AB) < E(AA), with values at 3.4 Å of c ≈ −0.055 eV, b ≈ −0.045 eV, a ≈ −0.035 eV per cell for BA, AB, AA respectively.
+At d = 3.4 Å, Giovannetti et al. (Fig. 4) give gaps at K of AA ≈ 80 meV, AB ≈ 45 meV, BA ≈ 30 meV (±5 meV read off the axis), and Fig. 2 gives the energy ordering E(BA) < E(AB) < E(AA), with Fig. 2 read at 3.4 Å as BA ≈ −0.055, AB ≈ −0.045, AA ≈ −0.035 eV per cell.
 
 | shift | stacking | ΔE (meV) | gap (meV) | paper gap (meV) |
 |---|---|---|---|---|
@@ -158,8 +158,6 @@ At d = 3.4 Å, Giovannetti et al. (Fig. 4) give gaps at K of AA ≈ 80 meV, AB �
 | 4 | AB | TODO(live run) | TODO(live run) | 45 |
 | 5 | bridge | TODO(live run) | TODO(live run) | |
 | 6 | BA | TODO(live run) | TODO(live run) | 30 |
-
-![Graphene on Hexagonal Boron Nitride](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/0-figure-from-manuscript.webp "Graphene on Hexagonal Boron Nitride, FIG. 7")
 
 At its own equilibrium distances the paper reports larger gaps, quoted here for reference and not compared: AA 56 meV at 3.50 Å, AB 46 meV at 3.40 Å, BA 53 meV at 3.22 Å.
 
@@ -202,7 +200,7 @@ The provenance print in cell 3.1 depends on labels that are not stored when a ma
 
 ## 9. Interactive JupyterLite notebook
 
-{% with origin_url=config.extra.jupyterlite.origin_url %}
+{% with origin_url=config.extra.jupyterlite.origin_url_lab %}
 {% with notebooks_path_root=config.extra.jupyterlite.notebooks_path_root %}
 {% with notebook_name='specific_examples/interface_2d_2d_boron_nitride_graphene_SIMULATION.ipynb' %}
 {% include 'jupyterlite_embed.html' %}
