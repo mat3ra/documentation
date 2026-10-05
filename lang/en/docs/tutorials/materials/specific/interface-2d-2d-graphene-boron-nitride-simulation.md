@@ -161,7 +161,7 @@ The notebook's final cell prints four clauses and a verdict:
 E(BA) < E(AB) < E(AA): {energy_ordering}
 Minimum at BA, maximum at AA: {energy_extrema}
 Gap AA > AB > BA: {gap_ordering}
-Each gap within 15 meV of the paper: {gaps_within_tolerance}
+Each gap within 15 % of the paper's: {gaps_within_tolerance}
 ```
 
 ```
