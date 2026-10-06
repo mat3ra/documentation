@@ -26,9 +26,13 @@ This tutorial calculates the total energy and band structure of the seven stacki
     Physical Review B 76, 073103 (2007)
     [DOI: 10.1103/PhysRevB.76.073103](https://doi.org/10.1103/PhysRevB.76.073103){:target='_blank'} [@Giovannetti2007]
 
-The seven stackings follow the sliding path of Fig. 7(a) in Jung et al. (2015) [@Jung2015]; the energies and band gaps compared are from Giovannetti et al. (2007), Fig. 2 and Fig. 4.
+The seven stackings slide between the three configurations of Fig. 1 — (a) AA, (b) AB, (c) BA; the energies and band gaps compared are Fig. 2 and Fig. 4.
 
-![The seven Gr/h-BN stackings](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/5-jl-result-preview.webp "The seven Gr/h-BN stackings along the sliding path, as built by the structure notebook")
+![The three stackings of graphene on h-BN](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/giovannetti2007-fig1-stackings.webp "The three stackings of graphene on h-BN (Giovannetti et al. 2007, Fig. 1): (a) C over B and N, (b) C over N and a hexagon centre, (c) C over B and a hexagon centre")
+
+![Total energy vs interlayer distance for the three stackings](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/giovannetti2007-fig2-energy-vs-distance.webp "Total energy vs interlayer distance for the three stackings (Giovannetti et al. 2007, Fig. 2; a = AA, b = AB, c = BA)")
+
+![Gap at K vs interlayer distance for the three stackings](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/giovannetti2007-fig4-gap-vs-distance.webp "Gap at K vs interlayer distance for the three stackings (Giovannetti et al. 2007, Fig. 4; a = AA, b = AB, c = BA)")
 
 ## 2. Prerequisites
 
@@ -139,10 +143,6 @@ Running the notebook again finds the seven jobs already finished by material and
 
 ## 6. Expected results
 
-![Total energy vs interlayer distance for the three stackings](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/giovannetti2007-fig2-energy-vs-distance.webp "Total energy vs interlayer distance for the three stackings (Giovannetti et al. 2007, Fig. 2; a = AA, b = AB, c = BA)")
-
-![Gap at K vs interlayer distance for the three stackings](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/giovannetti2007-fig4-gap-vs-distance.webp "Gap at K vs interlayer distance for the three stackings (Giovannetti et al. 2007, Fig. 4; a = AA, b = AB, c = BA)")
-
 At d = 3.4 Å, Giovannetti et al. (Fig. 4) give gaps at K of AA ≈ 80 and BA ≈ 30 meV read off Fig. 4 (±5 meV), AB = 46 meV, the paper's value at its 3.40 Å equilibrium, and Fig. 2 gives the energy ordering E(BA) < E(AB) < E(AA), with Fig. 2 read at 3.4 Å as BA ≈ −0.055, AB ≈ −0.045, AA ≈ −0.035 eV per cell.
 
 | shift | stacking | ΔE vs 0of6 (meV) | gap (meV) | paper gap (meV) | deviation |
@@ -156,6 +156,8 @@ At d = 3.4 Å, Giovannetti et al. (Fig. 4) give gaps at K of AA ≈ 80 and BA �
 | 6 | BA | −0.0 | 33.1 | 30 | +10 % |
 
 Shift 6 is the same structure as shift 0 one period later and reproduces it to 1 μeV in energy and in gap.
+
+![The seven Gr/h-BN stackings](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/5-jl-result-preview.webp "The seven stackings as built by the structure notebook, shift 0 to 6")
 
 ![Total energy along the sliding path (this notebook)](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/energy-along-sliding-path.webp "Total energy along the sliding path (this notebook)")
 
