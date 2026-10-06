@@ -69,9 +69,9 @@ MY_WORKFLOW_NAME = "Band Structure + DOS"
 APPLICATION_NAME = "espresso"
 
 CLUSTER_NAME = "001"  # specify full or partial name i.e. "cluster-001" to select
-QUEUE_NAME = QueueName.OR
-PPN = 16  # queue OR on cluster-001 allows at most 16 cores per node
-TIME_LIMIT = "02:00:00"
+QUEUE_NAME = QueueName.D
+PPN = 1
+TIME_LIMIT = "01:00:00"
 
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
 POLL_INTERVAL = 60  # seconds
@@ -131,7 +131,7 @@ In cell 1.2, set `ORGANIZATION_NAME` and `CLUSTER_NAME` to the account's organiz
 
 ### 5.3. Run the notebook
 
-Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), loads the seven materials and prints their provenance, saves them to the platform, configures one workflow per material, creates the compute configuration, then submits the seven jobs one at a time. Each job blocks the notebook until it finishes, a few minutes for a four-atom cell. Once all seven have finished, the notebook retrieves the band structures, total energies and gaps at K, and prints the comparison table.
+Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), loads the seven materials and prints their provenance, saves them to the platform, configures one workflow per material, creates the compute configuration, then submits the seven jobs one at a time. Each job blocks the notebook until it finishes, about 2 minutes for a four-atom cell, run on queue D with one core. Once all seven have finished, the notebook retrieves the band structures, total energies and gaps at K, and prints the comparison table.
 
 ### 5.4. Re-run the notebook
 
