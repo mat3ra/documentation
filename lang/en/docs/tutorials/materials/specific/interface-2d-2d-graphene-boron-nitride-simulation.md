@@ -143,30 +143,19 @@ Running the notebook again finds the seven jobs already finished by material and
 
 At d = 3.4 Å, Giovannetti et al. (Fig. 4) give gaps at K of AA ≈ 80 and BA ≈ 30 meV read off Fig. 4 (±5 meV), AB = 46 meV, the paper's value at its 3.40 Å equilibrium, and Fig. 2 gives the energy ordering E(BA) < E(AB) < E(AA), with Fig. 2 read at 3.4 Å as BA ≈ −0.055, AB ≈ −0.045, AA ≈ −0.035 eV per cell.
 
-| shift | stacking | ΔE vs 0of6 (meV) | gap (meV) | paper gap (meV) |
-|---|---|---|---|---|
-| 0 | BA | TODO(live run) | TODO(live run) | 30 |
-| 1 | bridge | TODO(live run) | TODO(live run) | |
-| 2 | AA | TODO(live run) | TODO(live run) | 80 |
-| 3 | bridge | TODO(live run) | TODO(live run) | |
-| 4 | AB | TODO(live run) | TODO(live run) | 46 |
-| 5 | bridge | TODO(live run) | TODO(live run) | |
-| 6 | BA | TODO(live run) | TODO(live run) | 30 |
+| shift | stacking | ΔE vs 0of6 (meV) | gap (meV) | paper gap (meV) | deviation |
+|---|---|---|---|---|---|
+| 0 | BA | TODO(live run) | TODO(live run) | 30 | TODO(live run) |
+| 1 | bridge | TODO(live run) | TODO(live run) | | |
+| 2 | AA | TODO(live run) | TODO(live run) | 80 | TODO(live run) |
+| 3 | bridge | TODO(live run) | TODO(live run) | | |
+| 4 | AB | TODO(live run) | TODO(live run) | 46 | TODO(live run) |
+| 5 | bridge | TODO(live run) | TODO(live run) | | |
+| 6 | BA | TODO(live run) | TODO(live run) | 30 | TODO(live run) |
 
 The paper's gaps at its own equilibrium distances are AA 56 meV at 3.50 Å, AB 46 meV at 3.40 Å and BA 53 meV at 3.22 Å.
 
-The notebook's final cell prints four clauses and a verdict:
-
-```
-E(BA) < E(AB) < E(AA): {energy_ordering}
-Minimum at BA, maximum at AA: {energy_extrema}
-Gap AA > AB > BA: {gap_ordering}
-Each gap within 15 % of the paper's: {gaps_within_tolerance}
-```
-
-```
-Reproduces Giovannetti et al. (2007): yes|no
-```
+The notebook's final cell prints this table with the measured ΔE, gap and deviation columns, and plots ΔE and the gap along the sliding path.
 
 ## 7. Customization options
 
