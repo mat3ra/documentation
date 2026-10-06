@@ -150,8 +150,14 @@ At d = 3.4 Å, Giovannetti et al. (Fig. 4) give gaps at K of AA ≈ 80 and BA �
 | 2 | AA | +21.2 | 94.1 | 80 | +18 % |
 | 3 | bridge | +16.7 | 77.8 | | |
 | 4 | AB | +16.4 | 54.9 | 46 | +19 % |
-| 5 | bridge | TODO(live run) | TODO(live run) | | |
-| 6 | BA | TODO(live run) | TODO(live run) | 30 | TODO(live run) |
+| 5 | bridge | +9.6 | 33.3 | | |
+| 6 | BA | −0.0 | 33.1 | 30 | +10 % |
+
+Shift 6 is the same structure as shift 0 one period later and reproduces it to 1 μeV in energy and in gap.
+
+![Total energy along the sliding path (this notebook)](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/energy-along-sliding-path.webp "Total energy along the sliding path (this notebook)")
+
+![Direct gap along the sliding path (this notebook)](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/gap-along-sliding-path.webp "Direct gap along the sliding path (this notebook)")
 
 The paper's gaps at its own equilibrium distances are AA 56 meV at 3.50 Å, AB 46 meV at 3.40 Å and BA 53 meV at 3.22 Å.
 
