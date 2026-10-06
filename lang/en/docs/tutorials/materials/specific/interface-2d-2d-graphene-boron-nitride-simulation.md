@@ -30,8 +30,6 @@ The seven stackings follow the sliding path of Fig. 7(a) in Jung et al. (2015) [
 
 ![The seven Gr/h-BN stackings](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/5-jl-result-preview.webp "The seven Gr/h-BN stackings along the sliding path, as built by the structure notebook")
 
-![Sliding energy, Jung et al. 2015](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/jung2015-fig7a-sliding-energy.webp "Total energy along the sliding path (Jung et al. 2015, Fig. 7(a)); the G/BN curve is the one reproduced")
-
 ## 2. Prerequisites
 
 Run the [structure creation tutorial](interface-2d-2d-graphene-boron-nitride.md) first. Its `interface_2d_2d_boron_nitride_graphene.ipynb` notebook names the seven stacking configurations (listed on that page) that this notebook loads.
