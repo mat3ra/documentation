@@ -26,13 +26,15 @@ This tutorial calculates the total energy and band structure of the seven stacki
     Physical Review B 76, 073103 (2007)
     [DOI: 10.1103/PhysRevB.76.073103](https://doi.org/10.1103/PhysRevB.76.073103){:target='_blank'} [@Giovannetti2007]
 
-Jung et al. (2015) model the same system; its Fig. 7(a) is an RPA-parameterised curve, not an independent DFT calculation, so the DFT numbers reproduced here are Giovannetti's [@Jung2015].
+The seven stackings follow the sliding path of Fig. 7(a) in Jung et al. (2015) [@Jung2015]; the energies and band gaps compared are from Giovannetti et al. (2007), Fig. 2 and Fig. 4.
+
+![The seven Gr/h-BN stackings](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/5-jl-result-preview.webp "The seven Gr/h-BN stackings along the sliding path, as built by the structure notebook")
+
+![Sliding energy, Jung et al. 2015](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/jung2015-fig7a-sliding-energy.webp "Total energy along the sliding path (Jung et al. 2015, Fig. 7(a)); the G/BN curve is the one reproduced")
 
 ## 2. Prerequisites
 
 Run the [structure creation tutorial](interface-2d-2d-graphene-boron-nitride.md) first. Its `interface_2d_2d_boron_nitride_graphene.ipynb` notebook names the seven stacking configurations (listed on that page) that this notebook loads.
-
-An account with a cluster is also required.
 
 ## 3. Workflow overview
 
@@ -139,6 +141,8 @@ Running the notebook again finds the seven jobs already finished by material and
 
 ## 6. Expected results
 
+![Total energy vs interlayer distance for the three stackings](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/giovannetti2007-fig2-energy-vs-distance.webp "Total energy vs interlayer distance for the three stackings (Giovannetti et al. 2007, Fig. 2; a = AA, b = AB, c = BA)")
+
 ![Gap at K vs interlayer distance for the three stackings](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/giovannetti2007-fig4-gap-vs-distance.webp "Gap at K vs interlayer distance for the three stackings (Giovannetti et al. 2007, Fig. 4; a = AA, b = AB, c = BA)")
 
 At d = 3.4 Å, Giovannetti et al. (Fig. 4) give gaps at K of AA ≈ 80 and BA ≈ 30 meV read off Fig. 4 (±5 meV), AB = 46 meV, the paper's value at its 3.40 Å equilibrium, and Fig. 2 gives the energy ordering E(BA) < E(AB) < E(AA), with Fig. 2 read at 3.4 Å as BA ≈ −0.055, AB ≈ −0.045, AA ≈ −0.035 eV per cell.
@@ -174,18 +178,6 @@ To add a material, add a name to `MATERIALS` with its shift index and stacking l
 ### 8.1. Material not found
 
 `ValueError: No material named …` means the structure notebook has not been run, or the name in `MATERIALS` does not match. Run the [structure tutorial](interface-2d-2d-graphene-boron-nitride.md) first; the names must match cell 1.2 exactly.
-
-### 8.2. Cluster not found
-
-`Cluster '001' not found` means no cluster matching `CLUSTER_NAME` is registered on the account. Register a cluster, or set `CLUSTER_NAME` to one that is.
-
-### 8.3. Gap near 1 eV
-
-If a printed gap is around 1 eV or larger, the provenance line's `gamma` is not 120.000°. The structure notebook's cell 3.5 re-setting of the cell to the hexagonal setting did not run.
-
-### 8.4. Provenance print fails
-
-`ValueError: zero-size array to reduction operation` in cell 3.1 means the material came from the platform rather than from `uploads/`, so the labels the provenance print depends on are not stored. Run the structure notebook so that the materials exist in `uploads/` rather than being loaded from the platform.
 
 ## 9. Interactive JupyterLite notebook
 
