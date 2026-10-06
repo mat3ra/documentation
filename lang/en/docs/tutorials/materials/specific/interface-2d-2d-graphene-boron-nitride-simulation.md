@@ -145,11 +145,11 @@ At d = 3.4 Å, Giovannetti et al. (Fig. 4) give gaps at K of AA ≈ 80 and BA �
 
 | shift | stacking | ΔE vs 0of6 (meV) | gap (meV) | paper gap (meV) | deviation |
 |---|---|---|---|---|---|
-| 0 | BA | TODO(live run) | TODO(live run) | 30 | TODO(live run) |
-| 1 | bridge | TODO(live run) | TODO(live run) | | |
-| 2 | AA | TODO(live run) | TODO(live run) | 80 | TODO(live run) |
-| 3 | bridge | TODO(live run) | TODO(live run) | | |
-| 4 | AB | TODO(live run) | TODO(live run) | 46 | TODO(live run) |
+| 0 | BA | 0.0 | 33.1 | 30 | +10 % |
+| 1 | bridge | +11.1 | 65.5 | | |
+| 2 | AA | +21.2 | 94.1 | 80 | +18 % |
+| 3 | bridge | +16.7 | 77.8 | | |
+| 4 | AB | +16.4 | 54.9 | 46 | +19 % |
 | 5 | bridge | TODO(live run) | TODO(live run) | | |
 | 6 | BA | TODO(live run) | TODO(live run) | 30 | TODO(live run) |
 
