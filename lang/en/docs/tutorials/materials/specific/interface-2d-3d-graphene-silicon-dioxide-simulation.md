@@ -36,7 +36,7 @@ Run the [structure creation tutorial](interface-2d-3d-graphene-silicon-dioxide.m
 
 The notebook runs the Standata `band_structure.json` workflow, which chains `pw_scf` and `pw_bands`, as one job on the interface. With `RELAX = True` it first runs the Standata `fixed_cell_relaxation.json` workflow as a separate job and takes the band structure on the relaxed structure.
 
-The notebook then reads the band structure at K, takes the Dirac point as the midpoint of the two bands adjacent to the Fermi level, and prints it and the gap beside the manuscript's values with the deviation in percent. Re-running the notebook finds an already-finished job by its material and workflow name and reuses it instead of resubmitting.
+The notebook then reads the band structure at K, takes the Dirac point as the midpoint of the Dirac pair of bands, and prints it and the gap beside the manuscript's values with the deviation in percent. Re-running the notebook finds an already-finished job by its material and workflow name and reuses it instead of resubmitting.
 
 ## 4. Calculation parameters
 
@@ -69,7 +69,7 @@ RELAX = False
 CLUSTER_NAME = "001"  # specify full or partial name i.e. "cluster-001" to select
 QUEUE_NAME = QueueName.OR
 PPN = 16  # queue OR on cluster-001 allows at most 16 cores per node
-TIME_LIMIT = "24:00:00"  # covers the optional relaxation of this 71-atom cell
+TIME_LIMIT = "04:00:00"
 
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
 POLL_INTERVAL = 60  # seconds
@@ -110,8 +110,8 @@ KPATH = [
 | ultrasoft pseudopotentials | GBRV ultrasoft, 40/200 Ry |
 | 6×6×1 k-mesh, 1×1 quartz cell (Sec. II) | `KPOINT_DENSITY = 4`, 6×6×1 |
 | 2×2 graphene on 1×1 quartz | the same, as built by the structure notebook |
-| 14 SiO2 bilayers, H-passivated back side | 21 Si planes, bare back side |
-| 20 Å vacuum | as built by the structure notebook |
+| 14 SiO2 bilayers, H-passivated back side | 15 Si planes (5 conventional cells; one bilayer read as one Si plane with its O), bare back side |
+| 20 Å vacuum | about 20 Å, as built by the structure notebook |
 | manuscript quartz cell | standata quartz cell, 2.3% larger in a |
 | d = 2.58 Å, metastable geometry (Sec. III) | d = 2.58 Å |
 
@@ -133,7 +133,7 @@ In cell 1.3, set `ORGANIZATION_NAME` and `CLUSTER_NAME` to the account's organiz
 
 ### 5.3. Run the notebook
 
-Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), loads the interface, re-sets its cell to 120° and prints its provenance (composition, number of atoms, gamma, valence electrons), saves it to the platform, configures the DFT model and the k-grid, creates the compute configuration, then submits the band structure job and waits for it to finish. Once finished, the notebook retrieves the band structure, prints E_F, E_D − E_F and the gap at K, and prints the comparison with the manuscript.
+Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), loads the interface, re-sets its cell to 120° and prints its provenance (composition, number of atoms, gamma, valence electrons, occupied bands), saves it to the platform, configures the DFT model and the k-grid, creates the compute configuration, then submits the band structure job and waits for it to finish. For the example as built the provenance reads Si15O30C8, 53 atoms, gamma = 120.000°, 272 valence electrons and 136 occupied bands. Once finished, the notebook retrieves the band structure, prints the bands at K around the Fermi level and the Dirac pair, then E_F, E_D − E_F and the gap at K, and prints the comparison with the manuscript.
 
 ### 5.4. Relax the interface (optional)
 

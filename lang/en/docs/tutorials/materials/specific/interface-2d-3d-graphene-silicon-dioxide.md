@@ -55,9 +55,9 @@ Select the input materials with the first being the substrate (SiO₂) and the s
 Open the `create_interface_with_min_strain_zsl.ipynb` notebook and modify the parameters as follows:
 
 - Miller indices: `(0, 0, 1)` for both materials
-- Thickness: `1` layer for graphene, `7` layers for SiO₂ (resulting in 14 bilayers as specified in the manuscript)
+- Thickness: `1` layer for graphene, `5` layers for SiO₂ (5 conventional cells = 15 Si planes, the manuscript's 14 SiO₂ bilayers rounded to a whole cell)
 - Interface distance: `2.58` Å (as stated in the manuscript)
-- Interface vacuum: `20.0` Å (as specified in the manuscript)
+- Interface vacuum: `17.5` Å (gives about 20 Å above graphene, as specified in the manuscript)
 
 Let's set `MAX_AREA=150` Å² to allow for a larger search area for the superlattice search algorithm.
 
@@ -79,14 +79,14 @@ FILM_USE_ORTHOGONAL_C = True
 
 SUBSTRATE_INDEX = 0
 SUBSTRATE_MILLER_INDICES = (0, 0, 1)
-SUBSTRATE_THICKNESS = 7  # in atomic layers (for 14 bilayers -- from manuscript)
+SUBSTRATE_THICKNESS = 5  # conventional cells along c; 5 gives 15 Si planes, the manuscript's 14 SiO2 bilayers rounded to a whole cell
 SUBSTRATE_TERMINATION_FORMULA = None  # if None, the first termination will be used
 SUBSTRATE_VACUUM = 0.0  # in angstroms
 SUBSTRATE_XY_SUPERCELL_MATRIX = [[1, 0], [0, 1]]
 SUBSTRATE_USE_ORTHOGONAL_C = True
 
 INTERFACE_DISTANCE = 2.58  # Gap between substrate and film, in Angstrom
-INTERFACE_VACUUM = 20.0  # Vacuum over film, in Angstrom
+INTERFACE_VACUUM = 17.5  # Vacuum over film, in Angstrom; gives about 20 A above graphene, as in the manuscript
 
 # Whether to convert materials to conventional cells before creating slabs.
 # To create interfaces with smaller cells, set this flag to False. (and pass already conventional cells as input)
