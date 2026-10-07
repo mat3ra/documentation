@@ -55,7 +55,7 @@ Select the input materials with the first being the substrate (SiO₂) and the s
 Open the `create_interface_with_min_strain_zsl.ipynb` notebook and modify the parameters as follows:
 
 - Miller indices: `(0, 0, 1)` for both materials
-- Thickness: `1` layer for graphene, `5` layers for SiO₂ (5 conventional cells = 15 Si planes, the nearest whole number of cells to the manuscript's 14 SiO₂ bilayers)
+- Thickness: `1` layer for graphene, `5` layers for SiO₂ (5 conventional cells: 15 Si planes; the manuscript has 14 bilayers)
 - Interface distance: `2.58` Å (as stated in the manuscript)
 - Interface vacuum: `17.5` Å (gives about 20 Å above graphene, as specified in the manuscript)
 

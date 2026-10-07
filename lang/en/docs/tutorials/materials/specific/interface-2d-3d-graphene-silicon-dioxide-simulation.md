@@ -29,12 +29,12 @@ This tutorial calculates the band structure of the graphene on O-terminated α-q
 
 The compared quantities are from Sec. III and Fig. 3(a) of the manuscript, for the metastable geometry with the graphene at d = 2.58 Å above the surface: graphene is p-doped, the gap at the Dirac point is 0.13 eV, and the Dirac point lies about 1.2 eV above the Fermi level (read off Fig. 3(a)).
 
-![Band structure of graphene on SiO2 from the manuscript](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/kang2008-fig3a-band-structure.webp "Band structure of graphene on the O-terminated surface, metastable geometry (Kang et al. 2008, Fig. 3(a)); path Γ-M-K-Γ, Fermi level at 0")
+![Band structure of graphene on SiO2 from the manuscript](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/kang2008-fig3a-band-structure.webp "Band structure of graphene on the O-terminated surface, metastable geometry (Kang et al. 2008, Fig. 3(a)); path Γ-M-K-Γ, energy in eV relative to the Fermi level")
 
 
 ## 2. Prerequisites
 
-Run the [structure creation tutorial](interface-2d-3d-graphene-silicon-dioxide.md) first. Its `interface_2d_3d_graphene_silicon_dioxide.ipynb` notebook saves the interface to the `uploads` folder under the name `C(001)-O2Si(001), Interface, Strain 1.875pct`, which this notebook loads.
+Run the [structure creation tutorial](interface-2d-3d-graphene-silicon-dioxide.md) first. Its `interface_2d_3d_graphene_silicon_dioxide.ipynb` notebook saves the interface in the 120° setting to the `uploads` folder under the name `C(001)-O2Si(001), Interface, Strain 1.875pct`, which this notebook loads. An interface from the generic ZSL notebook comes out at 60°, where the band path's K is not graphene's K.
 
 
 ## 3. Workflow overview
@@ -142,7 +142,7 @@ In cell 1.3, set `ORGANIZATION_NAME` and `CLUSTER_NAME` to the account's organiz
 
 ### 5.3. Run the notebook
 
-Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), loads the interface and prints its provenance (composition, number of atoms, gamma, interlayer distance, valence electrons, occupied bands), saves it to the platform, configures the DFT model and the k-grid, creates the compute configuration, then submits the band structure job and waits for it to finish. For the example as built the provenance reads Si15O30C8, 53 atoms, gamma = 120.000°, 272 valence electrons and 136 occupied bands. Once finished (measured on cluster-001, queue OR, 16 cores: SCF 49 min, band path 20 min, 74.5 min active in total), the notebook retrieves the band structure, prints the bands at K around the Fermi level and the Dirac pair, then E_F, E_D − E_F and the gap at K, and prints the comparison with the manuscript.
+Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), loads the interface and prints its provenance (composition, number of atoms, gamma, interlayer distance of 2.580 Å, valence electrons, occupied bands), saves it to the platform, configures the DFT model and the k-grid, creates the compute configuration, then submits the band structure job and waits for it to finish. For the example as built the provenance reads Si15O30C8, 53 atoms, gamma = 120.000°, 272 valence electrons and 136 occupied bands. Once finished (measured on cluster-001, queue OR, 16 cores: SCF 49 min, band path 20 min, 74.5 min active in total), the notebook retrieves the band structure, prints the bands at K around the Fermi level and the Dirac pair, then E_F, E_D − E_F and the gap at K, and prints the comparison with the manuscript.
 
 ### 5.4. Relax the interface (optional)
 
@@ -179,7 +179,7 @@ Gap at K (this notebook):       0.044 eV (-66.3 % deviation)
 
 Changing `ECUTWFC`, `ECUTRHO`, `KPOINT_DENSITY`, `KPATH_STEPS` or `SMEARING_SETTINGS["degauss"]` changes `MODEL_TAG`, which is part of the workflow name, so a new job is created rather than the finished one reused.
 
-The relaxed structure is found by its content and reused regardless of `RELAXATION_SETTINGS`.
+The relaxed structure is found by its content and reused regardless of the settings it was relaxed with.
 
 
 ## 8. Troubleshooting
