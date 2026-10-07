@@ -79,7 +79,7 @@ FILM_USE_ORTHOGONAL_C = True
 
 SUBSTRATE_INDEX = 0
 SUBSTRATE_MILLER_INDICES = (0, 0, 1)
-SUBSTRATE_THICKNESS = 5  # in conventional cells along c: 15 Si planes, the manuscript's 14 bilayers
+SUBSTRATE_THICKNESS = 5  # conventional cells along c: 15 Si planes; the manuscript has 14 bilayers
 SUBSTRATE_TERMINATION_FORMULA = None  # if None, the first termination will be used
 SUBSTRATE_VACUUM = 0.0  # in angstroms
 SUBSTRATE_XY_SUPERCELL_MATRIX = [[1, 0], [0, 1]]
