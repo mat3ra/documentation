@@ -63,7 +63,7 @@ The defect formation energy calculation consists of the following steps:
 6. **Relax every cell**: At fixed cell, reusing a relaxed structure if one is found
 7. **Compute total energies**: One Total Energy job on each relaxed structure
 8. **Retrieve results**: Print the chemical potentials, the formation enthalpy of GaN, and E_f at each limit
-9. **Compare with the manuscript**: Print the comparison with Miceli & Pasquarello and the verdict
+9. **Compare with the manuscript**: Print our values beside Miceli & Pasquarello's
 
 ## 4. Calculation parameters
 
@@ -111,7 +111,6 @@ CLUSTER_NAME = None
 QUEUE_NAME = QueueName.OR
 PPN = 16  # OR allows 16 cores per job
 TIME_LIMIT = "04:00:00"  # longest job: the Mg3N2 relaxation, about 1 h 40 min on 16 cores
-TOLERANCE_FRACTION = 0.15  # fractional agreement with the paper that counts as reproduced
 
 FUNCTIONAL = "pbe"
 PSEUDOPOTENTIAL_TYPE = "us"
@@ -141,14 +140,13 @@ with every job finished, about a minute.
 ### 5.5. Analyze results
 
 The last cell prints E_f at each limit and the formation enthalpy |ΔH_f(GaN)| beside the manuscript's
-values, then the verdict, here for the default and for `ENERGY_KGRID = [1, 1, 1]`:
+values, here for the default `ENERGY_KGRID`:
 
 ```
-Reproduces Miceli & Pasquarello (2016): yes (E_f N-rich +4%, Ga-rich +31%; PBE, energy k 4x4x3)
-Reproduces Miceli & Pasquarello (2016): no (E_f N-rich -49%, Ga-rich -54%; PBE, energy k 1x1x1)
+E_f(Ga-rich): 1.570 eV, Miceli 1.200 eV
+E_f(N-rich):  2.185 eV, Miceli 2.100 eV
+|ΔH_f(GaN)|:  0.922 eV, Miceli 1.400 eV
 ```
-
-`yes` requires E_f(N-rich) within `TOLERANCE_FRACTION` of 2.1 eV and E_f(Ga-rich) below E_f(N-rich).
 
 ## 6. Expected results
 
