@@ -172,7 +172,7 @@ Gap at K (Kang et al., 2008):   0.130 eV
 Gap at K (this notebook):       0.044 eV (-66.3 % deviation)
 ```
 
-![Band structure of graphene on SiO2 from this notebook](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/band-structure-this-notebook.webp "Band structure of the interface near the Fermi level, RELAX = False (job WLnHsEaMdy3gxbhQe); path K-Γ-M-K, energies relative to E_F")
+![Band structure of graphene on SiO2 from this notebook](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/band-structure-this-notebook.webp "Band structure of the interface near the Fermi level, RELAX = False (job WLnHsEaMdy3gxbhQe); path Γ-M-K-Γ, energies relative to E_F")
 
 
 ## 7. Customization options
