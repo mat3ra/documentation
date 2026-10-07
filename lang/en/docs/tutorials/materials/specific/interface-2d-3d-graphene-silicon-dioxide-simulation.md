@@ -133,7 +133,7 @@ In cell 1.3, set `ORGANIZATION_NAME` and `CLUSTER_NAME` to the account's organiz
 
 ### 5.3. Run the notebook
 
-Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), loads the interface, re-sets its cell to 120° and prints its provenance (composition, number of atoms, gamma, valence electrons, occupied bands), saves it to the platform, configures the DFT model and the k-grid, creates the compute configuration, then submits the band structure job and waits for it to finish. For the example as built the provenance reads Si15O30C8, 53 atoms, gamma = 120.000°, 272 valence electrons and 136 occupied bands. Once finished, the notebook retrieves the band structure, prints the bands at K around the Fermi level and the Dirac pair, then E_F, E_D − E_F and the gap at K, and prints the comparison with the manuscript.
+Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), loads the interface, re-sets its cell to 120° and prints its provenance (composition, number of atoms, gamma, valence electrons, occupied bands), saves it to the platform, configures the DFT model and the k-grid, creates the compute configuration, then submits the band structure job and waits for it to finish. For the example as built the provenance reads Si15O30C8, 53 atoms, gamma = 120.000°, 272 valence electrons and 136 occupied bands. Once finished (measured on cluster-001, queue OR, 16 cores: SCF 49 min, band path 20 min, 74.5 min active in total), the notebook retrieves the band structure, prints the bands at K around the Fermi level and the Dirac pair, then E_F, E_D − E_F and the gap at K, and prints the comparison with the manuscript.
 
 ### 5.4. Relax the interface (optional)
 
@@ -147,11 +147,20 @@ Running the notebook again finds the finished job by material and workflow name 
 
 | quantity | manuscript | this notebook, `RELAX = False` | this notebook, `RELAX = True` |
 |---|---|---|---|
-| doping | p-type (Sec. III) | TODO(live run) | TODO(live run) |
-| E_D − E_F (eV) | ≈ +1.2 (Fig. 3(a) read-off) | TODO(live run) | TODO(live run) |
-| gap at K (eV) | 0.13 (Sec. III) | TODO(live run) | TODO(live run) |
+| doping | p-type (Sec. III) | p-type | not run |
+| E_D − E_F (eV) | ≈ +1.2 (Fig. 3(a) read-off) | +1.115 (−7.1 %) | not run |
+| gap at K (eV) | 0.13 (Sec. III) | 0.044 (−66.3 %) | not run |
 
-The notebook's final cell prints the doping sign, E_D − E_F and the gap at K beside the manuscript's values, with the deviation in percent.
+Kang's gap is for the relaxed metastable geometry (Sec. III). The notebook's final cell prints, for `RELAX = False`:
+
+```
+Regime: unrelaxed SCF
+Doping: p-type (Kang et al., 2008: p-type)
+E_D - E_F (Kang et al., 2008):  +1.200 eV
+E_D - E_F (this notebook):      +1.115 eV (-7.1 % deviation)
+Gap at K (Kang et al., 2008):   0.130 eV
+Gap at K (this notebook):       0.044 eV (-66.3 % deviation)
+```
 
 ## 7. Customization options
 
