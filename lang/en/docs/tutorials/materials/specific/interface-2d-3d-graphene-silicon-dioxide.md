@@ -55,7 +55,7 @@ Select the input materials with the first being the substrate (SiO₂) and the s
 Open the `create_interface_with_min_strain_zsl.ipynb` notebook and modify the parameters as follows:
 
 - Miller indices: `(0, 0, 1)` for both materials
-- Thickness: `1` layer for graphene, `5` layers for SiO₂ (5 conventional cells = 15 Si planes, the manuscript's 14 SiO₂ bilayers rounded to a whole cell)
+- Thickness: `1` layer for graphene, `5` layers for SiO₂ (5 conventional cells = 15 Si planes, the nearest whole number of cells to the manuscript's 14 SiO₂ bilayers)
 - Interface distance: `2.58` Å (as stated in the manuscript)
 - Interface vacuum: `17.5` Å (gives about 20 Å above graphene, as specified in the manuscript)
 
@@ -79,14 +79,14 @@ FILM_USE_ORTHOGONAL_C = True
 
 SUBSTRATE_INDEX = 0
 SUBSTRATE_MILLER_INDICES = (0, 0, 1)
-SUBSTRATE_THICKNESS = 5  # conventional cells along c; 5 gives 15 Si planes, the manuscript's 14 SiO2 bilayers rounded to a whole cell
+SUBSTRATE_THICKNESS = 5  # in conventional cells along c: 15 Si planes, the manuscript's 14 bilayers
 SUBSTRATE_TERMINATION_FORMULA = None  # if None, the first termination will be used
 SUBSTRATE_VACUUM = 0.0  # in angstroms
 SUBSTRATE_XY_SUPERCELL_MATRIX = [[1, 0], [0, 1]]
 SUBSTRATE_USE_ORTHOGONAL_C = True
 
 INTERFACE_DISTANCE = 2.58  # Gap between substrate and film, in Angstrom
-INTERFACE_VACUUM = 17.5  # Vacuum over film, in Angstrom; gives about 20 A above graphene, as in the manuscript
+INTERFACE_VACUUM = 17.5  # Angstrom; gives about 20 A above graphene, as the builder adds INTERFACE_DISTANCE above the film too
 
 # Whether to convert materials to conventional cells before creating slabs.
 # To create interfaces with smaller cells, set this flag to False. (and pass already conventional cells as input)
@@ -104,8 +104,6 @@ MAX_ANGLE_TOLERANCE = 0.02
 REDUCE_RESULT_CELL_TO_PRIMITIVE = True
 ```
 
-![Notebook Setup](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/2-jl-setup-notebook.webp "Notebook Setup")
-
 ### 2.3 Run the Notebook
 
 Run the notebook to generate the interface structure between graphene and silicon dioxide with oxygen termination.
@@ -117,7 +115,7 @@ Run the notebook to generate the interface structure between graphene and silico
 The generation might take some time.
 After that, the user can pass the material to the Materials Designer for further analysis.
 
-![Gr/SiO2 Interface](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/3-jl-result-preview.webp "Gr/SiO2 Interface")
+![Gr/SiO2 Interface](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/3-structure-5-cells.webp "Gr/SiO2 Interface, side view: graphene on 5 conventional quartz cells (Si15O30C8, 53 atoms)")
 
 ## 4. Pass the Material to Materials Designer
 
