@@ -172,9 +172,9 @@ E_D - E_F             1.171 eV              1.280 eV
 Gap at K              0.062 eV              0.130 eV
 ```
 
-TODO(partial): band structure of the partially relaxed structure.
+The band structure of the structure after 5 BFGS steps of the `RELAX = True` relaxation (job domjmuR4659Rj8np5) is p-type, E_D − E_F +1.179 eV, gap at K 0.071 eV, beside the unrelaxed +1.171 eV and 0.062 eV.
 
-![Band structure of graphene on SiO2 from this notebook](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/band-structure-this-notebook.webp "Band structure of the interface near the Fermi level, RELAX = False (job WLnHsEaMdy3gxbhQe); path Γ-M-K-Γ, energies relative to E_F")
+![Band structure of graphene on SiO2 from this notebook](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/band-structure-this-notebook.webp "Band structure of the interface near the Fermi level, job F6AmKDRpQ6nFqiokb, shifted registry, unrelaxed; path Γ-M-K-Γ, energies relative to E_F")
 
 
 ## 7. Customization options
