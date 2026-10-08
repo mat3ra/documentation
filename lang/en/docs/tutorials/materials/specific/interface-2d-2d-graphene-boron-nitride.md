@@ -49,21 +49,20 @@ H_BN_LAYERS = 4
 H_BN_INTERLAYER_DISTANCE = 3.24  # Å, the paper's LDA value
 VACUUM = 15.0  # Å above graphene
 
-# Registry of graphene on the top h-BN layer, Giovannetti et al. 2007 Fig. 1: one C over B and the other over
-# N (a), over N and a hexagon centre (b), over B and a hexagon centre (c). All three run in the paper;
-# uncomment to build the others.
+# Giovannetti et al. 2007 compute all three stackings at every distance 2.5–3.9 Å; the defaults run
+# stacking (c) at three distances around its minimum. Uncomment entries to compute more
+# (one job per stacking × distance, ~25 min each on queue D with two cores).
 STACKINGS = [
     "c",
     # "a",
     # "b",
 ]
-STACKING_SHIFTS = {"a": 0, "b": 1, "c": -1}  # in units of a/√3 along y
-# Graphene–h-BN distance, Å. The paper scans 2.5–3.9; three points around (c)'s minimum are active, uncomment
-# the rest for the full set.
 DISTANCES = [
     3.1, 3.2, 3.3,
     # 2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9,
 ]
+STACKING_SHIFTS = {"a": 0, "b": 1, "c": -1}  # in units of a/√3 along y
+REGISTRY_TOLERANCE = 1e-3  # crystal units
 ```
 
 `STACKINGS` and `DISTANCES` list the registries and distances to build; the defaults build stacking (c) at 3.1, 3.2 and 3.3 Å, and uncommenting the rest builds the paper's 3 × 15 set.

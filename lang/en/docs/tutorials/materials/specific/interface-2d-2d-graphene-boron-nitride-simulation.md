@@ -53,6 +53,9 @@ from mat3ra.ide.compute import QueueName
 ORGANIZATION_NAME = None  # set to your organization name (full or partial); otherwise, your default one is used
 FOLDER = "./uploads"
 
+# Giovannetti et al. 2007 compute all three stackings at every distance 2.5–3.9 Å; the defaults run
+# stacking (c) at three distances around its minimum. Uncomment entries to compute more
+# (one job per stacking × distance, ~25 min each on queue D with two cores).
 STACKINGS = [
     "c",
     # "a",
