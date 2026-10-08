@@ -5,6 +5,7 @@ tags:
   - substitutional
   - point-defects
   - nitrogen
+  - formation energy
   - band-structure
   - D-0D-SUB
 
@@ -14,214 +15,213 @@ hide:
 render_macros: true
 ---
 
-# Substitutional Point Defects in Graphene (Band Structure)
+# Substitutional Point Defects in Graphene (Formation Energy and Band Structure)
 
 ## 1. Introduction
 
-This tutorial demonstrates the calculation of the band structure for graphene with vacancy and N substitutions, reproducing results from the following manuscript:
+This tutorial calculates the formation energy and the electronic band structure of the trimerized pyridine-type C₂₈N₃ defect in graphene, reproducing results from the following manuscript:
 
 !!!note "Manuscript"
     Yoshitaka Fujimoto and Susumu Saito, "Formation, stabilities, and electronic properties of nitrogen defects in graphene", Physical Review B, 2011. [DOI: 10.1103/PhysRevB.84.245446](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.84.245446){:target='_blank'}. [@Yoshitaka2011]
 
-This tutorial builds upon the [Substitutional Point Defects in Graphene](defect-point-substitution-graphene.md) tutorial, where the N-doped graphene structure is created. Here, the electronic band structure is calculated using Quantum ESPRESSO and compared with the published results.
+This tutorial builds upon the [Substitutional Point Defects in Graphene](defect-point-substitution-graphene.md) tutorial, where the pristine 4×4 graphene cell and the C₂₈N₃ defect are created. Both properties are calculated with Quantum ESPRESSO on the same cell.
 
 The figure below shows the band structure and atomic structure of N-doped graphene from the manuscript (Figure 3a):
 
 ![Band Structure from Paper](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/band-structure-paper-figure.webp "Band structure and atomic structure of N-doped graphene from Fujimoto & Saito 2011, Figure 3a")
 
-The calculation uses Density Functional Theory (DFT) with the Local Density Approximation (LDA) and norm-conserving pseudopotentials, following the methodology described in the manuscript.
+The calculation uses Density Functional Theory (DFT) with the Local Density Approximation (LDA), following the method described in the manuscript. Section 4 lists the settings and the single deviation from it.
 
 
 ## 2. Prerequisites
 
-Before starting this tutorial, one of the following steps should be completed:
-
-1. Complete the [Substitutional Point Defects in Graphene](defect-point-substitution-graphene.md) tutorial to create the N-doped graphene structure, OR
-2. Have the N-doped graphene material file saved in the `uploads` folder
+The notebook loads two materials from the `uploads` folder by exact name and raises when either is missing: `graphene 4x4`, the pristine reference cell that supplies the carbon chemical potential, and `graphene 4x4 N3V pyridinic (C28N3)`, the defective cell. Both are created and saved by the [Substitutional Point Defects in Graphene](defect-point-substitution-graphene.md) tutorial, which should be run first. The nitrogen reference is resolved from Standata and needs no upload.
 
 
 ## 3. Workflow overview
 
-The band structure calculation workflow consists of the following steps:
+The formation energy is assembled in the notebook from three total energy jobs, as defined in Section II of the manuscript:
 
-1. **Set up the environment and parameters**: Configure material, workflow, and computational settings
-2. **Authenticate and initialize API client**: Connect to the platform
-3. **Load material**: Import the N-doped graphene structure from file or Standata
-4. **Create workflow**: Set up the band structure calculation workflow with optional relaxation
-5. **Configure compute resources**: Select cluster, queue, and processor settings
-6. **Create and submit job**: Assemble and run the calculation
-7. **Monitor job status**: Wait for completion
-8. **Retrieve and visualize results**: Display the calculated band structure
+`E_f = E(C₂₈N₃) − 28 μ_C − 3 μ_N`
+
+where `μ_C` is the total energy of the pristine 4×4 cell per atom and `μ_N` that of the nitrogen reference cell per atom. A fourth job calculates the band structure of the same defective cell. The steps are:
+
+1. **Set up the environment and parameters**: material names, DFT model, relaxation switch, and compute settings
+2. **Authenticate and initialize API client**: connect to the platform
+3. **Load the materials**: the pristine and defective cells from the `uploads` folder, the nitrogen reference from Standata
+4. **Configure the shared model and k-grid**: one DFT model and a per-material k-grid for every job below
+5. **Configure compute resources**: select cluster, queue, and processor settings
+6. **Relax the defective cell**: only when `RELAX` is set, reusing a relaxed structure already saved on the account
+7. **Run the Total Energy jobs**: the defective, pristine, and nitrogen cells
+8. **Run the Band Structure job**: on the defective cell
+9. **Retrieve the results**: the band structure plot, the formation energy, and the comparison with Table I
 
 
 ## 4. Calculation parameters
 
-### 4.1. Run profiles
+### 4.1. Relaxation switch
 
-The notebook supports two run profiles:
+One switch in cell 1.3 decides which geometry both properties are calculated on:
 
-- **Debug mode**: Quick validation run with minimal k-point sampling and no relaxation. Completes in a few minutes.
-- **Production mode**: Paper-quality settings with structural relaxation and dense k-point sampling, following Fujimoto & Saito (2011).
+```python
+# NOTE: set to True for results close to the manuscript (relaxes C28N3 once, ~1 h); the formation
+# energy and the band structure both depend on it.
+RELAX = False
+```
 
-### 4.2. DFT parameters
+The relaxation keeps the cell fixed, is spin-polarized, and converges to the manuscript's 0.05 eV/Å (`RELAXATION_SETTINGS` in cell 1.4). It runs on the defective cell only: the pristine cell is at its minimum already.
 
-The calculation uses the following DFT parameters (consistent with the manuscript):
+### 4.2. DFT model parameters
 
-- **Functional**: LDA (Perdew-Zunger parametrization)
-- **Pseudopotentials**: Norm-conserving (ONCV)
-- **Energy cutoff**: 50 Ry for wavefunctions, 200 Ry for density
-- **K-point grid** (production): 6×6×1 for SCF and relaxation
-- **K-path**: K → Γ → M → K (high-symmetry path in hexagonal Brillouin zone)
+Cell 1.4 sets the model shared by every job:
 
-### 4.3. Relaxation settings
+```python
+# NOTE: the manuscript's value needs its own settings — Troullier-Martins norm-conserving LDA;
+# its 4x4 cell, 50 Ry cutoff and 6x6x1 k-grid are matched below, its pseudopotentials are not.
+MODEL_SUBTYPE = "lda"
+FUNCTIONAL = "pz"
+PSEUDOPOTENTIAL_TYPE = "us"  # GBRV ultrasoft, the only LDA family the platform publishes for C and N
+ECUTWFC = 50   # Ry, Fujimoto & Saito Sec. II
+ECUTRHO = 200  # Ry, GBRV's recommended charge-density cutoff
 
-In production mode, the structure is relaxed before the band structure calculation to optimize atomic positions while maintaining the cell parameters.
+KPOINT_DENSITY = 7  # points per Å⁻¹; gives 6 x 6 x 1 on the 4x4 cell, Fujimoto & Saito Sec. II
+MODEL_TAG = f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry k{KPOINT_DENSITY}"
+
+SCF_UNIT = "pw_scf"
+BANDS_UNIT = "pw_bands"
+RELAX_UNIT = "pw_relax"
+# C28N3 carries 127 valence electrons, so its ground state is a doublet.
+SPIN_SETTINGS = {
+    DEFECTIVE_NAME: {"nspin": 2, "tot_magnetization": 1},
+    PRISTINE_NAME: {"nspin": 1},
+    NITROGEN_NAME: {"nspin": 1},
+}
+RELAXATION_SETTINGS = {"forc_conv_thr": 1.9e-3, "nstep": 100}  # 0.05 eV/Å, Fujimoto & Saito Sec. II
+# Names the relaxation job; the relaxed structure itself is found by content hash.
+RELAX_TAG = f"{MODEL_TAG} f{RELAXATION_SETTINGS['forc_conv_thr']}"
+
+KPATH_STEPS = 20
+KPATH = [
+    {"point": "K", "steps": KPATH_STEPS},
+    {"point": "Γ", "steps": KPATH_STEPS},
+    {"point": "M", "steps": KPATH_STEPS},
+    {"point": "K", "steps": 1},
+]
+```
+
+The functional, the 4×4 cell, the 50 Ry cutoff, and the 6×6×1 k-grid are the manuscript's own. The pseudopotentials are not: the platform publishes no norm-conserving LDA set for carbon or nitrogen — the `nc` family is published under PBE only — so the GBRV ultrasoft set is the only settable LDA choice, and it stands in for the manuscript's Troullier-Martins norm-conserving set. `ECUTRHO = 200` Ry is the density cutoff recommended for that set.
+
+The nitrogen chemical potential is taken from Standata's solid nitrogen (`mp-154`), where the manuscript uses the free N₂ molecule; the platform carries no free molecule. Both offsets are named again in the notebook's comparison output.
 
 
 ## 5. Step-by-step instructions
 
 ### 5.1. Open the notebook
 
-Navigate to the API examples repository and open the band structure calculation notebook:
+Navigate to the API examples repository and open the simulation notebook:
 
 ```
 other/materials_designer/specific_examples/defect_point_substitution_graphene_SIMULATION.ipynb
 ```
 
-### 5.2. Configure parameters
+### 5.2. Set the material names
 
-In cell 1.2, set the run profile and material parameters:
-
-```python
-# Switch between "debug" and "production" modes
-RUN_PROFILE = "debug"  # Change to "production" for paper-quality results
-
-# Material parameters
-FOLDER = "./uploads"
-MATERIAL_NAME = "N-doped Graphene"
-
-# Workflow parameters
-APPLICATION_NAME = "espresso"
-MODEL_SUBTYPE = "lda"
-```
-
-For first-time use, start with `"debug"` mode to validate the workflow. Once confirmed working, switch to `"production"` for final results.
-
-### 5.3. Set DFT parameters
-
-The specific DFT parameters are configured in cell 1.3:
+Cell 1.2 names the materials the notebook loads:
 
 ```python
-# Pseudopotential settings
-PSEUDOPOTENTIAL_TYPE = "nc"
-FUNCTIONAL = "pz"
-
-# Energy cutoffs
-ECUTWFC = 50
-ECUTRHO = 4 * ECUTWFC
-
-# K-point sampling and path (automatically set based on RUN_PROFILE)
+# Names saved by defect_point_substitution_graphene.ipynb.
+PRISTINE_NAME = "graphene 4x4"
+DEFECTIVE_NAME = "graphene 4x4 N3V pyridinic (C28N3)"
+# Standata's solid nitrogen -- the platform carries no free N2 molecule.
+NITROGEN_NAME = "N2, Nitrogen, FCC (P2_13) 3D (Bulk), mp-154"
 ```
 
-### 5.4. Run the notebook
+### 5.3. Run the notebook
 
-Execute all cells by selecting *Run* > *Run All* from the menu.
+Execute all cells by selecting *Run* > *Run All Cells*.
 
 The notebook will:
 
 1. [Authenticate with the platform]({{ interface_url }}/jupyterlite/authentication.md) and initialize the API client
-2. Load the N-doped graphene material
-3. Create and configure the band structure workflow
-4. Submit the calculation job
-5. Monitor the job status
-6. Display the results when complete
+2. Load the two graphene cells and the nitrogen reference, and save all three to the platform
+3. Relax the defective cell, when `RELAX` is set
+4. Submit one Total Energy job for each cell that does not have one yet
+5. Submit the Band Structure job on the defective cell
+6. Display the band structure, the formation energy, and the comparison with the manuscript
 
-### 5.5. Monitor progress
+### 5.4. Monitor progress
 
-The notebook includes automatic job monitoring with status updates. In debug mode, the calculation typically completes in 5–10 minutes. Production mode may take several hours depending on the cluster load.
+Each set of jobs is polled every 60 seconds and the notebook waits for it to finish before moving on. The Total Energy jobs and the band structure job take minutes; the optional relaxation takes about an hour.
 
-### 5.6. Analyze results
+### 5.5. Read the results
 
-Once the job completes, the band structure is displayed. The plot shows:
-
-- Energy bands along the K → Γ → M → K path
-- Fermi level position
-- Band gap (if present)
-- Comparison with pristine graphene (if available)
+Section 9 of the notebook plots the band structure along the K → Γ → M → K path and prints the formation energy beside the manuscript's value, under the regime it was calculated in — `relaxed defect` or `unrelaxed SCF`.
 
 
 ## 6. Expected results
 
-The calculated band structure should show:
+The formation energy is compared with Table I of the manuscript, within a tolerance of 15 % of the published value:
 
-- **Modified electronic structure** near the Fermi level due to nitrogen substitution
-- **Breaking of symmetry** compared to pristine graphene
-- **Localized states** introduced by the nitrogen defects
-- **Band gap opening** (depending on defect configuration)
+| Quantity | Manuscript | This tutorial, `RELAX = True` |
+| --- | --- | --- |
+| Formation energy of C₂₈N₃ | 2.51 eV (Table I) | TODO(live run) |
+| Total magnetic moment | 0.89 μB (Sec. III C) | TODO(live run) |
 
-### 6.1. Comparison with published results
+Two known offsets are covered by that tolerance: the nitrogen chemical potential comes from solid N₂ rather than the free molecule, and the GBRV ultrasoft set stands in for the norm-conserving one. The default `RELAX = False` run calculates both properties on the unrelaxed geometry and is not expected to match the manuscript.
+
+### 6.1. Read the magnetic moment
+
+The magnetic moment is a manual check: the platform exposes no magnetization property and the notebook does not parse job files. Open the C₂₈N₃ Total Energy job on the platform, select its *Files* tab, and read the `total magnetization` line of `pw_scf.out`.
+
+### 6.2. Comparison with published results
 
 The figure below compares the band structure from the Fujimoto & Saito manuscript (left) with the calculated results (right):
 
 ![Band Structure Comparison](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/band-structure-comparison.webp "Comparison of band structure: manuscript (left) vs. calculated (right)")
 
-The calculated band structure reproduces the key features from the manuscript, including:
-
-- The overall band dispersion along the K → Γ → M → K path
-- The position of bands relative to the Fermi level
-- The electronic structure modifications due to nitrogen substitution
-- The characteristic features near the K and Γ points
+The check is for the three acceptor-like states near the Fermi level reported in Section III C, along the K → Γ → M → K path.
 
 
 ## 7. Customization options
 
 ### 7.1. Modify the K-path
 
-In order to change the k-point path for the band structure calculation, edit the `KPATH` parameter in cell 1.3:
-
-```python
-KPATH = [
-    {"point": "K", "steps": 20},
-    {"point": "Г", "steps": 20},
-    {"point": "M", "steps": 20},
-    {"point": "K", "steps": 1},
-]
-```
+The path is the `KPATH` list in cell 1.4. Add or replace high-symmetry points there, or raise `KPATH_STEPS` for a denser sampling between them. `Γ` is the Greek capital gamma (U+0393); the visually identical Cyrillic `Г` is not resolved as a point of the reciprocal lattice.
 
 ### 7.2. Adjust computational resources
 
-Modify the compute parameters in cell 1.2:
+Modify the compute parameters in cell 1.3:
 
 ```python
-CLUSTER_NAME = "101"  # Your cluster name
-QUEUE_NAME = QueueName.D  # Queue selection
-PPN = 1  # Processors per node
+CLUSTER_NAME = "001"  # specify full or partial name i.e. "cluster-001" to select
+QUEUE_NAME = QueueName.OR
+PPN = 16  # queue OR on cluster-001 allows at most 16 cores per node
+TIME_LIMIT = "12:00:00"  # covers the optional relaxation (~1 h)
 ```
 
-### 7.3. Add or remove relaxation
+### 7.3. Run the relaxed regime
 
-Toggle structural relaxation by changing the `ADD_RELAXATION` flag (set by `RUN_PROFILE`):
-
-```python
-ADD_RELAXATION = True  # Enable relaxation
-RELAXATION_KGRID = [6, 6, 1]  # K-point grid for relaxation
-```
+Set `RELAX = True` in cell 1.3 to reproduce the manuscript. The notebook then relaxes the defective cell before submitting anything else, takes both properties from the final structure of that job, and saves it as `graphene 4x4 N3V pyridinic (C28N3) relaxed`. A later run finds that structure on the account and skips the relaxation.
 
 
 ## 8. Troubleshooting
 
 ### 8.1. Material not found
 
-If the material is not found in the uploads folder:
+Loading raises when either name is missing from the `uploads` folder. Earlier versions of the structure notebook saved one material, named `N-doped Graphene`; an uploads folder left from one of those does not satisfy this notebook. Re-run the [structure creation tutorial](defect-point-substitution-graphene.md), which saves both materials under the names in cell 1.2.
 
-1. Run the [defect creation notebook](defect-point-substitution-graphene.md) first
-2. Ensure the material is saved with the exact name ("N-doped Graphene")
-3. Check that the material file is in the correct `uploads` folder
+### 8.2. Cluster not found
+
+Section 5 raises `ValueError: Cluster '001' not found` and lists the available hostnames when the account has no cluster matching `CLUSTER_NAME`. Set `CLUSTER_NAME` to one of the listed hostnames, or to `None` to take the first available cluster.
+
+### 8.3. The default run does not reproduce the manuscript
+
+With `RELAX = False` the comparison block ends with `Reproduces Fujimoto & Saito (2011): no (unrelaxed SCF)`. Both published quantities belong to the relaxed geometry, so reproducing them takes the relaxed regime of Section 7.3.
 
 
 ## 9. Interactive JupyterLite notebook
 
-The following JupyterLite notebook demonstrates the workflow for calculating the band structure of N-doped graphene. Select *Run* > *Run All Cells*.
+The following JupyterLite notebook calculates the formation energy and the band structure of the C₂₈N₃ defect in graphene. Select *Run* > *Run All Cells*.
 
 {% with origin_url=config.extra.jupyterlite.origin_url_lab %}
 {% with notebooks_path_root=config.extra.jupyterlite.notebooks_path_root %}
