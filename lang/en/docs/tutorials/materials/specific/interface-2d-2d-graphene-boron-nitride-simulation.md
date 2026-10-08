@@ -70,7 +70,7 @@ APPLICATION_NAME = "espresso"
 
 CLUSTER_NAME = "001"  # specify full or partial name i.e. "cluster-001" to select
 QUEUE_NAME = QueueName.D
-PPN = 1
+PPN = 2
 TIME_LIMIT = "04:00:00"
 
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -88,9 +88,11 @@ ECUTRHO = 200  # Ry, GBRV's tested charge-density cutoff
 
 KGRID = [36, 36, 1]  # Giovannetti et al. 2007; a multiple of 3 keeps K on the mesh
 OCCUPATIONS_SETTINGS = {"occupations": "tetrahedra"}  # the paper's tetrahedron method
-DIPOLE_SETTINGS = {"control": {"tefield": True, "dipfield": True}, "system": {"edir": 3, "eopreg": 0.05}}
+# eamp = 0: the sawtooth is the dipole correction only, no external field
+DIPOLE_SETTINGS = {"control": {"tefield": True, "dipfield": True}, "system": {"edir": 3, "eamp": 0.0, "eopreg": 0.05}}
 KPATH_STEPS = 100
-MODEL_TAG = f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry k{KGRID[0]} p{KPATH_STEPS} tetra dip"
+MODEL_TAG = (f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry k{KGRID[0]} p{KPATH_STEPS} "
+             f"{OCCUPATIONS_SETTINGS['occupations']} eamp{DIPOLE_SETTINGS['system']['eamp']}")
 
 SCF_UNIT = "pw_scf"
 NSCF_UNIT = "pw_nscf"
@@ -103,6 +105,10 @@ KPATH = [
     {"point": "M", "steps": KPATH_STEPS},
     {"point": "Γ", "steps": 1},
 ]
+
+VELOCITY_FIT_RANGE = (3, 8)  # path points from K used for the ħv fit
+ZOOM_POINTS = 12  # path points each side of K in the zoom
+ZOOM_WINDOW = 0.5  # eV each side of the band edges
 ```
 
 | paper | this notebook |
@@ -111,7 +117,7 @@ KPATH = [
 | VASP, plane waves, 600 eV | GBRV ultrasoft, 40/200 Ry |
 | 36×36×1 | 36×36×1 |
 | tetrahedron | tetrahedron (scf, nscf) |
-| dipole correction | dipole correction (`tefield`, `dipfield`, `edir = 3`) |
+| dipole correction | dipole correction (`tefield`, `dipfield`, `edir = 3`, `eamp = 0`, no external field) |
 | 4 h-BN layers at 3.24 Å | 4 h-BN layers at 3.24 Å |
 | a = 2.445 Å | a = 2.445 Å |
 | vacuum 12–15 Å | vacuum 15 Å |
@@ -133,7 +139,7 @@ In cell 1.2, set `ORGANIZATION_NAME` to the account's organization, and `STACKIN
 
 ### 5.3. Run the notebook
 
-Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md) (section 2), loads the materials by name, prints their provenance and saves them to the platform (section 3), configures one workflow per material (section 4), creates the compute configuration (section 5) and submits the jobs one at a time (section 6). Each ten-atom job takes a few minutes on queue D with one core, so the full set of 45 jobs runs for hours. Section 7 retrieves the total energies, gaps and plots, and section 8 prints the comparison with the paper.
+Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md) (section 2), loads the materials by name, prints their provenance and saves them to the platform (section 3), configures one workflow per material (section 4), creates the compute configuration (section 5) and submits the jobs one at a time (section 6). Each ten-atom job takes about 16 minutes on queue D with two cores, so the full set runs overnight. Section 7 retrieves the total energies, gaps and plots, and section 8 prints the comparison with the paper.
 
 ### 5.4. Re-run the notebook
 
