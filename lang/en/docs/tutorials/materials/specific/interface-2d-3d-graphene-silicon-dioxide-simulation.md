@@ -27,7 +27,7 @@ This tutorial calculates the band structure of the graphene on O-terminated α-q
     Physical Review B 78, 115404 (2008)
     [DOI: 10.1103/PhysRevB.78.115404](https://doi.org/10.1103/PhysRevB.78.115404){:target='_blank'} [@Kang2008]
 
-The compared quantities are from Sec. III and Fig. 3(a) of the manuscript, for the metastable geometry with the graphene at d = 2.58 Å above the surface: graphene is p-doped, the gap at the Dirac point is 0.13 eV, and the Dirac point lies about 1.2 eV above the Fermi level (read off Fig. 3(a)).
+The compared quantities are from Sec. III and Fig. 3(a) of the manuscript, for the metastable geometry with the graphene at d = 2.58 Å above the surface: graphene is p-doped, the gap at the Dirac point is 0.13 eV, and the Dirac point lies about 1.28 eV above the Fermi level (the midpoint of the two Dirac bands at K on Fig. 3(a), +1.21 and +1.35 eV).
 
 ![Band structure of graphene on SiO2 from the manuscript](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/kang2008-fig3a-band-structure.webp "Band structure of graphene on the O-terminated surface, metastable geometry (Kang et al. 2008, Fig. 3(a)); path Γ-M-K-Γ, energy in eV relative to the Fermi level")
 
@@ -39,9 +39,9 @@ Run the [structure creation tutorial](interface-2d-3d-graphene-silicon-dioxide.m
 
 ## 3. Workflow overview
 
-The notebook runs the Standata `band_structure.json` workflow, which chains `pw_scf` and `pw_bands`, as one job on the interface. With `RELAX = True` it first runs the Standata `fixed_cell_relaxation.json` workflow as a separate job and takes the band structure on the relaxed structure.
+The notebook runs the Standata `band_structure.json` workflow, which chains `pw_scf` and `pw_bands`, as one job on the interface. With `RELAX = True`, `add_relaxation()` puts a relaxation (fixed cell, the `pw_vc-relax` unit with `calculation = 'relax'`, the same k-mesh as the SCF) in front of it in the same job, and the band structure runs on the relaxed structure.
 
-The notebook then reads the band structure at K, takes the Dirac point as the midpoint of the Dirac pair of bands, and prints it and the gap beside the manuscript's values with the deviation in percent. Re-running the notebook finds an already-finished job by its material and workflow name and reuses it instead of resubmitting.
+The notebook then reads the band structure at K, takes the Dirac point as the midpoint of the Dirac pair of bands, and prints it and the gap beside the manuscript's values. Re-running the notebook finds an already-finished job by its material and workflow name and reuses it instead of resubmitting.
 
 
 ## 4. Calculation parameters
@@ -62,13 +62,14 @@ from mat3ra.ide.compute import QueueName
 ORGANIZATION_NAME = None  # set to your organization name (full or partial); otherwise, your default one is used
 FOLDER = "./uploads"
 
-RELAX_WORKFLOW_SEARCH_TERM = "fixed_cell_relaxation.json"
 BAND_STRUCTURE_WORKFLOW_SEARCH_TERM = "band_structure.json"
 MY_WORKFLOW_NAME = "Band Structure"
 APPLICATION_NAME = "espresso"
 
-# NOTE: False reads the band structure as built; True relaxes the interface once (fixed cell, whole
-# slab) and reads the band structure off the relaxed structure.
+# NOTE: False reads the band structure of the structure as built: E_D - E_F +1.171 eV, gap at K
+# 0.062 eV, about 1 h on OR/16. True relaxes all atoms at fixed cell to 0.03 eV/Å (Kang et al.
+# Sec. II) before the band structure, in the same job; on OR/16 it did 5 BFGS steps in the 4 h
+# TIME_LIMIT without converging, so it needs a longer TIME_LIMIT.
 RELAX = False
 
 CLUSTER_NAME = "001"  # specify full or partial name i.e. "cluster-001" to select
@@ -98,10 +99,9 @@ MODEL_TAG = (f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry k{KPOIN
 
 SCF_UNIT = "pw_scf"
 BANDS_UNIT = "pw_bands"
-RELAX_UNIT = "pw_relax"
+RELAX_UNIT = "pw_vc-relax"  # the relaxation unit add_relaxation() prepends; calculation is set to "relax" below
 RELAXATION_SETTINGS = {"forc_conv_thr": 1.17e-3, "nstep": 100}  # 0.03 eV/Å, Kang et al. 2008 Sec. II
-# Names the relaxation job; the relaxed structure itself is found by content hash.
-RELAX_TAG = f"{MODEL_TAG} f{RELAXATION_SETTINGS['forc_conv_thr']}"
+WORKFLOW_TAG = MODEL_TAG + (f" relax f{RELAXATION_SETTINGS['forc_conv_thr']}" if RELAX else "")
 
 KPATH = [
     {"point": "K", "steps": KPATH_STEPS},
@@ -121,7 +121,7 @@ K_INDEX = 0  # KPATH starts at K, so the first point of the band structure's pat
 | 14 SiO2 bilayers, H-passivated back side | 15 Si planes (5 conventional cells; one bilayer read as one Si plane with its O), bare back side |
 | 20 Å vacuum | about 20 Å, as built by the structure notebook |
 | manuscript quartz cell | standata quartz cell, 2.3 % larger in a |
-| d = 2.58 Å, metastable geometry (Sec. III) | d = 2.58 Å |
+| d = 2.58 Å, metastable geometry (Sec. III) | d = 2.58 Å, graphene shifted in-plane to the metastable registry (`REGISTRY_SHIFT` in the structure notebook) |
 
 The structure is the example as the structure notebook builds it. The bare back surface is the face the manuscript (p. 2) calls chemically inactive. The structure notebook's cell 3.5 sets the cell to the 120° hexagonal setting and types it `HEX`, so the symbolic K point of `KPATH` lies on the band path.
 
@@ -142,11 +142,11 @@ In cell 1.3, set `ORGANIZATION_NAME` and `CLUSTER_NAME` to the account's organiz
 
 ### 5.3. Run the notebook
 
-Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), loads the interface and prints its provenance (composition, number of atoms, gamma, interlayer distance of 2.580 Å, valence electrons, occupied bands), saves it to the platform, configures the DFT model and the k-grid, creates the compute configuration, then submits the band structure job and waits for it to finish. For the example as built the provenance reads Si15O30C8, 53 atoms, gamma = 120.000°, 272 valence electrons and 136 occupied bands. Once finished (measured on cluster-001, queue OR, 16 cores: SCF 49 min, band path 20 min, 74.5 min active in total), the notebook retrieves the band structure, prints the bands at K around the Fermi level and the Dirac pair, then E_F, E_D − E_F and the gap at K, and prints the comparison with the manuscript.
+Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), loads the interface and prints its provenance (composition, number of atoms, gamma, interlayer distance of 2.580 Å, valence electrons, occupied bands), configures the DFT model and the k-grid, creates the compute configuration, then submits the band structure job and waits for it to finish. For the example as built the provenance reads Si15O30C8, 53 atoms, gamma = 120.000°, 272 valence electrons and 136 occupied bands. Once finished (measured with `RELAX = False` on cluster-001, queue OR, 16 cores: about 1 h), the notebook retrieves the band structure, prints the bands at K around the Fermi level and the Dirac pair, then E_F, E_D − E_F and the gap at K, and prints the comparison with the manuscript.
 
 ### 5.4. Relax the interface (optional)
 
-Set `RELAX = True` in cell 1.3 and run the notebook. The notebook waits for the relaxation job and continues to the band structure in the same run. The interface is relaxed once (fixed cell, whole slab, force threshold 0.03 eV/Å, Sec. II) and saved to the account as `<name> relaxed`; the band structure is taken on that geometry. A relaxed structure already on the account is found by its content and reused.
+Set `RELAX = True` in cell 1.3 and run the notebook. The relaxation (all atoms, fixed cell, force threshold 0.03 eV/Å, Sec. II) runs in the same job before the band structure, and the band structure is taken on the relaxed structure. On cluster-001, queue OR, 16 cores, it did 5 BFGS steps in the 4 h `TIME_LIMIT` without converging, so it needs a longer `TIME_LIMIT`.
 
 ### 5.5. Re-run the notebook
 
@@ -155,31 +155,30 @@ Running the notebook again finds the finished job by material and workflow name 
 
 ## 6. Expected results
 
-| quantity | manuscript | this notebook |
+| quantity | manuscript | this notebook, `RELAX = False` |
 |---|---|---|
 | doping | p-type (Sec. III) | p-type |
-| E_D − E_F (eV) | ≈ +1.2 (Fig. 3(a) read-off) | +1.115 (−7.1 %) |
-| gap at K (eV) | 0.13 (Sec. III) | 0.044 (−66.3 %) |
+| E_D − E_F (eV) | 1.28 (midpoint of the two Dirac bands at K on Fig. 3(a), +1.21 and +1.35 eV) | +1.171 |
+| gap at K (eV) | 0.13 (Sec. III) | 0.062 |
 
-Kang's gap is for the relaxed metastable geometry (Sec. III); the values above are for `RELAX = False`. The notebook's final cell prints:
+Kang's gap is for the relaxed metastable geometry (Sec. III); the values above are for `RELAX = False` on the shifted registry (job F6AmKDRpQ6nFqiokb, unrelaxed, about 1 h on OR/16). The relaxed regime did not converge within the 4 h limit (5 BFGS steps on OR/16). The notebook's final cell prints:
 
 ```
 Regime: unrelaxed SCF
-Doping: p-type (Kang et al., 2008: p-type)
-E_D - E_F (Kang et al., 2008):  +1.200 eV
-E_D - E_F (this notebook):      +1.115 eV (-7.1 % deviation)
-Gap at K (Kang et al., 2008):   0.130 eV
-Gap at K (this notebook):       0.044 eV (-66.3 % deviation)
+                 this notebook    Kang et al. (2008)
+Doping                  p-type                p-type
+E_D - E_F             1.171 eV              1.280 eV
+Gap at K              0.062 eV              0.130 eV
 ```
+
+TODO(partial): band structure of the partially relaxed structure.
 
 ![Band structure of graphene on SiO2 from this notebook](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/band-structure-this-notebook.webp "Band structure of the interface near the Fermi level, RELAX = False (job WLnHsEaMdy3gxbhQe); path Γ-M-K-Γ, energies relative to E_F")
 
 
 ## 7. Customization options
 
-Changing `ECUTWFC`, `ECUTRHO`, `KPOINT_DENSITY`, `KPATH_STEPS` or `SMEARING_SETTINGS["degauss"]` changes `MODEL_TAG`, which is part of the workflow name, so a new job is created rather than the finished one reused.
-
-The relaxed structure is found by its content and reused regardless of the settings it was relaxed with.
+Changing `ECUTWFC`, `ECUTRHO`, `KPOINT_DENSITY`, `KPATH_STEPS`, `SMEARING_SETTINGS["degauss"]`, `RELAX` or `RELAXATION_SETTINGS["forc_conv_thr"]` changes the workflow name, so a new job is created rather than the finished one reused.
 
 
 ## 8. Troubleshooting

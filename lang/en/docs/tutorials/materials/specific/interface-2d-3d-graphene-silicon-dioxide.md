@@ -87,6 +87,7 @@ SUBSTRATE_USE_ORTHOGONAL_C = True
 
 INTERFACE_DISTANCE = 2.58  # Gap between substrate and film, in Angstrom
 INTERFACE_VACUUM = 17.5  # Angstrom; gives about 20 A above graphene, as the builder adds INTERFACE_DISTANCE above the film too
+REGISTRY_SHIFT = [-1.011, -0.725, 0.0]  # Å, in-plane shift of graphene to the manuscript's metastable registry, Sec. III
 
 # Whether to convert materials to conventional cells before creating slabs.
 # To create interfaces with smaller cells, set this flag to False. (and pass already conventional cells as input)
@@ -102,6 +103,40 @@ MAX_ANGLE_TOLERANCE = 0.02
 # Whether to reduce the resulting interface cell to the primitive cell after the interface creation.
 # If the reduction causes unexpected results, try increasing the `MAX_AREA` for search.
 REDUCE_RESULT_CELL_TO_PRIMITIVE = True
+```
+
+The ZSL match leaves the registry of graphene on the quartz surface undefined. The notebook shifts the film in-plane by `REGISTRY_SHIFT` to the registry of the manuscript's metastable geometry (Sec. III), where one surface O sits near a C atom and the other near a hexagon centre, and prints each surface O's in-plane distance to the nearest C:
+
+```python
+import numpy as np
+from mat3ra.made.tools.modify import interface_displace_part
+
+interface = interface_displace_part(interface, displacement=REGISTRY_SHIFT, use_cartesian_coordinates=True)
+
+interface_in_cartesian = interface.clone()
+interface_in_cartesian.to_cartesian()
+coordinates = np.array(interface_in_cartesian.basis.coordinates.values)
+elements = np.array(interface.basis.elements.values)
+cell_xy = np.array(interface.lattice.vector_arrays)[:2, :2]
+carbons = coordinates[elements == "C"]
+oxygens = coordinates[elements == "O"]
+for oxygen in oxygens[np.argsort(-oxygens[:, 2])[:2]]:
+    distances = [np.linalg.norm(oxygen[:2] - carbon[:2] - i * cell_xy[0] - j * cell_xy[1])
+                 for carbon in carbons for i in (-1, 0, 1) for j in (-1, 0, 1)]
+    print(f"surface O at z = {oxygen[2]:.3f} Å: nearest C in the plane {min(distances):.3f} Å")
+```
+
+The notebook then puts the cell in the 120° hexagonal setting and centers the slab along z, so that no atom sits at z = 0, where a relaxation would wrap it to the top of the cell:
+
+```python
+from mat3ra.made.tools.helpers import create_supercell
+from mat3ra.made.tools.modify import translate_to_center
+
+interface = create_supercell(interface, supercell_matrix=[[1, 0, 0], [-1, 1, 0], [0, 0, 1]])
+interface = translate_to_center(interface, axes=["z"])
+interface.lattice.type = "HEX"
+print(f"{interface.basis.number_of_atoms} atoms, a = {interface.lattice.a:.4f} Å, "
+      f"gamma = {interface.lattice.gamma:.1f}°")
 ```
 
 ### 2.3 Run the Notebook
