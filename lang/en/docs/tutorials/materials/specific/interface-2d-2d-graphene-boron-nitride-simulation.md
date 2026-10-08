@@ -149,17 +149,19 @@ A re-run finds the finished jobs by material and workflow name and reuses them r
 
 The paper's values and the values measured by the notebook:
 
-| quantity | paper | this notebook |
-|---|---|---|
-| equilibrium distance (a) | 3.50 Å | TODO(live run) |
-| equilibrium distance (b) | 3.40 Å | TODO(live run) |
-| equilibrium distance (c) | 3.22 Å | TODO(live run) |
-| gap at K at the equilibrium distance (a) | 56 meV | TODO(live run) |
-| gap at K at the equilibrium distance (b) | 46 meV | TODO(live run) |
-| gap at K at the equilibrium distance (c) | 53 meV | TODO(live run) |
-| h-BN gap at K | 4.7 eV | TODO(live run) |
-| effective mass at K (c) | 4.7·10⁻³ mₑ | TODO(live run) |
-| E(c) < E(b) < E(a) at every distance | yes | TODO(live run) |
+| quantity | paper | this notebook | deviation |
+|---|---|---|---|
+| equilibrium distance (a) | 3.50 Å | TODO(live run) | |
+| equilibrium distance (b) | 3.40 Å | TODO(live run) | |
+| equilibrium distance (c) | 3.22 Å | 3.232 Å | +0.4 % |
+| gap at K at the equilibrium distance (a) | 56 meV | TODO(live run) | |
+| gap at K at the equilibrium distance (b) | 46 meV | TODO(live run) | |
+| gap at K at the equilibrium distance (c) | 53 meV | 50.1 meV | −5 % |
+| h-BN gap at K | 4.7 eV | 4.73 eV | +1 % |
+| effective mass at K (c) | 4.7·10⁻³ mₑ | 6.7·10⁻³ mₑ | +43 % |
+| E(c) < E(b) < E(a) at every distance | yes | TODO(live run) | |
+
+Gap at K at 3.1 / 3.2 / 3.3 Å: 75.2 / 55.0 / 39.8 meV (Fig. 4, curve (c)).
 
 The notebook plots the total energy and the gap at K against the distance for each stacking (the paper's Fig. 2 and Fig. 4) and, for (c) at its equilibrium distance, the bands, the density of states and a zoom around K (Fig. 3).
 
