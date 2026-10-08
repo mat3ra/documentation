@@ -17,197 +17,181 @@ render_macros: true
 
 ## 1. Introduction
 
-This tutorial demonstrates the process of creating interfaces with different stacking configurations between 2D materials, specifically hexagonal boron nitride (h-BN) and graphene, based on the work presented in the following manuscript, where the electronic properties of h-BN-graphene interfaces are studied.
+This tutorial creates graphene on four layers of hexagonal boron nitride (h-BN) for three stackings and a list of graphene–h-BN distances, following the manuscript below.
 
 !!!note "Manuscript"
-    **Jeil Jung, Ashley M. DaSilva, Allan H. MacDonald & Shaffique Adam**
-    **Origin of the band gap in graphene on hexagonal boron nitride**
-    Nature Communications volume 6, Article number: 6308 (2015)
-    [DOI: 10.1038/ncomms7308](https://doi.org/10.1038/ncomms7308) [@Jung2015; @Novoselov2016; @Gupta2024]
+    **Gianluca Giovannetti, Petr A. Khomyakov, Geert Brocks, Paul J. Kelly and Jeroen van den Brink**
+    **Substrate-induced band gap in graphene on hexagonal boron nitride: Ab initio density functional calculations**
+    Physical Review B 76, 073103 (2007)
+    [DOI: 10.1103/PhysRevB.76.073103](https://doi.org/10.1103/PhysRevB.76.073103){:target='_blank'} [@Giovannetti2007]
 
-
-We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create interfaces and shift the layers along the y-axis to achieve different stacking configurations.
-
-The Figure 7 shows the different stacking configurations of graphene on h-BN.
-
-![Graphene on Hexagonal Boron Nitride](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/0-figure-from-manuscript.webp   "Graphene on Hexagonal Boron Nitride, FIG. 7")
+The [Materials Designer]({{ interface_url }}/materials-designer/overview/) imports the two materials from Standata, and the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) notebook builds the interfaces.
 
 ## 2. Load and preview materials
 
-First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the Graphene and Hexagonal BN materials from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
-
+First, navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import graphene (`2dm-3993`) and bulk h-BN (`mp-7991`) from [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
 
 ![Standata Graphene and h-BN Import](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/1-standata-import-gr-hbn.webp "Standata Graphene and h-BN Import")
 
-Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create the target structures.
+### 2.1. Launch JupyterLite session
 
-
-## 3. Create interface between h-BN and Graphene
-
-### 2.1 Launch JupyterLite Session
-
-Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
-
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment, with h-BN as the first material and graphene as the second.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
-### 3.2. Open and modify the notebook
+### 2.2. Open the notebook and set the parameters
 
-Select the input materials with first one being the substrate (h-BN) and the second one being the film (Graphene).
-
-Next, open `create_interface_with_min_strain_zsl.ipynb` notebook to modify the parameters by changing:
-
-Miller indices of both materials to `(0,0,1)`,
-
-Thickness of both materials to `1`,
-
-Distance between materials to `3.4` angstroms -- mentioned in the publication.
-
-Default value for `MAX_AREA = 50` should be enough since materials have similar lattice constants.
-
-
-Adjust the "1.1. Set up slab parameters" cell in the notebook according to:
+Open the `interface_2d_2d_boron_nitride_graphene.ipynb` notebook. Cell 1.1 sets the parameters:
 
 ```python
-# Enable interactive selection of terminations via UI prompt
-IS_TERMINATIONS_SELECTION_INTERACTIVE = False 
+LATTICE_CONSTANT = 2.445  # Å, graphene LDA (Giovannetti et al. 2007); h-BN is compressed to it
+H_BN_LAYERS = 4
+H_BN_INTERLAYER_DISTANCE = 3.24  # Å, the paper's LDA value
+VACUUM = 15.0  # Å above graphene
 
-FILM_INDEX = 1  # Index in the list of materials, to access as materials[FILM_INDEX]
-FILM_MILLER_INDICES = (0, 0, 1)
-FILM_THICKNESS = 1  # in atomic layers
-FILM_TERMINATION_FORMULA = None  # if None, the first termination will be used
-FILM_VACUUM = 0.0  # in angstroms
-FILM_XY_SUPERCELL_MATRIX = [[1, 0], [0, 1]]
-FILM_USE_ORTHOGONAL_C = True
-
-SUBSTRATE_INDEX = 0
-SUBSTRATE_MILLER_INDICES = (0, 0, 1)
-SUBSTRATE_THICKNESS = 1  # in atomic layers
-SUBSTRATE_TERMINATION_FORMULA = None  # if None, the first termination will be used
-SUBSTRATE_VACUUM = 0.0  # in angstroms
-SUBSTRATE_XY_SUPERCELL_MATRIX = [[1, 0], [0, 1]]
-SUBSTRATE_USE_ORTHOGONAL_C = True
-
-INTERFACE_DISTANCE = 3.4  # Gap between substrate and film, in Angstrom
-INTERFACE_VACUUM = 20.0  # Vacuum over film, in Angstrom
-
-# Whether to convert materials to conventional cells before creating slabs.
-# To create interfaces with smaller cells, set this flag to False. (and pass already conventional cells as input)
-USE_CONVENTIONAL_CELL = True
-
-# Maximum area for the superlattice search algorithm (the final interface area will be smaller)
-MAX_AREA = 50  # in Angstrom^2
-# Additional fine-tuning parameters (increase values to get more strained matches):
-MAX_AREA_TOLERANCE = 0.09  # in Angstrom^2
-MAX_LENGTH_TOLERANCE = 0.05
-MAX_ANGLE_TOLERANCE = 0.02
-
-# Whether to reduce the resulting interface cell to the primitive cell after the interface creation.
-# If the reduction causes unexpected results, try increasing the `MAX_AREA` for search.
-REDUCE_RESULT_CELL_TO_PRIMITIVE = True
-```
-
-![Notebook setup](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/2-jl-setup-notebook.webp "Notebook setup")
-
-
-### 3.3. Run the Notebook
-
-After setting the parameters, run the notebook to create the interface between h-BN and Graphene.
-
-![Run All](../../../images/jupyterlite/run-all.webp "Run All")
-
-### 3.4. View Results
-
-The generation might take some time.
-After that, the user can pass the material to the Materials Designer for further analysis.
-
-Interface between h-BN and Graphene with the specified parameters is shown below.
-
-![Gr/h-BN Interface ](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/3-jl-result-preview.webp "Gr/h-BN Interface")
-
-### 3.5. Set the cell to the standard hexagonal setting
-
-The ZSL interface cell comes out with γ = 60°, but the symbolic K point used by the simulation notebook assumes the standard 120° hexagonal cell. The cell is therefore re-set with a unimodular supercell matrix, and each shifted interface is typed `HEX`:
-
-```python
-from mat3ra.made.tools.helpers import create_supercell
-
-interface = create_supercell(interface, supercell_matrix=[[1, 0, 0], [-1, 1, 0], [0, 0, 1]])
-```
-
-### 3.6. Shift the layers to generate stacking configurations
-
-To shift graphene layer along the y-axis, the user can modify the last cell in the notebook to achieve different stacking configurations.
-
-As mentioned in the publication, the vector to slide the layers between AA, AB and BA configurations is `a/sqrt(3)`. The notebook builds seven interfaces at half-steps of this vector, with `n` running from `2` to `8`.
-
-The parameters cell sets the names used by the loop below and by the simulation notebook:
-
-```python
-# One name per shift (n = 2..8); the three symmetric registries carry their Jung 2015 / Giovannetti 2007 label,
-# n = 8 repeats n = 2 one period later.
-INTERFACE_NAMES = [
-    "Gr/hBN d3.4 shift 0of6 BA",
-    "Gr/hBN d3.4 shift 1of6",
-    "Gr/hBN d3.4 shift 2of6 AA",
-    "Gr/hBN d3.4 shift 3of6",
-    "Gr/hBN d3.4 shift 4of6 AB",
-    "Gr/hBN d3.4 shift 5of6",
-    "Gr/hBN d3.4 shift 6of6 BA",
+# Registry of graphene on the top h-BN layer, Giovannetti et al. 2007 Fig. 1: one C over B and the other over
+# N (a), over N and a hexagon centre (b), over B and a hexagon centre (c). All three run in the paper;
+# uncomment to build the others.
+STACKINGS = [
+    "c",
+    # "a",
+    # "b",
+]
+STACKING_SHIFTS = {"a": 0, "b": 1, "c": -1}  # in units of a/√3 along y
+# Graphene–h-BN distance, Å. The paper scans 2.5–3.9; three points around (c)'s minimum are active, uncomment
+# the rest for the full set.
+DISTANCES = [
+    3.1, 3.2, 3.3,
+    # 2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9,
 ]
 ```
 
-The loop below builds the seven interfaces and names them from `INTERFACE_NAMES`, using the `interface_displace_part()` function from the `mat3ra.made.tools.modify` module.
+`STACKINGS` and `DISTANCES` list the registries and distances to build; the defaults build stacking (c) at 3.1, 3.2 and 3.3 Å, and uncommenting the rest builds the paper's 3 × 15 set.
+
+![Notebook setup](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/2-jl-setup-notebook.webp "Notebook setup")
+
+## 3. Create the interfaces between h-BN and graphene
+
+### 3.1. Strain the materials
+
+Both materials are strained in-plane to a = 2.445 Å, and h-BN along c to 3.24 Å between layers:
+
+```python
+from mat3ra.made.tools.build_components.operations.core.modifications.strain.helpers import create_strain
+
+film_scale = LATTICE_CONSTANT / film.lattice.a
+substrate_scale = LATTICE_CONSTANT / substrate.lattice.a
+substrate_c_scale = 2 * H_BN_INTERLAYER_DISTANCE / substrate.lattice.c
+film = create_strain(film, strain_matrix=[[film_scale, 0, 0], [0, film_scale, 0], [0, 0, 1]])
+substrate = create_strain(
+    substrate, strain_matrix=[[substrate_scale, 0, 0], [0, substrate_scale, 0], [0, 0, substrate_c_scale]]
+)
+```
+
+### 3.2. Set the AA' stacking of h-BN
+
+The standata bulk h-BN entry is not AA': its boron atoms sit over hexagon centres of the next layer. The atoms of the upper layer are moved by (1/3, 2/3, 0) in crystal coordinates, so that boron sits over nitrogen in adjacent layers:
+
+```python
+from mat3ra.made.tools.analyze.other import get_atom_indices_with_condition_on_coordinates
+from mat3ra.made.tools.operations.core.unary import translate_atoms
+
+upper_layer_ids = get_atom_indices_with_condition_on_coordinates(substrate, lambda coordinate: coordinate[2] > 0.5)
+substrate = translate_atoms(
+    substrate, atom_ids=upper_layer_ids, vector=[1 / 3, 2 / 3, 0], use_cartesian_coordinates=False
+)
+```
+
+### 3.3. Create the slabs
+
+The h-BN slab has four layers, two per bulk cell, and the graphene slab one layer:
+
+```python
+from mat3ra.made.tools.build.pristine_structures.two_dimensional.slab import SlabConfiguration, SlabBuilder
+
+substrate_slab_config = SlabConfiguration.from_parameters(
+    material_or_dict=substrate,
+    miller_indices=(0, 0, 1),
+    number_of_layers=H_BN_LAYERS // 2,  # two BN layers per bulk cell
+    vacuum=0.0,
+)
+
+film_slab_config = SlabConfiguration.from_parameters(
+    material_or_dict=film,
+    miller_indices=(0, 0, 1),
+    number_of_layers=1,
+    vacuum=0.0,
+)
+
+substrate_slab = SlabBuilder().get_material(substrate_slab_config)
+film_slab = SlabBuilder().get_material(film_slab_config)
+```
+
+### 3.4. Create the interface at each distance and stacking
+
+The loop places graphene on the h-BN slab at each distance, shifts it along y by the registry shift of each stacking, names the interface and prints the measured registry:
 
 ```python
 import numpy as np
 from mat3ra.made.tools.analyze.other import get_average_interlayer_distance
 from mat3ra.made.tools.convert.interface_parts_enum import InterfacePartsEnum
+from mat3ra.made.tools.helpers import create_interface_zsl_between_slabs as create_zsl_interface_between_slabs
 from mat3ra.made.tools.modify import interface_displace_part
 
-a = interface.lattice.a
-shifted_interfaces = []
-for index, n in enumerate(range(2, 9)):
-    shifted_interface = interface_displace_part(
-        interface=interface,
-        displacement=[0, n * a / np.sqrt(3) / 2, 0],
-        use_cartesian_coordinates=True)
-    shifted_interface.name = INTERFACE_NAMES[index]
-    shifted_interface.lattice.type = "HEX"
-    shifted_interfaces.append(shifted_interface)
-    interlayer_distance = get_average_interlayer_distance(
-        shifted_interface, InterfacePartsEnum.SUBSTRATE.value, InterfacePartsEnum.FILM.value)
-    print(f"{shifted_interface.name}: {len(shifted_interface.basis.elements.ids)} atoms, "
-          f"gamma = {shifted_interface.lattice.gamma:.1f}°, interlayer distance = {interlayer_distance:.3f} Å")
+
+def get_registry(interface):
+    elements = np.array(interface.basis.elements.values)
+    coordinates = np.array(interface.basis.coordinates.values)
+    top_layer = (elements != "C") & np.isclose(coordinates[:, 2], coordinates[elements != "C", 2].max())
+    registry = []
+    for carbon in coordinates[elements == "C"]:
+        in_plane_offsets = (coordinates[top_layer, :2] - carbon[:2] + 0.5) % 1 - 0.5
+        atoms_below = elements[top_layer][np.all(np.abs(in_plane_offsets) < 1e-3, axis=1)]
+        registry.append(atoms_below[0] if len(atoms_below) else "hollow")
+    return registry
+
+
+interfaces = []
+for stacking in STACKINGS:
+    for distance in DISTANCES:
+        # the builder adds the gap to the vacuum above the film
+        interface = create_zsl_interface_between_slabs(
+            substrate_slab=substrate_slab, film_slab=film_slab, gap=distance, vacuum=VACUUM - distance
+        )
+        interface = interface_displace_part(
+            interface=interface,
+            displacement=[0, STACKING_SHIFTS[stacking] * interface.lattice.a / np.sqrt(3), 0],
+            use_cartesian_coordinates=True,
+        )
+        interface.name = f"Gr/hBN ({stacking}) d{distance:.2f}"
+        interface.lattice.type = "HEX"
+        interfaces.append(interface)
+        interlayer_distance = get_average_interlayer_distance(
+            interface, InterfacePartsEnum.SUBSTRATE.value, InterfacePartsEnum.FILM.value
+        )
+        vacuum = interface.lattice.c * (1 - max(coordinate[2] for coordinate in interface.basis.coordinates.values))
+        print(f"{interface.name}: {len(interface.basis.elements.ids)} atoms, a = {interface.lattice.a:.4f} Å, "
+              f"gamma = {interface.lattice.gamma:.1f}°, distance = {interlayer_distance:.3f} Å, "
+              f"vacuum = {vacuum:.2f} Å, C over {' / '.join(get_registry(interface))}")
 ```
 
-![Shift Interface](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/4-jl-setup-shift.webp "Shift Interface")
+![Gr/h-BN Interface](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/3-jl-result-preview.webp "Gr/h-BN Interface")
 
-Preview of interfaces with different stacking configurations is shown below.
+### 3.5. Run the notebook
 
-![Shifted Interfaces](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/5-jl-result-preview.webp "Shifted Interfaces")
+Select *Run* > *Run All*.
+
+![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
 ## 4. Pass the Material to Materials Designer
 
-The user can pass the material with the interface in the current Materials Designer environment and save it.
+The user can pass the materials to the current Materials Designer environment and save them.
 
 ![Final Material](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/6-wave-result.webp "Graphene on Hexagonal Boron Nitride Interface")
 
-Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
+Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the materials in Material JSON format or POSCAR format.
 
-The shift loop names the seven interfaces as follows, and the simulation notebook loads materials by these exact names:
-
-- `Gr/hBN d3.4 shift 0of6 BA`
-- `Gr/hBN d3.4 shift 1of6`
-- `Gr/hBN d3.4 shift 2of6 AA`
-- `Gr/hBN d3.4 shift 3of6`
-- `Gr/hBN d3.4 shift 4of6 AB`
-- `Gr/hBN d3.4 shift 5of6`
-- `Gr/hBN d3.4 shift 6of6 BA`
-
-Three of the seven are the symmetric stackings: AA (carbon over both boron and nitrogen), AB (carbon over nitrogen and over a hexagon centre) and BA (carbon over boron and over a hexagon centre); `0of6` and `6of6` are both BA, the same structure one period apart.
-
-Once the structures exist, the [simulation tutorial](interface-2d-2d-graphene-boron-nitride-simulation.md) loads them by name and reproduces the manuscript's stacking energies and band gaps.
+The interfaces are named `Gr/hBN (<stacking>) d<distance>`, for example `Gr/hBN (c) d3.10`, and the [simulation tutorial](interface-2d-2d-graphene-boron-nitride-simulation.md) loads them by these names.
 
 
 ## 5. Interactive JupyterLite Notebook
