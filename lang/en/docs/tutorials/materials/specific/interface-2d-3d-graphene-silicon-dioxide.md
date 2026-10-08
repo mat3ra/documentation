@@ -30,7 +30,7 @@ This tutorial demonstrates the process of creating interfaces between 2D and 3D 
 
 We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create interfaces between graphene and silicon dioxide with oxygen termination, as shown in the manuscript.
 
-We will focus on replicating the material from FIG. 1. (b) -- with Graphene on O-terminated SiO<sub>2</sub>. The material (a) requires relaxation to correctly reproduce the structure, which is not covered in this tutorial.
+We will focus on replicating the metastable geometry of Kang et al. Sec. III: graphene 2.58 Å above the O-terminated surface, shifted from the C-over-O registry of Fig. 1(b).
 
 ![Graphene on Silicon Dioxide](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/0-figure-from-manuscript.webp "Graphene on Silicon Dioxide, FIG. 1(b)")
 
@@ -86,8 +86,7 @@ SUBSTRATE_XY_SUPERCELL_MATRIX = [[1, 0], [0, 1]]
 SUBSTRATE_USE_ORTHOGONAL_C = True
 
 INTERFACE_DISTANCE = 2.58  # Gap between substrate and film, in Angstrom
-INTERFACE_VACUUM = 17.5  # Angstrom; gives about 20 A above graphene, as the builder adds INTERFACE_DISTANCE above the film too
-REGISTRY_SHIFT = [-1.011, -0.725, 0.0]  # Å, in-plane shift of graphene to the manuscript's metastable registry, Sec. III
+INTERFACE_VACUUM = 17.5  # in Angstrom
 
 # Whether to convert materials to conventional cells before creating slabs.
 # To create interfaces with smaller cells, set this flag to False. (and pass already conventional cells as input)
@@ -105,7 +104,11 @@ MAX_ANGLE_TOLERANCE = 0.02
 REDUCE_RESULT_CELL_TO_PRIMITIVE = True
 ```
 
-The ZSL match leaves the registry of graphene on the quartz surface undefined. The notebook shifts the film in-plane by `REGISTRY_SHIFT` to the registry of the manuscript's metastable geometry (Sec. III), where one surface O sits near a C atom and the other near a hexagon centre, and prints each surface O's in-plane distance to the nearest C:
+The specific-example notebook `interface_2d_3d_graphene_silicon_dioxide.ipynb` continues after the ZSL step with two more cells, which the generic notebook does not have. The ZSL match leaves the registry of graphene on the quartz surface undefined. The notebook shifts the film in-plane by `REGISTRY_SHIFT` to the registry of the manuscript's metastable geometry (Sec. III), where one surface O sits near a C atom and the other near a hexagon centre, and prints each surface O's in-plane distance to the nearest C. Its parameter, set in the notebook's parameter cell, and cell 3.5:
+
+```python
+REGISTRY_SHIFT = [-1.011, -0.725, 0.0]
+```
 
 ```python
 import numpy as np
@@ -126,7 +129,7 @@ for oxygen in oxygens[np.argsort(-oxygens[:, 2])[:2]]:
     print(f"surface O at z = {oxygen[2]:.3f} Å: nearest C in the plane {min(distances):.3f} Å")
 ```
 
-The notebook then puts the cell in the 120° hexagonal setting and centers the slab along z, so that no atom sits at z = 0, where a relaxation would wrap it to the top of the cell:
+Cell 3.6 puts the cell in the 120° hexagonal setting and centers the slab along z, so that no atom sits at z = 0, where a relaxation would wrap it to the top of the cell:
 
 ```python
 from mat3ra.made.tools.helpers import create_supercell
