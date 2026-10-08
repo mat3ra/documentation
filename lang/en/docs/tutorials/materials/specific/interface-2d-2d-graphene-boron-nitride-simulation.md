@@ -34,7 +34,7 @@ This tutorial calculates the total energy and band structure of graphene on four
 
 ## 2. Prerequisites
 
-Run the [structure creation tutorial](interface-2d-2d-graphene-boron-nitride.md) first. Its `interface_2d_2d_boron_nitride_graphene.ipynb` notebook creates and names the materials this notebook loads, for example `Gr/hBN (c) d3.10`. The defaults build stacking (c) at 3.1, 3.2 and 3.3 Å. Uncommenting the rest of `STACKINGS` and `DISTANCES` in both notebooks builds the paper's set of 3 stackings × 15 distances.
+Run the [structure creation tutorial](interface-2d-2d-graphene-boron-nitride.md) first. Its `interface_2d_2d_boron_nitride_graphene.ipynb` notebook creates and names the materials this notebook loads, for example `Gr/hBN (c) d3.10`. The defaults build stacking (c) at 3.1, 3.2 and 3.3 Å. The paper's full set is described in [Customization options](#7-customization-options).
 
 ## 3. Workflow overview
 
@@ -151,23 +151,31 @@ The paper's values and the values measured by the notebook:
 
 | quantity | paper | this notebook | deviation |
 |---|---|---|---|
-| equilibrium distance (a) | 3.50 Å | TODO(live run) | |
-| equilibrium distance (b) | 3.40 Å | TODO(live run) | |
+| equilibrium distance (a) | 3.50 Å | computed when "a" / "b" and the other distances are uncommented | |
+| equilibrium distance (b) | 3.40 Å | computed when "a" / "b" and the other distances are uncommented | |
 | equilibrium distance (c) | 3.22 Å | 3.232 Å | +0.4 % |
-| gap at K at the equilibrium distance (a) | 56 meV | TODO(live run) | |
-| gap at K at the equilibrium distance (b) | 46 meV | TODO(live run) | |
+| gap at K at the equilibrium distance (a) | 56 meV | computed when "a" / "b" and the other distances are uncommented | |
+| gap at K at the equilibrium distance (b) | 46 meV | computed when "a" / "b" and the other distances are uncommented | |
 | gap at K at the equilibrium distance (c) | 53 meV | 50.1 meV | −5 % |
 | h-BN gap at K | 4.7 eV | 4.73 eV | +1 % |
 | effective mass at K (c) | 4.7·10⁻³ mₑ | 6.7·10⁻³ mₑ | +43 % |
-| E(c) < E(b) < E(a) at every distance | yes | TODO(live run) | |
+| E(c) < E(b) < E(a) at every distance | yes | computed when "a" / "b" and the other distances are uncommented | |
 
 Gap at K at 3.1 / 3.2 / 3.3 Å: 75.2 / 55.0 / 39.8 meV (Fig. 4, curve (c)).
+
+![Total energy vs distance, stacking (c)](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/fig2-energy-vs-distance.webp "Total energy vs distance, stacking (c), default run (the paper's Fig. 2, one curve)")
+
+![Gap at K vs distance, stacking (c)](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/fig4-gap-vs-distance.webp "Gap at K vs distance, stacking (c), default run (the paper's Fig. 4, one curve)")
+
+![Bands around K for stacking (c) at 3.20 Å](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/bands-around-K.webp "Bands around K for (c) at 3.20 Å, default run (the paper's Fig. 3 inset): 55 meV gap")
 
 The notebook plots the total energy and the gap at K against the distance for each stacking (the paper's Fig. 2 and Fig. 4) and, for (c) at its equilibrium distance, the bands, the density of states and a zoom around K (Fig. 3).
 
 ## 7. Customization options
 
 `DISTANCES` and `STACKINGS` select the materials; they must match the lists in the structure notebook. `KGRID` and `KPATH_STEPS` control the k-point sampling of the SCF/NSCF grid and the band-structure path; `ECUTWFC` and `ECUTRHO` set the plane-wave cutoffs. `MODEL_TAG` is built from these settings and is part of every workflow's name, so changing any of them creates new jobs rather than reusing the ones already run.
+
+The paper's full set (three stackings × 2.5–3.9 Å) is obtained by uncommenting the `STACKINGS` and `DISTANCES` entries in both notebooks, one job per entry pair, about 25 minutes each on queue D.
 
 ## 8. Troubleshooting
 
