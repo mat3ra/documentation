@@ -200,8 +200,8 @@ l = 1 component of the manuscript's, and its shape depends on that choice while 
 `RELAX = True` relaxes the atoms of the superlattice at fixed cell, to 0.01 eV/Å, before the offset is computed;
 the bulks keep their ideal positions, which symmetry fixes. The manuscript uses ideal positions and finds the
 minimum-energy interface spacing within 0.1 % of the ideal one (Sec. II). Here the relaxation moves the interface
-spacing from 1.406 to 1.403 Å and the planes inside both blocks by up to 0.005 Å, while the bulk references keep
-their ideal spacings; the offset comes out 0.718 eV (section 6.1).
+spacing from 1.406 to 1.403 Å and the plane spacings inside both blocks by up to 0.005 Å, while the bulk references
+keep their ideal spacings; the offset comes out 0.718 eV (section 6.1).
 
 ### 7.2. Adjust computational resources
 
