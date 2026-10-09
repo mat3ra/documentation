@@ -168,8 +168,7 @@ the l = 1 component of the total potential, so they are printed for reference on
 smaller and the bulk term 0.10 eV larger than the manuscript's, and the sum is within 0.03 eV.
 
 The manuscript compares with no experiment for this interface: the measured Si/Ge junctions were presumably not
-pseudomorphic (p. 5630). Both calculations are LDA, so the band gaps printed in section 9.1 are Kohn–Sham gaps,
-smaller than the measured ones.
+pseudomorphic (p. 5630). The band gaps printed in section 9.1 are Kohn–Sham gaps, smaller than the measured ones.
 
 ### 6.1. Comparison with published results
 
@@ -177,14 +176,20 @@ smaller than the measured ones.
 |---|---|---|---|---|
 | Van de Walle & Martin | 0.74 | 0.84 | −0.11 (l = 1 reference) | 0.85 (l = 1 reference) |
 | This tutorial, default | 0.765 (+3.4 %) | 0.865 (+3.0 %) | −0.009 | 0.774 |
-| This tutorial, `RELAX = True` | 0.718 (−2.9 %) | 0.818 (−2.6 %) | −0.009 | 0.728 |
+| This tutorial, `RELAX = True` | 0.718 (−2.9 %) | 0.818 (−2.6 %) | −0.009 | 0.727 |
 
-The manuscript's Fig. 2 shows its potential across the superlattice, with the two bulk averages as dashed lines:
+The manuscript's Fig. 2 shows its potential across one period of the superlattice. The bulk potentials (dashed)
+coincide with it away from the interfaces, and their averages (dashed horizontal lines) are shifted with respect to
+each other:
 
 ![Potential across the Si/Ge (001) superlattice, manuscript](../../../images/tutorials/materials/interfaces/interface_3d_3d_silicon_germanium/2-figure-2-from-manuscript.webp "Averaged l = 1 potential across the (001) interface, Fig. 2 of the manuscript")
 
-Section 9.3 of the notebook plots the electrostatic potential across the same superlattice, with the averages over
-one plane spacing at the centre of each block:
+Section 9.3 of the notebook draws the same figure for this calculation: one period from the Ge→Si interface, each
+bulk's own potential (dotted) shifted onto its block, and the two averages (dashed). The bulk potentials coincide with
+the superlattice's inside both blocks and depart from it only at the interfaces, and the Ge average lies 0.77 eV above
+the Si one, against 0.85 eV in the manuscript. The wells at the atomic planes are deeper in Si here, where the
+manuscript's are deeper in Ge: the curve plotted is the electrostatic potential of these pseudopotentials, not the
+l = 1 component of the manuscript's, and its shape depends on that choice while ΔE_v does not (p. 5625).
 
 ![Potential across the Si/Ge (001) superlattice, this tutorial](../../../images/tutorials/materials/interfaces/interface_3d_3d_silicon_germanium/3-potential-this-notebook.webp "Electrostatic potential across the Si/Ge (001) superlattice, this tutorial")
 
@@ -194,8 +199,9 @@ one plane spacing at the centre of each block:
 
 `RELAX = True` relaxes the atoms of the superlattice at fixed cell, to 0.01 eV/Å, before the offset is computed;
 the bulks keep their ideal positions, which symmetry fixes. The manuscript uses ideal positions and finds the
-minimum-energy interface spacing within 0.1 % of the ideal one (Sec. II). Relaxed, the interface spacings stay at
-1.403 Å and the offset is 0.718 eV (section 6.1).
+minimum-energy interface spacing within 0.1 % of the ideal one (Sec. II). Here the relaxation moves the interface
+spacing from 1.406 to 1.403 Å and the planes inside both blocks by up to 0.005 Å, while the bulk references keep
+their ideal spacings; the offset comes out 0.718 eV (section 6.1).
 
 ### 7.2. Adjust computational resources
 
