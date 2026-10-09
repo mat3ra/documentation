@@ -45,6 +45,7 @@ Step-by-step recipes reproducing published work, one row per publication: the st
 | Jung et al. (2015)[^10]           | 2D–2D interface           | [Graphene / h-BN](tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride.md) | Band structure, total energies (Coming Soon) |
 | Shan et al. (2011)[^11]           | 3D–3D interface           | [Cu / SiO2](tutorials/materials/specific/interface-3d-3d-copper-silicon-dioxide.md) | Band structure (Coming Soon) |
 | Kang et al. (2008)[^12]           | 2D–3D interface           | [Graphene / SiO2](tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide.md) | Band structure (Coming Soon) |
+| Van de Walle et al. (1986)[^23]   | 3D–3D interface           | [Si / Ge (001)](tutorials/materials/specific/interface-3d-3d-silicon-germanium.md) | [Valence band offset](tutorials/materials/specific/interface-3d-3d-silicon-germanium-simulation.md) |
 | Dahal et al. (2014)[^13]          | Interface optimization    | [Graphene / Ni(111)](tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel.md) | [Registry and work of adhesion](tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel-simulation.md) |
 | Saidi et al. (2015)[^14]          | Adatom island             | [Pt on MoS2](tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum.md) | Binding energy per Pt atom, density of states (Coming Soon) |
 | Aradi et al. (2007)[^15]          | H-passivated nanowire     | [Si](tutorials/materials/specific/passivation-edge-nanowire-silicon.md) | Band gap, density of states, formation energy (Coming Soon) |
@@ -78,6 +79,7 @@ Step-by-step recipes reproducing published work, one row per publication: the st
 [^20]: Thompson-Flagg et al., EPL 85, 46002 (2009). [DOI](https://doi.org/10.1209/0295-5075/85/46002){:target='_blank'}
 [^21]: Frolov et al., Nat. Commun. 4, 1899 (2013). [DOI](https://doi.org/10.1038/ncomms2919){:target='_blank'}
 [^22]: Li et al., Nano Lett. 15, 6004 (2015). [DOI](https://doi.org/10.1021/acs.nanolett.5b01852){:target='_blank'}
+[^23]: Van de Walle et al., Phys. Rev. B 34, 5621 (1986). [DOI](https://doi.org/10.1103/PhysRevB.34.5621){:target='_blank'}
 
 
 
