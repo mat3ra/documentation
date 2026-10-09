@@ -25,14 +25,14 @@ This tutorial relaxes a Ti adatom at three sites on and next to a 5×5-atom isla
     **D. G. Sangiovanni, A. B. Mei, D. Edström, L. Hultman, V. Chirita, I. Petrov, and J. E. Greene**,
     "Effects of surface vibrations on interlayer mass transport: Ab initio molecular dynamics investigation of Ti adatom descent pathways and rates from TiN/TiN(001) islands", Physical Review B, 2018. [DOI: 10.1103/PhysRevB.97.035406](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.97.035406){:target='_blank'}. [@Sangiovanni2018]
 
-This tutorial builds upon the [Island Surface Defect Formation in TiN](defect-surface-island-titanium-nitride.md) tutorial, where the manuscript's 458-atom cell is created with the adatom at each site. The sites are labelled as in Fig. 6 of the manuscript: **a**, the fourfold hollow (FFH) on the island next to its edge; **c**, atop the N edge atom; **i**, atop the N terrace atom in front of the edge, the site that extends the island.
+This tutorial builds upon the [Island Surface Defect Formation in TiN](defect-surface-island-titanium-nitride.md) tutorial, where its Section 8 notebook builds the manuscript's 458-atom cell with the adatom at each site. The sites are labelled as in Fig. 6 of the manuscript: **a**, the fourfold hollow (FFH) on the island next to its edge; **c**, atop the N edge atom; **i**, atop the N terrace atom in front of the edge, the site that extends the island.
 
 The manuscript calculates these energies with Density Functional Theory (DFT). This tutorial uses the MACE-MP-0 machine-learned force field; Section 4 lists the settings.
 
 
 ## 2. Prerequisites
 
-The notebook loads four materials from the `uploads` folder by exact name and raises a `KeyError` when one is missing: `TiN(001) 12x12x3 island 5x5`, the island cell without the adatom, and the three cells with the adatom at a, c and i. All four are created and saved by the [Island Surface Defect Formation in TiN](defect-surface-island-titanium-nitride.md) tutorial, which should be run first. No platform account is needed: every calculation runs in the notebook's own kernel.
+The notebook loads four materials from the `uploads` folder by exact name and raises a `KeyError` when one is missing: `TiN(001) 12x12x3 island 5x5`, the island cell without the adatom, and the three cells with the adatom at a, c and i. All four are created and saved by `defect_surface_island_titanium_nitride.ipynb`, the notebook embedded in Section 8 of the [Island Surface Defect Formation in TiN](defect-surface-island-titanium-nitride.md) tutorial, which should be run first. No platform account is needed: every calculation runs in the notebook's own kernel.
 
 
 ## 3. Workflow overview
@@ -45,7 +45,7 @@ where `E_Ti` is the energy of an isolated Ti atom. The energies of c and i are t
 
 1. **Set up the environment and parameters**: install packages (JupyterLite only), material names, force field and relaxation parameters
 2. **Load the materials**: the island cell and the three adatom cells from the `uploads` folder
-3. **Build the MACE calculator**: with the D3 dispersion correction where the runtime provides it
+3. **Build the MACE calculator**: from the settings in cell 1.3
 4. **Relax the island cell**: then measure the island contraction and the surface ripple
 5. **Relax the adatom at a, c and i**: one relaxation per site, starting from the placed site
 6. **Calculate the energy of an isolated Ti atom**: the reference of the adsorption energy
@@ -67,7 +67,7 @@ MACE_DISPERSION = True
 MACE_DEFAULT_DTYPE = "float64"
 MACE_DEVICE = "cpu"
 
-FMAX = 0.02  # eV/Å, every atom free
+FMAX = 0.02  # eV/Å
 MAX_STEPS = 1000
 
 ISOLATED_ATOM_BOX = 15.0  # Å, edge of the cubic box around the isolated Ti atom
@@ -77,13 +77,13 @@ Every relaxation uses the [Broyden–Fletcher–Goldfarb–Shanno (BFGS) optimiz
 
 ### 4.2. Method compared with the manuscript
 
-The manuscript uses DFT with the Generalized Gradient Approximation (GGA) in the Vienna Ab initio Simulation Package (VASP), on the same cell. This tutorial uses the [MACE-MP-0](https://github.com/ACEsuit/mace){:target='_blank'} large model with the D3 dispersion correction, in double precision (`float64`) on the CPU. Every value in Section 6 is MACE beside DFT (GGA). The manuscript cites its isolated Ti atom energy (−2.275 eV); this tutorial calculates its own.
+The manuscript uses DFT with the Generalized Gradient Approximation (GGA) in the Vienna Ab initio Simulation Package (VASP), on the same cell; the site spacing here, from Standata's `mp-492`, is 2.121 Å against the manuscript's nearest-neighbour distance of 2.127 Å (Sec. II.A), −0.3 %. This tutorial uses the [MACE-MP-0](https://github.com/ACEsuit/mace){:target='_blank'} large model with the D3 dispersion correction, in double precision (`float64`) on the CPU. Every value in Section 6 is MACE beside DFT (GGA). The manuscript cites its isolated Ti atom energy (−2.275 eV); this tutorial calculates its own. Sec. II.B of the manuscript pre-optimizes the atop-N-edge configuration (c) with the adatom's relaxation constrained along [001]; this notebook relaxes c with every atom free.
 
 ### 4.3. Dispersion and run time
 
-The D3 term needs the `torch-dftd` package. The JupyterLite bundle does not carry it, so a run in the browser relaxes with MACE alone, and section 3 of the notebook prints that it does.
+The D3 term needs the `torch-dftd` package, which the JupyterLite bundle does not carry.
 
-The four relaxations, on 457 and 458 atoms, are meant to be run natively, with `mace-torch` and `torch-dftd` installed: the notebook took 16 to 34 minutes on an Apple M1 Pro CPU in two runs. The values in Section 6 are from such a run.
+The four relaxations, on 457 and 458 atoms, are meant to be run natively, with `mace-torch` and `torch-dftd` installed: the notebook took at most 34 minutes on an Apple M1 Pro CPU. The values in Section 6 are from such a run.
 
 
 ## 5. Step-by-step instructions
@@ -115,7 +115,7 @@ ADATOM_MATERIAL_NAMES = {
 Execute all cells by selecting *Run* > *Run All Cells*. The notebook then:
 
 1. Loads the four materials and prints their atom counts
-2. Builds the MACE calculator, with D3 where `torch-dftd` is installed
+2. Builds the MACE calculator
 3. Relaxes the island cell and prints the island contraction and the ripple
 4. Relaxes the adatom at a, c and i, and prints each energy and the adatom's displacement from its site
 5. Calculates the energy of an isolated Ti atom
@@ -123,11 +123,11 @@ Execute all cells by selecting *Run* > *Run All Cells*. The notebook then:
 
 ### 5.4. Monitor progress
 
-Each relaxation prints one line per BFGS step: the step, the time, the energy, and the largest force. In the run of Section 6, each relaxation took 24 to 33 steps of about 7.5 seconds.
+Each relaxation prints one line per BFGS step: the step, the time, the energy, and the largest force. In the run of Section 6, each relaxation took 24 to 33 steps of about 4 seconds.
 
 ### 5.5. Read the results
 
-Section 7.1 of the notebook prints the energies of c and i relative to a and the adsorption energy at a, each beside the manuscript's value with the deviation in percent, then the island contraction and the ripple. Section 7.2 plots the upper panel of Fig. 6, states a to i of the manuscript, with this notebook's a, c and i as markers on the same axes.
+Section 7.1 of the notebook prints the energies of c and i relative to a and the adsorption energy at a, each beside the manuscript's value with the deviation in percent, then the island contraction and the ripple. Section 7.2 plots the manuscript's states a to i of Fig. 6 (upper panel) as a line, with this notebook's a, c and i as markers on the same axes.
 
 
 ## 6. Expected results
@@ -146,8 +146,6 @@ A native run with the default parameters and D3 gives the values below, each bes
 
 The adatom moved 0.48 Å at a, 0.23 Å at c, and 0.20 Å at i from the site where it was placed.
 
-The manuscript's c is not a free minimum: Sec. II.B pre-optimizes an ab initio molecular dynamics (AIMD) transition-state configuration with the adatom atop the N edge atom and its relaxation constrained along [001], and the −0.15 eV of Fig. 6 is the energy of a nudged elastic band (NEB) image. The notebook relaxes c with every atom free.
-
 
 ## 7. Customization options
 
@@ -164,24 +162,24 @@ The manuscript's c is not a free minimum: Sec. II.B pre-optimizes an ab initio m
 
 ### 8.1. Material not found
 
-Section 2 of the notebook raises a `KeyError` naming the material when one of the four names in cell 1.2 is missing from the `uploads` folder. Earlier versions of the structure notebook saved a single, larger island cell; an `uploads` folder left from one of those does not satisfy this notebook. Re-run the [structure creation tutorial](defect-surface-island-titanium-nitride.md) in the same environment, which saves the four materials under the names in cell 1.2.
+Section 2 of the notebook raises a `KeyError` naming the material when one of the four names in cell 1.2 is missing from the `uploads` folder. Earlier versions of the structure notebook saved a single, larger island cell; an `uploads` folder left from one of those does not satisfy this notebook. Re-run `defect_surface_island_titanium_nitride.ipynb`, the notebook embedded in Section 8 of the [structure tutorial](defect-surface-island-titanium-nitride.md), in the same environment; it saves the four materials under the names in cell 1.2.
 
 ### 8.2. MACE is not installed
 
-In JupyterLite, cell 1.1 installs MACE and applies the patches the browser runtime needs; it has to run before any other cell. Natively it installs nothing and prints ``To install packages, run `pip install ".[all]"` in the terminal``, and that extra does not include MACE: install `mace-torch` and `torch-dftd` with `pip` into the notebook's environment, then restart the kernel.
+In JupyterLite, cell 1.1 installs MACE and applies the patches the browser runtime needs; it has to run before any other cell. Natively it installs nothing, applies the same patches, and prints ``To install packages, run `pip install ".[all]"` in the terminal``; that extra does not include MACE. The native install is `pip install ".[all]" mace-torch torch-dftd`, followed by a kernel restart.
 
 ### 8.3. The run is without dispersion
 
-When section 3 of the notebook prints `torch-dftd is not available here: MACE runs WITHOUT the D3 dispersion correction.`, every energy is MACE alone and differs from Section 6. This is the case in every JupyterLite run (Section 4.3). The values of Section 6 need a native kernel with `torch-dftd` installed.
+When Section 3 of the notebook prints `torch-dftd is not available here: MACE runs WITHOUT the D3 dispersion correction.`, every energy is MACE alone and differs from Section 6. This is the case in every JupyterLite run (Section 4.3). The values of Section 6 need a native kernel with `torch-dftd` installed.
 
 ### 8.4. The relaxations take long
 
-Every BFGS step evaluates MACE on 457 or 458 atoms, and the notebook runs four relaxations. They are meant to be run natively; Section 4.3 gives the native run time.
+Every BFGS step evaluates MACE on 457 or 458 atoms, and the notebook runs four relaxations (Section 4.3).
 
 
 ## 9. Interactive JupyterLite notebook
 
-The following JupyterLite notebook relaxes the Ti adatom at a, c and i and compares the energies with the manuscript. Select *Run* > *Run All Cells*. In the browser, MACE runs without D3 (Section 4.3).
+The following JupyterLite notebook relaxes the Ti adatom at a, c and i and compares the energies with the manuscript. The relaxations are meant for a native kernel (Section 4.3); in the browser they run without D3 and take hours.
 
 {% with origin_url=config.extra.jupyterlite.origin_url_lab %}
 {% with notebooks_path_root=config.extra.jupyterlite.notebooks_path_root %}

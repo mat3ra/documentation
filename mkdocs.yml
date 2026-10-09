@@ -162,7 +162,7 @@ nav:
             - Interstitial Point Defect in SnO:                             tutorials/materials/specific/defect-point-interstitial-tin-oxide.md
             - Interstitial Point Defect in SnO (Formation Energy and DOS):  tutorials/materials/specific/defect-point-interstitial-tin-oxide-simulation.md
             - Island Surface Defect Formation in TiN:                       tutorials/materials/specific/defect-surface-island-titanium-nitride.md
-            - Ti Adatom Descent on a TiN Island (MACE):                     tutorials/materials/specific/defect-surface-island-titanium-nitride-simulation.md
+            - Island Surface Defect Formation in TiN (Ti Adatom Descent):   tutorials/materials/specific/defect-surface-island-titanium-nitride-simulation.md
             - Step Surface Defect on Pt(111):                               tutorials/materials/specific/defect-surface-step-platinum.md
             - Twisted Bilayer h-BN nanoribbons:                             tutorials/materials/specific/interface-bilayer-twisted-nanoribbons-boron-nitride.md
             - Twisted Bilayer MoS2 commensurate lattices:                   tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide.md

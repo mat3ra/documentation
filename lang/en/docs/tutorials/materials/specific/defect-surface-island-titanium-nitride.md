@@ -29,7 +29,7 @@ This tutorial demonstrates the process of creating material with island on the s
 
 We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create a slab of TiN, identify the crystal coordinates for an island on the surface, and build it. 
 
-The target is the manuscript's 458-atom cell (Sec. II.A, Fig. 1b): a 5×5-atom island with Ti corners on a TiN(001) slab of 12×12 sites and three (001) planes with 15.3 Å of vacuum, and a Ti adatom at each of the sites a, c and i of Fig. 6. FIG. 2. a) of the paper, below, shows the larger 9×9-atom island:
+The target is the manuscript's 458-atom cell (Sec. II.A, Fig. 1b): a 5×5-atom island with Ti corners on a TiN(001) slab of 12×12 sites and three (001) planes with 15.3 Å of vacuum, and a Ti adatom at each of the sites a, c and i of Fig. 6. It is built by the notebook in Section 8; the Materials Designer steps below build the island slab before its bottom plane is removed. FIG. 2. a) of the paper, below, shows the larger 9×9-atom island:
 
 
 ![Surface Defect](../../../images/tutorials/materials/defects/defect-creation-surface-island-titanium-nitride/0.png "Surface Defect, Island FIG. 2. a)")
@@ -139,7 +139,7 @@ DEFAULT_SLAB_PARAMETERS = {
 }
 ```
 
-The slab built this way has four (001) planes. The combined notebook in Section 8 removes the bottom plane once the island is added and resets the vacuum to 15.3 Å, which leaves the manuscript's three planes and 457 atoms:
+The slab built this way has four (001) planes. The combined notebook in Section 8 removes the bottom plane once the island is added and resets the vacuum to 15.3 Å, which leaves three slab planes under the island and 457 atoms:
 
 ```python
 bottom_plane = get_atom_indices_by_layer(slab_with_island)[0]
@@ -161,7 +161,7 @@ After running the notebook, the user will be able to visualize the created mater
 
 ### 6.1. Add the adatom at the sites of Fig. 6
 
-The manuscript gives no coordinates for the adatom sites; the combined notebook in Section 8 derives them from the island built above. It takes the N atom with the smaller x in the island's edge row at the largest y (`edge_nitrogen_x`, `edge_y`), the bulk site spacing a/2 (`site_spacing`), and the heights of the island and terrace planes, then places the adatom one site spacing above the plane of each site:
+The notebook in Section 8 places the Ti adatom one bulk site spacing above the plane of each site: **a**, the fourfold hollow on the island between the edge N atom with the smaller x and the edge-centre Ti, the manuscript's FFH_edge; **c**, atop that edge N; **i**, atop the terrace N in front of it:
 
 ```python
 adatom_sites = {
@@ -170,8 +170,6 @@ adatom_sites = {
     "i": [edge_nitrogen_x, edge_y + site_spacing, terrace_z + site_spacing],
 }
 ```
-
-Here **a** is the fourfold hollow on the island next to the edge, **c** is atop the edge N atom, and **i** is atop the terrace N atom in front of it. Each site is added with `create_defect_point_interstitial` at that exact cartesian coordinate.
 
 ## 7. Pass the Material to Materials Designer
 
