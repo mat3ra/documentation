@@ -63,7 +63,8 @@ The calculation consists of the following steps:
 4. **Configure the model and k-grids**: One DFT model, a k-grid per material from one k-point density
 5. **Configure compute resources**: Select the cluster, queue, and processor settings
 6. **Relax the superlattice** (only if `RELAX = True`): at fixed cell
-7. **Configure the workflow**: The model, the k-grids, and the averaging window of the potential
+7. **Configure the workflow**: The model and the k-grids; the band structures are stored, and the workflow's own
+   post-processing, which takes the lineup from minima of the averaged potential, is removed
 8. **Run the job**: One Valence Band Offset job, which runs a band structure and the electrostatic potential on
    each of the three materials
 9. **Retrieve results**: The valence band maxima and average potentials, the offset, and the potential across the
@@ -137,7 +138,7 @@ average potential of the Si and the Ge block in the superlattice:
 Si (001) bulk a=5.43: E_VBM = 6.0108 eV, V̄ = 1.2535 eV, E_VBM - V̄ = 4.7573 eV, gap +0.474 eV
   in the superlattice: V̄ = 2.4459 eV, averaged over 1.3575 Å centred at z = 5.6250 Å
 Ge (001) bulk a=5.43 c=5.82: E_VBM = 9.0797 eV, V̄ = 4.3315 eV, E_VBM - V̄ = 4.7482 eV, gap -0.088 eV
-  in the superlattice: V̄ = 3.2183 eV, averaged over 1.4550 Å centred at z = 0.0000 Å
+  in the superlattice: V̄ = 3.2203 eV, averaged over 1.4550 Å centred at z = 11.2500 Å
 ```
 
 The valence band maximum is the top of band N_electrons / 2 along each bulk's k-path, and the gap the bottom of the
@@ -150,8 +151,8 @@ The last cell prints the offset beside the manuscript's values:
 
 ```
 Regime: ideal positions
-ΔE_v = 0.76 eV   paper 0.74 eV   deviation +3.1 %
-ΔE_v + 0.10 eV = 0.86 eV   paper 0.84 eV   deviation +2.8 %
+ΔE_v = 0.765 eV   paper 0.74 eV   deviation +3.4 %
+ΔE_v + 0.10 eV = 0.865 eV   paper 0.84 eV   deviation +3.0 %
 Ge valence band top above Si's   paper above
 (E_VBM - V̄)_Ge - (E_VBM - V̄)_Si = -0.01 eV   paper -0.11 eV
 (V̄_Ge - V̄_Si)_superlattice = +0.77 eV   paper +0.85 eV
@@ -175,7 +176,8 @@ smaller than the measured ones.
 | | ΔE_v (eV) | ΔE_v + 0.10 eV (eV) | bulk term (eV) | ΔV̄ (eV) |
 |---|---|---|---|---|
 | Van de Walle & Martin | 0.74 | 0.84 | −0.11 (l = 1 reference) | 0.85 (l = 1 reference) |
-| This tutorial, default | 0.763 (+3.1 %) | 0.863 (+2.8 %) | −0.009 | 0.772 |
+| This tutorial, default | 0.765 (+3.4 %) | 0.865 (+3.0 %) | −0.009 | 0.774 |
+| This tutorial, `RELAX = True` | 0.718 (−2.9 %) | 0.818 (−2.6 %) | −0.009 | 0.728 |
 
 The manuscript's Fig. 2 shows its potential across the superlattice, with the two bulk averages as dashed lines:
 
@@ -192,7 +194,8 @@ one plane spacing at the centre of each block:
 
 `RELAX = True` relaxes the atoms of the superlattice at fixed cell, to 0.01 eV/Å, before the offset is computed;
 the bulks keep their ideal positions, which symmetry fixes. The manuscript uses ideal positions and finds the
-minimum-energy interface spacing within 0.1 % of the ideal one (Sec. II).
+minimum-energy interface spacing within 0.1 % of the ideal one (Sec. II). Relaxed, the interface spacings stay at
+1.403 Å and the offset is 0.718 eV (section 6.1).
 
 ### 7.2. Adjust computational resources
 
