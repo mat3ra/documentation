@@ -210,6 +210,7 @@ nav:
             - H-Passivated Silicon (100) Surface:                               tutorials/materials/specific/passivation-surface-silicon.md
             - Gold Nanoclusters:                                                tutorials/materials/specific/nanocluster-gold.md
             - SrTiO3 Slab:                                                      tutorials/materials/specific/slab-strontium-titanate.md
+            - SrTiO3 Slab (Surface Energies):                                   tutorials/materials/specific/slab-strontium-titanate-simulation.md
             - Graphene / h-BN Interface:                                        tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride.md
             - Cu / SiO2 Interface:                                              tutorials/materials/specific/interface-3d-3d-copper-silicon-dioxide.md
             - Graphene / SiO2 Interface:                                        tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide.md
