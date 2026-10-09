@@ -55,7 +55,7 @@ FOLDER = "./uploads"
 
 # Giovannetti et al. 2007 compute all three stackings at every distance 2.5–3.9 Å; the defaults run
 # stacking (c) at three distances around its minimum. Uncomment entries to compute more
-# (one job per stacking × distance, ~25 min each on queue D with two cores).
+# (one job per stacking × distance).
 STACKINGS = [
     "c",
     # "a",
@@ -142,7 +142,7 @@ In cell 1.2, set `ORGANIZATION_NAME` to the account's organization, and `STACKIN
 
 ### 5.3. Run the notebook
 
-Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md) (section 2), loads the materials by name, prints their provenance and saves them to the platform (section 3), configures one workflow per material (section 4), creates the compute configuration (section 5) and submits the jobs one at a time (section 6). Each ten-atom job takes about 16 minutes on queue D with two cores, so the full set runs overnight. Section 7 retrieves the total energies, gaps and plots, and section 8 prints the comparison with the paper.
+Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md) (section 2), loads the materials by name, prints their provenance and saves them to the platform (section 3), configures one workflow per material (section 4), creates the compute configuration (section 5) and submits the jobs one at a time (section 6). Section 7 retrieves the total energies, gaps and plots, and section 8 prints the comparison with the paper.
 
 ### 5.4. Re-run the notebook
 
@@ -178,7 +178,7 @@ The notebook plots the total energy and the gap at K against the distance for ea
 
 `DISTANCES` and `STACKINGS` select the materials; they must match the lists in the structure notebook. `KGRID` and `KPATH_STEPS` control the k-point sampling of the SCF/NSCF grid and the band-structure path; `ECUTWFC` and `ECUTRHO` set the plane-wave cutoffs. `MODEL_TAG` is built from these settings and is part of every workflow's name, so changing any of them creates new jobs rather than reusing the ones already run.
 
-The paper's full set (three stackings × 2.5–3.9 Å) is obtained by uncommenting the `STACKINGS` and `DISTANCES` entries in both notebooks, one job per entry pair, about 25 minutes each on queue D.
+The paper's full set (three stackings × 2.5–3.9 Å) is obtained by uncommenting the `STACKINGS` and `DISTANCES` entries in both notebooks, one job per entry pair.
 
 ## 8. Troubleshooting
 

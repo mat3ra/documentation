@@ -149,11 +149,7 @@ The notebook will:
 
 ### 5.4. Monitor progress
 
-The notebook includes automatic job monitoring with status updates, polling every 60 seconds
-(`POLL_INTERVAL`). Jobs that already exist for the same material and workflow name are reused instead
-of resubmitted, and the notebook prints `♻️` for each one. Measured on cluster-001, 40 cores:
-the pristine supercell about 3.5 minutes of active time (about 11 minutes with the queue), α-Sn 13 seconds,
-SnO₂ about 1 minute, the Density of States job about 5 minutes (about 7 with the queue), the relaxation 48 minutes; on OR at 16 cores expect roughly 2.5× longer (the relaxation ≈ 2 h).
+The notebook includes automatic job monitoring with status updates.
 
 ### 5.5. Analyze results
 
@@ -235,20 +231,13 @@ check that its `uploads` folder holds both files, saved under the exact names
 `SnO 2x2x2 supercell` and `SnO 2x2x2 V_Sn-O_i pair (Togo Fig 4a)`. If `SnO2, Tin Dioxide, TET (P4_2/mnm) 3D
 (Bulk), mp-856` is not found, update `mat3ra-standata` to a release that includes the entry.
 
-### 8.2. Jobs end in `error` and the results cell raises `IndexError`
-
-The default `CLUSTER_NAME = None` takes the account's first listed cluster. If the prerequisite jobs
-end in `error` and the results cell raises `IndexError: list index out of range`, open one of them in
-the platform UI: if `pw_scf.out` ends in `MPI_Init` errors, that cluster cannot start it. Set
-`CLUSTER_NAME` to another cluster — cluster-001 ran every job here — and re-run; finished jobs are reused.
-
-### 8.3. No formation energy on the first `RELAX = True` run
+### 8.2. No formation energy on the first `RELAX = True` run
 
 With `RELAX = True`, the first run adds a relaxation job before the Density of States job, and waits for both. If
 the session ends before they finish, re-run the notebook later: it finds the relaxed structure and any finished
 jobs; the relaxation is not repeated, and a Density of States job that does not yet exist is created then.
 
-### 8.4. Formation energy far from the published value
+### 8.3. Formation energy far from the published value
 
 Check the V_Sn-O_i distance printed in section 3.2 of the notebook against Fig. 4(a) of the
 manuscript first: the oxygen interstitial sits directly below the tin vacancy, in the interlayer gap.

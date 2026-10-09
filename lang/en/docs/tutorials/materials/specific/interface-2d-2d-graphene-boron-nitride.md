@@ -51,7 +51,7 @@ VACUUM = 15.0  # Å above graphene
 
 # Giovannetti et al. 2007 compute all three stackings at every distance 2.5–3.9 Å; the defaults run
 # stacking (c) at three distances around its minimum. Uncomment entries to compute more
-# (one job per stacking × distance, ~25 min each on queue D with two cores).
+# (one job per stacking × distance).
 STACKINGS = [
     "c",
     # "a",
