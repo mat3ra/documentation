@@ -62,14 +62,13 @@ The calculation consists of the following steps:
 3. **Load materials**: Import the superlattice and the two bulks, print their plane spacings
 4. **Configure the model and k-grids**: One DFT model, a k-grid per material from one k-point density
 5. **Configure compute resources**: Select the cluster, queue, and processor settings
-6. **Relax the superlattice** (only if `RELAX = True`): at fixed cell
-7. **Configure the workflow**: The model and the k-grids; the band structures are stored, and the workflow's own
+6. **Configure the workflow**: The model and the k-grids; the band structures are stored, and the workflow's own
    post-processing, which takes the lineup from minima of the averaged potential, is removed
-8. **Run the job**: One Valence Band Offset job, which runs a band structure and the electrostatic potential on
+7. **Run the job**: One Valence Band Offset job, which runs a band structure and the electrostatic potential on
    each of the three materials
-9. **Retrieve results**: The valence band maxima and average potentials, the offset, and the potential across the
+8. **Retrieve results**: The valence band maxima and average potentials, the offset, and the potential across the
    superlattice
-10. **Compare with the manuscript**: Print our values beside Van de Walle & Martin's
+9. **Compare with the manuscript**: Print our values beside Van de Walle & Martin's
 
 ## 4. Calculation parameters
 
@@ -81,7 +80,7 @@ The calculation consists of the following steps:
 | Cutoff | 40 / 200 Ry | 6 Ry |
 | k-points | 5 points per Å⁻¹: 9×9×3 superlattice, 6×6×6 bulks | four special points |
 | Cell | 4 + 4 planes, 8 atoms, a∥ = 5.43, a_Ge⊥ = 5.82 Å | the same |
-| Positions | ideal (`RELAX = False`) | ideal |
+| Positions | ideal (Sec. II) | ideal |
 | Reference potential V̄ | planar average of the electrostatic potential | planar average of the l = 1 component of the total potential |
 | Spin–orbit | not included | not included; +0.10 eV added for Table I |
 
@@ -107,8 +106,6 @@ SUPERLATTICE_NAME = "Si/Ge (001) superlattice 4+4"
 SUBSTRATE_BULK_NAME = "Si (001) bulk a=5.43"
 FILM_BULK_NAME = "Ge (001) bulk a=5.43 c=5.82"
 
-RELAX = False
-
 CLUSTER_NAME = "001"
 QUEUE_NAME = QueueName.OR
 PPN = 16
@@ -131,7 +128,7 @@ then runs the steps listed in section 3.
 
 ### 5.4. Analyze results
 
-Section 9.1 of the notebook prints each bulk's valence band maximum, its average potential and its gap, and the
+Section 8.1 of the notebook prints each bulk's valence band maximum, its average potential and its gap, and the
 average potential of the Si and the Ge block in the superlattice:
 
 ```
@@ -145,12 +142,11 @@ The valence band maximum is the top of band N_electrons / 2 along each bulk's k-
 next band minus it. The strained Ge is a semimetal in the LDA: its L conduction band lies 0.088 eV below the valence
 band top at Γ, hence the negative gap. Each block is averaged over one plane spacing at
 its centre, one plane away from both interfaces, where the manuscript finds the potential bulk-like (Fig. 2).
-Section 9.3 plots the potential across the superlattice with the two block averages.
+Section 8.3 plots the potential across the superlattice with the two block averages.
 
 The last cell prints the offset beside the manuscript's values:
 
 ```
-Regime: ideal positions
 ΔE_v = 0.765 eV   paper 0.74 eV   deviation +3.4 %
 ΔE_v + 0.10 eV = 0.865 eV   paper 0.84 eV   deviation +3.0 %
 Ge valence band top above Si's   paper above
@@ -168,7 +164,7 @@ the l = 1 component of the total potential, so they are printed for reference on
 smaller and the bulk term 0.10 eV larger than the manuscript's, and the sum is within 0.03 eV.
 
 The manuscript compares with no experiment for this interface: the measured Si/Ge junctions were presumably not
-pseudomorphic (p. 5630). The band gaps printed in section 9.1 are Kohn–Sham gaps, smaller than the measured ones.
+pseudomorphic (p. 5630). The band gaps printed in section 8.1 are Kohn–Sham gaps, smaller than the measured ones.
 
 ### 6.1. Comparison with published results
 
@@ -176,7 +172,6 @@ pseudomorphic (p. 5630). The band gaps printed in section 9.1 are Kohn–Sham ga
 |---|---|---|---|---|
 | Van de Walle & Martin | 0.74 | 0.84 | −0.11 (l = 1 reference) | 0.85 (l = 1 reference) |
 | This tutorial, default | 0.765 (+3.4 %) | 0.865 (+3.0 %) | −0.009 | 0.774 |
-| This tutorial, `RELAX = True` | 0.718 (−2.9 %) | 0.818 (−2.6 %) | −0.009 | 0.727 |
 
 The manuscript's Fig. 2 shows its potential across one period of the superlattice. The bulk potentials (dashed)
 coincide with it away from the interfaces, and their averages (dashed horizontal lines) are shifted with respect to
@@ -184,7 +179,7 @@ each other:
 
 ![Potential across the Si/Ge (001) superlattice, manuscript](../../../images/tutorials/materials/interfaces/interface_3d_3d_silicon_germanium/2-figure-2-from-manuscript.webp "Averaged l = 1 potential across the (001) interface, Fig. 2 of the manuscript")
 
-Section 9.3 of the notebook draws the same figure for this calculation: one period from the Ge→Si interface, each
+Section 8.3 of the notebook draws the same figure for this calculation: one period from the Ge→Si interface, each
 bulk's own potential (dotted) shifted onto its block, and the two averages (dashed). The bulk potentials coincide with
 the superlattice's inside both blocks and depart from it only at the interfaces, and the Ge average lies 0.77 eV above
 the Si one, against 0.85 eV in the manuscript. Here the atomic planes sit at the minima of the potential and its
@@ -197,15 +192,7 @@ choice, ΔE_v does not (p. 5625).
 
 ## 7. Customization options
 
-### 7.1. Relax the superlattice
-
-`RELAX = True` relaxes the atoms of the superlattice at fixed cell, to 0.01 eV/Å, before the offset is computed;
-the bulks keep their ideal positions, which symmetry fixes. The manuscript uses ideal positions and finds the
-minimum-energy interface spacing within 0.1 % of the ideal one (Sec. II). Here the relaxation moves the interface
-spacing from 1.406 to 1.403 Å and the plane spacings inside both blocks by up to 0.005 Å, while the bulk references
-keep their ideal spacings; the offset comes out 0.718 eV (section 6.1).
-
-### 7.2. Adjust computational resources
+### 7.1. Adjust computational resources
 
 `CLUSTER_NAME` selects the cluster by its full or partial name; a name that is not available makes the notebook
 stop and list the ones that are.
@@ -221,7 +208,7 @@ If one of the three names is not found in the `uploads` folder or the account's 
 ### 8.2. Offset far from the published value
 
 Check the plane spacings printed in section 3 of the notebook first: 1.3575 Å in Si, 1.455 Å in Ge and 1.406 Å at
-both interfaces. Then check the gaps printed in section 9.1: about +0.47 eV for Si and −0.09 eV for Ge, whose L
+both interfaces. Then check the gaps printed in section 8.1: about +0.47 eV for Si and −0.09 eV for Ge, whose L
 conduction band dips below the valence band top at Γ in the LDA. A different Ge gap means a different
 pseudopotential, cutoff or cell, and moves E_VBM of Ge and the offset with it.
 
