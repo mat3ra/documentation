@@ -113,7 +113,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 3.1.1.1. Island Surface Defect Formation in TiN <span class="btn badge b-info border-50">D-2D-ISL</span>
 
 **Structure**: [Create Island Defect on TiN Surface](defect-surface-island-titanium-nitride.md)  
-**Properties**: [Calculate Ti Adatom Descent Energetics on a TiN Island (MACE)](defect-surface-island-titanium-nitride-simulation.md)  
+**Properties**: Calculate island formation energy (Coming Soon)  
 **DOI**: [10.1103/PhysRevB.97.035406](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.97.035406){:target='_blank'} [@Sangiovanni2018]
 
 ![Surface Defect](../../../images/tutorials/materials/defects/defect-creation-surface-island-titanium-nitride/0.png "Surface Defect, Island FIG. 2. a"){ style="max-height:500px;width:auto;" }

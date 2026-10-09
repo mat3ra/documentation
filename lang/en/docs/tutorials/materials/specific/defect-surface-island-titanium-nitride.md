@@ -27,9 +27,10 @@ This tutorial demonstrates the process of creating material with island on the s
     **D. G. Sangiovanni, A. B. Mei, D. Edström, L. Hultman, V. Chirita, I. Petrov, and J. E. Greene**, 
     "Effects of surface vibrations on interlayer mass transport: Ab initio molecular dynamics investigation of Ti adatom descent pathways and rates from TiN/TiN(001) islands", Physical Review B, 2018. [DOI: 10.1103/PhysRevB.97.035406](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.97.035406){:target='_blank'}. [@Sangiovanni2018]
 
-We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create a slab of TiN, identify the crystal coordinates for an island on the surface, and build it. 
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create a slab of TiN, identify the cartesian coordinates for an island on the surface, and build it. 
 
-The target is the manuscript's 458-atom cell (Sec. II.A, Fig. 1b): a 5×5-atom island with Ti corners on a TiN(001) slab of 12×12 sites and three (001) planes with 15.3 Å of vacuum, and a Ti adatom at each of the sites a, c and i of Fig. 6. It is built by the notebook in Section 8; the Materials Designer steps below build the island slab before its bottom plane is removed. FIG. 2. a) of the paper, below, shows the larger 9×9-atom island:
+We will focus on creating graphene-nitrogen structures from FIG. 2.
+Specifically, the material from FIG. 2. a) of the paper: 
 
 
 ![Surface Defect](../../../images/tutorials/materials/defects/defect-creation-surface-island-titanium-nitride/0.png "Surface Defect, Island FIG. 2. a)")
@@ -37,7 +38,9 @@ The target is the manuscript's 458-atom cell (Sec. II.A, Fig. 1b): a 5×5-atom i
 
 ## 2. Create and preview TiN Slab
 
-First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import TiN (`mp-492`) from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
+First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the graphene material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
+
+![Standata Graphene Import](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/1-standata-graphene.webp "Standata Graphene Import")
 
 
 Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create a TiN slab.
@@ -58,9 +61,9 @@ Next, edit `create_slab.ipynb` notebook to modify the parameters by adding the f
 IS_TERMINATIONS_SELECTION_INTERACTIVE = False 
 
 MILLER_INDICES = (0, 0, 1)
-THICKNESS = 2  # in conventional layers, each of two (001) planes
-VACUUM = 15.3  # in angstroms
-XY_SUPERCELL_MATRIX = [[6, 0], [0, 6]]
+THICKNESS = 3  # in atomic layers
+VACUUM = 10.0  # in angstroms
+XY_SUPERCELL_MATRIX = [[10, 0], [0, 10]]
 USE_ORTHOGONAL_C = True
 USE_CONVENTIONAL_CELL = True
 
@@ -86,19 +89,29 @@ We don't need to save the material at this point, as we will recreate the slab w
 
 ## 3. Identifying the Island vertices coordinates
 
-The island covers 5×5 atoms of the 6×6 supercell (12×12 sites), where the site spacing is 1/12 ≈ 0.0833 crystal units along both lattice directions (a and b). A box `0.4` crystal units wide encloses five sites in each direction.
+We are creating an island defect that covers an area of 4.5x4.5 unit cells (which corresponds to 9x9 atoms). This island will be placed inside a 10x10 supercell (20x20 atoms). 
+To position the island correctly, we need to select coordinates that are `0.45` crystal units apart along both lattice directions (a and b), ensuring the island is centered. 
 
-The x minimum of the box, `0.3233`, is one site spacing above its y minimum, `0.24`: this puts Ti atoms at the four island corners, as in the manuscript.
+The initial coordinates for this are `[0.0, 0.0]` and `[0.45, 0.45]`.
+
+To ensure the island starts from the Ti atom on the edge in the next layer, we will slightly adjust the coordinates:
+
+- Shift the left border by `0.05` (1/20 of the distance between atoms),
+- Shift the top border by `-0.05` (also 1/20 of the atom spacing). 
 
 For the z-axis, the first vertex will have a z-component of `0` (starting at the base of the supercell), and the second vertex will have a z-component of `1` (reaching the top of the supercell), ensuring the island spans the entire z-direction.
 
-The coordinates of the island vertices are: `[0.3233, 0.24, 0]` and `[0.7233, 0.64, 1]`.
+The coordinates after these adjustments are: `[0.05, 0.0, 0]` and `[0.45, 0.4, 1]`.
+
+Finally, to move the island to the center of the supercell, add 2 unit cells (2/10 of the supercell size) to both island vertex coordinates.
+
+The final centered coordinates of the island are: `[0.25, 0.2, 0]` and `[0.65, 0.6, 1]`.
 
 These coordinates will be used in the next step to create the island on the surface.
 
 ## 4. Create Island on the Surface
 
-### 4.1. Open `create_island_defect.ipynb` notebook
+### 4.1. Open `create_point_defect.ipynb` notebook
 
 Close the current notebook. `Introduction` notebook should be open by default.
 
@@ -106,7 +119,7 @@ Find `create_island_defect.ipynb` in the list of notebooks and double-click open
 
 ### 4.2. Modify the notebook
 
-Next, edit `create_island_defect.ipynb` notebook to modify the parameters by adding a list of [defect configuration objects](https://github.com/mat3ra/made/blob/3d938b4d91a31323dca7a02acb12b646dbb26634/src/py/mat3ra/made/tools/build/defect/configuration.py#L191) containing the crystal coordinates of the island vertices.
+Next, edit `create_island_defect.ipynb` notebook to modify the parameters by adding a list of [defect configuration objects](https://github.com/mat3ra/made/blob/3d938b4d91a31323dca7a02acb12b646dbb26634/src/py/mat3ra/made/tools/build/defect/configuration.py#L191) containing the cartesian coordinates of the island vertices.
 
 With the same TiN material selected in the materials input and coordinates for the island vertices from the previous step, the user can create the island on the surface.
 
@@ -120,8 +133,8 @@ Copy the below content and edit the "1.1. Set up defect parameters" cell in the 
 # and the corresponding parameters
 SHAPE_PARAMETERS = {
     'shape': 'box',
-    'min_coordinate': [0.3233, 0.24, 0],
-    'max_coordinate': [0.7233, 0.64, 1]
+    'min_coordinate': [0.25, 0.2, 0],
+    'max_coordinate': [0.65, 0.6, 1]
 }
 
 # Common parameters
@@ -129,23 +142,23 @@ CENTER_POSITION = [0.5, 0.5, 0.5]  # Center of the island
 USE_CARTESIAN_COORDINATES = False  # Use Cartesian coordinates for the island
 NUMBER_OF_ADDED_LAYERS = 0.5  # Number of layers to add to the island
 
+# Vacuum parameters for builder
+AUTO_ADD_VACUUM = True  # Automatically add vacuum to the slab
+VACUUM_THICKNESS = 10.0  # Thickness of the vacuum
+
 # Slab parameters for creating a new slab if provided material is not a slab
 DEFAULT_SLAB_PARAMETERS = {
     "miller_indices": (0,0,1),
-    "thickness": 2,  # conventional layers of two (001) planes
-    "vacuum": 15.3,
+    "thickness": 3,
+    "vacuum": 0.0,
     "use_orthogonal_c": True,
-    "xy_supercell_matrix": [[6, 0], [0, 6]]
+    "xy_supercell_matrix": [[10, 0], [0, 10]]
 }
 ```
 
-The slab built this way has four (001) planes. The combined notebook in Section 8 removes the bottom plane once the island is added and resets the vacuum to 15.3 Å, which leaves three slab planes under the island and 457 atoms:
+Here's the visual of the updated content:
 
-```python
-bottom_plane = get_atom_indices_by_layer(slab_with_island)[0]
-slab_with_island = filter_by_ids(slab_with_island, ids=bottom_plane, invert=True, reset_ids=True)
-slab_with_island = remove_vacuum(slab_with_island, fixed_padding=SLAB_PARAMETERS["vacuum"])
-```
+![Notebook setup](../../../images/tutorials/materials/defects/defect-creation-surface-island-titanium-nitride/island-setup.png "Notebook setup")
 
 ## 5. Run the Notebook
 
@@ -159,18 +172,6 @@ After running the notebook, the user will be able to visualize the created mater
 
 ![Review the Results](../../../images/tutorials/materials/defects/defect-creation-surface-island-titanium-nitride/original-result.png "Review the Results")
 
-### 6.1. Add the adatom at the sites of Fig. 6
-
-The notebook in Section 8 places the Ti adatom one bulk site spacing above the plane of each site: **a**, the fourfold hollow on the island between the edge N atom with the smaller x and the edge-centre Ti, the manuscript's FFH_edge; **c**, atop that edge N; **i**, atop the terrace N in front of it:
-
-```python
-adatom_sites = {
-    "a": [edge_nitrogen_x + site_spacing / 2, edge_y - site_spacing / 2, island_z + site_spacing],
-    "c": [edge_nitrogen_x, edge_y, island_z + site_spacing],
-    "i": [edge_nitrogen_x, edge_y + site_spacing, terrace_z + site_spacing],
-}
-```
-
 ## 7. Pass the Material to Materials Designer
 
 The user can pass the resulting material to the current Materials Designer environment and save it.
@@ -178,8 +179,6 @@ The user can pass the resulting material to the current Materials Designer envir
 <img data-gifffer="/images/tutorials/materials/defects/defect-creation-surface-island-titanium-nitride/final-material.gif" alt="Resulting Material: Island on the TiN Surface" />
 
 Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
-
-The combined notebook in Section 8 saves four materials: `TiN(001) 12x12x3 island 5x5`, and the same cell with the Ti adatom at each site, `TiN(001) 12x12x3 island 5x5 + Ti a (FFH island)`, `TiN(001) 12x12x3 island 5x5 + Ti c (atop-N edge)`, and `TiN(001) 12x12x3 island 5x5 + Ti i (atop-N terrace)`. The [Ti Adatom Descent on a TiN Island (MACE)](defect-surface-island-titanium-nitride-simulation.md) tutorial loads them by these names.
 
 
 ## 8. Interactive JupyterLite Notebook
