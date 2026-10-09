@@ -187,9 +187,11 @@ each other:
 Section 9.3 of the notebook draws the same figure for this calculation: one period from the Ge→Si interface, each
 bulk's own potential (dotted) shifted onto its block, and the two averages (dashed). The bulk potentials coincide with
 the superlattice's inside both blocks and depart from it only at the interfaces, and the Ge average lies 0.77 eV above
-the Si one, against 0.85 eV in the manuscript. The wells at the atomic planes are deeper in Si here, where the
-manuscript's are deeper in Ge: the curve plotted is the electrostatic potential of these pseudopotentials, not the
-l = 1 component of the manuscript's, and its shape depends on that choice while ΔE_v does not (p. 5625).
+the Si one, against 0.85 eV in the manuscript. Here the atomic planes sit at the minima of the potential and its
+oscillation is larger in Si; in the manuscript's figure they sit at the maxima (the arrows) and the oscillation is
+larger in Ge. The curve plotted here is the electrostatic potential of these pseudopotentials, not the l = 1
+component of the manuscript's total potential: its shape and the step between the two averages depend on that
+choice, ΔE_v does not (p. 5625).
 
 ![Potential across the Si/Ge (001) superlattice, this tutorial](../../../images/tutorials/materials/interfaces/interface_3d_3d_silicon_germanium/3-potential-this-notebook.webp "Electrostatic potential across the Si/Ge (001) superlattice, this tutorial")
 
