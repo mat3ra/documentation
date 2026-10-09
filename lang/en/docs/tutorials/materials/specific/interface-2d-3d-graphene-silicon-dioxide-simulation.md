@@ -143,11 +143,11 @@ In cell 1.3, set `ORGANIZATION_NAME` and `CLUSTER_NAME` to the account's organiz
 
 ### 5.3. Run the notebook
 
-Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), loads the interface and prints its provenance (composition, number of atoms, gamma, interlayer distance of 2.580 Å, valence electrons, occupied bands), configures the DFT model and the k-grid, creates the compute configuration, saves the material to the account, then submits the band structure job and waits for it to finish. For the example as built the provenance reads Si15O30C8, 53 atoms, gamma = 120.000°, 272 valence electrons and 136 occupied bands. Once finished (measured with `RELAX = False` on cluster-001, queue OR with 16 cores, called OR/16 below: about 1 h), the notebook retrieves the band structure, prints the bands at K around the Fermi level and the Dirac pair, then E_F, E_D − E_F and the gap at K, and prints the comparison with the manuscript.
+Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), loads the interface and prints its provenance (composition, number of atoms, gamma, interlayer distance of 2.580 Å, valence electrons, occupied bands), configures the DFT model and the k-grid, creates the compute configuration, saves the material to the account, then submits the band structure job and waits for it to finish. For the example as built the provenance reads Si15O30C8, 53 atoms, gamma = 120.000°, 272 valence electrons and 136 occupied bands. Once finished, the notebook retrieves the band structure, prints the bands at K around the Fermi level and the Dirac pair, then E_F, E_D − E_F and the gap at K, and prints the comparison with the manuscript.
 
 ### 5.4. Relax the interface (optional)
 
-Set `RELAX = True` in cell 1.3 and run the notebook. The relaxation (all atoms, fixed cell, force threshold 0.03 eV/Å, Sec. II) runs in the same job before the band structure, and the band structure is taken on the relaxed structure. On OR/16 it did 5 BFGS steps in the 4 h `TIME_LIMIT` with the force still falling (job 25yp4K2SMNJgJMmBy).
+Set `RELAX = True` in cell 1.3 and run the notebook. The relaxation (all atoms, fixed cell, force threshold 0.03 eV/Å, Sec. II) runs in the same job before the band structure, and the band structure is taken on the relaxed structure.
 
 ### 5.5. Re-run the notebook
 
@@ -162,7 +162,7 @@ Running the notebook again finds the finished job by material and workflow name 
 | E_D − E_F (eV) | +1.28 (midpoint of the two Dirac bands at K on Fig. 3(a), +1.21 and +1.35 eV) | +1.171 |
 | gap at K (eV) | 0.13 (Sec. III) | 0.062 |
 
-Kang's gap is for the relaxed metastable geometry (Sec. III); the values above are for `RELAX = False` on the shifted registry (job F6AmKDRpQ6nFqiokb, unrelaxed, about 1 h on OR/16). The relaxed regime did not converge within the 4 h limit (5 BFGS steps on OR/16). The notebook's final cell prints:
+Kang's gap is for the relaxed metastable geometry (Sec. III); the values above are for `RELAX = False` on the shifted registry. The relaxed regime did not converge within the 4 h limit. The notebook's final cell prints:
 
 ```
 Regime: unrelaxed SCF
@@ -172,9 +172,9 @@ E_D - E_F             1.171 eV              1.280 eV
 Gap at K              0.062 eV              0.130 eV
 ```
 
-The band structure of the structure after 5 BFGS steps of the `RELAX = True` relaxation (job domjmuR4659Rj8np5) is p-type, E_D − E_F +1.179 eV, gap at K 0.071 eV, beside the unrelaxed +1.171 eV and 0.062 eV.
+The band structure of the structure after 5 BFGS steps of the `RELAX = True` relaxation is p-type, E_D − E_F +1.179 eV, gap at K 0.071 eV, beside the unrelaxed +1.171 eV and 0.062 eV.
 
-![Band structure of graphene on SiO2 from this notebook](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/band-structure-this-notebook.webp "Band structure of the interface near the Fermi level, job F6AmKDRpQ6nFqiokb, shifted registry, unrelaxed; path Γ-M-K-Γ, energies relative to E_F")
+![Band structure of graphene on SiO2 from this notebook](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/band-structure-this-notebook.webp "Band structure of the interface near the Fermi level, shifted registry, unrelaxed; path Γ-M-K-Γ, energies relative to E_F")
 
 
 ## 7. Customization options
