@@ -66,6 +66,13 @@ ISLAND_MIN_COORDINATE = [0.3233, 0.24, 0]  # crystal coordinates
 ISLAND_MAX_COORDINATE = [0.7233, 0.64, 1]
 
 ADATOM_ELEMENT = "Ti"
+# Adatom sites as (Δx, Δy, Δz) from the island's edge N atom, in units of the Ti–N site spacing;
+# Δz = 0 is the island plane. Fig. 6's b and d–h are NEB images between these sites, not positions.
+ADATOM_SITES = {
+    "a": (0.5, -0.5, 1),  # fourfold hollow on the island beside the edge
+    "c": (0, 0, 1),       # atop the edge N
+    "i": (0, 1, 0),       # atop the terrace N in front of the edge
+}
 
 ISLAND_MATERIAL_NAME = "TiN(001) 12x12x3 island 5x5"
 ADATOM_MATERIAL_NAMES = {
@@ -97,7 +104,7 @@ The four planes are the three slab planes and the island.
 
 ### 4.2. Adatom sites
 
-Section 3 of the notebook places the Ti adatom one bulk site spacing above the plane of each site: **a**, the fourfold hollow between the edge N atom with the smaller x and the edge-centre Ti, the manuscript's FFH_edge; **c**, atop that edge N; **i**, atop the terrace N in front of it. The first lines of its cell derive the coordinates from the island built in Section 2:
+Section 3 of the notebook places the Ti adatom at each entry of `ADATOM_SITES`, measured from the edge N atom with the smaller x: **a**, the fourfold hollow between that N and the edge-centre Ti, the manuscript's FFH_edge; **c**, atop that edge N; **i**, atop the terrace N in front of it. The first lines of its cell turn the offsets into coordinates on the island built in Section 2:
 
 ```python
 site_spacing = material.lattice.a / 2
@@ -105,12 +112,10 @@ edge_y = island_y.max()
 edge_nitrogen_x = min(atoms.positions[index, 0] for index in island
                       if symbols[index] == "N" and np.isclose(atoms.positions[index, 1], edge_y))
 island_z = atoms.positions[island, 2].mean()
-terrace_z = atoms.positions[terrace, 2].mean()
 
 adatom_sites = {
-    "a": [edge_nitrogen_x + site_spacing / 2, edge_y - site_spacing / 2, island_z + site_spacing],
-    "c": [edge_nitrogen_x, edge_y, island_z + site_spacing],
-    "i": [edge_nitrogen_x, edge_y + site_spacing, terrace_z + site_spacing],
+    site: [edge_nitrogen_x + offset_x * site_spacing, edge_y + offset_y * site_spacing, island_z + offset_z * site_spacing]
+    for site, (offset_x, offset_y, offset_z) in ADATOM_SITES.items()
 }
 ```
 
@@ -143,7 +148,7 @@ The following JupyterLite notebook creates the island cell and the three adatom 
 
 ## 7. Parameter fine-tuning
 
-Another site, such as the fourfold hollow at the island corner of Fig. 1(b), is added as one more entry of `adatom_sites` in Section 3 of the notebook, with its name in `ADATOM_MATERIAL_NAMES`. The island size follows the box in `ISLAND_MIN_COORDINATE` and `ISLAND_MAX_COORDINATE`, and the terrace size follows `XY_SUPERCELL_MATRIX`.
+A start point is changed by editing its entry in `ADATOM_SITES` in cell 1.1, a triple (Δx, Δy, Δz) relative to the island's edge N atom in units of the site spacing. A new site, such as the fourfold hollow at the island corner of Fig. 1(b), is a new entry in `ADATOM_SITES` with the matching name in `ADATOM_MATERIAL_NAMES`. The island size follows the box in `ISLAND_MIN_COORDINATE` and `ISLAND_MAX_COORDINATE`, and the terrace size follows `XY_SUPERCELL_MATRIX`.
 
 
 ## 8. References
