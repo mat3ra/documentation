@@ -155,7 +155,7 @@ The PBE cleavage energies are 20-28 % below the B3PW ones, and the surface energ
 
 ### 7.1. Run the relaxed regime
 
-The default `RELAX = False` computes the cleavage energies from six Total Energy jobs. Setting `RELAX = True` in cell 1.3 adds one fixed-cell relaxation per slab, five jobs, and prints the relaxation and surface energies as well. The relaxed energy is the relaxation job's own; finished jobs are reused on a later run.
+The default `RELAX = False` computes the cleavage energies from six Total Energy jobs. Setting `RELAX = True` in cell 1.3 adds one fixed-cell relaxation per slab, five jobs, and prints the relaxation and surface energies as well. The relaxed energy is the relaxation job's own.
 
 ### 7.2. Adjust computational resources
 
