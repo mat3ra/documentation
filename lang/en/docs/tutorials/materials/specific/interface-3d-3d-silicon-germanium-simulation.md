@@ -158,7 +158,7 @@ Ge valence band top above Si's   paper above
 
 Sec. III.A of the manuscript gives ΔE_v = 0.74 eV for the (001) superlattice on silicon, Ge above Si, computed
 without spin–orbit coupling. Table I lists 0.84 eV for the same interface, after 0.10 eV is added for germanium's
-spin–orbit splitting (Sec. IV); the default run is compared with both, the second after adding the same 0.10 eV.
+spin–orbit splitting (Sec. IV); this run is compared with both, the second after adding the same 0.10 eV.
 The manuscript's two terms, ΔV̄ = 0.85 eV and the bulk term 11.08 − 11.19 = −0.11 eV (p. 5625), are measured from
 the l = 1 component of the total potential, so they are printed for reference only: here the lineup is 0.08 eV
 smaller and the bulk term 0.10 eV larger than the manuscript's, and the sum is within 0.03 eV.
@@ -171,7 +171,7 @@ pseudomorphic (p. 5630). The band gaps printed in section 8.1 are Kohn–Sham ga
 | | ΔE_v (eV) | ΔE_v + 0.10 eV (eV) | bulk term (eV) | ΔV̄ (eV) |
 |---|---|---|---|---|
 | Van de Walle & Martin | 0.74 | 0.84 | −0.11 (l = 1 reference) | 0.85 (l = 1 reference) |
-| This tutorial, default | 0.765 (+3.4 %) | 0.865 (+3.0 %) | −0.009 | 0.774 |
+| This tutorial | 0.765 (+3.4 %) | 0.865 (+3.0 %) | −0.009 | 0.774 |
 
 The manuscript's Fig. 2 shows its potential across one period of the superlattice. The bulk potentials (dashed)
 coincide with it away from the interfaces, and their averages (dashed horizontal lines) are shifted with respect to
