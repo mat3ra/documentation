@@ -34,6 +34,10 @@ out of plane to 5.82 Å; silicon stays cubic (Table I of the manuscript). The su
 (001) planes, one atom per plane, two identical interfaces and no vacuum: 8 atoms (Fig. 1). The spacing at each
 interface is the mean of the two bulk plane spacings, and the atoms stay at these ideal positions (Sec. II).
 
+The figure below shows Fig. 1 of the manuscript, the superlattice and its lattice parameters:
+
+![Si/Ge (001) superlattice](../../../images/tutorials/materials/interfaces/interface_3d_3d_silicon_germanium/0-figure-1-from-manuscript.webp "Si/Ge (001) superlattice, Fig. 1 of the manuscript")
+
 The offset needs, besides the superlattice, separate bulk cells of cubic Si and of Ge strained as in the
 superlattice (Sec. III.A), so the notebook saves all three. The
 [Si/Ge (001) Valence Band Offset](interface-3d-3d-silicon-germanium-simulation.md) tutorial loads them by name.
@@ -84,7 +88,9 @@ The three names are the ones the simulation notebook loads.
 
 Execute the notebook by selecting "Run" > "Run All Cells" from the JupyterLite menu.
 
-### 3.3. What the notebook does
+### 3.3. Follow the construction
+
+The notebook builds the superlattice in four steps:
 
 1. Each bulk is converted to its conventional cubic cell and strained to the lattice constants above. The strain
    comes first: the interface builder re-creates its slabs from the bulk, so a strain applied to a slab would be
@@ -112,6 +118,11 @@ Ge (001) bulk a=5.43 c=5.82: {'Ge': 8}, 8 atoms, cell 5.4300 x 5.4300 x 5.8200 �
 
 Si planes are a_Si⊥ / 4 = 1.3575 Å apart, Ge planes a_Ge⊥ / 4 = 1.455 Å, and both interfaces 1.406 Å.
 
+The superlattice built here, seen along [110] with [001] horizontal, two periods and three cells along b; Si is
+light, Ge dark:
+
+![Si/Ge (001) superlattice built by the notebook](../../../images/tutorials/materials/interfaces/interface_3d_3d_silicon_germanium/1-superlattice-this-notebook.webp "Si/Ge (001) superlattice 4+4, built by the notebook")
+
 
 ## 5. Save the structure
 
@@ -135,11 +146,10 @@ The following JupyterLite notebook creates the superlattice and the two bulk cel
 
 ## 7. Parameter fine-tuning
 
-The other strain states of Table I follow from the three lattice constants in cell 1.1, for example Si strained on
-a Ge substrate with `IN_PLANE_LATTICE_CONSTANT = 5.65`, `SUBSTRATE_OUT_OF_PLANE_LATTICE_CONSTANT = 5.26` and
-`FILM_OUT_OF_PLANE_LATTICE_CONSTANT = 5.65`; change the three names with them. `NUMBER_OF_LAYERS = 2` gives an 8 + 8
-superlattice. The manuscript's 6 + 6 size check cannot be built this way, since the slab thickness counts
-conventional layers of four (001) planes.
+The other (001) rows of Table I follow from the three lattice constants in cell 1.1, for example Si strained on a
+Ge substrate with `IN_PLANE_LATTICE_CONSTANT = 5.65`, `SUBSTRATE_OUT_OF_PLANE_LATTICE_CONSTANT = 5.26` and
+`FILM_OUT_OF_PLANE_LATTICE_CONSTANT = 5.65`; change the three names with them. The manuscript's 6 + 6 size check
+cannot be built this way, since the slab thickness counts conventional layers of four (001) planes.
 
 
 ## 8. References

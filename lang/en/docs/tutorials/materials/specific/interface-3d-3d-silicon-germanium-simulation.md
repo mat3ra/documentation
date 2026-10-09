@@ -62,7 +62,7 @@ The calculation consists of the following steps:
 3. **Load materials**: Import the superlattice and the two bulks, print their plane spacings
 4. **Configure the model and k-grids**: One DFT model, a k-grid per material from one k-point density
 5. **Configure compute resources**: Select the cluster, queue, and processor settings
-6. **Relax the superlattice** (only if `RELAX = True`): at fixed cell, reusing a relaxed structure if one is found
+6. **Relax the superlattice** (only if `RELAX = True`): at fixed cell
 7. **Configure the workflow**: The model, the k-grids, and the averaging window of the potential
 8. **Run the job**: One Valence Band Offset job, which runs a band structure and the electrostatic potential on
    each of the three materials
@@ -75,8 +75,8 @@ The calculation consists of the following steps:
 | | this tutorial | Van de Walle & Martin |
 |---|---|---|
 | Code | Quantum ESPRESSO | momentum-space pseudopotential code |
-| Functional | LDA (Perdew–Zunger) | LDA (Ceperley–Alder) |
-| Pseudopotentials | ultrasoft (GBRV), Ge 3d in valence | norm-conserving (Bachelet–Hamann–Schlüter) |
+| Functional | local density approximation (LDA): Ceperley–Alder, Perdew–Zunger parametrization | the same |
+| Pseudopotentials | ultrasoft, Garrity–Bennett–Rabe–Vanderbilt (GBRV) library, Ge 3d in valence | norm-conserving (Bachelet–Hamann–Schlüter) |
 | Cutoff | 40 / 200 Ry | 6 Ry |
 | k-points | 5 points per Å⁻¹: 9×9×3 superlattice, 6×6×6 bulks | four special points |
 | Cell | 4 + 4 planes, 8 atoms, a∥ = 5.43, a_Ge⊥ = 5.82 Å | the same |
@@ -111,7 +111,7 @@ RELAX = False
 CLUSTER_NAME = "001"
 QUEUE_NAME = QueueName.OR
 PPN = 16
-TIME_LIMIT = "04:00:00"  # the job ran 6-7 min on 16 cores, after 7 min in the queue
+TIME_LIMIT = "04:00:00"
 
 MODEL_SUBTYPE = "lda"
 FUNCTIONAL = "pz"
@@ -128,15 +128,7 @@ Execute all cells by selecting *Run* > *Run All* from the menu.
 The notebook first [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md),
 then runs the steps listed in section 3.
 
-### 5.4. Monitor progress
-
-The notebook polls the job.
-
-The job ends with status `error`. Its last step, "Calculate VBO", looks for minima of the averaged potential, and
-averaged over one plane spacing the bulk potentials have none. Every value the notebook reads is stored before that
-step, and the notebook reuses the job in this state.
-
-### 5.5. Analyze results
+### 5.4. Analyze results
 
 Section 9.1 of the notebook prints each bulk's valence band maximum, its average potential and its gap, and the
 average potential of the Si and the Ge block in the superlattice:
@@ -171,10 +163,10 @@ Sec. III.A of the manuscript gives ΔE_v = 0.74 eV for the (001) superlattice on
 without spin–orbit coupling. Table I lists 0.84 eV for the same interface, after 0.10 eV is added for germanium's
 spin–orbit splitting (Sec. IV); the default run is compared with both, the second after adding the same 0.10 eV.
 The manuscript's two terms, ΔV̄ = 0.85 eV and the bulk term 11.08 − 11.19 = −0.11 eV (p. 5625), are measured from
-the l = 1 component of the total potential, so they are printed for reference only: here the lineup is larger by the
-amount the bulk term is smaller, and the sum agrees.
+the l = 1 component of the total potential, so they are printed for reference only: here the lineup is 0.08 eV
+smaller and the bulk term 0.10 eV larger than the manuscript's, and the sum is within 0.03 eV.
 
-The manuscript compares with no experiment for this interface: none of the measured Si/Ge junctions was
+The manuscript compares with no experiment for this interface: the measured Si/Ge junctions were presumably not
 pseudomorphic (p. 5630). Both calculations are LDA, so the band gaps printed in section 9.1 are Kohn–Sham gaps,
 smaller than the measured ones.
 
@@ -183,7 +175,16 @@ smaller than the measured ones.
 | | ΔE_v (eV) | ΔE_v + 0.10 eV (eV) | bulk term (eV) | ΔV̄ (eV) |
 |---|---|---|---|---|
 | Van de Walle & Martin | 0.74 | 0.84 | −0.11 (l = 1 reference) | 0.85 (l = 1 reference) |
-| This tutorial, default | 0.763 (+3.1 %) | 0.863 (+2.8 %) | −0.009 | 0.773 |
+| This tutorial, default | 0.763 (+3.1 %) | 0.863 (+2.8 %) | −0.009 | 0.772 |
+
+The manuscript's Fig. 2 shows its potential across the superlattice, with the two bulk averages as dashed lines:
+
+![Potential across the Si/Ge (001) superlattice, manuscript](../../../images/tutorials/materials/interfaces/interface_3d_3d_silicon_germanium/2-figure-2-from-manuscript.webp "Averaged l = 1 potential across the (001) interface, Fig. 2 of the manuscript")
+
+Section 9.3 of the notebook plots the electrostatic potential across the same superlattice, with the averages over
+one plane spacing at the centre of each block:
+
+![Potential across the Si/Ge (001) superlattice, this tutorial](../../../images/tutorials/materials/interfaces/interface_3d_3d_silicon_germanium/3-potential-this-notebook.webp "Electrostatic potential across the Si/Ge (001) superlattice, this tutorial")
 
 ## 7. Customization options
 
@@ -193,16 +194,10 @@ smaller than the measured ones.
 the bulks keep their ideal positions, which symmetry fixes. The manuscript uses ideal positions and finds the
 minimum-energy interface spacing within 0.1 % of the ideal one (Sec. II).
 
-### 7.2. Other strain states
+### 7.2. Adjust computational resources
 
-Build the superlattice and the bulks for another row of Table I in the
-[structure notebook](interface-3d-3d-silicon-germanium.md), save them under new names, and set the three names
-here. For Si on a Ge substrate (a∥ = 5.65 Å) Table I gives ΔE_v = 0.31 eV, spin–orbit included.
-
-### 7.3. Adjust computational resources
-
-`CLUSTER_NAME = "001"` selects cluster-001; a name that is not available makes the notebook stop and list the ones
-that are.
+`CLUSTER_NAME` selects the cluster by its full or partial name; a name that is not available makes the notebook
+stop and list the ones that are.
 
 ## 8. Troubleshooting
 
@@ -212,15 +207,12 @@ If one of the three names is not found in the `uploads` folder or the account's 
 [Si/Ge (001) Strained Superlattice](interface-3d-3d-silicon-germanium.md) tutorial first, and check that its
 `uploads` folder holds the materials under those exact names.
 
-### 8.2. The job ends in `error`
-
-This is expected, see section 5.4: the notebook's results come from the steps before the one that fails.
-
-### 8.3. Offset far from the published value
+### 8.2. Offset far from the published value
 
 Check the plane spacings printed in section 3 of the notebook first: 1.3575 Å in Si, 1.455 Å in Ge and 1.406 Å at
-both interfaces. Then check the Ge valence band maximum printed in section 9.1, 9.0797 eV with the default settings:
-it is the top of band N_electrons / 2, 56 for the 8-atom Ge cell with the 3d shell in valence.
+both interfaces. Then check the gaps printed in section 9.1: about +0.47 eV for Si and −0.09 eV for Ge, whose L
+conduction band dips below the valence band top at Γ in the LDA. A different Ge gap means a different
+pseudopotential, cutoff or cell, and moves E_VBM of Ge and the offset with it.
 
 ## 9. Interactive JupyterLite notebook
 
