@@ -85,7 +85,7 @@ The manuscript uses DFT with the Generalized Gradient Approximation (GGA) in the
 
 The D3 term needs the `torch-dftd` package, which the JupyterLite bundle does not carry.
 
-The four relaxations, on 457 and 458 atoms, are meant to be run natively, with `mace-torch` and `torch-dftd` installed: the notebook took at most 34 minutes on an Apple M1 Pro CPU. The values in Section 6 are from such a run.
+The four relaxations, on 457 and 458 atoms, are meant to be run natively, with `mace-torch` and `torch-dftd` installed. The values in Section 6 are from such a run.
 
 
 ## 5. Step-by-step instructions
@@ -125,7 +125,7 @@ Execute all cells by selecting *Run* > *Run All Cells*. The notebook then:
 
 ### 5.4. Monitor progress
 
-Each relaxation prints one line per BFGS step: the step, the time, the energy, and the largest force. In the run of Section 6, each relaxation took 24 to 33 steps of about 4 seconds.
+Each relaxation prints one line per BFGS step: the step, the time, the energy, and the largest force. In the run of Section 6, each relaxation took 24 to 33 steps.
 
 ### 5.5. Read the results
 
