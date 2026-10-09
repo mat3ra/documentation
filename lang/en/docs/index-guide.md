@@ -50,7 +50,7 @@ Step-by-step recipes reproducing published work, one row per publication: the st
 | Aradi et al. (2007)[^15]          | H-passivated nanowire     | [Si](tutorials/materials/specific/passivation-edge-nanowire-silicon.md) | Band gap, density of states, formation energy (Coming Soon) |
 | Hansen et al. (1998)[^16]         | H-passivated surface      | [Si(100)](tutorials/materials/specific/passivation-surface-silicon.md) | Diffusion, reaction and desorption barriers (Coming Soon) |
 | Larsen et al. (2011)[^17]         | Nanoclusters              | [Au](tutorials/materials/specific/nanocluster-gold.md) | Total energy per atom, density of states (Coming Soon) |
-| Eglitis et al. (2008)[^18]        | Slab                      | [SrTiO3](tutorials/materials/specific/slab-strontium-titanate.md) | Surface energy (Coming Soon) |
+| Eglitis et al. (2008)[^18]        | Slab                      | [SrTiO3](tutorials/materials/specific/slab-strontium-titanate.md) | [Surface energy](tutorials/materials/specific/slab-strontium-titanate-simulation.md) |
 | Muller et al. (1999)[^19]         | High-k metal gate stack   | [Si/SiO2/HfO2/TiN](tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md) | Band structure, valence band offset (Coming Soon) |
 | Thompson-Flagg et al. (2009)[^20] | Ripple perturbation       | [Graphene](tutorials/materials/specific/perturbation-ripples-graphene.md) | Coming Soon |
 | Frolov et al. (2013)[^21]         | Grain boundary (3D)       | [Cu (FCC)](tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md) | Defect energy per atom (Coming Soon) |
