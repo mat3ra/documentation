@@ -107,11 +107,7 @@ CLEAVAGE_GROUPS = [("TiO", "Sr"), ("O",), ("SrO", "TiO2")]
 
 Execute all cells by selecting *Run* > *Run All Cells*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), then runs the steps listed in section 3.
 
-### 5.4. Monitor progress
-
-The notebook polls the jobs every 60 seconds (`POLL_INTERVAL`) and marks each reused job `♻️`. TODO(run): measured job times on cluster-001, OR queue, 16 cores.
-
-### 5.5. Read the results
+### 5.4. Read the results
 
 The last cell prints, per termination, our cleavage energy beside the manuscript's and, with `RELAX = True`, the relaxation and surface energies, the TiO + Sr sum and the order of the (011) surface energies:
 
