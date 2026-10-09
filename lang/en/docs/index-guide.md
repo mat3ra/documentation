@@ -29,7 +29,7 @@ Designing and constructing [material structures]({{ reference_url }}/materials/o
 
 ### 1.2. Reproducing Publications
 
-Step-by-step recipes reproducing published work, one row per publication: the structure each recipe builds, and the properties calculated from that structure. A Properties cell reading Coming Soon means no simulation tutorial exists yet. The [full overview](tutorials/materials/specific/overview.md) page contains figures and additional context for each entry.
+Step-by-step recipes reproducing published work, one row per structure: the structure each recipe builds, and the properties calculated from that structure. A Properties cell reading Coming Soon means no simulation tutorial exists yet. The [full overview](tutorials/materials/specific/overview.md) page contains figures and additional context for each entry.
 
 | Reference                         | Structure Type            | Material | Properties |
 |:----------------------------------|:--------------------------|:---------|:-----------|

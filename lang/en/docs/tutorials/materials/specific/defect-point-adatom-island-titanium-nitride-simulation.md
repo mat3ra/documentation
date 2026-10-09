@@ -71,11 +71,11 @@ FMAX = 0.02  # eV/Å
 MAX_STEPS = 1000
 ```
 
-Every relaxation uses the [Broyden–Fletcher–Goldfarb–Shanno (BFGS) optimizer](https://wiki.fysik.dtu.dk/ase/ase/optimize.html){:target='_blank'} of the Atomic Simulation Environment (ASE) with every atom free, and stops when the largest force falls below `FMAX`. The isolated Ti atom is one Ti site at the centre of an otherwise empty cell the size of the island cell, built with made's `AtomAtCoordinateBuilder`, and calculated with the same calculator.
+Every relaxation uses the [Broyden–Fletcher–Goldfarb–Shanno (BFGS) optimizer](https://wiki.fysik.dtu.dk/ase/ase/optimize.html){:target='_blank'} of the Atomic Simulation Environment (ASE) with every atom free, and stops when the largest force falls below `FMAX`. The isolated Ti atom is one Ti site at the centre of an otherwise empty cell the size of the island cell, calculated with the same calculator.
 
 ### 4.2. Method compared with the manuscript
 
-The manuscript uses DFT with the Generalized Gradient Approximation (GGA) in the Vienna Ab initio Simulation Package (VASP), on the same cell; the site spacing here, from Standata's `mp-492`, is 2.121 Å against the manuscript's nearest-neighbour distance of 2.127 Å (Sec. II.A), −0.3 %. This tutorial uses the [MACE-MP-0](https://github.com/ACEsuit/mace){:target='_blank'} large model with the D3 dispersion correction, in double precision (`float64`) on the CPU. Every value in Section 6 is MACE beside DFT (GGA). The manuscript cites its isolated Ti atom energy (−2.275 eV); this tutorial calculates its own. Sec. II.B of the manuscript pre-optimizes the atop-N-edge configuration (c) with the adatom's relaxation constrained along [001]; this notebook relaxes c with every atom free.
+The manuscript uses DFT with the Generalized Gradient Approximation (GGA) in the Vienna Ab initio Simulation Package (VASP), on the same cell; the site spacing here, from Standata's `mp-492`, is 2.121 Å against the manuscript's nearest-neighbour distance of 2.127 Å (Sec. II.A). This tutorial uses the [MACE-MP-0](https://github.com/ACEsuit/mace){:target='_blank'} large model with the D3 dispersion correction, in double precision (`float64`) on the CPU. Every value in Section 6 is MACE beside DFT (GGA). The manuscript cites its isolated Ti atom energy (−2.275 eV); this tutorial calculates its own. Sec. II.B of the manuscript pre-optimizes the atop-N-edge configuration (c) with the adatom's relaxation constrained along [001]; this notebook relaxes c with every atom free.
 
 ### 4.3. Dispersion and run time
 
@@ -142,8 +142,6 @@ A native run with the default parameters and D3 gives the values below, each bes
 | Ti–N spacing along the island medians | −3.5 % of bulk | −5.2 % (Sec. III.A, p. 10) |
 | Surface ripple, N above Ti | 0.067 Å | 0.19 Å (Sec. III.A, p. 8) |
 
-The adatom moved 0.48 Å at a, 0.23 Å at c, and 0.20 Å at i from the site where it was placed.
-
 The figure below shows the descent path from the manuscript (Figure 6), the energies of states a to i above and the trajectory of the adatom below:
 
 ![Ti adatom descent from the 5×5 island edge](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/1-figure-6-from-manuscript.webp "Ti adatom descent from a 5×5 TiN/TiN(001) island from Sangiovanni et al. 2018, Figure 6")
@@ -172,7 +170,7 @@ Section 2 of the notebook raises a `KeyError` naming the material when one of th
 
 ### 8.2. MACE is not installed
 
-In JupyterLite, cell 1.1 installs MACE and applies the patches the browser runtime needs; it has to run before any other cell. Natively it installs nothing, applies the same patches, and prints ``To install packages, run `pip install ".[all]"` in the terminal``; that extra does not include MACE. The native install is `pip install ".[all]" mace-torch torch-dftd`, followed by a kernel restart.
+In JupyterLite, cell 1.1 installs MACE; it has to run before any other cell. Natively it installs nothing and prints ``To install packages, run `pip install ".[all]"` in the terminal``; that extra does not include MACE. The native install is `pip install ".[all]" mace-torch torch-dftd`, followed by a kernel restart.
 
 ### 8.3. The run is without dispersion
 

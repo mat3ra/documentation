@@ -97,7 +97,7 @@ The four planes are the three slab planes and the island.
 
 ### 4.2. Adatom sites
 
-Section 3 of the notebook places the Ti adatom one bulk site spacing above the plane of each site: **a**, the fourfold hollow between the edge N atom with the smaller x and the edge-centre Ti, the manuscript's FFH_edge; **c**, atop that edge N; **i**, atop the terrace N in front of it. The first lines of its cell derive the coordinates from the island built in section 2:
+Section 3 of the notebook places the Ti adatom one bulk site spacing above the plane of each site: **a**, the fourfold hollow between the edge N atom with the smaller x and the edge-centre Ti, the manuscript's FFH_edge; **c**, atop that edge N; **i**, atop the terrace N in front of it. The first lines of its cell derive the coordinates from the island built in Section 2:
 
 ```python
 site_spacing = material.lattice.a / 2
@@ -125,7 +125,7 @@ TiN(001) 12x12x3 island 5x5 + Ti i (atop-N terrace): 458 atoms, adatom's three s
 
 ## 5. Save the structure
 
-Section 5 of the notebook passes four materials to Materials Designer, where they can be saved on the platform, and writes them to the `uploads` folder: `TiN(001) 12x12x3 island 5x5`, `TiN(001) 12x12x3 island 5x5 + Ti a (FFH island)`, `TiN(001) 12x12x3 island 5x5 + Ti c (atop-N edge)`, and `TiN(001) 12x12x3 island 5x5 + Ti i (atop-N terrace)`. The [simulation tutorial](defect-point-adatom-island-titanium-nitride-simulation.md) loads them by these names.
+Section 5 of the notebook passes the four materials named in cell 1.1 to Materials Designer, where they can be saved on the platform, and writes them to the `uploads` folder, from which the [simulation tutorial](defect-point-adatom-island-titanium-nitride-simulation.md) loads them.
 
 
 ## 6. Interactive JupyterLite notebook
@@ -143,7 +143,7 @@ The following JupyterLite notebook creates the island cell and the three adatom 
 
 ## 7. Parameter fine-tuning
 
-Another site, such as the fourfold hollow at the island corner of Fig. 1(b), is added as one more entry of `adatom_sites` in section 3 of the notebook, with its name in `ADATOM_MATERIAL_NAMES`. The island size follows the box in `ISLAND_MIN_COORDINATE` and `ISLAND_MAX_COORDINATE`, and the terrace size follows `XY_SUPERCELL_MATRIX`.
+Another site, such as the fourfold hollow at the island corner of Fig. 1(b), is added as one more entry of `adatom_sites` in Section 3 of the notebook, with its name in `ADATOM_MATERIAL_NAMES`. The island size follows the box in `ISLAND_MIN_COORDINATE` and `ISLAND_MAX_COORDINATE`, and the terrace size follows `XY_SUPERCELL_MATRIX`.
 
 
 ## 8. References
