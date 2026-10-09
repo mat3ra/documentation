@@ -74,7 +74,6 @@ PSEUDOPOTENTIAL_TYPE = "us"
 ECUTWFC = 40   # Ry, GBRV's recommended wavefunction cutoff
 ECUTRHO = 200  # Ry, GBRV's recommended charge-density cutoff
 KPOINT_DENSITY = 6.5  # Å⁻¹
-RELAXATION_SETTINGS = {"nstep": 100}
 ```
 
 
@@ -112,7 +111,14 @@ Execute all cells by selecting *Run* > *Run All Cells*. The notebook [authentica
 The last cell prints, per termination, our cleavage energy beside the manuscript's and, with `RELAX = True`, the relaxation and surface energies, the TiO + Sr sum and the order of the (011) surface energies:
 
 ```
-TODO(run): the comparison block of the RELAX = True run
+Ours: pbe-us 40-200Ry k6.5, relaxed; paper: B3PW. Energies in eV.
+TiO   cleavage 3.30 (paper 4.61, -28.4 %)  relaxation -1.27 (paper -1.55, +17.9 %)  surface 2.03 (paper 3.06, -33.7 %)
+Sr    cleavage 3.30 (paper 4.61, -28.4 %)  relaxation -1.05 (paper -1.95, +46.2 %)  surface 2.25 (paper 2.66, -15.3 %)
+O     cleavage 2.71 (paper 3.36, -19.5 %)  relaxation -1.42 (paper -1.32, -7.9 %)  surface 1.28 (paper 2.04, -37.2 %)
+SrO   cleavage 1.10 (paper 1.39, -20.6 %)  relaxation -0.17 (paper -0.24, +27.4 %)  surface 0.93 (paper 1.15, -19.2 %)
+TiO2  cleavage 1.10 (paper 1.39, -20.6 %)  relaxation -0.16 (paper -0.16, +0.3 %)  surface 0.94 (paper 1.23, -23.3 %)
+TiO + Sr = 4.28 (paper 5.72, -25.1 %)
+(011), lowest first: O < TiO < Sr (paper O < Sr < TiO)
 ```
 
 
@@ -132,7 +138,17 @@ The O-terminated (011) surface is the lowest in every method the manuscript comp
 
 ### 6.1. Comparison with published results
 
-TODO(run): this tutorial's values beside Table VII.
+Surface energies per 1×1 cell, in eV, this tutorial (PBE) beside Table VII (B3PW):
+
+| Termination | Cleavage | Relaxation | Surface | Surface, manuscript |
+|---|---|---|---|---|
+| (011) TiO | 3.30 | −1.27 | 2.03 | 3.06 |
+| (011) Sr | 3.30 | −1.05 | 2.25 | 2.66 |
+| (011) O | 2.71 | −1.42 | 1.28 | 2.04 |
+| (001) SrO | 1.10 | −0.17 | 0.93 | 1.15 |
+| (001) TiO<sub>2</sub> | 1.10 | −0.16 | 0.94 | 1.23 |
+
+The PBE cleavage energies are 20-28 % below the B3PW ones, and the surface energies 15-37 % below; the sum TiO + Sr is 4.28 eV against 5.72 eV. The O-terminated (011) surface is the lowest, as in the manuscript. TiO and Sr come out in the opposite order, which the manuscript reports as method-dependent.
 
 
 ## 7. Customization options
