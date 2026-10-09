@@ -130,9 +130,7 @@ then runs the steps listed in section 3.
 
 ### 5.4. Monitor progress
 
-The notebook polls the job every 60 seconds (`POLL_INTERVAL`). A job that already ran under the same workflow
-name is reused and marked `♻️`. Measured on cluster-001, 16 cores in the OR queue: about 7 min in the queue and
-6–7 min running; with the job finished, a re-run takes about a minute.
+The notebook polls the job.
 
 The job ends with status `error`. Its last step, "Calculate VBO", looks for minima of the averaged potential, and
 averaged over one plane spacing the bulk potentials have none. Every value the notebook reads is stored before that
