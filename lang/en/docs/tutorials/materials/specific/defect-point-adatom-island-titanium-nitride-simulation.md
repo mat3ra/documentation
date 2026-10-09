@@ -7,7 +7,7 @@ tags:
   - TiN
   - machine-learned force field
   - MACE
-  - D-2D-ISL
+  - D-2D-ADA
 
 hide:
   - tags
@@ -15,7 +15,7 @@ hide:
 render_macros: true
 ---
 
-# Ti Adatom Descent on a TiN Island (MACE)
+# Ti Adatom Descent on a 5×5 TiN Island (MACE)
 
 ## 1. Introduction
 
@@ -25,14 +25,14 @@ This tutorial relaxes a Ti adatom at three sites on and next to a 5×5-atom isla
     **D. G. Sangiovanni, A. B. Mei, D. Edström, L. Hultman, V. Chirita, I. Petrov, and J. E. Greene**,
     "Effects of surface vibrations on interlayer mass transport: Ab initio molecular dynamics investigation of Ti adatom descent pathways and rates from TiN/TiN(001) islands", Physical Review B, 2018. [DOI: 10.1103/PhysRevB.97.035406](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.97.035406){:target='_blank'}. [@Sangiovanni2018]
 
-This tutorial builds upon the [Island Surface Defect Formation in TiN](defect-surface-island-titanium-nitride.md) tutorial, where its Section 8 notebook builds the manuscript's 458-atom cell with the adatom at each site. The sites are labelled as in Fig. 6 of the manuscript: **a**, the fourfold hollow (FFH) on the island next to its edge; **c**, atop the N edge atom; **i**, atop the N terrace atom in front of the edge, the site that extends the island.
+This tutorial builds upon the [Ti Adatom on a 5×5 TiN Island](defect-point-adatom-island-titanium-nitride.md) tutorial, where the manuscript's 458-atom cell is created with the adatom at each site. The sites are labelled as in Fig. 6 of the manuscript: **a**, the fourfold hollow (FFH) on the island next to its edge; **c**, atop the N edge atom; **i**, atop the N terrace atom in front of the edge, the site that extends the island.
 
 The manuscript calculates these energies with Density Functional Theory (DFT). This tutorial uses the MACE-MP-0 machine-learned force field; Section 4 lists the settings.
 
 
 ## 2. Prerequisites
 
-The notebook loads four materials from the `uploads` folder by exact name and raises a `KeyError` when one is missing: `TiN(001) 12x12x3 island 5x5`, the island cell without the adatom, and the three cells with the adatom at a, c and i. All four are created and saved by `defect_surface_island_titanium_nitride.ipynb`, the notebook embedded in Section 8 of the [Island Surface Defect Formation in TiN](defect-surface-island-titanium-nitride.md) tutorial, which should be run first. No platform account is needed: every calculation runs in the notebook's own kernel.
+The notebook loads four materials from the `uploads` folder by exact name and raises a `KeyError` when one is missing: `TiN(001) 12x12x3 island 5x5`, the island cell without the adatom, and the three cells with the adatom at a, c and i. All four are created and saved by `defect_point_adatom_island_titanium_nitride.ipynb`, the notebook of the [Ti Adatom on a 5×5 TiN Island](defect-point-adatom-island-titanium-nitride.md) tutorial, which should be run first. No platform account is needed: every calculation runs in the notebook's own kernel.
 
 
 ## 3. Workflow overview
@@ -69,11 +69,9 @@ MACE_DEVICE = "cpu"
 
 FMAX = 0.02  # eV/Å
 MAX_STEPS = 1000
-
-ISOLATED_ATOM_BOX = 15.0  # Å, edge of the cubic box around the isolated Ti atom
 ```
 
-Every relaxation uses the [Broyden–Fletcher–Goldfarb–Shanno (BFGS) optimizer](https://wiki.fysik.dtu.dk/ase/ase/optimize.html){:target='_blank'} of the Atomic Simulation Environment (ASE) with every atom free, and stops when the largest force falls below `FMAX`. The isolated Ti atom is calculated in a cubic box of `ISOLATED_ATOM_BOX` with the same calculator.
+Every relaxation uses the [Broyden–Fletcher–Goldfarb–Shanno (BFGS) optimizer](https://wiki.fysik.dtu.dk/ase/ase/optimize.html){:target='_blank'} of the Atomic Simulation Environment (ASE) with every atom free, and stops when the largest force falls below `FMAX`. The isolated Ti atom is one Ti site at the centre of an otherwise empty cell the size of the island cell, built with made's `AtomAtCoordinateBuilder`, and calculated with the same calculator.
 
 ### 4.2. Method compared with the manuscript
 
@@ -93,7 +91,7 @@ The four relaxations, on 457 and 458 atoms, are meant to be run natively, with `
 Navigate to the API examples repository and open the simulation notebook:
 
 ```
-other/materials_designer/specific_examples/defect_surface_island_titanium_nitride_SIMULATION.ipynb
+other/materials_designer/specific_examples/defect_point_adatom_island_titanium_nitride_SIMULATION.ipynb
 ```
 
 ### 5.2. Set the material names
@@ -101,7 +99,7 @@ other/materials_designer/specific_examples/defect_surface_island_titanium_nitrid
 Cell 1.2 names the materials the notebook loads:
 
 ```python
-# Names saved by defect_surface_island_titanium_nitride.ipynb.
+# Names saved by defect_point_adatom_island_titanium_nitride.ipynb.
 ISLAND_MATERIAL_NAME = "TiN(001) 12x12x3 island 5x5"
 ADATOM_MATERIAL_NAMES = {
     "a": "TiN(001) 12x12x3 island 5x5 + Ti a (FFH island)",
@@ -127,24 +125,32 @@ Each relaxation prints one line per BFGS step: the step, the time, the energy, a
 
 ### 5.5. Read the results
 
-Section 7.1 of the notebook prints the energies of c and i relative to a and the adsorption energy at a, each beside the manuscript's value with the deviation in percent, then the island contraction and the ripple. Section 7.2 plots the manuscript's states a to i of Fig. 6 (upper panel) as a line, with this notebook's a, c and i as markers on the same axes.
+Section 7.1 of the notebook prints this notebook's values beside the manuscript's: the energies of c and i relative to a, the adsorption energy at a, the isolated Ti atom energy, the island contraction, and the ripple. Section 7.2 plots the manuscript's states a to i of Fig. 6 (upper panel) as a line, with this notebook's a, c and i as markers on the same axes.
 
 
 ## 6. Expected results
 
-A native run with the default parameters and D3 gives the values below, each beside the manuscript's value and its source. The deviation is the one the notebook prints.
+A native run with the default parameters and D3 gives the values below, each beside the manuscript's value and its source:
 
-| Quantity | Manuscript | This tutorial | Deviation |
-| --- | --- | --- | --- |
-| E(c) − E(a) | −0.15 ± 0.02 eV (Fig. 6, read off the axis) | +0.321 eV | −313.7 % |
-| E(i) − E(a) | −2.65 ± 0.05 eV (Fig. 6, read off the axis) | −2.252 eV | −15.0 % |
-| E_ads(a), each with its own E_Ti | −2.81 eV (Sec. III.A ¶8), E_Ti = −2.275 eV (Sec. II.B) | −3.018 eV, E_Ti = −3.889 eV | +7.4 % |
-| E_ads(a), both with E_Ti = −2.275 eV | −2.81 eV | −4.633 eV | +64.9 % |
-| Ti–Ti spacing along the island diagonals | −6.8 % of bulk (Sec. III.A, p. 10) | −4.9 % | — |
-| Ti–N spacing along the island medians | −5.2 % of bulk (Sec. III.A, p. 10) | −3.5 % | — |
-| Surface ripple, N above Ti | 0.19 Å (Sec. III.A, p. 8) | 0.07 Å | — |
+| Quantity | This notebook | Manuscript |
+| --- | --- | --- |
+| E(c) − E(a) | 0.321 eV | −0.15 ± 0.02 eV (Fig. 6, read off the axis) |
+| E(i) − E(a) | −2.252 eV | −2.65 ± 0.05 eV (Fig. 6, read off the axis) |
+| E_ads(a) | −3.019 eV | −2.81 eV (Sec. III.A ¶8) |
+| E_Ti, isolated atom | −3.889 eV | −2.275 eV (Sec. II.B) |
+| Ti–Ti spacing along the island diagonals | −4.9 % of bulk | −6.8 % (Sec. III.A, p. 10) |
+| Ti–N spacing along the island medians | −3.5 % of bulk | −5.2 % (Sec. III.A, p. 10) |
+| Surface ripple, N above Ti | 0.067 Å | 0.19 Å (Sec. III.A, p. 8) |
 
 The adatom moved 0.48 Å at a, 0.23 Å at c, and 0.20 Å at i from the site where it was placed.
+
+The figure below shows the descent path from the manuscript (Figure 6), the energies of states a to i above and the trajectory of the adatom below:
+
+![Ti adatom descent from the 5×5 island edge](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/1-figure-6-from-manuscript.webp "Ti adatom descent from a 5×5 TiN/TiN(001) island from Sangiovanni et al. 2018, Figure 6")
+
+Section 7.2 of the notebook draws this notebook's a, c and i on the manuscript's states a to i:
+
+![Fig. 6 with this notebook's energies](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/2-result-fig6-this-notebook.webp "Energies of a, c and i from this notebook beside Figure 6 of Sangiovanni et al. 2018")
 
 
 ## 7. Customization options
@@ -162,7 +168,7 @@ The adatom moved 0.48 Å at a, 0.23 Å at c, and 0.20 Å at i from the site wher
 
 ### 8.1. Material not found
 
-Section 2 of the notebook raises a `KeyError` naming the material when one of the four names in cell 1.2 is missing from the `uploads` folder. Earlier versions of the structure notebook saved a single, larger island cell; an `uploads` folder left from one of those does not satisfy this notebook. Re-run `defect_surface_island_titanium_nitride.ipynb`, the notebook embedded in Section 8 of the [structure tutorial](defect-surface-island-titanium-nitride.md), in the same environment; it saves the four materials under the names in cell 1.2.
+Section 2 of the notebook raises a `KeyError` naming the material when one of the four names in cell 1.2 is missing from the `uploads` folder. Re-run `defect_point_adatom_island_titanium_nitride.ipynb`, the notebook of the [structure tutorial](defect-point-adatom-island-titanium-nitride.md), in the same environment; it saves the four materials under the names in cell 1.2.
 
 ### 8.2. MACE is not installed
 
@@ -183,7 +189,7 @@ The following JupyterLite notebook relaxes the Ti adatom at a, c and i and compa
 
 {% with origin_url=config.extra.jupyterlite.origin_url_lab %}
 {% with notebooks_path_root=config.extra.jupyterlite.notebooks_path_root %}
-{% with notebook_name='specific_examples/defect_surface_island_titanium_nitride_SIMULATION.ipynb' %}
+{% with notebook_name='specific_examples/defect_point_adatom_island_titanium_nitride_SIMULATION.ipynb' %}
 {% include 'jupyterlite_embed.html' %}
 {% endwith %}
 {% endwith %}
