@@ -207,7 +207,7 @@ nav:
             - Twisted Bilayer MoS2 (Band Structure):                            tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide-simulation.md
             - Adatom Surface Defects on Graphene:                               tutorials/materials/specific/defect-surface-adatom-graphene.md
             - Ti Adatom on a 5×5 TiN Island:                                    tutorials/materials/specific/defect-point-adatom-island-titanium-nitride.md
-            - Ti Adatom on a 5×5 TiN Island (Ti Adatom Descent):                tutorials/materials/specific/defect-point-adatom-island-titanium-nitride-simulation.md
+            - Ti Adatom on a 5×5 TiN Island (Descent Energetics):               tutorials/materials/specific/defect-point-adatom-island-titanium-nitride-simulation.md
             - H-Passivated Silicon Nanowire:                                    tutorials/materials/specific/passivation-edge-nanowire-silicon.md
             - H-Passivated Silicon (100) Surface:                               tutorials/materials/specific/passivation-surface-silicon.md
             - Gold Nanoclusters:                                                tutorials/materials/specific/nanocluster-gold.md

@@ -75,7 +75,7 @@ ADATOM_MATERIAL_NAMES = {
 }
 ```
 
-`MATERIAL_NAME` is the full Standata name: the string `"TiN"` also matches tin. The island box spans 0.4 crystal units along a and b, which encloses five sites of the 12×12 surface in each direction. `ADATOM_MATERIAL_NAMES` are the names the simulation notebook loads.
+The island box spans 0.4 crystal units along a and b, which encloses five sites of the 12×12 surface in each direction. `ADATOM_MATERIAL_NAMES` are the names the simulation notebook loads.
 
 ### 3.2. Run the notebook
 
