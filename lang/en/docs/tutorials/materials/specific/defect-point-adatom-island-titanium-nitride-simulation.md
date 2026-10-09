@@ -27,6 +27,10 @@ This tutorial relaxes a Ti adatom at three sites on and next to a 5×5-atom isla
 
 This tutorial builds upon the [Ti Adatom on a 5×5 TiN Island](defect-point-adatom-island-titanium-nitride.md) tutorial, where the manuscript's 458-atom cell is created with the adatom at each site. The sites are labelled as in Fig. 6 of the manuscript: **a**, the fourfold hollow (FFH) on the island next to its edge; **c**, atop the N edge atom; **i**, atop the N terrace atom in front of the edge, the site that extends the island.
 
+The figure below shows the descent path from the manuscript (Figure 6), the energies of states a to i above and the trajectory of the adatom below:
+
+![Ti adatom descent from the 5×5 island edge](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/1-figure-6-from-manuscript.webp "Ti adatom descent from a 5×5 TiN/TiN(001) island from Sangiovanni et al. 2018, Figure 6")
+
 The manuscript calculates these energies with Density Functional Theory (DFT). This tutorial uses the MACE-MP-0 machine-learned force field; Section 4 lists the settings.
 
 
@@ -141,10 +145,6 @@ A native run with the default parameters and D3 gives the values below, each bes
 | Ti–Ti spacing along the island diagonals | −4.9 % of bulk | −6.8 % (Sec. III.A, p. 10) |
 | Ti–N spacing along the island medians | −3.5 % of bulk | −5.2 % (Sec. III.A, p. 10) |
 | Surface ripple, N above Ti | 0.067 Å | 0.19 Å (Sec. III.A, p. 8) |
-
-The figure below shows the descent path from the manuscript (Figure 6), the energies of states a to i above and the trajectory of the adatom below:
-
-![Ti adatom descent from the 5×5 island edge](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/1-figure-6-from-manuscript.webp "Ti adatom descent from a 5×5 TiN/TiN(001) island from Sangiovanni et al. 2018, Figure 6")
 
 Section 7.2 of the notebook draws this notebook's a, c and i on the manuscript's states a to i:
 
