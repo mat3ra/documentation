@@ -41,7 +41,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 2.1.1.1. Graphene/h-BN Interface <span class="btn badge b-info border-50">C-2D-INT-Z</span>
 
 **Structure**: [Create Graphene/h-BN Interface](interface-2d-2d-graphene-boron-nitride.md)  
-**Properties**: Calculate band structure and total energies (Coming Soon)  
+**Properties**: [Calculate Stacking Energy and Band Gap of Graphene on h-BN](interface-2d-2d-graphene-boron-nitride-simulation.md)  
 **DOI**: [10.1038/ncomms7308](https://doi.org/10.1038/ncomms7308){:target='_blank'} [@Jung2015]
 
 ![Graphene on Hexagonal Boron Nitride](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/0-figure-from-manuscript.webp "Graphene on Hexagonal Boron Nitride, FIG. 7"){ style="max-height:500px;width:auto;" }

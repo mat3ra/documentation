@@ -151,7 +151,7 @@ The notebook will:
 
 ### 5.4. Monitor progress
 
-Each set of jobs is polled every 60 seconds and the notebook waits for it to finish before moving on. The Total Energy jobs and the band structure job take minutes; the optional relaxation takes about an hour.
+Each set of jobs is polled and the notebook waits for it to finish before moving on.
 
 ### 5.5. Read the results
 
