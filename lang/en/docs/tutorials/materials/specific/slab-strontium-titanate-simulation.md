@@ -165,7 +165,7 @@ The default, `CLUSTER_NAME = None`, uses the account's first listed cluster; set
 
 ### 7.3. Use thicker slabs
 
-The manuscript checks that nine-plane slabs change the energies by less than 0.01 eV. Setting `NUMBER_OF_PLANES = 9` in the structure notebook saves the slabs as `... 9 planes`; here, the names in cell 1.2 then change to those. The slabs of a group in `CLEAVAGE_GROUPS` have to add up to whole SrTiO<sub>3</sub> units, which holds when they have the same thickness: section 8.2 of the notebook raises `ValueError: ... is not stoichiometric` otherwise.
+The manuscript checks that nine-plane slabs change the energies by less than 0.01 eV. Setting `NUMBER_OF_PLANES = 9` in the structure notebook saves the slabs as `... 9 planes`; here, the names in cell 1.2 then change to those.
 
 
 ## 8. Troubleshooting
