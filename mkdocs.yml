@@ -154,11 +154,13 @@ nav:
         - Reproducing Specific Manuscripts:
             - Overview:                                                     tutorials/materials/specific/overview.md
             - Substitutional Point Defects in Graphene:                     tutorials/materials/specific/defect-point-substitution-graphene.md
-            - Substitutional Point Defects in Graphene (Band Structure):    tutorials/materials/specific/defect-point-substitution-graphene-simulation.md
+            - Substitutional Point Defects in Graphene (Formation Energy and Band Structure): tutorials/materials/specific/defect-point-substitution-graphene-simulation.md
             - Vacancy-Substitution Pair Defects in GaN:                     tutorials/materials/specific/defect-point-pair-gallium-nitride.md
+            - Vacancy-Substitution Pair Defects in GaN (Formation Energy):  tutorials/materials/specific/defect-point-pair-gallium-nitride-simulation.md
             - Vacancy Point Defect in h-BN:                                 tutorials/materials/specific/defect-point-vacancy-boron-nitride.md
             - Vacancy Point Defect in h-BN (Formation Energy):              tutorials/materials/specific/defect-point-vacancy-boron-nitride-simulation.md
             - Interstitial Point Defect in SnO:                             tutorials/materials/specific/defect-point-interstitial-tin-oxide.md
+            - Interstitial Point Defect in SnO (Formation Energy and DOS):  tutorials/materials/specific/defect-point-interstitial-tin-oxide-simulation.md
             - Island Surface Defect Formation in TiN:                       tutorials/materials/specific/defect-surface-island-titanium-nitride.md
             - Step Surface Defect on Pt(111):                               tutorials/materials/specific/defect-surface-step-platinum.md
             - Twisted Bilayer h-BN nanoribbons:                             tutorials/materials/specific/interface-bilayer-twisted-nanoribbons-boron-nitride.md

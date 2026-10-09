@@ -45,7 +45,7 @@ First, we navigate to [Materials Designer]({{ interface_url }}/materials-designe
 
 ![Standata GaN Import](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/1-standata-GaN.webp "Standata GaN Import")
 
-We then use the [Advanced]({{ interface_url }}/materials-designer/header-menu/advanced/supercell/) menu to create a supercell of GaN with a size of 4x4x1.
+We then use the [Advanced]({{ interface_url }}/materials-designer/header-menu/advanced/supercell/) menu to create a supercell of GaN with a size of 3x3x2, containing 72 atoms.
 
 ![Supercell Creation for GaN](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/2-advanced-supercell.webp "Supercell GaN")
 
@@ -83,28 +83,13 @@ Next, edit `create_point_defect_pair.ipynb` notebook to modify the parameters by
 Copy the below content and edit the "1.1. Set up defect parameters" cell in the notebook as follows:
 
 ```python
-from types import SimpleNamespace
-
 # Selected material will be used as a unit cell to create a supercell first.
-SUPERCELL_MATRIX = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+SUPERCELL_MATRIX = [[3, 0, 0], [0, 3, 0], [0, 0, 2]]
 
-# List of dictionaries with defect parameters
-PRIMARY_DEFECT_CONFIG = SimpleNamespace(
-    defect_type="substitution",
-    coordinate=[1.608, 4.642, 5.240],  # Approx. coord that will be resolved to the closest site
-    use_cartesian_coordinates=True,  # Use cartesian or crystal coordinates
-    chemical_element="Mg",
-    # "site_id": 0, # Index of the atom in the host material
-    # "coordinate": None, # Exact position (override the approximate coordinate)
-)
-
-SECONDARY_DEFECT_CONFIG = SimpleNamespace(
-    defect_type="vacancy",
-    approximate_coordinate=[1.608, 4.642, 7.210],  # Approx. coord that will be resolved to the closest site
-    use_cartesian_coordinates=True,
-    # "site_id": 0, # Index of the atom in the host material
-    # "coordinate": None, # Exact position (override the approximate coordinate)
-)
+DEFECT_CONFIGS = [
+    {"type": "substitution", "coordinate": [0.5, 0.5, 0.5], "element": "Mg", "placement_method": "closest_site"},
+    {"type": "vacancy", "coordinate": [0.5, 0.5, 0.65], "placement_method": "closest_site"},
+]
 ```
 
 Here's the visual of the updated content:
@@ -125,7 +110,7 @@ After running the notebook, the user will be able to visualize the structure of 
 
 ## 7. Pass the Material to Materials Designer
 
-The user can pass the resulting material in the current Materials Designer environment and save it.
+The notebook passes two materials to the current Materials Designer environment: the pristine supercell `GaN 3x3x2` and the defect structure `GaN 3x3x2 Mg_Ga-V_N axial pair`. Both can be saved there.
 
 ![Final Material](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/7-wave-result.webp "Vacancy and Mg Substitution in GaN")
 
