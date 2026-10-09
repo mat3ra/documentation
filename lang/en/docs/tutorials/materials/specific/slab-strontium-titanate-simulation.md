@@ -61,7 +61,7 @@ with `n` the number of bulk units and `m` the number of slabs in the group. Each
 | Functional | Perdew-Burke-Ernzerhof (PBE) | hybrid B3PW |
 | Basis | plane waves, GBRV ultrasoft pseudopotentials, 40 / 200 Ry | Gaussian basis sets |
 | Lattice constant | 3.913 Å (Standata, mp-5229) | 3.904 Å (B3PW) |
-| Slabs | seven planes, 1×1, about 10 Å of vacuum (printed by the structure notebook) | seven planes, 1×1, no vacuum (two-dimensional slab model) |
+| Slabs | seven planes, 1×1, 9.8 Å of vacuum (011), 13.9 Å (001) | seven planes, 1×1, no vacuum (two-dimensional slab model) |
 | k-points | density 6.5 Å⁻¹: 11×8×1 (011), 11×11×1 (001), 11×11×11 bulk | 8×8 |
 | Relaxation | every atom, fixed cell, Quantum ESPRESSO's default force threshold | near-surface planes (two in Sec. III.B, three in Table VII) |
 | Spin | spin-restricted | not stated |
@@ -121,6 +121,8 @@ TiO + Sr = 4.28 (paper 5.72, -25.1 %)
 (011), lowest first: O < TiO < Sr (paper O < Sr < TiO)
 ```
 
+The deviation is relative to the size of the manuscript's value: for the negative relaxation energies, a positive deviation means less relaxation than in the manuscript.
+
 
 ## 6. Expected results
 
@@ -161,16 +163,16 @@ The default `RELAX = False` computes the cleavage energies from six Total Energy
 
 The default, `CLUSTER_NAME = None`, uses the account's first listed cluster; setting a specific name picks that cluster instead, and a name that is not available makes the notebook stop and list the ones that are.
 
+### 7.3. Use thicker slabs
+
+The manuscript checks that nine-plane slabs change the energies by less than 0.01 eV. Setting `NUMBER_OF_PLANES = 9` in the structure notebook saves the slabs as `... 9 planes`; here, the names in cell 1.2 then change to those. The slabs of a group in `CLEAVAGE_GROUPS` have to add up to whole SrTiO<sub>3</sub> units, which holds when they have the same thickness: section 8.2 of the notebook raises `ValueError: ... is not stoichiometric` otherwise.
+
 
 ## 8. Troubleshooting
 
 ### 8.1. Material not found
 
 Loading raises when a name is missing from the `uploads` folder and the account's materials collection. Run the notebook of the [SrTiO<sub>3</sub> Slab](slab-strontium-titanate.md) tutorial, which saves the six materials under the names in cell 1.2.
-
-### 8.2. A group is not stoichiometric
-
-Section 8.2 of the notebook raises `ValueError: ... is not stoichiometric` when the slabs of a group do not add up to whole SrTiO<sub>3</sub> units, for instance after a slab name in cell 1.2 was changed to a slab with a different number of planes. Each group in `CLEAVAGE_GROUPS` has to hold complementary slabs of the same thickness.
 
 
 ## 9. Interactive JupyterLite notebook
