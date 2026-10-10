@@ -214,6 +214,7 @@ nav:
             - Graphene on h-BN (Stacking Energy and Band Gap):                  tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride-simulation.md
             - Cu / SiO2 Interface:                                              tutorials/materials/specific/interface-3d-3d-copper-silicon-dioxide.md
             - Graphene / SiO2 Interface:                                        tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide.md
+            - GaAs / AlAs (110) Superlattice:                                   tutorials/materials/specific/interface-3d-3d-gallium-arsenide-aluminum-arsenide.md
             - High-k Metal Gate Stack:                                          tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md
             - Ripple Perturbation in Graphene:                                  tutorials/materials/specific/perturbation-ripples-graphene.md
             - Grain Boundary in Cu (FCC):                                       tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md
