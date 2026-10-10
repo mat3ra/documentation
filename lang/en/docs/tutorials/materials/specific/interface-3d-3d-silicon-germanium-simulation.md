@@ -62,8 +62,8 @@ The calculation consists of the following steps:
 3. **Load materials**: Import the superlattice and the two bulks, print their plane spacings
 4. **Configure the model and k-grids**: One DFT model, a k-grid per material from one k-point density
 5. **Configure compute resources**: Select the cluster, queue, and processor settings
-6. **Configure the workflow**: The model and the k-grids; the band structures are stored, and the workflow's own
-   post-processing, which takes the lineup from minima of the averaged potential, is removed
+6. **Configure the workflow**: The model, a k-grid per material, and the band structures the valence band maxima
+   are read from
 7. **Run the job**: One Valence Band Offset job, which runs a band structure and the electrostatic potential on
    each of the three materials
 8. **Retrieve results**: The valence band maxima and average potentials, the offset, and the potential across the
@@ -142,7 +142,7 @@ The valence band maximum is the top of band N_electrons / 2 along each bulk's k-
 next band minus it. The strained Ge is a semimetal in the LDA: its L conduction band lies 0.088 eV below the valence
 band top at Γ, hence the negative gap. Each block is averaged over one plane spacing at
 its centre, one plane away from both interfaces, where the manuscript finds the potential bulk-like (Fig. 2).
-Section 8.3 plots the potential across the superlattice with the two block averages.
+Section 8.3 plots the potential across the superlattice with the bulk potentials overlaid, as in the manuscript's Fig. 2.
 
 The last cell prints the offset beside the manuscript's values:
 

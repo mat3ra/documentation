@@ -92,15 +92,13 @@ Execute the notebook by selecting "Run" > "Run All Cells" from the JupyterLite m
 
 The notebook builds the superlattice in four steps:
 
-1. Each bulk is converted to its conventional cubic cell and strained to the lattice constants above. The strain
-   comes first: the interface builder re-creates its slabs from the bulk, so a strain applied to a slab would be
-   lost. The two strained cells, with c along [001], are also the bulk references of the simulation.
+1. Each bulk is converted to its conventional cubic cell and strained to the lattice constants above. The two
+   strained cells, with c along [001], are also the bulk references of the simulation.
 2. A slab of one conventional layer, four (001) planes, is cut from each, without vacuum.
 3. The Ge slab is placed on the Si slab at d = (a_Si⊥ + a_Ge⊥) / 8 = 1.406 Å, the mean of the two plane spacings.
    The second interface is the periodic one, at the top of the cell: setting c = a_Si⊥ + a_Ge⊥ = 11.25 Å gives it
    the same spacing.
-4. The cell is reduced to the primitive cell, 3.84 × 3.84 × 11.25 Å with 8 atoms. Reducing before c is set moves
-   the interface spacing into the Ge block instead.
+4. The cell is reduced to the primitive cell, 3.84 × 3.84 × 11.25 Å with 8 atoms.
 
 
 ## 4. Analyze the structure
