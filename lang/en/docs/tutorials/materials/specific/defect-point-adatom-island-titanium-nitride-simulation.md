@@ -153,17 +153,13 @@ A native run with the default parameters and D3 gives the values below, each bes
 
 Each panel shows a top view of the island region and a side view along the island edge, with the island on the left and the terrace on the right; the Ti adatom is orange.
 
+Relaxed a → c → i
+
+<img data-gifffer="/images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/4-descent-a-c-i.gif" alt="Relaxed a → c → i" />
+
 a: as built → relaxed
 
 <img data-gifffer="/images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/4-site-a.gif" alt="a: as built → relaxed" />
-
-c: as built → relaxed
-
-<img data-gifffer="/images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/4-site-c.gif" alt="c: as built → relaxed" />
-
-i: as built → relaxed
-
-<img data-gifffer="/images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/4-site-i.gif" alt="i: as built → relaxed" />
 
 Section 7.2 of the notebook draws this notebook's a, c and i on the manuscript's states a to i:
 
