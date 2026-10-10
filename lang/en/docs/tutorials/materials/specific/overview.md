@@ -15,7 +15,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 1.1.1.1. SrTiO3 Slab <span class="btn badge b-info border-50">P-2D-SLB-S</span>
 
 **Structure**: [Create SrTiO3 Slab Structure](slab-strontium-titanate.md)  
-**Properties**: Calculate surface energy (Coming Soon)  
+**Properties**: [Calculate Surface Energies of SrTiO3(011) and (001) Terminations](slab-strontium-titanate-simulation.md)  
 **DOI**: [10.1103/PhysRevB.77.195408](https://doi.org/10.1103/PhysRevB.77.195408){:target='_blank'} [@Eglitis2008; @Mukhopadhyay2006]
 
 ![Strontium Titanate Slabs](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/0-figure-from-manuscript.webp "Strontium Titanate Slabs, FIG. 2."){ style="max-height:500px;width:auto;" }

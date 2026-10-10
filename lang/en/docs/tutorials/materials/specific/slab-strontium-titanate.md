@@ -27,9 +27,9 @@ This tutorial demonstrates the process of creating strontium titanate (SrTiO<sub
     [DOI: 10.1103/PhysRevB.77.195408](https://doi.org/10.1103/PhysRevB.77.195408) [@Eglitis2008; @Mukhopadhyay2006]
 
 
-We will focus on creating SrTiO<sub>3</sub> (011) slabs with different terminations from FIG. 2.
+This tutorial creates SrTiO<sub>3</sub> (011) slabs on the two types of (011) planes, SrTiO and O<sub>2</sub>, shown in FIG. 2. The notebook in section 5 also cuts the manuscript's seven-plane slabs from them: the TiO-, Sr- and O-terminated (011) slabs of FIG. 3(d)-(f), made by removing atoms from both outer planes, and the SrO- and TiO<sub>2</sub>-terminated (001) slabs of FIG. 1. Their surface energies are computed in the [SrTiO<sub>3</sub> Surface Energies](slab-strontium-titanate-simulation.md) tutorial.
 
-![Strontium Titanate Slabs](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/0-figure-from-manuscript.webp "Strontium Titanate Slabs, FIG. 2.")
+![Strontium Titanate Slabs](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/0-figure-from-manuscript.webp "SrTiO and O2 cleavage planes of SrTiO3(011), FIG. 2.")
 
 ## 2. Create Strontium Titanate Slab
 
