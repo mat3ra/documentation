@@ -83,9 +83,9 @@ The manuscript uses DFT with the Generalized Gradient Approximation (GGA) in the
 
 ### 4.3. Dispersion and run time
 
-The D3 term needs the `torch-dftd` package, which the JupyterLite bundle does not carry.
+In JupyterLite, the install and calculator cells run, but the first relaxation exceeds the browser's memory: the first force call on the 457-atom cell fails with `can't allocate memory: you tried to allocate 763723776 bytes`, a 0.76 GB tensor. The JupyterLite bundle also carries no `torch-dftd`, so D3 is off in the browser.
 
-The four relaxations, on 457 and 458 atoms, are meant to be run natively, with `mace-torch` and `torch-dftd` installed. The values in Section 6 are from such a run.
+The four relaxations, on 457 and 458 atoms, run natively, with `mace-torch` and `torch-dftd` installed. The values in Section 6 are from such a run.
 
 
 ## 5. Step-by-step instructions
@@ -193,12 +193,12 @@ When Section 3 of the notebook prints `torch-dftd is not available here: MACE ru
 
 ### 8.4. The relaxations take long
 
-Every BFGS step evaluates MACE on 457 or 458 atoms, and the notebook runs four relaxations (Section 4.3).
+Every BFGS step evaluates MACE on 457 or 458 atoms, and the notebook runs four relaxations; in JupyterLite the first one stops on the browser's memory limit (Section 4.3).
 
 
 ## 9. Interactive JupyterLite notebook
 
-The following JupyterLite notebook relaxes the Ti adatom at a, c and i and compares the energies with the manuscript. The relaxations are meant for a native kernel (Section 4.3); in the browser they run without D3 and take hours.
+The following JupyterLite notebook relaxes the Ti adatom at a, c and i and compares the energies with the manuscript. In the browser, the install and calculator cells run and the relaxations do not (Section 4.3).
 
 {% with origin_url=config.extra.jupyterlite.origin_url_lab %}
 {% with notebooks_path_root=config.extra.jupyterlite.notebooks_path_root %}
