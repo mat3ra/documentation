@@ -30,7 +30,7 @@ cells its valence band offset is computed from.
     [@Hinuma2014]
 
 The superlattice stacks GaAs and AlAs along [110] without vacuum, so it has two identical interfaces. Both materials are
-strained in plane to the mean of their two lattice constants. The manuscript uses 11 atomic layers of each material; the
+strained to the mean of their two lattice constants and stay cubic as built; the manuscript relaxed the out-of-plane lattice. The manuscript uses 11 atomic layers of each material; the
 slab builder counts (110) layers in pairs of atomic planes, so the notebook builds 12 planes of each (6 layers), 48 atoms
 in total.
 
@@ -109,16 +109,16 @@ AlAs (110) bulk strained: {'Al': 4, 'As': 4}, 8 atoms, cell 5.7130 x 8.0794 x 4.
   coordination numbers: {4: 8}
 ```
 
-The planes are evenly spaced across both interfaces. The superlattice built here, seen along a with c horizontal, one
-period and three cells along b; the dotted line is the cell:
+The planes are evenly spaced across both interfaces. The picture below is drawn from the notebook's superlattice, seen
+along a with c horizontal; the dotted box outlines the cell along c and three cells along b:
 
 ![GaAs/AlAs (110) superlattice built by the notebook](../../../images/tutorials/materials/interfaces/interface_3d_3d_gallium_arsenide_aluminum_arsenide/0-superlattice-this-notebook.webp "GaAs/AlAs (110) superlattice 12+12, built by the notebook")
 
 
 ## 5. Save the structure
 
-Section 4 of the notebook passes the three materials to Materials Designer, where they can be saved on the
-platform, and writes them to the `uploads` folder.
+Section 4 of the notebook sends the three materials to the environment. In JupyterLite they are passed to Materials
+Designer, where they can be saved on the platform; in a local Jupyter session they are written to the `uploads` folder.
 
 
 ## 6. Interactive JupyterLite notebook
