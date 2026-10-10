@@ -50,7 +50,7 @@ with `n` the number of bulk units and `m` the number of slabs in the group. Each
 6. **Run the Total Energy jobs**: one on each cell as cut
 7. **Relax the slabs**: only when `RELAX` is set, at fixed cell, all atoms
 8. **Retrieve the results**: the total energies, and the cleavage, relaxation and surface energies
-9. **Compare with the manuscript**: our values beside Table VII, with the deviation in percent
+9. **Compare with the manuscript**: the computed values beside Table VII, with the deviation in percent
 
 
 ## 4. Calculation parameters
@@ -58,15 +58,15 @@ with `n` the number of bulk units and `m` the number of slabs in the group. Each
 | | this tutorial | Eglitis & Vanderbilt |
 |---|---|---|
 | Code | Quantum ESPRESSO | CRYSTAL-2003 |
-| Functional | Perdew-Burke-Ernzerhof (PBE) | hybrid B3PW |
-| Basis | plane waves, GBRV ultrasoft pseudopotentials, 40 / 200 Ry | Gaussian basis sets |
+| Functional | Perdew-Burke-Ernzerhof (PBE) | hybrid Becke three-parameter Perdew-Wang (B3PW) |
+| Basis | plane waves, Garrity-Bennett-Rabe-Vanderbilt (GBRV) ultrasoft pseudopotentials, 40 / 200 Ry | Gaussian basis sets |
 | Lattice constant | 3.913 Å (Standata, mp-5229) | 3.904 Å (B3PW) |
 | Slabs | seven planes, 1×1, 9.8 Å of vacuum (011), 13.9 Å (001) | seven planes, 1×1, no vacuum (two-dimensional slab model) |
 | k-points | density 6.5 Å⁻¹: 11×8×1 (011), 11×11×1 (001), 11×11×11 bulk | 8×8 |
 | Relaxation | every atom, fixed cell, Quantum ESPRESSO's default force threshold | near-surface planes (two in Sec. III.B, three in Table VII) |
 | Spin | spin-restricted | not stated |
 
-The functional is the main difference: the manuscript gives no PBE surface energies, so absolute shifts from Table VII are expected. The parameters cells hold these settings:
+The functional is the main difference: the manuscript gives no PBE surface energies, so absolute shifts from Table VII are expected. Cell 1.4 holds these settings:
 
 ```python
 FUNCTIONAL = "pbe"
@@ -108,7 +108,7 @@ Execute all cells by selecting *Run* > *Run All Cells*. The notebook [authentica
 
 ### 5.4. Read the results
 
-The last cell prints, per termination, our cleavage energy beside the manuscript's and, with `RELAX = True`, the relaxation and surface energies, the TiO + Sr sum and the order of the (011) surface energies:
+The last cell prints, per termination, the computed cleavage energy beside the manuscript's and, with `RELAX = True`, the relaxation and surface energies, the TiO + Sr sum and the order of the (011) surface energies:
 
 ```
 Ours: pbe-us 40-200Ry k6.5, relaxed; paper: B3PW. Energies in eV.
