@@ -146,6 +146,25 @@ A native run with the default parameters and D3 gives the values below, each bes
 | Ti–N spacing along the island medians | −3.5 % of bulk | −5.2 % (Sec. III.A, p. 10) |
 | Surface ripple, N above Ti | 0.067 Å | 0.19 Å (Sec. III.A, p. 8) |
 
+| | a | c | i |
+| --- | --- | --- | --- |
+| As built | ![Site a, as built](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/3-site-a-as-built.webp "Ti adatom at site a, as built") | ![Site c, as built](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/3-site-c-as-built.webp "Ti adatom at site c, as built") | ![Site i, as built](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/3-site-i-as-built.webp "Ti adatom at site i, as built") |
+| Relaxed | ![Site a, relaxed](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/3-site-a-relaxed.webp "Ti adatom at site a, relaxed") | ![Site c, relaxed](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/3-site-c-relaxed.webp "Ti adatom at site c, relaxed") | ![Site i, relaxed](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/3-site-i-relaxed.webp "Ti adatom at site i, relaxed") |
+
+Each panel shows a top view of the island region and a side view along the island edge, with the island on the left and the terrace on the right; the Ti adatom is orange.
+
+a: as built → relaxed
+
+<img data-gifffer="/images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/4-site-a.gif" alt="a: as built → relaxed" />
+
+c: as built → relaxed
+
+<img data-gifffer="/images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/4-site-c.gif" alt="c: as built → relaxed" />
+
+i: as built → relaxed
+
+<img data-gifffer="/images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/4-site-i.gif" alt="i: as built → relaxed" />
+
 Section 7.2 of the notebook draws this notebook's a, c and i on the manuscript's states a to i:
 
 ![Fig. 6 with this notebook's energies](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/2-result-fig6-this-notebook.webp "Energies of a, c and i from this notebook beside Figure 6 of Sangiovanni et al. 2018")
