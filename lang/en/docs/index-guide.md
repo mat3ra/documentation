@@ -29,7 +29,7 @@ Designing and constructing [material structures]({{ reference_url }}/materials/o
 
 ### 1.2. Reproducing Publications
 
-Step-by-step recipes reproducing published work, one row per publication: the structure each recipe builds, and the properties calculated from that structure. A Properties cell reading Coming Soon means no simulation tutorial exists yet. The [full overview](tutorials/materials/specific/overview.md) page contains figures and additional context for each entry.
+Step-by-step recipes reproducing published work, one row per structure: the structure each recipe builds, and the properties calculated from that structure. A Properties cell reading Coming Soon means no simulation tutorial exists yet. The [full overview](tutorials/materials/specific/overview.md) page contains figures and additional context for each entry.
 
 | Reference                         | Structure Type            | Material | Properties |
 |:----------------------------------|:--------------------------|:---------|:-----------|
@@ -38,6 +38,7 @@ Step-by-step recipes reproducing published work, one row per publication: the st
 | Bertoldo et al. (2022)[^3]        | Vacancy defect            | [h-BN](tutorials/materials/specific/defect-point-vacancy-boron-nitride.md) | [Formation energy](tutorials/materials/specific/defect-point-vacancy-boron-nitride-simulation.md) |
 | Togo et al. (2006)[^4]            | Interstitial defect       | [SnO](tutorials/materials/specific/defect-point-interstitial-tin-oxide.md) | [Formation energy and DOS](tutorials/materials/specific/defect-point-interstitial-tin-oxide-simulation.md) |
 | Sangiovanni et al. (2018)[^5]     | Island surface defect     | [TiN](tutorials/materials/specific/defect-surface-island-titanium-nitride.md) | Island formation energy (Coming Soon) |
+| Sangiovanni et al. (2018)[^5]     | Adatom on an island       | [Ti on a TiN island](tutorials/materials/specific/defect-point-adatom-island-titanium-nitride.md) | [Ti adatom descent energetics](tutorials/materials/specific/defect-point-adatom-island-titanium-nitride-simulation.md) |
 | Šljivančanin et al. (2002)[^6]    | Step surface defect       | [Pt(111)](tutorials/materials/specific/defect-surface-step-platinum.md) | Energy of dissociation (Coming Soon) |
 | Chan et al. (2008)[^7]            | Adatom surface defects    | [Graphene](tutorials/materials/specific/defect-surface-adatom-graphene.md) | Adsorption energy, density of states, diffusion barriers (Coming Soon) |
 | Xian et al. (2019)[^8]            | Twisted bilayer           | [h-BN nanoribbons](tutorials/materials/specific/interface-bilayer-twisted-nanoribbons-boron-nitride.md) | Band structure, total energies versus twist angle (Coming Soon) |
