@@ -29,11 +29,7 @@ This tutorial calculates the band structure of the graphene on O-terminated α-q
 
 The compared quantities are from Sec. III and Fig. 3(a) of the manuscript, for the metastable geometry with the graphene at d = 2.58 Å above the surface: graphene is p-doped, the gap at the Dirac point is 0.13 eV, and the Dirac point lies about 1.28 eV above the Fermi level (the midpoint of the two Dirac bands at K on Fig. 3(a), +1.21 and +1.35 eV).
 
-![Graphene on SiO2 from the manuscript](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/0-figure-from-manuscript.webp "Top view of graphene on the Si-terminated (a) and O-terminated (b) surfaces (Kang et al. 2008, Fig. 1); the metastable geometry is (b) with graphene shifted by (a1+a2)/3 (Sec. III)")
-
-![Graphene on SiO2 from the structure notebook](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/3-structure-5-cells.webp "The interface as built by the structure notebook, side view: graphene on 5 conventional quartz cells (Si15O30C8, 53 atoms)")
-
-![Band structure of graphene on SiO2 from the manuscript](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/kang2008-fig3a-band-structure.webp "Band structure of graphene on the O-terminated surface, metastable geometry (Kang et al. 2008, Fig. 3(a)); path Γ-M-K-Γ, energy in eV relative to the Fermi level")
+![Graphene on SiO2 from the manuscript and the structure notebook](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/structure-top-view-comparison.webp "Top view of graphene on the O-terminated surface: Kang et al. 2008, Fig. 1(b), the lowest-energy geometry (left), and the interface built by the structure notebook, graphene shifted to the metastable registry (right); 2×2 graphene cell in red. The metastable geometry is (b) with graphene shifted by (a1+a2)/3 (Sec. III)")
 
 
 ## 2. Prerequisites
@@ -178,7 +174,7 @@ Gap at K              0.062 eV              0.130 eV
 
 The band structure of the structure after 5 BFGS steps of the `RELAX = True` relaxation is p-type, E_D − E_F +1.179 eV, gap at K 0.071 eV, beside the unrelaxed +1.171 eV and 0.062 eV.
 
-![Band structure of graphene on SiO2 from this notebook](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/band-structure-this-notebook.webp "Band structure of the interface near the Fermi level, shifted registry, unrelaxed; path Γ-M-K-Γ, energies relative to E_F")
+![Band structure of graphene on SiO2 from the manuscript and this notebook](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/band-structure-comparison.webp "Band structure, path Γ-M-K-Γ, energy relative to the Fermi level: Kang et al. 2008, Fig. 3(a), metastable geometry (left) and this notebook, shifted registry, unrelaxed (right)")
 
 
 ## 7. Customization options
