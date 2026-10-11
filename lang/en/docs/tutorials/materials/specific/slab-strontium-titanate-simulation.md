@@ -28,6 +28,11 @@ This tutorial builds upon the [SrTiO<sub>3</sub> Slab](slab-strontium-titanate.m
 
 ![SrTiO3(011) cleavage planes](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/0-figure-from-manuscript.webp "SrTiO and O2 cleavage planes of SrTiO3(011), FIG. 2.")
 
+The two symmetric whole-plane (011) slabs that the manuscript starts from, SrTiO-terminated (FIG. 3(c)) and O<sub>2</sub>-terminated (FIG. 3(b)), as built by the structure notebook and shown in the Wave viewer:
+
+![SrTiO-terminated SrTiO3(011) slab](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/srtio3-011-srtio-terminated-slab-wave.webp "SrTiO3(011) SrTiO-terminated seven-plane slab, Wave viewer")
+![O2-terminated SrTiO3(011) slab](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/srtio3-011-o2-terminated-slab-wave.webp "SrTiO3(011) O2-terminated seven-plane slab, Wave viewer")
+
 
 ## 2. Prerequisites
 
