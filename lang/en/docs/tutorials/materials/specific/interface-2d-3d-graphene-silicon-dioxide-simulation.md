@@ -29,6 +29,8 @@ This tutorial calculates the band structure of the graphene on O-terminated α-q
 
 The compared quantities are from Sec. III and Fig. 3(a) of the manuscript, for the metastable geometry with the graphene at d = 2.58 Å above the surface: graphene is p-doped, the gap at the Dirac point is 0.13 eV, and the Dirac point lies about 1.28 eV above the Fermi level (the midpoint of the two Dirac bands at K on Fig. 3(a), +1.21 and +1.35 eV).
 
+![Graphene on SiO2 from the structure notebook](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/3-structure-5-cells.webp "The interface as built by the structure notebook, side view: graphene on 5 conventional quartz cells (Si15O30C8, 53 atoms)")
+
 ![Band structure of graphene on SiO2 from the manuscript](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/kang2008-fig3a-band-structure.webp "Band structure of graphene on the O-terminated surface, metastable geometry (Kang et al. 2008, Fig. 3(a)); path Γ-M-K-Γ, energy in eV relative to the Fermi level")
 
 
