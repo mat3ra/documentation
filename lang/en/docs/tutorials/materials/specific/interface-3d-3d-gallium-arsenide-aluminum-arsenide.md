@@ -114,6 +114,8 @@ along a with c horizontal; the dotted box outlines the cell along c and three ce
 
 ![GaAs/AlAs (110) superlattice built by the notebook](../../../images/tutorials/materials/interfaces/interface_3d_3d_gallium_arsenide_aluminum_arsenide/0-superlattice-this-notebook.webp "GaAs/AlAs (110) superlattice 12+12, built by the notebook")
 
+The GaAs block appears split between the bottom and the top of the cell. The reduction to the primitive cell places the cell origin on a symmetry plane of the superlattice, the centre of the GaAs block; across the periodic boundary it is one continuous block of 12 planes. Only the appearance changes, not the structure.
+
 
 ## 5. Save the structure
 
