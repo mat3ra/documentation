@@ -75,7 +75,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 2.1.1.5. GaAs/AlAs (110) Strained Superlattice <span class="btn badge b-info border-50">C-2D-INT-S</span>
 
 **Structure**: [Create GaAs/AlAs (110) Strained Superlattice](interface-3d-3d-gallium-arsenide-aluminum-arsenide.md)  
-**Properties**: Calculate valence band offset (Coming Soon)  
+**Properties**: [Calculate GaAs/AlAs (110) Valence Band Offset](interface-3d-3d-gallium-arsenide-aluminum-arsenide-simulation.md)  
 **DOI**: [10.1103/PhysRevB.90.155405](https://doi.org/10.1103/PhysRevB.90.155405){:target='_blank'} [@Hinuma2014]
 
 ![GaAs/AlAs (110) Superlattice](../../../images/tutorials/materials/interfaces/interface_3d_3d_gallium_arsenide_aluminum_arsenide/0-superlattice-this-notebook.webp "GaAs/AlAs (110) superlattice, built by the notebook"){ style="max-height:500px;width:auto;" }
