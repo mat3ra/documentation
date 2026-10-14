@@ -40,7 +40,7 @@ potential V̄, and the superlattice gives the step in V̄ between the two materi
 ΔE_v = (E_VBM − V̄)_GaAs − (E_VBM − V̄)_AlAs + (V̄_GaAs − V̄_AlAs)_superlattice
 ```
 
-The manuscript gives ΔE_v = 0.45 eV at the PBE level, GaAs above AlAs (Table II).
+The manuscript gives ΔE_v = 0.45 eV at the Perdew–Burke–Ernzerhof (PBE) level, GaAs above AlAs (Table II).
 
 ## 2. Prerequisites
 
@@ -67,7 +67,7 @@ The calculation consists of the following steps:
    each of the three materials
 8. **Retrieve results**: The valence band maxima and average potentials, the offset, and the potential across the
    superlattice
-9. **Compare with the manuscript**: Print our values beside Hinuma et al.'s
+9. **Compare with the manuscript**: Print the calculated values beside Hinuma et al.'s
 
 ## 4. Calculation parameters
 
@@ -75,12 +75,13 @@ The calculation consists of the following steps:
 |---|---|---|
 | Code | Quantum ESPRESSO | VASP |
 | Functional | PBE | PBE |
-| Pseudopotentials | ultrasoft, Garrity–Bennett–Rabe–Vanderbilt (GBRV) library, Ga 3d in valence | PAW, Ga 3d frozen in the core |
+| Pseudopotentials | ultrasoft, Garrity–Bennett–Rabe–Vanderbilt (GBRV) library, Ga 3d in valence | projector augmented-wave (PAW) potentials, Ga 3d frozen in the core |
 | Cutoff | 40 / 200 Ry | 550 eV for the bulks, not stated for the interface |
-| k-points | 3.5 points per Å⁻¹: 6×4×1 superlattice, 4×3×6 bulks | 6×4×1 interface, 6×6×6 bulks |
+| k-points | 3.5 points per Å⁻¹: 6×4×1 for the 48-atom superlattice cell, 4×3×6 for the 8-atom (110) bulk cells | 6×4×1 for the interface cell, 6×6×6 for the bulk cells |
+| Bulk lattice constant | 5.713 Å, the superlattice's, for both bulks | experimental, GaAs 5.654 Å and AlAs 5.661 Å, related to the interface lattice through the vacuum level (Eq. 2) |
 | Cell | 12 + 12 planes, 48 atoms, a∥ = 5.713 Å, as built | 11 + 11 layers, out-of-plane lattice and positions relaxed |
-| Reference potential V̄ | planar average of the electrostatic potential | average potential in each material |
-| Spin–orbit | not included | included, as an HSE correction to each valence band maximum |
+| Reference potential V̄ | planar average of the electrostatic potential over one plane spacing at each block's centre | local Kohn–Sham potential averaged in the PAW spheres at the atomic sites, middle third of each region |
+| Spin–orbit | not included | included, as a Heyd–Scuseria–Ernzerhof (HSE) correction to each valence band maximum |
 
 ## 5. Step-by-step instructions
 
@@ -94,26 +95,29 @@ other/materials_designer/specific_examples/interface_3d_3d_gallium_arsenide_alum
 
 ### 5.2. Configure parameters
 
-The parameters cells set the material names, the compute resources, and the DFT model:
+Cells 1.2-1.4 set the material names, the compute resources, and the DFT model:
 
 ```python
+# Names saved by interface_3d_3d_gallium_arsenide_aluminum_arsenide.ipynb.
 SUPERLATTICE_NAME = "GaAs/AlAs (110) superlattice 12+12"
 SUBSTRATE_BULK_NAME = "GaAs (110) bulk strained"
 FILM_BULK_NAME = "AlAs (110) bulk strained"
 
-CLUSTER_NAME = "001"
+CLUSTER_NAME = "001"  # specify full or partial name i.e. "cluster-001" to select
 QUEUE_NAME = QueueName.OR
-PPN = 16
+PPN = 16  # the OR queue allows at most 16 cores per node
 TIME_LIMIT = "04:00:00"
 
 MODEL_SUBTYPE = "gga"
-FUNCTIONAL = "pbe"
-PSEUDOPOTENTIAL_TYPE = "us"
-VALENCE_ELECTRONS_PER_ATOM = {"Ga": 19, "Al": 3, "As": 5}
-ECUTWFC = 40   # Ry
-ECUTRHO = 200  # Ry
-ADDITIONAL_PARAMETERS = {"electrons": {"mixing_mode": "local-TF", "mixing_beta": 0.2, "electron_maxstep": 200}}
-KPOINT_DENSITY = 3.5  # points per Å⁻¹
+FUNCTIONAL = "pbe"  # Hinuma et al. use PBE
+PSEUDOPOTENTIAL_TYPE = "us"  # GBRV ultrasoft, the PBE family the platform publishes for Ga, Al and As
+VALENCE_ELECTRONS_PER_ATOM = {"Ga": 19, "Al": 3, "As": 5}  # GBRV pseudopotentials, Ga with its 3p and 3d shells
+BLOCK_LABEL = {SUBSTRATE_BULK_NAME: "GaAs", FILM_BULK_NAME: "AlAs"}
+BLOCK_CATION = {SUBSTRATE_BULK_NAME: "Ga", FILM_BULK_NAME: "Al"}  # one cation per (110) plane marks each block
+ECUTWFC = 40   # Ry, GBRV's recommended wavefunction cutoff
+ECUTRHO = 200  # Ry, GBRV's recommended charge-density cutoff
+ADDITIONAL_PARAMETERS = {"electrons": {"mixing_mode": "local-TF", "mixing_beta": 0.2, "electron_maxstep": 200}}  # the long cell needs local-TF mixing to converge
+KPOINT_DENSITY = 3.5  # points per Å⁻¹: 6x4x1 on the superlattice as in the paper, an equivalent grid on the bulks
 ```
 
 ### 5.3. Run the notebook
@@ -130,13 +134,13 @@ average potential of the GaAs and the AlAs block in the superlattice:
 
 ```
 GaAs (110) bulk strained: E_VBM = 6.8978 eV, V̄ = 9.3124 eV, E_VBM - V̄ = -2.4146 eV, gap +0.289 eV
-  in the superlattice: V̄ = 8.4115 eV, averaged over 4.0397 Å centred at z = 0.0000 Å
+  in the superlattice: V̄ = 8.4117 eV, averaged over 2.0198 Å centred at z = 0.0000 Å
 AlAs (110) bulk strained: E_VBM = 4.6237 eV, V̄ = 7.6018 eV, E_VBM - V̄ = -2.9781 eV, gap +1.476 eV
-  in the superlattice: V̄ = 8.5044 eV, averaged over 4.0397 Å centred at z = 24.2382 Å
+  in the superlattice: V̄ = 8.5044 eV, averaged over 2.0198 Å centred at z = 24.2382 Å
 ```
 
 The valence band maximum is the top of band N_electrons / 2 along each bulk's k-path, and the gap the bottom of the
-next band minus it. Each block is averaged over one period of the potential, two (110) planes, at its centre, away from
+next band minus it. Each block is averaged over one plane spacing, one period of the potential, at its centre, away from
 both interfaces. Section 8.3 plots the potential across the superlattice with the bulk potentials overlaid.
 
 The last cell prints the offset beside the manuscript's values:
@@ -158,8 +162,8 @@ HSE and GW values and the experimental values from 0.15 to 0.55 eV for this pair
 ![GaAs/AlAs in Table II of the manuscript](../../../images/tutorials/materials/interfaces/interface_3d_3d_gallium_arsenide_aluminum_arsenide/1-table-ii-from-manuscript.webp "Table II of the manuscript: valence band offsets for A/B heterointerfaces")
 
 The manuscript's Table I lists the PBE bulk band gaps, 0.48 eV for GaAs and 1.32 eV for AlAs, at the experimental
-lattice constants (GaAs 5.654 Å). The bulk cells of this tutorial are at the mean of the two lattice constants of the
-platform's GaAs and AlAs structures, 5.713 Å.
+lattice constants (GaAs 5.654 Å, AlAs 5.661 Å). The bulk cells of this tutorial are at the mean of the two lattice
+constants of the platform's GaAs and AlAs structures, 5.713 Å.
 
 ### 6.1. Comparison with published results
 
@@ -168,8 +172,8 @@ platform's GaAs and AlAs structures, 5.713 Å.
 | Hinuma et al. | 0.45 | 0.48 | 1.32 |
 | This tutorial | 0.471 (+4.6 %) | 0.289 (−39.8 %) | 1.476 (+11.8 %) |
 
-The offset splits into the bulk term (E_VBM − V̄)_GaAs − (E_VBM − V̄)_AlAs = +0.564 eV and the lineup
-(V̄_GaAs − V̄_AlAs)_superlattice = −0.093 eV. The manuscript does not list the two terms.
+The offset splits into the bulk term (E_VBM − V̄)_GaAs − (E_VBM − V̄)_AlAs = +0.5635 eV and the lineup
+(V̄_GaAs − V̄_AlAs)_superlattice = −0.0928 eV. The manuscript does not list the two terms.
 
 Section 8.3 of the notebook plots the electrostatic potential across one period of the superlattice, from the
 AlAs→GaAs interface: each bulk's own potential (dotted) shifted onto its block, and the two block averages (dashed).
@@ -188,9 +192,10 @@ stop and list the ones that are.
 
 ### 8.1. Material not found
 
-If one of the three names is not found in the `uploads` folder or the account's materials collection, run the
-[GaAs/AlAs (110) Strained Superlattice](interface-3d-3d-gallium-arsenide-aluminum-arsenide.md) tutorial first, and
-check that its `uploads` folder holds the materials under those exact names.
+If one of the three names is not found, run the
+[GaAs/AlAs (110) Strained Superlattice](interface-3d-3d-gallium-arsenide-aluminum-arsenide.md) tutorial first. In
+JupyterLite, save the three materials to the account from Materials Designer under those exact names; in a local
+Jupyter session, check that the `uploads` folder holds them.
 
 ### 8.2. No cluster available
 
