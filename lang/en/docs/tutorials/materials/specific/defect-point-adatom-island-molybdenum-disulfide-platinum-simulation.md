@@ -31,7 +31,7 @@ t-(Mo)₄-S cluster (n = 4, three Pt atoms on top of Mo and the fourth above S) 
 
 The figure below shows Fig. 4 of the manuscript; the cluster computed here is panel (b):
 
-![Pt Island on MoS2](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/0-figure-from-manuscript.webp "Pt₄ clusters on MoS2, Fig. 4.")
+![Pt Island on MoS₂](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/0-figure-from-manuscript.webp "Pt₄ clusters on MoS₂, Fig. 4.")
 
 ## 2. Prerequisites
 
@@ -112,8 +112,8 @@ SMEARING_SETTINGS = {"occupations": "smearing", "smearing": "fermi-dirac", "dega
 DIPOLE_SETTINGS = {"control": {"tefield": True, "dipfield": True}, "system": {"edir": 3, "eamp": 0.0, "eopreg": 0.05}}
 # paper: the isolated Pt atom spin-polarized with two unpaired electrons; the slabs spin-averaged
 SPIN_SETTINGS = {"nspin": 2, "tot_magnetization": 2}
-# paper: all atoms relaxed to 0.005 eV/Å. nstep ends each relaxation inside TIME_LIMIT;
-# the residual force is printed in section 7. To reach the threshold, raise nstep (and TIME_LIMIT, cluster permitting).
+# paper: all atoms relaxed to 0.005 eV/Å = 1.9e-4 Ry/Bohr. nstep ends each relaxation inside TIME_LIMIT;
+# section 7 prints the force norm (all atoms). To reach the threshold, raise nstep (and TIME_LIMIT, cluster permitting).
 RELAXATION_SETTINGS = {"forc_conv_thr": 1.9e-4, "nstep": 10}
 MODEL_TAG = f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry G fd{SMEARING_SETTINGS['degauss']}"
 
@@ -157,8 +157,8 @@ The deviation is 100 (E_b − E_b,Saidi) / |E_b,Saidi|: a positive deviation is 
 | Pt₁, on top of Mo (Fig. 1a), Saidi Table 1 | −2.83 | 2.76 | 2.29 | — |
 | Pt₁, on top of Mo, this tutorial | −2.82 (+0.3 %) | not computed | not computed | — |
 
-Bond lengths are means over atom pairs under Table 1's 3 Å cutoff (`BOND_CUTOFF`).
-The printed Pt-Pt 2.80 Å is the mean over the six pairs under the cutoff: three apex-base pairs at 2.62 Å and three base-base pairs at 2.99 Å; Table 1 gives 2.61 Å.
+Bond lengths are means over atom pairs under Table 1's 3 Å cutoff (`BOND_CUTOFF`). The printed Pt-Pt 2.801 Å is the mean
+of six pairs: three apex-base pairs at 2.615 Å and three base-base pairs at 2.987 Å; Table 1 gives 2.61 Å.
 
 ## 7. Customization options
 
@@ -211,7 +211,7 @@ that `pw_scf.in` sets `nspin = 2` and `tot_magnetization = 2`.
 
 ## 9. Interactive JupyterLite notebook
 
-The following JupyterLite notebook calculates the binding energies of Pt on MoS2. Select *Run* > *Run All Cells*.
+The following JupyterLite notebook calculates the binding energies of Pt on MoS₂. Select *Run* > *Run All Cells*.
 
 {% with origin_url=config.extra.jupyterlite.origin_url_lab %}
 {% with notebooks_path_root=config.extra.jupyterlite.notebooks_path_root %}
