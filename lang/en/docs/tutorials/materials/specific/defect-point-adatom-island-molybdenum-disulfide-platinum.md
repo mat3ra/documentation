@@ -21,7 +21,7 @@ render_macros: true
 
 ## 1. Introduction
 
-This tutorial demonstrates how to create a platinum island on MoS2 by sequentially adding Pt adatoms, following the methodology described in the literature.
+This tutorial demonstrates how to create a platinum island on MoS2 by adding Pt adatoms, following the methodology described in the literature.
 
 !!!note "Manuscript"
     Saidi, W. A.
@@ -89,13 +89,12 @@ COORDINATES = [
 Key parameters explained:
 
 - Base layer Pt atoms (first three entries of `COORDINATES`):
+    * Positioned atop Mo atoms in a triangular arrangement
+    * Height 1.34 Å above the S plane: the Pt-Mo bond length of Table 1, 2.91 Å, less the S-Mo spacing of 1.57 Å
 
-  * Positioned atop Mo atoms in a triangular arrangement
-  * Height 1.34 Å above the S plane: the Pt-Mo bond length of Table 1, 2.91 Å, less the S-Mo spacing of 1.57 Å
 - Top Pt atom (fourth entry of `COORDINATES`):
-
-  * Centered above the triangle, atop S atom
-  * Height 3.20 Å above the S plane, 1.86 Å above the base Pt atoms: the Pt-Pt bond length of Table 1, 2.61 Å, over a triangle of side 3.18 Å
+    * Centered above the triangle, atop S atom
+    * Height 3.20 Å above the S plane, 1.86 Å above the base Pt atoms: the Pt-Pt bond length of Table 1, 2.61 Å, over a triangle of side 3.18 Å
 
 - The notebook computes both heights in section 1.4 from `PT_MO_BOND_LENGTH`, `PT_PT_BOND_LENGTH` and the S-Mo spacing it measures, and prints them
 

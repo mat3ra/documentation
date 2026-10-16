@@ -28,10 +28,9 @@ This tutorial builds upon the [Pt Nanoparticles on MoS2(001) Surface via Adatoms
 tutorial, where the structures are created. Here, the binding energy is calculated using Quantum ESPRESSO with Eq. 1
 of the manuscript, E_b = (1/n) [E(MoS₂ + Pt_n) − E(MoS₂) − n E(Pt atom)], against the isolated Pt atom: for the
 t-(Mo)₄-S cluster (n = 4, three Pt atoms on top of Mo and the fourth above S) and for one Pt atom on top of Mo (n = 1).
+The figure below shows the t-(Mo)₄-S cluster from the manuscript and from the structure notebook:
 
-The figure below shows Fig. 4 of the manuscript; the cluster computed here is panel (b):
-
-![Pt Island on MoS₂](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/0-figure-from-manuscript.webp "Pt₄ clusters on MoS₂, Fig. 4.")
+![Pt₄ on MoS₂ from the manuscript and the structure notebook](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/6-paper-vs-built-top.webp "Top view of the t-(Mo)₄-S cluster on MoS₂: Saidi 2015, Fig. 4(b) (left), and the 79-atom slab built by the structure notebook (right)")
 
 ## 2. Prerequisites
 
@@ -188,14 +187,12 @@ cutoff for them is tested here, and the manuscript's 350 eV does not transfer.
 
 ### 8.1. Material not found
 
-If `MoS2 5x5 monolayer`, `MoS2 5x5 Pt1 atop Mo` or `MoS2 5x5 Pt4 t-(Mo)4-S` is not found in the `uploads` folder or
-the account's materials collection, run the [structure tutorial](defect-point-adatom-island-molybdenum-disulfide-platinum.md)
-first, and check that its `uploads` folder holds the three materials under these exact names.
+If a material of section 2 is not found in the `uploads` folder or the account's materials collection, run the
+[structure tutorial](defect-point-adatom-island-molybdenum-disulfide-platinum.md) first; the names must match exactly.
 
 ### 8.2. No cluster available
 
-If section 5.1 of the notebook prints an empty list of clusters, there is nothing to submit to, and section 5.2
-stops. A cluster has to be available to the account before the notebook can run.
+If section 5.1 of the notebook prints an empty list of clusters, there is nothing to submit to, and section 5.2 stops.
 
 ### 8.3. Residual force above the threshold
 
