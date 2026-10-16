@@ -60,7 +60,7 @@ Set up the slab and defect parameters in the notebook:
 MATERIAL_NAME = "MoS2, Molybdenum Disulfide, HEX (P-6m2) 2D (Monolayer), 2dm-3150"
 MILLER_INDICES = (0, 0, 1)  # Miller indices of the surface
 SLAB_THICKNESS = 1  # Thickness of the slab in unit cells
-VACUUM = 0.0  # Vacuum added in Angstrom; the Standata cell already holds 20 Å above the layer
+VACUUM = 0.0  # Vacuum added in Angstrom; the Standata cell already holds 20 Å of vacuum
 XY_SUPERCELL_MATRIX = [[5, 0], [0, 5]]
 
 # Defect parameters
