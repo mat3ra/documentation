@@ -8,7 +8,6 @@ tags:
 
 hide:
   - tags
-# YAML header
 render_macros: true
 ---
 
@@ -138,26 +137,28 @@ The notebook polls the three relaxations, then the Total Energy job of the Pt at
 The notebook prints the relaxed Pt₄ bond lengths and both binding energies beside Table 1, with the deviation in percent:
 
 ```
-Pt-Mo: <value> Å, Saidi 2.91 Å
-Pt-S: <value> Å, Saidi 2.35 Å
-Pt-Pt: <value> Å, Saidi 2.61 Å
-E_b(Pt4, t-(Mo)4-S): <value> eV/Pt, Saidi -3.43 eV/Pt (<deviation> %)
-E_b(Pt1, atop Mo): <value> eV/Pt, Saidi -2.83 eV/Pt (<deviation> %)
+Pt-Mo: 2.892 Å, Saidi 2.91 Å
+Pt-S: 2.357 Å, Saidi 2.35 Å
+Pt-Pt: 2.801 Å, Saidi 2.61 Å
+E_b(Pt4, t-(Mo)4-S): -3.524 eV/Pt, Saidi -3.43 eV/Pt (-2.7 %)
+E_b(Pt1, atop Mo): -2.822 eV/Pt, Saidi -2.83 eV/Pt (+0.3 %)
 ```
 
 ## 6. Expected results
 
-Table 1's bond lengths are means over atom pairs closer than 3 Å, the notebook's `BOND_CUTOFF`. The deviation is
-100 (E_b − E_b,Saidi) / |E_b,Saidi|: a positive deviation is a weaker binding than the manuscript's.
+The deviation is 100 (E_b − E_b,Saidi) / |E_b,Saidi|: a positive deviation is a weaker binding than the manuscript's.
 
 ### 6.1. Comparison with published results
 
 | | E_b (eV per Pt atom) | Pt-Mo (Å) | Pt-S (Å) | Pt-Pt (Å) |
 |---|---|---|---|---|
 | Pt₄, t-(Mo)₄-S (Fig. 4b), Saidi Table 1 | −3.43 | 2.91 | 2.35 | 2.61 |
-| Pt₄, t-(Mo)₄-S, this tutorial | `<value>` (`<deviation>` %) | `<value>` | `<value>` | `<value>` |
+| Pt₄, t-(Mo)₄-S, this tutorial | −3.52 (−2.7 %) | 2.89 | 2.36 | 2.80 |
 | Pt₁, on top of Mo (Fig. 1a), Saidi Table 1 | −2.83 | 2.76 | 2.29 | — |
-| Pt₁, on top of Mo, this tutorial | `<value>` (`<deviation>` %) | not computed | not computed | — |
+| Pt₁, on top of Mo, this tutorial | −2.82 (+0.3 %) | not computed | not computed | — |
+
+Bond lengths are means over atom pairs under Table 1's 3 Å cutoff (`BOND_CUTOFF`). The printed Pt-Pt 2.80 Å is the mean
+of three apex-base pairs at 2.62 Å and three base-base pairs at 2.99 Å; Table 1's 2.61 Å is the apex-base distance.
 
 ## 7. Customization options
 
@@ -179,9 +180,9 @@ and a name that is not available makes the notebook stop and list the ones that 
 ### 7.3. Use the manuscript's settings
 
 Apart from the code, the pseudopotentials and the cutoff, section 4 follows the manuscript wherever it states a
-setting; the Pt atom box and the fixed cell are this tutorial's. The manuscript's PAW potentials are VASP's and cannot
-be matched. Quantum ESPRESSO's are selected with `PSEUDOPOTENTIAL_TYPE = "paw"`; neither they nor a cutoff for them
-is tested here, and the manuscript's 350 eV does not transfer.
+setting; the Pt atom box, the fixed cell and the `nstep` bound are this tutorial's. The manuscript's PAW potentials are
+VASP's and cannot be matched. Quantum ESPRESSO's are selected with `PSEUDOPOTENTIAL_TYPE = "paw"`; neither they nor a
+cutoff for them is tested here, and the manuscript's 350 eV does not transfer.
 
 ## 8. Troubleshooting
 
@@ -199,15 +200,14 @@ stops. A cluster has to be available to the account before the notebook can run.
 ### 8.3. Residual force above the threshold
 
 A relaxation that stops on `nstep` ends with forces above the manuscript's 0.005 eV/Å, and Eq. 1 then uses the energy
-of its last ionic step; section 7.2 of the notebook prints the residual force each slab ended with. In order to relax
-further, raise `nstep` as in section 7.1.
+of its last ionic step. In order to relax further, raise `nstep` as in section 7.1.
 
 ### 8.4. Binding energy far from the published value
 
 Check the provenance printed in section 3.1 of the notebook first: the three slabs read `Mo25S50`, `Mo25Pt1S50` and
-`Mo25Pt4S50`, with 75, 76 and 79 atoms, each in a `15.90 x 15.90 x 26.27 Å` cell, and the Pt atom `Pt1` in a
-`12.00 x 12.00 x 12.00 Å` cell. Then open the Total Energy job of the Pt atom, select the
-[Files tab]({{ interface_url }}/jobs/ui/files-tab/), and check that `pw_scf.in` sets `nspin = 2` and `tot_magnetization = 2`.
+`Mo25Pt4S50`, each in a `15.90 x 15.90 x 26.27 Å` cell, and the Pt atom `Pt1` in a `12.00 x 12.00 x 12.00 Å` cell. Then
+open the Total Energy job of the Pt atom, select the [Files tab]({{ interface_url }}/jobs/ui/files-tab/), and check
+that `pw_scf.in` sets `nspin = 2` and `tot_magnetization = 2`.
 
 ## 9. Interactive JupyterLite notebook
 
