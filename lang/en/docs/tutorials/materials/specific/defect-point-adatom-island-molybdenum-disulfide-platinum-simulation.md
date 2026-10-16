@@ -63,7 +63,7 @@ The binding energy calculation consists of the following steps:
 | Functional | Perdew-Burke-Ernzerhof (PBE), no van der Waals correction | PBE, no van der Waals correction |
 | Pseudopotentials | ultrasoft (GBRV) | projector augmented-wave (PAW) |
 | Cutoff | 40 / 200 Ry | 350 eV |
-| Cell | 5×5 monolayer, a = 3.18 Å; 75, 76 and 79 atoms in one 15.90 × 15.90 × 26.27 Å cell | 5×5 monolayer, a = 3.18 Å, vacuum over 10 Å |
+| Cell | 5×5 monolayer, a = 3.196 Å (Standata; publication 3.18 Å); 75, 76 and 79 atoms in one 15.98 × 15.98 × 26.27 Å cell | 5×5 monolayer, a = 3.18 Å, vacuum over 10 Å |
 | k-points | Γ | Γ |
 | Smearing | Fermi-Dirac, 0.05 eV | Fermi-Dirac, 0.05 eV |
 | Dipole correction | along z, on the three slabs | on the slabs |
@@ -178,10 +178,12 @@ and a name that is not available makes the notebook stop and list the ones that 
 
 ### 7.3. Use the manuscript's settings
 
-Apart from the code, the pseudopotentials and the cutoff, section 4 follows the manuscript wherever it states a
-setting; the Pt atom box, the fixed cell and the `nstep` bound are this tutorial's. The manuscript's PAW potentials are
-VASP's and cannot be matched. Quantum ESPRESSO's are selected with `PSEUDOPOTENTIAL_TYPE = "paw"`; neither they nor a
-cutoff for them is tested here, and the manuscript's 350 eV does not transfer.
+Apart from the code, the pseudopotentials and the cutoff, section 4 follows the manuscript wherever it states a setting;
+the lattice constant, the Pt atom box, the fixed cell and the `nstep` bound are this tutorial's. The manuscript's
+lattice constant is 3.18 Å and the structure notebook keeps Standata's 3.196 Å, 0.5 % apart; in order to match it,
+strain the substrate in the structure notebook before the slab is built. The manuscript's PAW potentials are VASP's and
+cannot be matched. Quantum ESPRESSO's are selected with `PSEUDOPOTENTIAL_TYPE = "paw"`; neither they nor a cutoff for
+them is tested here, and the manuscript's 350 eV does not transfer.
 
 ## 8. Troubleshooting
 
@@ -202,7 +204,7 @@ of its last ionic step. In order to relax further, raise `nstep` as in section 7
 ### 8.4. Binding energy far from the published value
 
 Check the provenance printed in section 3.1 of the notebook first: the three slabs read `Mo25S50`, `Mo25Pt1S50` and
-`Mo25Pt4S50`, each in a `15.90 x 15.90 x 26.27 Å` cell, and the Pt atom `Pt1` in a `12.00 x 12.00 x 12.00 Å` cell. Then
+`Mo25Pt4S50`, each in a `15.98 x 15.98 x 26.27 Å` cell, and the Pt atom `Pt1` in a `12.00 x 12.00 x 12.00 Å` cell. Then
 open the Total Energy job of the Pt atom, select the [Files tab]({{ interface_url }}/jobs/ui/files-tab/), and check
 that `pw_scf.in` sets `nspin = 2` and `tot_magnetization = 2`.
 
