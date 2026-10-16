@@ -55,6 +55,7 @@ Set up the slab and defect parameters in the notebook:
 
 ```python
 # Slab parameters
+# Exact name of the material to load from Standata; the pattern "MoS2.*2D" would load bulk MoS2 (mp-2815)
 MATERIAL_NAME = "MoS2, Molybdenum Disulfide, HEX (P-6m2) 2D (Monolayer), 2dm-3150"
 LATTICE_CONSTANT = 3.18  # Lattice constant of MoS2 used in the publication, in Angstrom (Standata: 3.196)
 MILLER_INDICES = (0, 0, 1)  # Miller indices of the surface

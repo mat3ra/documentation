@@ -28,8 +28,7 @@ MoS₂, reproducing results from the following manuscript:
 This tutorial builds upon the [Pt Nanoparticles on MoS2(001) Surface via Adatoms](defect-point-adatom-island-molybdenum-disulfide-platinum.md)
 tutorial, where the structures are created. Here, the binding energy is calculated using Quantum ESPRESSO with Eq. 1
 of the manuscript, E_b = (1/n) [E(MoS₂ + Pt_n) − E(MoS₂) − n E(Pt atom)], against the isolated Pt atom: for the
-t-(Mo)₄-S cluster (n = 4, three Pt atoms on top of Mo and the fourth above S) and for one Pt atom on top of Mo
-(n = 1). Both are compared with Table 1 of the manuscript.
+t-(Mo)₄-S cluster (n = 4, three Pt atoms on top of Mo and the fourth above S) and for one Pt atom on top of Mo (n = 1).
 
 The figure below shows Fig. 4 of the manuscript; the cluster computed here is panel (b):
 
@@ -70,7 +69,7 @@ The binding energy calculation consists of the following steps:
 | k-points | Γ | Γ |
 | Smearing | Fermi-Dirac, 0.05 eV | Fermi-Dirac, 0.05 eV |
 | Dipole correction | along z, on the three slabs | on the slabs |
-| Relaxation | all atoms, fixed cell, 0.005 eV/Å | all atoms, 0.005 eV/Å |
+| Relaxation | all atoms, fixed cell, 0.005 eV/Å, at most 10 ionic steps | all atoms, 0.005 eV/Å |
 | Spin, slabs | not spin-polarized | not spin-polarized, the supported clusters being non-magnetic |
 | Spin, Pt atom | `nspin = 2`, total magnetization 2 | spin-polarized, two unpaired electrons |
 | Pt atom box | 12 Å cube | not stated |
@@ -114,14 +113,15 @@ SMEARING_SETTINGS = {"occupations": "smearing", "smearing": "fermi-dirac", "dega
 DIPOLE_SETTINGS = {"control": {"tefield": True, "dipfield": True}, "system": {"edir": 3, "eamp": 0.0, "eopreg": 0.05}}
 # paper: the isolated Pt atom spin-polarized with two unpaired electrons; the slabs spin-averaged
 SPIN_SETTINGS = {"nspin": 2, "tot_magnetization": 2}
-# paper: all atoms relaxed to 0.005 eV/Å = 1.9e-4 Ry/Bohr; ours at most 100 ionic steps
-RELAXATION_SETTINGS = {"forc_conv_thr": 1.9e-4, "nstep": 100}
+# paper: all atoms relaxed to 0.005 eV/Å. nstep ends each relaxation inside TIME_LIMIT;
+# the residual force is printed in section 7. To reach the threshold, raise nstep (and TIME_LIMIT, cluster permitting).
+RELAXATION_SETTINGS = {"forc_conv_thr": 1.9e-4, "nstep": 10}
 MODEL_TAG = f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry G fd{SMEARING_SETTINGS['degauss']}"
 
 SCF_UNIT = "pw_scf"
 RELAX_UNIT = "pw_relax"
 # Names the relaxation jobs; the slab energies in Eq. 1 are read from these jobs.
-RELAX_TAG = f"{MODEL_TAG} dip f{RELAXATION_SETTINGS['forc_conv_thr']}"
+RELAX_TAG = f"{MODEL_TAG} dip f{RELAXATION_SETTINGS['forc_conv_thr']} n{RELAXATION_SETTINGS['nstep']}"
 ```
 
 ### 5.3. Run the notebook
@@ -135,8 +135,7 @@ The notebook polls the three relaxations, then the Total Energy job of the Pt at
 
 ### 5.5. Analyze results
 
-Section 8.2 of the notebook prints the mean bond lengths of the relaxed Pt₄ cluster, and the last cell prints both
-binding energies beside Table 1 of the manuscript, with the deviation in percent:
+The notebook prints the relaxed Pt₄ bond lengths and both binding energies beside Table 1, with the deviation in percent:
 
 ```
 Pt-Mo: <value> Å, Saidi 2.91 Å
@@ -148,9 +147,8 @@ E_b(Pt1, atop Mo): <value> eV/Pt, Saidi -2.83 eV/Pt (<deviation> %)
 
 ## 6. Expected results
 
-Table 1 of the manuscript gives the binding energy per Pt atom from Eq. 1, and the mean bond lengths over atom pairs
-closer than 3 Å, the notebook's `BOND_CUTOFF`. The deviation is 100 (E_b − E_b,Saidi) / |E_b,Saidi|: a positive
-deviation is a weaker binding than the manuscript's. Both sides are PBE calculations.
+Table 1's bond lengths are means over atom pairs closer than 3 Å, the notebook's `BOND_CUTOFF`. The deviation is
+100 (E_b − E_b,Saidi) / |E_b,Saidi|: a positive deviation is a weaker binding than the manuscript's.
 
 ### 6.1. Comparison with published results
 
@@ -165,11 +163,12 @@ deviation is a weaker binding than the manuscript's. Both sides are PBE calculat
 
 ### 7.1. Adjust the isolated-atom box and the relaxation threshold
 
-`PT_ATOM_BOX` in cell 1.2 is the edge of the cubic box around the isolated Pt atom; the manuscript does not state
-its box. A new box is a new material, so the Total Energy job of the Pt atom runs again. `RELAXATION_SETTINGS` in
-cell 1.4 holds the manuscript's force threshold, 0.005 eV/Å written in Ry/Bohr, and `nstep`, the maximum number of
-ionic steps. A new threshold is part of the relaxation jobs' names, so the slabs are relaxed again; `nstep` is not,
-so after changing it, add it to `RELAX_TAG` too, or the finished relaxations are reused.
+`PT_ATOM_BOX` in cell 1.2 is the edge of the cubic box around the isolated Pt atom; the manuscript does not state its
+box. A new box is a new material, so the Total Energy job of the Pt atom runs again. `RELAXATION_SETTINGS` in cell 1.4
+holds the manuscript's force threshold, 0.005 eV/Å written in Ry/Bohr, which stays the stopping criterion, and `nstep`,
+the number of ionic steps after which each relaxation ends inside `TIME_LIMIT`; section 7.2 of the notebook prints the
+residual force. In order to reach the threshold, raise `nstep` together with `TIME_LIMIT`, as far as the cluster
+allows. Both values are part of the relaxation jobs' names, so a change relaxes the three slabs again.
 
 ### 7.2. Adjust computational resources
 
@@ -197,11 +196,11 @@ first, and check that its `uploads` folder holds the three materials under these
 If section 5.1 of the notebook prints an empty list of clusters, there is nothing to submit to, and section 5.2
 stops. A cluster has to be available to the account before the notebook can run.
 
-### 8.3. Relaxation did not finish inside the time limit
+### 8.3. Residual force above the threshold
 
-A relaxation still running at `TIME_LIMIT` stops without a final structure, and section 7.2 of the notebook cannot
-read that slab's energy. Raise `TIME_LIMIT` in cell 1.3 and run all cells again: the jobs that finished are found
-by their names and not repeated, and the relaxation that stopped is submitted again from its starting structure.
+A relaxation that stops on `nstep` ends with forces above the manuscript's 0.005 eV/Å, and Eq. 1 then uses the energy
+of its last ionic step; section 7.2 of the notebook prints the residual force each slab ended with. In order to relax
+further, raise `nstep` as in section 7.1.
 
 ### 8.4. Binding energy far from the published value
 
