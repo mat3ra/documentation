@@ -154,10 +154,12 @@ deviation is a weaker binding than the manuscript's. Both sides are PBE calculat
 
 ### 6.1. Comparison with published results
 
-| Table 1 row | E_b (eV per Pt atom) | Pt-Mo (Å) | Pt-S (Å) | Pt-Pt (Å) |
+| | E_b (eV per Pt atom) | Pt-Mo (Å) | Pt-S (Å) | Pt-Pt (Å) |
 |---|---|---|---|---|
-| Pt₄, t-(Mo)₄-S, Fig. 4b | −3.43 | 2.91 | 2.35 | 2.61 |
-| Pt₁, on top of Mo, Fig. 1a | −2.83 | not compared | not compared | not compared |
+| Pt₄, t-(Mo)₄-S (Fig. 4b), Saidi Table 1 | −3.43 | 2.91 | 2.35 | 2.61 |
+| Pt₄, t-(Mo)₄-S, this tutorial | `<value>` (`<deviation>` %) | `<value>` | `<value>` | `<value>` |
+| Pt₁, on top of Mo (Fig. 1a), Saidi Table 1 | −2.83 | 2.76 | 2.29 | — |
+| Pt₁, on top of Mo, this tutorial | `<value>` (`<deviation>` %) | not computed | not computed | — |
 
 ## 7. Customization options
 
@@ -171,23 +173,16 @@ so after changing it, add it to `RELAX_TAG` too, or the finished relaxations are
 
 ### 7.2. Adjust computational resources
 
-The compute settings are in cell 1.3. The default, `CLUSTER_NAME = None`, uses the account's first listed cluster;
-setting a specific name picks that cluster instead, and a name that is not available makes the notebook stop and
-list the ones that are:
-
-```python
-CLUSTER_NAME = None
-QUEUE_NAME = QueueName.OR
-PPN = 16  # OR allows 16 cores per job
-TIME_LIMIT = "04:00:00"
-```
+`QUEUE_NAME`, `PPN` and `TIME_LIMIT` in cell 1.3 set the queue, the cores and the time limit of every job. The default,
+`CLUSTER_NAME = None`, uses the account's first listed cluster; setting a specific name picks that cluster instead,
+and a name that is not available makes the notebook stop and list the ones that are.
 
 ### 7.3. Use the manuscript's settings
 
-Every setting in section 4 except the code, the pseudopotentials and the cutoff is the manuscript's. The
-pseudopotential family cannot be matched, the manuscript's PAW potentials being VASP's. Quantum ESPRESSO's PAW
-potentials are selected with `PSEUDOPOTENTIAL_TYPE = "paw"`, untested here, as is a cutoff for them; the manuscript's
-350 eV belongs to its own potentials and does not transfer.
+Apart from the code, the pseudopotentials and the cutoff, section 4 follows the manuscript wherever it states a
+setting; the Pt atom box and the fixed cell are this tutorial's. The manuscript's PAW potentials are VASP's and cannot
+be matched. Quantum ESPRESSO's are selected with `PSEUDOPOTENTIAL_TYPE = "paw"`; neither they nor a cutoff for them
+is tested here, and the manuscript's 350 eV does not transfer.
 
 ## 8. Troubleshooting
 
@@ -212,9 +207,8 @@ by their names and not repeated, and the relaxation that stopped is submitted ag
 
 Check the provenance printed in section 3.1 of the notebook first: the three slabs read `Mo25S50`, `Mo25Pt1S50` and
 `Mo25Pt4S50`, with 75, 76 and 79 atoms, each in a `15.90 x 15.90 x 26.27 Å` cell, and the Pt atom `Pt1` in a
-`12.00 x 12.00 x 12.00 Å` cell. Then check the isolated atom, whose energy Eq. 1 subtracts n times: open its Total
-Energy job on the platform, select the [Files tab]({{ interface_url }}/jobs/ui/files-tab/), and read the
-`total magnetization` line of `pw_scf.out`, which reads 2.00 for the two unpaired electrons.
+`12.00 x 12.00 x 12.00 Å` cell. Then open the Total Energy job of the Pt atom, select the
+[Files tab]({{ interface_url }}/jobs/ui/files-tab/), and check that `pw_scf.in` sets `nspin = 2` and `tot_magnetization = 2`.
 
 ## 9. Interactive JupyterLite notebook
 

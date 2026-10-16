@@ -35,9 +35,9 @@ We will recreate the Pt island structure shown in Figure 4b:
 
 ## 2. Create MoS2 Substrate
 
-### 2.1. Load Base Material
+### 2.1. Open Materials Designer
 
-Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the MoS2 2D material from [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/).
 
 ### 2.2. Launch JupyterLite Session
 
@@ -87,16 +87,16 @@ COORDINATES = [
 
 Key parameters explained:
 
-- Base layer Pt atoms (first three configs):
+- Base layer Pt atoms (first three entries of `COORDINATES`):
 
   * Positioned atop Mo atoms in a triangular arrangement
   * Height 1.34 Å above the S plane: the Pt-Mo bond length of Table 1, 2.91 Å, less the S-Mo spacing of 1.57 Å
-- Top Pt atom (fourth config):
+- Top Pt atom (fourth entry of `COORDINATES`):
 
   * Centered above the triangle, atop S atom
   * Height 3.20 Å above the S plane, 1.86 Å above the base Pt atoms: the Pt-Pt bond length of Table 1, 2.61 Å, over a triangle of side 3.18 Å
 
-- `distance_z` sets the distance along the z-axis from the adatom to the topmost atom directly below it
+- The notebook computes both heights in section 1.4 from `PT_MO_BOND_LENGTH`, `PT_PT_BOND_LENGTH` and the S-Mo spacing it measures, and prints them
 
 ![Adatoms Setup](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/1-jl-setup-nb.webp "Pt adatoms setup")
 
@@ -157,15 +157,7 @@ The following embedded notebook demonstrates the complete process. Select "Run" 
 
 ## 7. Parameter Fine-tuning
 
-To adjust the island structure:
-
-1. Base Layer:
-   - Adjust `APPROXIMATE_POSITION_ON_SURFACE` to shift Pt positions
-   - Modify `DISTANCE_Z` to change height from surface
-
-2. Top Atom:
-   - Adjust position to change island shape
-   - Modify height to change Pt-Pt spacing
+In order to adjust the island structure, edit `COORDINATES` to move the Pt sites, and `PT_MO_BOND_LENGTH` and `PT_PT_BOND_LENGTH` to move the base and top heights.
 
 ## 8. References
 
