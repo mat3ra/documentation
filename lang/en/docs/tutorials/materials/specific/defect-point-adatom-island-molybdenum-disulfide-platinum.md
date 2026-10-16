@@ -43,9 +43,9 @@ Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview
 
 Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
-### 2.3. Open `create_adatom_defect.ipynb` Notebook
+### 2.3. Open `defect_point_adatom_island_molybdenum_disulfide_platinum.ipynb` Notebook
 
-Find and open the `create_adatom_defect.ipynb` notebook. Select MoS2 as input material.
+Find and open the `specific_examples/defect_point_adatom_island_molybdenum_disulfide_platinum.ipynb` notebook. It loads MoS2 from Standata by `MATERIAL_NAME`.
 
 ## 3. Configure and Create Structure
 
@@ -54,48 +54,35 @@ Find and open the `create_adatom_defect.ipynb` notebook. Select MoS2 as input ma
 Set up the slab and defect parameters in the notebook:
 
 ```python
-# Index in the list of materials, to access as materials[MATERIAL_INDEX]
-MATERIAL_INDEX = 0
-ELEMENT = "Pt"  # Chemical element of the adatom
-
-# Dictionaries are validated and converted to AdatomDefectDict objects below
-DEFECT_CONFIGS = [
-    {
-        "type": "adatom",
-        "coordinate_2d": [5/9, 4/9], # Crystal coordinates on the surface (x, y)
-        "distance_z": 1.2,  # Method to place the adatom
-        "element": ELEMENT,
-    },
-    {
-        "type": "adatom",
-        "coordinate_2d": [2/9, 4/9], # Crystal coordinates on the surface (x, y)
-        "distance_z": 1.2,  # Method to place the adatom
-        "element": ELEMENT,
-    },
-    {
-        "type": "adatom",
-        "coordinate_2d": [5/9, 7/9], # Crystal coordinates on the surface (x, y)
-        "distance_z": 1.2,  # Method to place the adatom
-        "element": ELEMENT,
-    },
-    {
-        "type": "adatom",
-        "coordinate_2d": [4/9, 5/9], # Crystal coordinates on the surface (x, y)
-        "distance_z": 1.6,  # Method to place the adatom
-        "element": ELEMENT,
-    },
-]
-
-
-PLACEMENT_METHOD = "new_crystal_site"  # Method to place the adatom, e.g., "new_crystal_site", "exact_coordinate", "equidistant"
-
-
 # Slab parameters
+MATERIAL_NAME = "MoS2, Molybdenum Disulfide, HEX (P-6m2) 2D (Monolayer), 2dm-3150"
+LATTICE_CONSTANT = 3.18  # Lattice constant of MoS2 used in the publication, in Angstrom (Standata: 3.196)
 MILLER_INDICES = (0, 0, 1)  # Miller indices of the surface
 SLAB_THICKNESS = 1  # Thickness of the slab in unit cells
-VACUUM = 10.0  # Vacuum thickness in Angstrom
-XY_SUPERCELL_MATRIX = [[3, 0], [0, 3]]  # Supercell matrix for the slab
-TERMINATION_FORMULA = None  # Stoichiometric formula of the slab termination to be used.
+VACUUM = 0.0  # Vacuum added in Angstrom; the Standata cell already holds 20 Å above the layer
+XY_SUPERCELL_MATRIX = [[5, 0], [0, 5]]
+
+# Defect parameters
+DEFECT_TYPE = "adatom"
+PLACEMENT_METHOD = "exact_coordinate"  # Choose between "equidistant", "new_crystal_site",  "exact_coordinate"
+CHEMICAL_ELEMENT = "Pt"  # Element to be placed at the site
+USE_CARTESIAN_COORDINATES = False  # If True, the position is in Cartesian coordinates
+
+# Relaxed mean bond lengths in the publication (Table 1, pairs within BOND_CUTOFF), in Angstrom
+PT_MO_BOND_LENGTH = 2.91
+PT_S_BOND_LENGTH = 2.35
+PT_PT_BOND_LENGTH = 2.61
+BOND_CUTOFF = 3.0
+
+# In the unit cell of MoS2 atoms have Mo: [2/3, 1/3, 0] and S: [1/3, 2/3, 0] crystal coordinates.
+# In the 5x5 supercell Mo sits at ((2/3 + i)/5, (1/3 + j)/5) and S at ((1/3 + i)/5, (2/3 + j)/5).
+# Three Pt atoms atop Mo at (i, j) = (2, 2), (1, 2), (2, 3); the fourth atop S at (2, 2), the centre of that triangle:
+COORDINATES = [
+    [8 / 15, 7 / 15, 0],  # 1st atom, atop central Mo
+    [5 / 15, 7 / 15, 0],  # 2nd atom, next clockwise atop Mo
+    [8 / 15, 10 / 15, 0],  # 3rd atom, next clockwise atop Mo
+    [7 / 15, 8 / 15, 0],  # 4th topmost atom, atop S
+]
 ```
 
 Key parameters explained:
@@ -103,11 +90,11 @@ Key parameters explained:
 - Base layer Pt atoms (first three configs):
 
   * Positioned atop Mo atoms in a triangular arrangement
-  * Height 1.2 Å from surface S atoms to achieve separation from Mo atoms of 2.8 A -- from publication
+  * Height 1.34 Å above the S plane: the Pt-Mo bond length of Table 1, 2.91 Å, less the S-Mo spacing of 1.57 Å
 - Top Pt atom (fourth config):
 
   * Centered above the triangle, atop S atom
-  * Height 1.6 Å from base Pt atoms (as they become the new surface layer)
+  * Height 3.20 Å above the S plane, 1.86 Å above the base Pt atoms: the Pt-Pt bond length of Table 1, 2.61 Å, over a triangle of side 3.18 Å
 
 - `distance_z` sets the distance along the z-axis from the adatom to the topmost atom directly below it
 
@@ -137,14 +124,14 @@ After adding all Pt atoms, verify the following:
 
 - Three Pt atoms should form a triangular base
 - Each base Pt should be positioned atop Mo atoms
-- Distance from surface S atoms should be ~1.2 Å
-- Relaxation is needed to achieve the exact geometry from the publication, can be performed elsewhere
+- Distance from surface S atoms should be ~1.34 Å
+- These heights are starting points for the relaxation
 
 ### 4.2. Top Atom Position
 
 - Fourth Pt should be centered above the triangle
 - Position should be approximately above a surface S atom
-- Height should be ~2.8 Å from surface (1.6 Å from base Pt atoms)
+- Height should be ~3.20 Å above the S plane (1.86 Å above the base Pt atoms)
 
 ## 5. Save the Structure
 
@@ -153,6 +140,8 @@ The final structure will be automatically passed back to Materials Designer wher
 1. Save it on the platform
 2. Export it in various formats
 3. Use it for further transformations
+
+The notebook passes three materials and writes them to the `uploads` folder, all in one 15.90 × 15.90 × 26.27 Å cell, since the binding energy subtracts the clean layer from the Pt slabs: `MoS2 5x5 monolayer` (75 atoms), `MoS2 5x5 Pt1 atop Mo` (76 atoms) and `MoS2 5x5 Pt4 t-(Mo)4-S` (79 atoms). The [binding energy tutorial](defect-point-adatom-island-molybdenum-disulfide-platinum-simulation.md) loads them by these names.
 
 ## 6. Interactive JupyterLite Notebook
 
