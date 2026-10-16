@@ -8,6 +8,7 @@ tags:
 
 hide:
   - tags
+# YAML header
 render_macros: true
 ---
 
@@ -15,8 +16,7 @@ render_macros: true
 
 ## 1. Introduction
 
-This tutorial calculates the binding energy per Pt atom of a Pt₄ cluster and of a single Pt adatom on monolayer
-MoS₂, reproducing results from the following manuscript:
+This tutorial calculates binding energies of Pt on monolayer MoS₂, reproducing results from the following manuscript:
 
 !!!note "Manuscript"
     W. A. Saidi, "Density Functional Theory Study of Nucleation and Growth of Pt Nanoparticles on MoS2(001)
@@ -157,8 +157,8 @@ The deviation is 100 (E_b − E_b,Saidi) / |E_b,Saidi|: a positive deviation is 
 | Pt₁, on top of Mo (Fig. 1a), Saidi Table 1 | −2.83 | 2.76 | 2.29 | — |
 | Pt₁, on top of Mo, this tutorial | −2.82 (+0.3 %) | not computed | not computed | — |
 
-Bond lengths are means over atom pairs under Table 1's 3 Å cutoff (`BOND_CUTOFF`). The printed Pt-Pt 2.80 Å is the mean
-of three apex-base pairs at 2.62 Å and three base-base pairs at 2.99 Å; Table 1's 2.61 Å is the apex-base distance.
+Bond lengths are means over atom pairs under Table 1's 3 Å cutoff (`BOND_CUTOFF`).
+The printed Pt-Pt 2.80 Å is the mean over the six pairs under the cutoff: three apex-base pairs at 2.62 Å and three base-base pairs at 2.99 Å; Table 1 gives 2.61 Å.
 
 ## 7. Customization options
 
