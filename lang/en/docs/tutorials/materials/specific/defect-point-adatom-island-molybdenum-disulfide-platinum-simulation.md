@@ -186,8 +186,8 @@ TIME_LIMIT = "04:00:00"
 
 Every setting in section 4 except the code, the pseudopotentials and the cutoff is the manuscript's. The
 pseudopotential family cannot be matched, the manuscript's PAW potentials being VASP's. Quantum ESPRESSO's PAW
-potentials are selected with `PSEUDOPOTENTIAL_TYPE = "paw"`, at a cutoff untested here; the manuscript's 350 eV
-belongs to its own potentials and does not transfer.
+potentials are selected with `PSEUDOPOTENTIAL_TYPE = "paw"`, untested here, as is a cutoff for them; the manuscript's
+350 eV belongs to its own potentials and does not transfer.
 
 ## 8. Troubleshooting
 
