@@ -150,7 +150,7 @@ The user can [save or download]({{ interface_url }}/materials-designer/header-me
 
 ## 4. Add Oxygen
 
-The O₂ precursor and the dissociated O pair are added to the Pt(211) slab and to the flat Pt(111) slab the terrace is built on, in section 4 of the `defect_surface_step_platinum.ipynb` notebook (section 5), with these lines of its cell 1.1:
+The O₂ precursor and the dissociated O pair are added to the Pt(211) slab and to the flat Pt(111) slab the terrace is built on, in section 4 of the `defect_surface_step_platinum.ipynb` notebook embedded in section 5 below, with these lines of its cell 1.1:
 
 ```python
 ADSORBATE_ELEMENT = "O"

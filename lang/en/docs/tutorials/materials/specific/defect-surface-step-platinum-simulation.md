@@ -31,7 +31,7 @@ the Pt(211) step, reproducing results from the following manuscript:
 
 This tutorial builds upon the [Terrace Steps on Platinum (111) Surface](defect-surface-step-platinum.md)
 tutorial, where the slabs with the O₂ precursor and the dissociated O pair are created. Here, both are relaxed
-with Quantum ESPRESSO, a climbing-image
+with Quantum ESPRESSO if `RELAX` is set, a climbing-image
 [nudged elastic band]({{ reference_url }}/models/auxiliary-concepts/nudged-elastic-band/) (NEB) calculation
 runs between them on each surface, and the barriers are compared with Table 1 of the manuscript.
 
@@ -60,9 +60,10 @@ The barrier calculation consists of the following steps:
 3. **Load materials**: Import the four materials by name and print their atom counts
 4. **Configure the model**: One DFT model for every workflow below
 5. **Configure compute resources**: Select the cluster, queue, and processor settings
-6. **Relax the four materials**: At fixed cell, reusing a relaxation job if one is found
-7. **Run the nudged elastic band**: One climbing-image NEB per surface, from the relaxed precursor to the
-   relaxed dissociated pair
+6. **Relax the four materials** (optional): Only if `RELAX` is set, at fixed cell, reusing a relaxation job
+   if one is found
+7. **Run the nudged elastic band**: One climbing-image NEB per surface, from the precursor to the dissociated
+   pair, both relaxed if `RELAX` is set
 8. **Retrieve results**: The energy profile, the barrier, the O–O distance at the highest image, the image error
 9. **Compare with the manuscript**: Print our values beside Šljivančanin & Hammer's
 
@@ -70,8 +71,8 @@ The barrier calculation consists of the following steps:
 
 | | this tutorial | Šljivančanin & Hammer |
 |---|---|---|
-| Code | Quantum ESPRESSO 7.5, as RPBE through `input_dft` needs 7.x | not stated |
-| Functional | revised Perdew-Burke-Ernzerhof (RPBE) | RPBE |
+| Code | Quantum ESPRESSO 7.5, as the functional below, set through `input_dft`, needs 7.x | not stated |
+| Functional | RPBE of Hammer, Hansen and Nørskov | RPBE |
 | Pseudopotentials | ultrasoft (GBRV) | ultrasoft (Vanderbilt) |
 | Cutoff | 40 / 200 Ry | 25 Ry |
 | Pt lattice constant | 3.943 Å (Standata, mp-126) | 4.02 Å |
@@ -81,7 +82,7 @@ The barrier calculation consists of the following steps:
 | Smearing | Marzari-Vanderbilt, 0.01 Ry | not stated |
 | Spin | not spin-polarized | not spin-polarized for the adsorbed states |
 | Relaxation | all atoms, fixed cell, force components below 0.1 eV/Å | upper half of the Pt atoms and the O atoms, total force below 0.1 eV/Å |
-| Transition state | climbing-image NEB, path converged to 0.1 eV/Å | relaxations at fixed O–O distance, on a 0.2 Å grid |
+| Transition state | climbing-image NEB, path threshold 0.1 eV/Å | relaxations at fixed O–O distance, on a 0.2 Å grid |
 | Dissociated pair | Pt(111): two neighbouring fcc hollows; Pt(211): two step-edge bridges, 2 Pt apart | not given |
 
 A job whose workflow has the same name and k-grid on the same material is reused. The workflow names carry
@@ -110,7 +111,8 @@ SURFACES = {
                 "kgrid": [2, 2, 1], "paper_barrier": 0.9, "paper_transition_state_oxygen_distance": 3.0},
 }
 
-APPLICATION_VERSION = "7.5"  # RPBE, set in 1.4, needs Quantum ESPRESSO 7.x
+# RPBE, set in 1.4, needs Quantum ESPRESSO 7.x
+APPLICATION_VERSION = "7.5"
 
 RELAX = True
 
@@ -119,14 +121,16 @@ QUEUE_NAME = QueueName.OR
 PPN = 16  # OR allows 16 cores per job
 TIME_LIMIT = "04:00:00"
 
-FUNCTIONAL = "pbe"  # selects the GBRV PBE pseudopotentials; QE_SYSTEM_SETTINGS sets the functional to RPBE
+# selects the GBRV PBE pseudopotentials; QE_SYSTEM_SETTINGS sets the functional to RPBE
+FUNCTIONAL = "pbe"
 PSEUDOPOTENTIAL_TYPE = "us"
 ECUTWFC = 40   # Ry
 ECUTRHO = 200  # Ry
 QE_SYSTEM_SETTINGS = {"input_dft": "rpbe", "nspin": 1, "occupations": "smearing", "smearing": "mv", "degauss": 0.01}
 RELAXATION_SETTINGS = {"forc_conv_thr": 3.9e-3, "nstep": 100}
 N_IMAGES = 1
-NEB_MAXIMUM_ITERATIONS = 50  # neb.x stops here, converged or not; the largest image error is printed in 9
+# neb.x stops here, converged or not; the largest image error is printed in 9
+NEB_MAXIMUM_ITERATIONS = 50
 NEB_PATH_SETTINGS = {"nstep_path": NEB_MAXIMUM_ITERATIONS, "minimum_image": True}
 ```
 
@@ -139,7 +143,7 @@ then runs the steps listed in section 3.
 
 ### 5.4. Monitor progress
 
-The notebook polls the jobs: the four relaxations, then the two NEB jobs.
+The notebook polls the jobs: the four relaxations if `RELAX` is set, then the two NEB jobs.
 
 ### 5.5. Analyze results
 
