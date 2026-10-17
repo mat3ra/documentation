@@ -133,14 +133,17 @@ The notebook polls the three relaxations, then the Total Energy job of the Pt at
 
 ### 5.5. Analyze results
 
-The notebook prints the relaxed Pt₄ bond lengths and both binding energies beside Table 1, with the deviation in percent:
+The notebook prints the residual forces, the relaxed Pt₄ bond lengths and the binding energies beside Table 1:
 
 ```
-Pt-Mo: 2.892 Å, Saidi 2.91 Å
-Pt-S: 2.357 Å, Saidi 2.35 Å
-Pt-Pt: 2.801 Å, Saidi 2.61 Å
-E_b(Pt4, t-(Mo)4-S): -3.524 eV/Pt, Saidi -3.43 eV/Pt (-2.7 %)
-E_b(Pt1, atop Mo): -2.822 eV/Pt, Saidi -2.83 eV/Pt (+0.3 %)
+MoS2 5x5 monolayer: residual force 0.0012 eV/angstrom
+MoS2 5x5 Pt1 atop Mo: residual force 0.2225 eV/angstrom
+MoS2 5x5 Pt4 t-(Mo)4-S: residual force 0.3845 eV/angstrom
+Pt-Mo: 2.872 Å, Saidi 2.91 Å
+Pt-S: 2.356 Å, Saidi 2.35 Å
+Pt-Pt: 2.616 Å, Saidi 2.61 Å
+E_b(Pt4, t-(Mo)4-S): -3.545 eV/Pt, Saidi -3.43 eV/Pt (-3.3 %)
+E_b(Pt1, atop Mo): -2.859 eV/Pt, Saidi -2.83 eV/Pt (-1.0 %)
 ```
 
 ## 6. Expected results
@@ -152,12 +155,15 @@ The deviation is 100 (E_b − E_b,Saidi) / |E_b,Saidi|: a positive deviation is 
 | | E_b (eV per Pt atom) | Pt-Mo (Å) | Pt-S (Å) | Pt-Pt (Å) |
 |---|---|---|---|---|
 | Pt₄, t-(Mo)₄-S (Fig. 4b), Saidi Table 1 | −3.43 | 2.91 | 2.35 | 2.61 |
-| Pt₄, t-(Mo)₄-S, this tutorial | −3.52 (−2.7 %) | 2.89 | 2.36 | 2.80 |
+| Pt₄, t-(Mo)₄-S, this tutorial | −3.55 (−3.3 %) | 2.87 | 2.36 | 2.62 |
 | Pt₁, on top of Mo (Fig. 1a), Saidi Table 1 | −2.83 | 2.76 | 2.29 | — |
-| Pt₁, on top of Mo, this tutorial | −2.82 (+0.3 %) | not computed | not computed | — |
+| Pt₁, on top of Mo, this tutorial | −2.86 (−1.0 %) | not computed | not computed | — |
 
-Bond lengths are means over atom pairs under Table 1's 3 Å cutoff (`BOND_CUTOFF`). The printed Pt-Pt 2.801 Å is the mean
-of six pairs: three apex-base pairs at 2.615 Å and three base-base pairs at 2.987 Å; Table 1 gives 2.61 Å.
+The printed Pt-Pt 2.616 Å is the mean of the three apex-base pairs; the three base-base pairs are at 3.00 Å, at Table 1's
+3 Å cutoff (`BOND_CUTOFF`), and are not counted; Table 1 gives 2.61 Å.
+
+![Relaxed Pt₄ on MoS₂ from the manuscript and this tutorial](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/8-paper-vs-relaxed-pt4-top.webp "Top view of the relaxed t-(Mo)₄-S cluster: Saidi 2015, Fig. 4(b) (left), and this tutorial (right)")
+![Relaxed Pt₁ on MoS₂ from the manuscript and this tutorial](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/9-paper-vs-relaxed-pt1-side.webp "Side view of the relaxed Pt atom on top of Mo: Saidi 2015, Fig. 1(a) (left), and this tutorial (right)")
 
 ## 7. Customization options
 
