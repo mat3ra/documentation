@@ -112,6 +112,8 @@ SURFACES = {
 
 APPLICATION_VERSION = "7.5"  # RPBE, set in 1.4, needs Quantum ESPRESSO 7.x
 
+RELAX = True
+
 CLUSTER_NAME = None
 QUEUE_NAME = QueueName.OR
 PPN = 16  # OR allows 16 cores per job
@@ -174,7 +176,7 @@ profiles of this tutorial (right), where the dashed lines mark the manuscript's 
 
 ## 7. Customization options
 
-### 7.1. Choose the k-grid and the number of images
+### 7.1. Choose the k-grid, the number of images and the relaxation
 
 `"kgrid"` in `SURFACES` (cell 1.2) is the k-grid of the relaxations and of the NEB on that surface; `[2, 2, 1]`
 is fast and not converged. `N_IMAGES` (cell 1.4) is the number of images between the relaxed end points: with
@@ -182,6 +184,10 @@ one, the path is the precursor, one climbing image, and the dissociated pair. ne
 `NEB_MAXIMUM_ITERATIONS`, converged or not; the path is converged when the largest image error printed on
 the barrier line is below 0.1 eV/Å. A new k-grid re-runs the relaxations and the NEB of that surface; a new
 `N_IMAGES` or `NEB_MAXIMUM_ITERATIONS` re-runs the NEB jobs only.
+
+`RELAX = True` (cell 1.3) relaxes the four materials before the NEB, as the manuscript does. `RELAX = False` runs
+the NEB between the structures as built, without the relaxations: faster, and the barrier is then measured from
+an unrelaxed precursor. Switching it starts new NEB jobs, as the end points change.
 
 ### 7.2. Adjust computational resources
 
