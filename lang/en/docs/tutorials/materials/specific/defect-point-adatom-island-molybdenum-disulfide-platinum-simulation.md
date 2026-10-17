@@ -142,22 +142,20 @@ MoS2 5x5 Pt4 t-(Mo)4-S: residual force 0.3845 eV/angstrom
 Pt-Mo: 2.872 Å, Saidi 2.91 Å
 Pt-S: 2.356 Å, Saidi 2.35 Å
 Pt-Pt: 2.616 Å, Saidi 2.61 Å
-E_b(Pt4, t-(Mo)4-S): -3.545 eV/Pt, Saidi -3.43 eV/Pt (-3.3 %)
-E_b(Pt1, atop Mo): -2.859 eV/Pt, Saidi -2.83 eV/Pt (-1.0 %)
+E_b(Pt4, t-(Mo)4-S): -3.545 eV/Pt, Saidi -3.43 eV/Pt
+E_b(Pt1, atop Mo): -2.859 eV/Pt, Saidi -2.83 eV/Pt
 ```
 
 ## 6. Expected results
-
-The deviation is 100 (E_b − E_b,Saidi) / |E_b,Saidi|: a positive deviation is a weaker binding than the manuscript's.
 
 ### 6.1. Comparison with published results
 
 | | E_b (eV per Pt atom) | Pt-Mo (Å) | Pt-S (Å) | Pt-Pt (Å) |
 |---|---|---|---|---|
 | Pt₄, t-(Mo)₄-S (Fig. 4b), Saidi Table 1 | −3.43 | 2.91 | 2.35 | 2.61 |
-| Pt₄, t-(Mo)₄-S, this tutorial | −3.545 (−3.3 %) | 2.872 | 2.356 | 2.616 |
+| Pt₄, t-(Mo)₄-S, this tutorial | −3.545 | 2.872 | 2.356 | 2.616 |
 | Pt₁, on top of Mo (Fig. 1a), Saidi Table 1 | −2.83 | 2.76 | 2.29 | — |
-| Pt₁, on top of Mo, this tutorial | −2.859 (−1.0 %) | not computed | not computed | — |
+| Pt₁, on top of Mo, this tutorial | −2.859 | not computed | not computed | — |
 
 The printed Pt-Pt 2.616 Å is the mean of the three apex-base pairs; the three base-base pairs are at 3.00 Å, at Table 1's
 3 Å cutoff (`BOND_CUTOFF`), and are not counted; Table 1 gives 2.61 Å.
@@ -188,11 +186,12 @@ and a name that is not available makes the notebook stop and list the ones that 
 
 Apart from the code, the pseudopotentials, the cutoff and the lattice constant, section 4 follows the manuscript
 wherever it states a setting; the Pt atom box, the fixed cell and the `nstep` bound are this tutorial's. In order to
-match the manuscript's 3.18 Å, 0.5 % below Standata's, apply `create_strain` to the substrate in the structure notebook
-before the slab is built, as in [Graphene on h-BN](interface-2d-2d-graphene-boron-nitride.md#31-strain-the-materials).
-The manuscript's PAW potentials are VASP's and cannot be matched. Quantum ESPRESSO's are selected with
-`PSEUDOPOTENTIAL_TYPE = "paw"`; neither they nor a cutoff for them is tested here, and the manuscript's 350 eV does not
-transfer. The structure notebook's 3x3 materials are used by changing the three names in section 1.2.
+match the manuscript's 3.18 Å instead of Standata's 3.196 Å, apply `create_strain` to the substrate in the structure
+notebook before the slab is built, as in
+[Graphene on h-BN](interface-2d-2d-graphene-boron-nitride.md#31-strain-the-materials). The manuscript's PAW potentials
+are VASP's and cannot be matched. Quantum ESPRESSO's are selected with `PSEUDOPOTENTIAL_TYPE = "paw"`; neither they nor
+a cutoff for them is tested here, and the manuscript's 350 eV does not transfer. The structure notebook's 3x3 materials
+are used by changing the three names in section 1.2.
 
 ## 8. Troubleshooting
 
