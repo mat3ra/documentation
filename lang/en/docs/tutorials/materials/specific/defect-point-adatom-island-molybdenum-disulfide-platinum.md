@@ -61,7 +61,8 @@ MATERIAL_NAME = "MoS2, Molybdenum Disulfide, HEX (P-6m2) 2D (Monolayer), 2dm-315
 MILLER_INDICES = (0, 0, 1)  # Miller indices of the surface
 SLAB_THICKNESS = 1  # Thickness of the slab in unit cells
 VACUUM = 0.0  # Vacuum added in Angstrom; the Standata cell already holds 20 Å of vacuum
-XY_SUPERCELL_MATRIX = [[5, 0], [0, 5]]
+# The simulation notebook uses the 5x5 materials
+XY_SUPERCELL_MATRICES = {"3x3": [[3, 0], [0, 3]], "5x5": [[5, 0], [0, 5]]}
 
 # Defect parameters
 DEFECT_TYPE = "adatom"
@@ -76,27 +77,36 @@ DISTANCE_Z_2nd_Pt_layer = 2.8  # Distance between S (MoS2) and Pt in second laye
 DISTANCE_Z_VALUES = [DISTANCE_Z_1st_Pt_layer, DISTANCE_Z_1st_Pt_layer, DISTANCE_Z_1st_Pt_layer, DISTANCE_Z_2nd_Pt_layer]
 
 # In the unit cell of MoS2 atoms have Mo: [2/3, 1/3, 0] and S: [1/3, 2/3, 0] crystal coordinates.
-# Creation of 5x5 supercell scales coordinates to steps of 1/15th between points: S, Mo and hollow.
+# Creation of 3x3 and 5x5 supercells scales coordinates to steps of 1/9th and 1/15th between points: S, Mo and hollow.
 # The adatoms are placed on the top of Mo atoms and S atoms can be obtained:
-COORDINATES = [
-    [8 / 15, 7 / 15, 0],  # 1st atom, atop central Mo
-    [5 / 15, 7 / 15, 0],  # 2nd atom, next clockwise atop Mo
-    [8 / 15, 10 / 15, 0],  # 3rd atom, next clockwise atop Mo
-    [7 / 15, 8 / 15, 0],  # 4th topmost atom, atop S
-]
+COORDINATES = {
+    "3x3": [
+        [5 / 9, 4 / 9, 0],  # 1st atom, atop central Mo
+        [2 / 9, 4 / 9, 0],  # 2nd atom, next clockwise atop Mo
+        [5 / 9, 7 / 9, 0],  # 3rd atom, next clockwise atop Mo
+        [4 / 9, 5 / 9, 0],  # 4th topmost atom, atop S
+    ],
+    "5x5": [
+        [8 / 15, 7 / 15, 0],  # 1st atom, atop central Mo
+        [5 / 15, 7 / 15, 0],  # 2nd atom, next clockwise atop Mo
+        [8 / 15, 10 / 15, 0],  # 3rd atom, next clockwise atop Mo
+        [7 / 15, 8 / 15, 0],  # 4th topmost atom, atop S
+    ],
+}
 ```
 
 Key parameters explained:
 
-- Base layer Pt atoms (first three entries of `COORDINATES`):
+- Base layer Pt atoms (first three entries of each size in `COORDINATES`):
     * Positioned atop Mo atoms in a triangular arrangement
     * Height 1.2 Å from surface S atoms to achieve separation from Mo atoms of 2.8 A -- a starting height for the relaxation
 
-- Top Pt atom (fourth entry of `COORDINATES`):
+- Top Pt atom (fourth entry of each size in `COORDINATES`):
     * Centered above the triangle, atop S atom
     * Height 2.8 Å from surface S atoms (1.6 Å from base Pt atoms) -- a starting height for the relaxation
 
 - `DISTANCE_Z_VALUES` sets the distance along the z-axis from each adatom to the top S plane
+- `XY_SUPERCELL_MATRICES` holds the two cell sizes, 3x3 and 5x5; the slab and defect cells run once for each size
 - The publication uses a = 3.18 Å; the notebook keeps Standata's 3.196 Å, 0.5 % apart. In order to match the publication, strain the substrate before the slab is built
 
 ![Adatoms Setup](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/1-jl-setup-nb.webp "Pt adatoms setup")
@@ -116,6 +126,10 @@ The result can be passed to Materials Designer for visualization and viewed from
 And from the side:
 
 ![Complete Island, side view](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/5-wave-result-side.webp "Complete Pt island structure, side view")
+
+The 3x3 and 5x5 slabs from the top, beside Fig. 4(b) of the manuscript:
+
+![Pt₄ on MoS₂ from the manuscript and this notebook](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/7-paper-vs-built-3x3-5x5-top.webp "Top view of the t-(Mo)₄-S cluster: Saidi 2015, Fig. 4(b) (left), and the 3×3 and 5×5 slabs built by this notebook")
 
 ## 4. Analyze the Structure
 
@@ -142,7 +156,7 @@ The final structure will be automatically passed back to Materials Designer wher
 2. Export it in various formats
 3. Use it for further transformations
 
-The notebook passes three materials and writes them to the `uploads` folder, all in one 15.98 × 15.98 × 26.27 Å cell, since the binding energy subtracts the clean layer from the Pt slabs: `MoS2 5x5 monolayer` (75 atoms), `MoS2 5x5 Pt1 atop Mo` (76 atoms) and `MoS2 5x5 Pt4 t-(Mo)4-S` (79 atoms). The [binding energy tutorial](defect-point-adatom-island-molybdenum-disulfide-platinum-simulation.md) loads them by these names.
+The notebook passes six materials and writes them to the `uploads` folder, three per size: `MoS2 3x3 monolayer`, `MoS2 3x3 Pt1 atop Mo` and `MoS2 3x3 Pt4 t-(Mo)4-S` (27, 28 and 31 atoms, in a 9.59 × 9.59 × 26.27 Å cell), and the same three named `5x5` (75, 76 and 79 atoms, in a 15.98 × 15.98 × 26.27 Å cell). The three of a size share one cell, since the binding energy subtracts the clean layer from the Pt slabs. The [binding energy tutorial](defect-point-adatom-island-molybdenum-disulfide-platinum-simulation.md) loads the 5x5 ones by these names.
 
 ## 6. Interactive JupyterLite Notebook
 
@@ -158,7 +172,7 @@ The following embedded notebook demonstrates the complete process. Select "Run" 
 
 ## 7. Parameter Fine-tuning
 
-In order to adjust the island structure, edit `COORDINATES` to move the Pt sites, and `DISTANCE_Z_1st_Pt_layer` and `DISTANCE_Z_2nd_Pt_layer` to move the base and top heights.
+In order to adjust the island structure, edit `COORDINATES` to move the Pt sites of each size, and `DISTANCE_Z_1st_Pt_layer` and `DISTANCE_Z_2nd_Pt_layer` to move the base and top heights.
 
 ## 8. References
 
