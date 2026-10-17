@@ -31,7 +31,7 @@ the Pt(211) step, reproducing results from the following manuscript:
 
 This tutorial builds upon the [Terrace Steps on Platinum (111) Surface](defect-surface-step-platinum.md)
 tutorial, where the slabs with the O₂ precursor and the dissociated O pair are created. Here, both are relaxed
-with Quantum ESPRESSO if `RELAX` is set, a climbing-image
+with Quantum ESPRESSO if `RELAX` is set; a climbing-image
 [nudged elastic band]({{ reference_url }}/models/auxiliary-concepts/nudged-elastic-band/) (NEB) calculation
 runs between them on each surface, and the barriers are compared with Table 1 of the manuscript.
 
@@ -71,7 +71,7 @@ The barrier calculation consists of the following steps:
 
 | | this tutorial | Šljivančanin & Hammer |
 |---|---|---|
-| Code | Quantum ESPRESSO 7.5, as the functional below, set through `input_dft`, needs 7.x | not stated |
+| Code | Quantum ESPRESSO 7.5: the functional below, set through `input_dft`, needs 7.x | not stated |
 | Functional | RPBE of Hammer, Hansen and Nørskov | RPBE |
 | Pseudopotentials | ultrasoft (GBRV) | ultrasoft (Vanderbilt) |
 | Cutoff | 40 / 200 Ry | 25 Ry |
@@ -183,7 +183,7 @@ profiles of this tutorial (right), where the dashed lines mark the manuscript's 
 ### 7.1. Choose the k-grid, the number of images and the relaxation
 
 `"kgrid"` in `SURFACES` (cell 1.2) is the k-grid of the relaxations and of the NEB on that surface; `[2, 2, 1]`
-is fast and not converged. `N_IMAGES` (cell 1.4) is the number of images between the relaxed end points: with
+is fast and not converged. `N_IMAGES` (cell 1.4) is the number of images between the end points: with
 one, the path is the precursor, one climbing image, and the dissociated pair. neb.x stops after
 `NEB_MAXIMUM_ITERATIONS`, converged or not; the path is converged when the largest image error printed on
 the barrier line is below 0.1 eV/Å. A new k-grid re-runs the relaxations and the NEB of that surface; a new
@@ -239,8 +239,8 @@ Pt(211) step O2 precursor: 34 atoms
 Pt(211) step 2O dissociated: 34 atoms
 ```
 
-Then open the relaxed end points, saved to the account as `<name> relaxed <relaxation tag>`: the O atoms of
-each should still sit on the sites of section 4 of the structure tutorial.
+Then, if `RELAX` is set, open the relaxed end points, saved to the account as `<name> relaxed <relaxation tag>`:
+the O atoms of each should still sit on the sites of section 4 of the structure tutorial.
 
 ## 9. Interactive JupyterLite notebook
 
