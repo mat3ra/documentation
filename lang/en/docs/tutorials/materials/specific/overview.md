@@ -131,7 +131,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 3.1.2.1. Step Surface Defect on Pt(111) <span class="btn badge b-info border-50">D-2D-TER</span>
 
 **Structure**: [Create Step Defect on Pt(111)](defect-surface-step-platinum.md)  
-**Properties**: Calculate energy of dissociation (Coming Soon)  
+**Properties**: [Calculate O₂ Dissociation Barrier on Pt(111) and at the Pt(211) Step](defect-surface-step-platinum-simulation.md)  
 **DOI**: [10.1016/s0039-6028(02)01908-8](https://doi.org/10.1016/s0039-6028(02)01908-8){:target='_blank'} [@Sljivancanin2002]
 
 ![Step Surface Defect on Pt](../../../images/tutorials/materials/defects/defect_surface_step_platinum/0-figure-from-manuscript.webp "Fig. 1."){ style="max-height:500px;width:auto;" }
