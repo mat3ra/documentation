@@ -99,7 +99,7 @@ Key parameters explained:
 
 - Base layer Pt atoms (first three entries of each size in `COORDINATES`):
     * Positioned atop Mo atoms in a triangular arrangement
-    * Height 1.2 Å from surface S atoms to achieve separation from Mo atoms of 2.8 A -- a starting height for the relaxation
+    * Height 1.2 Å from surface S atoms to achieve separation from Mo atoms of 2.8 Å -- a starting height for the relaxation
 
 - Top Pt atom (fourth entry of each size in `COORDINATES`):
     * Centered above the triangle, atop S atom
@@ -107,7 +107,7 @@ Key parameters explained:
 
 - `DISTANCE_Z_VALUES` sets the distance along the z-axis from each adatom to the top S plane
 - `XY_SUPERCELL_MATRICES` holds the two cell sizes, 3x3 and 5x5; the slab and defect cells run once for each size
-- The publication uses a = 3.18 Å; the notebook keeps Standata's 3.196 Å, 0.5 % apart. In order to match the publication, strain the substrate before the slab is built
+- The publication uses a = 3.18 Å; the notebook keeps Standata's 3.196 Å, 0.5 % apart. In order to match the publication, strain the substrate with `create_strain` before the slab is built, as in [Graphene on h-BN](interface-2d-2d-graphene-boron-nitride.md#31-strain-the-materials)
 
 ![Adatoms Setup](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/1-jl-setup-nb.webp "Pt adatoms setup")
 
@@ -140,7 +140,7 @@ After adding all Pt atoms, verify the following:
 - Three Pt atoms should form a triangular base
 - Each base Pt should be positioned atop Mo atoms
 - Distance from surface S atoms should be ~1.2 Å
-- Relaxation is needed to achieve the exact geometry from the publication, can be performed elsewhere
+- Relaxation is needed to achieve the exact geometry from the publication, performed in the [binding energy tutorial](defect-point-adatom-island-molybdenum-disulfide-platinum-simulation.md)
 
 ### 4.2. Top Atom Position
 

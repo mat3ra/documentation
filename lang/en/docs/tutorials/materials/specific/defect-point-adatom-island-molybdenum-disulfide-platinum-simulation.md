@@ -155,25 +155,27 @@ The deviation is 100 (E_b − E_b,Saidi) / |E_b,Saidi|: a positive deviation is 
 | | E_b (eV per Pt atom) | Pt-Mo (Å) | Pt-S (Å) | Pt-Pt (Å) |
 |---|---|---|---|---|
 | Pt₄, t-(Mo)₄-S (Fig. 4b), Saidi Table 1 | −3.43 | 2.91 | 2.35 | 2.61 |
-| Pt₄, t-(Mo)₄-S, this tutorial | −3.55 (−3.3 %) | 2.87 | 2.36 | 2.62 |
+| Pt₄, t-(Mo)₄-S, this tutorial | −3.545 (−3.3 %) | 2.872 | 2.356 | 2.616 |
 | Pt₁, on top of Mo (Fig. 1a), Saidi Table 1 | −2.83 | 2.76 | 2.29 | — |
-| Pt₁, on top of Mo, this tutorial | −2.86 (−1.0 %) | not computed | not computed | — |
+| Pt₁, on top of Mo, this tutorial | −2.859 (−1.0 %) | not computed | not computed | — |
 
 The printed Pt-Pt 2.616 Å is the mean of the three apex-base pairs; the three base-base pairs are at 3.00 Å, at Table 1's
 3 Å cutoff (`BOND_CUTOFF`), and are not counted; Table 1 gives 2.61 Å.
 
+The relaxation jobs return these structures, named `<name> relaxed <RELAX_TAG>` by section 7.2 of the notebook:
+
 ![Relaxed Pt₄ on MoS₂ from the manuscript and this tutorial](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/8-paper-vs-relaxed-pt4-top.webp "Top view of the relaxed t-(Mo)₄-S cluster: Saidi 2015, Fig. 4(b) (left), and this tutorial (right)")
+
 ![Relaxed Pt₁ on MoS₂ from the manuscript and this tutorial](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/9-paper-vs-relaxed-pt1-side.webp "Side view of the relaxed Pt atom on top of Mo: Saidi 2015, Fig. 1(a) (left), and this tutorial (right)")
 
 ## 7. Customization options
 
 ### 7.1. Adjust the isolated-atom box and the relaxation threshold
 
-`PT_ATOM_BOX` in cell 1.2 is the edge of the cubic box around the isolated Pt atom; the manuscript does not state its
-box. A new box is a new material, so the Total Energy job of the Pt atom runs again. `RELAXATION_SETTINGS` in cell 1.4
-holds the manuscript's force threshold, 0.005 eV/Å written in Ry/Bohr, which stays the stopping criterion, and `nstep`,
-the number of ionic steps after which each relaxation ends inside `TIME_LIMIT`; section 7.2 of the notebook prints the
-residual force. In order to reach the threshold, raise `nstep` together with `TIME_LIMIT`, as far as the cluster
+`PT_ATOM_BOX` in cell 1.2 is the edge of the cubic box around the isolated Pt atom. A new box is a new material, so the
+Total Energy job of the Pt atom runs again. `RELAXATION_SETTINGS` in cell 1.4 holds the manuscript's force threshold,
+0.005 eV/Å, which stays the stopping criterion, and `nstep`, the number of ionic steps after which each relaxation ends
+inside `TIME_LIMIT`. In order to reach the threshold, raise `nstep` together with `TIME_LIMIT`, as far as the cluster
 allows. Both values are part of the relaxation jobs' names, so a change relaxes the three slabs again.
 
 ### 7.2. Adjust computational resources
@@ -184,12 +186,13 @@ and a name that is not available makes the notebook stop and list the ones that 
 
 ### 7.3. Use the manuscript's settings
 
-Apart from the code, the pseudopotentials and the cutoff, section 4 follows the manuscript wherever it states a setting;
-the lattice constant, the Pt atom box, the fixed cell and the `nstep` bound are this tutorial's. The manuscript's
-lattice constant is 3.18 Å and the structure notebook keeps Standata's 3.196 Å, 0.5 % apart; in order to match it,
-strain the substrate in the structure notebook before the slab is built. The manuscript's PAW potentials are VASP's and
-cannot be matched. Quantum ESPRESSO's are selected with `PSEUDOPOTENTIAL_TYPE = "paw"`; neither they nor a cutoff for
-them is tested here, and the manuscript's 350 eV does not transfer.
+Apart from the code, the pseudopotentials, the cutoff and the lattice constant, section 4 follows the manuscript
+wherever it states a setting; the Pt atom box, the fixed cell and the `nstep` bound are this tutorial's. In order to
+match the manuscript's 3.18 Å, 0.5 % below Standata's, apply `create_strain` to the substrate in the structure notebook
+before the slab is built, as in [Graphene on h-BN](interface-2d-2d-graphene-boron-nitride.md#31-strain-the-materials).
+The manuscript's PAW potentials are VASP's and cannot be matched. Quantum ESPRESSO's are selected with
+`PSEUDOPOTENTIAL_TYPE = "paw"`; neither they nor a cutoff for them is tested here, and the manuscript's 350 eV does not
+transfer. The structure notebook's 3x3 materials are used by changing the three names in section 1.2.
 
 ## 8. Troubleshooting
 
