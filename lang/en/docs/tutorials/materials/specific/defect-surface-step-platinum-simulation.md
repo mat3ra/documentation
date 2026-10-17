@@ -31,9 +31,12 @@ the Pt(211) step, reproducing results from the following manuscript:
 
 This tutorial builds upon the [Terrace Steps on Platinum (111) Surface](defect-surface-step-platinum.md)
 tutorial, where the slabs with the O₂ precursor and the dissociated O pair are created. Here, both are relaxed
-with Quantum ESPRESSO if `RELAX` is set; a climbing-image
+with the MACE machine-learned force field if `RELAX` is set. The barrier then comes from the manuscript's own
+method, run with MACE in the notebook: the O–O distance is held at each point of a 0.2 Å grid while every other
+coordinate relaxes. With `RUN_DFT_NEB` set, a climbing-image
 [nudged elastic band]({{ reference_url }}/models/auxiliary-concepts/nudged-elastic-band/) (NEB) calculation
-runs between them on each surface, and the barriers are compared with Table 1 of the manuscript.
+with the manuscript's functional also runs between them on the platform. The barriers are compared with Table 1
+of the manuscript.
 
 The figure below shows FIG. 1 of the manuscript; the paths computed here are panels A (Pt(111),
 top–fcc–bridge) and B (Pt(211) step, top–bridge–top):
@@ -54,39 +57,36 @@ Before starting this tutorial, one of the following steps should be completed:
 
 The barrier calculation consists of the following steps:
 
-1. **Set up the environment and parameters**: Configure material names, the k-grid of each surface, the
+1. **Set up the environment and parameters**: Configure material names, the MACE force field, the scan, the
    Density Functional Theory (DFT) model, and compute resources
 2. **Authenticate and initialize API client**: Connect to the platform
 3. **Load materials**: Import the four materials by name and print their atom counts
-4. **Configure the model**: One DFT model for every workflow below
-5. **Configure compute resources**: Select the cluster, queue, and processor settings
-6. **Relax the four materials** (optional): Only if `RELAX` is set, at fixed cell, reusing a relaxation job
-   if one is found
-7. **Run the nudged elastic band**: One climbing-image NEB per surface, from the precursor to the dissociated
-   pair, both relaxed if `RELAX` is set
-8. **Retrieve results**: The energy profile, the barrier, the O–O distance at the highest image, the image error
-9. **Compare with the manuscript**: Print our values beside Šljivančanin & Hammer's
+4. **Configure the model**: One DFT model for the NEB
+5. **Configure compute resources**: Select the cluster, queue, nodes, and processor settings
+6. **Relax and scan with MACE**: Relax the materials if `RELAX` is set, then scan the O–O distance on the grid
+7. **Run the nudged elastic band** (optional): Only if `RUN_DFT_NEB` is set, one climbing-image NEB per
+   surface with RPBE on the platform
+8. **Retrieve results**: The NEB energy profile, barrier, O–O distance at the highest image, and image error
+9. **Compare with the manuscript**: Print the MACE values, and the NEB values if run, beside the manuscript's
 
 ## 4. Calculation parameters
 
-| | this tutorial | Šljivančanin & Hammer |
-|---|---|---|
-| Code | Quantum ESPRESSO 7.5: the functional below, set through `input_dft`, needs 7.x | not stated |
-| Functional | RPBE of Hammer, Hansen and Nørskov | RPBE |
-| Pseudopotentials | ultrasoft (GBRV) | ultrasoft (Vanderbilt) |
-| Cutoff | 40 / 200 Ry | 25 Ry |
-| Pt lattice constant | 3.943 Å (Standata, mp-126) | 4.02 Å |
-| Pt(111) slab | 3 layers × 16 Pt | 4 layers × 9 Pt |
-| Pt(211) slab | 8 (211) planes × 4 Pt along the step | 12 (211) planes × 3 Pt along the step |
-| k-points | 2×2×1 | 6×4×1 |
-| Smearing | Marzari-Vanderbilt, 0.01 Ry | not stated |
-| Spin | not spin-polarized | not spin-polarized for the adsorbed states |
-| Relaxation | all atoms, fixed cell, force components below 0.1 eV/Å | upper half of the Pt atoms and the O atoms, total force below 0.1 eV/Å |
-| Transition state | climbing-image NEB, path threshold 0.1 eV/Å | relaxations at fixed O–O distance, on a 0.2 Å grid |
-| Dissociated pair | Pt(111): two neighbouring fcc hollows; Pt(211): two step-edge bridges, 2 Pt apart | not given |
+| | MACE scan (default) | RPBE NEB (`RUN_DFT_NEB = True`) | Šljivančanin & Hammer |
+|---|---|---|---|
+| Where it runs | in the notebook | on the platform, Quantum ESPRESSO 7.5: RPBE through `input_dft` needs 7.x | code not stated |
+| Energy | MACE-MP-0 large, no dispersion correction | RPBE of Hammer, Hansen and Nørskov | RPBE |
+| Pseudopotentials, cutoff | — | ultrasoft (GBRV), 40 / 200 Ry | ultrasoft (Vanderbilt), 25 Ry |
+| k-points, smearing | — | 2×2×1, Marzari-Vanderbilt 0.01 Ry | 6×4×1, not stated |
+| Spin | — | not spin-polarized | not spin-polarized for the adsorbed states |
+| Transition state | highest point, O–O fixed on a 0.2 Å grid | climbing image, path threshold 0.1 eV/Å | highest point, O–O fixed on a 0.2 Å grid |
+| Relaxation | all atoms, in the scan all but the O–O distance; largest force below 0.1 eV/Å | end points from the MACE relaxation if `RELAX` | upper half of the Pt atoms and the O atoms, total force below 0.1 eV/Å |
+| Pt lattice constant | 3.943 Å (Standata, mp-126) | 3.943 Å | 4.02 Å |
+| Pt(111) slab | 3 layers × 16 Pt | 3 layers × 16 Pt | 4 layers × 9 Pt |
+| Pt(211) slab | 8 (211) planes × 4 Pt along the step | 8 (211) planes × 4 Pt | 12 (211) planes × 3 Pt along the step |
 
-A job whose workflow has the same name and k-grid on the same material is reused. The workflow names carry
-the application version and the DFT settings, so changing one starts new jobs.
+The dissociated pair, not given in the manuscript, ends the scan and the NEB: both O in neighbouring fcc hollows
+on Pt(111), on step-edge bridges 2 Pt apart on Pt(211). An NEB job with the same workflow name and k-grid on the
+same material is reused; a new application version or DFT setting starts new jobs.
 
 ## 5. Step-by-step instructions
 
@@ -100,8 +100,8 @@ other/materials_designer/specific_examples/defect_surface_step_platinum_SIMULATI
 
 ### 5.2. Configure parameters
 
-The parameters cells set the material names, the k-grid of each surface, the compute resources, and the
-DFT model:
+The parameters cells set the material names, the k-grid of each surface, the MACE force field and the scan,
+the compute resources, and the DFT model:
 
 ```python
 SURFACES = {
@@ -111,25 +111,30 @@ SURFACES = {
                 "kgrid": [2, 2, 1], "paper_barrier": 0.9, "paper_transition_state_oxygen_distance": 3.0},
 }
 
-# RPBE, set in 1.4, needs Quantum ESPRESSO 7.x
-APPLICATION_VERSION = "7.5"
-
 RELAX = True
+MACE_MODEL_FAMILY = "MACE-MP-0"
+MACE_MODEL = "large"
+MACE_DISPERSION = False
+FMAX = 0.1  # eV/Å
+OXYGEN_DISTANCE_STEP = 0.2  # Å
+
+RUN_DFT_NEB = False
 
 CLUSTER_NAME = None
-QUEUE_NAME = QueueName.OR
-PPN = 16  # OR allows 16 cores per job
+QUEUE_NAME = QueueName.OF
+NODES = 4
+PPN = 40
 TIME_LIMIT = "04:00:00"
 
+APPLICATION_VERSION = "7.5"
 # selects the GBRV PBE pseudopotentials; QE_SYSTEM_SETTINGS sets the functional to RPBE
 FUNCTIONAL = "pbe"
 PSEUDOPOTENTIAL_TYPE = "us"
 ECUTWFC = 40   # Ry
 ECUTRHO = 200  # Ry
 QE_SYSTEM_SETTINGS = {"input_dft": "rpbe", "nspin": 1, "occupations": "smearing", "smearing": "mv", "degauss": 0.01}
-RELAXATION_SETTINGS = {"forc_conv_thr": 3.9e-3, "nstep": 100}
+QE_ELECTRONS_SETTINGS = {"mixing_mode": "local-TF", "mixing_beta": 0.2}
 N_IMAGES = 1
-# neb.x stops here, converged or not; the largest image error is printed in 9
 NEB_MAXIMUM_ITERATIONS = 50
 NEB_PATH_SETTINGS = {"nstep_path": NEB_MAXIMUM_ITERATIONS, "minimum_image": True}
 ```
@@ -143,16 +148,21 @@ then runs the steps listed in section 3.
 
 ### 5.4. Monitor progress
 
-The notebook polls the jobs: the four relaxations if `RELAX` is set, then the two NEB jobs.
+The MACE relaxations and scans run in the notebook; with `RUN_DFT_NEB` set, it then polls the two NEB jobs.
 
 ### 5.5. Analyze results
 
-The last cells print the barrier and the O–O distance at the climbing image of each surface beside the
-manuscript's values, and plot both energy profiles:
+The last cells print the barrier and the O–O distance at the transition state of each surface beside the
+manuscript's values, and plot the scans. With the default `RUN_DFT_NEB = False`, only the `(MACE)` lines print;
+with `True`, each surface's NEB lines follow its MACE lines:
 
 ```
+Pt(111) barrier (MACE): 0.205 eV, Šljivančanin & Hammer 0.6 eV (-65.9 %)
+Pt(111) O–O at the transition state (MACE): 1.80 Å, Šljivančanin & Hammer 2.4 Å (-25.0 %)
 Pt(111) barrier: <value> eV, Šljivančanin & Hammer 0.6 eV (<value> %), largest image error <value> eV/Å
 Pt(111) O–O at the climbing image: <value> Å, Šljivančanin & Hammer 2.4 Å (<value> %)
+Pt(211) barrier (MACE): 0.740 eV, Šljivančanin & Hammer 0.9 eV (-17.8 %)
+Pt(211) O–O at the transition state (MACE): 1.80 Å, Šljivančanin & Hammer 3.0 Å (-40.0 %)
 Pt(211) barrier: <value> eV, Šljivančanin & Hammer 0.9 eV (<value> %), largest image error <value> eV/Å
 Pt(211) O–O at the climbing image: <value> Å, Šljivančanin & Hammer 3.0 Å (<value> %)
 ```
@@ -162,51 +172,55 @@ Pt(211) O–O at the climbing image: <value> Å, Šljivančanin & Hammer 3.0 Å 
 Table 1 of the manuscript gives the barrier from the O₂ precursor, computed with RPBE, as 0.6 eV on Pt(111)
 (top–fcc–bridge, FIG. 1 A) and 0.9 eV at the Pt(211) step (top–bridge–top, FIG. 1 B), with an O–O distance at
 the transition state of 2.4 Å and 3.0 Å. FIG. 2 draws the same barriers as energy levels measured from
-gas-phase O₂; the profiles here are measured from the precursor.
+gas-phase O₂; the scans and profiles here are measured from the precursor.
 
 ### 6.1. Comparison with published results
 
-| | Šljivančanin & Hammer, RPBE | this tutorial, `"kgrid": [2, 2, 1]` (default) |
-|---|---|---|
-| Pt(111) barrier | 0.6 eV | `<value>` eV (`<value>` %) |
-| Pt(211) barrier | 0.9 eV | `<value>` eV (`<value>` %) |
-| Pt(111) O–O at the transition state | 2.4 Å | `<value>` Å (`<value>` %) |
-| Pt(211) O–O at the transition state | 3.0 Å | `<value>` Å (`<value>` %) |
+| | Šljivančanin & Hammer, RPBE | MACE scan (default) | RPBE NEB (`RUN_DFT_NEB = True`) |
+|---|---|---|---|
+| Pt(111) barrier | 0.6 eV | 0.205 eV (−65.9 %) | `<value>` eV (`<value>` %) |
+| Pt(211) barrier | 0.9 eV | 0.740 eV (−17.8 %) | `<value>` eV (`<value>` %) |
+| Pt(111) O–O at the transition state | 2.4 Å | 1.80 Å (−25.0 %) | `<value>` Å (`<value>` %) |
+| Pt(211) O–O at the transition state | 3.0 Å | 1.80 Å (−40.0 %) | `<value>` Å (`<value>` %) |
 
-The figure below shows the Pt(111) and Pt(211) panels of FIG. 2 of the manuscript (left) beside the NEB energy
-profiles of this tutorial (right), where the dashed lines mark the manuscript's barriers:
+The figure below shows the Pt(111) and Pt(211) panels of FIG. 2 of the manuscript (left) beside the MACE scans
+of this tutorial (right), where the dashed lines mark the manuscript's barriers:
 
-![O₂ dissociation energy on Pt(111) and Pt(211)](../../../images/tutorials/materials/defects/defect_surface_step_platinum/energy-profile-comparison.webp "O₂ dissociation energy: manuscript, FIG. 2 (left) vs. NEB energy profiles (right)")
+![O₂ dissociation energy on Pt(111) and Pt(211)](../../../images/tutorials/materials/defects/defect_surface_step_platinum/energy-profile-comparison.webp "O₂ dissociation energy: manuscript, FIG. 2 (left) vs. fixed O–O scans with MACE (right)")
 
 ## 7. Customization options
 
-### 7.1. Choose the k-grid, the number of images and the relaxation
+### 7.1. Choose the force field, the scan and the relaxation
 
-`"kgrid"` in `SURFACES` (cell 1.2) is the k-grid of the relaxations and of the NEB on that surface; `[2, 2, 1]`
-is fast and not converged. `N_IMAGES` (cell 1.4) is the number of images between the end points: with
-one, the path is the precursor, one climbing image, and the dissociated pair. neb.x stops after
-`NEB_MAXIMUM_ITERATIONS`, converged or not; the path is converged when the largest image error printed on
-the barrier line is below 0.1 eV/Å. A new k-grid re-runs the relaxations and the NEB of that surface; a new
-`N_IMAGES` or `NEB_MAXIMUM_ITERATIONS` re-runs the NEB jobs only.
+`MACE_MODEL_FAMILY` and `MACE_MODEL` (cell 1.3) select the MACE force field; `MACE_DISPERSION = False` matches
+the manuscript's RPBE, which has no dispersion correction. `FMAX` is the largest force on an atom at which each
+relaxation stops, and `OXYGEN_DISTANCE_STEP` the grid of the scan, the manuscript's 0.1 eV/Å and 0.2 Å. The scan
+starts at the first grid point above the precursor's O–O distance and ends below the dissociated pair's.
 
-`RELAX = True` (cell 1.3) relaxes the four materials before the NEB, as the manuscript does. `RELAX = False` runs
-the NEB between the structures as built, without the relaxations: faster, and the barrier is then measured from
-an unrelaxed precursor. Switching it starts new NEB jobs, as the end points change.
+`RELAX = True` relaxes the four materials with MACE first, as the manuscript does: the scan starts from the
+relaxed precursor, and the relaxed materials are the end points of the NEB. `RELAX = False` uses the structures
+as built: faster, and the barrier is then measured from an unrelaxed precursor.
 
 ### 7.2. Adjust computational resources
 
-The default, `CLUSTER_NAME = None`, uses the account's first listed cluster; setting a specific name picks
-that cluster instead, and a name that is not available makes the notebook stop and list the ones that are.
+The compute settings apply to the NEB only. The default, `CLUSTER_NAME = None`, uses the account's first listed
+cluster; setting a specific name picks that cluster instead, and a name that is not available makes the notebook
+stop and list the ones that are. The OF queue runs one job on up to 10 nodes, the OR queue on one 16-core node;
+`NODES` and `PPN` set the job's size.
 
 ### 7.3. Use the manuscript's settings
 
-The functional and the spin treatment are the manuscript's. The other settings can be moved toward the
-manuscript's in the [structure notebook](defect-surface-step-platinum.md) and in section 7.1:
+The MACE scan is the manuscript's method with a force field in place of its functional. `RUN_DFT_NEB = True`
+adds the functional: one climbing-image NEB per surface with RPBE on the platform, each a multi-node job on the
+OF queue. It is an NEB rather than a scan because the platform cannot hold a fixed O–O distance. Its cost
+grows with `"kgrid"` in `SURFACES` (cell 1.2; the manuscript's 6×4×1 is on its own, smaller cells) and with
+`N_IMAGES`; neb.x stops after `NEB_MAXIMUM_ITERATIONS`, converged or not, and the path is converged when the
+largest image error on the barrier line is below 0.1 eV/Å. A new value of any of the three starts new NEB jobs.
 
-- **Pt(211) slab**: `THICKNESS = 3` gives the manuscript's 12 (211) planes; made's (211) cell holds an even
-  number of Pt along the step, so the manuscript's 3 is not reachable
+- **Pt(211) slab**: `THICKNESS = 3` in the [structure notebook](defect-surface-step-platinum.md) gives the
+  manuscript's 12 (211) planes; made's (211) cell holds an even number of Pt along the step, so 3 is not reachable
 - **Pt(111) slab**: stays at 3 layers, where the oxygen site of the structure notebook is the fcc hollow
-- **Fixed atoms**: all atoms relax, as the platform does not keep fixed atoms
+- **Fixed atoms**: all atoms relax apart from the scanned O–O distance, as the platform's NEB keeps no fixed atoms
 
 ## 8. Troubleshooting
 
@@ -221,12 +235,11 @@ its `uploads` folder holds the four materials under the names of cell 1.2.
 If section 5.1 of the notebook prints an empty list of clusters, there is nothing to submit to, and section
 5.2 stops. A cluster has to be available to the account before the notebook can run.
 
-### 8.3. No barrier on the first run
+### 8.3. No NEB barrier on the first run
 
-The platform's access token lasts one hour and can expire while the notebook waits for the relaxations or the
-NEB jobs in sections 6 and 7. The jobs keep running. Restart the kernel and run all cells again (*Kernel* >
-*Restart Kernel and Run All Cells*): the notebook asks for a new login and picks up the running and finished
-jobs.
+The platform's access token lasts one hour and can expire while the notebook waits for the NEB jobs in section
+7. The jobs keep running. Restart the kernel and run all cells again (*Kernel* > *Restart Kernel and Run All
+Cells*): the notebook asks for a new login and picks up the running and finished jobs.
 
 ### 8.4. Barrier far from the published value
 
@@ -239,8 +252,8 @@ Pt(211) step O2 precursor: 34 atoms
 Pt(211) step 2O dissociated: 34 atoms
 ```
 
-Then, if `RELAX` is set, open the relaxed end points, saved to the account as `<name> relaxed <relaxation tag>`:
-the O atoms of each should still sit on the sites of section 4 of the structure tutorial.
+Then, if `RELAX` is set, view the relaxed materials, saved to the account as `<name> relaxed MACE-MP-0 large` when
+`RUN_DFT_NEB` is set: the O atoms of each should still sit on the sites of section 4 of the structure tutorial.
 
 ## 9. Interactive JupyterLite notebook
 
