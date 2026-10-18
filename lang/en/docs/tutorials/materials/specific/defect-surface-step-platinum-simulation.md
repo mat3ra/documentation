@@ -194,12 +194,11 @@ of this tutorial (right), where the dashed lines mark the manuscript's barriers:
 
 `MACE_MODEL_FAMILY` and `MACE_MODEL` (cell 1.3) select the MACE force field; `MACE_DISPERSION = False` matches
 the manuscript's RPBE, which has no dispersion correction. `FMAX` is the largest force on an atom at which each
-relaxation stops, and `OXYGEN_DISTANCE_STEP` the grid of the scan, the manuscript's 0.1 eV/Å and 0.2 Å. The scan
-starts at the first grid point above the precursor's O–O distance and ends below the dissociated pair's.
+relaxation stops: the manuscript's 0.1 eV/Å, which it applies to the total force. `OXYGEN_DISTANCE_STEP` is its
+0.2 Å grid, from the first point above the precursor's O–O distance to below the dissociated pair's.
 
-`RELAX = True` relaxes the four materials with MACE first, as the manuscript does: the scan starts from the
-relaxed precursor, and the relaxed materials are the end points of the NEB. `RELAX = False` uses the structures
-as built: faster, and the barrier is then measured from an unrelaxed precursor.
+`RELAX = True` relaxes the four materials with MACE first, as the end points of the NEB. `RELAX = False` runs the
+NEB on the structures as built; the scan always starts from the MACE-relaxed precursor.
 
 ### 7.2. Adjust computational resources
 
