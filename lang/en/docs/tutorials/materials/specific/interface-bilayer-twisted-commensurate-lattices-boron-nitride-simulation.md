@@ -30,7 +30,7 @@ and reads off the width of its top set of flat valence bands, as in the followin
     "Multiflat Bands and Strong Correlations in Twisted Bilayer Boron Nitride: Doping-Induced Correlated Insulator and Superconductor" Nano Lett. 19, 4934–4940 (2019)
     [DOI: 10.1021/acs.nanolett.9b00986](https://doi.org/10.1021/acs.nanolett.9b00986) [@Xian2020]
 
-![Twisted bilayer h-BN from the manuscript and the structure notebook](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/commensurate-top-view-comparison.webp "Top view: Xian et al. 2019, Fig. 1a,b, configurations α (a) and β (b) with the moiré cell outlined (left), and the 7.34° configuration α bilayer built by the structure notebook, 244 atoms, B pink, N blue, cell outlined (right)")
+![Twisted bilayer h-BN from the manuscript and the structure notebook](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/commensurate-top-view-comparison.webp "Top view: Xian et al. 2019, Fig. 1a,b, configurations α (a) and β (b) with the moiré cell outlined, CC-BY (left), and the 7.34° configuration α bilayer built by the structure notebook, 244 atoms, B pink, N blue, cell outlined (right)")
 
 ### 1.1. What the manuscript found
 
@@ -115,10 +115,8 @@ PLOT_ENERGY_RANGE = (-0.5, 0.1)  # eV, relative to the top of the flat bands
 
 ### 4.1. K-point sampling
 
-`KGRID = [1, 1, 1]` samples the Γ point only, as the manuscript's self-consistent run (Supporting
-Information, p. 2). `KPATH` lists the vertices of the path and the number of steps from each to the
-next; the `steps` values set how many points the bands are computed at. The manuscript does not
-state its number of path points.
+`KPATH` lists the vertices of the path and the number of steps from each to the next; the `steps`
+values set how many points the bands are computed at.
 
 ### 4.2. The band structure path belongs to the moiré cell
 
@@ -182,7 +180,7 @@ width and the separation, and section 8 prints them beside the manuscript's valu
 
 ## 6. Expected results
 
-### 6.1. Flat-band width against twist angle
+### 6.1. Flat-band width
 
 The last cell prints the number of bands in the top valence flat set and its width along Γ–K–M
 beside the manuscript's value, and the separation of the set from the bands below:
@@ -196,7 +194,8 @@ beside the manuscript's value, and the separation of the set from the bands belo
 
 ### 6.2. Band structure
 
-Section 7.3 of the notebook plots the bands within `PLOT_ENERGY_RANGE` of the top of the flat set.
+The right panel of the figure above is the plot of section 7.3 of the notebook: the bands within
+`PLOT_ENERGY_RANGE` of the top of the flat set.
 The manuscript plots such bands at 2.64° (Fig. 1f) and from 5.08° to 2.64° (Supporting Information,
 Fig. S2), not at 7.34°.
 

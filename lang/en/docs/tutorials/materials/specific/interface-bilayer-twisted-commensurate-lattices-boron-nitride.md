@@ -33,7 +33,7 @@ The manuscript's two configurations, α and β, share one moiré cell and their 
 
 Figure 1a,b of the manuscript shows both configurations (left); the cell built in this tutorial is shown next to it in the same top view (right).
 
-![Twisted bilayer h-BN from the manuscript and the structure notebook](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/commensurate-top-view-comparison.webp "Top view: Xian et al. 2019, Fig. 1a,b, configurations α (a) and β (b) with the moiré cell outlined (left), and the 7.34° configuration α bilayer built by the structure notebook, 244 atoms, B pink, N blue, cell outlined (right)")
+![Twisted bilayer h-BN from the manuscript and the structure notebook](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/commensurate-top-view-comparison.webp "Top view: Xian et al. 2019, Fig. 1a,b, configurations α (a) and β (b) with the moiré cell outlined, CC-BY (left), and the 7.34° configuration α bilayer built by the structure notebook, 244 atoms, B pink, N blue, cell outlined (right)")
 
 ## 2. Load and preview h-BN structure
 
