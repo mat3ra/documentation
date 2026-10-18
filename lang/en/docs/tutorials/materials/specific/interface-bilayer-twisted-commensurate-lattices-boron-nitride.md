@@ -90,7 +90,7 @@ After setting the parameters, run the notebook to build the bilayer.
 ### 3.4. Check the geometry
 
 The notebook prints the atom count, the composition, the cell, the interlayer distance, and the
-twist angle of the built structure:
+target twist angle of the built structure:
 
 ```
 h-BN bilayer 7.34deg alpha d3.23: 244 atoms (B122N122), a = 19.596 Å, gamma = 120.0°, interlayer distance 3.230 Å, target twist 67.34°
@@ -100,7 +100,8 @@ h-BN bilayer 7.34deg alpha d3.23: 244 atoms (B122N122), a = 19.596 Å, gamma = 1
 
 The notebook shows the bilayer from the top and from the side. The structure is saved to the
 `uploads` folder under `MATERIAL_NAME`, and can also be passed to the Materials Designer for further
-analysis. Its top view is the right panel of the figure in section 1.
+analysis. The right panel of the figure in section 1 is this cell's structure, rotated to the
+orientation of the manuscript's Fig. 1a.
 
 Once the structure exists, the
 [band structure tutorial](interface-bilayer-twisted-commensurate-lattices-boron-nitride-simulation.md)
