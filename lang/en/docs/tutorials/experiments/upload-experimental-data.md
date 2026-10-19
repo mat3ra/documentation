@@ -11,18 +11,17 @@ render_macros: true
 
 # Upload Experimental Data to AlphaFilm
 
-This page explains how the laboratories of the AlphaFilm project, NLR and the University of Tennessee, Knoxville
-(UTK), upload their measurements to
+This page explains how a laboratory of the AlphaFilm project uploads its measurements to
 [alphafilm.mat3ra.com](https://alphafilm.mat3ra.com). A wafer is a Sample Set. Inside it sit Sample Sets for its
-measurements, which come as Measurement Sets: one folder, one command, one Measurement Set. Both laboratories see
-everything.
+measurements, which come as Measurement Sets: one folder, one command, one Measurement Set. Every laboratory in the
+organization sees everything.
 
 
 ## 1. Account in the AlphaFilm organization
 
 Everything for the project goes into one [organization]({{ reference_url }}/collaboration/organizations/overview/) on
-the site, AlphaFilm: NLR creates the wafer there (section 2) and both laboratories upload their runs into it
-(section 3).
+the site, AlphaFilm: the wafer's Sample Set is created there (section 2), and every run measured on the wafer is
+uploaded into it (section 3).
 
 Accounts are created in advance: the username and password of each lab member are in the file shared on Google Drive.
 The password can be [changed]({{ interface_url }}/accounts/ui/preferences/password/) after signing in at
@@ -37,7 +36,7 @@ open *Accounts* in the left sidebar, find AlphaFilm and choose **Set default** i
 ## 2. A wafer as a Sample Set
 
 Each wafer is one [set]({{ reference_url }}/entities-general/sets/) of samples, a Sample Set, named by the ID on the
-physical wafer, and everything measured on that wafer is uploaded under that name. NLR creates the set in the browser
+physical wafer, and everything measured on that wafer is uploaded under that name. The set is created in the browser
 when the wafer is made; another wafer gets its own set the same way.
 
 First, open the *Samples* tab of the account page from the left sidebar. Then, click **+ SET** at the top right, give
@@ -84,15 +83,15 @@ is a new folder for the output:
 mat3ra-parse asylum-spm RUN upload
 ```
 
-The three instruments are UTK's Asylum Research microscope for switching spectroscopy piezoresponse force microscopy
-(SS-PFM), and NLR's X-ray fluorescence (XRF) and current-voltage (I-V) instruments. What `mat3ra-parse` takes for
-each:
+The instruments with a parser today are an Asylum Research microscope for switching spectroscopy piezoresponse force
+microscopy (SS-PFM), an X-ray fluorescence (XRF) instrument, and a current-voltage (I-V) instrument. What
+`mat3ra-parse` takes for each:
 
 | Instrument | Input | Makes |
 |:-----------|:------|:------|
-| `asylum-spm` | the Asylum SS-PFM run's folder (UTK) | one measurement per pad, with its hysteresis loop and loop files; a pad without loops has neither |
-| `xrf-instrument` | the XRF grid table (NLR) | one measurement per site, with the site's row of the table |
-| `dc-iv-instrument` | the I-V folder with `IV_Volts.txt` and `IV_Amps.txt` (NLR) | one measurement per row, with that row of both files |
+| `asylum-spm` | the Asylum SS-PFM run's folder | one measurement per pad, with its hysteresis loop and loop files; a pad without loops has neither |
+| `xrf-instrument` | the XRF grid table | one measurement per site, with the site's row of the table |
+| `dc-iv-instrument` | the I-V folder with `IV_Volts.txt` and `IV_Amps.txt` | one measurement per row, with that row of both files |
 
 ### 3.4. Upload the folder
 
@@ -240,10 +239,10 @@ A measurement is one JSON document holding everything about it, with a folder of
 
 `setup` is the instrument, the session and the settings as the lab has them, and what the instrument did at each point
 (`points`); `sample` is a name, or
-`{name, description, metadata}`. Anything measured on a pad, I-V curves included, has the pad's size in the sample's
-`metadata`, next to its position, for example `"pad": {"shape": "circle", "size": {"radius": 0.25, "units": "mm"}}`;
-the calculations need it. It goes into a `sample.json`, as `{"pad": …}`, in the folder with the data (for XRF, the
-table's folder); `mat3ra-parse` adds whatever it holds to every sample's `metadata`.
+`{name, description, metadata}`. Whatever describes a sample beyond its position goes into the sample's `metadata`,
+for example a pad's shape and size, `"pad": {"shape": "circle", "size": {"radius": 0.25, "units": "mm"}}`; the
+calculations need it. It goes into a `sample.json`, as `{"pad": …}`, in the folder with the data (beside the input
+when it is one file); `mat3ra-parse` adds whatever it holds to every sample's `metadata`.
 
 `workflow` is the instrument's workflow document, which `mat3ra-parse` copies from fixtures into every measurement;
 for the Asylum run it adds the run's point pattern as `metadata.per_site`.
