@@ -229,13 +229,12 @@ the workflow document. Its `parse()` returns the set's document, one document pe
 A parser:
 
 - decides what one measurement is, one pad, one site or one row, and names its sample: a measurement has one sample
-- puts the instrument's own record of the session and its settings into `setup`
-- puts the point pattern of a measurement into its workflow, and what the instrument did at each point into `setup`
+- puts the instrument's own record of the session, its settings and each point into `setup`
 - copies the delivered files under `files/`, as they are
 - writes a property only for a type esse defines (section 2.3)
 - leaves results without a type in the files, rather than transcribing them into JSON
 - keeps `metadata` for context: positions, labels and the size of a pad
-- puts the workflow document into every measurement
+- puts the workflow document into every measurement, with the measurement's point pattern in the workflow's `metadata`
 
 ### 4.3. Register it in the factory
 

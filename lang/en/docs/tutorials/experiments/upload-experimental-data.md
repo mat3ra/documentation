@@ -210,7 +210,11 @@ A measurement is one JSON document holding everything about it, with a folder of
                             "...": "..."
                         }
                     ],
-                    "...": "..."
+                    "loop_settings": {
+                        "v_dc_max_v": 20.0,
+                        "frequency_hz": 0.3,
+                        "...": "..."
+                    }
                 }
             ]
         },
@@ -234,15 +238,16 @@ A measurement is one JSON document holding everything about it, with a folder of
 }
 ```
 
-`setup` is the instrument, the session and the settings as the lab has them; `sample` is a name, or
+`setup` is the instrument, the session and the settings as the lab has them, and what the instrument did at each point
+(`points`); `sample` is a name, or
 `{name, description, metadata}`. Anything measured on a pad, I-V curves included, has the pad's size in the sample's
 `metadata`, next to its position, for example `"pad": {"shape": "circle", "size": {"radius": 0.25, "units": "mm"}}`;
 the calculations need it.
 
 `workflow` is the instrument's workflow document, which `mat3ra-parse` copies from fixtures into every measurement;
+for the Asylum run it adds the run's point pattern as `metadata.per_site`.
 [Contribute Experimental Data Types](contribute-experimental-data-type.md#12-understand-the-workflow-document) shows
-one. The point pattern of a measurement belongs to its workflow (`metadata.per_site` for the Asylum run), and what the
-instrument did at each point to `setup` (`points`).
+one.
 
 The files are uploaded as the instrument wrote them. A result becomes a property once the platform has a type for it:
 an entry in `properties`, in the shape its schema shows. The *Results* tab plots a property when the platform has a
