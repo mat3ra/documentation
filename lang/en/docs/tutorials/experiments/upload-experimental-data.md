@@ -11,8 +11,8 @@ render_macros: true
 
 # Upload Experimental Data to AlphaFilm
 
-This page explains how the laboratories of the AlphaFilm project, the National Laboratory of the Rockies (NLR) and the
-University of Tennessee, Knoxville (UTK), upload their measurements to
+This page explains how the laboratories of the AlphaFilm project, NLR and the University of Tennessee, Knoxville
+(UTK), upload their measurements to
 [alphafilm.mat3ra.com](https://alphafilm.mat3ra.com). A wafer is a Sample Set. Inside it sit Sample Sets for its
 measurements, which come as Measurement Sets: one folder, one command, one Measurement Set. Both laboratories see
 everything.
