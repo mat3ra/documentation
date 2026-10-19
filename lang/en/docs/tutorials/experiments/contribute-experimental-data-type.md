@@ -223,9 +223,10 @@ git clone -b alphafilm https://github.com/mat3ra/parsers.git
 
 A parser reads a run as the instrument wrote it and returns what goes into the folder. It is a `BaseParser` subclass
 in `src/py/mat3ra/parsers/instruments/<instrument>/parser.py`, constructed with the path of the delivered input and
-the workflow document. Its `parse()` returns the set's document, one document per measurement and the files of each;
-`MeasurementSetParser` in `src/py/mat3ra/parsers/entities/measurement_set.py` writes them as the folder, adding the
-data folder's `sample.json`, when there is one, to every sample's `metadata`.
+the workflow document. Its `parse()` returns the set's document, one document per measurement and the files of each,
+as a path to copy or the lines to write; `MeasurementSetParser` in `src/py/mat3ra/parsers/entities/measurement_set.py`
+writes them as the folder, adding a `sample.json` in the input folder (for a file, beside it), when there is one, to
+every sample's `metadata`.
 
 A parser:
 

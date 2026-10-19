@@ -91,8 +91,8 @@ each:
 | Instrument | Input | Makes |
 |:-----------|:------|:------|
 | `asylum-spm` | the Asylum SS-PFM run's folder (UTK) | one measurement per pad, with its hysteresis loop and loop files; a pad without loops has neither |
-| `xrf-instrument` | the XRF grid table (NLR) | one measurement per site, the site's row of the table in its files |
-| `dc-iv-instrument` | the I-V folder with `IV_Volts.txt` and `IV_Amps.txt` (NLR) | one measurement per row, that row of both files in its files |
+| `xrf-instrument` | the XRF grid table (NLR) | one measurement per site, with the site's row of the table |
+| `dc-iv-instrument` | the I-V folder with `IV_Volts.txt` and `IV_Amps.txt` (NLR) | one measurement per row, with that row of both files |
 
 ### 3.4. Upload the folder
 
@@ -133,7 +133,7 @@ A parser writes the run into this folder:
     set.json               name, description, metadata of the measurement set
     <measurement>/         one folder per measurement, any name
         measurement.json   name, description, status, setup, workflow, sample, properties, metadata
-        files/...          optional: the measurement's own files
+        files/...          optional: the measurement's files
 ```
 
 Each file follows a schema, shown in full with a search box in the [schema explorer]({{ schemas_url }}/):
@@ -242,9 +242,8 @@ A measurement is one JSON document holding everything about it, with a folder of
 (`points`); `sample` is a name, or
 `{name, description, metadata}`. Anything measured on a pad, I-V curves included, has the pad's size in the sample's
 `metadata`, next to its position, for example `"pad": {"shape": "circle", "size": {"radius": 0.25, "units": "mm"}}`;
-the calculations need it. It goes into a `sample.json` in the folder with the data (for XRF, the table's
-folder), for example `{"pad": {"shape": "circle", "size": {"radius": 0.25, "units": "mm"}}}`; `mat3ra-parse` adds
-whatever it holds to every sample's `metadata`.
+the calculations need it. It goes into a `sample.json`, as `{"pad": …}`, in the folder with the data (for XRF, the
+table's folder); `mat3ra-parse` adds whatever it holds to every sample's `metadata`.
 
 `workflow` is the instrument's workflow document, which `mat3ra-parse` copies from fixtures into every measurement;
 for the Asylum run it adds the run's point pattern as `metadata.per_site`.
