@@ -167,9 +167,53 @@ A measurement is one JSON document holding everything about it, with a folder of
                 "...": "..."
             },
             "...": "..."
-        }
+        },
+        "points": [
+            {
+                "point_index": 0,
+                "probe_position": {
+                    "x_m": -9.99999842279679e-07,
+                    "y_m": -1.0000001587949376e-06
+                },
+                "drive_frequency_hz": 369811.38,
+                "file_path": "C:\\Users\\Asylum User\\Documents\\Asylum Research Data\\260831\\Image0231.ibw"
+            },
+            {
+                "point_index": 1,
+                "probe_position": {
+                    "x_m": 9.999999349192642e-07,
+                    "y_m": -1.0000001587949376e-06
+                },
+                "drive_frequency_hz": 368978.03,
+                "file_path": "C:\\Users\\Asylum User\\Documents\\Asylum Research Data\\260831\\Image0232.ibw"
+            },
+            {
+                "...": "..."
+            }
+        ]
     },
     "workflow": {
+        "metadata": {
+            "per_site": [
+                {
+                    "kind": "loop",
+                    "points_m": [
+                        [
+                            -1e-06,
+                            -1e-06
+                        ],
+                        [
+                            1e-06,
+                            -1e-06
+                        ],
+                        {
+                            "...": "..."
+                        }
+                    ],
+                    "...": "..."
+                }
+            ]
+        },
         "...": "..."
     },
     "sample": {
@@ -186,10 +230,7 @@ A measurement is one JSON document holding everything about it, with a folder of
             "name": "hysteresis_loop",
             "...": "..."
         }
-    ],
-    "metadata": {
-        "...": "..."
-    }
+    ]
 }
 ```
 
@@ -200,7 +241,8 @@ the calculations need it.
 
 `workflow` is the instrument's workflow document, which `mat3ra-parse` copies from fixtures into every measurement;
 [Contribute Experimental Data Types](contribute-experimental-data-type.md#12-understand-the-workflow-document) shows
-one.
+one. The point pattern of a measurement belongs to its workflow (`metadata.per_site` for the Asylum run), and what the
+instrument did at each point to `setup` (`points`).
 
 The files are uploaded as the instrument wrote them. A result becomes a property once the platform has a type for it:
 an entry in `properties`, in the shape its schema shows. The *Results* tab plots a property when the platform has a
