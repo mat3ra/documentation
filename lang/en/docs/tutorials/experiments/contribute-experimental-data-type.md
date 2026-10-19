@@ -55,8 +55,57 @@ flowchart LR
 Every measurement carries a workflow document: what was measured, with which instrument, and with which results. It
 follows the [experimental workflow]({{ schemas_url }}/#schema/workflow/experimental.json) schema: the instrument is
 named once, on the subworkflow; the units are of type `measurement` and list their results; there is no model, method
-or compute. Section 5 of [Upload Experimental Data](upload-experimental-data.md#5-upload-folder-and-its-schemas) shows
-the workflow of a switching spectroscopy piezoresponse force microscopy (SS-PFM) run.
+or compute. esse's `example/workflow/experimental.json` is the workflow of a switching spectroscopy piezoresponse
+force microscopy (SS-PFM) run, here with cuts marked `"...": "..."`:
+
+```json
+{
+    "name": "SS-PFM Hysteresis Loop",
+    "subworkflows": [
+        {
+            "name": "ss_pfm",
+            "instrument": {
+                "name": "asylum-spm",
+                "shortName": "spm",
+                "summary": "Asylum Research SPM driven by afm-lib (switching-spectroscopy PFM)",
+                "version": "1.0"
+            },
+            "properties": [
+                "hysteresis_loop"
+            ],
+            "units": [
+                {
+                    "type": "measurement",
+                    "name": "run_loop",
+                    "head": true,
+                    "results": [
+                        {
+                            "name": "hysteresis_loop"
+                        }
+                    ],
+                    "...": "..."
+                }
+            ],
+            "...": "..."
+        }
+    ],
+    "units": [
+        {
+            "type": "subworkflow",
+            "name": "ss_pfm",
+            "...": "..."
+        }
+    ],
+    "properties": [
+        "hysteresis_loop"
+    ],
+    "tags": [
+        "experimental",
+        "afm"
+    ],
+    "...": "..."
+}
+```
 
 The workflow document of each instrument lives in fixtures, beside its sample input, and `mat3ra-parse` copies it into
 every measurement it writes. The instrument's name in it is how `mat3ra-parse` finds the parser (section 4.3).
@@ -64,9 +113,9 @@ every measurement it writes. The instrument's name in it is how `mat3ra-parse` f
 ### 1.3. Work on the branch `alphafilm`
 
 Each of the three repositories has a branch `alphafilm`, and so has api-client, which provides `mat3ra-auth` and
-`mat3ra-upload`. The installation command reads parsers from its `alphafilm` branch, and the `alphafilm` extra of parsers
-installs fixtures and api-client from theirs; the tests of parsers read esse and fixtures from theirs. Each pull request below is opened
-against `alphafilm`.
+`mat3ra-upload`. The installation command reads parsers from its `alphafilm` branch, and the `alphafilm` extra of
+parsers installs fixtures and api-client from theirs; the tests of parsers read esse and fixtures from theirs. Each
+pull request below is opened against `alphafilm`.
 
 
 ## 2. `esse` repository
@@ -91,8 +140,9 @@ when a technique needs a field they lack:
 - `schema/workflow/experimental/instrument.json` → the instrument: `name`, which is required, `shortName`, `summary`
   and `version`.
 
-`schema/measurement.json` takes its `workflow` from `workflow/experimental.json`, and
-`example/workflow/experimental.json` is the SS-PFM workflow; `example/` mirrors `schema/`, one example per schema.
+`schema/measurement.json` takes its `workflow` from `schema/workflow/experimental.json`, and
+`example/workflow/experimental.json` is the workflow quoted in section 1.2; `example/` mirrors `schema/`, and an
+example is optional.
 
 ### 2.3. Add a property type
 
@@ -100,8 +150,8 @@ A result becomes a property only when esse defines its type; otherwise it stays 
 is a schema under `schema/properties_directory/`, with an example at the same path under `example/`. `hysteresis_loop`
 shows each place a type is registered: its schema and example, an entry in `manifest/properties.yaml`, its name in
 `schema/properties_directory/enum_options.json`, and a reference in `schema/property/holder.json`. The esse page
-[Contributing a schema](https://schemas.mat3ra.com/docs/contributing-a-schema.html) walks through a new property step
-by step.
+[Contributing a schema]({{ schemas_url }}/docs/contributing-a-schema.html) walks through a new property step by step;
+its pull request goes against `dev`, the one here against `alphafilm`.
 
 ### 2.4. Test and publish
 
@@ -143,12 +193,12 @@ data/instruments/asylum_spm/1.0/
     └── workflow.json
 ```
 
-`workflow.json` names the instrument on its subworkflow; the three existing ones are the starting point for a new one.
+The three existing `workflow.json` files are the starting point for a new one.
 
 ### 3.3. Register the files in the package manifest
 
-`src/py/mat3ra/fixtures/manifest.yml` gives each file a short reference under `instruments.<instrument>.v<version>`.
-`mat3ra-parse` reads the workflow at `instruments.<instrument>.v1.0.workflow`:
+`src/py/mat3ra/fixtures/manifest.yml` gives each file a reference path, `instruments/<instrument>/v<version>/<key>`.
+`mat3ra-parse` reads the workflow at `instruments/<instrument>/v1.0/workflow`; `v1.0` is the version it reads today:
 
 ```yaml
 instruments:
@@ -172,33 +222,32 @@ git clone -b alphafilm https://github.com/mat3ra/parsers.git
 ### 4.2. Write the parser
 
 A parser reads a run as the instrument wrote it and returns what goes into the folder. It is a `BaseParser` subclass
-in `instruments/<instrument>/parser.py`, constructed with the path of the delivered input and the workflow document.
-Its `parse()` returns the set's document, one document per measurement and the files of each; `MeasurementSetParser`
-in `entities/measurement_set.py` writes them as the folder. The X-ray fluorescence (XRF) parser,
-`instruments/xrf_instrument/parser.py`, is the shortest one to start from.
+in `src/py/mat3ra/parsers/instruments/<instrument>/parser.py`, constructed with the path of the delivered input and
+the workflow document. Its `parse()` returns the set's document, one document per measurement and the files of each;
+`MeasurementSetParser` in `src/py/mat3ra/parsers/entities/measurement_set.py` writes them as the folder.
 
 A parser:
 
 - decides what one measurement is, one pad, one site or one row, and names its sample: a measurement has one sample
-- puts the instrument's own record of its settings into `setup`
+- puts the instrument's own record of the session and its settings into `setup`
 - copies the delivered files under `files/`, as they are
 - writes a property only for a type esse defines (section 2.3)
 - leaves results without a type in the files, rather than transcribing them into JSON
-- keeps `metadata` for context: positions, labels, the session, and the size of a pad
+- keeps `metadata` for context: positions, labels and the size of a pad
 - puts the workflow document into every measurement
 
 ### 4.3. Register it in the factory
 
-One line in `factory.py` registers the parser under `instruments.<instrument>`, here for an instrument that its
-workflow names `my-instrument`:
+One line in `src/py/mat3ra/parsers/factory.py` registers the parser under `instruments.<instrument>`, here for an
+instrument that its workflow names `my-instrument`:
 
 ```python
 "instruments.my_instrument": "mat3ra.parsers.instruments.my_instrument.parser.MyInstrumentParser",
 ```
 
-`mat3ra-parse my-instrument RUN upload` then reads the workflow at `instruments.my_instrument.v1.0.workflow` in
-fixtures, takes the instrument's name from its subworkflow, and runs the parser registered under that name, with
-underscores for hyphens.
+`mat3ra-parse my-instrument RUN upload` then reads the workflow at `instruments/my_instrument/v1.0/workflow` in
+fixtures, takes the instrument's name from it, and runs the parser registered under that name, with underscores for
+hyphens.
 
 ### 4.4. Test against the fixture and esse
 
@@ -226,7 +275,10 @@ new property type needs no esse change.
 ### 5.1. `esse` checklist
 
   ✅ property schema under `schema/properties_directory/` and its example under `example/` <br/>
-  ✅ entries in `manifest/properties.yaml`, `enum_options.json` and `property/holder.json` <br/>
+  ✅ entries in `manifest/properties.yaml`, `schema/properties_directory/enum_options.json` and
+  `schema/property/holder.json` <br/>
+  ✅ regenerated models under `src/py/mat3ra/esse/` committed <br/>
+  ✅ entity-graph counts in `tests/js/entityGraph.tests.ts` updated <br/>
   ✅ `npm test` passes <br/>
   ✅ `[release]` commit pushed, WIP tarball published <br/>
   ✅ Merged into `alphafilm` first
@@ -234,16 +286,15 @@ new property type needs no esse change.
 ### 5.2. `fixtures` checklist
 
   ✅ delivered input and `workflow.json` under `data/instruments/<instrument>/<version>/case-001/` <br/>
-  ✅ instrument named on the workflow's subworkflow <br/>
   ✅ `manifest.yml` beside the cases <br/>
-  ✅ references under `instruments.<instrument>.v<version>` in `src/py/mat3ra/fixtures/manifest.yml` <br/>
+  ✅ references under `instruments/<instrument>/v1.0/` in `src/py/mat3ra/fixtures/manifest.yml` <br/>
   ✅ files stored in Git LFS <br/>
   ✅ Merged after the esse pull request
 
 ### 5.3. `parsers` checklist
 
-  ✅ `BaseParser` subclass in `instruments/<instrument>/parser.py` <br/>
-  ✅ one line in `factory.py`, keyed `instruments.<instrument>` <br/>
+  ✅ `BaseParser` subclass in `src/py/mat3ra/parsers/instruments/<instrument>/parser.py` <br/>
+  ✅ one line in `src/py/mat3ra/parsers/factory.py`, keyed `instruments.<instrument>` <br/>
   ✅ test reading the fixture and validating against esse <br/>
   ✅ `pytest tests/py/unit -q` passes <br/>
   ✅ Merged last
@@ -259,7 +310,7 @@ The documents and repositories this page refers to:
 
 - Usage: [Upload Experimental Data](upload-experimental-data.md)
 - Schemas: the [schema explorer]({{ schemas_url }}/) and esse's
-  [Contributing a schema](https://schemas.mat3ra.com/docs/contributing-a-schema.html)
+  [Contributing a schema]({{ schemas_url }}/docs/contributing-a-schema.html)
 - Schema repository: [github.com/mat3ra/esse](https://github.com/mat3ra/esse/tree/alphafilm)
 - Sample data repository: [github.com/mat3ra/fixtures](https://github.com/mat3ra/fixtures/tree/alphafilm)
 - Parser repository: [github.com/mat3ra/parsers](https://github.com/mat3ra/parsers/tree/alphafilm)

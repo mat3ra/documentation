@@ -25,9 +25,9 @@ the site, AlphaFilm: NLR creates the wafer there (section 2) and both laboratori
 (section 3).
 
 Accounts are created in advance: the username and password of each lab member are in the file shared on Google Drive.
-The password can be changed after signing in at [alphafilm.mat3ra.com](https://alphafilm.mat3ra.com), on the
-*Preferences* tab of the account page, with **Update password**. AlphaFilm is the default account, so everything
-created in the browser or with the commands below belongs to it. If the top right of the page shows another account,
+The password can be [changed]({{ interface_url }}/accounts/ui/preferences/password/) after signing in at
+[alphafilm.mat3ra.com](https://alphafilm.mat3ra.com). AlphaFilm is the default account, so everything created in the
+browser or with the commands below belongs to it. If the top right of the page shows another account,
 open *Accounts* in the left sidebar, find AlphaFilm and choose **Set default** in its row menu.
 
 !!!warning "Test deployment"
@@ -90,7 +90,7 @@ each:
 
 | Instrument | Input | Makes |
 |:-----------|:------|:------|
-| `asylum-spm` | the Asylum SS-PFM run's folder (UTK) | one measurement per pad, with its hysteresis loop and loop files |
+| `asylum-spm` | the Asylum SS-PFM run's folder (UTK) | one measurement per pad, with its hysteresis loop and loop files; a pad without loops has neither |
 | `xrf-instrument` | the XRF grid table (NLR) | one measurement per site, the table in its files |
 | `dc-iv-instrument` | the I-V folder with `IV_Volts.txt` and `IV_Amps.txt` (NLR) | one measurement per row, the sweeps in its files |
 
@@ -137,72 +137,76 @@ A parser writes the run into this folder:
 ```
 
 Each file follows a schema, shown in full with a search box in the [schema explorer]({{ schemas_url }}/):
-`measurement.json` is a [Measurement]({{ schemas_url }}/#schema/measurement.json), its `sample` a
-[Sample]({{ schemas_url }}/#schema/sample.json), its `workflow` an
+`measurement.json` is a [Measurement]({{ schemas_url }}/#schema/measurement.json), its `workflow` an
 [experimental Workflow]({{ schemas_url }}/#schema/workflow/experimental.json), and each entry of `properties` the
-schema of that property, [Hysteresis loop]({{ schemas_url }}/#schema/properties_directory/non_scalar/hysteresis_loop.json)
-today. `set.json` has only the three fields shown. A minimal folder that uploads is
-[upload_folder](https://github.com/mat3ra/api-client/tree/alphafilm/tests/py/data/upload_folder) in api-client.
+schema of that property,
+[Hysteresis loop]({{ schemas_url }}/#schema/properties_directory/non_scalar/hysteresis_loop.json) today. The folder
+carries `sample`, a [Sample]({{ schemas_url }}/#schema/sample.json), in place of the Measurement's `_sample`: the
+upload creates the sample and adds `_sample`. `set.json` has only the three fields shown.
 
 A measurement is one JSON document holding everything about it, with a folder of files beside it.
-`r0c00/measurement.json` from an Asylum SS-PFM run:
+`r0c00/measurement.json` as `mat3ra-parse` writes it from an Asylum SS-PFM run, with cuts marked `"...": "..."`:
 
 ```json
 {
-  "name": "20260901_171601_alscn_01448 r0c00",
-  "description": "SS-PFM hysteresis loop at site r0c00, 16 loops (8 on-field, 8 off-field)",
-  "status": "finished",
-  "setup": {
-    "instrument": {"name": "Asylum Research"},
-    "session": {"name": "20260901_171601_alscn_01448"},
-    "settings": {
-      "loop_settings": {"v_dc_max_v": 20.0, "frequency_hz": 0.3, "n_cycles": 3},
-      "pfm_excitation": {"...": "..."}
+    "name": "20260901_171601_alscn_01448 r0c00",
+    "description": "SS-PFM hysteresis loop at site r0c00, 16 loops (8 on-field, 8 off-field)",
+    "status": "finished",
+    "setup": {
+        "instrument": {
+            "name": "Asylum Research"
+        },
+        "session": {
+            "name": "20260901_171601_alscn_01448",
+            "...": "..."
+        },
+        "settings": {
+            "loop_settings": {
+                "v_dc_max_v": 20.0,
+                "frequency_hz": 0.30048078,
+                "...": "..."
+            },
+            "...": "..."
+        }
+    },
+    "workflow": {
+        "...": "..."
+    },
+    "sample": {
+        "name": "r0c00",
+        "metadata": {
+            "position": {
+                "x_stage_m": 0.021064,
+                "y_stage_m": 0.020812999
+            }
+        }
+    },
+    "properties": [
+        {
+            "name": "hysteresis_loop",
+            "...": "..."
+        }
+    ],
+    "metadata": {
+        "...": "..."
     }
-  },
-  "workflow": {"...": "the workflow document, the same for every measurement of the run"},
-  "sample": {
-    "name": "r0c00",
-    "metadata": {"position": {"x_stage_m": 0.021064, "y_stage_m": 0.020813}}
-  },
-  "properties": [
-    {"name": "hysteresis_loop", "...": "the property document in its schema's shape"}
-  ],
-  "metadata": {"...": "anything else the run recorded about this measurement"}
 }
 ```
 
-`setup` is the instrument and its settings as the lab has them; `sample` is a name, or `{name, description, metadata}`.
-Anything measured on a pad, I-V curves included, has the pad's size in the sample's `metadata`, next to its position,
-for example `"pad": {"shape": "circle", "size": {"radius": 0.25, "units": "mm"}}`; the calculations need it.
+`setup` is the instrument, the session and the settings as the lab has them; `sample` is a name, or
+`{name, description, metadata}`. Anything measured on a pad, I-V curves included, has the pad's size in the sample's
+`metadata`, next to its position, for example `"pad": {"shape": "circle", "size": {"radius": 0.25, "units": "mm"}}`;
+the calculations need it.
 
-`workflow` follows the experimental workflow schema: the instrument is named on the subworkflow, the units list their
-results, and there is no model, method or compute. The workflow of the SS-PFM run:
+`workflow` is the instrument's workflow document, which `mat3ra-parse` copies from fixtures into every measurement;
+[Contribute Experimental Data Types](contribute-experimental-data-type.md#12-understand-the-workflow-document) shows
+one.
 
-```json
-{
-  "name": "SS-PFM Hysteresis Loop",
-  "properties": ["hysteresis_loop"],
-  "subworkflows": [
-    {
-      "name": "ss_pfm",
-      "properties": ["hysteresis_loop"],
-      "instrument": {"name": "asylum-spm", "shortName": "spm", "summary": "Asylum Research SPM", "version": "1.0"},
-      "units": [
-        {"type": "measurement", "name": "run_loop", "results": [{"name": "hysteresis_loop"}], "...": "..."}
-      ]
-    }
-  ],
-  "units": [{"type": "subworkflow", "name": "ss_pfm", "...": "..."}],
-  "tags": ["afm"]
-}
-```
-
-The files are uploaded as the instrument wrote them. A result becomes a property, with its plot, once the platform has
-a type for it, the hysteresis loop today: an entry in `properties`, in the shape its schema shows. A property of a type
-the platform does not have is refused and stops the upload at that measurement. Results of other kinds stay in the
-files; their properties are built from the files once their types exist. `metadata` is for context, positions, labels,
-session, never for a result.
+The files are uploaded as the instrument wrote them. A result becomes a property once the platform has a type for it:
+an entry in `properties`, in the shape its schema shows. The *Results* tab plots a property when the platform has a
+view for it, the hysteresis loop today, and shows it as JSON otherwise. A property of a type the platform does not have
+is refused and stops the upload at that measurement. Results of other kinds stay in the files; their properties are
+built from the files once their types exist. `metadata` is for context, positions and labels, never for a result.
 
 
 ## 6. Creating the wafer's Sample Set without the browser
@@ -227,22 +231,33 @@ wafer = client.samples.create_set({
 ```
 
 A set inside another takes the parent's id as `parentSetId`. The same request without Python is
-`PUT https://alphafilm.mat3ra.com/api/2018-10-01/samples/create-set` with that body and the headers `X-Account-Id` and
-`X-Auth-Token` from the credentials file.
+`PUT https://alphafilm.mat3ra.com/api/2018-10-01/samples/create-set` with that body and the headers
+`Content-Type: application/json`, `X-Account-Id` and `X-Auth-Token`, the last two from the credentials file.
 
 
 ## 7. Troubleshooting
 
-### 7.1. Wafer set not found
+### 7.1. No credentials
 
-`mat3ra-upload` stops with `Found 0 sample sets named …` when the wafer's set does not exist, its name differs, or it
-was created under another account. Create the set in the browser under AlphaFilm (section 2) and pass its exact name.
+`mat3ra-upload` stops with `No API credentials` when `mat3ra-auth` has not been run on this computer. Run
+`mat3ra-auth alphafilm.mat3ra.com`.
 
-### 7.2. Error 401
+### 7.2. Wafer set not found
 
-`mat3ra-auth` has not been run on this computer, or was run for another host. Run `mat3ra-auth alphafilm.mat3ra.com`.
+`mat3ra-upload` stops with `Found 0 sample sets named …` when the set does not exist, its name differs, or
+`mat3ra-auth` was run for another host. Create the set in the browser (section 2), pass its exact name, or run
+`mat3ra-auth alphafilm.mat3ra.com`.
 
-### 7.3. Data read as pointer files
+### 7.3. Two sets with the same name
+
+`mat3ra-upload` stops with `Found 2 sample sets named …` when two sets with that name are visible; the upload needs
+exactly one.
+
+### 7.4. Error 401
+
+The token in use was deleted, under *Preferences* → *API Tokens*. Run `mat3ra-auth alphafilm.mat3ra.com` again.
+
+### 7.5. Data read as pointer files
 
 `mat3ra-parse` fails with `json.decoder.JSONDecodeError`, or the data it reads starts with `version https://git-lfs`:
 git-lfs was missing at installation, and the data arrived as LFS pointer files. Install git-lfs, run `git lfs install`,
@@ -252,21 +267,21 @@ then install again:
 pip install --force-reinstall "mat3ra-parsers[alphafilm] @ git+https://github.com/mat3ra/parsers.git@alphafilm"
 ```
 
-### 7.4. Property refused
+### 7.6. Property refused
 
 The upload stops at a measurement whose property has a type the platform does not define. Remove the property from
 `properties` in that `measurement.json`; the result stays in the files.
 
-### 7.5. Records under the personal account
+### 7.7. Records under the personal account
 
-The default account was not AlphaFilm at the time of the upload. Set AlphaFilm as the default account (section 1),
-create a new wafer set, and upload again.
+AlphaFilm has to be the default account before uploading (section 1). Records already created under the personal
+account stay there, and a second upload finds them by name and reuses them. Write to the Mat3ra team about them.
 
-### 7.6. Slow second run
+### 7.8. Slow second upload
 
-A second run of the same folder takes minutes: the platform lists the stored files with a signed URL per file. This is
-harmless; nothing is uploaded again.
+A second upload of the same folder takes longer than the first and changes nothing, because the platform lists the
+stored files.
 
-### 7.7. Error 403 on a file
+### 7.9. Error 403 on a file
 
 The signed URLs for the files expire after 15 minutes. Run the upload again; it sends only the missing files.
