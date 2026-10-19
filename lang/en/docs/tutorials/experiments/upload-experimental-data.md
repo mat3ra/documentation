@@ -91,8 +91,8 @@ each:
 | Instrument | Input | Makes |
 |:-----------|:------|:------|
 | `asylum-spm` | the Asylum SS-PFM run's folder (UTK) | one measurement per pad, with its hysteresis loop and loop files; a pad without loops has neither |
-| `xrf-instrument` | the XRF grid table (NLR) | one measurement per site, the table in its files |
-| `dc-iv-instrument` | the I-V folder with `IV_Volts.txt` and `IV_Amps.txt` (NLR) | one measurement per row, the sweeps in its files |
+| `xrf-instrument` | the XRF grid table (NLR) | one measurement per site, the site's row of the table in its files |
+| `dc-iv-instrument` | the I-V folder with `IV_Volts.txt` and `IV_Amps.txt` (NLR) | one measurement per row, that row of both files in its files |
 
 ### 3.4. Upload the folder
 
@@ -133,7 +133,7 @@ A parser writes the run into this folder:
     set.json               name, description, metadata of the measurement set
     <measurement>/         one folder per measurement, any name
         measurement.json   name, description, status, setup, workflow, sample, properties, metadata
-        files/...          optional: the measurement's files, as the instrument wrote them
+        files/...          optional: the measurement's own files
 ```
 
 Each file follows a schema, shown in full with a search box in the [schema explorer]({{ schemas_url }}/):
@@ -242,15 +242,18 @@ A measurement is one JSON document holding everything about it, with a folder of
 (`points`); `sample` is a name, or
 `{name, description, metadata}`. Anything measured on a pad, I-V curves included, has the pad's size in the sample's
 `metadata`, next to its position, for example `"pad": {"shape": "circle", "size": {"radius": 0.25, "units": "mm"}}`;
-the calculations need it.
+the calculations need it. It goes into a `sample.json` in the folder with the data (for XRF, the table's
+folder), for example `{"pad": {"shape": "circle", "size": {"radius": 0.25, "units": "mm"}}}`; `mat3ra-parse` adds
+whatever it holds to every sample's `metadata`.
 
 `workflow` is the instrument's workflow document, which `mat3ra-parse` copies from fixtures into every measurement;
 for the Asylum run it adds the run's point pattern as `metadata.per_site`.
 [Contribute Experimental Data Types](contribute-experimental-data-type.md#12-understand-the-workflow-document) shows
 one.
 
-The files are uploaded as the instrument wrote them. A result becomes a property once the platform has a type for it:
-an entry in `properties`, in the shape its schema shows. The *Results* tab plots a property when the platform has a
+The files are the measurement's own, as the instrument wrote them; from a table that holds many measurements, each
+gets the header and its own row. A result becomes a property once the platform has a type for it: an entry in
+`properties`, in the shape its schema shows. The *Results* tab plots a property when the platform has a
 view for it, the hysteresis loop today, and shows it as JSON otherwise. A property of a type the platform does not have
 is refused and stops the upload at that measurement. Results of other kinds stay in the files; their properties are
 built from the files once their types exist. `metadata` is for context, positions and labels, never for a result.

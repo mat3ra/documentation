@@ -224,13 +224,14 @@ git clone -b alphafilm https://github.com/mat3ra/parsers.git
 A parser reads a run as the instrument wrote it and returns what goes into the folder. It is a `BaseParser` subclass
 in `src/py/mat3ra/parsers/instruments/<instrument>/parser.py`, constructed with the path of the delivered input and
 the workflow document. Its `parse()` returns the set's document, one document per measurement and the files of each;
-`MeasurementSetParser` in `src/py/mat3ra/parsers/entities/measurement_set.py` writes them as the folder.
+`MeasurementSetParser` in `src/py/mat3ra/parsers/entities/measurement_set.py` writes them as the folder, adding the
+data folder's `sample.json`, when there is one, to every sample's `metadata`.
 
 A parser:
 
 - decides what one measurement is, one pad, one site or one row, and names its sample: a measurement has one sample
 - puts the instrument's own record of the session, its settings and each point into `setup`
-- copies the delivered files under `files/`, as they are
+- copies the measurement's own files under `files/`, as they are; from a table, its header and the measurement's row
 - writes a property only for a type esse defines (section 2.3)
 - leaves results without a type in the files, rather than transcribing them into JSON
 - keeps `metadata` for context: positions, labels and the size of a pad
