@@ -183,6 +183,10 @@ nav:
             - Gr/Ni(111) Registry and Work of Adhesion:                     tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel-simulation.md
             - Pt Adatoms Island on MoS2:                                    tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum.md
 
+        - Experimental Data:
+            - Upload Experimental Data:                                     tutorials/experiments/upload-experimental-data.md
+            - Contribute Experimental Data Types:                           tutorials/experiments/contribute-experimental-data-type.md
+
 # COMMON UI COMPONENTS
     - Interface Components:
         - Overview:                                      ui/overview.md

@@ -162,6 +162,16 @@ Platform access, notebook environments, and software management.
 | Contribute new applications | Contribute new applications to the Mat3ra platform | [Link](tutorials/contribute-new-application.md) |
 
 
+## 4. Experimental Data
+
+Uploading measurements to the AlphaFilm deployment, and adding instruments and types of results.
+
+| Topic                              | Description                                                  | Link |
+|:-----------------------------------|:-------------------------------------------------------------|:-----|
+| Upload experimental data           | Parse an instrument's run and upload it to AlphaFilm         | [Link](tutorials/experiments/upload-experimental-data.md) |
+| Contribute experimental data types | Add an instrument or a type of result: schema, data, parser  | [Link](tutorials/experiments/contribute-experimental-data-type.md) |
+
+
 <!--
 TODOs:
 - add noteebooks from https://github.com/mat3ra/api-examples/tree/main/other/materials_designer

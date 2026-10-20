@@ -49,6 +49,7 @@ extra:
         origin_url: https://jupyterlite.mat3ra.com/retro/notebooks
         origin_url_lab: https://jupyterlite.mat3ra.com/lab/tree
         notebooks_path_root: made
+    schemas_url: https://deploy-preview-442--mat3ra-esse.netlify.app
 
 theme:
     name: material
