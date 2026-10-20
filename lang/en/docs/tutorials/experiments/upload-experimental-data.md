@@ -13,8 +13,8 @@ render_macros: true
 
 This page explains how a laboratory of the AlphaFilm project uploads its measurements to
 [alphafilm.mat3ra.com](https://alphafilm.mat3ra.com). A wafer is a Sample Set. Inside it sit Sample Sets for its
-measurements, which come as Measurement Sets: one folder, one command, one Measurement Set. Every laboratory in the
-organization sees everything.
+measurements, which come as Measurement Sets, one per uploaded folder. Every laboratory in the organization sees
+everything.
 
 
 ## 1. Account in the AlphaFilm organization
@@ -23,7 +23,7 @@ Everything for the project goes into one [organization]({{ reference_url }}/coll
 the site, AlphaFilm: the wafer's Sample Set is created there (section 2), and every run measured on the wafer is
 uploaded into it (section 3).
 
-Accounts are created in advance: the username and password of each lab member are in the file shared on Google Drive.
+The Mat3ra team creates each lab member's account in advance and shares its username and password.
 The password can be [changed]({{ interface_url }}/accounts/ui/preferences/password/) after signing in at
 [alphafilm.mat3ra.com](https://alphafilm.mat3ra.com). AlphaFilm is the default account, so everything created in the
 browser or with the commands below belongs to it. If the top right of the page shows another account,
@@ -39,9 +39,9 @@ Each wafer is one [set]({{ reference_url }}/entities-general/sets/) of samples, 
 physical wafer, and everything measured on that wafer is uploaded under that name. The set is created in the browser
 when the wafer is made; another wafer gets its own set the same way.
 
-First, open the *Samples* tab of the account page from the left sidebar. Then, click **+ SET** at the top right, give
-the set the wafer's ID as its name and the synthesis notes as its description, and click **Submit**. Here the wafer is
-named `Library_1`:
+Open the *Samples* tab of the account page from the left sidebar, click **+ SET** at the top right, give the set the
+wafer's ID as its name and the synthesis notes as its description, and click **Submit**. Here the wafer is named
+`Library_1`:
 
 ![Set Name dialog with the name Library_1 and the synthesis notes](../../images/tutorials/experiments/create-wafer-sample-set.webp "Creating the Sample Set Library_1")
 
@@ -53,8 +53,8 @@ own, holding that run's samples:
 
 ## 3. Install, sign in, parse and upload
 
-The commands need Python 3.10 or newer, git and git-lfs, the Git Large File Storage (LFS) extension; `git lfs install`
-is run once after installing git-lfs. Each step is one command in a terminal.
+The commands run in a terminal and need Python 3.10 or newer, git and git-lfs. Run `git lfs install` once after
+installing git-lfs.
 
 ### 3.1. Install the commands
 
@@ -66,9 +66,9 @@ pip install "mat3ra-notebooks-utils[alphafilm] @ git+https://github.com/mat3ra/a
 
 ### 3.2. Sign in
 
-Signing in is done once. The command prints a code; confirm it in the browser signed in to alphafilm.mat3ra.com. The
-command then stores an Application Programming Interface (API) token that does not expire, with the account id and
-the host, in `.mat3ra/api_token_cache.json` in the home folder:
+Signing in is done once. The command prints a link and a code. Open the link in the browser signed in to
+alphafilm.mat3ra.com and confirm the code. The command then stores an Application Programming Interface (API) token
+that does not expire, with the account id and the host, in `.mat3ra/api_token_cache.json` in the home folder:
 
 ```bash
 mat3ra-auth alphafilm.mat3ra.com
@@ -83,9 +83,7 @@ is a new folder for the output:
 mat3ra-parse asylum-spm RUN upload
 ```
 
-The instruments with a parser today are an Asylum Research microscope for switching spectroscopy piezoresponse force
-microscopy (SS-PFM), an X-ray fluorescence (XRF) instrument, and a current-voltage (I-V) instrument. What
-`mat3ra-parse` takes for each:
+The instruments with a parser today, and what `mat3ra-parse` takes for each:
 
 | Instrument | Input | Makes |
 |:-----------|:------|:------|
@@ -238,21 +236,20 @@ A measurement is one JSON document holding everything about it, with a folder of
 ```
 
 `setup` is the instrument, the session and the settings as the lab has them, and what the instrument did at each point
-(`points`); `sample` is a name, or
+(`points`). `sample` is a name, or
 `{name, description, metadata}`. Whatever describes a sample beyond its position goes into the sample's `metadata`,
-for example a pad's shape and size, `"pad": {"shape": "circle", "size": {"radius": 0.25, "units": "mm"}}`; the
+for example a pad's shape and size, `"pad": {"shape": "circle", "size": {"radius": 0.25, "units": "mm"}}`. The
 calculations need it. It goes into a `sample.json`, as `{"pad": …}`, in the folder with the data (beside the input
-when it is one file); `mat3ra-parse` adds whatever it holds to every sample's `metadata`.
+when it is one file), before the first upload. `mat3ra-parse` adds whatever it holds to every sample's `metadata`.
+Later uploads leave existing samples as they are.
 
-`workflow` is the instrument's workflow document, which `mat3ra-parse` copies from fixtures into every measurement;
-for the Asylum run it adds the run's point pattern as `metadata.per_site`.
-[Contribute Experimental Data Types](contribute-experimental-data-type.md#33-write-the-workflow-document) shows
-one.
+`workflow` is the instrument's workflow document, the same for every measurement of the run. For the Asylum run,
+`mat3ra-parse` adds the run's point pattern as `metadata.per_site`.
+[Contribute Experimental Data Types](contribute-experimental-data-type.md#33-write-the-workflow-document) shows how
+one is written.
 
-The files are the measurement's own, as the instrument wrote them; from a table that holds many measurements, each
-gets the header and its own row. A result becomes a property once the platform has a type for it: an entry in
-`properties`, in the shape its schema shows. The *Results* tab plots a property when the platform has a
-view for it, the hysteresis loop today, and shows it as JSON otherwise. A property of a type the platform does not have
+The files are the measurement's own, as the instrument wrote them. A result becomes a property once the platform has a
+type for it: an entry in `properties`, in the shape its schema shows. A property of a type the platform does not have
 is refused and stops the upload at that measurement. Results of other kinds stay in the files; their properties are
 built from the files once their types exist. `metadata` is for context, positions and labels, never for a result.
 
@@ -303,13 +300,13 @@ exactly one.
 
 ### 7.4. Error 401
 
-The token in use was deleted, under *Preferences* → *API Tokens*. Run `mat3ra-auth alphafilm.mat3ra.com` again.
+The token in use was deleted, under the *API Tokens* section of the *Preferences* tab. Run
+`mat3ra-auth alphafilm.mat3ra.com` again.
 
 ### 7.5. Data read as pointer files
 
-`mat3ra-parse` fails with `json.decoder.JSONDecodeError`, or the data it reads starts with `version https://git-lfs`:
-git-lfs was missing at installation, and the data arrived as LFS pointer files. Install git-lfs, run `git lfs install`,
-then install again:
+`mat3ra-parse` fails with `json.decoder.JSONDecodeError`. Check `sample.json` first. Otherwise git-lfs was missing at
+installation, and the data arrived as LFS pointer files. Install git-lfs, run `git lfs install`, then install again:
 
 ```bash
 pip install --force-reinstall "mat3ra-notebooks-utils[alphafilm] @ git+https://github.com/mat3ra/api-examples.git@alphafilm"
@@ -318,7 +315,8 @@ pip install --force-reinstall "mat3ra-notebooks-utils[alphafilm] @ git+https://g
 ### 7.6. Property refused
 
 The upload stops at a measurement whose property has a type the platform does not define. Remove the property from
-`properties` in that `measurement.json`; the result stays in the files.
+`properties` in every `measurement.json`, or from the parser that writes it, and upload again. The result stays in the
+files.
 
 ### 7.7. Records under the personal account
 
