@@ -88,7 +88,7 @@ The instruments with a parser today, and what `mat3ra-parse` takes for each:
 | Instrument | Input | Makes |
 |:-----------|:------|:------|
 | `asylum-spm` | the Asylum switching spectroscopy piezoresponse force microscopy (SS-PFM) run's folder | one measurement per pad, with its hysteresis loop and loop files; a pad without loops has neither |
-| `xrf-instrument` | the X-ray fluorescence (XRF) table | one measurement per site, with the site's row of the table |
+| `xrf-instrument` | the folder with the X-ray fluorescence (XRF) table | one measurement per site, with the site's row of the table |
 | `dc-iv-instrument` | the current-voltage (I-V) folder: `IV_Volts.txt`, `IV_Amps.txt`, and `IV_Positions.txt` with the tab-separated `Row` and `Column` of each of their rows, in the same order | one measurement per pad, named `r<Row>c<Column>`, with its row of `IV_Volts.txt` and `IV_Amps.txt` |
 
 ### 3.4. Upload the folder
@@ -242,8 +242,8 @@ A measurement is one JSON document holding everything about it, with a folder of
 (`points`). `sample` is a name, or
 `{name, description, metadata}`. Whatever describes a sample beyond its position goes into the sample's `metadata`,
 for example a pad's shape and size, `"pad": {"shape": "circle", "size": {"radius": 0.25, "units": "mm"}}`. The
-calculations need it. It goes into a `sample.json`, as `{"pad": …}`, in the folder with the data (beside the input
-when it is one file), before the first upload. `mat3ra-parse` adds whatever it holds to every sample's `metadata`.
+calculations need it. It goes into a `sample.json`, as `{"pad": …}`, in the folder with the data, before the first
+upload. `mat3ra-parse` adds whatever it holds to every sample's `metadata`.
 Later uploads leave existing samples as they are.
 
 `workflow` is the instrument's workflow document, the same for every measurement of the run. For the Asylum run,
