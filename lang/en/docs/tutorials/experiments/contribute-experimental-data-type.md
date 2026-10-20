@@ -215,7 +215,8 @@ measurement, and the files of each measurement. A file is given as a path to cop
 adds the content of a `sample.json` in the input folder, or beside an input file, to every sample's `metadata`.
 
 The parser decides what one measurement is, for example one pad. It gives each measurement one sample, with a name
-and the sample's position in `metadata`. It copies the workflow document into every measurement and adds the run's
+and, when the data gives one, its position in `metadata` as `{"coordinates": [x, y], "units": …}`. It copies the
+workflow document into every measurement and adds the run's
 point pattern, when the run has one, to the workflow's `metadata`. The instrument's record of the run, such as its
 settings, goes into `setup`. A result goes into `properties` when esse defines its type (section 2). Other results
 stay in the files. Each measurement gets only its own files, copied as delivered. A measurement from a table gets the

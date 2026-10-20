@@ -89,7 +89,7 @@ The instruments with a parser today, and what `mat3ra-parse` takes for each:
 |:-----------|:------|:------|
 | `asylum-spm` | the Asylum switching spectroscopy piezoresponse force microscopy (SS-PFM) run's folder | one measurement per pad, with its hysteresis loop and loop files; a pad without loops has neither |
 | `xrf-instrument` | the X-ray fluorescence (XRF) table | one measurement per site, with the site's row of the table |
-| `dc-iv-instrument` | the current-voltage (I-V) folder with `IV_Volts.txt`, `IV_Amps.txt` and `IV_Positions.txt` | one measurement per pad, named by its Row and Column, with its row of both files |
+| `dc-iv-instrument` | the current-voltage (I-V) folder: `IV_Volts.txt`, `IV_Amps.txt`, and `IV_Positions.txt` with the tab-separated `Row` and `Column` of each of their rows, in the same order | one measurement per pad, named `r<Row>c<Column>`, with its row of `IV_Volts.txt` and `IV_Amps.txt` |
 
 ### 3.4. Upload the folder
 
@@ -221,8 +221,11 @@ A measurement is one JSON document holding everything about it, with a folder of
         "name": "r0c00",
         "metadata": {
             "position": {
-                "x_stage_m": 0.021064,
-                "y_stage_m": 0.020812999
+                "coordinates": [
+                    0.021064,
+                    0.020812999
+                ],
+                "units": "m"
             }
         }
     },
