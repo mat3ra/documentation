@@ -90,8 +90,8 @@ microscopy (SS-PFM), an X-ray fluorescence (XRF) instrument, and a current-volta
 | Instrument | Input | Makes |
 |:-----------|:------|:------|
 | `asylum-spm` | the Asylum SS-PFM run's folder | one measurement per pad, with its hysteresis loop and loop files; a pad without loops has neither |
-| `xrf-instrument` | the XRF grid table | one measurement per site, with the site's row of the table |
-| `dc-iv-instrument` | the I-V folder with `IV_Volts.txt` and `IV_Amps.txt` | one measurement per row, with that row of both files |
+| `xrf-instrument` | the XRF table | one measurement per site, with the site's row of the table |
+| `dc-iv-instrument` | the I-V folder with `IV_Volts.txt`, `IV_Amps.txt` and `IV_Positions.txt` | one measurement per pad, named by its Row and Column, with its row of both files |
 
 ### 3.4. Upload the folder
 
