@@ -246,7 +246,7 @@ when it is one file); `mat3ra-parse` adds whatever it holds to every sample's `m
 
 `workflow` is the instrument's workflow document, which `mat3ra-parse` copies from fixtures into every measurement;
 for the Asylum run it adds the run's point pattern as `metadata.per_site`.
-[Contribute Experimental Data Types](contribute-experimental-data-type.md#12-understand-the-workflow-document) shows
+[Contribute Experimental Data Types](contribute-experimental-data-type.md#33-write-the-workflow-document) shows
 one.
 
 The files are the measurement's own, as the instrument wrote them; from a table that holds many measurements, each

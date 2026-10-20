@@ -10,26 +10,18 @@ render_macros: true
 
 # Contribute Experimental Data Types to AlphaFilm
 
-This page explains how a new instrument, or a new type of result, is added to AlphaFilm, so that the commands of
-[Upload Experimental Data](upload-experimental-data.md) work for it unchanged. The work is one pull request (PR) to
-each of the repositories `esse`, `fixtures` and `parsers` that needs a change. A GitHub account, git, git-lfs, Python
-3.10 or newer, and [Node.js](https://nodejs.org) for the schema tests are required.
+This page describes how a new instrument, or a new type of result, is added to AlphaFilm, so that the commands of
+[Upload Experimental Data](upload-experimental-data.md) work for it. The work is a pull request to each of the
+repositories `esse`, `fixtures` and `parsers`. It needs a GitHub account, git, git-lfs, Python 3.10 or newer, and
+[Node.js](https://nodejs.org) for the schema tests.
 
 
 ## 1. Overview
 
-### 1.1. Understand the three repositories
-
-[**esse**](https://github.com/mat3ra/esse) holds the JSON schemas of the records: the measurement, the sample, the
-experimental workflow and the property types. The platform validates uploaded measurements and properties against
-them.
-
-[**fixtures**](https://github.com/mat3ra/fixtures) holds, for each instrument, a sample of its output as delivered and
-the workflow document of its measurements.
-
-[**parsers**](https://github.com/mat3ra/parsers) holds one parser per instrument and the `mat3ra-parse` command. The
-command reads the instrument's workflow document from fixtures, runs the parser, and writes the folder that
-`mat3ra-upload` takes.
+[**esse**](https://github.com/mat3ra/esse) holds the JSON schemas that the platform validates uploaded measurements
+and properties against. [**fixtures**](https://github.com/mat3ra/fixtures) holds, for each instrument, a sample of its
+output as delivered and the workflow document of its measurements. [**parsers**](https://github.com/mat3ra/parsers)
+holds one parser per instrument and the `mat3ra-parse` command, which writes the folder that `mat3ra-upload` takes.
 
 ```mermaid
 flowchart LR
@@ -50,13 +42,91 @@ flowchart LR
     Schemas -->|validation| Platform
 ```
 
-### 1.2. Understand the workflow document
+Laboratories install the commands from api-examples, as in
+[Upload Experimental Data](upload-experimental-data.md#31-install-the-commands). Its `alphafilm` extra installs
+api-client, parsers and fixtures from their `alphafilm` branches. The pull requests are merged in order, esse first,
+fixtures second and parsers last.
 
-Every measurement carries a workflow document: what was measured, with which instrument, and with which results. It
-follows the [experimental workflow]({{ schemas_url }}/#schema/workflow/experimental.json) schema: the instrument is
-named once, on the subworkflow; the units are of type `measurement` and list their results; there is no model, method
-or compute. esse's `example/workflow/experimental.json` is the workflow of a switching spectroscopy piezoresponse
-force microscopy (SS-PFM) run, here with cuts marked `"...": "..."`:
+
+## 2. Add a property type to `esse`
+
+This section is needed only for a new property type.
+
+### 2.1. Clone the repository
+
+Clone the `alphafilm` branch:
+
+```bash
+git clone -b alphafilm https://github.com/mat3ra/esse.git
+```
+
+### 2.2. Add the schema and register it
+
+Add the schema of the type under `schema/properties_directory/` and its example at the same path under `example/`.
+Add an entry for the type to `manifest/properties.yaml`, its name to `schema/properties_directory/enum_options.json`,
+and a reference to its schema in `schema/property/holder.json`. The `hysteresis_loop` type is registered in the same
+places. esse's guide [Contributing a schema]({{ schemas_url }}/docs/contributing-a-schema.html) describes a new
+property step by step.
+
+### 2.3. Regenerate the models and update the counts
+
+Regenerate the Python models under `src/py/mat3ra/esse/` and commit them with the schema. The new schema changes the
+entity-graph counts in `tests/js/entityGraph.tests.ts`. Update them in the same commit.
+
+### 2.4. Run the tests
+
+`npm test` builds and lints the schemas, then runs the tests:
+
+```bash
+npm install
+npm test
+```
+
+### 2.5. Publish a work-in-progress build
+
+Push a commit whose message contains `[release]`. A work-in-progress (WIP) tarball is then published under the release
+tag `wip-<short commit hash>`. AlphaFilm accepts the new property type once it is redeployed with that tarball.
+
+### 2.6. Open the pull request
+
+Open the pull request against `alphafilm`.
+
+
+## 3. Add the instrument to `fixtures`
+
+### 3.1. Clone the repository
+
+The delivered inputs and workflow documents under `data/` are stored in Git Large File Storage (LFS). LFS is set up
+before the clone:
+
+```bash
+git lfs install
+git clone -b alphafilm https://github.com/mat3ra/fixtures.git
+```
+
+### 3.2. Add the delivered output
+
+Create the folder `data/instruments/<instrument>/<version>/`. `<instrument>` is the instrument's name in its workflow,
+with underscores for hyphens, for example `asylum_spm` for `asylum-spm`. Copy a few measurements' worth of the output,
+as the instrument delivered it, into a case folder, `case-001` for the first. Name and describe each case in a
+`manifest.yml` beside the case folders. The folder of the `asylum-spm` instrument:
+
+```text
+data/instruments/asylum_spm/1.0/
+├── manifest.yml
+└── case-001/
+    ├── loops/
+    ├── summary.json
+    └── workflow.json
+```
+
+### 3.3. Write the workflow document
+
+Add the workflow document of the measurements to the case as `workflow.json`, starting from one of the three existing
+ones. The document follows the [experimental workflow]({{ schemas_url }}/#schema/workflow/experimental.json) schema.
+Name the instrument once, on the subworkflow. Give each unit the type `measurement` and list its results. esse's
+`example/workflow/experimental.json` is the workflow of a switching spectroscopy piezoresponse force microscopy
+(SS-PFM) run, here with cuts marked `"...": "..."`:
 
 ```json
 {
@@ -107,98 +177,11 @@ force microscopy (SS-PFM) run, here with cuts marked `"...": "..."`:
 }
 ```
 
-The workflow document of each instrument lives in fixtures, beside its sample input, and `mat3ra-parse` copies it into
-every measurement it writes. The instrument's name in it is how `mat3ra-parse` finds the parser (section 4.3).
+### 3.4. Register the files in the package manifest
 
-### 1.3. Work on the branch `alphafilm`
-
-Each of the three repositories has a branch `alphafilm`, and so has api-client, which provides `mat3ra-auth` and
-`mat3ra-upload`. The installation command reads parsers from its `alphafilm` branch, and the `alphafilm` extra of
-parsers installs fixtures and api-client from theirs; the tests of parsers read esse and fixtures from theirs. Each
-pull request below is opened against `alphafilm`.
-
-
-## 2. `esse` repository
-
-### 2.1. Clone the repository
-
-The work starts from the repository's `alphafilm` branch:
-
-```bash
-git clone -b alphafilm https://github.com/mat3ra/esse.git
-```
-
-### 2.2. Check the experimental workflow schemas
-
-A new instrument needs no schema change: its name is a value in the workflow document. The workflow schemas change only
-when a technique needs a field they lack:
-
-- `schema/workflow/experimental.json` → the workflow: name, description, metadata, tags, `properties`, `subworkflows`
-  and `units`.
-- `schema/workflow/experimental/subworkflow.json` → a subworkflow: `properties`, `instrument` and `units`.
-- `schema/workflow/experimental/unit.json` → a unit of type `measurement`, with the `results` it gives.
-- `schema/workflow/experimental/instrument.json` → the instrument: `name`, which is required, `shortName`, `summary`
-  and `version`.
-
-`schema/measurement.json` takes its `workflow` from `schema/workflow/experimental.json`, and
-`example/workflow/experimental.json` is the workflow quoted in section 1.2; `example/` mirrors `schema/`, and an
-example is optional.
-
-### 2.3. Add a property type
-
-A result becomes a property only when esse defines its type; otherwise it stays in the measurement's files. A new type
-is a schema under `schema/properties_directory/`, with an example at the same path under `example/`. `hysteresis_loop`
-shows each place a type is registered: its schema and example, an entry in `manifest/properties.yaml`, its name in
-`schema/properties_directory/enum_options.json`, and a reference in `schema/property/holder.json`. The esse page
-[Contributing a schema]({{ schemas_url }}/docs/contributing-a-schema.html) walks through a new property step by step;
-its pull request goes against `dev`, the one here against `alphafilm`.
-
-### 2.4. Test and publish
-
-`npm test` builds the schemas, lints them and runs the tests:
-
-```bash
-npm install
-npm test
-```
-
-A commit whose message contains `[release]` publishes a work-in-progress (WIP) tarball under the release tag
-`wip-<short commit hash>`. AlphaFilm accepts a new property type once it is redeployed with that tarball.
-
-
-## 3. `fixtures` repository
-
-### 3.1. Clone the repository
-
-Files under `data/` are stored in Git Large File Storage (LFS), so `git lfs install` comes before cloning:
-
-```bash
-git lfs install
-git clone -b alphafilm https://github.com/mat3ra/fixtures.git
-```
-
-### 3.2. Add the delivered input and its workflow
-
-Each instrument has a folder `data/instruments/<instrument>/<version>/`, named as the workflow names the instrument,
-with underscores for hyphens: `asylum_spm` for `asylum-spm`. A case, `case-001` first, holds a sample of the output as
-the instrument delivered it, a few measurements' worth, and the `workflow.json` of its measurements. `manifest.yml`
-beside the cases names and describes each one:
-
-```text
-data/instruments/asylum_spm/1.0/
-├── manifest.yml
-└── case-001/
-    ├── loops/
-    ├── summary.json
-    └── workflow.json
-```
-
-The three existing `workflow.json` files are the starting point for a new one.
-
-### 3.3. Register the files in the package manifest
-
-`src/py/mat3ra/fixtures/manifest.yml` gives each file a reference path, `instruments/<instrument>/v<version>/<key>`.
-`mat3ra-parse` reads the workflow at `instruments/<instrument>/v1.0/workflow`; `v1.0` is the version it reads today:
+Register the files in `src/py/mat3ra/fixtures/manifest.yml`, each under a key. The reference path of a file is then
+`instruments/<instrument>/v<version>/<key>`. `mat3ra-parse` reads the workflow at
+`instruments/<instrument>/v1.0/workflow`:
 
 ```yaml
 instruments:
@@ -208,12 +191,16 @@ instruments:
       summary: /data/instruments/asylum_spm/1.0/case-001/summary.json
 ```
 
+### 3.5. Open the pull request
 
-## 4. `parsers` repository
+Open the pull request against `alphafilm`.
+
+
+## 4. Add the parser to `parsers`
 
 ### 4.1. Clone the repository
 
-The work starts from the repository's `alphafilm` branch:
+Clone the `alphafilm` branch:
 
 ```bash
 git clone -b alphafilm https://github.com/mat3ra/parsers.git
@@ -221,89 +208,63 @@ git clone -b alphafilm https://github.com/mat3ra/parsers.git
 
 ### 4.2. Write the parser
 
-A parser reads a run as the instrument wrote it and returns what goes into the folder. It is a `BaseParser` subclass
-in `src/py/mat3ra/parsers/instruments/<instrument>/parser.py`, constructed with the path of the delivered input and
-the workflow document. Its `parse()` returns the set's document, one document per measurement and the files of each,
-as a path to copy or the lines to write; `MeasurementSetParser` in `src/py/mat3ra/parsers/entities/measurement_set.py`
-writes them as the folder, adding a `sample.json` in the input folder (for a file, beside it), when there is one, to
-every sample's `metadata`.
+Create `src/py/mat3ra/parsers/instruments/<instrument>/parser.py` with a `BaseParser` subclass. Its constructor takes
+the path of the delivered input and the workflow document. Its `parse()` returns the set's document, one document per
+measurement, and the files of each measurement. A file is given as a path to copy or as the lines to write.
+`MeasurementSetParser` in `src/py/mat3ra/parsers/entities/measurement_set.py` writes the folder from them. It also
+adds the content of a `sample.json` in the input folder, or beside an input file, to every sample's `metadata`.
 
-A parser:
-
-- decides what one measurement is, one pad, one site or one row, and names its sample: a measurement has one sample
-- puts the instrument's own record of the session, its settings and each point into `setup`
-- copies the measurement's own files under `files/`, as they are; from a table, its header and the measurement's row
-- writes a property only for a type esse defines (section 2.3)
-- leaves results without a type in the files, rather than transcribing them into JSON
-- keeps `metadata` for context: positions, labels and the size of a pad
-- puts the workflow document into every measurement, with the measurement's point pattern in the workflow's `metadata`
+The parser decides what one measurement is, for example one pad. It gives each measurement one sample, with a name
+and the sample's position in `metadata`. It copies the workflow document into every measurement and adds the run's
+point pattern, when the run has one, to the workflow's `metadata`. The instrument's record of the run, such as its
+settings, goes into `setup`. A result goes into `properties` when esse defines its type (section 2). Other results
+stay in the files. Each measurement gets only its own files, copied as delivered. A measurement from a table gets the
+table's header and its own row.
 
 ### 4.3. Register it in the factory
 
-One line in `src/py/mat3ra/parsers/factory.py` registers the parser under `instruments.<instrument>`, here for an
-instrument that its workflow names `my-instrument`:
+Add a line to `src/py/mat3ra/parsers/factory.py` that registers the parser under `instruments.<instrument>`. For an
+instrument that its workflow names `my-instrument`, the line is:
 
 ```python
 "instruments.my_instrument": "mat3ra.parsers.instruments.my_instrument.parser.MyInstrumentParser",
 ```
 
 `mat3ra-parse my-instrument RUN upload` then reads the workflow at `instruments/my_instrument/v1.0/workflow` in
-fixtures, takes the instrument's name from it, and runs the parser registered under that name, with underscores for
-hyphens.
+fixtures. It takes the instrument's name from the workflow and runs the parser registered under that name, with
+underscores for hyphens.
 
 ### 4.4. Test against the fixture and esse
 
-A test in `tests/py/unit/` parses the fixture's input with its workflow, compares the result with the expected
-measurements and files, and validates each measurement against esse's `measurement` schema, as the existing tests do.
-The `tests` extra installs esse and fixtures from their `alphafilm` branches, and the tests run as in continuous
-integration (CI):
+Add a test to `tests/py/unit/` like the existing ones. It parses the fixture's input with its workflow, compares the
+result with the expected measurements and files, and validates each measurement against esse's `measurement` schema.
+Install the `tests` extra, which brings esse and fixtures from their `alphafilm` branches, and run the tests:
 
 ```bash
 pip install ".[tests]"
 pytest tests/py/unit -q
 ```
 
-A fixture not yet merged is tested by running `pip install ../fixtures` after the first command, which puts the local
-fixtures checkout in place of the `alphafilm` one.
+Until the fixtures pull request is merged, run `pip install ../fixtures` after the first command. The local fixtures
+checkout then takes the place of the `alphafilm` one.
+
+### 4.5. Open the pull request
+
+Open the pull request against `alphafilm`.
 
 
-## 5. Merge order and checklist
+## 5. Reinstall the commands and parse a run
 
-The order follows what each repository reads from the others: esse first, since the platform and the parser's test
-validate against its schemas; fixtures second, since the parser's test and `mat3ra-parse` read the input and the
-workflow from it; parsers last. A repository with nothing to change is skipped: an instrument whose results have no
-new property type needs no esse change.
+After the pull requests are merged, reinstall the commands with `--force-reinstall`, which brings the new parser and
+fixtures. Then parse a run of the new instrument, `RUN` here, into a new folder, `upload`:
 
-### 5.1. `esse` checklist
+```bash
+pip install --force-reinstall "mat3ra-notebooks-utils[alphafilm] @ git+https://github.com/mat3ra/api-examples.git@alphafilm"
+mat3ra-parse <instrument> RUN upload
+```
 
-  ✅ property schema under `schema/properties_directory/` and its example under `example/` <br/>
-  ✅ entries in `manifest/properties.yaml`, `schema/properties_directory/enum_options.json` and
-  `schema/property/holder.json` <br/>
-  ✅ regenerated models under `src/py/mat3ra/esse/` committed <br/>
-  ✅ entity-graph counts in `tests/js/entityGraph.tests.ts` updated <br/>
-  ✅ `npm test` passes <br/>
-  ✅ `[release]` commit pushed, WIP tarball published <br/>
-  ✅ Merged into `alphafilm` first
-
-### 5.2. `fixtures` checklist
-
-  ✅ delivered input and `workflow.json` under `data/instruments/<instrument>/<version>/case-001/` <br/>
-  ✅ `manifest.yml` beside the cases <br/>
-  ✅ references under `instruments/<instrument>/v1.0/` in `src/py/mat3ra/fixtures/manifest.yml` <br/>
-  ✅ files stored in Git LFS <br/>
-  ✅ Merged after the esse pull request
-
-### 5.3. `parsers` checklist
-
-  ✅ `BaseParser` subclass in `src/py/mat3ra/parsers/instruments/<instrument>/parser.py` <br/>
-  ✅ one line in `src/py/mat3ra/parsers/factory.py`, keyed `instruments.<instrument>` <br/>
-  ✅ test reading the fixture and validating against esse <br/>
-  ✅ `pytest tests/py/unit -q` passes <br/>
-  ✅ Merged last
-
-The installation command of [Upload Experimental Data](upload-experimental-data.md#31-install-the-commands), run with
-`--force-reinstall` after the three merges, brings the new parser, and `mat3ra-parse <instrument> RUN upload` writes a
-folder that `mat3ra-upload` takes as before.
+The folder is uploaded with `mat3ra-upload` as in
+[Upload Experimental Data](upload-experimental-data.md#34-upload-the-folder).
 
 
 ## 6. References
