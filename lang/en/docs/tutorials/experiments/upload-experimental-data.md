@@ -61,7 +61,7 @@ is run once after installing git-lfs. Each step is one command in a terminal.
 The installation is done once:
 
 ```bash
-pip install "mat3ra-parsers[alphafilm] @ git+https://github.com/mat3ra/parsers.git@alphafilm"
+pip install "mat3ra-notebooks-utils[alphafilm] @ git+https://github.com/mat3ra/api-examples.git@alphafilm"
 ```
 
 ### 3.2. Sign in
@@ -312,7 +312,7 @@ git-lfs was missing at installation, and the data arrived as LFS pointer files. 
 then install again:
 
 ```bash
-pip install --force-reinstall "mat3ra-parsers[alphafilm] @ git+https://github.com/mat3ra/parsers.git@alphafilm"
+pip install --force-reinstall "mat3ra-notebooks-utils[alphafilm] @ git+https://github.com/mat3ra/api-examples.git@alphafilm"
 ```
 
 ### 7.6. Property refused
