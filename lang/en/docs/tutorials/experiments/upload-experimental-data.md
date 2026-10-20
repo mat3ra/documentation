@@ -53,8 +53,8 @@ own, holding that run's samples:
 
 ## 3. Install, sign in, parse and upload
 
-The commands run in a terminal and need Python 3.10 or newer, git and git-lfs. Run `git lfs install` once after
-installing git-lfs.
+The commands run in a terminal and need Python 3.10 or newer, git and git-lfs (Git Large File Storage). Run
+`git lfs install` once after installing git-lfs.
 
 ### 3.1. Install the commands
 
@@ -87,9 +87,9 @@ The instruments with a parser today, and what `mat3ra-parse` takes for each:
 
 | Instrument | Input | Makes |
 |:-----------|:------|:------|
-| `asylum-spm` | the Asylum SS-PFM run's folder | one measurement per pad, with its hysteresis loop and loop files; a pad without loops has neither |
-| `xrf-instrument` | the XRF table | one measurement per site, with the site's row of the table |
-| `dc-iv-instrument` | the I-V folder with `IV_Volts.txt`, `IV_Amps.txt` and `IV_Positions.txt` | one measurement per pad, named by its Row and Column, with its row of both files |
+| `asylum-spm` | the Asylum switching spectroscopy piezoresponse force microscopy (SS-PFM) run's folder | one measurement per pad, with its hysteresis loop and loop files; a pad without loops has neither |
+| `xrf-instrument` | the X-ray fluorescence (XRF) table | one measurement per site, with the site's row of the table |
+| `dc-iv-instrument` | the current-voltage (I-V) folder with `IV_Volts.txt`, `IV_Amps.txt` and `IV_Positions.txt` | one measurement per pad, named by its Row and Column, with its row of both files |
 
 ### 3.4. Upload the folder
 
