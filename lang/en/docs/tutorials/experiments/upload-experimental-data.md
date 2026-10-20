@@ -76,8 +76,8 @@ mat3ra-auth alphafilm.mat3ra.com
 
 ### 3.3. Parse a run
 
-The first argument names the instrument, the second is the run as the instrument wrote it, `RUN` here, and the third
-is a new folder for the output:
+The first argument names the instrument, the second is the run's folder, `RUN` here, whose name is the run's name
+(an Asylum run keeps the one in `summary.json`), and the third is a new folder for the output:
 
 ```bash
 mat3ra-parse asylum-spm RUN upload
@@ -88,7 +88,7 @@ The instruments with a parser today, and what `mat3ra-parse` takes for each:
 | Instrument | Input | Makes |
 |:-----------|:------|:------|
 | `asylum-spm` | the Asylum switching spectroscopy piezoresponse force microscopy (SS-PFM) run's folder | one measurement per pad, with its hysteresis loop and loop files; a pad without loops has neither |
-| `xrf-instrument` | the folder with the X-ray fluorescence (XRF) table | one measurement per site, with the site's row of the table |
+| `xrf-instrument` | the folder with the X-ray fluorescence (XRF) table, the only `.txt` file in it | one measurement per site, with the site's row of the table |
 | `dc-iv-instrument` | the current-voltage (I-V) folder: `IV_Volts.txt`, `IV_Amps.txt`, and `IV_Positions.txt` with the tab-separated `Row` and `Column` of each of their rows, in the same order | one measurement per pad, named `r<Row>c<Column>`, with its row of `IV_Volts.txt` and `IV_Amps.txt` |
 
 ### 3.4. Upload the folder

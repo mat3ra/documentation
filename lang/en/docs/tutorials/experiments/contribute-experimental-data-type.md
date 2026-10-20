@@ -209,10 +209,10 @@ git clone -b alphafilm https://github.com/mat3ra/parsers.git
 ### 4.2. Write the parser
 
 Create `src/py/mat3ra/parsers/instruments/<instrument>/parser.py` with a `BaseParser` subclass. Its constructor takes
-the path of the delivered input and the workflow document. Its `parse()` returns the set's document, one document per
-measurement, and the files of each measurement. A file is given as a path to copy or as the lines to write.
-`MeasurementSetParser` in `src/py/mat3ra/parsers/entities/measurement_set.py` writes the folder from them. It also
-adds the content of a `sample.json` in the input folder to every sample's `metadata`.
+the path of the folder with the delivered output and the workflow document. Its `parse()` returns the set's document,
+one document per measurement, and the files of each measurement. A file is given as a path to copy or as the lines
+to write. `MeasurementSetParser` in `src/py/mat3ra/parsers/entities/measurement_set.py` writes the folder from them.
+It also adds the content of a `sample.json` in the input folder to every sample's `metadata`.
 
 The parser decides what one measurement is, for example one pad. It gives each measurement one sample, with a name
 and, when the data gives one, its position in `metadata` as `{"coordinates": [x, y], "units": …}`. It copies the
