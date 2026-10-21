@@ -21,7 +21,7 @@ render_macros: true
 This tutorial demonstrates the process of creating 2D grain boundary structures in hexagonal boron nitride (h-BN), based on the work presented in the following manuscript:
 
 !!!note "Manuscript"
-    Qiucheng Li, Xiaolong Zou, Mengxi Liu, Jingyu Sun, Yabo Gao, Yue Qi, Xiebo Zhou, Boris I. Yakobson, Yanfeng Zhang, and Zhongfan Liu, "Grain Boundary Structures and Electronic Properties of Hexagonal Boron Nitride on Cu(111)", ACS Nano 2015 9 (6), 6308-6315. [DOI: 10.1021/acs.nanolett.5b01852](https://doi.org/10.1021/acs.nanolett.5b01852){:target='_blank'}. [@Li2015]
+    Qiucheng Li, Xiaolong Zou, Mengxi Liu, Jingyu Sun, Yabo Gao, Yue Qi, Xiebo Zhou, Boris I. Yakobson, Yanfeng Zhang, and Zhongfan Liu, "Grain Boundary Structures and Electronic Properties of Hexagonal Boron Nitride on Cu(111)", Nano Lett. 2015, 15 (9), 5804-5810. [DOI: 10.1021/acs.nanolett.5b01852](https://doi.org/10.1021/acs.nanolett.5b01852){:target='_blank'}. [@Li2015]
 
 We will focus on creating h-BN grain boundary structures similar to Figure 2c from the manuscript:
 
