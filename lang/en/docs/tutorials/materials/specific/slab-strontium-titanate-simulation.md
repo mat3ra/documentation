@@ -28,7 +28,7 @@ This tutorial builds upon the [SrTiO<sub>3</sub> Slab](slab-strontium-titanate.m
 
 ![SrTiO3(011) cleavage planes](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/0-figure-from-manuscript.webp "SrTiO and O2 cleavage planes of SrTiO3(011), FIG. 2.")
 
-The two symmetric whole-plane (011) slabs that the manuscript starts from, SrTiO-terminated (FIG. 3(c)) and O<sub>2</sub>-terminated (FIG. 3(b)), as built by the structure notebook and shown in the Wave viewer:
+The structure notebook also builds the two symmetric whole-plane (011) slabs that the manuscript starts from, SrTiO-terminated (FIG. 3(c)) and O<sub>2</sub>-terminated (FIG. 3(b)), shown here in the Wave viewer:
 
 ![SrTiO-terminated SrTiO3(011) slab](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/srtio3-011-srtio-terminated-slab-wave.webp "SrTiO3(011) SrTiO-terminated seven-plane slab, Wave viewer")
 ![O2-terminated SrTiO3(011) slab](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/srtio3-011-o2-terminated-slab-wave.webp "SrTiO3(011) O2-terminated seven-plane slab, Wave viewer")
@@ -55,7 +55,7 @@ with `n` the number of bulk units and `m` the number of slabs in the group. Each
 6. **Run the Total Energy jobs**: one on each cell as cut
 7. **Relax the slabs**: only when `RELAX` is set, at fixed cell, all atoms
 8. **Retrieve the results**: the total energies, and the cleavage, relaxation and surface energies
-9. **Compare with the manuscript**: the computed values beside Table VII, with the deviation in percent
+9. **Compare with the manuscript**: the computed values beside Table VII
 
 
 ## 4. Calculation parameters
@@ -71,7 +71,7 @@ with `n` the number of bulk units and `m` the number of slabs in the group. Each
 | Relaxation | every atom, fixed cell, Quantum ESPRESSO's default force threshold | near-surface planes (two in Sec. III.B, three in Table VII) |
 | Spin | spin-restricted | not stated |
 
-The functional is the main difference: the manuscript gives no PBE surface energies, so absolute shifts from Table VII are expected. Cell 1.4 holds these settings:
+The functional is the main difference: the manuscript gives no PBE surface energies. Cell 1.4 holds these settings:
 
 ```python
 FUNCTIONAL = "pbe"
@@ -113,20 +113,16 @@ Execute all cells by selecting *Run* > *Run All Cells*. The notebook [authentica
 
 ### 5.4. Read the results
 
-The last cell prints, per termination, the computed cleavage energy beside the manuscript's and, with `RELAX = True`, the relaxation and surface energies, the TiO + Sr sum and the order of the (011) surface energies:
+The last cell prints, per termination, the computed cleavage energy beside the manuscript's and, with `RELAX = True`, the relaxation and surface energies:
 
 ```
 Ours: pbe-us 40-200Ry k6.5, relaxed; paper: B3PW. Energies in eV.
-TiO   cleavage 3.30 (paper 4.61, -28.4 %)  relaxation -1.27 (paper -1.55, +17.9 %)  surface 2.03 (paper 3.06, -33.7 %)
-Sr    cleavage 3.30 (paper 4.61, -28.4 %)  relaxation -1.05 (paper -1.95, +46.2 %)  surface 2.25 (paper 2.66, -15.3 %)
-O     cleavage 2.71 (paper 3.36, -19.5 %)  relaxation -1.42 (paper -1.32, -7.9 %)  surface 1.28 (paper 2.04, -37.2 %)
-SrO   cleavage 1.10 (paper 1.39, -20.6 %)  relaxation -0.17 (paper -0.24, +27.4 %)  surface 0.93 (paper 1.15, -19.2 %)
-TiO2  cleavage 1.10 (paper 1.39, -20.6 %)  relaxation -0.16 (paper -0.16, +0.3 %)  surface 0.94 (paper 1.23, -23.3 %)
-TiO + Sr = 4.28 (paper 5.72, -25.1 %)
-(011), lowest first: O < TiO < Sr (paper O < Sr < TiO)
+TiO   cleavage 3.30 (paper 4.61)  relaxation -1.27 (paper -1.55)  surface 2.03 (paper 3.06)
+Sr    cleavage 3.30 (paper 4.61)  relaxation -1.05 (paper -1.95)  surface 2.25 (paper 2.66)
+O     cleavage 2.71 (paper 3.36)  relaxation -1.42 (paper -1.32)  surface 1.28 (paper 2.04)
+SrO   cleavage 1.10 (paper 1.39)  relaxation -0.17 (paper -0.24)  surface 0.93 (paper 1.15)
+TiO2  cleavage 1.10 (paper 1.39)  relaxation -0.16 (paper -0.16)  surface 0.94 (paper 1.23)
 ```
-
-The deviation is relative to the size of the manuscript's value: for the negative relaxation energies, a positive deviation means less relaxation than in the manuscript.
 
 
 ## 6. Comparison with the manuscript
@@ -140,8 +136,6 @@ Energies per 1×1 surface cell, in eV: this tutorial (PBE), with Table VII of th
 | (011) O | 2.71 (3.36) | −1.42 (−1.32) | 1.28 (2.04) |
 | (001) SrO | 1.10 (1.39) | −0.17 (−0.24) | 0.93 (1.15) |
 | (001) TiO<sub>2</sub> | 1.10 (1.39) | −0.16 (−0.16) | 0.94 (1.23) |
-
-The PBE cleavage energies are 20-28 % below the B3PW ones, and the surface energies 15-37 % below; the sum TiO + Sr is 4.28 eV against 5.72 eV. The O-terminated (011) surface is the lowest, as in every method the manuscript compares; TiO and Sr come out in the opposite order, which the manuscript reports as method-dependent (Sec. IV).
 
 
 ## 7. Customization options
@@ -164,6 +158,10 @@ The manuscript checks that nine-plane slabs change the energies by less than 0.0
 ### 8.1. Material not found
 
 Loading raises when a name is missing from the `uploads` folder and the account's materials collection. Run the notebook of the [SrTiO<sub>3</sub> Slab](slab-strontium-titanate.md) tutorial, which saves the six materials under the names in cell 1.2.
+
+### 8.2. No cluster available
+
+If section 5.1 of the notebook prints an empty list of clusters, there is nothing to submit to, and section 5.2 stops. A cluster has to be available to the account before the notebook can run.
 
 
 ## 9. Interactive JupyterLite notebook
