@@ -45,7 +45,7 @@ Every energy comes from total energy jobs and the manuscript's Eqs. (1)-(5), eva
 
 `E_cleav = [Σ E_slab(unrelaxed) − n E_bulk] / (2 m)`
 
-with `n` the number of bulk units and `m` the number of slabs in the group. Each slab then adds its own relaxation energy, both faces relaxing, `E_rel = [E_slab(relaxed) − E_slab(unrelaxed)] / 2`, and its surface energy is `E_surf = E_cleav + E_rel`. The equal split is a convention: the sum `E_surf(TiO) + E_surf(Sr)` does not depend on it. The steps are:
+with `n` the number of bulk units and `m` the number of slabs in the group. Each slab then adds its own relaxation energy, both faces relaxing, `E_rel = [E_slab(relaxed) − E_slab(unrelaxed)] / 2`, and its surface energy is `E_surf = E_cleav + E_rel`. The steps are:
 
 1. **Set up the environment and parameters**: material names, Density Functional Theory (DFT) model, relaxation switch, and compute settings
 2. **Authenticate and initialize API client**: connect to the platform
