@@ -84,9 +84,9 @@ The barrier calculation consists of the following steps:
 | Pt(111) slab | 3 layers × 16 Pt | 3 layers × 16 Pt | 4 layers × 9 Pt |
 | Pt(211) slab | 8 (211) planes × 4 Pt along the step | 8 (211) planes × 4 Pt | 12 (211) planes × 3 Pt along the step |
 
-The dissociated pair, not given in the manuscript, ends the scan and the NEB: both O in neighbouring fcc hollows
-on Pt(111), on step-edge bridges 2 Pt apart on Pt(211). An NEB job that is queued, running or finished on the same
-two end points with the same k-grid is reused, also when the application version or a DFT setting has changed.
+The dissociated pair, not given in the manuscript, ends the scan and the NEB: both O in neighbouring fcc hollows on Pt(111),
+on step-edge bridges 2 Pt apart on Pt(211). An NEB job that is queued, running or finished on the same two end points with
+the same k-grid is reused, also when the application version or a setting of cell 1.4, `N_IMAGES` included, has changed.
 
 ## 5. Step-by-step instructions
 
@@ -214,7 +214,8 @@ adds the functional: one climbing-image NEB per surface with RPBE on the platfor
 OF queue. It is an NEB rather than a scan because the platform cannot hold a fixed O–O distance. Its cost
 grows with `"kgrid"` in `SURFACES` (cell 1.2; the manuscript's 6×4×1 is on its own, smaller cells) and with
 `N_IMAGES`; neb.x stops after `NEB_MAXIMUM_ITERATIONS`, converged or not, and the path is converged when the
-largest image error on the barrier line is below 0.1 eV/Å. A new value of any of the three starts new NEB jobs.
+largest image error on the barrier line is below 0.1 eV/Å. A new `"kgrid"` starts new NEB jobs; a new `N_IMAGES` or
+`NEB_MAXIMUM_ITERATIONS` reuses the jobs already run on the same end points (section 4).
 
 - **Pt(211) slab**: `THICKNESS = 3` in the [structure notebook](defect-surface-step-platinum.md) gives the
   manuscript's 12 (211) planes; made's (211) cell holds an even number of Pt along the step, so 3 is not reachable
