@@ -125,6 +125,10 @@ A re-run finds the finished jobs by material and workflow name and reuses them r
 
 ## 6. Expected results
 
+The boundary is a continuous 5-7 chain with one B–B and one N–N bond per period, as in the paper.
+
+![Type III 5|7 boundary: Li et al. 2015 and this work](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride_5_7/boundary-structure-comparison.webp "Type III 5|7 boundary, top view: Li et al. 2015, Fig. 3f (left) and the MACE-relaxed structure of this work (right)")
+
 The paper's values (the gap from the text, the peaks and the perfect layer's gap read off Fig. 4b) and the values measured by the notebook, with the MACE-relaxed boundary:
 
 | quantity | paper | this notebook | deviation |
