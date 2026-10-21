@@ -131,15 +131,15 @@ The boundary is a continuous 5-7 chain with one B–B and one N–N bond per per
 
 The paper's values (the gap from the text, the peaks and the perfect layer's gap read off Fig. 4b) and the values measured by the notebook, with the MACE-relaxed boundary:
 
-| quantity | paper | this notebook | deviation |
-|---|---|---|---|
-| gap, peak (2) to peak (3) | 3.21 eV | 3.20 eV | −0.3 % |
-| peak (1) | −2.85 eV | −2.67 eV | +6.1 % |
-| peak (2) | −1.82 eV | −1.68 eV | +8.0 % |
-| peak (3) | +1.39 eV | +1.52 eV | +9.7 % |
-| peak (4) | +2.31 eV | +2.52 eV | +9.3 % |
-| perfect-layer gap | 4.4 eV | 4.40 eV | 0.0 % |
-| gap change at the boundary | −1.19 eV | −1.20 eV | −0.8 % |
+| quantity | this work | Li et al. 2015 |
+|---|---|---|
+| gap, peak (2) to peak (3) | 3.20 eV | 3.21 eV |
+| peak (1) | −2.67 eV | −2.85 eV |
+| peak (2) | −1.68 eV | −1.82 eV |
+| peak (3) | +1.52 eV | +1.39 eV |
+| peak (4) | +2.52 eV | +2.31 eV |
+| perfect-layer gap | 4.40 eV | 4.4 eV |
+| gap change at the boundary | −1.20 eV | −1.19 eV |
 
 ![LDOS of the 5|7 boundary and density of states of perfect h-BN](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride_5_7/ldos-comparison.webp "LDOS of the 5|7 boundary (red) and density of states of perfect h-BN (black): Li et al. 2015, Fig. 4b (left, the 4|8 boundary is not computed here) and this notebook (right), -4 to 4 eV")
 
