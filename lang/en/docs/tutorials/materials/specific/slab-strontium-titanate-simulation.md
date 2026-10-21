@@ -127,15 +127,25 @@ TiO2  cleavage 1.10 (paper 1.39)  relaxation -0.16 (paper -0.16)  surface 0.94 (
 
 ## 6. Comparison with the manuscript
 
-Energies per 1×1 surface cell, in eV: this tutorial (PBE), with Table VII of the manuscript (B3PW) in parentheses.
+Energies per 1×1 surface cell, in eV: Table VII of the manuscript (B3PW) and this tutorial (PBE).
 
-| Termination | Cleavage | Relaxation | Surface |
+| Termination | Value | Paper | Ours |
 |---|---|---|---|
-| (011) TiO | 3.30 (4.61) | −1.27 (−1.55) | 2.03 (3.06) |
-| (011) Sr | 3.30 (4.61) | −1.05 (−1.95) | 2.25 (2.66) |
-| (011) O | 2.71 (3.36) | −1.42 (−1.32) | 1.28 (2.04) |
-| (001) SrO | 1.10 (1.39) | −0.17 (−0.24) | 0.93 (1.15) |
-| (001) TiO<sub>2</sub> | 1.10 (1.39) | −0.16 (−0.16) | 0.94 (1.23) |
+| (011) TiO | Cleavage | 4.61 | 3.30 |
+| (011) TiO | Relaxation | −1.55 | −1.27 |
+| (011) TiO | Surface | 3.06 | 2.03 |
+| (011) Sr | Cleavage | 4.61 | 3.30 |
+| (011) Sr | Relaxation | −1.95 | −1.05 |
+| (011) Sr | Surface | 2.66 | 2.25 |
+| (011) O | Cleavage | 3.36 | 2.71 |
+| (011) O | Relaxation | −1.32 | −1.42 |
+| (011) O | Surface | 2.04 | 1.28 |
+| (001) SrO | Cleavage | 1.39 | 1.10 |
+| (001) SrO | Relaxation | −0.24 | −0.17 |
+| (001) SrO | Surface | 1.15 | 0.93 |
+| (001) TiO<sub>2</sub> | Cleavage | 1.39 | 1.10 |
+| (001) TiO<sub>2</sub> | Relaxation | −0.16 | −0.16 |
+| (001) TiO<sub>2</sub> | Surface | 1.23 | 0.94 |
 
 
 ## 7. Customization options
