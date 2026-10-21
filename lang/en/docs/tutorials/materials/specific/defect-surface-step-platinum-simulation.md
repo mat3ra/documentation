@@ -85,8 +85,8 @@ The barrier calculation consists of the following steps:
 | Pt(211) slab | 8 (211) planes × 4 Pt along the step | 8 (211) planes × 4 Pt | 12 (211) planes × 3 Pt along the step |
 
 The dissociated pair, not given in the manuscript, ends the scan and the NEB: both O in neighbouring fcc hollows
-on Pt(111), on step-edge bridges 2 Pt apart on Pt(211). An NEB job with the same workflow name and k-grid on the
-same material is reused; a new application version or DFT setting starts new jobs.
+on Pt(111), on step-edge bridges 2 Pt apart on Pt(211). An NEB job that is queued, running or finished on the same
+two end points with the same k-grid is reused, also when the application version or a DFT setting has changed.
 
 ## 5. Step-by-step instructions
 
