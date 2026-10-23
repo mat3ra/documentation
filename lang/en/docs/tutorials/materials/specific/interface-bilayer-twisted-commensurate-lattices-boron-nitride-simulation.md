@@ -21,7 +21,7 @@ render_macros: true
 
 ## 1. Introduction
 
-This tutorial calculates the band structure of the twisted bilayer hexagonal boron nitride (h-BN)
+This tutorial calculates the band structure of the twisted hexagonal boron nitride (h-BN) bilayers
 created in the [structure creation tutorial](interface-bilayer-twisted-commensurate-lattices-boron-nitride.md)
 and reads off the width of their top set of flat valence bands, as in the following manuscript.
 
@@ -57,8 +57,8 @@ along Γ–K–M of the moiré cell.
 | `h-BN bilayer 7.34deg alpha d3.23` | 60° + 7.34° (α) | 3.23 Å | 244 |
 | `h-BN bilayer 7.34deg beta d3.23` | 7.34° (β) | 3.23 Å | 244 |
 
-The simulation notebook computes α by default. β and the manuscript's 6.01°, 5.08° and 3.89° cells
-(364, 508 and 868 atoms) are commented entries in `MATERIALS`; 5.08° and smaller exceed one 4 h job.
+The simulation notebook computes α by default; β and the smaller angles are commented entries in
+`MATERIALS`.
 
 ### 3.1. The structure is not relaxed
 
@@ -159,8 +159,8 @@ from mat3ra.ide.compute import QueueName
 ORGANIZATION_NAME = None  # set to your organization name (full or partial); otherwise, your default one is used
 FOLDER = "./uploads"
 # Names as saved by the structure notebook, each with the width of its top valence flat set in Xian et al. 2019
-# (meV; 7.34°: text p. 4936; 6.01, 5.08 and 3.89°: read off Fig. 1g). One job per material; 5.08° and smaller exceed
-# one 4 h single-node job.
+# (meV, configuration not stated; 7.34°: text p. 4936; 6.01, 5.08 and 3.89°: read off Fig. 1g). One job per material;
+# every angle below 7.34° exceeds one 4 h single-node job.
 MATERIALS = {
     "h-BN bilayer 7.34deg alpha d3.23": {"paper_flat_band_width": 101.4},
     # "h-BN bilayer 7.34deg beta d3.23": {"paper_flat_band_width": 101.4},

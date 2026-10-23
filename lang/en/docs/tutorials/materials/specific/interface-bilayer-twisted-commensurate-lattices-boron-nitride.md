@@ -43,7 +43,7 @@ First, we navigate to [Materials Designer]({{ interface_url }}/materials-designe
 
 Standata's lattice constant of 2.509 Å is used as is; the manuscript uses 2.512 Å (Supporting Information, p. 2).
 
-Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create the twisted bilayer h-BN structure.
+Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create the twisted h-BN bilayers.
 
 
 ## 3. Create the h-BN bilayers
@@ -79,9 +79,7 @@ INTERFACE_PARAMETERS = [
 INTERFACE_DISTANCE = 3.23  # Å, the article's
 ```
 
-The defaults build α and β at 7.34°. The manuscript's smaller angles of Fig. 1g, 6.01°, 5.08° and
-3.89°, are commented entries with cells of 364, 508 and 868 atoms; uncomment them to build those as
-well.
+The defaults build α and β at 7.34°.
 
 The interlayer distance of 3.23 Å is the manuscript's, the optimized distance of the bilayer without
 twist (p. 4935–4936).
