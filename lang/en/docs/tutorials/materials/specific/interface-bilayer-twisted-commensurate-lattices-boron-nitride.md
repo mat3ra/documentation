@@ -27,13 +27,13 @@ This tutorial demonstrates the process of creating a periodic twisted bilayer he
     [DOI: 10.1021/acs.nanolett.9b00986](https://doi.org/10.1021/acs.nanolett.9b00986) [@Xian2020]
 
 
-We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create the periodic twisted bilayer at 7.34°, one of the cells the manuscript computes (Fig. 1g; text p. 4936). The built cell has 244 atoms.
+We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create the periodic twisted bilayers at 7.34°, one of the cells the manuscript computes (Fig. 1g; text p. 4936). Each built cell has 244 atoms.
 
-The manuscript's two configurations, α and β, share one moiré cell and their twist angles differ by 60° (p. 4935). With the h-BN from Standata, a twist of 60° + 7.34° gives configuration α and 7.34° gives β; this tutorial builds α.
+The manuscript's two configurations, α and β, share one moiré cell and their twist angles differ by 60° (p. 4935). With the h-BN from Standata, a twist of 60° + 7.34° gives configuration α and 7.34° gives β; this tutorial builds both.
 
-Figure 1a,b of the manuscript shows both configurations (left); the cell built in this tutorial is shown next to it in the same top view (right).
+Figure 1a,b of the manuscript shows both configurations (left); the cells built in this tutorial are shown next to them in the same top view (right).
 
-![Twisted bilayer h-BN from the manuscript and the structure notebook](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/commensurate-top-view-comparison.webp "Top view: Xian et al. 2019, Fig. 1a,b, configurations α (a) and β (b) with the moiré cell outlined, CC-BY (left), and the 7.34° configuration α bilayer built by the structure notebook, 244 atoms, B pink, N blue, cell outlined (right)")
+![Twisted bilayer h-BN from the manuscript and the structure notebook](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/commensurate-top-view-comparison.webp "Top view: Xian et al. 2019, Fig. 1a,b, schematic of configurations α (a) and β (b) with the moiré cell outlined, CC-BY (left); the structure notebook's 7.34° configuration α (top) and β (bottom) bilayers, 244 atoms each, 3×3 cells with one cell outlined, B pink, N blue (right)")
 
 ## 2. Load and preview h-BN structure
 
@@ -46,7 +46,7 @@ Standata's lattice constant of 2.509 Å is used as is; the manuscript uses 2.512
 Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create the twisted bilayer h-BN structure.
 
 
-## 3. Create the h-BN bilayer
+## 3. Create the h-BN bilayers
 
 ### 3.1. Launch JupyterLite Session
 
@@ -59,14 +59,29 @@ Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/material
 Open `specific_examples/interface_bilayer_twisted_commensurate_lattices_boron_nitride.ipynb`
 — the notebook embedded in section 4 below.
 
-The first cell sets the twist angle, the interlayer distance, and the name the structure is saved
-under:
+The first cell lists the configurations to build, each a name and a twist angle, and sets the
+interlayer distance:
 
 ```python
-TARGET_TWIST_ANGLE = 60 + 7.34  # degrees; configuration α of Xian et al. 2019 Fig. 1a, 7.34 gives β
+# Uncomment a line to build that configuration as well: α is twisted by 60° + θ, β by θ. The angles are those of
+# Xian et al. 2019 Fig. 1g; smaller angles have larger cells (6.01°: 364 atoms, 5.08°: 508, 3.89°: 868) and build
+# slower.
+INTERFACE_PARAMETERS = [
+    {"name": "h-BN bilayer 7.34deg alpha d3.23", "angle": 60 + 7.34},
+    {"name": "h-BN bilayer 7.34deg beta d3.23", "angle": 7.34},
+    # {"name": "h-BN bilayer 6.01deg alpha d3.23", "angle": 60 + 6.01},
+    # {"name": "h-BN bilayer 6.01deg beta d3.23", "angle": 6.01},
+    # {"name": "h-BN bilayer 5.08deg alpha d3.23", "angle": 60 + 5.08},
+    # {"name": "h-BN bilayer 5.08deg beta d3.23", "angle": 5.08},
+    # {"name": "h-BN bilayer 3.89deg alpha d3.23", "angle": 60 + 3.89},
+    # {"name": "h-BN bilayer 3.89deg beta d3.23", "angle": 3.89},
+]
 INTERFACE_DISTANCE = 3.23  # Å, the article's
-MATERIAL_NAME = "h-BN bilayer 7.34deg alpha d3.23"
 ```
+
+The defaults build α and β at 7.34°. The manuscript's smaller angles of Fig. 1g, 6.01°, 5.08° and
+3.89°, are commented entries with cells of 364, 508 and 868 atoms; uncomment them to build those as
+well.
 
 The interlayer distance of 3.23 Å is the manuscript's, the optimized distance of the bilayer without
 twist (p. 4935–4936).
@@ -83,29 +98,30 @@ VISUALIZE_REPETITIONS = [3, 3, 1]
 
 ### 3.3. Run the Notebook
 
-After setting the parameters, run the notebook to build the bilayer.
+After setting the parameters, run the notebook to build every active configuration.
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
 ### 3.4. Check the geometry
 
-The notebook prints the atom count, the composition, the cell, the interlayer distance, and the
-target twist angle of the built structure:
+For each structure the notebook prints the atom count, the composition, the cell, the interlayer
+distance, and the target twist angle:
 
 ```
 h-BN bilayer 7.34deg alpha d3.23: 244 atoms (B122N122), a = 19.596 Å, gamma = 120.0°, interlayer distance 3.230 Å, target twist 67.34°
+h-BN bilayer 7.34deg beta d3.23: 244 atoms (B122N122), a = 19.596 Å, gamma = 120.0°, interlayer distance 3.230 Å, target twist 7.34°
 ```
 
 ### 3.5. View results and pass to Materials Designer
 
-The notebook shows the bilayer from the top and from the side. The structure is saved to the
-`uploads` folder under `MATERIAL_NAME`, and can also be passed to the Materials Designer for further
-analysis. The right panel of the figure in section 1 is this cell's structure, rotated to the
-orientation of the manuscript's Fig. 1a.
+The notebook shows the bilayers from the top and from the side. Each structure is saved to the
+`uploads` folder under its `name`, and can also be passed to the Materials Designer for further
+analysis. The right column of the figure in section 1 shows these cells, rotated to the
+orientation of the manuscript's Fig. 1a,b.
 
-Once the structure exists, the
+Once the structures exist, the
 [band structure tutorial](interface-bilayer-twisted-commensurate-lattices-boron-nitride-simulation.md)
-loads it by name and computes the width of its top valence flat bands.
+loads them by name and computes the width of their top valence flat bands.
 
 
 ## 4. Interactive JupyterLite Notebook

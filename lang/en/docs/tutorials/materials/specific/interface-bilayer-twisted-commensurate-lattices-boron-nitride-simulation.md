@@ -23,14 +23,14 @@ render_macros: true
 
 This tutorial calculates the band structure of the twisted bilayer hexagonal boron nitride (h-BN)
 created in the [structure creation tutorial](interface-bilayer-twisted-commensurate-lattices-boron-nitride.md)
-and reads off the width of its top set of flat valence bands, as in the following manuscript.
+and reads off the width of their top set of flat valence bands, as in the following manuscript.
 
 !!!note "Manuscript"
     **Lede Xian, Dante M. Kennes, Nicolas Tancogne-Dejean, Massimo Altarelli, and Angel Rubio**,
     "Multiflat Bands and Strong Correlations in Twisted Bilayer Boron Nitride: Doping-Induced Correlated Insulator and Superconductor" Nano Lett. 19, 4934–4940 (2019)
     [DOI: 10.1021/acs.nanolett.9b00986](https://doi.org/10.1021/acs.nanolett.9b00986) [@Xian2020]
 
-![Twisted bilayer h-BN from the manuscript and the structure notebook](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/commensurate-top-view-comparison.webp "Top view: Xian et al. 2019, Fig. 1a,b, configurations α (a) and β (b) with the moiré cell outlined, CC-BY (left), and the 7.34° configuration α bilayer built by the structure notebook, 244 atoms, B pink, N blue, cell outlined (right)")
+![Twisted bilayer h-BN from the manuscript and the structure notebook](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/commensurate-top-view-comparison.webp "Top view: Xian et al. 2019, Fig. 1a,b, schematic of configurations α (a) and β (b) with the moiré cell outlined, CC-BY (left); the structure notebook's 7.34° configuration α (top) and β (bottom) bilayers, 244 atoms each, 3×3 cells with one cell outlined, B pink, N blue (right)")
 
 ### 1.1. What the manuscript found
 
@@ -43,30 +43,34 @@ cell. The top set of valence bands is flat, and its width decreases from 101.4 m
 
 Run the
 [structure creation tutorial](interface-bilayer-twisted-commensurate-lattices-boron-nitride.md)
-first. Its notebook saves the bilayer into the `uploads` folder under the name
-`h-BN bilayer 7.34deg alpha d3.23`, and this notebook loads it back by exactly that name.
+first. Its notebook saves each bilayer into the `uploads` folder under a name such as
+`h-BN bilayer 7.34deg alpha d3.23`, and this notebook loads them back by exactly those names.
 
 ## 3. What is calculated
 
-One job runs the Standata "Band Structure" workflow (`band_structure.json`) on the bilayer built by
-the structure notebook. It chains `pw_scf`, the self-consistent run at Γ, and `pw_bands`, the bands
+One job per material runs the Standata "Band Structure" workflow (`band_structure.json`) on a
+bilayer built by the structure notebook. It chains `pw_scf`, the self-consistent run at Γ, and `pw_bands`, the bands
 along Γ–K–M of the moiré cell.
 
 | structure | twist | interlayer distance | atoms |
 |---|---|---|---|
 | `h-BN bilayer 7.34deg alpha d3.23` | 60° + 7.34° (α) | 3.23 Å | 244 |
+| `h-BN bilayer 7.34deg beta d3.23` | 7.34° (β) | 3.23 Å | 244 |
+
+The simulation notebook computes α by default. β and the manuscript's 6.01°, 5.08° and 3.89° cells
+(364, 508 and 868 atoms) are commented entries in `MATERIALS`; 5.08° and smaller exceed one 4 h job.
 
 ### 3.1. The structure is not relaxed
 
 The manuscript's band widths are computed with flat layers 3.23 Å apart (p. 4935–4936). The
-structure notebook builds the bilayer the same way, and the workflow has no relaxation step.
+structure notebook builds the bilayers the same way, and the workflow has no relaxation step.
 
 ### 3.2. Which configuration the twist angle gives
 
 Configurations α and β share one moiré cell and their twist angles differ by 60° (p. 4935). Their
 unrelaxed band structures are almost identical, and the manuscript does not say which one Fig. 1g
-uses (p. 4936). With the h-BN from Standata, the structure notebook's
-`TARGET_TWIST_ANGLE = 60 + 7.34` gives α, and `7.34` gives β.
+uses (p. 4936). With the h-BN from Standata, an `angle` of `60 + 7.34` in the structure notebook
+gives α, and `7.34` gives β.
 
 
 ## 4. Calculation parameters
@@ -130,11 +134,12 @@ separation is the distance from the set's minimum down to the maximum of the nex
 
 ## 5. Step-by-step instructions
 
-### 5.1. Create the structure
+### 5.1. Create the structures
 
 Run the
 [structure creation notebook](interface-bilayer-twisted-commensurate-lattices-boron-nitride.md).
-Its default parameters build the 7.34° α bilayer and save it as `h-BN bilayer 7.34deg alpha d3.23`.
+Its default parameters build the 7.34° α and β bilayers and save them as
+`h-BN bilayer 7.34deg alpha d3.23` and `h-BN bilayer 7.34deg beta d3.23`.
 
 ### 5.2. Open the simulation notebook
 
@@ -142,9 +147,10 @@ Its default parameters build the 7.34° α bilayer and save it as `h-BN bilayer 
 other/materials_designer/specific_examples/interface_bilayer_twisted_commensurate_lattices_boron_nitride_SIMULATION.ipynb
 ```
 
-### 5.3. Select the material
+### 5.3. Select the materials
 
-Cell 1.2 holds the material name, the workflow and the compute settings:
+Cell 1.2 holds the materials with the manuscript's width for each, the workflow and the compute
+settings:
 
 ```python
 from datetime import datetime
@@ -152,7 +158,19 @@ from mat3ra.ide.compute import QueueName
 
 ORGANIZATION_NAME = None  # set to your organization name (full or partial); otherwise, your default one is used
 FOLDER = "./uploads"
-MATERIAL_NAME = "h-BN bilayer 7.34deg alpha d3.23"  # as saved by the structure notebook
+# Names as saved by the structure notebook, each with the width of its top valence flat set in Xian et al. 2019
+# (meV; 7.34°: text p. 4936; 6.01, 5.08 and 3.89°: read off Fig. 1g). One job per material: 7.34° takes about 3 h on
+# queue OR with 16 cores; 5.08° and smaller exceed one 4 h single-node job.
+MATERIALS = {
+    "h-BN bilayer 7.34deg alpha d3.23": {"paper_flat_band_width": 101.4},
+    # "h-BN bilayer 7.34deg beta d3.23": {"paper_flat_band_width": 101.4},
+    # "h-BN bilayer 6.01deg alpha d3.23": {"paper_flat_band_width": 54.9},
+    # "h-BN bilayer 6.01deg beta d3.23": {"paper_flat_band_width": 54.9},
+    # "h-BN bilayer 5.08deg alpha d3.23": {"paper_flat_band_width": 31.6},
+    # "h-BN bilayer 5.08deg beta d3.23": {"paper_flat_band_width": 31.6},
+    # "h-BN bilayer 3.89deg alpha d3.23": {"paper_flat_band_width": 11.7},
+    # "h-BN bilayer 3.89deg beta d3.23": {"paper_flat_band_width": 11.7},
+}
 
 WORKFLOW_SEARCH_TERM = "band_structure.json"
 MY_WORKFLOW_NAME = "Band Structure"
@@ -167,35 +185,39 @@ timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
 POLL_INTERVAL = 60  # seconds
 ```
 
-`MATERIAL_NAME` must match the name the structure notebook saved. Set `ORGANIZATION_NAME` to the
-account's organization.
+Each name in `MATERIALS` must match a name the structure notebook saved; one job is created per
+entry. Set `ORGANIZATION_NAME` to the account's organization.
 
 ### 5.4. Run the notebook
 
 Select *Run* > *Run All*. The notebook will
 [authenticate with the platform]({{ interface_url }}/jupyterlite/authentication.md), load and save
-the material, submit the job and wait for it. Section 7 reads the band structure, the flat-band
-width and the separation, and section 8 prints them beside the manuscript's value.
+the materials, submit the jobs one after another and wait for them. Section 7 reads the band
+structures, the flat-band widths and the separations, and section 8 prints them beside the
+manuscript's values.
 
 
 ## 6. Expected results
 
 ### 6.1. Flat-band width
 
-The last cell prints the number of bands in the top valence flat set and its width along Γ–K–M
-beside the manuscript's value, and the separation of the set from the bands below:
+For each material the last cell prints the number of bands in the top valence flat set and its
+width along Γ–K–M beside the manuscript's value, and the separation of the set from the bands below.
+For the default `h-BN bilayer 7.34deg alpha d3.23`:
 
 | quantity | this tutorial | manuscript |
 |---|---|---|
 | width of the top valence flat set (2 bands), along Γ–K–M | 101.3 meV | 101.4 meV (text p. 4936; Fig. 1g) |
 | separation from the bands below | 57.6 meV | not given at 7.34° |
 
-![Width of the top valence flat bands against twist angle from the manuscript, and bands near the valence-band top from the simulation notebook](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/flat-bands-results-comparison.webp "Xian et al. 2019, Fig. 1g: width of the top set of valence flat bands of unrelaxed twisted bilayer h-BN against twist angle, CC-BY (left); the simulation notebook: bands near the valence-band top of the 7.34° configuration α bilayer along Γ–K–M, energies relative to the top of the flat set (right)")
 
 ### 6.2. Band structure
 
-The right panel of the figure above is the plot of section 7.3 of the notebook: the bands within
-`PLOT_ENERGY_RANGE` of the top of the flat set.
+Section 7.3 of the notebook plots, for each material, the bands within `PLOT_ENERGY_RANGE` of the
+top of the flat set. For the default α bilayer:
+
+![Bands near the valence-band top of the 7.34° α bilayer](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/bands-near-valence-band-top-alpha.webp "Bands near the valence-band top of the 7.34° configuration α bilayer along Γ–K–M, energies relative to the top of the flat set, from the simulation notebook")
+
 The manuscript plots such bands at 2.64° (Fig. 1f) and from 5.08° to 2.64° (Supporting Information,
 Fig. S2), not at 7.34°.
 
@@ -203,8 +225,8 @@ Fig. S2), not at 7.34°.
 
 ### 7.1. Material not found
 
-`ValueError: No material named …` means the structure notebook has not been run, or `MATERIAL_NAME`
-differs from the name it saved. Run the
+`ValueError: No material named …` means the structure notebook has not been run, or a name in
+`MATERIALS` differs from the names it saved. Run the
 [structure tutorial](interface-bilayer-twisted-commensurate-lattices-boron-nitride.md) first.
 
 
