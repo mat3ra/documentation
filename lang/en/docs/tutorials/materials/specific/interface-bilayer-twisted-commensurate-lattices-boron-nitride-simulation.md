@@ -159,8 +159,8 @@ from mat3ra.ide.compute import QueueName
 ORGANIZATION_NAME = None  # set to your organization name (full or partial); otherwise, your default one is used
 FOLDER = "./uploads"
 # Names as saved by the structure notebook, each with the width of its top valence flat set in Xian et al. 2019
-# (meV; 7.34°: text p. 4936; 6.01, 5.08 and 3.89°: read off Fig. 1g). One job per material: 7.34° takes about 3 h on
-# queue OR with 16 cores; 5.08° and smaller exceed one 4 h single-node job.
+# (meV; 7.34°: text p. 4936; 6.01, 5.08 and 3.89°: read off Fig. 1g). One job per material; 5.08° and smaller exceed
+# one 4 h single-node job.
 MATERIALS = {
     "h-BN bilayer 7.34deg alpha d3.23": {"paper_flat_band_width": 101.4},
     # "h-BN bilayer 7.34deg beta d3.23": {"paper_flat_band_width": 101.4},
