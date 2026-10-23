@@ -121,7 +121,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 3.1.1.2. Pt Adatoms Island on MoS2 <span class="btn badge b-info border-50">D-2D-ISL</span>
 
 **Structure**: [Create Pt Island on MoS2](defect-point-adatom-island-molybdenum-disulfide-platinum.md)  
-**Properties**: Calculate binding energy per Pt atom and density of states (Coming Soon)  
+**Properties**: [Calculate Binding Energy per Pt Atom on MoS2](defect-point-adatom-island-molybdenum-disulfide-platinum-simulation.md)  
 **DOI**: [10.1021/cg5013395](https://doi.org/10.1021/cg5013395){:target='_blank'} [@Saidi2015; @Jiao2016; @Fichthorn2000; @Neugebauer1993; @Hortamani2007]
 
 ![Pt Island on MoS2](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/0-figure-from-manuscript.webp "Pt island formation on MoS2"){ style="max-height:500px;width:auto;" }
