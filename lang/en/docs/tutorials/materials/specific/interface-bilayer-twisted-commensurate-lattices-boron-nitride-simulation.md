@@ -213,16 +213,6 @@ For the default `h-BN bilayer 7.34deg alpha d3.23`:
 | separation from the bands below | 57.6 meV | not given at 7.34° |
 
 
-### 6.2. Band structure
-
-Section 7.3 of the notebook plots, for each material, the bands within `PLOT_ENERGY_RANGE` of the
-top of the flat set. For the default α bilayer:
-
-![Bands near the valence-band top of the 7.34° α bilayer](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/bands-near-valence-band-top-alpha.webp "Bands near the valence-band top of the 7.34° configuration α bilayer along Γ–K–M, energies relative to the top of the flat set, from the simulation notebook")
-
-The manuscript plots such bands at 2.64° (Fig. 1f) and from 5.08° to 2.64° (Supporting Information,
-Fig. S2), not at 7.34°.
-
 ## 7. Troubleshooting
 
 ### 7.1. Material not found
