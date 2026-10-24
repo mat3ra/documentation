@@ -169,11 +169,6 @@ The manuscript checks that nine-plane slabs change the energies by less than 0.0
 
 Loading raises when a name is missing from the `uploads` folder and the account's materials collection. Run the notebook of the [SrTiO<sub>3</sub> Slab](slab-strontium-titanate.md) tutorial, which saves the six materials under the names in cell 1.2.
 
-### 8.2. No cluster available
-
-If section 5.1 of the notebook prints an empty list of clusters, there is nothing to submit to, and section 5.2 stops. A cluster has to be available to the account before the notebook can run.
-
-
 ## 9. Interactive JupyterLite notebook
 
 The following JupyterLite notebook calculates the surface energies of the SrTiO<sub>3</sub> slabs. Select *Run* > *Run All Cells*.
