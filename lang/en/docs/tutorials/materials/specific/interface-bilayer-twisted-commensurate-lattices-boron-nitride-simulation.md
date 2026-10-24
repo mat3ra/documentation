@@ -159,8 +159,8 @@ from mat3ra.ide.compute import QueueName
 ORGANIZATION_NAME = None  # set to your organization name (full or partial); otherwise, your default one is used
 FOLDER = "./uploads"
 # Names as saved by the structure notebook, each with the width of its top valence flat set in Xian et al. 2019
-# (meV, configuration not stated; 7.34°: text p. 4936; 6.01, 5.08 and 3.89°: read off Fig. 1g). One job per material;
-# every angle below 7.34° exceeds one 4 h single-node job.
+# (meV, configuration not stated; 7.34° and 2.64°: text p. 4936; 6.01, 5.08 and 3.89°: read off Fig. 1g). One job per
+# material; every angle below 7.34° exceeds one 4 h single-node job.
 MATERIALS = {
     "h-BN bilayer 7.34deg alpha d3.23": {"paper_flat_band_width": 101.4},
     # "h-BN bilayer 7.34deg beta d3.23": {"paper_flat_band_width": 101.4},
@@ -170,6 +170,8 @@ MATERIALS = {
     # "h-BN bilayer 5.08deg beta d3.23": {"paper_flat_band_width": 31.6},
     # "h-BN bilayer 3.89deg alpha d3.23": {"paper_flat_band_width": 11.7},
     # "h-BN bilayer 3.89deg beta d3.23": {"paper_flat_band_width": 11.7},
+    # "h-BN bilayer 2.64deg alpha d3.23": {"paper_flat_band_width": 1.6},
+    # "h-BN bilayer 2.64deg beta d3.23": {"paper_flat_band_width": 1.6},
 }
 
 WORKFLOW_SEARCH_TERM = "band_structure.json"

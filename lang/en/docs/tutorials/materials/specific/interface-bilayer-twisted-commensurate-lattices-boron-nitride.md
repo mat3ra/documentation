@@ -64,8 +64,7 @@ interlayer distance:
 
 ```python
 # Uncomment a line to build that configuration as well: α is twisted by 60° + θ, β by θ. The angles are those of
-# Xian et al. 2019 Fig. 1g; smaller angles have larger cells (6.01°: 364 atoms, 5.08°: 508, 3.89°: 868) and build
-# slower.
+# Xian et al. 2019 Fig. 1g; smaller angles have larger cells (6.01°: 364 atoms, 5.08°: 508, 3.89°: 868, 2.64°: 1876).
 INTERFACE_PARAMETERS = [
     {"name": "h-BN bilayer 7.34deg alpha d3.23", "angle": 60 + 7.34},
     {"name": "h-BN bilayer 7.34deg beta d3.23", "angle": 7.34},
@@ -75,6 +74,8 @@ INTERFACE_PARAMETERS = [
     # {"name": "h-BN bilayer 5.08deg beta d3.23", "angle": 5.08},
     # {"name": "h-BN bilayer 3.89deg alpha d3.23", "angle": 60 + 3.89},
     # {"name": "h-BN bilayer 3.89deg beta d3.23", "angle": 3.89},
+    # {"name": "h-BN bilayer 2.64deg alpha d3.23", "angle": 60 + 2.64},
+    # {"name": "h-BN bilayer 2.64deg beta d3.23", "angle": 2.64},
 ]
 INTERFACE_DISTANCE = 3.23  # Å, the article's
 ```
