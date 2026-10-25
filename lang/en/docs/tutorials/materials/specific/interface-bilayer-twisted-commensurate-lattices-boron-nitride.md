@@ -78,6 +78,7 @@ INTERFACE_PARAMETERS = [
     # {"name": "h-BN bilayer 2.64deg beta d3.23", "angle": 2.64},
 ]
 INTERFACE_DISTANCE = 3.23  # Å, the article's
+MONOLAYER_NAME = "h-BN monolayer"  # the Standata monolayer, saved as is (Fig. 1d)
 ```
 
 The defaults build α and β at 7.34°.

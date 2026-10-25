@@ -102,19 +102,6 @@ PSEUDOPOTENTIAL_TYPE = "us"  # GBRV
 ECUTWFC = 40  # Ry
 ECUTRHO = 200  # Ry; paper: VASP PAW, 400 eV
 
-# paper: Γ–K–M, number of points not stated; ours 7, evenly spaced (|ΓK| = 2|KM|)
-KPATH = [
-    {"point": "Γ", "steps": 4},
-    {"point": "K", "steps": 2},
-    {"point": "M", "steps": 1},
-]
-# paper Fig. 1d: Γ–K–M, number of points not stated; ours 61, evenly spaced
-KPATH_MONOLAYER = [
-    {"point": "Γ", "steps": 40},
-    {"point": "K", "steps": 20},
-    {"point": "M", "steps": 1},
-]
-KPATHS = {"h-BN monolayer": KPATH_MONOLAYER}  # every other material: KPATH
 MODEL_TAG = f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry"
 
 SCF_UNIT = "pw_scf"
@@ -125,8 +112,9 @@ PLOT_ENERGY_RANGE = (-0.5, 0.1)  # eV, relative to the top of the flat bands
 
 ### 4.1. K-point sampling
 
-`KPATH` lists the vertices of the path and the number of steps from each to the next; the `steps`
-values set how many points the bands are computed at.
+`KPATH` and `KPATH_MONOLAYER`, in cell 1.2, list the vertices of a path and the number of steps from
+each to the next; the `steps` values set how many points the bands are computed at. Each entry of
+`MATERIALS` names its path under `"kpath"`.
 
 ### 4.2. The band structure path belongs to the moiré cell
 
@@ -155,8 +143,8 @@ other/materials_designer/specific_examples/interface_bilayer_twisted_commensurat
 
 ### 5.3. Select the materials
 
-Cell 1.2 holds the materials with the manuscript's width for each, the workflow and the compute
-settings:
+Cell 1.2 holds the band paths, the materials with the k-grid, path and manuscript value of each,
+the workflow and the compute settings:
 
 ```python
 from datetime import datetime
@@ -164,23 +152,36 @@ from mat3ra.ide.compute import QueueName
 
 ORGANIZATION_NAME = None  # set to your organization name (full or partial); otherwise, your default one is used
 FOLDER = "./uploads"
-# Names as saved by the structure notebook, each with the k-grid of its self-consistent run and the paper's value:
-# the monolayer's LDA band gap (eV, SI p. 10) or the width of the bilayer's top valence flat set (meV, configuration
-# not stated; 7.34° and 2.64°: text p. 4936; 6.01, 5.08 and 3.89°: read off Fig. 1g). The twisted cells use the paper's
-# Γ-only self-consistent run. One job per material; every angle below 7.34° exceeds one 4 h single-node job.
+# paper: Γ–K–M, number of points not stated; ours evenly spaced (|ΓK| = 2|KM|), 7 points for the moiré cells
+KPATH = [
+    {"point": "Γ", "steps": 4},
+    {"point": "K", "steps": 2},
+    {"point": "M", "steps": 1},
+]
+# paper Fig. 1d: Γ–K–M, number of points not stated; ours 61, evenly spaced
+KPATH_MONOLAYER = [
+    {"point": "Γ", "steps": 40},
+    {"point": "K", "steps": 20},
+    {"point": "M", "steps": 1},
+]
+# Names as saved by the structure notebook, each with the k-grid of its self-consistent run, the path of its bands and
+# the paper's value: the monolayer's LDA band gap (eV, SI p. 10) or the width of the bilayer's top valence flat set
+# (meV, configuration not stated; 7.34° and 2.64°: text p. 4936; 6.01, 5.08 and 3.89°: read off Fig. 1g). The twisted
+# cells use the paper's Γ-only self-consistent run. One job per material; every angle below 7.34° exceeds one 4 h
+# single-node job.
 MATERIALS = {
     # paper: k-grid not stated; ours a multiple of 3, which keeps K on the mesh
-    "h-BN monolayer": {"kgrid": [12, 12, 1], "paper_band_gap": 4.7},
-    "h-BN bilayer 7.34deg alpha d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 101.4},
-    # "h-BN bilayer 7.34deg beta d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 101.4},
-    # "h-BN bilayer 6.01deg alpha d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 54.9},
-    # "h-BN bilayer 6.01deg beta d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 54.9},
-    # "h-BN bilayer 5.08deg alpha d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 31.6},
-    # "h-BN bilayer 5.08deg beta d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 31.6},
-    # "h-BN bilayer 3.89deg alpha d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 11.7},
-    # "h-BN bilayer 3.89deg beta d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 11.7},
-    # "h-BN bilayer 2.64deg alpha d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 1.6},
-    # "h-BN bilayer 2.64deg beta d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 1.6},
+    "h-BN monolayer": {"kgrid": [12, 12, 1], "kpath": KPATH_MONOLAYER, "paper_band_gap": 4.7},
+    "h-BN bilayer 7.34deg alpha d3.23": {"kgrid": [1, 1, 1], "kpath": KPATH, "paper_flat_band_width": 101.4},
+    # "h-BN bilayer 7.34deg beta d3.23": {"kgrid": [1, 1, 1], "kpath": KPATH, "paper_flat_band_width": 101.4},
+    # "h-BN bilayer 6.01deg alpha d3.23": {"kgrid": [1, 1, 1], "kpath": KPATH, "paper_flat_band_width": 54.9},
+    # "h-BN bilayer 6.01deg beta d3.23": {"kgrid": [1, 1, 1], "kpath": KPATH, "paper_flat_band_width": 54.9},
+    # "h-BN bilayer 5.08deg alpha d3.23": {"kgrid": [1, 1, 1], "kpath": KPATH, "paper_flat_band_width": 31.6},
+    # "h-BN bilayer 5.08deg beta d3.23": {"kgrid": [1, 1, 1], "kpath": KPATH, "paper_flat_band_width": 31.6},
+    # "h-BN bilayer 3.89deg alpha d3.23": {"kgrid": [1, 1, 1], "kpath": KPATH, "paper_flat_band_width": 11.7},
+    # "h-BN bilayer 3.89deg beta d3.23": {"kgrid": [1, 1, 1], "kpath": KPATH, "paper_flat_band_width": 11.7},
+    # "h-BN bilayer 2.64deg alpha d3.23": {"kgrid": [1, 1, 1], "kpath": KPATH, "paper_flat_band_width": 1.6},
+    # "h-BN bilayer 2.64deg beta d3.23": {"kgrid": [1, 1, 1], "kpath": KPATH, "paper_flat_band_width": 1.6},
 }
 
 WORKFLOW_SEARCH_TERM = "band_structure.json"
