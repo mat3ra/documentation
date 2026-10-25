@@ -115,8 +115,8 @@ h-BN bilayer 7.34deg beta d3.23: 244 atoms (B122N122), a = 19.596 Å, gamma = 12
 
 The notebook shows the bilayers from the top and from the side. Each structure is saved to the
 `uploads` folder under its `name`, and can also be passed to the Materials Designer for further
-analysis. The right column of the figure in section 1 shows these cells, rotated to the
-orientation of the manuscript's Fig. 1a,b.
+analysis. The Standata monolayer is saved as `h-BN monolayer`. The right column of the figure in
+section 1 shows these cells, rotated to the orientation of the manuscript's Fig. 1a,b.
 
 Once the structures exist, the
 [band structure tutorial](interface-bilayer-twisted-commensurate-lattices-boron-nitride-simulation.md)

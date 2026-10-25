@@ -43,22 +43,23 @@ cell. The top set of valence bands is flat, and its width decreases from 101.4 m
 
 Run the
 [structure creation tutorial](interface-bilayer-twisted-commensurate-lattices-boron-nitride.md)
-first. Its notebook saves each bilayer into the `uploads` folder under a name such as
+first. Its notebook saves each bilayer and the monolayer into the `uploads` folder under a name such as
 `h-BN bilayer 7.34deg alpha d3.23`, and this notebook loads them back by exactly those names.
 
 ## 3. What is calculated
 
 One job per material runs the Standata "Band Structure" workflow (`band_structure.json`) on a
-bilayer built by the structure notebook. It chains `pw_scf`, the self-consistent run at Γ, and `pw_bands`, the bands
-along Γ–K–M of the moiré cell.
+structure saved by the structure notebook. It chains `pw_scf`, the self-consistent run on the material's k-grid, and
+`pw_bands`, the bands along Γ–K–M of its cell.
 
 | structure | twist | interlayer distance | atoms |
 |---|---|---|---|
 | `h-BN bilayer 7.34deg alpha d3.23` | 60° + 7.34° (α) | 3.23 Å | 244 |
 | `h-BN bilayer 7.34deg beta d3.23` | 7.34° (β) | 3.23 Å | 244 |
+| `h-BN monolayer` | — | — | 2 |
 
-The simulation notebook computes α by default; β and the smaller angles are commented entries in
-`MATERIALS`.
+The simulation notebook computes the monolayer and α by default; β and the smaller angles are
+commented entries in `MATERIALS`.
 
 ### 3.1. The structure is not relaxed
 
@@ -84,8 +85,8 @@ The manuscript used VASP with the local density approximation (LDA) and projecto
 | Functional | LDA (`pz`) | LDA |
 | Pseudopotentials | ultrasoft (GBRV) | PAW |
 | Cutoff | 40 Ry wavefunction, 200 Ry density | 400 eV |
-| Self-consistent k-points | Γ | Γ |
-| Band path | Γ–K–M, 7 points | Γ–K–M, number of points not stated |
+| Self-consistent k-points | Γ (bilayers), 12×12×1 (monolayer) | Γ (bilayers), not stated (monolayer) |
+| Band path | Γ–K–M, 7 points (bilayers), 61 points (monolayer) | Γ–K–M, number of points not stated |
 | Lattice constant | 2.509 Å (Standata) | 2.512 Å |
 | Interlayer distance | 3.23 Å | 3.23 Å |
 | Vacuum | 20 Å above the top layer | not stated |
@@ -101,15 +102,20 @@ PSEUDOPOTENTIAL_TYPE = "us"  # GBRV
 ECUTWFC = 40  # Ry
 ECUTRHO = 200  # Ry; paper: VASP PAW, 400 eV
 
-KGRID = [1, 1, 1]  # Γ only, as the paper's self-consistent run
 # paper: Γ–K–M, number of points not stated; ours 7, evenly spaced (|ΓK| = 2|KM|)
 KPATH = [
     {"point": "Γ", "steps": 4},
     {"point": "K", "steps": 2},
     {"point": "M", "steps": 1},
 ]
-MODEL_TAG = (f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry k{KGRID[0]} "
-             f"p{sum(point['steps'] for point in KPATH)}")
+# paper Fig. 1d: Γ–K–M, number of points not stated; ours 61, evenly spaced
+KPATH_MONOLAYER = [
+    {"point": "Γ", "steps": 40},
+    {"point": "K", "steps": 20},
+    {"point": "M", "steps": 1},
+]
+KPATHS = {"h-BN monolayer": KPATH_MONOLAYER}  # every other material: KPATH
+MODEL_TAG = f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry"
 
 SCF_UNIT = "pw_scf"
 BANDS_UNIT = "pw_bands"
@@ -158,20 +164,23 @@ from mat3ra.ide.compute import QueueName
 
 ORGANIZATION_NAME = None  # set to your organization name (full or partial); otherwise, your default one is used
 FOLDER = "./uploads"
-# Names as saved by the structure notebook, each with the width of its top valence flat set in Xian et al. 2019
-# (meV, configuration not stated; 7.34° and 2.64°: text p. 4936; 6.01, 5.08 and 3.89°: read off Fig. 1g). One job per
-# material; every angle below 7.34° exceeds one 4 h single-node job.
+# Names as saved by the structure notebook, each with the k-grid of its self-consistent run and the paper's value:
+# the monolayer's LDA band gap (eV, SI p. 10) or the width of the bilayer's top valence flat set (meV, configuration
+# not stated; 7.34° and 2.64°: text p. 4936; 6.01, 5.08 and 3.89°: read off Fig. 1g). The twisted cells use the paper's
+# Γ-only self-consistent run. One job per material; every angle below 7.34° exceeds one 4 h single-node job.
 MATERIALS = {
-    "h-BN bilayer 7.34deg alpha d3.23": {"paper_flat_band_width": 101.4},
-    # "h-BN bilayer 7.34deg beta d3.23": {"paper_flat_band_width": 101.4},
-    # "h-BN bilayer 6.01deg alpha d3.23": {"paper_flat_band_width": 54.9},
-    # "h-BN bilayer 6.01deg beta d3.23": {"paper_flat_band_width": 54.9},
-    # "h-BN bilayer 5.08deg alpha d3.23": {"paper_flat_band_width": 31.6},
-    # "h-BN bilayer 5.08deg beta d3.23": {"paper_flat_band_width": 31.6},
-    # "h-BN bilayer 3.89deg alpha d3.23": {"paper_flat_band_width": 11.7},
-    # "h-BN bilayer 3.89deg beta d3.23": {"paper_flat_band_width": 11.7},
-    # "h-BN bilayer 2.64deg alpha d3.23": {"paper_flat_band_width": 1.6},
-    # "h-BN bilayer 2.64deg beta d3.23": {"paper_flat_band_width": 1.6},
+    # paper: k-grid not stated; ours a multiple of 3, which keeps K on the mesh
+    "h-BN monolayer": {"kgrid": [12, 12, 1], "paper_band_gap": 4.7},
+    "h-BN bilayer 7.34deg alpha d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 101.4},
+    # "h-BN bilayer 7.34deg beta d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 101.4},
+    # "h-BN bilayer 6.01deg alpha d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 54.9},
+    # "h-BN bilayer 6.01deg beta d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 54.9},
+    # "h-BN bilayer 5.08deg alpha d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 31.6},
+    # "h-BN bilayer 5.08deg beta d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 31.6},
+    # "h-BN bilayer 3.89deg alpha d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 11.7},
+    # "h-BN bilayer 3.89deg beta d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 11.7},
+    # "h-BN bilayer 2.64deg alpha d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 1.6},
+    # "h-BN bilayer 2.64deg beta d3.23": {"kgrid": [1, 1, 1], "paper_flat_band_width": 1.6},
 }
 
 WORKFLOW_SEARCH_TERM = "band_structure.json"
@@ -195,22 +204,29 @@ entry. Set `ORGANIZATION_NAME` to the account's organization.
 Select *Run* > *Run All*. The notebook will
 [authenticate with the platform]({{ interface_url }}/jupyterlite/authentication.md), load and save
 the materials, submit the jobs one after another and wait for them. Section 7 reads the band
-structures, the flat-band widths and the separations, and section 8 prints them beside the
-manuscript's values.
+structures, the flat-band widths and the separations of the bilayers and the band gap of the
+monolayer, and section 8 prints them beside the manuscript's values.
 
 
 ## 6. Expected results
 
-### 6.1. Flat-band width
+### 6.1. Flat-band width and band gap
 
-For each material the last cell prints the number of bands in the top valence flat set and its
-width along Γ–K–M beside the manuscript's value, and the separation of the set from the bands below.
-For the default `h-BN bilayer 7.34deg alpha d3.23`:
+For each bilayer the last cell prints the number of bands in the top valence flat set and its width
+along Γ–K–M beside the manuscript's value, and the separation of the set from the bands below; for
+the monolayer, its band gap along Γ–K–M beside the manuscript's. For the defaults:
 
 | quantity | this tutorial | manuscript |
 |---|---|---|
-| width of the top valence flat set (2 bands), along Γ–K–M | 101.3 meV | 101.4 meV (text p. 4936; Fig. 1g) |
-| separation from the bands below | 57.6 meV | not given at 7.34° |
+| `h-BN bilayer 7.34deg alpha d3.23`: width of the top valence flat set (2 bands), along Γ–K–M | 101.3 meV | 101.4 meV (text p. 4936; Fig. 1g) |
+| `h-BN bilayer 7.34deg alpha d3.23`: separation from the bands below | 57.6 meV | not given at 7.34° |
+| `h-BN monolayer`: band gap along Γ–K–M | 4.56 eV | 4.7 eV (Supporting Information, p. 10) |
+
+### 6.2. Band structure of the monolayer
+
+The monolayer job's bands, on the manuscript's Γ–K–M path and energy window:
+
+![Band structure of monolayer h-BN from the manuscript and from the simulation notebook's job](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/monolayer-bands-comparison.webp "Band structure of monolayer h-BN along Γ–K–M: Xian et al. 2019, Fig. 1d, CC-BY (left); the monolayer job of the simulation notebook, the 8 bands it computes, energies relative to mid-gap, where the paper's panel places its zero by eye (right)")
 
 
 ## 7. Troubleshooting
