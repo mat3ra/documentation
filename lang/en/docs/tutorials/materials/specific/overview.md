@@ -41,7 +41,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 2.1.1.1. Graphene/h-BN Interface <span class="btn badge b-info border-50">C-2D-INT-Z</span>
 
 **Structure**: [Create Graphene/h-BN Interface](interface-2d-2d-graphene-boron-nitride.md)  
-**Properties**: Calculate band structure and total energies (Coming Soon)  
+**Properties**: [Calculate Stacking Energy and Band Gap of Graphene on h-BN](interface-2d-2d-graphene-boron-nitride-simulation.md)  
 **DOI**: [10.1038/ncomms7308](https://doi.org/10.1038/ncomms7308){:target='_blank'} [@Jung2015]
 
 ![Graphene on Hexagonal Boron Nitride](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/0-figure-from-manuscript.webp "Graphene on Hexagonal Boron Nitride, FIG. 7"){ style="max-height:500px;width:auto;" }
@@ -49,7 +49,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 2.1.1.2. Graphene/SiO2 Interface <span class="btn badge b-info border-50">C-2D-INT-Z</span>
 
 **Structure**: [Create Graphene/SiO2 Interface](interface-2d-3d-graphene-silicon-dioxide.md)  
-**Properties**: Calculate band structure (Coming Soon)  
+**Properties**: [Calculate Doping and Gap at the Dirac Point of Graphene on SiO2](interface-2d-3d-graphene-silicon-dioxide-simulation.md)  
 **DOI**: [10.1103/PhysRevB.78.115404](https://doi.org/10.1103/PhysRevB.78.115404){:target='_blank'}
 
 ![Graphene on Silicon Dioxide](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/0-figure-from-manuscript.webp "Graphene on Silicon Dioxide, FIG. 1(b)"){ style="max-height:500px;width:auto;" }
@@ -72,13 +72,20 @@ This document provides a comprehensive catalog of materials science tutorials or
 ![Gr/Ni Interface](../../../images/tutorials/materials/optimization/optimization_interface_film_xy_position_graphene_nickel/0-figure-from-manuscript.webp "Optimal position of graphene on Ni(111)"){ style="max-height:500px;width:auto;" }
 
 
-##### 2.1.1.5. Si/Ge (001) Strained Superlattice <span class="btn badge b-info border-50">C-2D-INT-S</span>
+##### 2.1.1.5. Si/Ge (001) Interface <span class="btn badge b-info border-50">C-2D-INT-S</span>
 
-**Structure**: [Create Si/Ge (001) Strained Superlattice](interface-3d-3d-silicon-germanium.md)  
+**Structure**: [Create Si/Ge (001) Interface](interface-3d-3d-silicon-germanium.md)  
 **Properties**: [Calculate Si/Ge (001) Valence Band Offset](interface-3d-3d-silicon-germanium-simulation.md)  
 **DOI**: [10.1103/PhysRevB.34.5621](https://doi.org/10.1103/PhysRevB.34.5621){:target='_blank'} [@VanDeWalle1986]
 
-![Si/Ge (001) Superlattice](../../../images/tutorials/materials/interfaces/interface_3d_3d_silicon_germanium/0-figure-1-from-manuscript.webp "Si/Ge (001) superlattice, FIG. 1"){ style="max-height:500px;width:auto;" }
+![Si/Ge (001) Interface](../../../images/tutorials/materials/interfaces/interface_3d_3d_silicon_germanium/0-figure-1-from-manuscript.webp "Si/Ge (001) superlattice, FIG. 1"){ style="max-height:500px;width:auto;" }
+##### 2.1.1.6. GaAs/AlAs (110) Interface <span class="btn badge b-info border-50">C-2D-INT-S</span>
+
+**Structure**: [Create GaAs/AlAs (110) Interface](interface-3d-3d-gallium-arsenide-aluminum-arsenide.md)  
+**Properties**: [Calculate GaAs/AlAs (110) Valence Band Offset](interface-3d-3d-gallium-arsenide-aluminum-arsenide-simulation.md)  
+**DOI**: [10.1103/PhysRevB.90.155405](https://doi.org/10.1103/PhysRevB.90.155405){:target='_blank'} [@Hinuma2014]
+
+![GaAs/AlAs (110) Interface](../../../images/tutorials/materials/interfaces/interface_3d_3d_gallium_arsenide_aluminum_arsenide/0-superlattice-this-notebook.webp "GaAs/AlAs (110) superlattice, built by the notebook"){ style="max-height:500px;width:auto;" }
 
 #### 2.1.2. Heterostack
 

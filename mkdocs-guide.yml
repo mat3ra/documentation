@@ -211,10 +211,14 @@ nav:
             - Gold Nanoclusters:                                                tutorials/materials/specific/nanocluster-gold.md
             - SrTiO3 Slab:                                                      tutorials/materials/specific/slab-strontium-titanate.md
             - Graphene / h-BN Interface:                                        tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride.md
+            - Graphene on h-BN (Stacking Energy and Band Gap):                  tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride-simulation.md
             - Cu / SiO2 Interface:                                              tutorials/materials/specific/interface-3d-3d-copper-silicon-dioxide.md
             - Graphene / SiO2 Interface:                                        tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide.md
-            - Si / Ge (001) Superlattice:                                       tutorials/materials/specific/interface-3d-3d-silicon-germanium.md
-            - Si / Ge (001) Superlattice (Valence Band Offset):                 tutorials/materials/specific/interface-3d-3d-silicon-germanium-simulation.md
+            - Graphene on SiO2 (Doping and Gap at the Dirac Point):             tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide-simulation.md
+            - Si / Ge (001) Interface:                                          tutorials/materials/specific/interface-3d-3d-silicon-germanium.md
+            - Si / Ge (001) Interface (Valence Band Offset):                    tutorials/materials/specific/interface-3d-3d-silicon-germanium-simulation.md
+            - GaAs / AlAs (110) Interface:                                      tutorials/materials/specific/interface-3d-3d-gallium-arsenide-aluminum-arsenide.md
+            - GaAs / AlAs (110) Interface (Valence Band Offset):                tutorials/materials/specific/interface-3d-3d-gallium-arsenide-aluminum-arsenide-simulation.md
             - High-k Metal Gate Stack:                                          tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md
             - Ripple Perturbation in Graphene:                                  tutorials/materials/specific/perturbation-ripples-graphene.md
             - Grain Boundary in Cu (FCC):                                       tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md
