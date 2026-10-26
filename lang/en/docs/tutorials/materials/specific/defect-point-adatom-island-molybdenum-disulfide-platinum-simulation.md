@@ -30,7 +30,7 @@ of the manuscript, E_b = (1/n) [E(MoS₂ + Pt_n) − E(MoS₂) − n E(Pt atom)]
 t-(Mo)₄-S cluster (n = 4, three Pt atoms on top of Mo and the fourth above S) and for one Pt atom on top of Mo (n = 1).
 The figure below shows the t-(Mo)₄-S cluster from the manuscript and from the structure notebook:
 
-![Pt₄ on MoS₂ from the manuscript and the structure notebook](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/6-paper-vs-built-top.webp "Top view of the t-(Mo)₄-S cluster on MoS₂: Saidi 2015, Fig. 4(b) (left), and the 79-atom slab built by the structure notebook, turned 30° in-plane to match (right)")
+![Pt₄ on MoS₂ from the manuscript and the structure notebook](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/6-manuscript-vs-built-top.webp "Top view of the t-(Mo)₄-S cluster on MoS₂: Saidi 2015, Fig. 4(b) (left), and the 79-atom slab built by the structure notebook, turned 30° in-plane to match (right)")
 
 ## 2. Prerequisites
 
@@ -170,9 +170,9 @@ The printed mean Pt-Pt distance, 2.616 Å, is the mean of the three apex-base pa
 
 The relaxation jobs return these structures, named `<name> relaxed <RELAX_TAG>` by section 7.2 of the notebook:
 
-![Relaxed Pt₄ on MoS₂ from the manuscript and this tutorial](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/8-paper-vs-relaxed-pt4-top.webp "Top view of the relaxed t-(Mo)₄-S cluster: Saidi 2015, Fig. 4(b) (left), and this tutorial, turned 30° in-plane to match (right)")
+![Relaxed Pt₄ on MoS₂ from the manuscript and this tutorial](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/8-manuscript-vs-relaxed-pt4-top.webp "Top view of the relaxed t-(Mo)₄-S cluster: Saidi 2015, Fig. 4(b) (left), and this tutorial, turned 30° in-plane to match (right)")
 
-![Relaxed Pt₁ on MoS₂ from the manuscript and this tutorial](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/9-paper-vs-relaxed-pt1-side.webp "Side view of the relaxed Pt atom on top of Mo: Saidi 2015, Fig. 1(a) (left), and this tutorial (right)")
+![Relaxed Pt₁ on MoS₂ from the manuscript and this tutorial](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/9-manuscript-vs-relaxed-pt1-side.webp "Side view of the relaxed Pt atom on top of Mo: Saidi 2015, Fig. 1(a) (left), and this tutorial (right)")
 
 ## 7. Customization options
 

@@ -129,7 +129,7 @@ And from the side:
 
 The 3x3 and 5x5 slabs from the top, beside Fig. 4(b) of the manuscript:
 
-![Pt₄ on MoS₂ from the manuscript and this notebook](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/7-paper-vs-built-3x3-5x5-top.webp "Top view of the t-(Mo)₄-S cluster: Saidi 2015, Fig. 4(b) (left), and the 3×3 and 5×5 slabs built by this notebook")
+![Pt₄ on MoS₂ from the manuscript and this notebook](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/7-manuscript-vs-built-3x3-5x5-top.webp "Top view of the t-(Mo)₄-S cluster: Saidi 2015, Fig. 4(b) (left), and the 3×3 and 5×5 slabs built by this notebook")
 
 ## 4. Analyze the Structure
 
