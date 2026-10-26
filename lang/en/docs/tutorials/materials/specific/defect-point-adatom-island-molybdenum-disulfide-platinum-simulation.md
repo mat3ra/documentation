@@ -92,26 +92,26 @@ PRISTINE_NAME = "MoS2 5x5 monolayer"
 PT1_NAME = "MoS2 5x5 Pt1 atop Mo"
 PT4_NAME = "MoS2 5x5 Pt4 t-(Mo)4-S"
 PT_ATOM_NAME = "Pt atom"
-PT_ATOM_BOX = 12.0  # Å, edge of the cubic box around the isolated Pt atom; paper: box size not stated
+PT_ATOM_BOX = 12.0  # Å, edge of the cubic box around the isolated Pt atom; manuscript: box size not stated
 ```
 
 Cell 1.4 sets the DFT model; each comment names the manuscript's setting:
 
 ```python
-# paper: VASP PAW at 350 eV; ours GBRV ultrasoft at its own converged 40/200 Ry
+# manuscript: VASP PAW at 350 eV; ours GBRV ultrasoft at its own converged 40/200 Ry
 FUNCTIONAL = "pbe"
 PSEUDOPOTENTIAL_TYPE = "us"
 ECUTWFC = 40   # Ry
 ECUTRHO = 200  # Ry
 
-GAMMA_KGRID = [1, 1, 1]  # paper: Γ only, for the slabs and the isolated atom
-# paper: Fermi-Dirac, k_B T = 0.05 eV = 0.003675 Ry
+GAMMA_KGRID = [1, 1, 1]  # manuscript: Γ only, for the slabs and the isolated atom
+# manuscript: Fermi-Dirac, k_B T = 0.05 eV = 0.003675 Ry
 SMEARING_SETTINGS = {"occupations": "smearing", "smearing": "fermi-dirac", "degauss": 0.003675}
-# paper: dipole correction along z; eamp = 0 keeps the sawtooth a correction, no external field
+# manuscript: dipole correction along z; eamp = 0 keeps the sawtooth a correction, no external field
 DIPOLE_SETTINGS = {"control": {"tefield": True, "dipfield": True}, "system": {"edir": 3, "eamp": 0.0, "eopreg": 0.05}}
-# paper: the isolated Pt atom spin-polarized with two unpaired electrons; the slabs spin-averaged
+# manuscript: the isolated Pt atom spin-polarized with two unpaired electrons; the slabs spin-averaged
 SPIN_SETTINGS = {"nspin": 2, "tot_magnetization": 2}
-# paper: all atoms relaxed to 0.005 eV/Å = 1.9e-4 Ry/Bohr. nstep ends each relaxation inside TIME_LIMIT;
+# manuscript: all atoms relaxed to 0.005 eV/Å = 1.9e-4 Ry/Bohr. nstep ends each relaxation inside TIME_LIMIT;
 # section 7 prints the force norm (all atoms). To reach the threshold, raise nstep (and TIME_LIMIT, cluster permitting).
 RELAXATION_SETTINGS = {"forc_conv_thr": 1.9e-4, "nstep": 10}
 MODEL_TAG = f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry G fd{SMEARING_SETTINGS['degauss']}"
@@ -133,17 +133,25 @@ The notebook polls the three relaxations, then the Total Energy job of the Pt at
 
 ### 5.5. Analyze results
 
-The notebook prints the residual forces, the relaxed Pt₄ bond lengths and the binding energies beside Table 1:
+The output comes in three groups: the residual force each relaxation ended with, one line per material; the mean Pt-Mo,
+Pt-S and Pt-Pt distances in the relaxed Pt₄ cluster, over the pairs under `BOND_CUTOFF`; and the binding energy per Pt
+atom from Eq. 1. A line whose label ends in `Saidi 2015` is that quantity from Table 1 of the manuscript, and the line
+above it is the notebook's own value:
 
 ```
-MoS2 5x5 monolayer: residual force 0.0012 eV/angstrom
-MoS2 5x5 Pt1 atop Mo: residual force 0.2225 eV/angstrom
-MoS2 5x5 Pt4 t-(Mo)4-S: residual force 0.3845 eV/angstrom
-Pt-Mo: 2.872 Å, Saidi 2.91 Å
-Pt-S: 2.356 Å, Saidi 2.35 Å
-Pt-Pt: 2.616 Å, Saidi 2.61 Å
-E_b(Pt4, t-(Mo)4-S): -3.545 eV/Pt, Saidi -3.43 eV/Pt
-E_b(Pt1, atop Mo): -2.859 eV/Pt, Saidi -2.83 eV/Pt
+Residual force, MoS2 5x5 monolayer: 0.0012 eV/angstrom
+Residual force, MoS2 5x5 Pt1 atop Mo: 0.2225 eV/angstrom
+Residual force, MoS2 5x5 Pt4 t-(Mo)4-S: 0.3845 eV/angstrom
+Mean Pt-Mo distance: 2.872 Å
+Mean Pt-Mo distance, Saidi 2015: 2.91 Å
+Mean Pt-S distance: 2.356 Å
+Mean Pt-S distance, Saidi 2015: 2.35 Å
+Mean Pt-Pt distance: 2.616 Å
+Mean Pt-Pt distance, Saidi 2015: 2.61 Å
+Binding energy per Pt atom, Pt4 t-(Mo)4-S: -3.545 eV
+Binding energy per Pt atom, Pt4 t-(Mo)4-S, Saidi 2015: -3.43 eV
+Binding energy per Pt atom, Pt1 atop Mo: -2.859 eV
+Binding energy per Pt atom, Pt1 atop Mo, Saidi 2015: -2.83 eV
 ```
 
 ## 6. Expected results
@@ -157,8 +165,8 @@ E_b(Pt1, atop Mo): -2.859 eV/Pt, Saidi -2.83 eV/Pt
 | Pt₁, on top of Mo (Fig. 1a), Saidi Table 1 | −2.83 | 2.76 | 2.29 | — |
 | Pt₁, on top of Mo, this tutorial | −2.859 | not computed | not computed | — |
 
-The printed Pt-Pt 2.616 Å is the mean of the three apex-base pairs; the three base-base pairs are at 3.00 Å, at Table 1's
-3 Å cutoff (`BOND_CUTOFF`), and are not counted; Table 1 gives 2.61 Å.
+The printed mean Pt-Pt distance, 2.616 Å, is the mean of the three apex-base pairs; the three base-base pairs are at
+3.00 Å, at Table 1's 3 Å cutoff (`BOND_CUTOFF`), and are not counted; Table 1 gives 2.61 Å.
 
 The relaxation jobs return these structures, named `<name> relaxed <RELAX_TAG>` by section 7.2 of the notebook:
 
