@@ -226,9 +226,8 @@ NEB on the structures as built; the scan always starts from the MACE-relaxed pre
 ### 7.2. Adjust computational resources
 
 The compute settings apply to the NEB only. The default, `CLUSTER_NAME = None`, uses the account's first listed
-cluster; setting a specific name picks that cluster instead, and a name that is not available makes the notebook
-stop and list the ones that are. The OF queue runs one job on up to 10 nodes, the OR queue on one 16-core node;
-`NODES` and `PPN` set the job's size.
+cluster; setting it to a cluster's full host name uses that cluster without listing. The OF queue runs one job
+on up to 10 nodes, the OR queue on one 16-core node; `NODES` and `PPN` set the job's size.
 
 ### 7.3. Use the manuscript's settings
 
