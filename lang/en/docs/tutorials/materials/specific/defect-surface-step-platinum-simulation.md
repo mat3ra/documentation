@@ -105,10 +105,20 @@ the compute resources, and the DFT model:
 
 ```python
 SURFACES = {
-    "Pt(111)": {"precursor": "Pt(111) O2 precursor", "dissociated": "Pt(111) 2O dissociated",
-                "kgrid": [2, 2, 1], "paper_barrier": 0.6, "paper_transition_state_oxygen_distance": 2.4},
-    "Pt(211)": {"precursor": "Pt(211) step O2 precursor", "dissociated": "Pt(211) step 2O dissociated",
-                "kgrid": [2, 2, 1], "paper_barrier": 0.9, "paper_transition_state_oxygen_distance": 3.0},
+    "Pt(111)": {
+        "precursor": "Pt(111) O2 precursor",
+        "dissociated": "Pt(111) 2O dissociated",
+        "kgrid": [2, 2, 1],
+        "paper_barrier": 0.6,
+        "paper_transition_state_oxygen_distance": 2.4,
+    },
+    "Pt(211)": {
+        "precursor": "Pt(211) step O2 precursor",
+        "dissociated": "Pt(211) step 2O dissociated",
+        "kgrid": [2, 2, 1],
+        "paper_barrier": 0.9,
+        "paper_transition_state_oxygen_distance": 3.0,
+    },
 }
 
 RELAX = True
@@ -122,21 +132,31 @@ RUN_DFT_NEB = False
 
 CLUSTER_NAME = None
 QUEUE_NAME = QueueName.OF
-NODES = 4
-PPN = 40
-TIME_LIMIT = "04:00:00"
+NODES = 1
+PPN = 30
+TIME_LIMIT = "08:00:00"
 
 APPLICATION_VERSION = "7.5"
-# selects the GBRV PBE pseudopotentials; QE_SYSTEM_SETTINGS sets the functional to RPBE
+# selects the GBRV PBE pseudopotentials; QE_SYSTEM_SETTINGS sets the
+# functional to RPBE
 FUNCTIONAL = "pbe"
 PSEUDOPOTENTIAL_TYPE = "us"
 ECUTWFC = 40   # Ry
 ECUTRHO = 200  # Ry
-QE_SYSTEM_SETTINGS = {"input_dft": "rpbe", "nspin": 1, "occupations": "smearing", "smearing": "mv", "degauss": 0.01}
+QE_SYSTEM_SETTINGS = {
+    "input_dft": "rpbe",
+    "nspin": 1,
+    "occupations": "smearing",
+    "smearing": "mv",
+    "degauss": 0.01,
+}
 QE_ELECTRONS_SETTINGS = {"mixing_mode": "local-TF", "mixing_beta": 0.2}
 N_IMAGES = 1
 NEB_MAXIMUM_ITERATIONS = 50
-NEB_PATH_SETTINGS = {"nstep_path": NEB_MAXIMUM_ITERATIONS, "minimum_image": True}
+NEB_PATH_SETTINGS = {
+    "nstep_path": NEB_MAXIMUM_ITERATIONS,
+    "minimum_image": True,
+}
 ```
 
 ### 5.3. Run the notebook
