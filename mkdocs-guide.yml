@@ -226,6 +226,7 @@ nav:
             - Gr/Ni(111) Interface Optimization:                                tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel.md
             - Gr/Ni(111) Registry and Work of Adhesion:                         tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel-simulation.md
             - Pt Adatoms Island on MoS2:                                        tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum.md
+            - Pt Adatoms Island on MoS2 (Binding Energy):                       tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum-simulation.md
 
 # 2. Simulations
     - 2. Simulations:
