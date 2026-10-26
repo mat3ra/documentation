@@ -116,12 +116,12 @@ Execute all cells by selecting *Run* > *Run All Cells*. The notebook [authentica
 The last cell prints, per termination, the computed cleavage energy beside the manuscript's and, with `RELAX = True`, the relaxation and surface energies:
 
 ```
-Ours: pbe-us 40-200Ry k6.5, relaxed; paper: B3PW. Energies in eV.
-TiO   cleavage 3.30 (paper 4.61)  relaxation -1.27 (paper -1.55)  surface 2.03 (paper 3.06)
-Sr    cleavage 3.30 (paper 4.61)  relaxation -1.05 (paper -1.95)  surface 2.25 (paper 2.66)
-O     cleavage 2.71 (paper 3.36)  relaxation -1.42 (paper -1.32)  surface 1.28 (paper 2.04)
-SrO   cleavage 1.10 (paper 1.39)  relaxation -0.17 (paper -0.24)  surface 0.93 (paper 1.15)
-TiO2  cleavage 1.10 (paper 1.39)  relaxation -0.16 (paper -0.16)  surface 0.94 (paper 1.23)
+Ours: pbe-us 40-200Ry k6.5, relaxed; manuscript: B3PW. Energies in eV.
+TiO   cleavage 3.30 (manuscript 4.61)  relaxation -1.27 (manuscript -1.55)  surface 2.03 (manuscript 3.06)
+Sr    cleavage 3.30 (manuscript 4.61)  relaxation -1.05 (manuscript -1.95)  surface 2.25 (manuscript 2.66)
+O     cleavage 2.71 (manuscript 3.36)  relaxation -1.42 (manuscript -1.32)  surface 1.28 (manuscript 2.04)
+SrO   cleavage 1.10 (manuscript 1.39)  relaxation -0.17 (manuscript -0.24)  surface 0.93 (manuscript 1.15)
+TiO2  cleavage 1.10 (manuscript 1.39)  relaxation -0.16 (manuscript -0.16)  surface 0.94 (manuscript 1.23)
 ```
 
 
@@ -129,7 +129,7 @@ TiO2  cleavage 1.10 (paper 1.39)  relaxation -0.16 (paper -0.16)  surface 0.94 (
 
 Energies per 1×1 surface cell, in eV: Table VII of the manuscript (B3PW) and this tutorial (PBE).
 
-| Termination | Value | Paper | Ours |
+| Termination | Value | Manuscript | Ours |
 |---|---|---|---|
 | (011) TiO | Cleavage | 4.61 | 3.30 |
 | | Relaxation | −1.55 | −1.27 |
