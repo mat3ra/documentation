@@ -41,7 +41,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 2.1.1.1. Graphene/h-BN Interface <span class="btn badge b-info border-50">C-2D-INT-Z</span>
 
 **Structure**: [Create Graphene/h-BN Interface](interface-2d-2d-graphene-boron-nitride.md)  
-**Properties**: Calculate band structure and total energies (Coming Soon)  
+**Properties**: [Calculate Stacking Energy and Band Gap of Graphene on h-BN](interface-2d-2d-graphene-boron-nitride-simulation.md)  
 **DOI**: [10.1038/ncomms7308](https://doi.org/10.1038/ncomms7308){:target='_blank'} [@Jung2015]
 
 ![Graphene on Hexagonal Boron Nitride](../../../images/tutorials/materials/interfaces/interface_2d_2d_graphene_boron_nitride/0-figure-from-manuscript.webp "Graphene on Hexagonal Boron Nitride, FIG. 7"){ style="max-height:500px;width:auto;" }
@@ -71,6 +71,14 @@ This document provides a comprehensive catalog of materials science tutorials or
 
 ![Gr/Ni Interface](../../../images/tutorials/materials/optimization/optimization_interface_film_xy_position_graphene_nickel/0-figure-from-manuscript.webp "Optimal position of graphene on Ni(111)"){ style="max-height:500px;width:auto;" }
 
+
+##### 2.1.1.5. GaAs/AlAs (110) Strained Superlattice <span class="btn badge b-info border-50">C-2D-INT-S</span>
+
+**Structure**: [Create GaAs/AlAs (110) Strained Superlattice](interface-3d-3d-gallium-arsenide-aluminum-arsenide.md)  
+**Properties**: [Calculate GaAs/AlAs (110) Valence Band Offset](interface-3d-3d-gallium-arsenide-aluminum-arsenide-simulation.md)  
+**DOI**: [10.1103/PhysRevB.90.155405](https://doi.org/10.1103/PhysRevB.90.155405){:target='_blank'} [@Hinuma2014]
+
+![GaAs/AlAs (110) Superlattice](../../../images/tutorials/materials/interfaces/interface_3d_3d_gallium_arsenide_aluminum_arsenide/0-superlattice-this-notebook.webp "GaAs/AlAs (110) superlattice, built by the notebook"){ style="max-height:500px;width:auto;" }
 
 #### 2.1.2. Heterostack
 
@@ -185,7 +193,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 3.3.2.1. Vacancy-Substitution Pair Defects in GaN <span class="btn badge b-info border-50">D-0D-DFP</span>
 
 **Structure**: [Create Vacancy-Substitution Pair in GaN](defect-point-pair-gallium-nitride.md)  
-**Properties**: Calculate defect formation energies (Coming Soon)  
+**Properties**: [Calculate Formation Energy of the Mg_Ga-V_N Pair in GaN](defect-point-pair-gallium-nitride-simulation.md)  
 **DOI**: [10.1103/PhysRevB.93.165207](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.93.165207){:target='_blank'} [@Miceli2016]
 
 ![Point Pair Defects: Mg Substitution and Vacancy in GaN](../../../images/tutorials/materials/defects/defect_point_pair_gallium_nitride/0-figure-from-manuscript.webp "Point Defect Pair: Substitution, Vacancy in GaN, FIG. 2."){ style="max-height:500px;width:auto;" }
@@ -205,7 +213,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 3.3.4.1. Interstitial Point Defect in SnO <span class="btn badge b-info border-50">D-0D-INT</span>
 
 **Structure**: [Create Interstitial Defect in SnO](defect-point-interstitial-tin-oxide.md)  
-**Properties**: Calculate formation energies and band structure (Coming Soon)  
+**Properties**: [Calculate Formation Energy and Density of States of the V_Sn-O_i Pair in SnO](defect-point-interstitial-tin-oxide-simulation.md)  
 **DOI**: [10.1103/PhysRevB.74.195128](https://doi.org/10.1103/PhysRevB.74.195128){:target='_blank'} [@Togo2006; @Wang2014; @Na-Phattalung2006]
 
 ![SnO O-interstitial](../../../images/tutorials/materials/defects/defect_point_interstitial_tin_oxide/0-figure-from-manuscript.webp "O-interstitial defect in SnO"){ style="max-height:500px;width:auto;" }

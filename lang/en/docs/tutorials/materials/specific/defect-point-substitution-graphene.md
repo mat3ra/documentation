@@ -124,13 +124,16 @@ After running the notebook, the user will be able to visualize the structure of 
 
 ![Review the Results](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/6-jl-result-preview.webp "Review the Results")
 
-## 7. Pass the Material to Materials Designer
+## 7. Pass the Materials to Materials Designer
 
-The user can pass the material with substitution defects in the current Materials Designer environment and save it.
+The notebook passes two materials into the current Materials Designer environment, where they can be saved:
+
+- `graphene 4x4` — the pristine supercell, which the [band structure and formation energy tutorial](defect-point-substitution-graphene-simulation.md) uses as the reference cell and as the source of the carbon chemical potential.
+- `graphene 4x4 N3V pyridinic (C28N3)` — the defective cell of FIG. 1 b), the one the defect properties are calculated for.
 
 ![Final Material](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/7-wave-result.webp "N-doped Graphene")
 
-Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
+The materials can also be [saved or downloaded]({{ interface_url }}/materials-designer/header-menu/input-output/) in Material JSON format or POSCAR format.
 
 
 ## 8. Interactive JupyterLite Notebook
