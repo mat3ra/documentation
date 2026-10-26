@@ -135,23 +135,32 @@ The notebook polls the three relaxations, then the Total Energy job of the Pt at
 
 The output comes in three groups: the residual force each relaxation ended with, one line per material; the mean Pt-Mo,
 Pt-S and Pt-Pt distances in the relaxed Pt₄ cluster, over the pairs under `BOND_CUTOFF`; and the binding energy per Pt
-atom from Eq. 1. A line whose label ends in `Saidi 2015` is that quantity from Table 1 of the manuscript, and the line
-above it is the notebook's own value:
+atom from Eq. 1. Each quantity is printed twice: the notebook's own values first, then the same lines headed "… from the
+manuscript" with Table 1's values.
 
 ```
-Residual force, MoS2 5x5 monolayer: 0.0012 eV/angstrom
-Residual force, MoS2 5x5 Pt1 atop Mo: 0.2225 eV/angstrom
-Residual force, MoS2 5x5 Pt4 t-(Mo)4-S: 0.3845 eV/angstrom
-Mean Pt-Mo distance: 2.872 Å
-Mean Pt-Mo distance, Saidi 2015: 2.91 Å
-Mean Pt-S distance: 2.356 Å
-Mean Pt-S distance, Saidi 2015: 2.35 Å
-Mean Pt-Pt distance: 2.616 Å
-Mean Pt-Pt distance, Saidi 2015: 2.61 Å
-Binding energy per Pt atom, Pt4 t-(Mo)4-S: -3.545 eV
-Binding energy per Pt atom, Pt4 t-(Mo)4-S, Saidi 2015: -3.43 eV
-Binding energy per Pt atom, Pt1 atop Mo: -2.859 eV
-Binding energy per Pt atom, Pt1 atop Mo, Saidi 2015: -2.83 eV
+Residual force after relaxation:
+MoS2 5x5 monolayer: 0.0012 eV/angstrom
+MoS2 5x5 Pt1 atop Mo: 0.2225 eV/angstrom
+MoS2 5x5 Pt4 t-(Mo)4-S: 0.3845 eV/angstrom
+
+Mean Pt distances in the relaxed Pt4 cluster:
+Pt-Mo: 2.872 Å
+Pt-S: 2.356 Å
+Pt-Pt: 2.616 Å
+
+Mean Pt distances from the manuscript:
+Pt-Mo: 2.91 Å
+Pt-S: 2.35 Å
+Pt-Pt: 2.61 Å
+
+Binding energy per Pt atom:
+Pt4 t-(Mo)4-S: -3.545 eV
+Pt1 atop Mo: -2.859 eV
+
+Binding energy per Pt atom from the manuscript:
+Pt4 t-(Mo)4-S: -3.43 eV
+Pt1 atop Mo: -2.83 eV
 ```
 
 ## 6. Expected results
