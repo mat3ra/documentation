@@ -49,7 +49,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 2.1.1.2. Graphene/SiO2 Interface <span class="btn badge b-info border-50">C-2D-INT-Z</span>
 
 **Structure**: [Create Graphene/SiO2 Interface](interface-2d-3d-graphene-silicon-dioxide.md)  
-**Properties**: Calculate band structure (Coming Soon)  
+**Properties**: [Calculate Doping and Gap at the Dirac Point of Graphene on SiO2](interface-2d-3d-graphene-silicon-dioxide-simulation.md)  
 **DOI**: [10.1103/PhysRevB.78.115404](https://doi.org/10.1103/PhysRevB.78.115404){:target='_blank'}
 
 ![Graphene on Silicon Dioxide](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/0-figure-from-manuscript.webp "Graphene on Silicon Dioxide, FIG. 1(b)"){ style="max-height:500px;width:auto;" }
