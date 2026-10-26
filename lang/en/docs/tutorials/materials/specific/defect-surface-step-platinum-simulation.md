@@ -134,7 +134,7 @@ CLUSTER_NAME = None
 QUEUE_NAME = QueueName.OF
 NODES = 1
 PPN = 30
-TIME_LIMIT = "08:00:00"
+TIME_LIMIT = "12:00:00"
 
 APPLICATION_VERSION = "7.5"
 # selects the GBRV PBE pseudopotentials; QE_SYSTEM_SETTINGS sets the
@@ -153,9 +153,12 @@ QE_SYSTEM_SETTINGS = {
 QE_ELECTRONS_SETTINGS = {"mixing_mode": "local-TF", "mixing_beta": 0.2}
 N_IMAGES = 1
 NEB_MAXIMUM_ITERATIONS = 50
+# k_max / k_min: the spring pair neb.x suggests in its output for this system
 NEB_PATH_SETTINGS = {
     "nstep_path": NEB_MAXIMUM_ITERATIONS,
     "minimum_image": True,
+    "k_max": 0.15,
+    "k_min": 0.10,
 }
 ```
 
