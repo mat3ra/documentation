@@ -91,7 +91,7 @@ PEAK_PROMINENCE = 0.1  # fraction of the maximum boundary LDOS in the window a p
 ENERGY_WINDOW = (-4.0, 4.0)  # eV, the range of Fig. 4b
 ```
 
-| paper | this notebook |
+| manuscript | this notebook |
 |---|---|
 | PBE | PBE |
 | VASP, PAW; cutoff not stated | GBRV ultrasoft, 40/200 Ry |
@@ -117,7 +117,7 @@ In cell 1.3, set `ORGANIZATION_NAME` to the account's organization. Cell 1.2 nam
 
 ### 5.3. Run the notebook
 
-Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md) (section 2), loads the two materials, prints their composition and cell and saves them to the platform (section 3), configures one model and k-point density for both cells (section 4) and the compute (section 5), relaxes the boundary if `RELAX` (section 6), and creates and submits the two Density of States jobs (section 7). Section 8 reads the per-atom densities of states, the gap and the peaks, and plots the LDOS; section 9 prints the comparison with the paper.
+Select *Run* > *Run All*. The notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md) (section 2), loads the two materials, prints their composition and cell and saves them to the platform (section 3), configures one model and k-point density for both cells (section 4) and the compute (section 5), relaxes the boundary if `RELAX` (section 6), and creates and submits the two Density of States jobs (section 7). Section 8 reads the per-atom densities of states, the gap and the peaks, and plots the LDOS; section 9 prints the comparison with the manuscript.
 
 ### 5.4. Re-run the notebook
 
@@ -125,11 +125,11 @@ A re-run finds the finished jobs by material and workflow name and reuses them r
 
 ## 6. Expected results
 
-The boundary is a continuous 5-7 chain with one B–B and one N–N bond per period, as in the paper.
+The boundary is a continuous 5-7 chain with one B–B and one N–N bond per period, as in the manuscript.
 
 ![Type III 5|7 boundary: Li et al. 2015 and this work](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride_5_7/boundary-structure-comparison.webp "Type III 5|7 boundary, top view: Li et al. 2015, Fig. 3f (left) and the MACE-relaxed structure of this work (right)")
 
-The paper's values (the gap from the text, the peaks and the perfect layer's gap read off Fig. 4b) and the values measured by the notebook, with the MACE-relaxed boundary:
+The manuscript's values (the gap from the text, the peaks and the perfect layer's gap read off Fig. 4b) and the values measured by the notebook, with the MACE-relaxed boundary:
 
 | quantity | this work | Li et al. 2015 |
 |---|---|---|
@@ -143,11 +143,11 @@ The paper's values (the gap from the text, the peaks and the perfect layer's gap
 
 ![LDOS of the 5|7 boundary and density of states of perfect h-BN](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride_5_7/ldos-comparison.webp "LDOS of the 5|7 boundary (red) and density of states of perfect h-BN (black): Li et al. 2015, Fig. 4b (left, the 4|8 boundary is not computed here) and this notebook (right), -4 to 4 eV")
 
-Peaks (2) and (3) lie inside the gap of the perfect layer and peaks (1) and (4) just outside it, in the paper and in this notebook.
+Peaks (2) and (3) lie inside the gap of the perfect layer and peaks (1) and (4) just outside it, in the manuscript and in this notebook.
 
 ## 7. Customization options
 
-`GRAIN_BOUNDARY_NAME` selects the boundary; the commented alternative is the same cell as built, before the MACE relaxation. `RELAX = True` relaxes the boundary with DFT to the paper's 0.01 eV/Å before the Density of States job, and reuses a relaxed structure already on the account.
+`GRAIN_BOUNDARY_NAME` selects the boundary; the commented alternative is the same cell as built, before the MACE relaxation. `RELAX = True` relaxes the boundary with DFT to the manuscript's 0.01 eV/Å before the Density of States job, and reuses a relaxed structure already on the account.
 
 `KPOINT_DENSITY`, `ECUTWFC` and `ECUTRHO` set the k-point sampling and the plane-wave cutoffs. `MODEL_TAG` is built from these settings and is part of every workflow's name, so changing any of them creates new jobs rather than reusing the ones already run. The read-out parameters of cell 1.5 act on the finished jobs only.
 
