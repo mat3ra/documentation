@@ -28,7 +28,7 @@ This tutorial builds upon the [SrTiO<sub>3</sub> Slab](slab-strontium-titanate.m
 
 ![SrTiO3(011) cleavage planes](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/0-figure-from-manuscript.webp "SrTiO and O2 cleavage planes of SrTiO3(011), FIG. 2.")
 
-The structure notebook also builds the two symmetric whole-plane (011) slabs that the manuscript starts from, SrTiO-terminated (FIG. 3(c)) and O<sub>2</sub>-terminated (FIG. 3(b)), shown here in the Wave viewer:
+The structure notebook also builds the two symmetric (011) slabs from simple cleavage that the manuscript starts from, SrTiO-terminated (FIG. 3(c)) and O<sub>2</sub>-terminated (FIG. 3(b)), shown here in the Wave viewer:
 
 ![SrTiO-terminated SrTiO3(011) slab](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/srtio3-011-srtio-terminated-slab-wave.webp "SrTiO3(011) SrTiO-terminated seven-plane slab, Wave viewer")
 ![O2-terminated SrTiO3(011) slab](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/srtio3-011-o2-terminated-slab-wave.webp "SrTiO3(011) O2-terminated seven-plane slab, Wave viewer")
@@ -36,7 +36,7 @@ The structure notebook also builds the two symmetric whole-plane (011) slabs tha
 
 ## 2. Prerequisites
 
-The notebook loads six materials from the `uploads` folder or the account's materials collection by exact name, and raises when one is missing: the bulk cell `SrTiO3, Strontium Titanate, CUB (Pm-3m) 3D (Bulk), mp-5229` and the slabs `SrTiO3(011) TiO-terminated 7 planes`, `SrTiO3(011) Sr-terminated 7 planes`, `SrTiO3(011) O-terminated 7 planes`, `SrTiO3(001) SrO-terminated 7 planes` and `SrTiO3(001) TiO2-terminated 7 planes`. All six are saved by the notebook of the [SrTiO<sub>3</sub> Slab](slab-strontium-titanate.md) tutorial, which should be run first. It also saves the two charged whole-plane (011) slabs of FIG. 3(b) and 3(c); no energy is computed for them.
+The notebook loads six materials from the `uploads` folder or the account's materials collection by exact name, and raises when one is missing: the bulk cell `SrTiO3, Strontium Titanate, CUB (Pm-3m) 3D (Bulk), mp-5229` and the slabs `SrTiO3(011) TiO-terminated 7 planes`, `SrTiO3(011) Sr-terminated 7 planes`, `SrTiO3(011) O-terminated 7 planes`, `SrTiO3(001) SrO-terminated 7 planes` and `SrTiO3(001) TiO2-terminated 7 planes`. All six are saved by the notebook of the [SrTiO<sub>3</sub> Slab](slab-strontium-titanate.md) tutorial, which should be run first. It also saves the two charged (011) slabs from simple cleavage of FIG. 3(b) and 3(c); no energy is computed for them.
 
 
 ## 3. Workflow overview
