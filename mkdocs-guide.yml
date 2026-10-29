@@ -205,6 +205,8 @@ nav:
             - Twisted Bilayer h-BN Nanoribbons:                                 tutorials/materials/specific/interface-bilayer-twisted-nanoribbons-boron-nitride.md
             - Twisted Bilayer MoS2:                                             tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide.md
             - Twisted Bilayer MoS2 (Band Structure):                            tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide-simulation.md
+            - Twisted Bilayer h-BN Commensurate Lattices:                       tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-boron-nitride.md
+            - Twisted Bilayer h-BN Commensurate Lattices (Flat Bands):          tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-boron-nitride-simulation.md
             - Adatom Surface Defects on Graphene:                               tutorials/materials/specific/defect-surface-adatom-graphene.md
             - H-Passivated Silicon Nanowire:                                    tutorials/materials/specific/passivation-edge-nanowire-silicon.md
             - H-Passivated Silicon (100) Surface:                               tutorials/materials/specific/passivation-surface-silicon.md
