@@ -1,9 +1,9 @@
 # Hardware Specifications
 
-Our computing resources are hosted by trusted vendors: [Amazon Web Services](aws.md) and [Microsoft Azure](azure.md).
-We support IBM SoftLayer[^1], Rackspace[^2] and Google Cloud[^3] can deploy capacity there on a short notice.
+Our computing resources are hosted by trusted vendors: [Amazon Web Services](aws.md), [Microsoft Azure](azure.md) and [Google Cloud](google.md).
+We also support cloud-prem deployments hosted on the customer side with these vendors.
 
-The following shows the CPU and GPU hardware specification on aforementioned vendors.
+The following shows the CPU and GPU hardware specifications of the aforementioned vendors.
 
 ## CPU Types
 
@@ -32,7 +32,7 @@ The following table shows different types of GPUs the GPU-enabled compute nodes 
 
 ## Available Resources
 
-As of 2025 our major compute and storage systems (per cluster) are as explained below.
+As of 2026, our major compute and storage systems (per cluster) are as explained below.
 The total number of cores is administratively limited by our agreements with the cloud vendors, and
 can be extended further upon request.
 
@@ -40,14 +40,9 @@ can be extended further upon request.
 |:---------|:-----------:|:-----------------:|:---------------:|
 | AWS      |   36,000    |      60,000       |        8        |
 | Azure    |   10,000    |      20,000       |        8        |
+| Google   |   10,000    |      20,000       |        8        |
 
 ## Links
-
-[^1]: [IBM SoftLayer, official website](http://www.softlayer.com)
-
-[^2]: [Rackspace, official website](http://www.rackspace.com)
-
-[^3]: [Google Cloud, official website](https://cloud.google.com)
 
 [^4]: [Intel Xeon Processor E5-2667 v3, online product documentation](https://ark.intel.com/products/83361/Intel-Xeon-Processor-E5-2667-v3-20M-Cache-3-20-GHz-)
 
