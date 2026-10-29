@@ -17,7 +17,7 @@ render_macros: true
 
 ## 1. Introduction
 
-This tutorial calculates the local density of states (LDOS) at the Type III 5|7 grain boundary of an h-BN monolayer and the density of states of the perfect layer, reproducing Fig. 4b of the following manuscript: the gap between the two LDOS peaks that border it, about 3.2 eV, the four boundary peaks inside the gap of the perfect layer, and the gap of the perfect layer.
+This tutorial calculates the local density of states (LDOS) at the Type III 5|7 grain boundary of an h-BN monolayer and the density of states of the perfect layer, reproducing Fig. 4b of the following manuscript: the gap between the two LDOS peaks that border it, about 3.2 eV, the four boundary peaks, and the gap of the perfect layer.
 
 !!!note "Manuscript"
     **Qiucheng Li, Xiaolong Zou, Mengxi Liu, Jingyu Sun, Yabo Gao, Yue Qi, Xiebo Zhou, Boris I. Yakobson, Yanfeng Zhang and Zhongfan Liu**
@@ -139,7 +139,6 @@ The manuscript's values (the gap from the text, the peaks and the perfect layer'
 | peak (3) | +1.52 eV | +1.39 eV |
 | peak (4) | +2.52 eV | +2.31 eV |
 | perfect-layer gap | 4.40 eV | 4.4 eV |
-| gap change at the boundary | −1.20 eV | −1.19 eV |
 
 ![LDOS of the 5|7 boundary and density of states of perfect h-BN](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride_5_7/ldos-comparison.webp "LDOS of the 5|7 boundary (red) and density of states of perfect h-BN (black): Li et al. 2015, Fig. 4b (left, the 4|8 boundary is not computed here) and this notebook (right), -4 to 4 eV")
 
