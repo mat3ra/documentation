@@ -126,7 +126,7 @@ Execute all cells by selecting *Run* > *Run All Cells*. The notebook [authentica
 Section 8.1 of the notebook prints the total energy per atom of bulk gold and, per cluster, the final energy of the relaxation and Quantum ESPRESSO's total force, the norm over all atoms. Section 9 plots ΔE(N) of each relaxed cluster over the manuscript's Fig. 4, where the four random seeds of each shape form a band, and the last cell prints, per cluster in `COMPARISON_SIZES`, the manuscript's value beside ours. With the default settings:
 
 ```
-ΔE, Au55 Icosahedron: Larsen 2011 0.602 eV/atom | ours TODO(run) eV/atom
+ΔE, Au55 Icosahedron: Larsen 2011 0.602 eV/atom | ours 0.530 eV/atom
 ```
 
 Between the closed shells the manuscript's value is the range over its four seeds.
@@ -138,16 +138,11 @@ Energy per atom relative to bulk gold, in eV/atom: Fig. 4 of the manuscript (RPB
 
 | Cluster | Manuscript | Ours |
 |---|---|---|
-| Au34 Cuboctahedron | 0.683–0.720 | TODO(run) |
-| Au40 Cuboctahedron | 0.683–0.715 | TODO(run) |
-| Au55 Cuboctahedron | 0.616 | TODO(run) |
-| Au58 Cuboctahedron | 0.559–0.578 | TODO(run) |
-| Au60 Cuboctahedron | 0.584–0.585 | TODO(run) |
-| Au34 Icosahedron | 0.666–0.703 | TODO(run) |
-| Au40 Icosahedron | 0.690–0.706 | TODO(run) |
-| Au55 Icosahedron | 0.602 | TODO(run) |
-| Au58 Icosahedron | 0.556–0.558 | TODO(run) |
-| Au60 Icosahedron | 0.554–0.555 | TODO(run) |
+| Au55 Icosahedron | 0.602 | 0.530 |
+
+Uncommenting the other shapes and sizes in cell 1.2 adds their points to the plot and, for the sizes in `COMPARISON_SIZES`, their rows to the comparison.
+
+![Energy per atom of gold clusters relative to bulk gold, this tutorial](../../../images/tutorials/materials/0d_materials/nanocluster_gold/5-energy-per-atom-this-notebook.webp "ΔE(N) of the relaxed Au55 icosahedron over Fig. 4 of the manuscript, default run")
 
 
 ## 7. Customization options
