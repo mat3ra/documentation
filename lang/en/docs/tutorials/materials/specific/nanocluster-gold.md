@@ -79,6 +79,8 @@ Run the notebook by selecting "Run > Run All Cells" from the menu.
 
 After running the notebook, the octahedral gold nanoparticle structure will be created. 
 
+The cluster is built with the conventional (cubic) lattice constant of bulk gold, 4.171 Å, so the Au–Au nearest-neighbor distance is 2.95 Å, as in bulk gold.
+
 The user will be able to visualize the created structure and download the corresponding files.
 
 For better view of the solid symmetry rotation of image might be needed like `"rotation": "45y,45x"` for the cuboctahedron.
@@ -157,6 +159,19 @@ parameters = {
 ```
 
 ![Icosahedron 309](../../../images/tutorials/materials/0d_materials/nanocluster_gold/jl-result-preview-icosahedron-309.webp "Icosahedron 309")
+
+### 4.2. Create the series between closed shells
+
+The notebook of section 5 also builds the clusters between the closed shells, as in Sec. III C of the manuscript. Starting from the next larger closed shell, 55 atoms for N = 30–54 and 147 atoms for N = 56–60, it removes a randomly chosen lowest-coordinated atom until N atoms remain, then places the cluster in a box with 5.0 Å of vacuum on each side. The manuscript uses four random seeds per size; the notebook uses one. The parameters are set at the top of the notebook, with all values but one commented out, so only the 55-atom icosahedron is built by default:
+
+```python
+SHAPES = ["icosahedron"]  # , "cuboctahedron"
+CLUSTER_SIZES = [55]  # list(range(30, 61))
+RANDOM_SEED = 42
+VACUUM = 5.0  # Å on each side of the cluster
+```
+
+Each cluster is saved as `Au<N> <Shape>`, e.g. `Au40 Cuboctahedron`, the name loaded by the [simulation tutorial](nanocluster-gold-simulation.md).
 
 ## 5. Interactive JupiterLite Notebook
 
