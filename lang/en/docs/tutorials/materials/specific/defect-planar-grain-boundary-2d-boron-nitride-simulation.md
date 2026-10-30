@@ -13,7 +13,7 @@ hide:
 render_macros: true
 ---
 
-# 5|7 Grain Boundary in h-BN (Band Gap and In-Gap States)
+# Grain Boundary (2D) in h-BN (Band Gap and In-Gap States)
 
 ## 1. Introduction
 
@@ -27,7 +27,7 @@ This tutorial calculates the local density of states (LDOS) at the Type III 5|7 
 
 ## 2. Prerequisites
 
-Run the structure notebook `defect_planar_grain_boundary_2d_boron_nitride_5_7.ipynb` first. It builds the (3,1)|(1,3) boundary at 32.2°, a cell of 208 atoms (62.7 × 9.05 Å) holding two boundaries, each a continuous 5-7-5-7 chain with one B–B and one N–N bond per period, relaxes it with MACE and saves it as `h-BN 5-7 grain boundary, MACE-relaxed`, the name this notebook loads.
+Run the structure notebook `defect_planar_grain_boundary_2d_boron_nitride.ipynb` first. It builds the (3,1)|(1,3) boundary at 32.2°, a cell of 208 atoms (62.7 × 9.05 Å) holding two boundaries, each a continuous 5-7-5-7 chain with one B–B and one N–N bond per period, relaxes it with MACE and saves it as `h-BN 5-7 grain boundary, MACE-relaxed`, the name this notebook loads.
 
 ## 3. Workflow overview
 
@@ -108,7 +108,7 @@ ENERGY_WINDOW = (-4.0, 4.0)  # eV, the range of Fig. 4b
 Navigate to the API examples repository and open:
 
 ```
-other/materials_designer/specific_examples/defect_planar_grain_boundary_2d_boron_nitride_5_7_SIMULATION.ipynb
+other/materials_designer/specific_examples/defect_planar_grain_boundary_2d_boron_nitride_SIMULATION.ipynb
 ```
 
 ### 5.2. Configure parameters
@@ -127,7 +127,7 @@ A re-run finds the finished jobs by material and workflow name and reuses them r
 
 The boundary is a continuous 5-7 chain with one B–B and one N–N bond per period, as in the manuscript.
 
-![Type III 5|7 boundary: Li et al. 2015 and this work](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride_5_7/boundary-structure-comparison.webp "Type III 5|7 boundary, top view: Li et al. 2015, Fig. 3f (left) and the MACE-relaxed structure of this work (right)")
+![Type III 5|7 boundary: Li et al. 2015 and this work](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/boundary-structure-comparison.webp "Type III 5|7 boundary, top view: Li et al. 2015, Fig. 3f (left) and the MACE-relaxed structure of this work (right)")
 
 The manuscript's values (the gap from the text, the peaks and the perfect layer's gap read off Fig. 4b) and the values measured by the notebook, with the MACE-relaxed boundary:
 
@@ -140,7 +140,7 @@ The manuscript's values (the gap from the text, the peaks and the perfect layer'
 | peak (4) | +2.52 eV | +2.31 eV |
 | perfect-layer gap | 4.40 eV | 4.4 eV |
 
-![LDOS of the 5|7 boundary and density of states of perfect h-BN](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride_5_7/ldos-comparison.webp "LDOS of the 5|7 boundary (red) and density of states of perfect h-BN (black): Li et al. 2015, Fig. 4b (left, the 4|8 boundary is not computed here) and this notebook (right), -4 to 4 eV")
+![LDOS of the 5|7 boundary and density of states of perfect h-BN](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/ldos-comparison.webp "LDOS of the 5|7 boundary (red) and density of states of perfect h-BN (black): Li et al. 2015, Fig. 4b (left, the 4|8 boundary is not computed here) and this notebook (right), -4 to 4 eV")
 
 Peaks (2) and (3) lie inside the gap of the perfect layer and peaks (1) and (4) just outside it, in the manuscript and in this notebook.
 
@@ -160,7 +160,7 @@ Peaks (2) and (3) lie inside the gap of the perfect layer and peaks (1) and (4) 
 
 {% with origin_url=config.extra.jupyterlite.origin_url_lab %}
 {% with notebooks_path_root=config.extra.jupyterlite.notebooks_path_root %}
-{% with notebook_name='specific_examples/defect_planar_grain_boundary_2d_boron_nitride_5_7_SIMULATION.ipynb' %}
+{% with notebook_name='specific_examples/defect_planar_grain_boundary_2d_boron_nitride_SIMULATION.ipynb' %}
 {% include 'jupyterlite_embed.html' %}
 {% endwith %}
 {% endwith %}

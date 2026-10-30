@@ -56,7 +56,7 @@ Step-by-step recipes reproducing published work, one row per publication: the st
 | Muller et al. (1999)[^19]         | High-k metal gate stack   | [Si/SiO2/HfO2/TiN](tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md) | Band structure, valence band offset (Coming Soon) |
 | Thompson-Flagg et al. (2009)[^20] | Ripple perturbation       | [Graphene](tutorials/materials/specific/perturbation-ripples-graphene.md) | Coming Soon |
 | Frolov et al. (2013)[^21]         | Grain boundary (3D)       | [Cu (FCC)](tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md) | Defect energy per atom (Coming Soon) |
-| Li et al. (2015)[^22]             | Grain boundary (2D)       | [h-BN](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride.md) | [Band gap and local density of states](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride-5-7-simulation.md) |
+| Li et al. (2015)[^22]             | Grain boundary (2D)       | [h-BN](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride.md) | [Band gap and local density of states](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride-simulation.md) |
 
 [^1]: Fujimoto et al., Phys. Rev. B 84, 245446 (2011). [DOI](https://doi.org/10.1103/PhysRevB.84.245446){:target='_blank'}
 [^2]: Miceli et al., Phys. Rev. B 93, 165207 (2016). [DOI](https://doi.org/10.1103/PhysRevB.93.165207){:target='_blank'}
