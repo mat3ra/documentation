@@ -15,7 +15,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 1.1.1.1. SrTiO3 Slab <span class="btn badge b-info border-50">P-2D-SLB-S</span>
 
 **Structure**: [Create SrTiO3 Slab Structure](slab-strontium-titanate.md)  
-**Properties**: Calculate surface energy (Coming Soon)  
+**Properties**: [Calculate Surface Energies of SrTiO3(011) and (001) Terminations](slab-strontium-titanate-simulation.md)  
 **DOI**: [10.1103/PhysRevB.77.195408](https://doi.org/10.1103/PhysRevB.77.195408){:target='_blank'} [@Eglitis2008; @Mukhopadhyay2006]
 
 ![Strontium Titanate Slabs](../../../images/tutorials/materials/2d_materials/slab_strontium_titanate/0-figure-from-manuscript.webp "Strontium Titanate Slabs, FIG. 2."){ style="max-height:500px;width:auto;" }
@@ -49,7 +49,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 2.1.1.2. Graphene/SiO2 Interface <span class="btn badge b-info border-50">C-2D-INT-Z</span>
 
 **Structure**: [Create Graphene/SiO2 Interface](interface-2d-3d-graphene-silicon-dioxide.md)  
-**Properties**: Calculate band structure (Coming Soon)  
+**Properties**: [Calculate Doping and Gap at the Dirac Point of Graphene on SiO2](interface-2d-3d-graphene-silicon-dioxide-simulation.md)  
 **DOI**: [10.1103/PhysRevB.78.115404](https://doi.org/10.1103/PhysRevB.78.115404){:target='_blank'}
 
 ![Graphene on Silicon Dioxide](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/0-figure-from-manuscript.webp "Graphene on Silicon Dioxide, FIG. 1(b)"){ style="max-height:500px;width:auto;" }
@@ -71,6 +71,21 @@ This document provides a comprehensive catalog of materials science tutorials or
 
 ![Gr/Ni Interface](../../../images/tutorials/materials/optimization/optimization_interface_film_xy_position_graphene_nickel/0-figure-from-manuscript.webp "Optimal position of graphene on Ni(111)"){ style="max-height:500px;width:auto;" }
 
+
+##### 2.1.1.5. Si/Ge (001) Interface <span class="btn badge b-info border-50">C-2D-INT-S</span>
+
+**Structure**: [Create Si/Ge (001) Interface](interface-3d-3d-silicon-germanium.md)  
+**Properties**: [Calculate Si/Ge (001) Valence Band Offset](interface-3d-3d-silicon-germanium-simulation.md)  
+**DOI**: [10.1103/PhysRevB.34.5621](https://doi.org/10.1103/PhysRevB.34.5621){:target='_blank'} [@VanDeWalle1986]
+
+![Si/Ge (001) Interface](../../../images/tutorials/materials/interfaces/interface_3d_3d_silicon_germanium/0-figure-1-from-manuscript.webp "Si/Ge (001) superlattice, FIG. 1"){ style="max-height:500px;width:auto;" }
+##### 2.1.1.6. GaAs/AlAs (110) Interface <span class="btn badge b-info border-50">C-2D-INT-S</span>
+
+**Structure**: [Create GaAs/AlAs (110) Interface](interface-3d-3d-gallium-arsenide-aluminum-arsenide.md)  
+**Properties**: [Calculate GaAs/AlAs (110) Valence Band Offset](interface-3d-3d-gallium-arsenide-aluminum-arsenide-simulation.md)  
+**DOI**: [10.1103/PhysRevB.90.155405](https://doi.org/10.1103/PhysRevB.90.155405){:target='_blank'} [@Hinuma2014]
+
+![GaAs/AlAs (110) Interface](../../../images/tutorials/materials/interfaces/interface_3d_3d_gallium_arsenide_aluminum_arsenide/0-superlattice-this-notebook.webp "GaAs/AlAs (110) superlattice, built by the notebook"){ style="max-height:500px;width:auto;" }
 
 #### 2.1.2. Heterostack
 
@@ -121,7 +136,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 3.1.1.2. Pt Adatoms Island on MoS2 <span class="btn badge b-info border-50">D-2D-ISL</span>
 
 **Structure**: [Create Pt Island on MoS2](defect-point-adatom-island-molybdenum-disulfide-platinum.md)  
-**Properties**: Calculate binding energy per Pt atom and density of states (Coming Soon)  
+**Properties**: [Calculate Binding Energy per Pt Atom on MoS2](defect-point-adatom-island-molybdenum-disulfide-platinum-simulation.md)  
 **DOI**: [10.1021/cg5013395](https://doi.org/10.1021/cg5013395){:target='_blank'} [@Saidi2015; @Jiao2016; @Fichthorn2000; @Neugebauer1993; @Hortamani2007]
 
 ![Pt Island on MoS2](../../../images/tutorials/materials/defects/defect_point_adatom_island_molybdenum_disulfide_platinum/0-figure-from-manuscript.webp "Pt island formation on MoS2"){ style="max-height:500px;width:auto;" }
