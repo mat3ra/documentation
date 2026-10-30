@@ -24,7 +24,7 @@ This tutorial calculates the energy per atom of cuboctahedral and icosahedral go
     A. H. Larsen, J. Kleis, K. S. Thygesen, J. K. Nørskov, and K. W. Jacobsen, "Electronic shell structure and chemisorption on gold nanoparticles", Physical Review B 84, 245429 (2011).
     [DOI: 10.1103/PhysRevB.84.245429](https://doi.org/10.1103/PhysRevB.84.245429){:target='_blank'}. [@Larsen2011]
 
-This tutorial builds upon the [Gold Nanoclusters](nanocluster-gold.md) tutorial, where the clusters are created. The closed shells of 55 and 147 atoms are the regular shapes of FIG. 2 of the manuscript; every size in between is made from the next larger closed shell by removing a randomly chosen lowest-coordinated atom, one at a time, while keeping the adsorption facet intact (Sec. III C of the manuscript). The notebook strips without that constraint.
+This tutorial builds upon the [Gold Nanoclusters](nanocluster-gold.md) tutorial, where the clusters are created. The closed shells of 55 and 147 atoms are the regular shapes of FIG. 2 of the manuscript; every size in between is made from the next larger closed shell by removing a randomly chosen lowest-coordinated atom, one at a time, while keeping the adsorption facet intact (Sec. III C of the manuscript). The notebook keeps one (111) facet in the same way.
 
 ![Gold Nanoparticles](../../../images/tutorials/materials/0d_materials/nanocluster_gold/0-manuscript-image.webp "Cuboctahedra and icosahedra of 55, 147 and 309 atoms, FIG. 2.")
 

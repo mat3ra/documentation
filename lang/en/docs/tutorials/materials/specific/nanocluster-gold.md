@@ -162,7 +162,7 @@ parameters = {
 
 ### 4.2. Create the series between closed shells
 
-The notebook also builds the clusters between the closed shells, following Sec. III C of the manuscript, without its facet constraint. Starting from the next larger closed shell, 55 atoms for N = 30–54 and 147 atoms for N = 56–60, it removes a randomly chosen lowest-coordinated atom until N atoms remain, then places the cluster in a box with 5.0 Å of vacuum on each side. The manuscript uses four random seeds per size; the notebook uses one. The parameters are set at the top of the notebook, with all values but one commented out, so only the 55-atom icosahedron is built by default:
+The notebook also builds the clusters between the closed shells, following Sec. III C of the manuscript. Starting from the next larger closed shell, 55 atoms for N = 30–54 and 147 atoms for N = 56–60, it removes a randomly chosen lowest-coordinated atom until N atoms remain, never one of the next-smaller closed shell and one of a kept (111) facet only when no other atom is left, then places the cluster in a box with 5.0 Å of vacuum on each side. The manuscript uses four random seeds per size; the notebook uses one. The parameters are set at the top of the notebook, with all values but one commented out, so only the 55-atom icosahedron is built by default:
 
 ```python
 SHAPES = ["icosahedron"]  # , "cuboctahedron"
