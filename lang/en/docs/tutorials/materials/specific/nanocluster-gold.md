@@ -162,13 +162,14 @@ parameters = {
 
 ### 4.2. Create the series between closed shells
 
-The notebook of section 5 also builds the clusters between the closed shells, as in Sec. III C of the manuscript. Starting from the next larger closed shell, 55 atoms for N = 30–54 and 147 atoms for N = 56–60, it removes a randomly chosen lowest-coordinated atom until N atoms remain, then places the cluster in a box with 5.0 Å of vacuum on each side. The manuscript uses four random seeds per size; the notebook uses one. The parameters are set at the top of the notebook, with all values but one commented out, so only the 55-atom icosahedron is built by default:
+The notebook also builds the clusters between the closed shells, as in Sec. III C of the manuscript. Starting from the next larger closed shell, 55 atoms for N = 30–54 and 147 atoms for N = 56–60, it removes a randomly chosen lowest-coordinated atom until N atoms remain, then places the cluster in a box with 5.0 Å of vacuum on each side. The manuscript uses four random seeds per size; the notebook uses one. The parameters are set at the top of the notebook, with all values but one commented out, so only the 55-atom icosahedron is built by default:
 
 ```python
 SHAPES = ["icosahedron"]  # , "cuboctahedron"
 CLUSTER_SIZES = [55]  # list(range(30, 61))
 RANDOM_SEED = 42
 VACUUM = 5.0  # Å on each side of the cluster
+COORDINATION_CUTOFF = 3.5  # Å, distance within which atoms count as neighbors
 ```
 
 Each cluster is saved as `Au<N> <Shape>`, e.g. `Au40 Cuboctahedron`, the name loaded by the [simulation tutorial](nanocluster-gold-simulation.md).

@@ -65,8 +65,8 @@ with `E(Au_N)` the final energy of the cluster's relaxation and `E_bulk` the tot
 | Bulk gold | face-centered cubic, a = 4.171 Å (Standata, mp-81), 16×16×16 k-points | not stated |
 | k-points (clusters) | Γ point | Γ point (non-periodic cell) |
 | Relaxation | every atom, fixed cell, forces below 0.075 eV/Å | forces below 0.075 eV/Å |
-| Smearing | 0.005 Ry | Fermi temperature 0.01 eV |
-| Spin | spin-restricted | spin-paired |
+| Smearing | 0.005 Ry | Fermi temperature 0.01 eV (p. 245429-2); 0.1 eV (p. 245429-6) |
+| Spin | spin-paired | spin-paired |
 
 The platform's Quantum ESPRESSO has no RPBE, so the calculation uses PBE. Cell 1.4 holds these settings:
 
@@ -123,7 +123,7 @@ Execute all cells by selecting *Run* > *Run All Cells*. The notebook [authentica
 
 ### 5.5. Read the results
 
-Section 8.1 of the notebook prints the total energy per atom of bulk gold and, per cluster, the final energy of the relaxation and its residual force. Section 9 plots ΔE(N) of each relaxed cluster over the manuscript's Fig. 4, where the four random seeds of each shape form a band, and the last cell prints, per cluster in `COMPARISON_SIZES`, the manuscript's value beside ours. With the default settings:
+Section 8.1 of the notebook prints the total energy per atom of bulk gold and, per cluster, the final energy of the relaxation and Quantum ESPRESSO's total force, the norm over all atoms. Section 9 plots ΔE(N) of each relaxed cluster over the manuscript's Fig. 4, where the four random seeds of each shape form a band, and the last cell prints, per cluster in `COMPARISON_SIZES`, the manuscript's value beside ours. With the default settings:
 
 ```
 ΔE, Au55 Icosahedron: Larsen 2011 0.602 eV/atom | ours TODO(run) eV/atom
