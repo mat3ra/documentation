@@ -27,7 +27,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 1.2.1.1. Gold Nanoclusters <span class="btn badge b-info border-50">P-0D-NPR</span>
 
 **Structure**: [Create Gold Nanocluster Structure](nanocluster-gold.md)  
-**Properties**: Calculate total energy per atom and density of states (Coming Soon)  
+**Properties**: [Calculate Energy per Atom of Gold Nanoclusters](nanocluster-gold-simulation.md), density of states (Coming Soon)  
 **DOI**: [10.1103/PhysRevB.84.245429](https://doi.org/10.1103/PhysRevB.84.245429){:target='_blank'} [@Larsen2011]
 
 ![Gold Nanoparticles](../../../images/tutorials/materials/0d_materials/nanocluster_gold/0-manuscript-image.webp "Fig. 2. Gold Nanoparticles"){ style="max-height:500px;width:auto;" }
