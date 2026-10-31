@@ -56,7 +56,7 @@ Step-by-step recipes reproducing published work, one row per publication: the st
 | Muller et al. (1999)[^19]         | High-k metal gate stack   | [Si/SiO2/HfO2/TiN](tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md) | Band structure, valence band offset (Coming Soon) |
 | Thompson-Flagg et al. (2009)[^20] | Ripple perturbation       | [Graphene](tutorials/materials/specific/perturbation-ripples-graphene.md) | Coming Soon |
 | Frolov et al. (2013)[^21]         | Grain boundary (3D)       | [Cu (FCC)](tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md) | Defect energy per atom (Coming Soon) |
-| Li et al. (2015)[^22]             | Grain boundary (2D)       | [h-BN](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride.md) | Band gap, local density of states (Coming Soon) |
+| Li et al. (2015)[^22]             | Grain boundary (2D)       | [h-BN](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride.md) | [Band gap and local density of states](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride-simulation.md) |
 
 [^1]: Fujimoto et al., Phys. Rev. B 84, 245446 (2011). [DOI](https://doi.org/10.1103/PhysRevB.84.245446){:target='_blank'}
 [^2]: Miceli et al., Phys. Rev. B 93, 165207 (2016). [DOI](https://doi.org/10.1103/PhysRevB.93.165207){:target='_blank'}
@@ -79,7 +79,7 @@ Step-by-step recipes reproducing published work, one row per publication: the st
 [^19]: Muller et al., Nature 399, 758 (1999). [Reference](https://docs.quantumatk.com/tutorials/hkmg_builder/hkmg_builder.html){:target='_blank'}
 [^20]: Thompson-Flagg et al., EPL 85, 46002 (2009). [DOI](https://doi.org/10.1209/0295-5075/85/46002){:target='_blank'}
 [^21]: Frolov et al., Nat. Commun. 4, 1899 (2013). [DOI](https://doi.org/10.1038/ncomms2919){:target='_blank'}
-[^22]: Li et al., Nano Lett. 15, 6004 (2015). [DOI](https://doi.org/10.1021/acs.nanolett.5b01852){:target='_blank'}
+[^22]: Li et al., Nano Lett. 15, 5804 (2015). [DOI](https://doi.org/10.1021/acs.nanolett.5b01852){:target='_blank'}
 [^23]: Van de Walle et al., Phys. Rev. B 34, 5621 (1986). [DOI](https://doi.org/10.1103/PhysRevB.34.5621){:target='_blank'}
 [^24]: Hinuma et al., Phys. Rev. B 90, 155405 (2014). [DOI](https://doi.org/10.1103/PhysRevB.90.155405){:target='_blank'}
 

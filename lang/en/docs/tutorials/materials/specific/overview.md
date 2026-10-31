@@ -166,10 +166,10 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 3.1.4.1. Grain Boundary in h-BN <span class="btn badge b-info border-50">D-2D-GBP</span>
 
 **Structure**: [Create Grain Boundary in h-BN](defect-planar-grain-boundary-2d-boron-nitride.md)  
-**Properties**: Calculate band gaps and LDOS (Coming Soon)  
+**Properties**: [Calculate Band Gap and LDOS at the Grain Boundary in h-BN](defect-planar-grain-boundary-2d-boron-nitride-simulation.md)  
 **DOI**: [10.1021/acs.nanolett.5b01852](https://doi.org/10.1021/acs.nanolett.5b01852){:target='_blank'} [@Li2015]
 
-![h-BN Grain Boundary](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/0-figure-from-manuscript.webp "h-BN Grain Boundary, FIG. 2c."){ style="max-height:500px;width:auto;" }
+![Type III 5|7 boundary in h-BN: Li et al. 2015 and this work](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/boundary-structure-comparison.webp "Type III 5|7 boundary, top view: Li et al. 2015, Fig. 3f (left) and the MACE-relaxed structure of this work (right)"){ style="max-height:500px;width:auto;" }
 
 ### 3.2. 1D Structures
 
