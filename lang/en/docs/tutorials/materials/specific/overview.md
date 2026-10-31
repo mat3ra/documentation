@@ -50,7 +50,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 
 **Structure**: [Create Graphene/SiO2 Interface](interface-2d-3d-graphene-silicon-dioxide.md)  
 **Properties**: [Calculate Doping and Gap at the Dirac Point of Graphene on SiO2](interface-2d-3d-graphene-silicon-dioxide-simulation.md)  
-**DOI**: [10.1103/PhysRevB.78.115404](https://doi.org/10.1103/PhysRevB.78.115404){:target='_blank'}
+**DOI**: [10.1103/PhysRevB.78.115404](https://doi.org/10.1103/PhysRevB.78.115404){:target='_blank'} [@Kang2008]
 
 ![Graphene on Silicon Dioxide](../../../images/tutorials/materials/interfaces/interface_2d_3d_graphene_silicon_dioxide/0-figure-from-manuscript.webp "Graphene on Silicon Dioxide, FIG. 1(b)"){ style="max-height:500px;width:auto;" }
 
@@ -113,7 +113,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 
 **Structure**: [Create Twisted MoS2 Commensurate Lattices](interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide.md)  
 **Properties**: [Calculate Band Structure of Twisted MoS2 Bilayers](interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide-simulation.md)  
-**DOI**: [10.1038/ncomms5966](https://doi.org/10.1038/ncomms5966){:target='_blank'} [@Liu2014; @Zhang2016; @Cao2018]
+**DOI**: [10.1038/ncomms5966](https://doi.org/10.1038/ncomms5966){:target='_blank'} [@Liu2014; @Cao2018]
 
 ![Twisted Bilayer Molybdenum Disulfide](../../../images/tutorials/materials/interfaces/twisted-bilayer-molybdenum-disulfide/MoS2-twisted-bilayers.png "Twisted Bilayer Molybdenum Disulfide"){ style="max-height:500px;width:auto;" }
 
@@ -157,7 +157,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 
 **Structure**: [Create Adatom Defects on Graphene](defect-surface-adatom-graphene.md)  
 **Properties**: Calculate adsorption energy, density of states, work function, dipole moment, and diffusion barriers (Coming Soon)  
-**DOI**: [10.1103/PhysRevB.77.235430](https://doi.org/10.1103/PhysRevB.77.235430){:target='_blank'}
+**DOI**: [10.1103/PhysRevB.77.235430](https://doi.org/10.1103/PhysRevB.77.235430){:target='_blank'} [@Chan2008]
 
 ![Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/me_adatom_on_hollow_graphene.webp "Fig. 1. Adatom on Graphene Surface"){ style="max-height:500px;width:auto;" }
 
@@ -167,7 +167,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 
 **Structure**: [Create Grain Boundary in h-BN](defect-planar-grain-boundary-2d-boron-nitride.md)  
 **Properties**: [Calculate Band Gap and LDOS at the Grain Boundary in h-BN](defect-planar-grain-boundary-2d-boron-nitride-simulation.md)  
-**DOI**: [10.1021/acs.nanolett.5b01852](https://doi.org/10.1021/acs.nanolett.5b01852){:target='_blank'}
+**DOI**: [10.1021/acs.nanolett.5b01852](https://doi.org/10.1021/acs.nanolett.5b01852){:target='_blank'} [@Li2015]
 
 ![Type III 5|7 boundary in h-BN: Li et al. 2015 and this work](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/boundary-structure-comparison.webp "Type III 5|7 boundary, top view: Li et al. 2015, Fig. 3f (left) and the MACE-relaxed structure of this work (right)"){ style="max-height:500px;width:auto;" }
 
@@ -191,7 +191,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 
 **Structure**: [Create Substitutional Defects in Graphene](defect-point-substitution-graphene.md)  
 **Properties**: [Calculate Band Structure of N-doped Graphene](defect-point-substitution-graphene-simulation.md)  
-**DOI**: [10.1103/PhysRevB.84.245446](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.84.245446){:target='_blank'}
+**DOI**: [10.1103/PhysRevB.84.245446](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.84.245446){:target='_blank'} [@Yoshitaka2011]
 
 ![Point Defect, Substitution, 0](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/0-figure-from-manuscript.webp "Point Defect, Substitution, FIG. 1."){ style="max-height:500px;width:auto;" }
 
@@ -211,7 +211,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 
 **Structure**: [Create Vacancy Defect in h-BN](defect-point-vacancy-boron-nitride.md)  
 **Properties**: [Calculate Formation Energy of a Boron Vacancy in h-BN](defect-point-vacancy-boron-nitride-simulation.md)  
-**DOI**: [10.1038/s41524-022-00730-w](https://doi.org/10.1038/s41524-022-00730-w){:target='_blank'}
+**DOI**: [10.1038/s41524-022-00730-w](https://doi.org/10.1038/s41524-022-00730-w){:target='_blank'} [@Bertoldo2022]
 
 ![Vacancy in h-BN](../../../images/tutorials/materials/defects/defect_point_vacancy_boron_nitride/0-figure-from-manuscript.webp "Vacancy in h-BN"){ style="max-height:500px;width:auto;" }
 

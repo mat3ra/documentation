@@ -23,7 +23,7 @@ This tutorial calculates the formation energy of the neutral V_Sn-O_i defect pai
 (SnO), and compares it with the value reported in the following manuscript:
 
 !!!note "Manuscript"
-    A. Togo, F. Oba, and I. Tanaka, "First-principles calculations of native defects in tin
+    A. Togo, F. Oba, I. Tanaka, and K. Tatsumi, "First-principles calculations of native defects in tin
     monoxide", Physical Review B 74, 195128 (2006).
     [DOI:10.1103/PhysRevB.74.195128](https://doi.org/10.1103/PhysRevB.74.195128){:target='_blank'}.
     [@Togo2006]
