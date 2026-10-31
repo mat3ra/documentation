@@ -23,7 +23,7 @@ render_macros: true
 This tutorial demonstrates how to create an oxygen interstitial defect in tin monoxide (SnO), following the methodology described in the literature.
 
 !!!note "Manuscript"
-    A. Togo, F. Oba, and I. Tanaka
+    A. Togo, F. Oba, I. Tanaka, and K. Tatsumi
     "First-principles calculations of native defects in tin monoxide"
     Physical Review B 74, 195128 (2006)
     [DOI: 10.1103/PhysRevB.74.195128](https://doi.org/10.1103/PhysRevB.74.195128){:target='_blank'}. [@Togo2006; @Wang2014; @Na-Phattalung2006]

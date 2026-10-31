@@ -24,7 +24,7 @@ results from the following manuscript:
 
 !!!note "Manuscript"
     Fabian Bertoldo, Sajid Ali, Simone Manti & Kristian S. Thygesen, "Quantum point defects in 2D
-    materials - the QPOD database", npj Computational Materials, 2022.
+    materials - the QPOD database", npj Computational Materials 8, 56 (2022).
     [DOI:10.1038/s41524-022-00730-w](https://doi.org/10.1038/s41524-022-00730-w){:target='_blank'}.
     [@Bertoldo2022]
 
