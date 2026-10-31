@@ -173,7 +173,7 @@ The MACE relaxations and scans run in the notebook; it then polls the relaxation
 ### 5.5. Analyze results
 
 The last cells print the barrier and the O–O distance at the transition state of each surface beside the
-manuscript's values, and plot the scans. Each surface's NEB lines follow its MACE lines:
+manuscript's values, and plot the scans. The Pt(111) NEB lines follow its MACE lines:
 
 ```
 Pt(111) barrier (MACE): 0.205 eV, Šljivančanin & Hammer 0.6 eV
@@ -205,7 +205,7 @@ of this tutorial (right), where the dashed lines mark the manuscript's barriers:
 
 ![O₂ dissociation energy on Pt(111) and Pt(211)](../../../images/tutorials/materials/defects/defect_surface_step_platinum/energy-profile-comparison.webp "O₂ dissociation energy: manuscript, FIG. 2 (left) vs. fixed O–O scans with MACE (right)")
 
-The Pt(211) RPBE NEB runs the same way, from its entry in `SURFACES`; it has not been run here.
+The Pt(211) RPBE NEB runs the same way, from its entry in `SURFACES`.
 
 ### 6.2. Difference from the manuscript
 
@@ -214,13 +214,15 @@ at an O–O distance of 1.78 Å and 1.80 Å. Both are below the manuscript's 0.6
 
 | Setting | Šljivančanin & Hammer | This tutorial | Parameter to change |
 |---|---|---|---|
-| Pt(111) slab | 4 layers × 9 Pt (p. 236, FIG. 1 A) | 3 layers × 16 Pt | `number_of_layers`, `xy_supercell_matrix` in `SLAB_PARAMETERS`, structure notebook; with 2 or 4 layers the O lands in the hcp or atop site, not fcc (its section 4) |
-| k-points | 6×4×1 (p. 237) | 2×2×1 | `"kgrid"` in `SURFACES`, cell 1.2 |
+| Pt(111) slab | 4 layers × 9 Pt (p. 236, FIG. 1 A) | 3 layers × 16 Pt | —, made's Pt(111) cell holds 4 Pt per layer (9 is not reachable); 4 layers moves the O off the fcc hollow (structure notebook, section 4) |
+| Pt(111) vacuum | ≈10 Å (p. 236) | 15 Å | `vacuum` in `SLAB_PARAMETERS`, structure notebook |
+| k-points | 6×4×1 for its 9-Pt cell (p. 237) | 2×2×1 | `"kgrid"` in `SURFACES`, cell 1.2 |
 | Pt lattice constant | 4.02 Å, RPBE (p. 236) | 3.943 Å, Standata, not strained | — |
-| Dissociated pair | not given | both O in neighbouring fcc hollows | the O placement, section 4.4 of the structure notebook |
-| Transition state | constrained relaxations, O–O fixed on a 0.2 Å grid (p. 237) | climbing-image NEB, one intermediate image | `N_IMAGES`, cell 1.4 |
+| Dissociated pair | not given | both O in neighbouring fcc hollows | — |
+| Transition state | constrained relaxations, O–O fixed on a 0.2 Å grid (p. 237) | climbing-image NEB, one intermediate image | —, the platform cannot hold a fixed O–O distance; the MACE scan follows the manuscript's method |
 | Relaxation | upper half of the Pt atoms and the O atoms, the rest fixed (p. 236) | all atoms | —, the platform keeps no fixed atoms |
-| Pseudopotentials, cutoff | Vanderbilt ultrasoft, 25 Ry (p. 236) | GBRV ultrasoft, 40 / 200 Ry | `PSEUDOPOTENTIAL_TYPE`, `ECUTWFC`, `ECUTRHO`, cell 1.4 |
+| Force criterion | two-norm of the total force < 0.1 eV/Å (p. 236) | each force component < 0.1 eV/Å; MACE: largest force on an atom < 0.1 eV/Å | `forc_conv_thr` in `RELAXATION_SETTINGS`, cell 1.4; `FMAX`, cell 1.3 |
+| Pseudopotentials, cutoff | Vanderbilt ultrasoft, 25 Ry (p. 236) | GBRV ultrasoft, 40 / 200 Ry | `ECUTWFC`, `ECUTRHO`, cell 1.4 |
 
 Which of these settings moves the barrier is not tested here.
 
