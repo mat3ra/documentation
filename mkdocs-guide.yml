@@ -284,4 +284,9 @@ nav:
             - TensorFlow (GPU):                            tutorials/general-functionality/tensorflow-gpu.md
             - Add New Software:                            /command-line/cli/actions/add-software/
 
+# 4. Experimental Data
+    - 4. Experimental Data:
+        - Upload Experimental Data:                        tutorials/experiments/upload-experimental-data.md
+        - Contribute Experimental Data Types:              tutorials/experiments/contribute-experimental-data-type.md
+
 
