@@ -178,7 +178,8 @@ manuscript's values, and plot the scans. The Pt(111) NEB lines follow its MACE l
 ```
 Pt(111) barrier (MACE): 0.205 eV, Šljivančanin & Hammer 0.6 eV
 Pt(111) O–O at the transition state (MACE): 1.80 Å, Šljivančanin & Hammer 2.4 Å
-Pt(111) barrier: 0.205 eV, Šljivančanin & Hammer 0.6 eV, largest image error 0.095 eV/Å
+Pt(111) barrier: 0.205 eV, Šljivančanin & Hammer 0.6 eV
+Pt(111) largest NEB image error: 0.095 eV/Å
 Pt(111) O–O at the climbing image: 1.78 Å, Šljivančanin & Hammer 2.4 Å
 Pt(211) barrier (MACE): 0.740 eV, Šljivančanin & Hammer 0.9 eV
 Pt(211) O–O at the transition state (MACE): 1.80 Å, Šljivančanin & Hammer 3.0 Å
@@ -254,7 +255,7 @@ adds the functional: the four materials relaxed and one climbing-image NEB per s
 six jobs on the OF queue. It is an NEB rather than a scan because the platform cannot hold a fixed O–O distance. Its cost
 grows with `"kgrid"` in `SURFACES` (cell 1.2; the manuscript's 6×4×1 is on its own, smaller cells) and with
 `N_IMAGES`; neb.x stops after `NEB_MAXIMUM_ITERATIONS`, converged or not, and the path is converged when the
-largest image error on the barrier line is below 0.1 eV/Å. A new `"kgrid"` starts new relaxation and NEB jobs; a new
+largest NEB image error is below 0.1 eV/Å. A new `"kgrid"` starts new relaxation and NEB jobs; a new
 `N_IMAGES` or `NEB_MAXIMUM_ITERATIONS` reuses the jobs already run from the same precursor (section 4).
 
 - **Pt(211) slab**: `THICKNESS = 3` in the [structure notebook](defect-surface-step-platinum.md) gives the
