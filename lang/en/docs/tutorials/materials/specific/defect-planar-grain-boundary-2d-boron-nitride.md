@@ -4,7 +4,6 @@ tags:
   - h-BN
   - 2D-materials
   - interface
-  - twist-angle
   - D-2D-GBP
 
 hide:
@@ -13,7 +12,7 @@ hide:
 render_macros: true
 ---
 
-# 2D Grain Boundaries in Hexagonal Boron Nitride.
+# Grain Boundary (2D) in h-BN
 
 ## 1. Introduction
 
@@ -24,17 +23,27 @@ This tutorial creates a grain boundary in a hexagonal boron nitride (h-BN) monol
 
 The notebook builds the Type III boundary of Figure 3f: a continuous chain of pentagons and heptagons (5|7), with B–B and N–N bonds alternating along it. The cell holds two such boundaries, as in the manuscript's calculation.
 
-## 2. Open the notebook
+## 2. Open the Notebook
 
-### 2.1. Launch JupyterLite session
+### 2.1. Open Materials Designer
 
-Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment. The notebook loads the h-BN monolayer (`2dm-4991`) from Standata itself.
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/).
+
+### 2.2. Launch JupyterLite Session
+
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
 ![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
-### 2.2. Open the notebook and set the parameters
+### 2.3. Open `defect_planar_grain_boundary_2d_boron_nitride.ipynb` Notebook
 
-Open the `specific_examples/defect_planar_grain_boundary_2d_boron_nitride.ipynb` notebook. Cell 1.1 sets the parameters:
+Find and open the `specific_examples/defect_planar_grain_boundary_2d_boron_nitride.ipynb` notebook. It loads the h-BN monolayer (`2dm-4991`) from Standata.
+
+## 3. Configure and Create Structure
+
+### 3.1. Set Parameters
+
+Cell 1.1 sets the parameters:
 
 ```python
 # Grain boundary parameters
@@ -64,35 +73,38 @@ MATERIAL_NAME = "h-BN 5-7 grain boundary, MACE-relaxed"
 CELL_REPETITIONS_FOR_VISUALIZATION = [1, 2, 1]
 ```
 
-Each grain is a supercell of the monolayer. The rows of `GRAIN_1_SUPERCELL_MATRIX` and `GRAIN_2_SUPERCELL_MATRIX` are its vectors across and along the boundary, written in the lattice basis of the monolayer. They put the lattice vectors (3, 1) of one grain and (1, 3) of the other, in the 60° basis of the literature, along the boundary: the (3,1)|(1,3) boundary of the manuscript at 32.2°. `NUMBER_OF_PERIODS_ACROSS` sets the width of each grain, and `SLIDE_ALONG_BOUNDARY` shifts the second grain along the boundary so that the two grains meet in the 5|7 pattern. `FMAX` is the force threshold of the relaxation, 0.01 eV/Å as in the manuscript.
 
-## 3. Create the grain boundary
+Each grain is a supercell of the monolayer. The rows of `GRAIN_1_SUPERCELL_MATRIX` and `GRAIN_2_SUPERCELL_MATRIX` are its vectors across and along the boundary, written in the lattice basis of the monolayer. They put the lattice vectors (3, 1) of one grain and (1, 3) of the other, in the 60° basis of the literature, along the boundary: the (3,1)|(1,3) boundary of the manuscript at 32.2°.
 
-### 3.1. Run the notebook
+### 3.2. Run the Notebook
 
-Select *Run* > *Run All*.
+Select "Run" > "Run All Cells".
 
 ![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
-The notebook joins the two grains (section 3), relaxes the atomic positions with MACE at fixed cell (section 4), and prints the number of atoms of each element and of B–B and N–N bonds before and after the relaxation:
+The notebook joins the two grains (section 3) and prints the number of atoms of each element and of B–B and N–N bonds. It then relaxes the atomic positions with MACE at fixed cell (section 4) and prints the energy change and the same counts again:
 
 ```
 208 atoms, B 104, N 104, B–B 2, N–N 2
+Energy change on relaxation: -2.898 eV
+208 atoms, B 104, N 104, B–B 2, N–N 2
 ```
 
-### 3.2. Analyze the results
+### 3.3. Pass the Result to Materials Designer
+
+The notebook passes the boundary as built and its relaxed version, `h-BN 5-7 grain boundary` and `h-BN 5-7 grain boundary, MACE-relaxed`, to the current Materials Designer environment.
+
+## 4. Analyze the Structure
 
 The cell is 62.7 × 9.05 Å with 208 atoms. Each of the two boundaries is a continuous 5-7 chain with one B–B and one N–N bond per period, as in the manuscript.
 
 ![Type III 5|7 boundary: Li et al. 2015 and this work](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/boundary-structure-comparison.webp "Type III 5|7 boundary, top view: Li et al. 2015, Fig. 3f (left) and the MACE-relaxed structure of this notebook (right)")
 
-## 4. Pass the material to Materials Designer
+## 5. Save the Structure
 
-The notebook passes the boundary as built and its relaxed version, `h-BN 5-7 grain boundary` and `h-BN 5-7 grain boundary, MACE-relaxed`, to the current Materials Designer environment, where the user can save them. It also writes the relaxed one to the `uploads` folder; the [simulation tutorial](defect-planar-grain-boundary-2d-boron-nitride-simulation.md) loads it by this name.
+In Materials Designer, the user can save the materials on the platform or [download]({{ interface_url }}/materials-designer/header-menu/input-output/) them in Material JSON or POSCAR format. The notebook also writes the relaxed boundary to the `uploads` folder; the [simulation tutorial](defect-planar-grain-boundary-2d-boron-nitride-simulation.md) loads it by its name.
 
-Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
-
-## 5. Interactive JupyterLite Notebook
+## 6. Interactive JupyterLite Notebook
 
 The following JupyterLite notebook builds and relaxes the boundary. Select "Run" > "Run All Cells".
 
@@ -104,4 +116,8 @@ The following JupyterLite notebook builds and relaxes the boundary. Select "Run"
 {% endwith %}
 {% endwith %}
 
-## 6. References
+## 7. Parameter Fine-tuning
+
+`NUMBER_OF_PERIODS_ACROSS` sets the width of each grain, and `SLIDE_ALONG_BOUNDARY` shifts the second grain along the boundary so that the two grains meet in the 5|7 pattern. `FMAX` is the force threshold of the relaxation, 0.01 eV/Å as in the manuscript.
+
+## 8. References
