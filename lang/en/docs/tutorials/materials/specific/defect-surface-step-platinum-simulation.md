@@ -109,15 +109,15 @@ SURFACES = {
         "precursor": "Pt(111) O2 precursor",
         "dissociated": "Pt(111) 2O dissociated",
         "kgrid": [2, 2, 1],
-        "paper_barrier": 0.6,
-        "paper_transition_state_oxygen_distance": 2.4,
+        "manuscript_barrier": 0.6,
+        "manuscript_transition_state_oxygen_distance": 2.4,
     },
     "Pt(211)": {
         "precursor": "Pt(211) step O2 precursor",
         "dissociated": "Pt(211) step 2O dissociated",
         "kgrid": [2, 2, 1],
-        "paper_barrier": 0.9,
-        "paper_transition_state_oxygen_distance": 3.0,
+        "manuscript_barrier": 0.9,
+        "manuscript_transition_state_oxygen_distance": 3.0,
     },
 }
 
@@ -176,14 +176,12 @@ The last cells print the barrier and the O–O distance at the transition state 
 manuscript's values, and plot the scans. Each surface's NEB lines follow its MACE lines:
 
 ```
-Pt(111) barrier (MACE): 0.205 eV, Šljivančanin & Hammer 0.6 eV (-65.9 %)
-Pt(111) O–O at the transition state (MACE): 1.80 Å, Šljivančanin & Hammer 2.4 Å (-25.0 %)
-Pt(111) barrier: <value> eV, Šljivančanin & Hammer 0.6 eV (<value> %), largest image error <value> eV/Å
-Pt(111) O–O at the climbing image: <value> Å, Šljivančanin & Hammer 2.4 Å (<value> %)
-Pt(211) barrier (MACE): 0.740 eV, Šljivančanin & Hammer 0.9 eV (-17.8 %)
-Pt(211) O–O at the transition state (MACE): 1.80 Å, Šljivančanin & Hammer 3.0 Å (-40.0 %)
-Pt(211) barrier: <value> eV, Šljivančanin & Hammer 0.9 eV (<value> %), largest image error <value> eV/Å
-Pt(211) O–O at the climbing image: <value> Å, Šljivančanin & Hammer 3.0 Å (<value> %)
+Pt(111) barrier (MACE): 0.205 eV, Šljivančanin & Hammer 0.6 eV
+Pt(111) O–O at the transition state (MACE): 1.80 Å, Šljivančanin & Hammer 2.4 Å
+Pt(111) barrier: 0.205 eV, Šljivančanin & Hammer 0.6 eV, largest image error 0.095 eV/Å
+Pt(111) O–O at the climbing image: 1.78 Å, Šljivančanin & Hammer 2.4 Å
+Pt(211) barrier (MACE): 0.740 eV, Šljivančanin & Hammer 0.9 eV
+Pt(211) O–O at the transition state (MACE): 1.80 Å, Šljivančanin & Hammer 3.0 Å
 ```
 
 ## 6. Expected results
@@ -197,15 +195,34 @@ gas-phase O₂; the scans and profiles here are measured from the precursor.
 
 | | Šljivančanin & Hammer, RPBE | MACE scan | RPBE NEB |
 |---|---|---|---|
-| Pt(111) barrier | 0.6 eV | 0.205 eV (−65.9 %) | `<value>` eV (`<value>` %) |
-| Pt(211) barrier | 0.9 eV | 0.740 eV (−17.8 %) | `<value>` eV (`<value>` %) |
-| Pt(111) O–O at the transition state | 2.4 Å | 1.80 Å (−25.0 %) | `<value>` Å (`<value>` %) |
-| Pt(211) O–O at the transition state | 3.0 Å | 1.80 Å (−40.0 %) | `<value>` Å (`<value>` %) |
+| Pt(111) barrier | 0.6 eV | 0.205 eV | 0.205 eV |
+| Pt(211) barrier | 0.9 eV | 0.740 eV | not computed |
+| Pt(111) O–O at the transition state | 2.4 Å | 1.80 Å | 1.78 Å |
+| Pt(211) O–O at the transition state | 3.0 Å | 1.80 Å | not computed |
 
 The figure below shows the Pt(111) and Pt(211) panels of FIG. 2 of the manuscript (left) beside the MACE scans
 of this tutorial (right), where the dashed lines mark the manuscript's barriers:
 
 ![O₂ dissociation energy on Pt(111) and Pt(211)](../../../images/tutorials/materials/defects/defect_surface_step_platinum/energy-profile-comparison.webp "O₂ dissociation energy: manuscript, FIG. 2 (left) vs. fixed O–O scans with MACE (right)")
+
+The Pt(211) RPBE NEB runs the same way, from its entry in `SURFACES`; it has not been run here.
+
+### 6.2. Difference from the manuscript
+
+On Pt(111), the RPBE NEB and the MACE scan agree with each other: a barrier of 0.205 eV, with the transition state
+at an O–O distance of 1.78 Å and 1.80 Å. Both are below the manuscript's 0.6 eV at 2.4 Å. These settings differ:
+
+| Setting | Šljivančanin & Hammer | This tutorial | Parameter to change |
+|---|---|---|---|
+| Pt(111) slab | 4 layers × 9 Pt (p. 236, FIG. 1 A) | 3 layers × 16 Pt | `number_of_layers`, `xy_supercell_matrix` in `SLAB_PARAMETERS`, structure notebook; with 2 or 4 layers the O lands in the hcp or atop site, not fcc (its section 4) |
+| k-points | 6×4×1 (p. 237) | 2×2×1 | `"kgrid"` in `SURFACES`, cell 1.2 |
+| Pt lattice constant | 4.02 Å, RPBE (p. 236) | 3.943 Å, Standata, not strained | — |
+| Dissociated pair | not given | both O in neighbouring fcc hollows | the O placement, section 4.4 of the structure notebook |
+| Transition state | constrained relaxations, O–O fixed on a 0.2 Å grid (p. 237) | climbing-image NEB, one intermediate image | `N_IMAGES`, cell 1.4 |
+| Relaxation | upper half of the Pt atoms and the O atoms, the rest fixed (p. 236) | all atoms | —, the platform keeps no fixed atoms |
+| Pseudopotentials, cutoff | Vanderbilt ultrasoft, 25 Ry (p. 236) | GBRV ultrasoft, 40 / 200 Ry | `PSEUDOPOTENTIAL_TYPE`, `ECUTWFC`, `ECUTRHO`, cell 1.4 |
+
+Which of these settings moves the barrier is not tested here.
 
 ## 7. Customization options
 
