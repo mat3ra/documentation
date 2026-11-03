@@ -22,13 +22,13 @@ This tutorial demonstrates the process of creating a twisted bilayer boron nitri
 
 !!!note "Manuscript"
     **Lede Xian, Dante M. Kennes, Nicolas Tancogne-Dejean, Massimo Altarelli, and Angel Rubio**, 
-    "Multiflat Bands and Strong Correlations in Twisted Bilayer Boron Nitride: Doping-Induced Correlated Insulator and Superconductor" Phys. Rev. Lett. 125, 086402, 20 August 2020
+    "Multiflat Bands and Strong Correlations in Twisted Bilayer Boron Nitride: Doping-Induced Correlated Insulator and Superconductor" Nano Lett. 19, 4934–4940 (2019)
     [DOI: 10.1021/acs.nanolett.9b00986](https://doi.org/10.1021/acs.nanolett.9b00986) [@Xian2020]
 
 
 We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to  create Hexagonal boron nitride bilayer structure configurations with 2 specific twist angles.
 
-The image shows the twisted bilayer h-BN structure with a twist angle of 2.64° (a) and 62.64° (b).
+The image shows the twisted bilayer h-BN structure with a twist angle of 62.64° (a, configuration α) and 2.64° (b, configuration β).
 
 ![Twisted Bilayer Boron Nitride](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/tbbn-paper-image.png "Twisted Bilayer Boron Nitride")
 
@@ -42,7 +42,7 @@ Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) en
 
 ## 3. Create bilayer with a twist angle of 2.64°
 
-### 2.1 Launch JupyterLite Session
+### 3.1. Launch JupyterLite Session
 
 Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
@@ -100,7 +100,7 @@ After reviewing the results, the user can pass the material to the Materials Des
 ## 4. Create a TBBN structure with a twist angle of 62.64°
 
 ### 4.1. Repeat the steps above
-To create a twisted bilayer boron nitride structure with a twist angle of 62.64°, repeat the above steps 2.1 -- 2.5 with the following modifications.
+To create a twisted bilayer boron nitride structure with a twist angle of 62.64°, repeat the above steps 3.1 -- 3.5 with the following modifications.
  
 Set `TWIST_ANGLE = 62.64` in the "1.1. Set up slab parameters" cell in the notebook.
 
