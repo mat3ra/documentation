@@ -227,7 +227,7 @@ the monolayer, its band gap along Γ–K–M beside the manuscript's. For the de
 
 The manuscript's Fig. 1d beside the monolayer job's band structure as the platform plots it:
 
-![Band structure of monolayer h-BN from the manuscript and from the platform](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/monolayer-bands-comparison.webp "Xian et al. 2019, Fig. 1d, CC-BY (left); the monolayer job\'s band structure as plotted on the platform (energies relative to E_F) (right)")
+![Band structure of monolayer h-BN from the manuscript and from the platform](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/monolayer-bands-comparison.webp "Xian et al. 2019, Fig. 1d, CC-BY (left); the monolayer job's band structure as plotted on the platform, same energy window (eV relative to E_F) (right)")
 
 
 ## 7. Troubleshooting
