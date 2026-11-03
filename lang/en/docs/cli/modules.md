@@ -85,6 +85,7 @@ lammps/2025.07.22.2-gnu
 lammps/2025.07.22.2-intel-2023.1
 lammps/2025.07.22.2-intel-2023.1-cuda-12.8
 nwchem/7.0.2-gnu
+q3/2026.10.31-0-mpi
 vasp/5.4.4-gnu
 
 ---------------------------- /export/compute/modulefiles/libraries -----------------------------

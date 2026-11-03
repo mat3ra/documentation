@@ -348,6 +348,9 @@ nav:
                 - Components:                           software-directory/modeling/vasp/components.md
 
                 - Compute Parameters:                   software-directory/modeling/vasp/compute-parameters.md
+            - Quantum 3xplorer:
+                - Overview:                             software-directory/modeling/q3/overview.md
+                - Components:                           software-directory/modeling/q3/components.md
             - TurboMole:                                software-directory/modeling/turbomole.md
             - LAMMPS:                                   software-directory/modeling/lammps.md
             - NWChem:                                   software-directory/modeling/nwchem.md
