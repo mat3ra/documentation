@@ -185,6 +185,8 @@ nav:
             - GaAs/AlAs (110) Interface:                                    tutorials/materials/specific/interface-3d-3d-gallium-arsenide-aluminum-arsenide.md
             - GaAs/AlAs (110) Interface (Valence Band Offset):              tutorials/materials/specific/interface-3d-3d-gallium-arsenide-aluminum-arsenide-simulation.md
             - High-k Metal Gate Stack (Si/SiO2/HfO2/TiN):                   tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md
+            - "High-k Metal Gate Stack: SiO2/HfO2 (001) Interface":         tutorials/materials/specific/interface-3d-3d-silicon-dioxide-hafnium-dioxide.md
+            - "High-k Metal Gate Stack: SiO2/HfO2 (001) Interface (Valence Band Offset)": tutorials/materials/specific/interface-3d-3d-silicon-dioxide-hafnium-dioxide-simulation.md
             - Ripple perturbation of a Graphene sheet:                      tutorials/materials/specific/perturbation-ripples-graphene.md
             - Grain Boundary in FCC Metals (Copper):                        tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md
             - Grain Boundary (2D) in h-BN:                                  tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride.md

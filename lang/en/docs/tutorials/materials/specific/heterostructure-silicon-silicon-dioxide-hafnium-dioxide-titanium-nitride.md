@@ -37,6 +37,8 @@ We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/
 
 ![High-k Metal Gate Stack](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/original-figure.webp "High-k Metal Gate Stack")
 
+The valence band offset at the SiO2/HfO2 interface of the stack is calculated in the [SiO2/HfO2 (001) Valence Band Offset](interface-3d-3d-silicon-dioxide-hafnium-dioxide-simulation.md) tutorial.
+
 ## 2. Set Up Materials
 
 First, navigate to Materials Designer and import from [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/) the following materials:
