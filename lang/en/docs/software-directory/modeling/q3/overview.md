@@ -1,9 +1,8 @@
 # Quantum 3xplorer
 
-Quantum 3xplorer (Q3, referred to as "q3" in our platform) [^1] [^2] is an
-AI-native quantum simulation engine, written from scratch by AI coding agents
-under the direction and supervision of domain scientists. Its first
-implementation is a plane-wave
+Quantum 3xplorer (or Q3 in short) [^1] [^2] is an AI-native quantum simulation
+engine, written from scratch by AI coding agents under the direction and
+supervision of domain scientists. Its first implementation is a plane-wave
 [pseudopotential]({{ reference_url }}/methods-directory/pseudopotential/overview/)
 code for [Density Functional Theory]({{ reference_url }}/models-directory/dft/overview/)
 (DFT) calculations of periodic crystals. The engine is written in C++17, with a
