@@ -136,7 +136,8 @@ $EXEC_CMD mpirun -np $PBS_NP q3 q3_scf.yml > q3.out
 
 Results are written to `<outdir>/<prefix>_results.json`, where `outdir` and
 `prefix` are set in the `control` section of the input file. The input format is
-described in the Q3 documentation [^2].
+described in the Q3 documentation [^2]. Complete example inputs are listed in
+the [Examples](components.md#examples) section of the components page.
 
 ## Links
 

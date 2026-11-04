@@ -31,8 +31,21 @@ the [Fermi energy]({{ reference_url }}/properties-directory/scalar/fermi-energy/
 
 The `q3_scf` flavor uses two input files. The first one, `material.json`, holds
 the [material]({{ reference_url }}/materials/overview/) in its
-[structured representation]({{ data_url }}/materials/data/), as fetched from the
-platform. The second one, `q3_scf.yml`, is the Q3 input in YAML format, which
+[structured representation]({{ data_url }}/materials/data/). The template of
+this file is filled from the job context: the workflow fetches the material of
+the job from the platform and assigns it to the `MATERIAL` variable, which is
+written to `material.json` at runtime.
+
+The content of `material.json` can also be overwritten with complete material
+data, for example in the [Unit Editor]({{ interface_url }}/workflow-designer/unit-editor/)
+or in a command-line job. Material data in this format is available from the
+[Standata](https://github.com/mat3ra/standata/tree/main/data/materials) repository
+(`@mat3ra/standata`). Structures from the
+[Materials Project](https://next-gen.materialsproject.org/materials/) database
+can be [imported]({{ interface_url }}/materials/actions/import/) into the
+platform first, which stores them in the same format.
+
+The second input file, `q3_scf.yml`, is the Q3 input in YAML format, which
 refers to `material.json` and sets the method, the self-consistent field
 parameters, and the output location.
 
@@ -83,3 +96,18 @@ elements of the material, the
 (in Rydberg) from the method parameters, and the
 [k-point grid]({{ reference_url }}/models/auxiliary-concepts/reciprocal-space/sampling/)
 from the unit settings.
+
+## Examples
+
+Two sets of ready-to-run inputs are available for Q3.
+
+- The [q3/scf](https://github.com/mat3ra/cli-job-examples/tree/main/q3/scf)
+example of the [CLI job examples](https://github.com/mat3ra/cli-job-examples)
+repository contains a batch script, the Q3 input, and the material file for a self-consistent field calculation of FCC silicon, the same system as the Quantum
+ESPRESSO `pw.x` example. On the compute clusters, the example is located under
+`~/job_script_templates/q3/scf` and can be submitted as explained in the
+[command-line jobs]({{ cli_url }}/jobs-cli/actions/create/) documentation.
+- The [examples](https://github.com/camsai/q3/tree/main/examples) directory of
+the Q3 source repository covers the total energy of semiconductors, metals,
+magnetic metals, and isolated atoms, as well as band structures (including
+Wannier interpolation), densities of states, and relaxations.
