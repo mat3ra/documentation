@@ -15,7 +15,7 @@ hide:
 render_macros: true
 ---
 
-# Ti Adatom Descent on a 5×5 TiN Island (MACE)
+# Ti Adatom Descent on a 5×5 TiN Island (MACE and DFT)
 
 ## 1. Introduction
 
@@ -31,12 +31,14 @@ The figure below shows the descent path from the manuscript (Figure 6), the ener
 
 ![Ti adatom descent from the 5×5 island edge](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/1-figure-6-from-manuscript.webp "Ti adatom descent from a 5×5 TiN/TiN(001) island from Sangiovanni et al. 2018, Figure 6")
 
-The manuscript calculates these energies with Density Functional Theory (DFT). This tutorial uses the MACE-MP-0 machine-learned force field; Section 4 lists the settings.
+The manuscript calculates these energies with Density Functional Theory (DFT). This tutorial calculates them twice: with the MACE-MP-0 machine-learned force field in the notebook's own kernel, and with DFT on the Mat3ra platform, starting from the structures MACE relaxed. Section 4 lists the settings of both.
 
 
 ## 2. Prerequisites
 
-The notebook loads four materials from the `uploads` folder by exact name and raises a `KeyError` when one is missing: `TiN(001) 12x12x3 island 5x5`, the island cell without the adatom, and the three cells with the adatom at a, c and i. All four are created and saved by `defect_point_adatom_island_titanium_nitride.ipynb`, the notebook of the [Ti Adatom on a 5×5 TiN Island](defect-point-adatom-island-titanium-nitride.md) tutorial, which should be run first. No platform account is needed: every calculation runs in the notebook's own kernel.
+The notebook loads four materials from the `uploads` folder by exact name and raises a `KeyError` when one is missing: `TiN(001) 12x12x3 island 5x5`, the island cell without the adatom, and the three cells with the adatom at a, c and i. All four are created and saved by `defect_point_adatom_island_titanium_nitride.ipynb`, the notebook of the [Ti Adatom on a 5×5 TiN Island](defect-point-adatom-island-titanium-nitride.md) tutorial, which should be run first with the `CELL_SIZE` set in cell 1.2 here.
+
+The MACE relaxations of Sections 2 to 6 run in the notebook's own kernel. The DFT relaxations of Section 7 are jobs on the Mat3ra platform and need an account on it.
 
 
 ## 3. Workflow overview
@@ -45,15 +47,16 @@ The adsorption energy at a follows Eq. (4) of the manuscript:
 
 `E_ads(a) = E(slab + island + Ti at a) − E(slab + island) − E_Ti`
 
-where `E_Ti` is the energy of an isolated Ti atom. The energies of c and i are taken relative to a, as on the vertical axis of Fig. 6. The steps are:
+where `E_Ti` is the energy of an isolated Ti atom. The energies of c and i are taken relative to a, as on the vertical axis of Fig. 6. Both methods calculate the same four energies on the same structures. The steps are:
 
-1. **Set up the environment and parameters**: install packages (JupyterLite only), material names, force field and relaxation parameters
+1. **Set up the environment and parameters**: install packages (JupyterLite only), material names, force field, relaxation, DFT and compute parameters
 2. **Load the materials**: the island cell and the three adatom cells from the `uploads` folder
 3. **Build the MACE calculator**: from the settings in cell 1.3
 4. **Relax the island cell**: then measure the island contraction and the surface ripple
 5. **Relax the adatom at a, c and i**: one relaxation per site, starting from the placed site
 6. **Calculate the energy of an isolated Ti atom**: the reference of the adsorption energy
-7. **Compare with the manuscript**: energies relative to a, the adsorption energy at a, and the Fig. 6 plot
+7. **Relax the same structures with DFT**: one platform job per structure, each starting from the geometry MACE relaxed
+8. **Compare with the manuscript**: energies relative to a, the adsorption energy at a, and the Fig. 6 plot
 
 
 ## 4. Calculation parameters
@@ -63,6 +66,7 @@ where `E_Ti` is the energy of an isolated Ti atom. The energies of c and i are t
 Cell 1.3 sets the force field and the relaxation:
 
 ```python
+ORGANIZATION_NAME = None
 FOLDER = "./uploads"
 
 MACE_MODEL_FAMILY = "MACE-MP-0"
@@ -73,19 +77,76 @@ MACE_DEVICE = "cpu"
 
 FMAX = 0.02  # eV/Å
 MAX_STEPS = 1000
+FROZEN_SLAB_PLANES = 1  # bottom slab planes held fixed in the MACE and DFT relaxations
 ```
 
-Every relaxation uses the [Broyden–Fletcher–Goldfarb–Shanno (BFGS) optimizer](https://wiki.fysik.dtu.dk/ase/ase/optimize.html){:target='_blank'} of the Atomic Simulation Environment (ASE) with every atom free, and stops when the largest force falls below `FMAX`. The isolated Ti atom is one Ti site at the centre of an otherwise empty cell the size of the island cell, calculated with the same calculator.
+Every MACE relaxation uses the [Broyden–Fletcher–Goldfarb–Shanno (BFGS) optimizer](https://wiki.fysik.dtu.dk/ase/ase/optimize.html){:target='_blank'} of the Atomic Simulation Environment (ASE) and stops when the largest force falls below `FMAX`. `FROZEN_SLAB_PLANES` holds the atoms of that many bottom slab planes at their positions, in the MACE relaxations and in the DFT ones; every other atom is free. The notebook carries the fixed atoms into the DFT jobs as the material's atomic constraints, so both methods relax the same atoms. The isolated Ti atom is one Ti site at the centre of an otherwise empty cell the size of the island cell.
 
-### 4.2. Method compared with the manuscript
+### 4.2. Cell size
 
-The manuscript uses DFT with the Generalized Gradient Approximation (GGA) in the Vienna Ab initio Simulation Package (VASP), on the same cell; the site spacing here, from Standata's `mp-492`, is 2.121 Å against the manuscript's nearest-neighbour distance of 2.127 Å (Sec. II.A). This tutorial uses the [MACE-MP-0](https://github.com/ACEsuit/mace){:target='_blank'} large model with the D3 dispersion correction, in double precision (`float64`) on the CPU. Every value in Section 6 is MACE beside DFT (GGA). The manuscript cites its isolated Ti atom energy (−2.275 eV); this tutorial calculates its own. Sec. II.B of the manuscript pre-optimizes the atop-N-edge configuration (c) with the adatom's relaxation constrained along [001]; this notebook relaxes c with every atom free.
+`CELL_SIZE` in cell 1.2 names the cell the structure notebook built, and has to match the setting used there. The manuscript's cell, `"12x12x3"`, has 457 atoms and 458 with the adatom; `"10x10x2"` has 225 and 226. With the bottom slab plane fixed, MACE gives these energies on the two:
 
-### 4.3. Dispersion and run time
+| Quantity | `"12x12x3"` | `"10x10x2"` |
+| --- | --- | --- |
+| E(c) − E(a) | 0.315 eV | 0.311 eV |
+| E(i) − E(a) | −2.247 eV | −2.109 eV |
+| E_ads(a) | −3.015 eV | −3.067 eV |
+
+A DFT step on the manuscript's cell is several times the cost of one on the smaller cell, so the DFT jobs are run with `CELL_SIZE = "10x10x2"` set in both notebooks.
+
+### 4.3. DFT model parameters
+
+Cell 1.4 sets the model of every DFT job:
+
+```python
+# manuscript: VASP, every structure relaxed with DFT; here the DFT relaxation starts from the MACE-relaxed structure
+APPLICATION_NAME = "espresso"
+RELAXATION_SEARCH_TERM = "fixed_cell_relaxation.json"
+# manuscript: GGA of Perdew, Burke and Wang (PW91); for PW91 add "input_dft": "pw91" to DFT_SYSTEM_SETTINGS
+FUNCTIONAL = "pbe"
+PSEUDOPOTENTIAL_TYPE = "us"  # manuscript: PAW; ours GBRV ultrasoft
+ECUTWFC = 40  # Ry; manuscript: 400 eV for the static calculations, Sec. II.B
+ECUTRHO = 200  # Ry
+DFT_KGRID = [1, 1, 1]  # manuscript: Γ only
+DFT_SYSTEM_SETTINGS = {"smearing": "mv", "degauss": 0.01}  # Ry
+MAXIMUM_IONIC_STEPS = 5  # per job, so that it ends within TIME_LIMIT; the next job continues from its last structure
+DAVIDSON_SUBSPACE_DIMENSION = 2  # half the default 4: less memory per process
+DFT_CONTROL_SETTINGS = {"nstep": MAXIMUM_IONIC_STEPS}
+# conv_thr 1e-4 Ry ≈ 1.4 meV on the total energy; local-TF mixing for a slab with vacuum
+DFT_ELECTRONS_SETTINGS = {"conv_thr": 1e-4, "mixing_mode": "local-TF", "mixing_beta": 0.2,
+                          "diago_david_ndim": DAVIDSON_SUBSPACE_DIMENSION}
+DFT_SPIN_SETTINGS_BY_LABEL = {"isolated_adatom": {"nspin": 2, "tot_magnetization": 2}}  # two unpaired Ti d electrons
+```
+
+Quantum ESPRESSO runs a fixed-cell relaxation with the PBE functional and the GBRV ultrasoft pseudopotentials the platform publishes, at 40 and 200 Ry, on the Γ point alone, with Marzari-Vanderbilt smearing of 0.01 Ry. `MAXIMUM_IONIC_STEPS` bounds the ionic steps of one job so that it ends inside its time limit, and the next job on the same structure continues from the final structure of the last. `conv_thr` of 1e-4 Ry and local-TF mixing at 0.2 are what converge this metallic slab, and `DAVIDSON_SUBSPACE_DIMENSION` halves the Davidson subspace to lower the memory each process needs. Of the five structures only the isolated Ti atom is spin-polarized, at a fixed total magnetization.
+
+### 4.4. Compute resources
+
+Cell 1.5 sets where the jobs run:
+
+```python
+from mat3ra.ide.compute import QueueName
+
+CLUSTER_NAME = "001"
+QUEUE_NAME = QueueName.OF
+PPN = 60  # OF's maxPPN: the job is billed for the whole node
+TIME_LIMIT = "08:00:00"
+POLL_INTERVAL = 600  # seconds
+```
+
+`CLUSTER_NAME` selects the cluster whose hostname contains it. `PPN` is the maximum of the OF queue, so the job uses the whole node it is billed for. `TIME_LIMIT` bounds one job, and `POLL_INTERVAL` is how often Section 7.9 asks the platform whether the jobs have finished.
+
+### 4.5. Methods compared with the manuscript
+
+The manuscript uses DFT with the Generalized Gradient Approximation (GGA) in the Vienna Ab initio Simulation Package (VASP), and relaxes every structure with DFT at 0 K (Sec. II.A); its bottom slab layer is held fixed in the molecular dynamics runs. This tutorial relaxes every structure with the [MACE-MP-0](https://github.com/ACEsuit/mace){:target='_blank'} large model with the D3 dispersion correction, in double precision (`float64`) on the CPU, and the DFT relaxation then starts from that geometry and takes the ionic steps `MAXIMUM_IONIC_STEPS` allows.
+
+The site spacing here, from Standata's `mp-492`, is 2.121 Å against the manuscript's nearest-neighbour distance of 2.127 Å (Sec. II.A). The manuscript cites its isolated Ti atom energy (−2.275 eV); this tutorial calculates its own with each method. Sec. II.B of the manuscript pre-optimizes the atop-N-edge configuration (c) with the adatom's relaxation constrained along [001]; this notebook relaxes c with every atom but the fixed bottom plane free.
+
+### 4.6. Dispersion and the browser
 
 In JupyterLite, the install and calculator cells run, but the first relaxation exceeds the browser's memory: the first force call on the 457-atom cell fails with `can't allocate memory: you tried to allocate 763723776 bytes`, a 0.76 GB tensor. The JupyterLite bundle also carries no `torch-dftd`, so D3 is off in the browser.
 
-The four relaxations, on 457 and 458 atoms, run natively, with `mace-torch` and `torch-dftd` installed. The values in Section 6 are from such a run.
+The four MACE relaxations, on 457 and 458 atoms, run natively, with `mace-torch` and `torch-dftd` installed. The MACE values in Section 6 are from such a run. The DFT jobs of Section 7 run on the platform and do not depend on the kernel the notebook runs in.
 
 
 ## 5. Step-by-step instructions
@@ -103,48 +164,75 @@ other/materials_designer/specific_examples/defect_point_adatom_island_titanium_n
 Cell 1.2 names the materials the notebook loads:
 
 ```python
-# Names saved by defect_point_adatom_island_titanium_nitride.ipynb.
-ISLAND_MATERIAL_NAME = "TiN(001) 12x12x3 island 5x5"
+# Names saved by defect_point_adatom_island_titanium_nitride.ipynb, with the CELL_SIZE set there.
+CELL_SIZE = "12x12x3"
+ISLAND_MATERIAL_NAME = f"TiN(001) {CELL_SIZE} island 5x5"
 ADATOM_MATERIAL_NAMES = {
-    "a": "TiN(001) 12x12x3 island 5x5 + Ti a (FFH island)",
-    "c": "TiN(001) 12x12x3 island 5x5 + Ti c (atop-N edge)",
-    "i": "TiN(001) 12x12x3 island 5x5 + Ti i (atop-N terrace)",
+    "a": f"{ISLAND_MATERIAL_NAME} + Ti a (FFH island)",
+    "c": f"{ISLAND_MATERIAL_NAME} + Ti c (atop-N edge)",
+    "i": f"{ISLAND_MATERIAL_NAME} + Ti i (atop-N terrace)",
 }
 ```
 
-### 5.3. Run the notebook
+### 5.3. Run the MACE relaxations
 
-Execute all cells by selecting *Run* > *Run All Cells*. The notebook then:
+Execute all cells by selecting *Run* > *Run All Cells*. Sections 2 to 6 need no platform account. The notebook:
 
 1. Loads the four materials and prints their atom counts
 2. Builds the MACE calculator
 3. Relaxes the island cell and prints the island contraction and the ripple
 4. Relaxes the adatom at a, c and i, and prints each energy and the adatom's displacement from its site
 5. Calculates the energy of an isolated Ti atom
-6. Prints the comparison with the manuscript and plots Fig. 6
 
-### 5.4. Monitor progress
+### 5.4. Run the DFT relaxations
 
-Each relaxation prints one line per BFGS step: the step, the time, the energy, and the largest force. In the run of Section 6, each relaxation took 24 to 33 steps.
+Section 7 of the notebook [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md), initializes the API client, and selects the account and the default project. It then:
 
-### 5.5. Read the results
+1. Saves the MACE-relaxed structures and the isolated Ti atom to the platform, each with the fixed bottom plane as its atomic constraints
+2. Builds the DFT model from cell 1.4
+3. Creates the compute configuration from cell 1.5
+4. Creates one fixed-cell relaxation job per structure and submits it, reusing a submitted, queued, active or finished job of the same workflow on the same structure
+5. Waits for the jobs, polling every `POLL_INTERVAL` seconds
+6. Reads the total energy and the final structure of each job
 
-Section 7.1 of the notebook prints this notebook's values beside the manuscript's: the energies of c and i relative to a, the adsorption energy at a, the isolated Ti atom energy, the island contraction, and the ripple. Section 7.2 plots the manuscript's states a to i of Fig. 6 (upper panel) as a line, with this notebook's a, c and i as markers on the same axes.
+`DFT_MATERIAL_LABELS` in cell 1.3 names the structures to relax:
+
+```python
+# DFT relaxations of the MACE-relaxed structures, one platform job each; an empty list skips the platform jobs.
+# The other structures can be added one at a time, each after the previous job has finished.
+DFT_MATERIAL_LABELS = [
+    "slab_with_island",
+    # "a",
+    # "c",
+    # "i",
+    # "isolated_adatom",
+]
+```
+
+It ships with the island cell alone and the four others commented out. Uncommenting one more after the job before it has finished keeps one job on the cluster at a time, and a structure that already has a job is picked up again instead of being submitted twice. An empty list skips the platform and leaves Section 8 with the MACE values alone.
+
+### 5.5. Monitor progress
+
+Each MACE relaxation prints one line per BFGS step: the step, the time, the energy, and the largest force. Each DFT job prints its identifier and its status when it is created, and the notebook then polls it until it finishes.
+
+### 5.6. Read the results
+
+Section 8.1 of the notebook prints this notebook's MACE and DFT values beside the manuscript's: the energies of c and i relative to a, the adsorption energy at a, the isolated Ti atom energy, the island contraction, and the ripple. A quantity whose DFT job has not run shows `—`. Section 8.2 plots the manuscript's states a to i of Fig. 6 (upper panel) as a line, with this notebook's a, c and i as markers on the same axes.
 
 
 ## 6. Expected results
 
-A native run with the default parameters and D3 gives the values below, each beside the manuscript's value and its source:
+A native run on the manuscript's cell with the default parameters and D3 gives the MACE values below, each beside the manuscript's value and its source:
 
-| Quantity | This notebook | Manuscript |
+| Quantity | This notebook, MACE | Manuscript |
 | --- | --- | --- |
-| E(c) − E(a) | 0.321 eV | −0.15 ± 0.02 eV (Fig. 6, read off the axis) |
-| E(i) − E(a) | −2.252 eV | −2.65 ± 0.05 eV (Fig. 6, read off the axis) |
-| E_ads(a) | −3.019 eV | −2.81 eV (Sec. III.A ¶8) |
+| E(c) − E(a) | 0.315 eV | −0.15 ± 0.02 eV (Fig. 6, read off the axis) |
+| E(i) − E(a) | −2.247 eV | −2.65 ± 0.05 eV (Fig. 6, read off the axis) |
+| E_ads(a) | −3.015 eV | −2.81 eV (Sec. III.A ¶8) |
 | E_Ti, isolated atom | −3.889 eV | −2.275 eV (Sec. II.B) |
-| Ti–Ti spacing along the island diagonals | −4.9 % of bulk | −6.8 % (Sec. III.A, p. 10) |
-| Ti–N spacing along the island medians | −3.5 % of bulk | −5.2 % (Sec. III.A, p. 10) |
-| Surface ripple, N above Ti | 0.067 Å | 0.19 Å (Sec. III.A, p. 8) |
+| Ti–Ti spacing along the island diagonals | −5.0 % of bulk | −6.8 % (Sec. III.A, p. 10) |
+| Ti–N spacing along the island medians | −3.6 % of bulk | −5.2 % (Sec. III.A, p. 10) |
+| Surface ripple, N above Ti | 0.071 Å | 0.19 Å (Sec. III.A, p. 8) |
 
 a: as built → relaxed
 
@@ -154,7 +242,7 @@ Relaxed a → c → i
 
 <img data-gifffer="/images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/4-descent-a-c-i.gif" alt="Relaxed a → c → i" />
 
-Section 7.2 of the notebook draws this notebook's a, c and i on the manuscript's states a to i:
+Section 8.2 of the notebook draws this notebook's a, c and i on the manuscript's states a to i:
 
 ![Fig. 6 with this notebook's energies](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/2-result-fig6-this-notebook.webp "Energies of a, c and i from this notebook beside Figure 6 of Sangiovanni et al. 2018")
 
@@ -182,16 +270,16 @@ In JupyterLite, cell 1.1 installs MACE; it has to run before any other cell. Nat
 
 ### 8.3. The run is without dispersion
 
-When Section 3 of the notebook prints `torch-dftd is not available here: MACE runs WITHOUT the D3 dispersion correction.`, every energy is MACE alone and differs from Section 6. This is the case in every JupyterLite run (Section 4.3). The values of Section 6 need a native kernel with `torch-dftd` installed.
+When Section 3 of the notebook prints `torch-dftd is not available here: MACE runs WITHOUT the D3 dispersion correction.`, every energy is MACE alone and differs from Section 6. This is the case in every JupyterLite run (Section 4.6). The values of Section 6 need a native kernel with `torch-dftd` installed.
 
 ### 8.4. The relaxations take long
 
-Every BFGS step evaluates MACE on 457 or 458 atoms, and the notebook runs four relaxations; in JupyterLite the first one stops on the browser's memory limit (Section 4.3).
+Every BFGS step evaluates MACE on 457 or 458 atoms, and the notebook runs four relaxations; in JupyterLite the first one stops on the browser's memory limit (Section 4.6).
 
 
 ## 9. Interactive JupyterLite notebook
 
-The following JupyterLite notebook relaxes the Ti adatom at a, c and i and compares the energies with the manuscript. In the browser, the install and calculator cells run and the relaxations do not (Section 4.3).
+The following JupyterLite notebook relaxes the Ti adatom at a, c and i with MACE and with DFT, and compares the energies with the manuscript. In the browser, the install and calculator cells run and the relaxations do not (Section 4.6).
 
 {% with origin_url=config.extra.jupyterlite.origin_url_lab %}
 {% with notebooks_path_root=config.extra.jupyterlite.notebooks_path_root %}

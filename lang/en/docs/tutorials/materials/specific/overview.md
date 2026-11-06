@@ -149,7 +149,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 3.1.3.2. Ti Adatom on a 5×5 TiN Island <span class="btn badge b-info border-50">D-2D-ADA</span>
 
 **Structure**: [Create Ti Adatom on a 5×5 TiN Island](defect-point-adatom-island-titanium-nitride.md)  
-**Properties**: [Calculate Ti Adatom Descent Energetics (MACE)](defect-point-adatom-island-titanium-nitride-simulation.md)  
+**Properties**: [Calculate Ti Adatom Descent Energetics (MACE and DFT)](defect-point-adatom-island-titanium-nitride-simulation.md)  
 **DOI**: [10.1103/PhysRevB.97.035406](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.97.035406){:target='_blank'} [@Sangiovanni2018]
 
 ![Ti Adatom on a 5×5 TiN Island](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/0-figure-1b-from-manuscript.webp "5×5-atom TiN/TiN(001) island, Fig. 1b"){ style="max-height:500px;width:auto;" }
