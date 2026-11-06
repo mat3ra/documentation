@@ -55,7 +55,7 @@ where `E_Ti` is the energy of an isolated Ti atom. The energies of c and i are t
 4. **Relax the island cell**: then measure the island contraction and the surface ripple
 5. **Relax the adatom at a, c and i**: one relaxation per site, starting from the placed site
 6. **Calculate the energy of an isolated Ti atom**: the reference of the adsorption energy
-7. **Relax the same structures with DFT**: one platform job per structure, each starting from the geometry MACE relaxed
+7. **Run DFT on the platform**: a fixed-cell relaxation on the four slab structures, each starting from the geometry MACE relaxed, and a total energy on the isolated Ti atom, which has nothing to relax
 8. **Compare with the manuscript**: energies relative to a, the adsorption energy at a, and the Fig. 6 plot
 
 
@@ -97,6 +97,8 @@ Cell 1.4 sets the model of every DFT job:
 APPLICATION_NAME = "espresso"
 RELAXATION_SEARCH_TERM = "fixed_cell_relaxation.json"
 TOTAL_ENERGY_SEARCH_TERM = "total_energy.json"  # the isolated atom: one SCF, nothing to relax
+RELAX_UNIT = "pw_relax"
+SCF_UNIT = "pw_scf"
 # manuscript: GGA of Perdew, Burke and Wang (PW91); for PW91 add "input_dft": "pw91" to DFT_SYSTEM_SETTINGS
 FUNCTIONAL = "pbe"
 PSEUDOPOTENTIAL_TYPE = "us"  # manuscript: PAW; ours GBRV ultrasoft
@@ -186,8 +188,9 @@ Execute all cells by selecting *Run* > *Run All Cells*. Sections 2 to 6 need no 
 `DFT_MATERIAL_LABELS` in cell 1.3 names the structures Section 7 runs, and ships empty, so *Run All Cells* submits nothing and Section 8 holds the MACE values alone:
 
 ```python
-# DFT relaxations of the MACE-relaxed structures, one platform job each; an empty list skips the platform jobs.
-# The other structures can be added one at a time, each after the previous job has finished.
+# One platform job per structure: a fixed-cell relaxation on the MACE-relaxed slab structures, and a total
+# energy on the isolated Ti atom, which has nothing to relax; an empty list skips the platform jobs.
+# The structures can be added one at a time, each after the previous job has finished.
 DFT_MATERIAL_LABELS = [
     # "slab_with_island",
     # "a",
@@ -219,7 +222,7 @@ Section 8.1 of the notebook prints this notebook's MACE and DFT values beside th
 
 ## 6. Expected results
 
-The table below holds every value this notebook computed, each beside the manuscript's and its source. The MACE columns are native runs on the two cells of Section 4.2; the DFT column is a fixed-cell relaxation of each structure on the platform, started from the MACE geometry and read at its fifth ionic step. At these settings DFT places c below a, as the manuscript reports, where MACE places it above.
+The table below holds every value this notebook computed, each beside the manuscript's and its source. The MACE columns are native runs on the two cells of Section 4.2; the DFT column is a fixed-cell relaxation of the four slab structures on the platform, started from the MACE geometry and read at its fifth ionic step, and a total energy on the isolated Ti atom, which has nothing to relax. At these settings DFT places c below a, as the manuscript reports, where MACE places it above.
 
 | Quantity | This notebook, MACE (12×12×3) | This notebook, MACE (10×10×2) | This notebook, DFT (10×10×2) | Sangiovanni et al. (2018) |
 | --- | --- | --- | --- | --- |
