@@ -84,13 +84,7 @@ Every MACE relaxation uses the [Broyden–Fletcher–Goldfarb–Shanno (BFGS) op
 
 ### 4.2. Cell size
 
-`CELL_SIZE` in cell 1.2 names the cell the structure notebook built, and has to match the setting used there. The manuscript's cell, `"12x12x3"`, has 457 atoms and 458 with the adatom; `"10x10x2"` has 225 and 226. With the bottom slab plane fixed, MACE gives these energies on the two:
-
-| Quantity | `"12x12x3"` | `"10x10x2"` |
-| --- | --- | --- |
-| E(c) − E(a) | 0.315 eV | 0.311 eV |
-| E(i) − E(a) | −2.247 eV | −2.109 eV |
-| E_ads(a) | −3.015 eV | −3.067 eV |
+`CELL_SIZE` in cell 1.2 names the cell the structure notebook built, and has to match the setting used there. The manuscript's cell, `"12x12x3"`, has 457 atoms and 458 with the adatom; `"10x10x2"` has 225 and 226. Section 6 lists what each method gives on each of the two.
 
 A DFT step on the manuscript's cell is several times the cost of one on the smaller cell, so the DFT jobs are run with `CELL_SIZE = "10x10x2"` set in both notebooks.
 
@@ -222,17 +216,23 @@ Section 8.1 of the notebook prints this notebook's MACE and DFT values beside th
 
 ## 6. Expected results
 
-A native run on the manuscript's cell with the default parameters and D3 gives the MACE values below, each beside the manuscript's value and its source:
+The table below holds every value this notebook computed, each beside the manuscript's and its source. The MACE columns are native runs on the two cells of Section 4.2; the DFT column is a fixed-cell relaxation of each structure on the platform, started from the MACE geometry and read at its fifth ionic step. At these settings DFT places c below a, as the manuscript reports, and MACE places it above.
 
-| Quantity | This notebook, MACE | Manuscript |
-| --- | --- | --- |
-| E(c) − E(a) | 0.315 eV | −0.15 ± 0.02 eV (Fig. 6, read off the axis) |
-| E(i) − E(a) | −2.247 eV | −2.65 ± 0.05 eV (Fig. 6, read off the axis) |
-| E_ads(a) | −3.015 eV | −2.81 eV (Sec. III.A ¶8) |
-| E_Ti, isolated atom | −3.889 eV | −2.275 eV (Sec. II.B) |
-| Ti–Ti spacing along the island diagonals | −5.0 % of bulk | −6.8 % (Sec. III.A, p. 10) |
-| Ti–N spacing along the island medians | −3.6 % of bulk | −5.2 % (Sec. III.A, p. 10) |
-| Surface ripple, N above Ti | 0.071 Å | 0.19 Å (Sec. III.A, p. 8) |
+| Quantity | This notebook, MACE (12×12×3) | This notebook, MACE (10×10×2) | This notebook, DFT (10×10×2) | Sangiovanni et al. (2018) |
+| --- | --- | --- | --- | --- |
+| E(c) − E(a), eV | 0.315 | 0.311 | −0.239 | −0.15 ± 0.02 (Fig. 6, read off the axis) |
+| E(i) − E(a), eV | −2.247 | −2.109 | — | −2.65 ± 0.05 (Fig. 6, read off the axis) |
+| E_ads(a), eV | −3.015 | −3.067 | −2.923 | −2.81 (Sec. III.A ¶8) |
+| E_Ti, isolated atom, eV | −3.889 | −3.889 | — | −2.275 (Sec. II.B) |
+| Ti–Ti spacing along the island diagonals, % of bulk | −5.0 | −5.1 | — | −6.8 (Sec. III.A, p. 10) |
+| Ti–N spacing along the island medians, % of bulk | −3.6 | −3.7 | — | −5.2 (Sec. III.A, p. 10) |
+| Surface ripple, N above Ti, Å | 0.071 | 0.028 | — | 0.19 (Sec. III.A, p. 8) |
+
+Site i was not run with DFT.
+
+Quantum ESPRESSO's absolute energy for the free Ti atom is not on the manuscript's scale, so the DFT column leaves E_Ti out; it cancels in E_ads(a), where it is used.
+
+The island contraction and the ripple are measured on the MACE relaxation only.
 
 a: as built → relaxed
 
@@ -242,9 +242,9 @@ Relaxed a → c → i
 
 <img data-gifffer="/images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/4-descent-a-c-i.gif" alt="Relaxed a → c → i" />
 
-Section 8.2 of the notebook draws this notebook's a, c and i on the manuscript's states a to i:
+Section 8.2 of the notebook draws the manuscript's states a to i as a line, this notebook's MACE energies at a, c and i as filled markers, and its DFT energies at a and c as open diamonds, both on the 10×10×2 cell:
 
-![Fig. 6 with this notebook's energies](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/2-result-fig6-this-notebook.webp "Energies of a, c and i from this notebook beside Figure 6 of Sangiovanni et al. 2018")
+![Fig. 6 with this notebook's energies](../../../images/tutorials/materials/defects/defect-point-adatom-island-titanium-nitride/2-result-fig6-this-notebook.webp "Energies relative to a from this notebook, MACE at a, c and i and DFT at a and c on the 10x10x2 cell, beside Figure 6 of Sangiovanni et al. 2018")
 
 
 ## 7. Customization options
