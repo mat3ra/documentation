@@ -96,11 +96,11 @@ other/materials_designer/specific_examples/nanocluster_gold_SIMULATION.ipynb
 
 ### 5.2. Set the shapes and sizes
 
-Cell 1.2 selects the clusters. By default it relaxes the 55-atom icosahedron only; the commented-out values select both shapes and every size from 30 to 60:
+Cell 1.2 selects the clusters. By default it relaxes the two 55-atom shapes, the icosahedron and the cuboctahedron; the commented-out values select every size from 30 to 60:
 
 ```python
 ELEMENT = "Au"
-SHAPES = ["icosahedron"]  # , "cuboctahedron"
+SHAPES = ["icosahedron", "cuboctahedron"]
 CLUSTER_SIZES = [55]  # list(range(30, 61))
 BULK_NAME = "Gold"
 COMPARISON_SIZES = [34, 40, 55, 58, 60]  # sizes printed beside the manuscript's values
@@ -127,6 +127,7 @@ Section 8.1 of the notebook prints the total energy per atom of bulk gold and, p
 
 ```
 ΔE, Au55 Icosahedron: Larsen 2011 0.602 eV/atom | ours 0.530 eV/atom
+ΔE, Au55 Cuboctahedron: Larsen 2011 0.615–0.616 eV/atom | ours 0.551 eV/atom
 ```
 
 Between the closed shells the manuscript's value is the range over its four seeds.
@@ -139,17 +140,18 @@ Energy per atom relative to bulk gold, in eV/atom: Fig. 4 of the manuscript (RPB
 | Cluster | Manuscript | Ours |
 |---|---|---|
 | Au55 Icosahedron | 0.602 | 0.530 |
+| Au55 Cuboctahedron | 0.615–0.616 | 0.551 |
 
-Uncommenting the other shapes and sizes in cell 1.2 adds their points to the plot and, for the sizes in `COMPARISON_SIZES`, their rows to the comparison.
+Uncommenting the other sizes in cell 1.2 adds their points to the plot and, for the sizes in `COMPARISON_SIZES`, their rows to the comparison.
 
-![Energy per atom of gold clusters relative to bulk gold, this tutorial](../../../images/tutorials/materials/0d_materials/nanocluster_gold/5-energy-per-atom-this-notebook.webp "ΔE(N) of the relaxed Au55 icosahedron over Fig. 4 of the manuscript, default run")
+![Energy per atom of gold clusters from the manuscript and this tutorial](../../../images/tutorials/materials/0d_materials/nanocluster_gold/5-manuscript-vs-this-notebook-energy-per-atom.webp "Energy per atom relative to bulk gold: Larsen 2011, Fig. 4 (left), and the relaxed 55-atom icosahedron and cuboctahedron of this tutorial over the manuscript's series (right)")
 
 
 ## 7. Customization options
 
 ### 7.1. Run the whole series
 
-Setting `SHAPES = ["icosahedron", "cuboctahedron"]` and `CLUSTER_SIZES = list(range(30, 61))` in cell 1.2 relaxes both shapes at every size from 30 to 60, 62 relaxations, and plots the whole curve. The structure notebook saves the same clusters when its own `SHAPES` and `CLUSTER_SIZES` are set the same way.
+Setting `CLUSTER_SIZES = list(range(30, 61))` in cell 1.2 relaxes both shapes at every size from 30 to 60, 62 relaxations, and plots the whole curve. The structure notebook saves the same clusters when its own `SHAPES` and `CLUSTER_SIZES` are set the same way.
 
 ### 7.2. Adjust computational resources
 
