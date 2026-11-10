@@ -96,14 +96,16 @@ other/materials_designer/specific_examples/nanocluster_gold_SIMULATION.ipynb
 
 ### 5.2. Set the shapes and sizes
 
-Cell 1.2 selects the clusters. By default it relaxes the two 55-atom shapes, the icosahedron and the cuboctahedron; the commented-out values select every size from 30 to 60:
+Cell 1.2 selects the clusters. By default it relaxes the icosahedra of 40 and 55 atoms and the cuboctahedra of 50 and 55 atoms; the commented-out values select every size from 30 to 60:
 
 ```python
 ELEMENT = "Au"
-SHAPES = ["icosahedron", "cuboctahedron"]
-CLUSTER_SIZES = [55]  # list(range(30, 61))
+CLUSTER_SIZES_BY_SHAPE = {
+    "icosahedron": [40, 55],  # list(range(30, 61))
+    "cuboctahedron": [50, 55],  # list(range(30, 61))
+}
 BULK_NAME = "Gold"
-COMPARISON_SIZES = [34, 40, 55, 58, 60]  # sizes printed beside the manuscript's values
+COMPARISON_SIZES = [34, 40, 50, 55, 58, 60]  # sizes printed beside the manuscript's values
 ```
 
 ### 5.3. Set the compute resources
@@ -126,7 +128,9 @@ Execute all cells by selecting *Run* > *Run All Cells*. The notebook [authentica
 Section 8.1 of the notebook prints the total energy per atom of bulk gold and, per cluster, the final energy of the relaxation and Quantum ESPRESSO's total force, the norm over all atoms. Section 9 plots ΔE(N) of each relaxed cluster over the manuscript's Fig. 4, where the four random seeds of each shape form a band, and the last cell prints, per cluster in `COMPARISON_SIZES`, the manuscript's value beside ours. With the default settings:
 
 ```
+ΔE, Au40 Icosahedron: Larsen 2011 0.690–0.706 eV/atom | ours 0.629 eV/atom
 ΔE, Au55 Icosahedron: Larsen 2011 0.602 eV/atom | ours 0.530 eV/atom
+ΔE, Au50 Cuboctahedron: Larsen 2011 0.635–0.686 eV/atom | ours 0.612 eV/atom
 ΔE, Au55 Cuboctahedron: Larsen 2011 0.615–0.616 eV/atom | ours 0.551 eV/atom
 ```
 
@@ -139,19 +143,21 @@ Energy per atom relative to bulk gold, in eV/atom: Fig. 4 of the manuscript (RPB
 
 | Cluster | Manuscript | Ours |
 |---|---|---|
+| Au40 Icosahedron | 0.690–0.706 | 0.629 |
 | Au55 Icosahedron | 0.602 | 0.530 |
+| Au50 Cuboctahedron | 0.635–0.686 | 0.612 |
 | Au55 Cuboctahedron | 0.615–0.616 | 0.551 |
 
 Uncommenting the other sizes in cell 1.2 adds their points to the plot and, for the sizes in `COMPARISON_SIZES`, their rows to the comparison.
 
-![Energy per atom of gold clusters from the manuscript and this tutorial](../../../images/tutorials/materials/0d_materials/nanocluster_gold/5-manuscript-vs-this-notebook-energy-per-atom.webp "Energy per atom relative to bulk gold: Larsen 2011, Fig. 4 (left), and the relaxed 55-atom icosahedron and cuboctahedron of this tutorial over the manuscript's series (right)")
+![Energy per atom of gold clusters from the manuscript and this tutorial](../../../images/tutorials/materials/0d_materials/nanocluster_gold/5-manuscript-vs-this-notebook-energy-per-atom.webp "Energy per atom relative to bulk gold: Larsen 2011, Fig. 4 (left), and the relaxed icosahedra and cuboctahedra of this tutorial over the manuscript's series (right)")
 
 
 ## 7. Customization options
 
 ### 7.1. Run the whole series
 
-Setting `CLUSTER_SIZES = list(range(30, 61))` in cell 1.2 relaxes both shapes at every size from 30 to 60, 62 relaxations, and plots the whole curve. The structure notebook saves the same clusters when its own `SHAPES` and `CLUSTER_SIZES` are set the same way.
+Setting both lists of `CLUSTER_SIZES_BY_SHAPE` in cell 1.2 to `list(range(30, 61))` relaxes both shapes at every size from 30 to 60, 62 relaxations, and plots the whole curve. The structure notebook saves the same clusters when its own `CLUSTER_SIZES_BY_SHAPE` is set the same way.
 
 ### 7.2. Adjust computational resources
 
@@ -162,7 +168,7 @@ The default, `CLUSTER_NAME = None`, uses the account's first listed cluster; set
 
 ### 8.1. Material not found
 
-Loading raises when a name is missing from the `uploads` folder and the account's materials collection. Run the notebook of the [Gold Nanoclusters](nanocluster-gold.md) tutorial with the same `SHAPES` and `CLUSTER_SIZES`; it saves the clusters under the names `Au<N> <Shape>`.
+Loading raises when a name is missing from the `uploads` folder and the account's materials collection. Run the notebook of the [Gold Nanoclusters](nanocluster-gold.md) tutorial with the same `CLUSTER_SIZES_BY_SHAPE`; it saves the clusters under the names `Au<N> <Shape>`.
 
 ## 9. Interactive JupyterLite notebook
 
