@@ -131,25 +131,34 @@ Execute all cells by selecting *Run* > *Run All Cells*. The notebook [authentica
 
 ### 5.5. Read the results
 
-Section 8.1 of the notebook prints the total energy per atom of bulk gold and, per cluster, the final energy of the relaxation and Quantum ESPRESSO's total force, the norm over all atoms. Section 9 plots ΔE(N) of each relaxed cluster over the manuscript's Fig. 4, where each shape's lowest and highest value over the manuscript's four random seeds are drawn as open markers, and the last cell prints, per cluster in `COMPARISON_SIZES`, the manuscript's value beside ours. With the default settings:
+Section 8.1 of the notebook prints the total energy per atom of bulk gold and, per cluster, the final energy of the relaxation and Quantum ESPRESSO's total force, the norm over all atoms. Section 9 plots ΔE(N) of each relaxed cluster over the manuscript's Fig. 4, where each shape's lowest and highest value over the manuscript's four random seeds are drawn as open markers, and the last cell prints, per cluster in `COMPARISON_SIZES`, our value and then the manuscript's. With the default settings:
 
 ```
-ΔE, Au40 Icosahedron: Larsen 2011 0.690–0.706 eV/atom | ours 0.629 eV/atom
-ΔE, Au50 Icosahedron: Larsen 2011 0.627–0.634 eV/atom | ours 0.557 eV/atom
-ΔE, Au55 Icosahedron: Larsen 2011 0.602 eV/atom | ours 0.530 eV/atom
-ΔE, Au40 Cuboctahedron: Larsen 2011 0.683–0.715 eV/atom | ours 0.604 eV/atom
-ΔE, Au50 Cuboctahedron: Larsen 2011 0.635–0.686 eV/atom | ours 0.612 eV/atom
-ΔE, Au55 Cuboctahedron: Larsen 2011 0.615–0.616 eV/atom | ours 0.551 eV/atom
+Energy per atom relative to bulk gold:
+Au40 Icosahedron: 0.629 eV/atom
+Au50 Icosahedron: 0.557 eV/atom
+Au55 Icosahedron: 0.530 eV/atom
+Au40 Cuboctahedron: 0.604 eV/atom
+Au50 Cuboctahedron: 0.612 eV/atom
+Au55 Cuboctahedron: 0.551 eV/atom
+
+Energy per atom relative to bulk gold from the manuscript:
+Au40 Icosahedron: 0.690–0.706 eV/atom
+Au50 Icosahedron: 0.627–0.634 eV/atom
+Au55 Icosahedron: 0.602 eV/atom
+Au40 Cuboctahedron: 0.683–0.715 eV/atom
+Au50 Cuboctahedron: 0.635–0.686 eV/atom
+Au55 Cuboctahedron: 0.615–0.616 eV/atom
 ```
 
-Between the closed shells the manuscript's value is the range over its four seeds.
 
+## 6. Expected results
 
-## 6. Comparison with the manuscript
+### 6.1. Comparison with published results
 
 Energy per atom relative to bulk gold, in eV/atom: Fig. 4 of the manuscript (RPBE; lowest–highest over four seeds) and this tutorial (PBE; one seed).
 
-| Cluster | Manuscript | Ours |
+| Cluster | Larsen 2011, Fig. 4 | This tutorial |
 |---|---|---|
 | Au40 Icosahedron | 0.690–0.706 | 0.629 |
 | Au50 Icosahedron | 0.627–0.634 | 0.557 |
