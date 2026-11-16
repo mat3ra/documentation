@@ -78,11 +78,13 @@ ECUTRHO = 200  # Ry, GBRV's recommended charge-density cutoff
 
 BULK_KGRID = [16, 16, 16]
 CLUSTER_KGRID = [1, 1, 1]  # Γ point, the clusters are isolated
-RELAXATION_SETTINGS = {"forc_conv_thr": 2.9e-3, "nstep": 200, "tstress": False}  # Ry/Bohr, the manuscript's 0.075 eV/Å
+# &CONTROL of the relaxations: the manuscript's 0.075 eV/Å in Ry/Bohr; the cell is fixed, so no stress
+RELAXATION_SETTINGS = {"forc_conv_thr": 2.9e-3, "nstep": 200, "tstress": False, "max_seconds": MAX_SECONDS}
+# &ELECTRONS: a cluster in vacuum converges with local-TF mixing, and its empty bands need no full accuracy
 QE_ELECTRONS_SETTINGS = {"diago_full_acc": False, "mixing_mode": "local-TF"}
 ```
 
-`forc_conv_thr` is the force threshold of Quantum ESPRESSO, in Ry/Bohr; `nstep` is the largest number of ionic steps of one relaxation. The cell is fixed, so stress is not computed; a cluster in vacuum converges with local-TF mixing, and its empty bands need no full accuracy. A relaxation that ends at `nstep` has not reached the force threshold: raise `nstep`, and the time limit with it.
+`forc_conv_thr` is the force threshold of Quantum ESPRESSO, in Ry/Bohr; `nstep` is the largest number of ionic steps of one relaxation. The cell is fixed, so stress is not computed; a cluster in vacuum converges with local-TF mixing, and its empty bands need no full accuracy. A relaxation that ends at `nstep` has not reached the force threshold: raise `nstep`, and the time limit with it. `max_seconds` stops Quantum ESPRESSO ten minutes before the wall time so that a relaxation cut short still writes its files.
 
 
 ## 5. Step-by-step instructions
@@ -116,8 +118,11 @@ Cell 1.3 sets the cluster, queue, number of cores and time limit of every job:
 ```python
 CLUSTER_NAME = None
 QUEUE_NAME = QueueName.OR
-PPN = 16  # OR allows 16 cores per job
-TIME_LIMIT = "24:00:00"
+PPN = 16  # cores per job; OR gives one node, whose size depends on the cluster
+TIME_LIMIT_HOURS = 24  # a stripped cluster can need ~150 ionic steps; see nstep below
+TIME_LIMIT = f"{TIME_LIMIT_HOURS:02d}:00:00"
+# pw.x stops 10 minutes before TIME_LIMIT and writes its files
+MAX_SECONDS = TIME_LIMIT_HOURS * 3600 - 600
 ```
 
 ### 5.4. Run the notebook
@@ -126,7 +131,7 @@ Execute all cells by selecting *Run* > *Run All Cells*. The notebook [authentica
 
 ### 5.5. Read the results
 
-Section 8.1 of the notebook prints the total energy per atom of bulk gold and, per cluster, the final energy of the relaxation and Quantum ESPRESSO's total force, the norm over all atoms. Section 9 plots ΔE(N) of each relaxed cluster over the manuscript's Fig. 4, where the four random seeds of each shape form a band, and the last cell prints, per cluster in `COMPARISON_SIZES`, the manuscript's value beside ours. With the default settings:
+Section 8.1 of the notebook prints the total energy per atom of bulk gold and, per cluster, the final energy of the relaxation and Quantum ESPRESSO's total force, the norm over all atoms. Section 9 plots ΔE(N) of each relaxed cluster over the manuscript's Fig. 4, where each shape's lowest and highest value over the manuscript's four random seeds are drawn as open markers, and the last cell prints, per cluster in `COMPARISON_SIZES`, the manuscript's value beside ours. With the default settings:
 
 ```
 ΔE, Au40 Icosahedron: Larsen 2011 0.690–0.706 eV/atom | ours 0.629 eV/atom
