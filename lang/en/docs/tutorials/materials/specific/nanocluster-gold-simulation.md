@@ -78,10 +78,11 @@ ECUTRHO = 200  # Ry, GBRV's recommended charge-density cutoff
 
 BULK_KGRID = [16, 16, 16]
 CLUSTER_KGRID = [1, 1, 1]  # Γ point, the clusters are isolated
-RELAXATION_SETTINGS = {"forc_conv_thr": 2.9e-3, "nstep": 100}  # Ry/Bohr, the manuscript's 0.075 eV/Å
+RELAXATION_SETTINGS = {"forc_conv_thr": 2.9e-3, "nstep": 200, "tstress": False}  # Ry/Bohr, the manuscript's 0.075 eV/Å
+QE_ELECTRONS_SETTINGS = {"diago_full_acc": False, "mixing_mode": "local-TF"}
 ```
 
-`forc_conv_thr` is the force threshold of Quantum ESPRESSO, in Ry/Bohr; `nstep` is the largest number of ionic steps of one relaxation.
+`forc_conv_thr` is the force threshold of Quantum ESPRESSO, in Ry/Bohr; `nstep` is the largest number of ionic steps of one relaxation. The cell is fixed, so stress is not computed; a cluster in vacuum converges with local-TF mixing, and its empty bands need no full accuracy. A relaxation that ends at `nstep` has not reached the force threshold: raise `nstep`, and the time limit with it.
 
 
 ## 5. Step-by-step instructions
@@ -96,13 +97,13 @@ other/materials_designer/specific_examples/nanocluster_gold_SIMULATION.ipynb
 
 ### 5.2. Set the shapes and sizes
 
-Cell 1.2 selects the clusters. By default it relaxes the icosahedra of 40 and 55 atoms and the cuboctahedra of 50 and 55 atoms; the commented-out values select every size from 30 to 60:
+Cell 1.2 selects the clusters. By default it relaxes the icosahedra and the cuboctahedra of 40, 50 and 55 atoms; the commented-out values select every size from 30 to 60:
 
 ```python
 ELEMENT = "Au"
 CLUSTER_SIZES_BY_SHAPE = {
-    "icosahedron": [40, 55],  # list(range(30, 61))
-    "cuboctahedron": [50, 55],  # list(range(30, 61))
+    "icosahedron": [40, 50, 55],  # list(range(30, 61))
+    "cuboctahedron": [40, 50, 55],  # list(range(30, 61))
 }
 BULK_NAME = "Gold"
 COMPARISON_SIZES = [34, 40, 50, 55, 58, 60]  # sizes printed beside the manuscript's values
@@ -116,7 +117,7 @@ Cell 1.3 sets the cluster, queue, number of cores and time limit of every job:
 CLUSTER_NAME = None
 QUEUE_NAME = QueueName.OR
 PPN = 16  # OR allows 16 cores per job
-TIME_LIMIT = "04:00:00"
+TIME_LIMIT = "24:00:00"
 ```
 
 ### 5.4. Run the notebook
@@ -129,7 +130,9 @@ Section 8.1 of the notebook prints the total energy per atom of bulk gold and, p
 
 ```
 ΔE, Au40 Icosahedron: Larsen 2011 0.690–0.706 eV/atom | ours 0.629 eV/atom
+ΔE, Au50 Icosahedron: Larsen 2011 0.627–0.634 eV/atom | ours 0.557 eV/atom
 ΔE, Au55 Icosahedron: Larsen 2011 0.602 eV/atom | ours 0.530 eV/atom
+ΔE, Au40 Cuboctahedron: Larsen 2011 0.683–0.715 eV/atom | ours 0.604 eV/atom
 ΔE, Au50 Cuboctahedron: Larsen 2011 0.635–0.686 eV/atom | ours 0.612 eV/atom
 ΔE, Au55 Cuboctahedron: Larsen 2011 0.615–0.616 eV/atom | ours 0.551 eV/atom
 ```
@@ -144,7 +147,9 @@ Energy per atom relative to bulk gold, in eV/atom: Fig. 4 of the manuscript (RPB
 | Cluster | Manuscript | Ours |
 |---|---|---|
 | Au40 Icosahedron | 0.690–0.706 | 0.629 |
+| Au50 Icosahedron | 0.627–0.634 | 0.557 |
 | Au55 Icosahedron | 0.602 | 0.530 |
+| Au40 Cuboctahedron | 0.683–0.715 | 0.604 |
 | Au50 Cuboctahedron | 0.635–0.686 | 0.612 |
 | Au55 Cuboctahedron | 0.615–0.616 | 0.551 |
 
