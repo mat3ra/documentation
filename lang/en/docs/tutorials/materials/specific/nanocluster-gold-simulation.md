@@ -84,7 +84,7 @@ RELAXATION_SETTINGS = {"forc_conv_thr": 2.9e-3, "nstep": 200, "tstress": False, 
 QE_ELECTRONS_SETTINGS = {"diago_full_acc": False, "mixing_mode": "local-TF"}
 ```
 
-`forc_conv_thr` is the force threshold of Quantum ESPRESSO, in Ry/Bohr; `nstep` is the largest number of ionic steps of one relaxation. The cell is fixed, so stress is not computed; a cluster in vacuum converges with local-TF mixing, and its empty bands need no full accuracy. A relaxation that ends at `nstep` has not reached the force threshold: raise `nstep`, and the time limit with it. `max_seconds` stops Quantum ESPRESSO ten minutes before the wall time so that a relaxation cut short still writes its files.
+`forc_conv_thr` is the force threshold of Quantum ESPRESSO, in Ry/Bohr. A relaxation that ends at `nstep` has not reached it: raise `nstep`, and the time limit with it. `max_seconds` stops Quantum ESPRESSO ten minutes before the wall time, so a relaxation cut short still writes its files.
 
 
 ## 5. Step-by-step instructions
@@ -113,7 +113,7 @@ COMPARISON_SIZES = [34, 40, 50, 55, 58, 60]  # sizes printed beside the manuscri
 
 ### 5.3. Set the compute resources
 
-Cell 1.3 sets the cluster, queue, number of cores and time limit of every job:
+Cell 1.3 sets the cluster, queue, number of cores, time limit of every job and the stop time of Quantum ESPRESSO:
 
 ```python
 CLUSTER_NAME = None
