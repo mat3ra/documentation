@@ -265,7 +265,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 4.2.1.1. H-Passivated Silicon (100) Surface <span class="btn badge b-info border-50">X-2D-PAS</span>
 
 **Structure**: [Create H-Passivated Si(100) Surface](passivation-surface-silicon.md)  
-**Properties**: Calculate [H diffusion barrier](defect-point-adatom-silicon-hydrogen-simulation.md), reaction and desorption barriers (Coming Soon)  
+**Properties**: Calculate [H and D diffusion barriers](defect-point-adatom-silicon-hydrogen-simulation.md), reaction and desorption barriers (Coming Soon)  
 **DOI**: [10.1103/PhysRevB.57.13295](https://doi.org/10.1103/PhysRevB.57.13295){:target='_blank'} [@Hansen1998; @Northrup1991; @Boland1990]
 
 ![Si(100) H-Passivated Surface](../../../images/tutorials/materials/passivation/passivation_surface_silicon/0-figure-from-manuscript.webp "H-Passivated Silicon (100)"){ style="max-height:500px;width:auto;" }

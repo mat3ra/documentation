@@ -34,9 +34,10 @@ Here, both are relaxed with the Perdew–Burke–Ernzerhof (PBE) functional on t
 [nudged elastic band]({{ reference_url }}/models/auxiliary-concepts/nudged-elastic-band/) (NEB) calculation runs
 between the two minima. The barrier is compared with Table V of the manuscript.
 
-The figure below shows Fig. 1 of the manuscript; the path computed here is the intradimer path (a):
+The figure below shows Fig. 1 of the manuscript (left) beside the start structure with the start and intradimer-end
+H sites marked (right); the path computed here is the intradimer path (a):
 
-![H adatom diffusion paths on Si(100)2×1](../../../images/tutorials/materials/defects/defect_point_adatom_silicon_hydrogen/0-figure-from-manuscript.webp "Diffusion paths of an H adatom on Si(100)2×1, Fig. 1.")
+![Fig. 1 of the manuscript and the H sites of this tutorial](../../../images/tutorials/materials/defects/defect_point_adatom_silicon_hydrogen/fig1-vs-our-sites.webp "Hansen and Vogl 1998, Fig. 1 (left), and the start with the start and intradimer-end H sites marked (right)")
 
 ## 2. Prerequisites
 
@@ -92,79 +93,38 @@ other/materials_designer/specific_examples/defect_point_adatom_silicon_hydrogen_
 
 ### 5.2. Configure parameters
 
-Cell 1.2 names the start and the end of each path to run:
+The parameters cells set the material names, the compute resources, and the DFT model:
 
 ```python
-# Names saved by defect_point_adatom_silicon_hydrogen.ipynb: the start, and the end of each path to run (Fig. 1)
 START_NAME = "H on Si(100) start"
 END_NAME_BY_PATH = {
     "intradimer": "H on Si(100) intradimer end",
     # "intrarow": "H on Si(100) intrarow end",
     # "inter-row": "H on Si(100) inter-row end",
 }
-```
 
-Cell 1.3 sets the workflows and the compute resources:
-
-```python
-from datetime import datetime
-from mat3ra.ide.compute import QueueName
-
-ORGANIZATION_NAME = None  # set to your organization name (full or partial); otherwise, your default one is used
-FOLDER = "./uploads"
-
-RELAX_WORKFLOW_SEARCH_TERM = "fixed_cell_relaxation.json"
-NEB_WORKFLOW_SEARCH_TERM = "neb.json"
-APPLICATION_NAME = "espresso"
-APPLICATION_VERSION = "7.5"
-
-# full host name of the cluster
 CLUSTER_NAME = None
-# OR allows one node per job
 QUEUE_NAME = QueueName.OR
 NODES = 1
 PPN = 16
 TIME_LIMIT_HOURS = 24
-TIME_LIMIT = f"{TIME_LIMIT_HOURS:02d}:00:00"
-# pw.x and neb.x stop 10 minutes before TIME_LIMIT and write their files
-MAX_SECONDS = TIME_LIMIT_HOURS * 3600 - 600
 
-timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
-POLL_INTERVAL = 60  # seconds
-```
-
-Cell 1.4 sets the DFT model of the relaxations and the NEB:
-
-```python
-# GBRV ultrasoft pseudopotentials at their converged 40/200 Ry
+APPLICATION_VERSION = "7.5"
 FUNCTIONAL = "pbe"
 PSEUDOPOTENTIAL_TYPE = "us"
 ECUTWFC = 40   # Ry
 ECUTRHO = 200  # Ry
 # for the 64-Si slab; [1, 2, 1] for the manuscript's 144-Si slab
 KGRID = [2, 3, 1]
-# &SYSTEM of the relaxations and the NEB: the H adatom leaves one unpaired electron, so spin-polarized with the
-# total magnetization held at 1
 QE_SYSTEM_SETTINGS = {
     "degauss": 0.005,
     "nspin": 2,
     "tot_magnetization": 1,
     "starting_magnetization": 0.5,
 }
-# &CONTROL of the relaxations: all atoms free, until every force component is below QE's default 1e-3 Ry/Bohr
-# (manuscript: 1e-4 eV/Å = 3.9e-6 Ry/Bohr)
 RELAXATION_SETTINGS = {"forc_conv_thr": 1e-3, "max_seconds": MAX_SECONDS}
-# images between the end points; the path is converged when the largest image error is below 0.1 eV/Å
 N_IMAGES = 1
-# neb.x stops after nstep_path steps, converged or not; the largest image error is printed in 9
 NEB_PATH_SETTINGS = {"nstep_path": 50, "minimum_image": True}
-
-RELAX_UNIT = "pw_relax"
-NEB_UNIT = "neb"
-# written by neb.x: every image of the final path
-NEB_PATH_FILE = "__prefix__.xyz"
-# written by neb.x: energy and error of every image of the final path
-NEB_ENERGY_FILE = "__prefix__.dat"
 ```
 
 ### 5.3. Run the notebook
@@ -261,19 +221,7 @@ The platform's access token lasts one hour and can expire while the notebook wai
 in sections 6 and 7. The jobs keep running. Restart the kernel and run all cells again (*Kernel* > *Restart Kernel
 and Run All Cells*): the notebook asks for a new login and picks up the running and finished jobs.
 
-### 8.4. Relaxation stopped before convergence
-
-A relaxation stopped by `MAX_SECONDS` or by the workflow's limit of 50 ionic steps reads finished on the platform,
-and its last structure becomes an end point of the NEB. The output of a converged relaxation contains
-`bfgs converged`; check it in each relaxation job before reading the barrier.
-
-### 8.5. NEB job failed without files
-
-An NEB job that fails on the cluster's shared storage leaves no files to read, and neb.x cannot resume it: each job
-starts from scratch in a new folder. Run all cells again: a failed NEB job is not reused, and a new one starts from
-the same relaxed materials.
-
-### 8.6. Barrier far from the published value
+### 8.4. Barrier far from the published value
 
 Check the atom counts printed in section 3 of the notebook first:
 
@@ -282,8 +230,8 @@ H on Si(100) start: 65 atoms
 H on Si(100) intradimer end: 65 atoms
 ```
 
-Then view the relaxed materials on the account: the H of the relaxed start should still sit on the upper atom of
-its dimer, and the H of the relaxed end on the partner atom.
+Then view the relaxed materials on the account: the H of the relaxed start should still sit on the Si atom it caps
+in the structure notebook, and the H of the relaxed end on its dimer partner.
 
 ## 9. Interactive JupyterLite notebook
 
