@@ -164,7 +164,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 3.1.3.1. Adatom Surface Defects on Graphene <span class="btn badge b-info border-50">D-2D-ADA</span>
 
 **Structure**: [Create Adatom Defects on Graphene](defect-surface-adatom-graphene.md)  
-**Properties**: Calculate adsorption energy, density of states, work function, dipole moment, and diffusion barriers (Coming Soon)  
+**Properties**: [Calculate Adsorption Energy of Metal Adatoms on Graphene](defect-surface-adatom-graphene-simulation.md); density of states, work function, dipole moment, and diffusion barriers (Coming Soon)  
 **DOI**: [10.1103/PhysRevB.77.235430](https://doi.org/10.1103/PhysRevB.77.235430){:target='_blank'} [@Chan2008]
 
 ![Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/me_adatom_on_hollow_graphene.webp "Fig. 1. Adatom on Graphene Surface"){ style="max-height:500px;width:auto;" }
