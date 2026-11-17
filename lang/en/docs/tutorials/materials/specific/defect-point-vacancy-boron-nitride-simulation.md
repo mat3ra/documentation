@@ -24,7 +24,7 @@ results from the following manuscript:
 
 !!!note "Manuscript"
     Fabian Bertoldo, Sajid Ali, Simone Manti & Kristian S. Thygesen, "Quantum point defects in 2D
-    materials - the QPOD database", npj Computational Materials, 2022.
+    materials - the QPOD database", npj Computational Materials 8, 56 (2022).
     [DOI:10.1038/s41524-022-00730-w](https://doi.org/10.1038/s41524-022-00730-w){:target='_blank'}.
     [@Bertoldo2022]
 
@@ -148,10 +148,8 @@ The notebook will:
 
 ### 5.4. Monitor progress
 
-The notebook includes automatic job monitoring with status updates. The default run
-(`RELAX = False`) completes in about 15 minutes the first time, or about 6 minutes once the
-reference jobs are reused. With `RELAX = True`, relaxing the defective cell takes about 52
-minutes; once that relaxed structure exists, later runs find it and skip the relaxation.
+The notebook includes automatic job monitoring with status updates. With `RELAX = True`,
+once that relaxed structure exists, later runs find it and skip the relaxation.
 
 ### 5.5. Analyze results
 
@@ -233,8 +231,7 @@ submitting anything — seed one for the missing element first.
 
 ### 8.3. Job errors or time limit
 
-The 12-hour time limit is the notebook's default ceiling; the measured relaxation took about 52
-minutes on 40 cores. Increase `TIME_LIMIT` if a job runs out of time before finishing.
+The 12-hour time limit is the notebook's default ceiling. Increase `TIME_LIMIT` if a job runs out of time before finishing.
 
 ## 9. Interactive JupyterLite notebook
 

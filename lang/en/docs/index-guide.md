@@ -39,23 +39,25 @@ Step-by-step recipes reproducing published work, one row per structure: the stru
 | Togo et al. (2006)[^4]            | Interstitial defect       | [SnO](tutorials/materials/specific/defect-point-interstitial-tin-oxide.md) | [Formation energy and DOS](tutorials/materials/specific/defect-point-interstitial-tin-oxide-simulation.md) |
 | Sangiovanni et al. (2018)[^5]     | Island surface defect     | [TiN](tutorials/materials/specific/defect-surface-island-titanium-nitride.md) | Island formation energy (Coming Soon) |
 | Sangiovanni et al. (2018)[^5]     | Adatom on an island       | [Ti on a TiN island](tutorials/materials/specific/defect-point-adatom-island-titanium-nitride.md) | [Ti adatom descent energetics](tutorials/materials/specific/defect-point-adatom-island-titanium-nitride-simulation.md) |
-| Šljivančanin et al. (2002)[^6]    | Step surface defect       | [Pt(111)](tutorials/materials/specific/defect-surface-step-platinum.md) | Energy of dissociation (Coming Soon) |
+| Šljivančanin et al. (2002)[^6]    | Step surface defect       | [Pt(111)](tutorials/materials/specific/defect-surface-step-platinum.md) | [Dissociation barrier](tutorials/materials/specific/defect-surface-step-platinum-simulation.md) |
 | Chan et al. (2008)[^7]            | Adatom surface defects    | [Graphene](tutorials/materials/specific/defect-surface-adatom-graphene.md) | Adsorption energy, density of states, diffusion barriers (Coming Soon) |
-| Xian et al. (2019)[^8]            | Twisted bilayer           | [h-BN nanoribbons](tutorials/materials/specific/interface-bilayer-twisted-nanoribbons-boron-nitride.md) | Band structure, total energies versus twist angle (Coming Soon) |
+| Xian et al. (2019)[^8]            | Twisted bilayer           | [h-BN](tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-boron-nitride.md), [h-BN nanoribbons](tutorials/materials/specific/interface-bilayer-twisted-nanoribbons-boron-nitride.md) | [Band structure](tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-boron-nitride-simulation.md) |
 | Liu et al. (2014)[^9]             | Twisted bilayer           | [MoS2](tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide.md) | [Band structure](tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide-simulation.md) |
-| Jung et al. (2015)[^10]           | 2D–2D interface           | [Graphene / h-BN](tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride.md) | Band structure, total energies (Coming Soon) |
+| Jung et al. (2015)[^10]           | 2D–2D interface           | [Graphene / h-BN](tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride.md) | [Stacking energy and band gap](tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride-simulation.md) |
+| Kang et al. (2008)[^12]           | 2D–3D interface           | [Graphene / SiO2](tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide.md) | [Doping and gap at the Dirac point](tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide-simulation.md) |
 | Shan et al. (2011)[^11]           | 3D–3D interface           | [Cu / SiO2](tutorials/materials/specific/interface-3d-3d-copper-silicon-dioxide.md) | Band structure (Coming Soon) |
-| Kang et al. (2008)[^12]           | 2D–3D interface           | [Graphene / SiO2](tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide.md) | Band structure (Coming Soon) |
+| Van de Walle et al. (1986)[^23]   | 3D–3D interface           | [Si / Ge (001)](tutorials/materials/specific/interface-3d-3d-silicon-germanium.md) | [Valence band offset](tutorials/materials/specific/interface-3d-3d-silicon-germanium-simulation.md) |
+| Hinuma et al. (2014)[^24]         | 3D–3D interface           | [GaAs / AlAs (110)](tutorials/materials/specific/interface-3d-3d-gallium-arsenide-aluminum-arsenide.md) | [Valence band offset](tutorials/materials/specific/interface-3d-3d-gallium-arsenide-aluminum-arsenide-simulation.md) |
 | Dahal et al. (2014)[^13]          | Interface optimization    | [Graphene / Ni(111)](tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel.md) | [Registry and work of adhesion](tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel-simulation.md) |
-| Saidi et al. (2015)[^14]          | Adatom island             | [Pt on MoS2](tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum.md) | Binding energy per Pt atom, density of states (Coming Soon) |
+| Saidi et al. (2015)[^14]          | Adatom island             | [Pt on MoS2](tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum.md) | [Binding energy](tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum-simulation.md) |
 | Aradi et al. (2007)[^15]          | H-passivated nanowire     | [Si](tutorials/materials/specific/passivation-edge-nanowire-silicon.md) | Band gap, density of states, formation energy (Coming Soon) |
 | Hansen et al. (1998)[^16]         | H-passivated surface      | [Si(100)](tutorials/materials/specific/passivation-surface-silicon.md) | Diffusion, reaction and desorption barriers (Coming Soon) |
 | Larsen et al. (2011)[^17]         | Nanoclusters              | [Au](tutorials/materials/specific/nanocluster-gold.md) | Total energy per atom, density of states (Coming Soon) |
-| Eglitis et al. (2008)[^18]        | Slab                      | [SrTiO3](tutorials/materials/specific/slab-strontium-titanate.md) | Surface energy (Coming Soon) |
+| Eglitis et al. (2008)[^18]        | Slab                      | [SrTiO3](tutorials/materials/specific/slab-strontium-titanate.md) | [Surface energy](tutorials/materials/specific/slab-strontium-titanate-simulation.md) |
 | Muller et al. (1999)[^19]         | High-k metal gate stack   | [Si/SiO2/HfO2/TiN](tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md) | Band structure, valence band offset (Coming Soon) |
 | Thompson-Flagg et al. (2009)[^20] | Ripple perturbation       | [Graphene](tutorials/materials/specific/perturbation-ripples-graphene.md) | Coming Soon |
 | Frolov et al. (2013)[^21]         | Grain boundary (3D)       | [Cu (FCC)](tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md) | Defect energy per atom (Coming Soon) |
-| Li et al. (2015)[^22]             | Grain boundary (2D)       | [h-BN](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride.md) | Band gap, local density of states (Coming Soon) |
+| Li et al. (2015)[^22]             | Grain boundary (2D)       | [h-BN](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride.md) | [Band gap and local density of states](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride-simulation.md) |
 
 [^1]: Fujimoto et al., Phys. Rev. B 84, 245446 (2011). [DOI](https://doi.org/10.1103/PhysRevB.84.245446){:target='_blank'}
 [^2]: Miceli et al., Phys. Rev. B 93, 165207 (2016). [DOI](https://doi.org/10.1103/PhysRevB.93.165207){:target='_blank'}
@@ -78,7 +80,9 @@ Step-by-step recipes reproducing published work, one row per structure: the stru
 [^19]: Muller et al., Nature 399, 758 (1999). [Reference](https://docs.quantumatk.com/tutorials/hkmg_builder/hkmg_builder.html){:target='_blank'}
 [^20]: Thompson-Flagg et al., EPL 85, 46002 (2009). [DOI](https://doi.org/10.1209/0295-5075/85/46002){:target='_blank'}
 [^21]: Frolov et al., Nat. Commun. 4, 1899 (2013). [DOI](https://doi.org/10.1038/ncomms2919){:target='_blank'}
-[^22]: Li et al., Nano Lett. 15, 6004 (2015). [DOI](https://doi.org/10.1021/acs.nanolett.5b01852){:target='_blank'}
+[^22]: Li et al., Nano Lett. 15, 5804 (2015). [DOI](https://doi.org/10.1021/acs.nanolett.5b01852){:target='_blank'}
+[^23]: Van de Walle et al., Phys. Rev. B 34, 5621 (1986). [DOI](https://doi.org/10.1103/PhysRevB.34.5621){:target='_blank'}
+[^24]: Hinuma et al., Phys. Rev. B 90, 155405 (2014). [DOI](https://doi.org/10.1103/PhysRevB.90.155405){:target='_blank'}
 
 
 

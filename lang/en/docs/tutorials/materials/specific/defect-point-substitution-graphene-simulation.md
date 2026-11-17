@@ -22,7 +22,7 @@ render_macros: true
 This tutorial calculates the formation energy and the electronic band structure of the trimerized pyridine-type C₂₈N₃ defect in graphene, reproducing results from the following manuscript:
 
 !!!note "Manuscript"
-    Yoshitaka Fujimoto and Susumu Saito, "Formation, stabilities, and electronic properties of nitrogen defects in graphene", Physical Review B, 2011. [DOI: 10.1103/PhysRevB.84.245446](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.84.245446){:target='_blank'}. [@Yoshitaka2011]
+    Yoshitaka Fujimoto and Susumu Saito, "Formation, stabilities, and electronic properties of nitrogen defects in graphene", Physical Review B 84, 245446 (2011). [DOI: 10.1103/PhysRevB.84.245446](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.84.245446){:target='_blank'}. [@Yoshitaka2011]
 
 This tutorial builds upon the [Substitutional Point Defects in Graphene](defect-point-substitution-graphene.md) tutorial, where the pristine 4×4 graphene cell and the C₂₈N₃ defect are created. Both properties are calculated with Quantum ESPRESSO on the same cell.
 
@@ -151,7 +151,7 @@ The notebook will:
 
 ### 5.4. Monitor progress
 
-Each set of jobs is polled every 60 seconds and the notebook waits for it to finish before moving on. The Total Energy jobs and the band structure job take minutes; the optional relaxation takes about an hour.
+Each set of jobs is polled and the notebook waits for it to finish before moving on.
 
 ### 5.5. Read the results
 

@@ -24,7 +24,7 @@ This tutorial demonstrates the process of creating a twisted bilayer molybdenum 
 !!!note "Manuscript"
     **Kaihui Liu, Liming Zhang, Ting Cao, Chenhao Jin, Diana Qiu, Qin Zhou, Alex Zettl, Peidong Yang, Steve G. Louie & Feng Wang**,
     "Evolution of interlayer coupling in twisted molybdenum disulfide bilayers" Nature Communications volume 5, Article number: 4966 (2014)
-    [DOI: 10.1038/ncomms5966](https://doi.org/10.1038/ncomms5966) [@Liu2014; @Zhang2016; @Cao2018]
+    [DOI: 10.1038/ncomms5966](https://doi.org/10.1038/ncomms5966) [@Liu2014; @Cao2018]
 
 
 We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create molybdenum disulfide bilayer structure configurations with multiple twist angles.

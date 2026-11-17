@@ -163,9 +163,12 @@ nav:
             - Interstitial Point Defect in SnO (Formation Energy and DOS):  tutorials/materials/specific/defect-point-interstitial-tin-oxide-simulation.md
             - Island Surface Defect Formation in TiN:                       tutorials/materials/specific/defect-surface-island-titanium-nitride.md
             - Step Surface Defect on Pt(111):                               tutorials/materials/specific/defect-surface-step-platinum.md
+            - Step Surface Defect on Pt(111) (O2 Dissociation Barrier):     tutorials/materials/specific/defect-surface-step-platinum-simulation.md
             - Twisted Bilayer h-BN nanoribbons:                             tutorials/materials/specific/interface-bilayer-twisted-nanoribbons-boron-nitride.md
             - Twisted Bilayer MoS2 commensurate lattices:                   tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide.md
             - Twisted Bilayer MoS2 commensurate lattices (Band Structure):  tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-molybdenum-disulfide-simulation.md
+            - Twisted Bilayer h-BN commensurate lattices:                   tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-boron-nitride.md
+            - Twisted Bilayer h-BN commensurate lattices (Flat Bands):      tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-boron-nitride-simulation.md
             - Adatom Surface Defects on Graphene:                           tutorials/materials/specific/defect-surface-adatom-graphene.md
             - Ti Adatom on a 5×5 TiN Island:                                tutorials/materials/specific/defect-point-adatom-island-titanium-nitride.md
             - Ti Adatom on a 5×5 TiN Island (Descent Energetics):           tutorials/materials/specific/defect-point-adatom-island-titanium-nitride-simulation.md
@@ -173,16 +176,25 @@ nav:
             - H-Passivated Silicon (100) Surface:                           tutorials/materials/specific/passivation-surface-silicon.md
             - Gold Nanoclusters:                                            tutorials/materials/specific/nanocluster-gold.md
             - SrTiO3 Slab:                                                  tutorials/materials/specific/slab-strontium-titanate.md
+            - SrTiO3 Slab (Surface Energies):                               tutorials/materials/specific/slab-strontium-titanate-simulation.md
             - Interface between Graphene and h-BN:                          tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride.md
+            - Graphene on h-BN (Stacking Energy and Band Gap):              tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride-simulation.md
             - Interface between Copper and SiO2 (Cristobalite):             tutorials/materials/specific/interface-3d-3d-copper-silicon-dioxide.md
             - Interface between Graphene and SiO2 (alpha-quartz):           tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide.md
+            - Interface between Graphene and SiO2 (Doping and Gap at the Dirac Point):         tutorials/materials/specific/interface-2d-3d-graphene-silicon-dioxide-simulation.md
+            - Si/Ge (001) Interface:                                        tutorials/materials/specific/interface-3d-3d-silicon-germanium.md
+            - Si/Ge (001) Interface (Valence Band Offset):                  tutorials/materials/specific/interface-3d-3d-silicon-germanium-simulation.md
+            - GaAs/AlAs (110) Interface:                                    tutorials/materials/specific/interface-3d-3d-gallium-arsenide-aluminum-arsenide.md
+            - GaAs/AlAs (110) Interface (Valence Band Offset):              tutorials/materials/specific/interface-3d-3d-gallium-arsenide-aluminum-arsenide-simulation.md
             - High-k Metal Gate Stack (Si/SiO2/HfO2/TiN):                   tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md
             - Ripple perturbation of a Graphene sheet:                      tutorials/materials/specific/perturbation-ripples-graphene.md
             - Grain Boundary in FCC Metals (Copper):                        tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md
             - Grain Boundary (2D) in h-BN:                                  tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride.md
+            - Grain Boundary (2D) in h-BN (Band Gap and In-Gap States):     tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride-simulation.md
             - Gr/Ni(111) Interface Optimization:                            tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel.md
             - Gr/Ni(111) Registry and Work of Adhesion:                     tutorials/materials/specific/optimization-interface-film-xy-position-graphene-nickel-simulation.md
             - Pt Adatoms Island on MoS2:                                    tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum.md
+            - Pt Adatoms Island on MoS2 (Binding Energy):                   tutorials/materials/specific/defect-point-adatom-island-molybdenum-disulfide-platinum-simulation.md
 
 # COMMON UI COMPONENTS
     - Interface Components:
@@ -338,6 +350,9 @@ nav:
                 - Components:                           software-directory/modeling/vasp/components.md
 
                 - Compute Parameters:                   software-directory/modeling/vasp/compute-parameters.md
+            - Quantum 3xplorer:
+                - Overview:                             software-directory/modeling/q3/overview.md
+                - Components:                           software-directory/modeling/q3/components.md
             - TurboMole:                                software-directory/modeling/turbomole.md
             - LAMMPS:                                   software-directory/modeling/lammps.md
             - NWChem:                                   software-directory/modeling/nwchem.md

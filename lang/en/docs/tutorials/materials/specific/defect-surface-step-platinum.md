@@ -64,7 +64,7 @@ Open a `create_slab.ipynb` notebook and set up the slab parameters in the "1.1. 
 IS_TERMINATIONS_SELECTION_INTERACTIVE = False 
 
 MILLER_INDICES = (2, 1, 1)
-THICKNESS = 6  # in atomic layers
+THICKNESS = 2  # in (211) slab layers; one layer is four atomic planes
 VACUUM = 10.0  # in angstroms
 XY_SUPERCELL_MATRIX = [[1, 0], [0, 1]]
 USE_ORTHOGONAL_C = True
@@ -78,7 +78,7 @@ TERMINATION_INDEX = 0
 
 These parameters will create a Pt(211) surface with:
 
-- 6 atomic layers thickness
+- 2 (211) slab layers, eight atomic planes
 - 10 Å vacuum region
 - Orthogonal z-axis
 - Using the conventional unit cell
@@ -123,7 +123,7 @@ ROTATE_TO_MATCH_PBC = True  # Rotate to match periodic boundary conditions
 # Slab parameters for creating a new slab if provided material is not a slab
 DEFAULT_SLAB_PARAMETERS = {
     "miller_indices": (1, 1, 1),
-    "thickness": 6,
+    "thickness": 3,
     "vacuum": 10.0,
     "USE_ORTHOGONAL_C": True,
     "xy_supercell_matrix": [[2, 0], [0, 2]]
@@ -148,7 +148,24 @@ The same material with repetitions:
 
 The user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
-## 4. Interactive JupyterLite Notebook
+## 4. Add Oxygen
+
+The O₂ precursor and the dissociated O pair are added to the Pt(211) slab and to the flat Pt(111) slab the terrace is built on, in section 4 of the `defect_surface_step_platinum.ipynb` notebook embedded in section 5 below, with these lines of its cell 1.1:
+
+```python
+ADSORBATE_ELEMENT = "O"
+# O-O distance of the adsorbed O2 precursor, Šljivančanin & Hammer 2002, Table 1, in angstroms
+PRECURSOR_BOND_LENGTH_111 = 1.36  # Pt(111), top-fcc-bridge
+PRECURSOR_BOND_LENGTH_211 = 1.37  # Pt(211) step, top-bridge-top
+# in crystal units; snapped to the nearest hollow (fcc on the 3-layer slab)
+PRECURSOR_SITE_COORDINATE_111 = [0.5, 0.5]
+# starting height of every O above the topmost Pt for the relaxation, in angstroms
+ADSORBATE_HEIGHT = 1.8
+```
+
+On the 3-layer Pt(111) slab, one O placed at `PRECURSOR_SITE_COORDINATE_111` snaps to the nearest fcc hollow (with 2 or 4 layers it lands in the hcp or atop site); the molecule axis points from that hollow to its nearest top-layer Pt, and the neighbouring fcc hollow is one Pt-Pt bond away on that side (top-fcc-bridge, FIG. 1. A). On Pt(211), the precursor lies along the step edge, the topmost Pt row, centred over the bridge between two neighbouring edge atoms (top-bridge-top, FIG. 1. B). Each precursor is O₂ centred on its site with the O-O distance of Table 1; each dissociated pair puts the two O atoms in two neighbouring fcc hollows (Pt(111)) or on the step-edge bridges one Pt spacing to either side (Pt(211)). All O atoms start `ADSORBATE_HEIGHT` above the topmost Pt. The notebook shows the four materials and saves them as `Pt(111) O2 precursor`, `Pt(111) 2O dissociated`, `Pt(211) step O2 precursor` and `Pt(211) step 2O dissociated`.
+
+## 5. Interactive JupyterLite Notebook
 
 The following JupyterLite notebook demonstrates both approaches. Select "Run" > "Run All Cells" to execute the notebook.
 
@@ -160,4 +177,4 @@ The following JupyterLite notebook demonstrates both approaches. Select "Run" > 
 {% endwith %}
 {% endwith %}
 
-## 5. References
+## 6. References

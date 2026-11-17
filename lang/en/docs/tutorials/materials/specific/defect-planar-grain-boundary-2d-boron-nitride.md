@@ -4,8 +4,6 @@ tags:
   - h-BN
   - 2D-materials
   - interface
-  - twist-angle
-  - atom-restoration
   - D-2D-GBP
 
 hide:
@@ -14,139 +12,101 @@ hide:
 render_macros: true
 ---
 
-# 2D Grain Boundaries in Hexagonal Boron Nitride.
+# Grain Boundary (2D) in h-BN
 
 ## 1. Introduction
 
-This tutorial demonstrates the process of creating 2D grain boundary structures in hexagonal boron nitride (h-BN), based on the work presented in the following manuscript:
+This tutorial creates a grain boundary in a hexagonal boron nitride (h-BN) monolayer and relaxes it with the MACE machine-learned force field, following the manuscript below.
 
 !!!note "Manuscript"
-    Qiucheng Li, Xiaolong Zou, Mengxi Liu, Jingyu Sun, Yabo Gao, Yue Qi, Xiebo Zhou, Boris I. Yakobson, Yanfeng Zhang, and Zhongfan Liu, "Grain Boundary Structures and Electronic Properties of Hexagonal Boron Nitride on Cu(111)", ACS Nano 2015 9 (6), 6308-6315. [DOI: 10.1021/acs.nanolett.5b01852](https://doi.org/10.1021/acs.nanolett.5b01852){:target='_blank'}. [@Li2015]
+    Qiucheng Li, Xiaolong Zou, Mengxi Liu, Jingyu Sun, Yabo Gao, Yue Qi, Xiebo Zhou, Boris I. Yakobson, Yanfeng Zhang, and Zhongfan Liu, "Grain Boundary Structures and Electronic Properties of Hexagonal Boron Nitride on Cu(111)", Nano Lett. 2015, 15 (9), 5804-5810. [DOI: 10.1021/acs.nanolett.5b01852](https://doi.org/10.1021/acs.nanolett.5b01852){:target='_blank'}. [@Li2015]
 
-We will focus on creating h-BN grain boundary structures similar to Figure 2c from the manuscript:
+The notebook builds the Type III boundary of Figure 3f: a continuous chain of pentagons and heptagons (5|7), with B–B and N–N bonds alternating along it. The cell holds two such boundaries, as in the manuscript's calculation.
 
-![h-BN Grain Boundary](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/0-figure-from-manuscript.webp "h-BN Grain Boundary, FIG. 2c.")
+## 2. Open the Notebook
 
-## 2. Create Initial h-BN Structure
+### 2.1. Open Materials Designer
 
-### 2.1. Load h-BN Material
-
-Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the h-BN material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
-
-1. Click on "Input/Output" menu
-2. Select "Import from Standata"
-3. Search for "Boron_Nitride" and select the 2D h-BN material
-
-![Standata h-BN Import](../../../images/tutorials/materials/interfaces/twisted-bilayer-boron-nitride/standata-import-bn.png "Standata h-BN Import")
-
+Navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/).
 
 ### 2.2. Launch JupyterLite Session
 
-Select "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" to open JupyterLite.
+Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
-### 2.3. Open and Configure Notebook
+![JupyterLite Dialog](../../../images/jupyterlite/md-advanced-jl.webp "JupyterLite Dialog")
 
-Find and open `create_grain_boundary_film.ipynb`. Edit the grain boundary parameters in section 1.1:
+### 2.3. Open `defect_planar_grain_boundary_2d_boron_nitride.ipynb` Notebook
 
-`TARGET_TWIST_ANGLE = 9.0` -- As described in the manuscript.
-`ANGLE_TOLERANCE = 0.5` -- Tolerance for twist angle matching, in degrees.
-`BOUNDARY_GAP = 0.0` -- Gap between two phases in X direction, should be set to 0.0 for seamless boundary.
-`DISTANCE_TOLERANCE = 1.43` -- Distance tolerance for atom merging, in Angstroms. Set to be smaller than the B-N length to avoid symmetrical atoms.
-`EDGE_INCLUSION_TOLERANCE = 0.0` -- Edge inclusion parameter, in Angstroms. Controls the overlap of the second phase onto the first phase.
+Find and open the `specific_examples/defect_planar_grain_boundary_2d_boron_nitride.ipynb` notebook. It loads the h-BN monolayer (`2dm-4991`) from Standata.
+
+## 3. Configure and Create Structure
+
+### 3.1. Set Parameters
+
+Cell 1.1 sets the parameters:
 
 ```python
-# Material selection
-MATERIAL_INDEX = 0  # Index in the list of materials
-
 # Grain boundary parameters
-TARGET_TWIST_ANGLE = 9.0  # in degrees
-BOUNDARY_GAP = 0.0  # Gap between two orientations in X direction, in Angstroms
-XY_SUPERCELL_MATRIX = [[1, 0], [0, 2]] # Supercell matrix to be applied to each of the orientations before matching
-MILLER_INDICES = (0, 0, 1)  # Miller indices for the supercell matching
-VACUUM = 10.0  # Vacuum thickness in Angstroms, added to the top and bottom of the grain boundary
+NUMBER_OF_PERIODS_ACROSS = 2  # repetitions of each grain across the boundary
+# Supercell matrices of the two grains in the lattice basis of the monolayer, rows: across and along the boundary
+GRAIN_1_SUPERCELL_MATRIX = [[-2 * NUMBER_OF_PERIODS_ACROSS, -7 * NUMBER_OF_PERIODS_ACROSS], [4, 1]]
+GRAIN_2_SUPERCELL_MATRIX = [[-5 * NUMBER_OF_PERIODS_ACROSS, -7 * NUMBER_OF_PERIODS_ACROSS], [3, -1]]
+SLIDE_ALONG_BOUNDARY = 0.754  # in Angstroms, shift of the second grain along the boundary
+VACUUM = 0.0  # in Angstroms
 
-# Search algorithm parameters
-MAX_REPETITION = None  # Maximum supercell matrix element value
-ANGLE_TOLERANCE = 0.5  # in degrees
-RETURN_FIRST_MATCH = True  # If True, returns first solution within tolerance
+# Analysis parameters
+BOND_LENGTH_CUTOFF = 1.75  # in Angstroms
 
-# Distance tolerance for two atoms to be considered too close. 
-# Used when merging two orientations to remove the atoms of the first one. 
-# Should be less than the expected bond length
-DISTANCE_TOLERANCE = 1.43  # in Angstroms
+# Relaxation parameters
+MACE_MODEL_FAMILY = "MACE-MP-0"
+MACE_MODEL = "large"
+MACE_DISPERSION = False  # the manuscript uses PBE without a dispersion correction
+MACE_DEFAULT_DTYPE = "float64"
+MACE_DEVICE = "cpu"
+FMAX = 0.01  # eV/Å, the force threshold of the manuscript
 
-# How much to expand inclusion of the edge atoms for both orientations and fill in the gap region.
-# A fine-tuning parameter
-EDGE_INCLUSION_TOLERANCE = 0.0  # in Angstroms
+# Output parameters
+UNRELAXED_MATERIAL_NAME = "h-BN 5-7 grain boundary"
+MATERIAL_NAME = "h-BN 5-7 grain boundary, MACE-relaxed"
 
 # Visualization parameters
-SHOW_INTERMEDIATE_STEPS = True
-CELL_REPETITIONS_FOR_VISUALIZATION = [3, 3, 1]
+CELL_REPETITIONS_FOR_VISUALIZATION = [1, 2, 1]
 ```
 
-![Notebook Setup](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/2-jl-setup-nb-gb.webp "Notebook Setup")
 
-!!!note "Important Parameter"
-    The `DISTANCE_TOLERANCE` parameter (1.43 Å) is larger than B-N distances at the one specific spot in the boundary. This will cause certain nitrogen atoms to be removed during structure generation, which we'll need to restore later.
+Each grain is a supercell of the monolayer. The rows of `GRAIN_1_SUPERCELL_MATRIX` and `GRAIN_2_SUPERCELL_MATRIX` are its vectors across and along the boundary, written in the lattice basis of the monolayer. They put the lattice vectors (3, 1) of one grain and (1, 3) of the other, in the 60° basis of the literature, along the boundary: the (3,1)|(1,3) boundary of the manuscript at 32.2°.
 
-## 3. Run the Notebook
+### 3.2. Run the Notebook
 
-Run the notebook by selecting "Run" > "Run All Cells".
+Select "Run" > "Run All Cells".
 
-The notebook will generate the h-BN grain boundary structure based on the parameters provided.
+![Run All](../../../images/jupyterlite/run-all.webp "Run All")
 
-![Initial h-BN Structure](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/4-wave-result-gb.webp "Initial h-BN Structure")
+The notebook joins the two grains (section 3) and prints the number of atoms of each element and of B–B and N–N bonds. It then relaxes the atomic positions with MACE at fixed cell (section 4) and prints the energy change and the same counts again:
 
-## 4. Restore Missing Nitrogen Atom
-
-Due to the `DISTANCE_TOLERANCE` setting, one nitrogen atom at the boundary is removed. We need to restore it:
-
-### 4.1. Add Missing Nitrogen
-
-Open JupyterLite Session and find `create_point_defect.ipynb` notebook.
-
-Select the h-BN grain boundary structure as input material and configure the adatom defect parameters in the "1.1. Set Notebook Parameters" section:
-
-```python
-# Selected material will be used as a unit cell to create a supercell first.
-SUPERCELL_MATRIX = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
-
-DEFECT_CONFIGS = [
-    {
-        "type": "interstitial",
-        "coordinate": [0.5, 0.45, 0.5],  # Crystal coordinates
-        "element": "N",
-        "placement_method": "closest_site",
-    },
-]
+```
+208 atoms, B 104, N 104, B–B 2, N–N 2
+Energy change on relaxation: -2.898 eV
+208 atoms, B 104, N 104, B–B 2, N–N 2
 ```
 
-![Notebook Setup](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/5-jl-setup-nb-final-gb.webp "Notebook Setup")
+### 3.3. Pass the Result to Materials Designer
 
-### 4.2. Run the Notebook
+The notebook passes the boundary as built and its relaxed version, `h-BN 5-7 grain boundary` and `h-BN 5-7 grain boundary, MACE-relaxed`, to the current Materials Designer environment.
 
-Run the notebook to add the missing nitrogen atom to the h-BN grain boundary structure.
+## 4. Analyze the Structure
 
-![Final Structure Preview](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/6-jl-result-preview-final-gb.webp "Final Structure Preview")
+The cell is 62.7 × 9.05 Å with 208 atoms. Each of the two boundaries is a continuous 5-7 chain with one B–B and one N–N bond per period, as in the manuscript.
 
-## 5. Pass Final Material to Materials Designer
+![Type III 5|7 boundary: Li et al. 2015 and this work](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/boundary-structure-comparison.webp "Type III 5|7 boundary, top view: Li et al. 2015, Fig. 3f (left) and the MACE-relaxed structure of this notebook (right)")
 
-The user can pass the material with substitution defects in the current Materials Designer environment and save it.
+## 5. Save the Structure
 
-![Final Material](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/7-wave-result-final-gb.webp "Final Material")
+In Materials Designer, the user can save the materials on the platform or [download]({{ interface_url }}/materials-designer/header-menu/input-output/) them in Material JSON or POSCAR format. The notebook also writes the relaxed boundary to the `uploads` folder; the [simulation tutorial](defect-planar-grain-boundary-2d-boron-nitride-simulation.md) loads it by its name.
 
-Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
+## 6. Interactive JupyterLite Notebook
 
-## 6. Manual Adjustment
-
-To fill the gaps between two phases edge atoms can be adjusted manually in Materials Designer 3D editor.
-The resulting structure should be similar to the one shown in the manuscript.
-
-![Adjusted Structure](../../../images/tutorials/materials/defects/defect_planar_grain_boundary_2d_boron_nitride/8-wave-result-final-gb-relaxed.webp "Adjusted Structure")
-
-## 7. Interactive JupyterLite Notebook
-
-The following JupyterLite notebook demonstrates the complete process. Select "Run" > "Run All Cells".
+The following JupyterLite notebook builds and relaxes the boundary. Select "Run" > "Run All Cells".
 
 {% with origin_url=config.extra.jupyterlite.origin_url %}
 {% with notebooks_path_root=config.extra.jupyterlite.notebooks_path_root %}
@@ -155,5 +115,9 @@ The following JupyterLite notebook demonstrates the complete process. Select "Ru
 {% endwith %}
 {% endwith %}
 {% endwith %}
+
+## 7. Parameter Fine-tuning
+
+`NUMBER_OF_PERIODS_ACROSS` sets the width of each grain, and `SLIDE_ALONG_BOUNDARY` shifts the second grain along the boundary so that the two grains meet in the 5|7 pattern. `FMAX` is the force threshold of the relaxation, 0.01 eV/Å as in the manuscript.
 
 ## 8. References

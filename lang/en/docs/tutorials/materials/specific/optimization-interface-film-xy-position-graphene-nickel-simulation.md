@@ -28,7 +28,7 @@ using the interface created in the
 
 !!!note "Manuscript"
     **Arjun Dahal, Matthias Batzill**,
-    "Graphene-nickel interfaces: a review" Nanoscale, 6(5), 2548 (2014)
+    "Graphene–nickel interfaces: a review" Nanoscale, 6(5), 2548 (2014)
     [DOI: 10.1039/c3nr05279f](https://doi.org/10.1039/c3nr05279f) [@Dahal2014]
 
     Its computed values are from **Jayeeta Lahiri et al.**, "Graphene growth and stability at nickel

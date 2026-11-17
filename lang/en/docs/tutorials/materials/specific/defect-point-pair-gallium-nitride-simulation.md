@@ -131,11 +131,7 @@ then runs the steps listed in section 3.
 
 ### 5.4. Monitor progress
 
-The notebook polls the jobs every 60 seconds (`POLL_INTERVAL`) and marks each reused structure or job
-`♻️`. Measured on cluster-001, 16 cores in the OR queue, as job time without the queue: from scratch about
-2 h 10 min (default `ENERGY_KGRID`) and 1 h 50 min (`[1, 1, 1]`), longer than one login lasts (section
-8.3); with the relaxations reused, about 35 and 12 min (the default run took 42 min with the queue);
-with every job finished, about a minute.
+The notebook polls the jobs.
 
 ### 5.5. Analyze results
 
@@ -209,19 +205,17 @@ tutorial first, and check that its `uploads` folder holds the pair under that ex
 `Mg3N2-[Magnesium_Nitride]-BCC_[Ia-3]_3D_[Bulk]-[mp-1559]` is not found, update `mat3ra-standata` to a
 release that includes the entry.
 
-### 8.2. No cluster available, or jobs end in `error`
+### 8.2. No cluster available
 
 If section 5.1 of the notebook prints an empty list of clusters, there is nothing to submit to, and
 section 5.2 stops with `IndexError: list index out of range`. A cluster has to be available to the
-account before the notebook can run. If the relaxations end in `error` on the default cluster, section 7
-of the notebook stops with `RuntimeError: Job … reported no 'final_structure'`. Set `CLUSTER_NAME` to
-another cluster — cluster-001 ran every job here — and re-run; finished jobs are reused.
+account before the notebook can run.
 
 ### 8.3. No formation energy on the first run
 
 The platform's access token lasts one hour and expires during the Mg₃N₂ relaxation: on a first run from
 scratch, the wait in section 6 of the notebook stops with `HTTPError 401: You must be logged in`. The jobs
-keep running. About 1 h 40 min after the start, restart the kernel and run all cells again (*Kernel* >
+keep running. Restart the kernel and run all cells again (*Kernel* >
 *Restart Kernel and Run All Cells*): the notebook asks for a new login and picks up the running and
 finished jobs.
 

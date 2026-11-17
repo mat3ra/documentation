@@ -21,7 +21,7 @@ render_macros: true
 This tutorial demonstrates the process of creating materials with vacancy point defects, based on the work presented in the following manuscript:
 
 !!!note "Manuscript"
-    Fabian Bertoldo, Sajid Ali, Simone Manti & Kristian S. Thygesen, "Quantum point defects in 2D materials - the QPOD database", npj Computational Materials, 2022. [DOI:10.1038/s41524-022-00730-w](https://doi.org/10.1038/s41524-022-00730-w){:target='_blank'}. [@Bertoldo2022; @Kohan2000]
+    Fabian Bertoldo, Sajid Ali, Simone Manti & Kristian S. Thygesen, "Quantum point defects in 2D materials - the QPOD database", npj Computational Materials 8, 56 (2022). [DOI:10.1038/s41524-022-00730-w](https://doi.org/10.1038/s41524-022-00730-w){:target='_blank'}. [@Bertoldo2022; @Kohan2000]
 
 We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) and JupyterLite environment to create a nanoribbon of hexagonal boron nitride (h-BN) and introduce vacancy defects. The process combines the capabilities of nanoribbon creation and point defect introduction.
 

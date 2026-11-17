@@ -145,6 +145,7 @@ exclude_docs: |
   software-directory/modeling/gromacs/
   software-directory/modeling/lammps/
   software-directory/modeling/nwchem/
+  software-directory/modeling/q3/
   software-directory/modeling/turbomole/
   software-directory/modeling/turbomole.md
   software-directory/modeling/vasp/overview.md

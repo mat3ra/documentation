@@ -27,7 +27,7 @@ This tutorial demonstrates the process of creating material with nitrogen vacanc
 
 !!!note "Manuscript"
     **Giacomo Miceli, Alfredo Pasquarello**,
-    "Self-compensation due to point defects in Mg-doped GaN", Physical Review B, 2016.
+    "Self-compensation due to point defects in Mg-doped GaN", Physical Review B 93, 165207 (2016).
     [DOI: 10.1103/PhysRevB.93.165207](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.93.165207){:target='_blank'}. [@Miceli2016]
 
 We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create a supercell of GaN, identify the crystal site positions for defects, and introduce nitrogen atoms and vacancies accordingly.
