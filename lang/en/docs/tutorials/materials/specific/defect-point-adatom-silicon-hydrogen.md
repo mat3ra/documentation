@@ -99,7 +99,7 @@ The notebook shows the materials in the Wave viewer and passes them to Materials
 
 The start with both H sites marked, beside Fig. 1 of the manuscript, with the dimer rows along the same direction:
 
-![Fig. 1 of the manuscript and the H sites of this notebook](../../../images/tutorials/materials/defects/defect_point_adatom_silicon_hydrogen/fig1-vs-our-sites.webp "Hansen and Vogl 1998, Fig. 1 (left), and the start with the start and intradimer-end H sites marked (right)")
+![Fig. 1 of the manuscript and the H sites of this notebook](../../../images/tutorials/materials/defects/defect_point_adatom_silicon_hydrogen/fig1-vs-our-sites.webp "Hansen and Vogl 1998, Fig. 1 (left), and the start structure with both H sites marked (right)")
 
 ## 4. Analyze the structure
 

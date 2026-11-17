@@ -34,10 +34,10 @@ Here, both are relaxed with the Perdew–Burke–Ernzerhof (PBE) functional on t
 [nudged elastic band]({{ reference_url }}/models/auxiliary-concepts/nudged-elastic-band/) (NEB) calculation runs
 between the two minima. The barrier is compared with Table V of the manuscript.
 
-The figure below shows Fig. 1 of the manuscript (left) beside the start structure with the start and intradimer-end
+The figure below shows Fig. 1 of the manuscript (left) beside the start structure with both
 H sites marked (right); the path computed here is the intradimer path (a):
 
-![Fig. 1 of the manuscript and the H sites of this tutorial](../../../images/tutorials/materials/defects/defect_point_adatom_silicon_hydrogen/fig1-vs-our-sites.webp "Hansen and Vogl 1998, Fig. 1 (left), and the start with the start and intradimer-end H sites marked (right)")
+![Fig. 1 of the manuscript and the H sites of this tutorial](../../../images/tutorials/materials/defects/defect_point_adatom_silicon_hydrogen/fig1-vs-our-sites.webp "Hansen and Vogl 1998, Fig. 1 (left), and the start structure with both H sites marked (right)")
 
 ## 2. Prerequisites
 
@@ -108,6 +108,8 @@ QUEUE_NAME = QueueName.OR
 NODES = 1
 PPN = 16
 TIME_LIMIT_HOURS = 24
+# pw.x and neb.x stop 10 minutes before TIME_LIMIT and write their files
+MAX_SECONDS = TIME_LIMIT_HOURS * 3600 - 600
 
 APPLICATION_VERSION = "7.5"
 FUNCTIONAL = "pbe"
@@ -141,7 +143,8 @@ The notebook polls the relaxation jobs on the platform, then the NEB jobs.
 ### 5.5. Analyze results
 
 The last cells print, for each path, the barriers beside Table V of the manuscript, the largest NEB image error,
-and the two Si atoms nearest the H at the climbing image (section 6.1).
+the two Si atoms nearest the H at the climbing image and, for the intradimer path, the dimer bond at the saddle
+(section 6.1).
 
 ## 6. Expected results
 
