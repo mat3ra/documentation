@@ -158,7 +158,7 @@ The intradimer run prints:
 ```
 Intradimer barrier, relaxed, from the start: <J3> eV, from the end: <J3> eV, Hansen & Vogl 1998: 1.1 eV; ref. 36 (LDA) 1.2, ref. 13 (GGA) 1.9, via Hansen & Vogl Table V
 Largest image error, intradimer path: <J3> eV/Å
-Two Si nearest the H at the climbing image, intradimer path: <J3> Å and <J3> Å, <J3> Å apart
+Two Si nearest the H at the climbing image, intradimer path: <J3> Å and <J3> Å
 Dimer bond at the saddle, H on Si(100): <J3> Å, Hansen & Vogl 1998: 3.23 Å
 ```
 
