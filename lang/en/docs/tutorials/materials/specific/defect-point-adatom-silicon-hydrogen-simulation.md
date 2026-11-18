@@ -104,9 +104,9 @@ END_NAME_BY_PATH = {
 }
 
 CLUSTER_NAME = None
-QUEUE_NAME = QueueName.OR
+QUEUE_NAME = QueueName.OF
 NODES = 1
-PPN = 16
+PPN = 36
 TIME_LIMIT_HOURS = 24
 # pw.x and neb.x stop 10 minutes before TIME_LIMIT and write their files
 MAX_SECONDS = TIME_LIMIT_HOURS * 3600 - 600
@@ -193,11 +193,11 @@ from the start, in either direction; the two directions are mirror images throug
 
 ### 7.2. Adjust computational resources
 
-The compute settings apply to the relaxations and the NEBs: by default, each job runs on one node of the OR queue
-with 16 cores for up to 24 hours (`TIME_LIMIT_HOURS`); pw.x and neb.x stop 10 minutes earlier (`MAX_SECONDS`) and
+The compute settings apply to the relaxations and the NEBs: by default, each job runs on one node of the OF queue
+with 36 cores for up to 24 hours (`TIME_LIMIT_HOURS`); pw.x and neb.x stop 10 minutes earlier (`MAX_SECONDS`) and
 write their files. The default, `CLUSTER_NAME = None`, uses the account's first listed cluster; setting it to a
-cluster's full host name uses that cluster without listing. The OR queue runs one job on one node; `PPN` sets its
-cores.
+cluster's full host name uses that cluster without listing. The OF queue starts a node for each job; `PPN` sets its
+cores, up to the queue's maximum on the cluster (60 on some).
 
 ### 7.3. Use the manuscript's settings
 
