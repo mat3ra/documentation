@@ -79,8 +79,8 @@ the settings behind it; the right column lists the manuscript's own settings (Me
 | End points | relaxed, all atoms, cell fixed | not stated |
 | Transition state | climbing image, one intermediate image, path threshold 0.1 eV/Å | climbing-image NEB, number of images not stated |
 
-A material already relaxed with the same k-grid, or still relaxing, is reused, and so is an NEB job from the same
-initial material that is queued, running or finished with the same k-grid.
+A material already relaxed with the same `KGRID`, or still relaxing, is reused, and so is an NEB job of the same path
+from the same initial material that is queued, running or finished with the same `KGRID`.
 
 ## 5. Step-by-step instructions
 
@@ -94,10 +94,21 @@ other/materials_designer/specific_examples/perturbation_ferroelectric_switching_
 
 ### 5.2. Configure parameters
 
-Section 1 of the notebook sets the material names, the compute resources, and the DFT model. The model parameters
-are:
+The parameters cells of section 1 set the material names, the manuscript's barrier, the compute resources, and the
+DFT model:
 
 ```python
+INITIAL_MATERIAL_NAME = "HfO2 Pca21"
+FINAL_MATERIAL_NAME = "HfO2 Pca21 S:T switched"
+PATH_NAME = "S:T"
+MANUSCRIPT_BARRIER = 0.736
+
+CLUSTER_NAME = None
+QUEUE_NAME = QueueName.OR
+NODES = 1
+PPN = 16
+TIME_LIMIT_HOURS = 4
+
 APPLICATION_VERSION = "7.5"
 FUNCTIONAL = "pbe"
 PSEUDOPOTENTIAL_TYPE = "us"
@@ -105,7 +116,8 @@ ECUTWFC = 40   # Ry
 ECUTRHO = 200  # Ry
 KGRID = [6, 6, 6]
 KGRID_SHIFTS = [1, 1, 1]
-QE_SYSTEM_SETTINGS = {"nspin": 1, "occupations": "smearing", "degauss": 0.005}
+QE_SYSTEM_SETTINGS = {"nspin": 1, "degauss": 0.005}
+RELAXATION_SETTINGS = {"max_seconds": MAX_SECONDS}
 N_IMAGES = 1
 NEB_PATH_SETTINGS = {"nstep_path": 50, "minimum_image": True}
 ```
@@ -128,7 +140,7 @@ and plot the energy profile:
 
 ```
 S:T barrier, Pca2₁ HfO₂: ours <MEASURED> eV/u.c. | Mu et al. 2025, Table 1 (from Wu et al. 2023), 0.736 eV/u.c.
-Largest NEB image error: <MEASURED> eV/Å
+Largest image error, S:T path: <MEASURED> eV/Å
 ```
 
 ## 6. Expected results
@@ -185,8 +197,8 @@ reuses the NEB job already run from the same initial material (section 4).
 
 The compute settings apply to the relaxations and the NEB: by default, each job runs on one node of the OR queue with
 all of its cores for up to 4 hours, and pw.x and neb.x stop 10 minutes earlier and write their files. On one OR
-node, the relaxation of `HfO2 Pca21` took <MEASURED>, the relaxation of `HfO2 Pca21 S:T switched` <MEASURED>, and
-the NEB <MEASURED>.
+node with 36 cores, the relaxation of `HfO2 Pca21` took 19 min, the relaxation of `HfO2 Pca21 S:T switched` 51 min,
+and the NEB <MEASURED>.
 
 ## 8. Troubleshooting
 
@@ -217,7 +229,7 @@ HfO2 Pca21 S:T switched: 12 atoms
 ```
 
 Then view the two relaxed materials on the account along x: they should match Fig. 1(a) and (c), the second the
-first mirrored through the Hf plane, with equal total energies.
+first mirrored through the Hf plane, with total energies a few meV apart (1.9 meV in this tutorial's run).
 
 ## 9. Interactive JupyterLite notebook
 
