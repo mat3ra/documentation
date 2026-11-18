@@ -102,7 +102,7 @@ DOS_WORKFLOW_SEARCH_TERM = "band_gap_dos_hse.json"
 CLUSTER_NAME = None  # specify full or partial name i.e. "cluster-001" to select
 QUEUE_NAME = QueueName.OF
 PPN = None  # None uses the selected queue's maximum cores per job on the selected cluster
-NPOOLS = 4  # Quantum ESPRESSO k-point pools; must divide the cores per job and not exceed any job's k-points
+NPOOLS = 2  # k-point pools: must divide the cores and not exceed any job's k-points; each adds HSE06 exchange memory
 TIME_LIMIT = "24:00:00"
 
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -189,7 +189,8 @@ The notebook reuses a job with the same material, workflow name and k-point grid
 ### 7.2. Adjust computational resources
 
 `QUEUE_NAME`, `PPN`, `NPOOLS` and `TIME_LIMIT` in cell 1.2 set the queue, the cores, the k-point pools and the time
-limit of every job; `NPOOLS` must divide the cores and not exceed the number of k-points of any job. The default,
+limit of every job; `NPOOLS` must divide the cores and not exceed the number of k-points of any job. Each pool keeps
+its own copy of the HSE06 exchange data, so the memory per node grows with `NPOOLS`. The default,
 `CLUSTER_NAME = None`, uses the account's first listed cluster; setting a specific name picks that cluster instead, and
 a name that is not available makes the notebook stop and list the ones that are.
 
