@@ -100,8 +100,8 @@ BANDS_WORKFLOW_SEARCH_TERM = "band_structure_hse.json"
 DOS_WORKFLOW_SEARCH_TERM = "band_gap_dos_hse.json"
 
 CLUSTER_NAME = None  # specify full or partial name i.e. "cluster-001" to select
-QUEUE_NAME = QueueName.OR
-PPN = 16  # OR allows 16 cores per job
+QUEUE_NAME = QueueName.OF
+PPN = 36  # OF allows up to the cluster's maximum cores per job: 60 on cluster-001, 36 on cluster-002, 44 on cluster-003
 TIME_LIMIT = "04:00:00"
 
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
