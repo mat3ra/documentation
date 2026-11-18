@@ -196,7 +196,10 @@ reuses the NEB job already run from the same initial material (section 4).
 ### 7.2. Adjust computational resources
 
 The compute settings apply to the relaxations and the NEB: by default, each job runs on one node of the OF queue with
-36 cores for up to 4 hours, and pw.x and neb.x stop 10 minutes earlier and write their files.
+36 cores for up to 4 hours (`TIME_LIMIT_HOURS`), and pw.x and neb.x stop 10 minutes earlier and write their files.
+The default, `CLUSTER_NAME = None`, uses the account's first listed cluster; setting it to a cluster's full host name
+uses that cluster without listing. `NODES` and `PPN` set the job's size; 36 cores fit every cluster's OF node, and on
+cluster-001 `PPN` can be raised to 60.
 
 ## 8. Troubleshooting
 
