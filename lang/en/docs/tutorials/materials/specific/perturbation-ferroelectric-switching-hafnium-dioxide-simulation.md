@@ -104,9 +104,9 @@ PATH_NAME = "S:T"
 MANUSCRIPT_BARRIER = 0.736
 
 CLUSTER_NAME = None
-QUEUE_NAME = QueueName.OR
+QUEUE_NAME = QueueName.OF
 NODES = 1
-PPN = 16
+PPN = 60
 TIME_LIMIT_HOURS = 4
 
 APPLICATION_VERSION = "7.5"
@@ -139,8 +139,8 @@ The last cells print the barrier beside the manuscript's value, with the largest
 and plot the energy profile:
 
 ```
-S:T barrier, Pca2₁ HfO₂: ours <MEASURED> eV/u.c. | Mu et al. 2025, Table 1 (from Wu et al. 2023), 0.736 eV/u.c.
-Largest image error, S:T path: <MEASURED> eV/Å
+S:T barrier, Pca2₁ HfO₂: ours 0.684 eV/u.c. | Mu et al. 2025, Table 1 (from Wu et al. 2023), 0.736 eV/u.c.
+Largest image error, S:T path: 0.089 eV/Å
 ```
 
 ## 6. Expected results
@@ -154,10 +154,10 @@ heterostructure. The manuscript shows no bulk S:T energy profile.
 
 | | Mu et al., Table 1 | This tutorial |
 |---|---|---|
-| S:T barrier, bulk, fixed cell | 0.736 eV/u.c. (from ref. 24) | <MEASURED> eV/u.c. |
+| S:T barrier, bulk, fixed cell | 0.736 eV/u.c. (from ref. 24) | 0.684 eV/u.c. |
 | S:T barrier, bulk, variable cell | 0.432 eV/u.c. (from ref. 24) | not computed: the platform's NEB keeps the cell fixed |
 | S:T barrier, Ni/HfO₂/Ni heterostructure | 0.181 eV/u.c. | not computed |
-| Largest NEB image error | not stated | <MEASURED> eV/Å |
+| Largest NEB image error | not stated | 0.089 eV/Å |
 
 The figure below shows the energy profile of the NEB computed here, with the manuscript's 0.736 eV/u.c. as a dashed
 line:
@@ -177,10 +177,10 @@ These settings differ:
 | Smearing | not stated | 0.005 Ry | `degauss` in `QE_SYSTEM_SETTINGS` |
 | Intermediate images | not stated | one | `N_IMAGES` |
 
-With one intermediate image, that image is the midpoint between the initial structure and its mirror image through
-the Hf plane; it has the mirror symmetry (space group Pbcm) and keeps it throughout the NEB, so the path cannot pass
-through a lower-symmetry intermediate. For the S:T pathway the manuscript names a monoclinic P2₁/c intermediate in
-the heterostructure, "similar to that of the bulk form" of ref. 24 (p. 3).
+With one intermediate image, neb.x starts that image at the midpoint of the straight path between the two relaxed
+materials, with the three-fold coordinated O in the Hf plane (0.0125 Å from it in this tutorial's run). For the S:T
+pathway the manuscript names a monoclinic P2₁/c intermediate in the heterostructure, "similar to that of the bulk
+form" of ref. 24 (p. 3).
 
 Which of these settings moves the barrier is not tested here.
 
@@ -195,10 +195,10 @@ reuses the NEB job already run from the same initial material (section 4).
 
 ### 7.2. Adjust computational resources
 
-The compute settings apply to the relaxations and the NEB: by default, each job runs on one node of the OR queue with
-all of its cores for up to 4 hours, and pw.x and neb.x stop 10 minutes earlier and write their files. On one OR
-node with 36 cores, the relaxation of `HfO2 Pca21` took 19 min, the relaxation of `HfO2 Pca21 S:T switched` 51 min,
-and the NEB <MEASURED>.
+The compute settings apply to the relaxations and the NEB: by default, each job runs on one node of the OF queue with
+all of its cores for up to 4 hours, and pw.x and neb.x stop 10 minutes earlier and write their files. On one 36-core
+node of the OR queue, the relaxation of `HfO2 Pca21` took 19 min and the relaxation of `HfO2 Pca21 S:T switched`
+51 min; on 16 cores of an OF node, the NEB took 13 min.
 
 ## 8. Troubleshooting
 
