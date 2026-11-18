@@ -114,7 +114,7 @@ manuscript (left) beside the two structures built here, in Wave with bonds, seen
 
 The Wave pictures are taken with [bonds and the orthographic camera]({{ interface_url }}/materials-designer/3d-editor/view/)
 on, [repetitions]({{ interface_url }}/materials-designer/3d-editor/parameters/) 1×2×2, radius 0.25, and the chemical
-connectivity factor 0.95: it bonds the Hf–O pairs (2.03–2.23 Å) and not the Hf–Hf pairs (3.39 Å and up), which the
+connectivity factor 0.95: it bonds the Hf–O pairs (2.02–2.23 Å) and not the Hf–Hf pairs (3.39 Å and up), which the
 default 1.05 also bonds.
 
 In the initial structure the three-fold coordinated O sit 0.1378 c above each Hf plane, in the final structure
