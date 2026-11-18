@@ -102,7 +102,9 @@ DOS_WORKFLOW_SEARCH_TERM = "band_gap_dos_hse.json"
 CLUSTER_NAME = None  # specify full or partial name i.e. "cluster-001" to select
 QUEUE_NAME = QueueName.OF
 PPN = None  # None uses the selected queue's maximum cores per job on the selected cluster
-TIME_LIMIT = "04:00:00"
+NPOOLS = 2  # pw.x k-point pools; NPOOLS × NBAND must divide the cores per job
+NBAND = 2  # pw.x band groups, which split the HSE exact-exchange work
+TIME_LIMIT = "24:00:00"
 
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
 POLL_INTERVAL = 60  # seconds
