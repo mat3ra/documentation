@@ -102,7 +102,7 @@ DOS_WORKFLOW_SEARCH_TERM = "band_gap_dos_hse.json"
 CLUSTER_NAME = None  # specify full or partial name i.e. "cluster-001" to select
 QUEUE_NAME = QueueName.OF
 PPN = None  # None uses the selected queue's maximum cores per job on the selected cluster
-NPOOLS = 4  # Quantum ESPRESSO k-point pools; must divide the cores per job
+NPOOLS = 4  # Quantum ESPRESSO k-point pools; must divide the cores per job and not exceed any job's k-points
 TIME_LIMIT = "24:00:00"
 
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -111,8 +111,8 @@ POLL_INTERVAL = 60  # seconds
 ENERGY_WINDOW = (-4.0, 6.0)  # eV, the energy range of Fig. 8
 ```
 
-Cell 1.3 sets the cutoffs, the relaxation, and the k-point and q-point grids; the comments name the manuscript's
-settings:
+Cell 1.3 sets the cutoffs, the relaxation, the preliminary SCF verbosity, the HSE06 stress (off), and the k-point and
+q-point grids; the comments name the manuscript's settings:
 
 ```python
 # manuscript: geometry with DFTB, gaps with CRYSTAL and a one-parameter global hybrid fitted to bulk Si;
@@ -123,7 +123,7 @@ ECUTRHO = 200  # Ry
 # forces below 1e-4 Ha/Bohr as in the manuscript, in QE's Ry/Bohr; the atoms and the period along the wire relax
 RELAXATION_SETTINGS = {"control": {"forc_conv_thr": 2e-4, "nstep": 100}, "cell": {"cell_dofree": "z"}}
 PRELIMINARY_SCF_SETTINGS = {"control": {"verbosity": "high"}}  # so pw.x prints the crystal k-points the HSE run uses
-HSE_SETTINGS = {"control": {"tstress": False}}  # QE 6.3 computes no hybrid-functional stress with k-point pools
+HSE_SETTINGS = {"control": {"tstress": False}}  # Quantum ESPRESSO computes no hybrid-functional stress with pools
 RELAX_KGRID = [1, 1, 8]  # manuscript: 1x1x4 on two periods
 BANDS_KGRID = [1, 1, 8]
 QGRID = [1, 1, 4]  # HSE exchange q-grid; each dimension divides the one of BANDS_KGRID
@@ -189,8 +189,9 @@ The notebook reuses a job with the same material, workflow name and k-point grid
 ### 7.2. Adjust computational resources
 
 `QUEUE_NAME`, `PPN`, `NPOOLS` and `TIME_LIMIT` in cell 1.2 set the queue, the cores, the k-point pools and the time
-limit of every job. The default, `CLUSTER_NAME = None`, uses the account's first listed cluster; setting a specific
-name picks that cluster instead, and a name that is not available makes the notebook stop and list the ones that are.
+limit of every job; `NPOOLS` must divide the cores and not exceed the number of k-points of any job. The default,
+`CLUSTER_NAME = None`, uses the account's first listed cluster; setting a specific name picks that cluster instead, and
+a name that is not available makes the notebook stop and list the ones that are.
 
 ## 8. Troubleshooting
 
