@@ -197,7 +197,8 @@ The compute settings apply to the relaxations and the NEBs: by default, each job
 with 60 cores for up to 12 hours (`TIME_LIMIT_HOURS`); pw.x and neb.x stop 10 minutes earlier (`MAX_SECONDS`) and
 write their files. The default, `CLUSTER_NAME = None`, uses the account's first listed cluster; setting it to a
 cluster's full host name uses that cluster without listing. The OF queue adds several compute nodes at once as jobs
-arrive; `PPN` sets the cores per node, up to the queue's maximum on the cluster (cluster-001 60, cluster-002 36, cluster-003 44).
+arrive; `PPN` sets the cores per node, up to the queue's maximum on the cluster (cluster-001 60, cluster-002 36,
+cluster-003 44); on another cluster, lower `PPN` to its maximum.
 
 ### 7.3. Use the manuscript's settings
 
