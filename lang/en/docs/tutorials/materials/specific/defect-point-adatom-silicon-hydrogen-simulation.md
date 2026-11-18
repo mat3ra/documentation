@@ -196,8 +196,8 @@ from the start, in either direction; the two directions are mirror images throug
 The compute settings apply to the relaxations and the NEBs: by default, each job runs on one node of the OF queue
 with 36 cores for up to 24 hours (`TIME_LIMIT_HOURS`); pw.x and neb.x stop 10 minutes earlier (`MAX_SECONDS`) and
 write their files. The default, `CLUSTER_NAME = None`, uses the account's first listed cluster; setting it to a
-cluster's full host name uses that cluster without listing. The OF queue starts a node for each job; `PPN` sets its
-cores, up to the queue's maximum on the cluster (60 on some).
+cluster's full host name uses that cluster without listing. The OF queue adds several compute nodes at once as jobs
+arrive; `PPN` sets the cores per node, up to the queue's maximum on the cluster (36 to 60; 36 fits every cluster).
 
 ### 7.3. Use the manuscript's settings
 
