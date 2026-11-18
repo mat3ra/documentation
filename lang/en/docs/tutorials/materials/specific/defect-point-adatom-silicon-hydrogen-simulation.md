@@ -159,10 +159,10 @@ climbing image. The start and the end sit on different atoms of a buckled dimer,
 The intradimer run prints:
 
 ```
-Intradimer barrier, relaxed, from the start: <J3> eV, from the end: <J3> eV, Hansen & Vogl 1998: 1.1 eV; ref. 36 (LDA) 1.2, ref. 13 (GGA) 1.9, via Hansen & Vogl Table V
-Largest image error, intradimer path: <J3> eV/Å
-Two Si nearest the H at the climbing image, intradimer path: <J3> Å and <J3> Å
-Dimer bond at the saddle, H on Si(100): <J3> Å, Hansen & Vogl 1998: 3.23 Å
+Intradimer barrier, relaxed, from the start: 1.29 eV, from the end: 1.27 eV, Hansen & Vogl 1998: 1.1 eV; ref. 36 (LDA) 1.2, ref. 13 (GGA) 1.9, via Hansen & Vogl Table V
+Largest image error, intradimer path: 0.097 eV/Å
+Two Si nearest the H at the climbing image, intradimer path: 1.73 Å and 1.81 Å
+Dimer bond at the saddle, H on Si(100): 2.32 Å, Hansen & Vogl 1998: 3.23 Å
 ```
 
 ### 6.2. Difference from the manuscript
