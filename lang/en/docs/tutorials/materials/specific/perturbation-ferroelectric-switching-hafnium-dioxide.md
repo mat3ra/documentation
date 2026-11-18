@@ -112,6 +112,11 @@ manuscript (left) beside the two structures built here, in Wave with bonds, seen
 
 ![Fig. 1(a) and (c) of the manuscript beside the two structures built here](../../../images/tutorials/materials/defects/perturbation_ferroelectric_switching_hafnium_dioxide/structure-comparison.webp "Initial and S:T switched Pca2₁ HfO₂: manuscript, Fig. 1(a) and (c) (left) vs. this tutorial in Wave, seen along x (right)")
 
+The Wave pictures are taken with [bonds and the orthographic camera]({{ interface_url }}/materials-designer/3d-editor/view/)
+on, [repetitions]({{ interface_url }}/materials-designer/3d-editor/parameters/) 1×2×2, radius 0.25, and the chemical
+connectivity factor 0.95: it bonds the Hf–O pairs (2.03–2.23 Å) and not the Hf–Hf pairs (3.39 Å and up), which the
+default 1.05 also bonds.
+
 In the initial structure the three-fold coordinated O sit 0.1378 c above each Hf plane, in the final structure
 0.1378 c below it; seen along x, the final structure is the initial one mirrored through the Hf plane, as Fig. 1(c).
 
