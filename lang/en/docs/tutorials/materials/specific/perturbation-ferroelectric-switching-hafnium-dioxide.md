@@ -107,10 +107,10 @@ structures, as the nudged elastic band of the simulation tutorial requires.
 
 ## 4. Compare with the manuscript
 
-Section 3 of the notebook shows both structures seen along x. The figure below places Fig. 1(a) and (c) of the
-manuscript (left) beside the two structures built here (right):
+Section 3 of the notebook shows both structures in the Wave viewer. The figure below places Fig. 1(a) and (c) of the
+manuscript (left) beside the two structures built here, in Wave with bonds, seen along x (right):
 
-![Fig. 1(a) and (c) of the manuscript beside the two structures built here](../../../images/tutorials/materials/defects/perturbation_ferroelectric_switching_hafnium_dioxide/structure-comparison.webp "Initial and S:T switched Pca2₁ HfO₂: manuscript, Fig. 1(a) and (c) (left) vs. this tutorial, seen along x (right)")
+![Fig. 1(a) and (c) of the manuscript beside the two structures built here](../../../images/tutorials/materials/defects/perturbation_ferroelectric_switching_hafnium_dioxide/structure-comparison.webp "Initial and S:T switched Pca2₁ HfO₂: manuscript, Fig. 1(a) and (c) (left) vs. this tutorial in Wave, seen along x (right)")
 
 In the initial structure the three-fold coordinated O sit 0.1378 c above each Hf plane, in the final structure
 0.1378 c below it; seen along x, the final structure is the initial one mirrored through the Hf plane, as Fig. 1(c).
