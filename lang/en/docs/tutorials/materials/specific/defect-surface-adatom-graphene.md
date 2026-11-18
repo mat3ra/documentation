@@ -30,11 +30,9 @@ The image shows the adatom on the graphene surface.
 
 ![Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/me_adatom_on_hollow_graphene.webp "Fig. 1. Adatom on Graphene Surface")
 
-## 2. Load and preview Graphene structure
+## 2. Open Materials Designer
 
-First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the Graphene material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
-
-![Standata Graphene Import](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/1-standata-graphene.webp "Standata Graphene Import")
+First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/).
 
 Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create a graphene structure with an adatom on the surface.
 

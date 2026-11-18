@@ -119,7 +119,8 @@ GAMMA_KGRID = [1, 1, 1]  # manuscript: Γ only for the isolated atoms
 SMEARING_SETTINGS = {"occupations": "smearing", "smearing": "gaussian", "degauss": 0.003675}
 # manuscript: dipole correction along z; eamp = 0 keeps the sawtooth a correction, no external field
 DIPOLE_SETTINGS = {"control": {"tefield": True, "dipfield": True}, "system": {"edir": 3, "eamp": 0.0, "eopreg": 0.05}}
-# manuscript: forces below 0.05 eV/Å = 1.9e-3 Ry/Bohr
+# manuscript: forces below 0.05 eV/Å = 1.9e-3 Ry/Bohr, per force component;
+# section 7.2 prints the force norm (all atoms)
 RELAXATION_SETTINGS = {"forc_conv_thr": 1.9e-3, "nstep": 100}
 # manuscript: the adatom relaxes along z only, the C atoms in all directions
 ADATOM_CONSTRAINT = [False, False, True]
@@ -191,26 +192,28 @@ Total magnetization from the manuscript:
 Li on graphene 4x4 hollow: 0.00 μB
 ```
 
+The residual force is Quantum ESPRESSO's total force, the norm over all atoms.
+
 ## 6. Expected results
 
 ### 6.1. Comparison with published results
 
 | | ΔE (eV) | E_max − ΔE (eV) | h (Å) | d_AC (Å) | Total magnetization (μB) |
 |---|---|---|---|---|---|
-| Li, hollow, this tutorial | 1.057 | — | 1.68 | 2.21 | 0.00 |
 | Li, hollow, Chan Tables I and II | 1.096 | — | 1.71 | 2.23 | 0.00 |
-| Li, bridge, this tutorial | `<value>` | `<value>` | `<value>` | `<value>` | `<value>` |
+| Li, hollow, this tutorial | 1.057 | — | 1.68 | 2.21 | 0.00 |
 | Li, bridge, Chan Table I | 0.773 | 0.322 | 1.88 | 2.09 | — |
-| Li, top, this tutorial | `<value>` | `<value>` | `<value>` | `<value>` | `<value>` |
+| Li, bridge, this tutorial | `<value>` | `<value>` | `<value>` | `<value>` | `<value>` |
 | Li, top, Chan Table I | 0.754 | 0.342 | 1.89 | 2.02 | — |
-| Na, hollow, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
+| Li, top, this tutorial | `<value>` | `<value>` | `<value>` | `<value>` | `<value>` |
 | Na, hollow, Chan Tables I and II | 0.462 | — | 2.28 | 2.70 | 0.27 |
-| K, hollow, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
+| Na, hollow, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
 | K, hollow, Chan Tables I and II | 0.802 | — | 2.60 | 2.99 | 0.17 |
-| Sn, top, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
+| K, hollow, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
 | Sn, top, Chan Tables I and II | 0.256 | — | 2.82 | 2.75 | 1.81 |
-| Pd, bridge, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
+| Sn, top, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
 | Pd, bridge, Chan Tables I and II | 1.081 | — | 2.21 | 2.18 | 0.00 |
+| Pd, bridge, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
 
 ## 7. Customization options
 
@@ -254,9 +257,10 @@ If section 5.1 of the notebook prints an empty list of clusters, there is nothin
 
 ### 8.3. Residual force above the threshold
 
-A relaxation that stops on `nstep` ends with forces above the manuscript's 0.05 eV/Å, and Eq. 1 then uses the energy
-of its last ionic step. In order to relax further, raise `nstep` as in section 7.1; the new value applies to the cells
-without a relaxation job.
+A relaxation that stops on `nstep` ends with a force component above the manuscript's 0.05 eV/Å, and Eq. 1 then uses
+the energy of its last ionic step. In order to relax further, raise `nstep` as in section 7.1 and change
+`workflow.name` in section 6 of the notebook: the name does not carry `nstep`, so under the old name the finished
+relaxation job is reused.
 
 ### 8.4. Adsorption energy far from the published value
 
