@@ -13,7 +13,7 @@ hide:
 render_macros: true
 ---
 
-# H-Passivated Silicon Nanowire (Band Gap and DOS)
+# H-Passivated Silicon Nanowire (Band Gap and Density of States)
 
 ## 1. Introduction
 
@@ -59,8 +59,8 @@ The band gap and DOS calculation consists of the following steps:
 
 | | this tutorial | Aradi |
 |---|---|---|
-| Code | Quantum ESPRESSO | DFTB+ for the geometry, CRYSTAL for the band gaps and the bands |
-| Geometry | PBE, variable-cell relaxation of one period: the atoms and the period along the wire | density functional based tight-binding (DFTB), two periods: the atoms and the length along the wire |
+| Code | Quantum ESPRESSO | DFTB+, a density functional based tight-binding (DFTB) code, for the geometry; CRYSTAL for the band gaps and the bands |
+| Geometry | PBE, variable-cell relaxation of one period: the atoms and the period along the wire | DFTB, two periods: the atoms and the length along the wire |
 | Band gaps and bands | HSE06 | one-parameter global hybrid, developed and tested for bulk Si (1.16 eV) |
 | Pseudopotentials | ultrasoft (GBRV) | not stated |
 | Cutoff | 40 / 200 Ry | not stated |
@@ -156,17 +156,11 @@ job's valence-band maximum (VBM) at 0.
 
 ### 6.1. Comparison with published results
 
-| quantity | this tutorial | manuscript |
+| quantity | PBE | manuscript |
 |---|---|---|
-| band gap of the wire | 1.48 eV, direct, VBM and CBM at Γ (PBE) | 2.21 eV, direct (Table II, one-parameter global hybrid) |
+| band gap of the wire | 1.48 eV, direct, VBM and conduction-band minimum (CBM) at Γ | 2.21 eV, direct (Table II, one-parameter global hybrid) |
 
-The first lines give the period along the wire as built and after the PBE relaxation; the lines under "Band gap
-(HSE06)" give this tutorial's gap of the wire, from its band structure job, and of bulk silicon, each direct or
-indirect, with the k-points of the VBM and the conduction-band minimum (CBM) in crystal coordinates, (0, 0, 0) being Γ
-and (0, 0, 0.5) Z for the wire; the lines under "Band gap from the manuscript" give Table II's 2.21 eV, direct, for the
-wire and the manuscript's 1.16 eV, indirect, for bulk silicon.
-
-![Bands and DOS of the H-passivated Si nanowire from the manuscript and this tutorial](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/8-manuscript-vs-ours-bands-dos.webp "DOS (solid), DOS projected on the H atoms (dotted) and bands along Γ–Z of the H-passivated ⟨110⟩ Si nanowire, r = 0.51 nm, −4 to 6 eV, VBM at 0: Aradi et al. 2007, Fig. 8, left (left), and this tutorial, PBE (right)")
+![Bands and DOS of the H-passivated Si nanowire from the manuscript and with PBE](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/8-manuscript-vs-ours-bands-dos.webp "DOS (solid), DOS projected on the H atoms (dotted) and bands along Γ–Z of the H-passivated ⟨110⟩ Si nanowire, r = 0.51 nm, −4 to 6 eV, VBM at 0: Aradi et al. 2007, Fig. 8, left (left), and PBE (right)")
 
 ## 7. Customization options
 
@@ -179,8 +173,13 @@ PBE calculation whose k-points the HSE06 band structure uses, of the DOS of the 
 `QGRID` is the grid of q-points on which the band structure job evaluates the exact exchange, and `KPATH_STEPS` the
 number of steps from Γ to Z. For every listed k-point and every q-point, Quantum ESPRESSO needs k − q among the listed
 k-points. On the grid, this holds when each dimension of `QGRID` divides the one of `BANDS_KGRID`. On the path, it
-holds when `KPATH_STEPS` is even: the q-points of 1×1×4 lie 0.25 apart along the wire, in crystal coordinates, and the
-path points 0.5 / `KPATH_STEPS` apart.
+holds when the third value of `QGRID` divides 2 × `KPATH_STEPS`: the path points lie 0.5 / `KPATH_STEPS` apart along
+the wire, in crystal coordinates, and the q-points 1 / the third value of `QGRID` apart, a whole number of path steps.
+For the default 1×1×4, `KPATH_STEPS` is even.
+
+The notebook reuses a job with the same material, workflow name and k-point grid, so after a change to `QGRID` or
+`KPATH_STEPS` the name of the band structure workflow, set in section 4.2 of the notebook, must change for a new job to
+run.
 
 ### 7.2. Adjust computational resources
 
@@ -203,7 +202,10 @@ If section 5.1 of the notebook prints an empty list of clusters, there is nothin
 
 The manuscript's band gaps come from a one-parameter global hybrid developed and tested for bulk Si, this tutorial's
 from HSE06. The bulk silicon lines of section 8.1 of the notebook compare the two functionals on bulk Si, for which the
-manuscript's hybrid gives 1.16 eV; the wire's pair is read beside the bulk pair.
+manuscript's hybrid gives 1.16 eV; the wire's pair is read beside the bulk pair. The HSE06 gap also depends on the
+q-point grid of the exact exchange: open the band structure and the DOS jobs of the wire, select the
+[Files tab]({{ interface_url }}/jobs/ui/files-tab/), and check that `pw_scf_bands_hse.in` and `pw_scf_hse.in` set
+`input_dft` to `'hse'` and `nqx1`, `nqx2`, `nqx3` to 1, 1 and 4.
 
 ## 9. Interactive JupyterLite notebook
 
