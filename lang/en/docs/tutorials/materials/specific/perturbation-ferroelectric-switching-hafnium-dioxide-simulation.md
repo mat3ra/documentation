@@ -106,8 +106,9 @@ MANUSCRIPT_BARRIER = 0.736
 CLUSTER_NAME = None
 QUEUE_NAME = QueueName.OF
 NODES = 1
-PPN = 60
+PPN = 36
 TIME_LIMIT_HOURS = 4
+MAX_SECONDS = TIME_LIMIT_HOURS * 3600 - 600
 
 APPLICATION_VERSION = "7.5"
 FUNCTIONAL = "pbe"
@@ -178,9 +179,8 @@ These settings differ:
 | Intermediate images | not stated | one | `N_IMAGES` |
 
 With one intermediate image, neb.x starts that image at the midpoint of the straight path between the two relaxed
-materials, with the three-fold coordinated O in the Hf plane (0.0125 Å from it in this tutorial's run). For the S:T
-pathway the manuscript names a monoclinic P2₁/c intermediate in the heterostructure, "similar to that of the bulk
-form" of ref. 24 (p. 3).
+materials, with the three-fold coordinated O in the Hf plane. For the S:T pathway the manuscript names a monoclinic
+P2₁/c intermediate in the heterostructure, "similar to that of the bulk form" of ref. 24 (p. 3).
 
 Which of these settings moves the barrier is not tested here.
 
@@ -196,9 +196,7 @@ reuses the NEB job already run from the same initial material (section 4).
 ### 7.2. Adjust computational resources
 
 The compute settings apply to the relaxations and the NEB: by default, each job runs on one node of the OF queue with
-all of its cores for up to 4 hours, and pw.x and neb.x stop 10 minutes earlier and write their files. On one 36-core
-node of the OR queue, the relaxation of `HfO2 Pca21` took 19 min and the relaxation of `HfO2 Pca21 S:T switched`
-51 min; on 16 cores of an OF node, the NEB took 13 min.
+36 cores for up to 4 hours, and pw.x and neb.x stop 10 minutes earlier and write their files.
 
 ## 8. Troubleshooting
 
@@ -229,7 +227,7 @@ HfO2 Pca21 S:T switched: 12 atoms
 ```
 
 Then view the two relaxed materials on the account along x: they should match Fig. 1(a) and (c), the second the
-first mirrored through the Hf plane, with total energies a few meV apart (1.9 meV in this tutorial's run).
+first mirrored through the Hf plane, with total energies a few meV apart.
 
 ## 9. Interactive JupyterLite notebook
 
