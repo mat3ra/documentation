@@ -214,6 +214,7 @@ nav:
             - H Adatom on Si(100):                                              tutorials/materials/specific/defect-point-adatom-silicon-hydrogen.md
             - H Adatom on Si(100) (Intradimer Diffusion Barrier):               tutorials/materials/specific/defect-point-adatom-silicon-hydrogen-simulation.md
             - Gold Nanoclusters:                                                tutorials/materials/specific/nanocluster-gold.md
+            - Gold Nanoclusters (Energy per Atom):                              tutorials/materials/specific/nanocluster-gold-simulation.md
             - SrTiO3 Slab:                                                      tutorials/materials/specific/slab-strontium-titanate.md
             - SrTiO3 Slab (Surface Energies):                                   tutorials/materials/specific/slab-strontium-titanate-simulation.md
             - Graphene / h-BN Interface:                                        tutorials/materials/specific/interface-2d-2d-graphene-boron-nitride.md
