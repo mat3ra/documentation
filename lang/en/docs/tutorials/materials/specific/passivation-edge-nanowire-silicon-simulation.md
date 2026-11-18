@@ -91,6 +91,7 @@ from mat3ra.ide.compute import QueueName
 ORGANIZATION_NAME = None  # set to your organization name (full or partial); otherwise, your default one is used
 FOLDER = "./uploads"
 WIRE_NAME = "Si nanowire 110 H-passivated one period"  # saved by the structure notebook
+RELAXED_WIRE_NAME = "Si nanowire 110 H-passivated relaxed one period"
 BULK_NAME = "Silicon"  # Standata
 
 APPLICATION_NAME = "espresso"
@@ -124,6 +125,8 @@ RELAX_KGRID = [1, 1, 8]  # manuscript: 1x1x4 on two periods
 BANDS_KGRID = [1, 1, 8]
 QGRID = [1, 1, 4]  # HSE exchange q-grid; each dimension divides the one of BANDS_KGRID
 KPATH_STEPS = 20  # even, so every k − q of the path stays on the path for the 1x1x4 q-grid
+# a job is reused by material, this name and BANDS_KGRID, so rename it after changing QGRID or KPATH_STEPS
+BANDS_WORKFLOW_NAME = "Band Structure HSE06 Si nanowire"
 DOS_KGRID = [1, 1, 8]  # the workflow runs odd dimensions as the next even, so 2x2x8
 BULK_KGRID = [8, 8, 8]
 
@@ -178,8 +181,7 @@ the wire, in crystal coordinates, and the q-points 1 / the third value of `QGRID
 For the default 1×1×4, `KPATH_STEPS` is even.
 
 The notebook reuses a job with the same material, workflow name and k-point grid, so after a change to `QGRID` or
-`KPATH_STEPS` the name of the band structure workflow, set in section 4.2 of the notebook, must change for a new job to
-run.
+`KPATH_STEPS`, `BANDS_WORKFLOW_NAME` in cell 1.3 must change for a new job to run.
 
 ### 7.2. Adjust computational resources
 
@@ -205,7 +207,7 @@ from HSE06. The bulk silicon lines of section 8.1 of the notebook compare the tw
 manuscript's hybrid gives 1.16 eV; the wire's pair is read beside the bulk pair. The HSE06 gap also depends on the
 q-point grid of the exact exchange: open the band structure and the DOS jobs of the wire, select the
 [Files tab]({{ interface_url }}/jobs/ui/files-tab/), and check that `pw_scf_bands_hse.in` and `pw_scf_hse.in` set
-`input_dft` to `'hse'` and `nqx1`, `nqx2`, `nqx3` to 1, 1 and 4.
+`input_dft` to `'hse'` and `nqx1`, `nqx2`, `nqx3` to 1, 1 and 4 with the default grids.
 
 ## 9. Interactive JupyterLite notebook
 
