@@ -62,27 +62,26 @@ ADATOM_CELL_NAME = "{chemical_element} on graphene 4x4 {site}"
 
 PLACEMENT_METHOD = "exact_coordinate"
 
-HOLLOW_SITE_COORDINATE = [1 / 2, 1 / 2]  # in crystal coordinates
-BRIDGE_SITE_COORDINATE = [3 / 8, 1 / 2]  # in crystal coordinates
-TOP_SITE_COORDINATE = [7 / 12, 5 / 12]  # in crystal coordinates
+# hollow: hexagon centre, bridge: C–C midpoint, top: atop a C (manuscript Fig. 2), in crystal coordinates
+SITE_POSITION_BY_NAME = {"hollow": [1 / 2, 1 / 2], "bridge": [3 / 8, 1 / 2], "top": [7 / 12, 5 / 12]}
 
 # distance_z is the height h from Table I of the manuscript, where the relaxation starts.
 # Uncomment the lines to create the defect for the desired adatom.
 ADATOM_PARAMETERS = [
-    {"chemical_element": "Li", "site": "hollow", "distance_z": 1.71, "position_on_surface": HOLLOW_SITE_COORDINATE},
-    {"chemical_element": "Li", "site": "bridge", "distance_z": 1.88, "position_on_surface": BRIDGE_SITE_COORDINATE},
-    {"chemical_element": "Li", "site": "top", "distance_z": 1.89, "position_on_surface": TOP_SITE_COORDINATE},
-    {"chemical_element": "Na", "site": "hollow", "distance_z": 2.28, "position_on_surface": HOLLOW_SITE_COORDINATE},
-    {"chemical_element": "K", "site": "hollow", "distance_z": 2.60, "position_on_surface": HOLLOW_SITE_COORDINATE},
-    # {"chemical_element": "Ca", "site": "hollow", "distance_z": 2.29, "position_on_surface": HOLLOW_SITE_COORDINATE},
-    # {"chemical_element": "Al", "site": "hollow", "distance_z": 2.13, "position_on_surface": HOLLOW_SITE_COORDINATE},
-    # {"chemical_element": "Ga", "site": "hollow", "distance_z": 2.20, "position_on_surface": HOLLOW_SITE_COORDINATE},
-    # {"chemical_element": "In", "site": "hollow", "distance_z": 2.45, "position_on_surface": HOLLOW_SITE_COORDINATE},
-    {"chemical_element": "Sn", "site": "top", "distance_z": 2.82, "position_on_surface": TOP_SITE_COORDINATE},
-    # {"chemical_element": "Ti", "site": "hollow", "distance_z": 1.80, "position_on_surface": HOLLOW_SITE_COORDINATE},
-    # {"chemical_element": "Fe", "site": "hollow", "distance_z": 1.53, "position_on_surface": HOLLOW_SITE_COORDINATE},
-    {"chemical_element": "Pd", "site": "bridge", "distance_z": 2.21, "position_on_surface": BRIDGE_SITE_COORDINATE},
-    # {"chemical_element": "Au", "site": "top", "distance_z": 2.69, "position_on_surface": TOP_SITE_COORDINATE},
+    {"chemical_element": "Li", "site": "hollow", "distance_z": 1.71},
+    {"chemical_element": "Li", "site": "bridge", "distance_z": 1.88},
+    {"chemical_element": "Li", "site": "top", "distance_z": 1.89},
+    {"chemical_element": "Na", "site": "hollow", "distance_z": 2.28},
+    {"chemical_element": "K", "site": "hollow", "distance_z": 2.60},
+    # {"chemical_element": "Ca", "site": "hollow", "distance_z": 2.29},
+    # {"chemical_element": "Al", "site": "hollow", "distance_z": 2.13},
+    # {"chemical_element": "Ga", "site": "hollow", "distance_z": 2.20},
+    # {"chemical_element": "In", "site": "hollow", "distance_z": 2.45},
+    {"chemical_element": "Sn", "site": "top", "distance_z": 2.82},
+    # {"chemical_element": "Ti", "site": "hollow", "distance_z": 1.80},
+    # {"chemical_element": "Fe", "site": "hollow", "distance_z": 1.53},
+    {"chemical_element": "Pd", "site": "bridge", "distance_z": 2.21},
+    # {"chemical_element": "Au", "site": "top", "distance_z": 2.69},
 ]
 ```
 

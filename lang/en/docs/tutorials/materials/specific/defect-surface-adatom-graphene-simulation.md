@@ -121,11 +121,20 @@ SMEARING_SETTINGS = {"occupations": "smearing", "smearing": "gaussian", "degauss
 DIPOLE_SETTINGS = {"control": {"tefield": True, "dipfield": True}, "system": {"edir": 3, "eamp": 0.0, "eopreg": 0.05}}
 # manuscript: forces below 0.05 eV/Å = 1.9e-3 Ry/Bohr
 RELAXATION_SETTINGS = {"forc_conv_thr": 1.9e-3, "nstep": 100}
+# manuscript: the adatom relaxes along z only, the C atoms in all directions
+ADATOM_CONSTRAINT = [False, False, True]
+CARBON_CONSTRAINT = [True, True, True]
 # manuscript: spin-polarized; the clean layer is non-magnetic and runs without spin.
 # C is species 1 in the input and the adatom species 2, which starts with a magnetic moment.
 ADATOM_SPIN_SETTINGS = {"nspin": 2, "starting_magnetization(2)": 0.5}
-# Table II μ_A: total magnetization of each isolated atom in μB; an atom with 0 runs without spin
-ATOM_MAGNETIZATION_BY_ELEMENT = {"Li": 1, "Na": 1, "K": 1, "Sn": 2, "Pd": 0}
+# Table II μ_A: total magnetization of each isolated atom in μB; Pd (μ_A = 0) runs without spin
+ATOM_SPIN_SETTINGS_BY_ELEMENT = {
+    "Li": {"nspin": 2, "tot_magnetization": 1},
+    "Na": {"nspin": 2, "tot_magnetization": 1},
+    "K": {"nspin": 2, "tot_magnetization": 1},
+    "Sn": {"nspin": 2, "tot_magnetization": 2},
+    "Pd": {},
+}
 MODEL_TAG = f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry g{SMEARING_SETTINGS['degauss']}"
 
 SCF_UNIT = "pw_scf"
@@ -148,39 +157,35 @@ atoms.
 The output comes in two groups: the residual force each relaxation ended with, one line per cell; then, one line per
 adatom cell, the adsorption energy from Eq. 1, the energy below the favored site (E_max − ΔE), h, d_AC and the total
 magnetization. Each quantity of the second group is printed twice: the notebook's own values first, then the same lines
-headed "… from the manuscript" with the values of Tables I and II. E_max − ΔE is printed for the cells that bind less
-than another active cell of the same element, such as Li on the bridge and top sites; the default run, with the clean
-layer and Li on the hollow site, prints its headers only:
+headed "… from the manuscript" with the values of Tables I and II. E_max − ΔE is printed for Li on the bridge and top
+sites when Li on the hollow site, the favored site in Table I, is active too; the default run, with the clean layer and
+Li on the hollow site, prints the other four quantities:
 
 ```
 Residual force after relaxation:
-Graphene 4x4: <value> eV/angstrom
-Li on graphene 4x4 hollow: <value> eV/angstrom
+Graphene 4x4: 0.0004 eV/angstrom
+Li on graphene 4x4 hollow: 0.0622 eV/angstrom
 
 Adsorption energy:
-Li on graphene 4x4 hollow: <value> eV
+Li on graphene 4x4 hollow: 1.057 eV
 
 Adsorption energy from the manuscript:
 Li on graphene 4x4 hollow: 1.096 eV
 
-Adsorption energy below the favored site (E_max − ΔE):
-
-Adsorption energy below the favored site (E_max − ΔE) from the manuscript:
-
 Adatom height above the C plane:
-Li on graphene 4x4 hollow: <value> Å
+Li on graphene 4x4 hollow: 1.68 Å
 
 Adatom height above the C plane from the manuscript:
 Li on graphene 4x4 hollow: 1.71 Å
 
 Nearest adatom–C distance:
-Li on graphene 4x4 hollow: <value> Å
+Li on graphene 4x4 hollow: 2.21 Å
 
 Nearest adatom–C distance from the manuscript:
 Li on graphene 4x4 hollow: 2.23 Å
 
 Total magnetization:
-Li on graphene 4x4 hollow: <value> μB
+Li on graphene 4x4 hollow: 0.00 μB
 
 Total magnetization from the manuscript:
 Li on graphene 4x4 hollow: 0.00 μB
@@ -192,20 +197,20 @@ Li on graphene 4x4 hollow: 0.00 μB
 
 | | ΔE (eV) | E_max − ΔE (eV) | h (Å) | d_AC (Å) | Total magnetization (μB) |
 |---|---|---|---|---|---|
+| Li, hollow, this tutorial | 1.057 | — | 1.68 | 2.21 | 0.00 |
 | Li, hollow, Chan Tables I and II | 1.096 | — | 1.71 | 2.23 | 0.00 |
-| Li, hollow, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
-| Li, bridge, Chan Table I | 0.773 | 0.322 | 1.88 | 2.09 | — |
 | Li, bridge, this tutorial | `<value>` | `<value>` | `<value>` | `<value>` | `<value>` |
-| Li, top, Chan Table I | 0.754 | 0.342 | 1.89 | 2.02 | — |
+| Li, bridge, Chan Table I | 0.773 | 0.322 | 1.88 | 2.09 | — |
 | Li, top, this tutorial | `<value>` | `<value>` | `<value>` | `<value>` | `<value>` |
-| Na, hollow, Chan Tables I and II | 0.462 | — | 2.28 | 2.70 | 0.27 |
+| Li, top, Chan Table I | 0.754 | 0.342 | 1.89 | 2.02 | — |
 | Na, hollow, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
-| K, hollow, Chan Tables I and II | 0.802 | — | 2.60 | 2.99 | 0.17 |
+| Na, hollow, Chan Tables I and II | 0.462 | — | 2.28 | 2.70 | 0.27 |
 | K, hollow, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
-| Sn, top, Chan Tables I and II | 0.256 | — | 2.82 | 2.75 | 1.81 |
+| K, hollow, Chan Tables I and II | 0.802 | — | 2.60 | 2.99 | 0.17 |
 | Sn, top, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
-| Pd, bridge, Chan Tables I and II | 1.081 | — | 2.21 | 2.18 | 0.00 |
+| Sn, top, Chan Tables I and II | 0.256 | — | 2.82 | 2.75 | 1.81 |
 | Pd, bridge, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
+| Pd, bridge, Chan Tables I and II | 1.081 | — | 2.21 | 2.18 | 0.00 |
 
 ## 7. Customization options
 
@@ -221,8 +226,9 @@ without a job.
 ### 7.2. Adjust computational resources
 
 `QUEUE_NAME`, `PPN` and `TIME_LIMIT` in cell 1.3 set the queue, the cores and the time limit of every job. The default,
-`CLUSTER_NAME = None`, uses the account's first listed cluster; setting a specific name picks that cluster instead,
-and a name that is not available makes the notebook stop and list the ones that are.
+`CLUSTER_NAME = "001"`, picks the cluster whose name contains `001`; another name picks that cluster instead,
+`CLUSTER_NAME = None` uses the account's first listed cluster, and a name that is not available makes the notebook stop
+and list the ones that are.
 
 ### 7.3. Use the manuscript's settings
 
