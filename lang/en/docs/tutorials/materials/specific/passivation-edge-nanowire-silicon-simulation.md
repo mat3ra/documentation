@@ -156,7 +156,9 @@ job's valence-band maximum (VBM) at 0.
 
 ### 6.1. Comparison with published results
 
-<!-- RESULTS: the output of sections 7.1 and 8.1 of the executed notebook, verbatim, in a fenced block -->
+| quantity | this tutorial | manuscript |
+|---|---|---|
+| band gap of the wire | 1.48 eV, direct, VBM and CBM at Γ (PBE) | 2.21 eV, direct (Table II, one-parameter global hybrid) |
 
 The first lines give the period along the wire as built and after the PBE relaxation; the lines under "Band gap
 (HSE06)" give this tutorial's gap of the wire, from its band structure job, and of bulk silicon, each direct or
@@ -164,7 +166,7 @@ indirect, with the k-points of the VBM and the conduction-band minimum (CBM) in 
 and (0, 0, 0.5) Z for the wire; the lines under "Band gap from the manuscript" give Table II's 2.21 eV, direct, for the
 wire and the manuscript's 1.16 eV, indirect, for bulk silicon.
 
-<!-- RESULTS: ![Bands and DOS of the H-passivated Si nanowire from the manuscript and this tutorial](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/8-manuscript-vs-ours-bands-dos.webp "DOS (solid), DOS projected on the H atoms (dotted) and bands along Γ–Z of the H-passivated ⟨110⟩ Si nanowire, r = 0.51 nm, −4 to 6 eV, VBM at 0: Aradi et al. 2007, Fig. 8, left (left), and this tutorial, HSE06 (right)") -->
+![Bands and DOS of the H-passivated Si nanowire from the manuscript and this tutorial](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/8-manuscript-vs-ours-bands-dos.webp "DOS (solid), DOS projected on the H atoms (dotted) and bands along Γ–Z of the H-passivated ⟨110⟩ Si nanowire, r = 0.51 nm, −4 to 6 eV, VBM at 0: Aradi et al. 2007, Fig. 8, left (left), and this tutorial, PBE (right)")
 
 ## 7. Customization options
 
