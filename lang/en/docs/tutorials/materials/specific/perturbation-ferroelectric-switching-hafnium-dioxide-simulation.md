@@ -118,7 +118,7 @@ ECUTRHO = 200  # Ry
 KGRID = [6, 6, 6]
 KGRID_SHIFTS = [1, 1, 1]
 QE_SYSTEM_SETTINGS = {"nspin": 1, "degauss": 0.005}
-RELAXATION_SETTINGS = {"max_seconds": MAX_SECONDS}
+RELAXATION_SETTINGS = {"forc_conv_thr": 1e-3, "max_seconds": MAX_SECONDS}
 N_IMAGES = 1
 NEB_PATH_SETTINGS = {"nstep_path": 50, "minimum_image": True}
 ```
