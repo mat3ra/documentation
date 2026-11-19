@@ -146,19 +146,14 @@ Largest image error, S:T path: 0.089 eV/Å
 
 ## 6. Expected results
 
-Table 1 of the manuscript (p. 4) lists the energy barrier heights of the uniform polarization reversal per unit cell
-of four Hf and eight O atoms (u.c.). For the S:T pathway in bulk it gives 0.736 eV/u.c. with the cell fixed and
-0.432 eV/u.c. from the variable-cell NEB, both taken from ref. 24, and 0.181 eV/u.c. in the Ni/HfO₂/Ni
-heterostructure. The manuscript shows no bulk S:T energy profile.
+Table 1 of the manuscript (p. 4) gives the barrier of the uniform polarization reversal along the S:T pathway in bulk,
+with the cell fixed, as 0.736 eV per unit cell of four Hf and eight O atoms (u.c.).
 
 ### 6.1. Comparison with published results
 
 | | Mu et al., Table 1 | This tutorial |
 |---|---|---|
 | S:T barrier, bulk, fixed cell | 0.736 eV/u.c. (from ref. 24) | 0.684 eV/u.c. |
-| S:T barrier, bulk, variable cell | 0.432 eV/u.c. (from ref. 24) | not computed: the platform's NEB keeps the cell fixed |
-| S:T barrier, Ni/HfO₂/Ni heterostructure | 0.181 eV/u.c. | not computed |
-| Largest NEB image error | not stated | 0.089 eV/Å |
 
 The figure below shows the energy profile of the NEB computed here, with the manuscript's barrier, 0.736 eV/u.c., as a
 gray square at the reaction coordinate of the highest image:
@@ -171,68 +166,17 @@ These settings differ:
 
 | Setting | Mu et al. | This tutorial | Parameter to change |
 |---|---|---|---|
-| Source of the bulk barrier | Wu et al. 2023, ref. 24 (Table 1, p. 4) | this tutorial's NEB | — |
 | Code, pseudopotentials | VASP, PAW (p. 6) | Quantum ESPRESSO, GBRV ultrasoft | — |
 | Cutoff | 500 eV (p. 6) | 40 / 200 Ry | `ECUTWFC`, `ECUTRHO` |
 | Lattice | 5.256 × 5.046 × 5.073 Å, the manuscript's PBE calculation (p. 6) | 5.2195 × 5.0048 × 5.0327 Å, Standata mp-685097 | — |
 | Smearing | not stated | 0.005 Ry | `degauss` in `QE_SYSTEM_SETTINGS` |
 | Intermediate images | not stated | one | `N_IMAGES` |
 
-With one intermediate image, neb.x starts that image at the midpoint of the straight path between the two relaxed
-materials, with the three-fold coordinated O in the Hf plane. For the S:T pathway the manuscript names a monoclinic
-P2₁/c intermediate in the heterostructure, "similar to that of the bulk form" of ref. 24 (p. 3).
-
-Which of these settings moves the barrier is not tested here.
-
 ## 7. Customization options
 
-### 7.1. Choose the number of images
+`N_IMAGES` sets the number of intermediate images between the two relaxed materials.
 
-`N_IMAGES` sets the number of intermediate images between the two relaxed materials. neb.x stops after `nstep_path`
-iterations of `NEB_PATH_SETTINGS`, converged or not, and the path is converged when the largest NEB image error is
-below 0.1 eV/Å. The cost grows with `N_IMAGES` and with `KGRID`. A new `KGRID` starts new relaxation and NEB jobs; a new `N_IMAGES`
-reuses the NEB job already run from the same initial material (section 4).
-
-### 7.2. Adjust computational resources
-
-The compute settings apply to the relaxations and the NEB: by default, each job runs on one node of the OF queue with
-36 cores for up to 4 hours (`TIME_LIMIT_HOURS`), and pw.x and neb.x stop 10 minutes earlier and write their files.
-The default, `CLUSTER_NAME = None`, uses the account's first listed cluster; setting it to a cluster's full host name
-uses that cluster without listing. `NODES` and `PPN` set the job's size; 36 cores fit every cluster's OF node, and on
-cluster-001 `PPN` can be raised to 60.
-
-## 8. Troubleshooting
-
-### 8.1. Material not found
-
-If one of the two materials is not found in the `uploads` folder or the account's materials collection, run
-the [Ferroelectric Switching of HfO₂ along the S:T Pathway](perturbation-ferroelectric-switching-hafnium-dioxide.md)
-tutorial first, and check that its `uploads` folder holds the two materials under the names of section 1.
-
-### 8.2. No cluster available
-
-If section 5 of the notebook prints an empty list of clusters, there is nothing to submit to. A cluster has to be
-available to the account before the notebook can run.
-
-### 8.3. No barrier on the first run
-
-The platform's access token lasts one hour and can expire while the notebook waits for the relaxation and NEB jobs.
-The jobs keep running. Restart the kernel and run all cells again (*Kernel* > *Restart Kernel and Run All Cells*):
-the notebook asks for a new login and picks up the running and finished jobs.
-
-### 8.4. Barrier far from the published value
-
-Check the atom counts printed in section 3 of the notebook first:
-
-```
-HfO2 Pca21: 12 atoms
-HfO2 Pca21 S:T switched: 12 atoms
-```
-
-Then view the two relaxed materials on the account along x: they should match Fig. 1(a) and (c), the second the
-first mirrored through the Hf plane, with total energies a few meV apart.
-
-## 9. Interactive JupyterLite notebook
+## 8. Interactive JupyterLite notebook
 
 The following JupyterLite notebook demonstrates the workflow for calculating the S:T polarization switching barrier
 of Pca2₁ HfO₂. Select *Run* > *Run All Cells*.
@@ -245,4 +189,4 @@ of Pca2₁ HfO₂. Select *Run* > *Run All Cells*.
 {% endwith %}
 {% endwith %}
 
-## 10. References
+## 9. References

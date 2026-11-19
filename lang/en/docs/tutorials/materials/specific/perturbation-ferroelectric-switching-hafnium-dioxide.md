@@ -33,8 +33,7 @@ The manuscript names the pathways of the 180° polarization reversal by the way 
 (p. 2): "the three-fold coordinated O shifting through (denoted by T) or not through (denoted by N) Hf-atomic planes
 along the polarization (z-) direction leads to opposite polarization reversals. And as seen along the x-direction, the
 polarization reversal may be realized by the straight z-direction shifting of three-fold coordinated O (denoted by S)
-or the z-direction shifting of three-fold coordinated O accompanied with crosswise displacements along the y-direction
-(denoted by C)".
+[...]".
 
 Fig. 1 of the manuscript shows the unit cell, four Hf and eight O atoms, seen along x: the initial state (a) and the
 final states (b)–(g). The S:T pathway takes (a) to (c), along the green arrows of (c).
@@ -94,8 +93,7 @@ The notebook builds the final structure from the initial one in two steps.
 ### 3.1. Find the three-fold coordinated O
 
 Section 2.1 of the notebook counts, for every O atom, the Hf atoms within `NEIGHBOR_RADIUS`, periodic images
-included. Four O atoms have three Hf neighbors and four have four; all O–Hf bonds are 2.02–2.23 Å long, and the nearest
-other Hf is 3.25 Å away, so a 2.5 Å radius counts the bonded Hf only.
+included. Four O atoms have three Hf neighbors and four have four.
 
 ### 3.2. Shift them through the Hf plane
 
@@ -114,18 +112,13 @@ manuscript (left) beside the two structures built here, in Wave with bonds, seen
 
 The Wave pictures are taken with [bonds and the orthographic camera]({{ interface_url }}/materials-designer/3d-editor/view/)
 on, [repetitions]({{ interface_url }}/materials-designer/3d-editor/parameters/) 1×2×2, radius 0.25, and the chemical
-connectivity factor 0.95: it bonds the Hf–O pairs (2.02–2.23 Å) and not the Hf–Hf pairs (3.39 Å and up), which the
-default 1.05 also bonds.
-
-In the initial structure the three-fold coordinated O sit 0.1378 c above each Hf plane, in the final structure
-0.1378 c below it; seen along x, the final structure is the initial one mirrored through the Hf plane, as Fig. 1(c).
+connectivity factor 0.95.
 
 
 ## 5. Pass the materials to Materials Designer
 
-Section 4 of the notebook sends `HfO2 Pca21` and `HfO2 Pca21 S:T switched` to the environment. In JupyterLite they
-are passed to Materials Designer, where they can be saved on the platform; in a local Jupyter session they are written
-to the `uploads` folder.
+Section 4 of the notebook passes two materials and writes them to the `uploads` folder: `HfO2 Pca21` and
+`HfO2 Pca21 S:T switched`.
 
 
 ## 6. Interactive JupyterLite notebook
