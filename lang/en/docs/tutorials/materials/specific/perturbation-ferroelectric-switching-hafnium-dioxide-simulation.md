@@ -160,10 +160,10 @@ heterostructure. The manuscript shows no bulk S:T energy profile.
 | S:T barrier, Ni/HfO₂/Ni heterostructure | 0.181 eV/u.c. | not computed |
 | Largest NEB image error | not stated | 0.089 eV/Å |
 
-The figure below shows the energy profile of the NEB computed here, with the manuscript's 0.736 eV/u.c. as a dashed
-line:
+The figure below shows the energy profile of the NEB computed here and the manuscript's barrier, 0.736 eV/u.c., as a
+single gray point beside the highest image; the manuscript gives the barrier height only:
 
-![S:T energy profile of Pca2₁ HfO₂](../../../images/tutorials/materials/defects/perturbation_ferroelectric_switching_hafnium_dioxide/energy-profile-comparison.webp "S:T polarization reversal of Pca2₁ HfO₂: climbing-image NEB, this tutorial; dashed line, Mu et al., Table 1, 0.736 eV/u.c.")
+![S:T energy profile of Pca2₁ HfO₂](../../../images/tutorials/materials/defects/perturbation_ferroelectric_switching_hafnium_dioxide/energy-profile-comparison.webp "S:T polarization reversal of Pca2₁ HfO₂: climbing-image NEB, this tutorial; gray point, Mu et al., Table 1, barrier 0.736 eV/u.c.")
 
 ### 6.2. Difference from the manuscript
 
