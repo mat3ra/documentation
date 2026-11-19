@@ -80,7 +80,8 @@ the settings behind it; the right column lists the manuscript's own settings (Me
 | Transition state | climbing image, one intermediate image, path threshold 0.1 eV/Å | climbing-image NEB, number of images not stated |
 
 A material already relaxed with the same `KGRID`, or still relaxing, is reused, and so is an NEB job of the same path
-from the same initial material that is queued, running or finished with the same `KGRID`.
+from the same initial material that is queued, running or finished with the same `KGRID`, also when the application
+version or a setting of cell 1.4, `N_IMAGES` included, has changed.
 
 ## 5. Step-by-step instructions
 
@@ -136,7 +137,7 @@ The notebook submits the two relaxations, then the NEB, and polls each job on th
 
 ### 5.5. Analyze results
 
-The last cells print the barrier beside the manuscript's value, with the largest image error of the converged path,
+The last cells print the barrier beside the manuscript's value, with the largest image error of the final path,
 and plot the energy profile:
 
 ```
