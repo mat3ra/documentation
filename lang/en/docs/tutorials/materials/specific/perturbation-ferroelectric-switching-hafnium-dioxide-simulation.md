@@ -125,7 +125,7 @@ NEB_PATH_SETTINGS = {"nstep_path": 50, "minimum_image": True}
 
 ### 5.3. Run the notebook
 
-Execute all cells by selecting *Run* > *Run All* from the menu.
+Execute all cells by selecting *Run* > *Run All Cells* from the menu.
 
 The notebook first [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md),
 then runs the steps listed in section 3.
@@ -153,9 +153,9 @@ with the cell fixed, as 0.736 eV per unit cell of four Hf and eight O atoms (u.c
 
 | | Mu et al., Table 1 | This tutorial |
 |---|---|---|
-| S:T barrier, bulk, fixed cell | 0.736 eV/u.c. (from ref. 24) | 0.684 eV/u.c. |
+| S:T barrier, bulk, fixed cell | 0.736 eV/u.c. (from Wu et al. 2023) | 0.684 eV/u.c. |
 
-The figure below shows the energy profile of the NEB computed here, with the manuscript's barrier, 0.736 eV/u.c., as a
+The figure below shows the energy profile of the NEB computed here, with the manuscript's barrier as a
 gray square at the reaction coordinate of the highest image:
 
 ![S:T energy profile of Pca2₁ HfO₂](../../../images/tutorials/materials/defects/perturbation_ferroelectric_switching_hafnium_dioxide/energy-profile-comparison.webp "S:T polarization reversal of Pca2₁ HfO₂: blue line, climbing-image NEB of this tutorial, barrier 0.684 eV/u.c.; gray square, Mu et al., Table 1, barrier 0.736 eV/u.c.")
@@ -172,11 +172,7 @@ These settings differ:
 | Smearing | not stated | 0.005 Ry | `degauss` in `QE_SYSTEM_SETTINGS` |
 | Intermediate images | not stated | one | `N_IMAGES` |
 
-## 7. Customization options
-
-`N_IMAGES` sets the number of intermediate images between the two relaxed materials.
-
-## 8. Interactive JupyterLite notebook
+## 7. Interactive JupyterLite notebook
 
 The following JupyterLite notebook demonstrates the workflow for calculating the S:T polarization switching barrier
 of Pca2₁ HfO₂. Select *Run* > *Run All Cells*.
@@ -189,4 +185,4 @@ of Pca2₁ HfO₂. Select *Run* > *Run All Cells*.
 {% endwith %}
 {% endwith %}
 
-## 9. References
+## 8. References
