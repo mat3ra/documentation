@@ -26,9 +26,9 @@ This tutorial demonstrates the process of creating a graphene structure with an 
 
 We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create a graphene structure with a metal adatom on the surface.
 
-The image shows the adatom on the graphene surface.
+The image shows Li on the hollow site of the 4×4 graphene cell, 2×2 cells seen from above: Fig. 1 of the manuscript (left) and the cell this tutorial builds, in Wave (right).
 
-![Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/me_adatom_on_hollow_graphene.webp "Fig. 1. Adatom on Graphene Surface")
+![Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/structure-comparison.webp "Li on the hollow site of 4×4 graphene: manuscript Fig. 1 and this tutorial")
 
 ## 2. Open Materials Designer
 
@@ -83,7 +83,7 @@ ADATOM_PARAMETERS = [
 ]
 ```
 
-The notebook loads graphene from Standata by `MATERIAL_NAME`. Removing the vacuum leaves a 1 Å cell height, and `VACUUM` adds 14 Å to it, so every cell is 15 Å high, as in the manuscript. `distance_z` in `ADATOM_PARAMETERS` is the height above the C plane from Table I of the manuscript, where the relaxation starts.
+The notebook loads graphene from Standata by `MATERIAL_NAME`. Removing the vacuum leaves a 1 Å cell height, and `VACUUM` adds 14 Å to it, so every cell is 15 Å high, as in the manuscript, with the C plane in the middle of the cell. `distance_z` in `ADATOM_PARAMETERS` is the height above the C plane from Table I of the manuscript, where the relaxation starts.
 
 ### 3.3. Run the notebook
 
