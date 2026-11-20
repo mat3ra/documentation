@@ -203,17 +203,9 @@ The residual force is Quantum ESPRESSO's total force, the norm over all atoms.
 | Li, hollow, Chan Tables I and II | 1.096 | — | 1.71 | 2.23 | 0.00 |
 | Li, hollow, this tutorial | 1.057 | — | 1.68 | 2.21 | 0.00 |
 | Li, bridge, Chan Table I | 0.773 | 0.322 | 1.88 | 2.09 | — |
-| Li, bridge, this tutorial | `<value>` | `<value>` | `<value>` | `<value>` | `<value>` |
+| Li, bridge, this tutorial | 0.732 | 0.325 | 1.86 | 2.06 | 0.00 |
 | Li, top, Chan Table I | 0.754 | 0.342 | 1.89 | 2.02 | — |
-| Li, top, this tutorial | `<value>` | `<value>` | `<value>` | `<value>` | `<value>` |
-| Na, hollow, Chan Tables I and II | 0.462 | — | 2.28 | 2.70 | 0.27 |
-| Na, hollow, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
-| K, hollow, Chan Tables I and II | 0.802 | — | 2.60 | 2.99 | 0.17 |
-| K, hollow, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
-| Sn, top, Chan Tables I and II | 0.256 | — | 2.82 | 2.75 | 1.81 |
-| Sn, top, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
-| Pd, bridge, Chan Tables I and II | 1.081 | — | 2.21 | 2.18 | 0.00 |
-| Pd, bridge, this tutorial | `<value>` | — | `<value>` | `<value>` | `<value>` |
+| Li, top, this tutorial | 0.713 | 0.343 | 1.85 | 1.98 | 0.00 |
 
 ## 7. Customization options
 
