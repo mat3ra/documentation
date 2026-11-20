@@ -173,11 +173,11 @@ job's valence-band maximum (VBM) at 0.
 
 ### 6.1. Comparison with published results
 
-| quantity | PBE | manuscript |
+| quantity | this tutorial | manuscript |
 |---|---|---|
-| band gap of the wire | 1.48 eV, direct, VBM and conduction-band minimum (CBM) at Γ | 2.21 eV, direct (Table II, one-parameter global hybrid) |
+| band gap of the wire | 1.48 eV, direct (PBE) | 2.21 eV, direct (one-parameter global hybrid, Table II) |
 
-![Bands and DOS of the H-passivated Si nanowire from the manuscript and with PBE](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/8-manuscript-vs-ours-bands-dos.webp "DOS (solid), DOS projected on the H atoms (dotted) and bands along Γ–Z of the H-passivated ⟨110⟩ Si nanowire, r = 0.51 nm, −4 to 6 eV, VBM at 0: Aradi et al. 2007, Fig. 8, left (left), and PBE (right)")
+![Bands and DOS of the H-passivated Si nanowire from the manuscript and this tutorial](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/8-manuscript-vs-ours-bands-dos.webp "DOS (solid), DOS projected on the H atoms (dotted) and bands along Γ–Z of the H-passivated ⟨110⟩ Si nanowire, r = 0.51 nm, −4 to 6 eV, VBM at 0: Aradi et al. 2007, Fig. 8, left (left), and this tutorial, PBE (right)")
 
 ## 7. Customization options
 
