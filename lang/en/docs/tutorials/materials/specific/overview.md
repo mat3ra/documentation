@@ -169,6 +169,14 @@ This document provides a comprehensive catalog of materials science tutorials or
 
 ![Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/me_adatom_on_hollow_graphene.webp "Fig. 1. Adatom on Graphene Surface"){ style="max-height:500px;width:auto;" }
 
+##### 3.1.3.2. H Adatom on Si(100) <span class="btn badge b-info border-50">D-2D-ADA</span>
+
+**Structure**: [Create H Adatom on Si(100)](defect-point-adatom-silicon-hydrogen.md)  
+**Properties**: [Calculate Intradimer Diffusion Barrier of H on Si(100)](defect-point-adatom-silicon-hydrogen-simulation.md)  
+**DOI**: [10.1103/PhysRevB.57.13295](https://doi.org/10.1103/PhysRevB.57.13295){:target='_blank'} [@Hansen1998]
+
+![H Adatom on Si(100)](../../../images/tutorials/materials/defects/defect_point_adatom_silicon_hydrogen/0-figure-from-manuscript.webp "Diffusion paths of an H adatom on Si(100)2×1, Fig. 1."){ style="max-height:500px;width:auto;" }
+
 #### 3.1.4. Grain Boundary Planar
 
 ##### 3.1.4.1. Grain Boundary in h-BN <span class="btn badge b-info border-50">D-2D-GBP</span>
@@ -265,7 +273,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 4.2.1.1. H-Passivated Silicon (100) Surface <span class="btn badge b-info border-50">X-2D-PAS</span>
 
 **Structure**: [Create H-Passivated Si(100) Surface](passivation-surface-silicon.md)  
-**Properties**: Calculate H and D diffusion barriers, reaction and desorption barriers (Coming Soon)  
+**Properties**: Calculate [H and D diffusion barriers](defect-point-adatom-silicon-hydrogen-simulation.md), reaction and desorption barriers (Coming Soon)  
 **DOI**: [10.1103/PhysRevB.57.13295](https://doi.org/10.1103/PhysRevB.57.13295){:target='_blank'} [@Hansen1998; @Northrup1991; @Boland1990]
 
 ![Si(100) H-Passivated Surface](../../../images/tutorials/materials/passivation/passivation_surface_silicon/0-figure-from-manuscript.webp "H-Passivated Silicon (100)"){ style="max-height:500px;width:auto;" }
