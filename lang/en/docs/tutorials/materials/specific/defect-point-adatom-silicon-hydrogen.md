@@ -83,7 +83,6 @@ The parameters are used as follows:
 - `MATERIAL_NAME` loads Standata's reconstructed slab: eight Si layers and one dimer per 7.734 × 3.867 Å cell, with the dimer buckled by 0.65 Å
 - `SUPERCELL_MATRIX` repeats it 2×2: 64 Si in a 15.468 × 7.734 × 21.875 Å cell, two dimer rows of two dimers each; the commented 3×3 gives 144 Si, as in the manuscript (Sec. IV), in a 23.202 × 11.601 Å cell
 - `PASSIVANT`, `BOND_LENGTH`, `SURFACE`, `SHADOWING_RADIUS` and `DEPTH` cap the dangling bond of each top-face dimer atom with an H, 1.46 Å straight up: 8 H on the 2×2 slab; the bottom face stays bare
-- `SITE_BY_MATERIAL_NAME` names each material and gives the Cartesian (x, y) of the Si atom its H caps; each material keeps that H and none of the other seven
 
 ### 3.2. Run the notebook
 

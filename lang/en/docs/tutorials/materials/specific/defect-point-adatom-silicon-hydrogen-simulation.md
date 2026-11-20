@@ -77,6 +77,10 @@ The barrier calculation consists of the following steps:
 | Transition state | climbing image, one intermediate image, path threshold 0.1 eV/Å | maximum along the saddle line of a map of height-minimised energies |
 | Relaxation | all atoms, force components below 10⁻³ Ry/Bohr | all Si atoms and the H height, forces below 10⁻⁴ eV/Å |
 
+A material already relaxed, or still relaxing, with the same `KGRID` is not relaxed again, and an NEB already
+finished, or still running, for the same path from the same relaxed start with the same `KGRID` is not run again,
+even when other settings have changed.
+
 ## 5. Step-by-step instructions
 
 ### 5.1. Open the notebook
@@ -144,21 +148,20 @@ The last cells print the results of each path beside the manuscript's values and
 
 Table V of the manuscript gives the relaxed intradimer barrier, path (a) of Fig. 1, as 1.1 eV with its classical
 potential, and quotes 1.2 eV from the local density approximation (LDA) of Vittadini et al. (1993) and 1.9 eV from
-the generalized gradient approximation (GGA) of Nachtigall and Jordan (1995). Along this path the dimer bond
-stretches from 2.37 Å to 3.23 Å (p. 13298).
+the generalized gradient approximation (GGA) of Nachtigall and Jordan (1995). In the manuscript, the dimer bond
+stretches along this path from 2.37 Å to 3.23 Å (p. 13298).
 
-The notebook prints the barrier from the start and from the end; its dimer bond at the saddle is the distance between
-the two Si atoms nearest the H at the climbing image.
+The dimer bond at the saddle is the distance between the two Si atoms nearest the H at the climbing image.
 
 ### 6.1. Comparison with published results
 
 The intradimer run prints:
 
 ```
-Intradimer barrier, relaxed, from the start: 1.29 eV, from the end: 1.27 eV, Hansen & Vogl 1998: 1.1 eV; Vittadini et al. 1993 (LDA) 1.2, Nachtigall & Jordan 1995 (GGA) 1.9, via Hansen & Vogl Table V
+Intradimer barrier, relaxed, from the start: 1.29 eV, from the end: 1.27 eV, Hansen & Vogl 1998: 1.1 eV; Vittadini et al. 1993 (LDA): 1.2 eV, Nachtigall & Jordan 1995 (GGA): 1.9 eV, via Hansen & Vogl Table V
 Largest image error, intradimer path: 0.097 eV/Å
 Two Si nearest the H at the climbing image, intradimer path: 1.73 Å and 1.81 Å
-Dimer bond at the saddle, H on Si(100): 2.32 Å, Hansen & Vogl 1998: 3.23 Å
+Dimer bond at the saddle, intradimer path: 2.32 Å, Hansen & Vogl 1998: 3.23 Å
 ```
 
 The figure below shows the energy profile of the NEB computed here, with the manuscript's barrier as a gray square
