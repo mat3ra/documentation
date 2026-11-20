@@ -55,6 +55,7 @@ Step-by-step recipes reproducing published work, one row per publication: the st
 | Eglitis et al. (2008)[^18]        | Slab                      | [SrTiO3](tutorials/materials/specific/slab-strontium-titanate.md) | [Surface energy](tutorials/materials/specific/slab-strontium-titanate-simulation.md) |
 | Muller et al. (1999)[^19]         | High-k metal gate stack   | [Si/SiO2/HfO2/TiN](tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md) | Band structure, valence band offset (Coming Soon) |
 | Thompson-Flagg et al. (2009)[^20] | Ripple perturbation       | [Graphene](tutorials/materials/specific/perturbation-ripples-graphene.md) | Coming Soon |
+| Mu et al. (2025)[^25]             | Ferroelectric switching   | [HfO2](tutorials/materials/specific/perturbation-ferroelectric-switching-hafnium-dioxide.md) | [Switching barrier](tutorials/materials/specific/perturbation-ferroelectric-switching-hafnium-dioxide-simulation.md) |
 | Frolov et al. (2013)[^21]         | Grain boundary (3D)       | [Cu (FCC)](tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md) | Defect energy per atom (Coming Soon) |
 | Li et al. (2015)[^22]             | Grain boundary (2D)       | [h-BN](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride.md) | [Band gap and local density of states](tutorials/materials/specific/defect-planar-grain-boundary-2d-boron-nitride-simulation.md) |
 
@@ -82,6 +83,7 @@ Step-by-step recipes reproducing published work, one row per publication: the st
 [^22]: Li et al., Nano Lett. 15, 5804 (2015). [DOI](https://doi.org/10.1021/acs.nanolett.5b01852){:target='_blank'}
 [^23]: Van de Walle et al., Phys. Rev. B 34, 5621 (1986). [DOI](https://doi.org/10.1103/PhysRevB.34.5621){:target='_blank'}
 [^24]: Hinuma et al., Phys. Rev. B 90, 155405 (2014). [DOI](https://doi.org/10.1103/PhysRevB.90.155405){:target='_blank'}
+[^25]: Mu et al., npj Comput. Mater. 11, 126 (2025). [DOI](https://doi.org/10.1038/s41524-025-01633-2){:target='_blank'}
 
 
 

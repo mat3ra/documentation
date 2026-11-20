@@ -250,6 +250,14 @@ This document provides a comprehensive catalog of materials science tutorials or
 
 ![Rippled Graphene](../../../images/tutorials/materials/defects/perturbation_ripple_graphene/0-figure-from-manuscript.webp "Rippled Graphene, FIG. 1."){ style="max-height:500px;width:auto;" }
 
+##### 4.1.1.2. Ferroelectric Switching of HfO2 <span class="btn badge b-info border-50">X-3D-PER</span>
+
+**Structure**: [Create the S:T Switched Structure of Pca2₁ HfO₂](perturbation-ferroelectric-switching-hafnium-dioxide.md)  
+**Properties**: [Calculate the S:T Polarization Switching Barrier of HfO₂](perturbation-ferroelectric-switching-hafnium-dioxide-simulation.md)  
+**DOI**: [10.1038/s41524-025-01633-2](https://doi.org/10.1038/s41524-025-01633-2){:target='_blank'} [@Mu2025]
+
+![Ferroelectric Switching of HfO2](../../../images/tutorials/materials/defects/perturbation_ferroelectric_switching_hafnium_dioxide/0-figure-from-manuscript.webp "Polarization reversal pathways of Pca2₁ HfO₂, Fig. 1."){ style="max-height:500px;width:auto;" }
+
 ### 4.2. 2D Structures
 
 #### 4.2.1. Passivated Surface
