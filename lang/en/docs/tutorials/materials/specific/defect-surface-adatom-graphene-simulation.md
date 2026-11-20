@@ -27,9 +27,9 @@ This tutorial calculates adsorption energies of metal adatoms on graphene, repro
 This tutorial builds upon the [Adatom on Graphene Surface](defect-surface-adatom-graphene.md) tutorial, where the
 structures are created. Here, the adsorption energy is calculated using Quantum ESPRESSO with Eq. 1 of the manuscript,
 ΔE = E_ag − E_a − E_g, from the energies of the adatom on the 4×4 graphene cell, the isolated atom and the clean 4×4
-layer, and printed positive for a bound adatom, as Table I lists it: for Li on the hollow, bridge and top sites, Na and
-K on the hollow site, Sn on the top site and Pd on the bridge site. The adatom height h above the C plane, the nearest
-adatom–C distance d_AC and the total magnetization are compared with Tables I and II.
+layer, and printed positive for a bound adatom, as Table I lists it, for Li on the hollow, bridge and top sites. The
+adatom height h above the C plane, the nearest adatom–C distance d_AC and the total magnetization are compared with
+Tables I and II.
 
 ## 2. Prerequisites
 
