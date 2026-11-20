@@ -121,10 +121,10 @@ k-point and q-point grids; the comments name the manuscript's settings:
 # PBE0 form and PseudoDojo norm-conserving ones, as ultrasoft augmentation of every band pair dominates its cost
 ECUTWFC = 40  # Ry
 ECUTRHO = 200  # Ry
-HYBRID_PSEUDOPOTENTIAL_TYPE = "nc"
-HYBRID_PSEUDOPOTENTIAL_SEARCH_TEXT = "dojo-oncv/0.4"  # PseudoDojo 0.4 among the platform's norm-conserving files
-HYBRID_ECUTWFC = 72  # Ry, PseudoDojo "normal" hint: H 36 Ha, Si 18 Ha
-HYBRID_ECUTRHO = 4 * HYBRID_ECUTWFC  # Ry, enough for norm-conserving pseudopotentials
+HSE_PSEUDOPOTENTIAL_TYPE = "nc"
+HSE_PSEUDOPOTENTIAL_SEARCH_TEXT = "dojo-oncv/0.4"  # PseudoDojo 0.4 among the platform's norm-conserving files for HSE06
+HSE_ECUTWFC = 72  # Ry, PseudoDojo "normal" hint: H 36 Ha, Si 18 Ha
+HSE_ECUTRHO = 4 * HSE_ECUTWFC  # Ry, enough for norm-conserving pseudopotentials
 # fraction of exact exchange; the manuscript fits it so bulk Si gives 1.16 eV, which section 8.1 prints
 EXX_FRACTION = 0.25
 
@@ -132,9 +132,9 @@ EXX_FRACTION = 0.25
 RELAXATION_SETTINGS = {"control": {"forc_conv_thr": 2e-4, "nstep": 100}, "cell": {"cell_dofree": "z"}}
 PRELIMINARY_SCF_SETTINGS = {"control": {"verbosity": "high"}}  # so pw.x prints the crystal k-points the hybrid run uses
 # Quantum ESPRESSO computes no hybrid-functional stress with pools; ecutfock (Ry) as in the DOS workflow, since
-# its default, 4 x HYBRID_ECUTWFC, would multiply each pool's exchange memory
-HYBRID_SETTINGS = {"control": {"tstress": False},
-                   "system": {"input_dft": "pbe0", "exx_fraction": EXX_FRACTION, "ecutfock": 100}}
+# its default, 4 x HSE_ECUTWFC, would multiply each pool's exchange memory
+HSE_SETTINGS = {"control": {"tstress": False},
+                "system": {"input_dft": "pbe0", "exx_fraction": EXX_FRACTION, "ecutfock": 100}}
 RELAX_KGRID = [1, 1, 8]  # manuscript: 1x1x4 on two periods
 BANDS_KGRID = [1, 1, 8]
 QGRID = [1, 1, 4]  # exact-exchange q-grid; each dimension divides the one of BANDS_KGRID
@@ -212,12 +212,6 @@ its own copy of the exact-exchange data, so the memory per node grows with `NPOO
 `CLUSTER_NAME = None`, uses the account's first listed cluster; setting a specific name picks that cluster instead, and
 a name that is not available makes the notebook stop and list the ones that are.
 
-### 7.3. Adjust the fraction of exact exchange
-
-`EXX_FRACTION` in cell 1.3 is the fraction of exact exchange of the hybrid runs and part of their workflow names. It is
-refitted after a change to their pseudopotentials or cutoffs: the bulk silicon job runs at two fractions whose band
-gaps lie on either side of 1.16 eV, and a linear interpolation between them gives the new value.
-
 ## 8. Troubleshooting
 
 ### 8.1. Material not found
@@ -232,7 +226,7 @@ If section 5.1 of the notebook prints an empty list of clusters, there is nothin
 ### 8.3. Band gap far from the published value
 
 The manuscript's band gaps come from a one-parameter global hybrid fitted to bulk Si, this tutorial's from a global
-hybrid in the PBE0 form fitted the same way (section 7.3); the bulk silicon lines of section 8.1 of the notebook show
+hybrid in the PBE0 form fitted the same way; the bulk silicon lines of section 8.1 of the notebook show
 the fit. The gap also depends on the q-point grid of the exact exchange: open the band structure and the DOS jobs of the
 wire, select the [Files tab]({{ interface_url }}/jobs/ui/files-tab/), and check that `pw_scf_bands_hse.in` and
 `pw_scf_hse.in` set `input_dft` to `'pbe0'`, `exx_fraction` to `EXX_FRACTION`, and `nqx1`, `nqx2`, `nqx3` to 1, 1 and
