@@ -62,7 +62,7 @@ The barrier calculation consists of the following steps:
 7. **Run the nudged elastic band**: One climbing-image NEB per path, from the relaxed start to the relaxed end
 8. **Retrieve results**: The barrier from the start and from the end, the largest image error, and the two Si
    atoms nearest the H at the climbing image
-9. **Compare with the manuscript**: Print the values beside Table V of the manuscript
+9. **Compare with the manuscript**: Print the values beside Table V of the manuscript and plot the energy profile
 
 ## 4. Calculation parameters
 
@@ -71,15 +71,11 @@ The barrier calculation consists of the following steps:
 | Energy | PBE, Quantum ESPRESSO 7.5 | classical Si–H potential: Tersoff-3 (Si–Si), Brenner (H–H), a fitted Si–H term |
 | Pseudopotentials, cutoff | ultrasoft (GBRV), 40 / 200 Ry | — |
 | k-points, smearing | 2×3×1, Gaussian 0.005 Ry | — |
-| Spin | spin-polarized, total magnetization 1 (one unpaired electron) | — |
+| Spin | spin-polarized, total magnetization 1 | — |
 | Slab | 64 Si in eight layers, 2×2, bottom face bare | 144 Si in eight layers |
 | Dimers | buckled by 0.65 Å (Standata) | symmetric |
 | Transition state | climbing image, one intermediate image, path threshold 0.1 eV/Å | maximum along the saddle line of a map of height-minimised energies |
 | Relaxation | all atoms, force components below 10⁻³ Ry/Bohr | all Si atoms and the H height, forces below 10⁻⁴ eV/Å |
-
-A material already relaxed with the same k-grid, or still relaxing, is reused, and so is an NEB job of the same path
-from the same start that is queued, running or finished with the same k-grid, also when the application version or a
-setting of cell 1.4, `N_IMAGES` included, has changed.
 
 ## 5. Step-by-step instructions
 
@@ -131,7 +127,7 @@ NEB_PATH_SETTINGS = {"nstep_path": 50, "minimum_image": True}
 
 ### 5.3. Run the notebook
 
-Execute all cells by selecting *Run* > *Run All* from the menu.
+Execute all cells by selecting *Run* > *Run All Cells* from the menu.
 
 The notebook first [authenticates with the platform]({{ interface_url }}/jupyterlite/authentication.md),
 then runs the steps listed in section 3.
@@ -142,28 +138,33 @@ The notebook polls the relaxation jobs on the platform, then the NEB jobs.
 
 ### 5.5. Analyze results
 
-The last cells print, for each path, the barriers beside Table V of the manuscript, the largest NEB image error,
-the two Si atoms nearest the H at the climbing image and, for the intradimer path, the dimer bond at the saddle
-(section 6.1).
+The last cells print the results of each path beside the manuscript's values and plot the energy profile (section 6.1).
 
 ## 6. Expected results
 
 Table V of the manuscript gives the relaxed intradimer barrier, path (a) of Fig. 1, as 1.1 eV with its classical
-potential, and quotes 1.2 eV from the local density approximation (LDA, its ref. 36) and 1.9 eV from the generalized
-gradient approximation (GGA, its ref. 13). In relaxed intradimer diffusion the dimer bond stretches from 2.37 Å to
-3.23 Å (p. 13298); the notebook compares the latter with the distance between the two Si atoms nearest the H at the
-climbing image. The start and the end sit on different atoms of a buckled dimer, so the barrier is printed from each.
+potential, and quotes 1.2 eV from the local density approximation (LDA) of Vittadini et al. (1993) and 1.9 eV from
+the generalized gradient approximation (GGA) of Nachtigall and Jordan (1995). Along this path the dimer bond
+stretches from 2.37 Å to 3.23 Å (p. 13298).
+
+The notebook prints the barrier from the start and from the end; its dimer bond at the saddle is the distance between
+the two Si atoms nearest the H at the climbing image.
 
 ### 6.1. Comparison with published results
 
 The intradimer run prints:
 
 ```
-Intradimer barrier, relaxed, from the start: 1.29 eV, from the end: 1.27 eV, Hansen & Vogl 1998: 1.1 eV; ref. 36 (LDA) 1.2, ref. 13 (GGA) 1.9, via Hansen & Vogl Table V
+Intradimer barrier, relaxed, from the start: 1.29 eV, from the end: 1.27 eV, Hansen & Vogl 1998: 1.1 eV; Vittadini et al. 1993 (LDA) 1.2, Nachtigall & Jordan 1995 (GGA) 1.9, via Hansen & Vogl Table V
 Largest image error, intradimer path: 0.097 eV/Å
 Two Si nearest the H at the climbing image, intradimer path: 1.73 Å and 1.81 Å
 Dimer bond at the saddle, H on Si(100): 2.32 Å, Hansen & Vogl 1998: 3.23 Å
 ```
+
+The figure below shows the energy profile of the NEB computed here, with the manuscript's barrier as a gray square
+at the reaction coordinate of the highest image:
+
+![Intradimer energy profile of an H adatom on Si(100)](../../../images/tutorials/materials/defects/defect_point_adatom_silicon_hydrogen/energy-profile-comparison.webp "Intradimer diffusion of an H adatom on Si(100): blue line, climbing-image NEB of this tutorial, barrier 1.29 eV; gray square, Hansen & Vogl 1998, Table V, relaxed, barrier 1.1 eV")
 
 ### 6.2. Difference from the manuscript
 
@@ -173,71 +174,19 @@ These settings differ from the manuscript's:
 |---|---|---|---|
 | Energy | classical Si–H potential: Tersoff-3 (Si–Si), Brenner (H–H), a fitted Si–H term (Sec. II, p. 13296) | PBE, GBRV ultrasoft pseudopotentials, 40 / 200 Ry | — |
 | Dimers | symmetric (Sec. III A, p. 13297) | buckled by 0.65 Å, Standata's slab as is | — |
-| Slab | 144 Si in eight layers (Sec. IV, p. 13299) | 64 Si in eight layers, 2×2; H 7.73 Å from its periodic images | 3×3 `SUPERCELL_MATRIX` in the [structure notebook](defect-point-adatom-silicon-hydrogen.md) (144 Si, 11.60 Å), with `KGRID = [1, 2, 1]`, cell 1.4 |
+| Slab | 144 Si in eight layers (Sec. IV, p. 13299) | 64 Si in eight layers, 2×2; H 7.73 Å from its periodic images | 3×3 `SUPERCELL_MATRIX` in the [structure notebook](defect-point-adatom-silicon-hydrogen.md) (144 Si, 11.60 Å), with `KGRID = [1, 2, 1]` |
 | Transition state | maximum along the saddle line of a map of height-minimised energies over the surface cell (Sec. III C, p. 13298) | climbing-image NEB along one path, one intermediate image | — |
-| Force criterion | below 10⁻⁴ eV/Å for all atoms (Sec. IV, p. 13299) | each force component below 10⁻³ Ry/Bohr in the relaxations; largest image error below 0.1 eV/Å on the path | `forc_conv_thr` in `RELAXATION_SETTINGS`; `path_thr` added to `NEB_PATH_SETTINGS`, cell 1.4 |
+| Force criterion | below 10⁻⁴ eV/Å for all atoms (Sec. IV, p. 13299) | each force component below 10⁻³ Ry/Bohr in the relaxations; largest image error below 0.1 eV/Å on the path | `forc_conv_thr` in `RELAXATION_SETTINGS`; `path_thr` added to `NEB_PATH_SETTINGS` |
 | Spin | none, classical potential | spin-polarized, total magnetization 1 | — |
-| Unrelaxed barriers | Table V, Si frozen: 2.6 / 2.3 / 3.2 eV for (a) / (b) / (c) (p. 13298) | not computed | —, the platform's NEB keeps no fixed atoms |
-
-Which of these settings moves the barrier is not tested here.
 
 ## 7. Customization options
 
-### 7.1. Run the intrarow and inter-row paths
-
 The [structure notebook](defect-point-adatom-silicon-hydrogen.md) creates `H on Si(100) intrarow end` and
 `H on Si(100) inter-row end` when their entries in `SITE_BY_MATERIAL_NAME` are uncommented. Listing a path in
-`END_NAME_BY_PATH`, cell 1.2, runs the relaxation of its end and its NEB from the relaxed start with the same
-settings; the start is relaxed once. On the 2×2 slab the intrarow end is half the cell length along the row away
-from the start, in either direction; the two directions are mirror images through the start dimer.
+`END_NAME_BY_PATH` runs the relaxation of its end and its NEB from the relaxed start with the same settings; the
+start is relaxed once.
 
-### 7.2. Adjust computational resources
-
-The compute settings apply to the relaxations and the NEBs: by default, each job runs on one node of the OF queue
-with 60 cores for up to 12 hours (`TIME_LIMIT_HOURS`); pw.x and neb.x stop 10 minutes earlier (`MAX_SECONDS`) and
-write their files. The default, `CLUSTER_NAME = None`, uses the account's first listed cluster; setting it to a
-cluster's full host name uses that cluster without listing. The OF queue adds several compute nodes at once as jobs
-arrive; `PPN` sets the cores per node, up to the queue's maximum on the cluster (cluster-001 60, cluster-002 36,
-cluster-003 44); on another cluster, lower `PPN` to its maximum.
-
-### 7.3. Use the manuscript's settings
-
-The manuscript's slab size is the 3×3 `SUPERCELL_MATRIX` of the structure notebook, with `KGRID = [1, 2, 1]` in
-cell 1.4; a new `KGRID` starts new relaxation and NEB jobs. neb.x stops after `nstep_path` steps, converged or not,
-and the path is converged when the largest NEB image error is below 0.1 eV/Å.
-
-## 8. Troubleshooting
-
-### 8.1. Material not found
-
-If one of the materials is not found in the `uploads` folder or the account's materials collection, run the
-[H Adatom on Si(100)](defect-point-adatom-silicon-hydrogen.md) tutorial first, and check that its `uploads` folder
-holds the materials under the names of cell 1.2.
-
-### 8.2. No cluster available
-
-If section 5.1 of the notebook prints an empty list of clusters, there is nothing to submit to, and section
-5.2 stops. A cluster has to be available to the account before the notebook can run.
-
-### 8.3. No NEB barrier on the first run
-
-The platform's access token lasts one hour and can expire while the notebook waits for the relaxation and NEB jobs
-in sections 6 and 7. The jobs keep running. Restart the kernel and run all cells again (*Kernel* > *Restart Kernel
-and Run All Cells*): the notebook asks for a new login and picks up the running and finished jobs.
-
-### 8.4. Barrier far from the published value
-
-Check the atom counts printed in section 3 of the notebook first:
-
-```
-H on Si(100) start: 65 atoms
-H on Si(100) intradimer end: 65 atoms
-```
-
-Then view the relaxed materials on the account: the H of the relaxed start should still sit on the Si atom it caps
-in the structure notebook, and the H of the relaxed end on its dimer partner.
-
-## 9. Interactive JupyterLite notebook
+## 8. Interactive JupyterLite notebook
 
 The following JupyterLite notebook demonstrates the workflow for calculating the intradimer diffusion barrier of an
 H adatom on Si(100). Select *Run* > *Run All Cells*.
@@ -250,4 +199,4 @@ H adatom on Si(100). Select *Run* > *Run All Cells*.
 {% endwith %}
 {% endwith %}
 
-## 10. References
+## 9. References

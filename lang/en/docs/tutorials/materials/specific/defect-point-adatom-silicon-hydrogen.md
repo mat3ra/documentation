@@ -84,8 +84,6 @@ The parameters are used as follows:
 - `SUPERCELL_MATRIX` repeats it 2×2: 64 Si in a 15.468 × 7.734 × 21.875 Å cell, two dimer rows of two dimers each; the commented 3×3 gives 144 Si, as in the manuscript (Sec. IV), in a 23.202 × 11.601 Å cell
 - `PASSIVANT`, `BOND_LENGTH`, `SURFACE`, `SHADOWING_RADIUS` and `DEPTH` cap the dangling bond of each top-face dimer atom with an H, 1.46 Å straight up: 8 H on the 2×2 slab; the bottom face stays bare
 - `SITE_BY_MATERIAL_NAME` names each material and gives the Cartesian (x, y) of the Si atom its H caps; each material keeps that H and none of the other seven
-- The start has the H on the upper atom of a dimer; the intradimer end on its partner, 2.21 Å away laterally and 0.65 Å lower, path (a)
-- The commented entries are the ends of path (b), the upper atom of the next dimer along the row, 3.87 Å away, and of path (c), the facing lower atom of the neighbouring row, 5.52 Å away
 
 ### 3.2. Run the notebook
 
@@ -93,9 +91,7 @@ Execute the notebook to create the structures by selecting "Run" > "Run All Cell
 
 ### 3.3. Pass the result to Materials Designer
 
-The notebook shows the materials in the Wave viewer and passes them to Materials Designer. The start and the intradimer end from the top, drawn with the Atomic Simulation Environment (ASE), with the top-layer Si atoms (the dimers) dark:
-
-![Start and intradimer end, top view](../../../images/tutorials/materials/defects/defect_point_adatom_silicon_hydrogen/1-ase-start-intradimer-end-top.webp "H on Si(100) start (left) and H on Si(100) intradimer end (right), top view")
+The notebook shows the materials in the Wave viewer and passes them to Materials Designer.
 
 The start with both H sites marked, beside Fig. 1 of the manuscript, with the dimer rows along the same direction:
 
@@ -103,19 +99,11 @@ The start with both H sites marked, beside Fig. 1 of the manuscript, with the di
 
 ## 4. Analyze the structure
 
-The structures are built from Standata's slab as is; the relaxation in the [simulation tutorial](defect-point-adatom-silicon-hydrogen-simulation.md) moves the atoms from these positions.
-
-### 4.1. Slab
-
-The slab is centred in its cell along z, with the dangling bonds of the bottom face left bare. Its dimers are buckled by 0.65 Å, with a dimer bond of 2.30 Å; the manuscript's are symmetric (Sec. III A, p. 13297), with a dimer bond of 2.37 Å (p. 13298). The manuscript states no Si lattice constant; the slab keeps Standata's, 5.469 Å.
-
-### 4.2. H adatom sites
-
-Each H sits 1.46 Å straight above the Si atom it caps. The start H is on the upper atom of a dimer; the intradimer-end H on its partner, 2.21 Å away laterally and 0.65 Å lower. Each H is 7.73 Å from its periodic images (11.60 Å on the 3×3 slab).
+The slab is centred in its cell along z. Its dimer bond is 2.30 Å; the manuscript's clean dimer bond is 2.37 Å (p. 13298). Each H is 7.73 Å from its periodic images (11.60 Å on the 3×3 slab).
 
 ## 5. Save the structure
 
-The notebook passes two materials to Materials Designer, where they can be saved on the platform, and writes them to the `uploads` folder: `H on Si(100) start` and `H on Si(100) intradimer end`, 64 Si and 1 H each in the same 15.468 × 7.734 × 21.875 Å cell. Both list their atoms in the same order, as the first and last images of the nudged elastic band need. The [intradimer diffusion barrier tutorial](defect-point-adatom-silicon-hydrogen-simulation.md) loads them by these names.
+The notebook passes two materials to Materials Designer, where they can be saved on the platform, and writes them to the `uploads` folder: `H on Si(100) start` and `H on Si(100) intradimer end`, 64 Si and 1 H each, in the same cell. Both list their atoms in the same order, as the first and last images of the nudged elastic band need. The [intradimer diffusion barrier tutorial](defect-point-adatom-silicon-hydrogen-simulation.md) loads them by these names.
 
 ## 6. Interactive JupyterLite notebook
 
