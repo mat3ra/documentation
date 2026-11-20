@@ -28,7 +28,7 @@ We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/
 
 The image shows an adatom on the hollow site, 2×2 cells of 4×4 graphene seen from above: Fig. 1 of the manuscript (left) and the Li hollow cell this tutorial builds, in Wave (right).
 
-![Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/structure-comparison.webp "Adatom on the hollow site of 4×4 graphene: manuscript Fig. 1 and the Li hollow cell of this tutorial")
+![Adatom on graphene from the manuscript and the structure notebook](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/structure-comparison.webp "Top view, 2×2 cells of 4×4 graphene: Chan et al. 2008, Fig. 1 (left), and the Li hollow cell built by the structure notebook, one cell outlined (right)")
 
 ## 2. Open Materials Designer
 
