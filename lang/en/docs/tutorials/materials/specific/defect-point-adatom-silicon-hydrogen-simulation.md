@@ -77,8 +77,8 @@ The barrier calculation consists of the following steps:
 | Transition state | climbing image, one intermediate image, path threshold 0.1 eV/Å | maximum along the saddle line of a map of height-minimised energies |
 | Relaxation | all atoms, force components below 10⁻³ Ry/Bohr | all Si atoms and the H height, forces below 10⁻⁴ eV/Å |
 
-A material already relaxed, or still relaxing, with the same `KGRID` is not relaxed again, and an NEB already
-finished, or still running, for the same path from the same relaxed start with the same `KGRID` is not run again,
+A material already relaxed, or queued or relaxing, with the same `KGRID` is not relaxed again, and an NEB already
+finished, or queued or running, for the same path from the same relaxed start with the same `KGRID` is not run again,
 even when other settings have changed.
 
 ## 5. Step-by-step instructions
@@ -147,9 +147,10 @@ The last cells print the results of each path beside the manuscript's values and
 ## 6. Expected results
 
 Table V of the manuscript gives the relaxed intradimer barrier, path (a) of Fig. 1, as 1.1 eV with its classical
-potential, and quotes 1.2 eV from the local density approximation (LDA) of Vittadini et al. (1993) and 1.9 eV from
-the generalized gradient approximation (GGA) of Nachtigall and Jordan (1995). In the manuscript, the dimer bond
-stretches along this path from 2.37 Å to 3.23 Å (p. 13298).
+potential, and quotes, in its local density approximation (LDA) and generalized gradient approximation (GGA)
+columns, 1.2 eV from [Vittadini et al. (1993)](https://doi.org/10.1016/0167-2584(93)90751-4){:target='_blank'} and
+1.9 eV from [Nachtigall and Jordan (1995)](https://doi.org/10.1063/1.468954){:target='_blank'}. In the manuscript,
+the dimer bond stretches along this path from 2.37 Å to 3.23 Å (p. 13298).
 
 The dimer bond at the saddle is the distance between the two Si atoms nearest the H at the climbing image.
 
