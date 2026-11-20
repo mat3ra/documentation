@@ -62,8 +62,8 @@ The band gap and DOS calculation consists of the following steps:
 | Code | Quantum ESPRESSO | DFTB+, a density functional based tight-binding (DFTB) code, for the geometry; CRYSTAL for the band gaps and the bands |
 | Geometry | PBE, variable-cell relaxation of one period: the atoms and the period along the wire | DFTB, two periods: the atoms and the length along the wire |
 | Band gaps and bands | HSE06 | one-parameter global hybrid, developed and tested for bulk Si (1.16 eV) |
-| Pseudopotentials | ultrasoft (GBRV) | not stated |
-| Cutoff | 40 / 200 Ry | not stated |
+| Pseudopotentials | ultrasoft (GBRV) for the relaxation; norm-conserving (PseudoDojo) for the HSE06 runs | not stated |
+| Cutoff | 40 / 200 Ry for the relaxation; 72 / 288 Ry, exact exchange 100 Ry, for the HSE06 runs | not stated |
 | Cell | one period, Si₁₈H₁₂, c = 3.867 Å before the relaxation (Standata Si, a = 5.468 Å); about 18 Å between wire images | DFTB: two periods, Si₃₆H₂₄, 1000 Å perpendicular to the wire; CRYSTAL: one period, periodic along the wire only; lattice constant not stated |
 | k-points, relaxation | 1×1×8 on one period | 1×1×4 on two periods |
 | k-points, band structure | 1×1×8 and 21 points along Γ–Z; q-points 1×1×4 for the exact exchange | not stated |
@@ -111,25 +111,36 @@ POLL_INTERVAL = 60  # seconds
 ENERGY_WINDOW = (-4.0, 6.0)  # eV, the energy range of Fig. 8
 ```
 
-Cell 1.3 sets the cutoffs, the relaxation, the preliminary SCF verbosity, the HSE06 stress (off), and the k-point and
-q-point grids; the comments name the manuscript's settings:
+Cell 1.3 sets the cutoffs, the pseudopotential type of the HSE06 runs, the relaxation, the preliminary SCF
+verbosity, the HSE06 stress (off) and exact-exchange cutoff, and the k-point and q-point grids; the comments name the
+manuscript's settings:
 
 ```python
 # manuscript: geometry with DFTB, gaps with CRYSTAL and a one-parameter global hybrid fitted to bulk Si;
-# ours: geometry with PBE, gaps with HSE06, GBRV ultrasoft pseudopotentials at their tested cutoffs
+# ours: geometry with PBE, GBRV ultrasoft pseudopotentials at their tested cutoffs; gaps with HSE06, PseudoDojo
+# norm-conserving ones, as the ultrasoft augmentation of every band pair dominates the cost of the exact exchange
 ECUTWFC = 40  # Ry
 ECUTRHO = 200  # Ry
+HSE_PSEUDOPOTENTIAL_TYPE = "nc"
+HSE_PSEUDOPOTENTIAL_SEARCH_TEXT = "dojo-oncv/0.4"  # PseudoDojo 0.4 among the platform's norm-conserving files for HSE06
+HSE_ECUTWFC = 72  # Ry, PseudoDojo "normal" hint: H 36 Ha, Si 18 Ha
+HSE_ECUTRHO = 4 * HSE_ECUTWFC  # Ry, enough for norm-conserving pseudopotentials
 
 # forces below 1e-4 Ha/Bohr as in the manuscript, in QE's Ry/Bohr; the atoms and the period along the wire relax
 RELAXATION_SETTINGS = {"control": {"forc_conv_thr": 2e-4, "nstep": 100}, "cell": {"cell_dofree": "z"}}
 PRELIMINARY_SCF_SETTINGS = {"control": {"verbosity": "high"}}  # so pw.x prints the crystal k-points the HSE run uses
-HSE_SETTINGS = {"control": {"tstress": False}}  # Quantum ESPRESSO computes no hybrid-functional stress with pools
+# Quantum ESPRESSO computes no hybrid-functional stress with pools; ecutfock (Ry) as in the DOS workflow, since
+# its default, 4 x HSE_ECUTWFC, would multiply each pool's exchange memory
+HSE_SETTINGS = {"control": {"tstress": False}, "system": {"ecutfock": 100}}
 RELAX_KGRID = [1, 1, 8]  # manuscript: 1x1x4 on two periods
 BANDS_KGRID = [1, 1, 8]
 QGRID = [1, 1, 4]  # HSE exchange q-grid; each dimension divides the one of BANDS_KGRID
 KPATH_STEPS = 20  # even, so every k − q of the path stays on the path for the 1x1x4 q-grid
-# a job is reused by material, this name and BANDS_KGRID, so rename it after changing QGRID or KPATH_STEPS
-BANDS_WORKFLOW_NAME = "Band Structure HSE06 Si nanowire"
+# a job is reused by material, workflow name and k-grid, so rename a workflow after changing any other setting it uses
+RELAX_WORKFLOW_NAME = "Variable-cell Relaxation Si nanowire"
+BANDS_WORKFLOW_NAME = "Band Structure HSE06 Si nanowire PseudoDojo"
+WIRE_DOS_WORKFLOW_NAME = "Band Gap + DOS HSE06 Si nanowire PseudoDojo"
+BULK_DOS_WORKFLOW_NAME = "Band Gap + DOS HSE06 Si bulk PseudoDojo"
 DOS_KGRID = [1, 1, 8]  # the workflow runs odd dimensions as the next even, so 2x2x8
 BULK_KGRID = [8, 8, 8]
 
@@ -183,8 +194,9 @@ holds when the third value of `QGRID` divides 2 × `KPATH_STEPS`: the path point
 the wire, in crystal coordinates, and the q-points 1 / the third value of `QGRID` apart, a whole number of path steps.
 For the default 1×1×4, `KPATH_STEPS` is even.
 
-The notebook reuses a job with the same material, workflow name and k-point grid, so after a change to `QGRID` or
-`KPATH_STEPS`, `BANDS_WORKFLOW_NAME` in cell 1.3 must change for a new job to run.
+The notebook reuses a job with the same material, workflow name and k-point grid, so after a change to any other
+setting of a workflow, its name in cell 1.3 (`RELAX_WORKFLOW_NAME`, `BANDS_WORKFLOW_NAME`, `WIRE_DOS_WORKFLOW_NAME` or
+`BULK_DOS_WORKFLOW_NAME`) must change for a new job to run.
 
 ### 7.2. Adjust computational resources
 
