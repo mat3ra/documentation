@@ -29,8 +29,10 @@ This tutorial calculates the band gap, the bands along the wire and the density 
 This tutorial builds upon the [Passivation of Silicon Nanowire](passivation-edge-nanowire-silicon.md) tutorial, where
 the structure is created. Here, Quantum ESPRESSO relaxes one period of the wire, Si₁₈H₁₂, with the
 Perdew-Burke-Ernzerhof (PBE) functional, then calculates its bands along Γ–Z, Z being the end of the Brillouin zone
-along the wire, and its density of states (DOS) with a global hybrid functional in the PBE0 form, its fraction of exact
-exchange fitted, as in the manuscript, to the band gap of bulk silicon, 1.16 eV, which the notebook calculates as well.
+along the wire, and its density of states (DOS) with a global hybrid functional of the
+[PBE0](https://doi.org/10.1063/1.478522){:target='_blank'} form, PBE exchange mixed with a fraction of exact exchange.
+The fraction is fitted, as in the manuscript, so that bulk silicon has a band gap of 1.16 eV; the notebook also
+calculates this gap.
 
 ## 2. Prerequisites
 
@@ -122,11 +124,11 @@ k-point and q-point grids; the comments name the manuscript's settings:
 ECUTWFC = 40  # Ry
 ECUTRHO = 200  # Ry
 HSE_PSEUDOPOTENTIAL_TYPE = "nc"
-HSE_PSEUDOPOTENTIAL_SEARCH_TEXT = "dojo-oncv/0.4"  # PseudoDojo 0.4 among the platform's norm-conserving files for HSE06
+HSE_PSEUDOPOTENTIAL_SEARCH_TEXT = "dojo-oncv/0.4"  # PseudoDojo 0.4 among norm-conserving files for hybrid functionals
 HSE_ECUTWFC = 72  # Ry, PseudoDojo "normal" hint: H 36 Ha, Si 18 Ha
 HSE_ECUTRHO = 4 * HSE_ECUTWFC  # Ry, enough for norm-conserving pseudopotentials
-# fraction of exact exchange; the manuscript fits it so bulk Si gives 1.16 eV, which section 8.1 prints
-EXX_FRACTION = 0.25
+# fraction of exact exchange, fitted (to two decimals) so bulk Si gives the manuscript's 1.16 eV; section 8.1 prints it
+EXX_FRACTION = 0.10
 
 # forces below 1e-4 Ha/Bohr as in the manuscript, in QE's Ry/Bohr; the atoms and the period along the wire relax
 RELAXATION_SETTINGS = {"control": {"forc_conv_thr": 2e-4, "nstep": 100}, "cell": {"cell_dofree": "z"}}
@@ -229,8 +231,8 @@ The manuscript's band gaps come from a one-parameter global hybrid fitted to bul
 hybrid in the PBE0 form fitted the same way; the bulk silicon lines of section 8.1 of the notebook show
 the fit. The gap also depends on the q-point grid of the exact exchange: open the band structure and the DOS jobs of the
 wire, select the [Files tab]({{ interface_url }}/jobs/ui/files-tab/), and check that `pw_scf_bands_hse.in` and
-`pw_scf_hse.in` set `input_dft` to `'pbe0'`, `exx_fraction` to `EXX_FRACTION`, and `nqx1`, `nqx2`, `nqx3` to 1, 1 and
-4 with the default grids.
+`pw_scf_hse.in` set `input_dft` to `'pbe0'`, `exx_fraction` to the value of `EXX_FRACTION`, and `nqx1`, `nqx2`,
+`nqx3` to 1, 1 and 4 with the default grids.
 
 ## 9. Interactive JupyterLite notebook
 
