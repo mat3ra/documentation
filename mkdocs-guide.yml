@@ -210,6 +210,7 @@ nav:
             - Twisted Bilayer h-BN Commensurate Lattices (Flat Bands):          tutorials/materials/specific/interface-bilayer-twisted-commensurate-lattices-boron-nitride-simulation.md
             - Adatom Surface Defects on Graphene:                               tutorials/materials/specific/defect-surface-adatom-graphene.md
             - H-Passivated Silicon Nanowire:                                    tutorials/materials/specific/passivation-edge-nanowire-silicon.md
+            - H-Passivated Silicon Nanowire (Band Gap and DOS):                 tutorials/materials/specific/passivation-edge-nanowire-silicon-simulation.md
             - H-Passivated Silicon (100) Surface:                               tutorials/materials/specific/passivation-surface-silicon.md
             - Gold Nanoclusters:                                                tutorials/materials/specific/nanocluster-gold.md
             - Gold Nanoclusters (Energy per Atom):                              tutorials/materials/specific/nanocluster-gold-simulation.md
