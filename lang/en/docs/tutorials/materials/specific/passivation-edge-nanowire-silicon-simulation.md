@@ -105,7 +105,7 @@ CLUSTER_NAME = None  # specify full or partial name i.e. "cluster-001" to select
 QUEUE_NAME = QueueName.OF
 PPN = None  # None uses the selected queue's maximum cores per job on the selected cluster
 NPOOLS = 2  # k-point pools: must divide the cores and not exceed any job's k-points; each adds exact-exchange memory
-TIME_LIMIT = "24:00:00"
+TIME_LIMIT = "04:00:00"
 
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
 POLL_INTERVAL = 60  # seconds
@@ -181,11 +181,11 @@ job's valence-band maximum (VBM) at 0.
 Band gap of the wire:
 
 - manuscript (Aradi et al. 2007, Table II, one-parameter global hybrid): 2.21 eV, direct
-- this tutorial (PBE): 1.48 eV, direct
+- this tutorial (global hybrid in the PBE0 form, exact-exchange fraction 0.10): 2.00 eV, direct
 
 Bands along Γ–Z and DOS (solid: total, dotted: on the H atoms), with the valence-band maximum at 0 eV:
 
-![Bands and DOS of the H-passivated Si nanowire from the manuscript and this tutorial](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/8-manuscript-vs-ours-bands-dos.webp "DOS (solid), DOS projected on the H atoms (dotted) and bands along Γ–Z of the H-passivated ⟨110⟩ Si nanowire, r = 0.51 nm, −4 to 6 eV, VBM at 0: Aradi et al. 2007, Fig. 8, left (left), and this tutorial, PBE (right)")
+![Bands and DOS of the H-passivated Si nanowire from the manuscript and this tutorial](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/8-manuscript-vs-ours-bands-dos.webp "DOS (solid), DOS projected on the H atoms (dotted) and bands along Γ–Z of the H-passivated ⟨110⟩ Si nanowire, r = 0.51 nm, −4 to 6 eV, VBM at 0: Aradi et al. 2007, Fig. 8, left (left), and this tutorial, global hybrid (right)")
 
 ## 7. Customization options
 
