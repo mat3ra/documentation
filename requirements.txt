@@ -45,7 +45,7 @@ pip==26.2
 platformdirs==4.11.0
 proto-plus==1.27.2
 protobuf==6.33.6
-pyasn1==0.6.4
+pyasn1==0.6.5
 pyasn1_modules==0.4.2
 pybtex==0.24.0
 Pygments==2.20.0
