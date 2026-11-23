@@ -97,6 +97,14 @@ This document provides a comprehensive catalog of materials science tutorials or
 
 ![High-k Metal Gate Stack](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/original-figure.webp "High-k Metal Gate Stack"){ style="max-height:500px;width:auto;" }
 
+##### 2.1.2.2. High-k Metal Gate Stack Interfaces (Si/SiO2, SiO2/HfO2, HfO2/TiN) <span class="btn badge b-info border-50">C-2D-HST</span>
+
+**Structure**: [Create the Interface Superlattices](heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md#7-create-the-interface-superlattices)  
+**Properties**: [Calculate High-k Metal Gate Stack Valence Band Offsets](heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride-simulation.md)  
+**DOI**: [10.1063/1.3609869](https://doi.org/10.1063/1.3609869){:target='_blank'} [@Prodhomme2011], [10.1016/j.mser.2014.11.001](https://doi.org/10.1016/j.mser.2014.11.001){:target='_blank'} [@Robertson2015]
+
+![SiO2/HfO2 Interface with Monoclinic HfO2](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/1-sio2-hfo2-monoclinic-structure-comparison.webp "SiO2/HfO2 with monoclinic HfO2: Prodhomme et al. 2011, Fig. 1(a), and the superlattice built by the notebook"){ style="max-height:500px;width:auto;" }
+
 #### 2.1.3. Interface - Twisted
 
 ##### 2.1.3.1. Twisted Bilayer h-BN Nanoribbons <span class="btn badge b-info border-50">C-2D-INT-T</span>
