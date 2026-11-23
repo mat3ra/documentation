@@ -38,7 +38,7 @@ We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/
 ![High-k Metal Gate Stack](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/original-figure.webp "High-k Metal Gate Stack")
 
 The interface superlattices of section 7 follow the manuscripts below; their valence band offsets are calculated in the
-[High-k Metal Gate Stack: Valence Band Offsets](heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride-simulation.md)
+[High-k Metal Gate Stack: Si/SiO2, SiO2/HfO2 and HfO2/TiN Valence Band Offsets](heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride-simulation.md)
 tutorial.
 
 !!!note "Manuscripts"
@@ -225,7 +225,8 @@ The user then can [save or download]({{ interface_url }}/materials-designer/head
 Prodhomme et al. compute the band alignment of the stack pairwise, at the Si/SiO₂, SiO₂/HfO₂ and HfO₂/TiN interfaces,
 each in a cell periodic along the interface normal without vacuum, so that each cell holds two interfaces. Robertson
 and Wallace give the SiO₂/HfO₂ offset of a second model, with cubic HfO₂ after Sharia et al. [@Sharia2007]. Sections
-5–12 of the notebook build the four superlattices and the bulk cells the offsets are read against.
+5–12 of `heterostructure_silicon_silicon_dioxide_hafnium_dioxide_titanium_nitride.ipynb`, the notebook embedded in
+section 8, build the four superlattices and the bulk cells the offsets are read against.
 
 SiO₂ is β-cristobalite, cut along its (001) face, the 5.23 × 5.23 Å² square cell; Si and HfO₂ are strained onto it, and
 TiN onto HfO₂. The strains follow from the Standata lattices. The publications do not give the separation of the
@@ -286,9 +287,9 @@ without describing their bonding. Here the oxygen-rich SiO₂ block ends in an O
 Si–O–Si bridges join the blocks; the oxygen-poor block ends in a Si plane, with Si–Si bonds across the interfaces.
 
 Section 11 of the notebook draws each superlattice seen along b, with c vertical and two cells along a and b; the dotted
-box outlines the cell. The Si/SiO₂ superlattice, Si₄₈O₂₆, 74 atoms, SiO₂ at the bottom of the cell:
+box outlines the two cells along a. The Si/SiO₂ superlattice, Si₄₈O₂₆, 74 atoms, SiO₂ at the bottom of the cell:
 
-![Si/SiO2 (001) superlattice, oxygen-rich, built by the notebook](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/0-si-sio2-structure-this-notebook.webp "Si/SiO2 (001) superlattice 18+12, oxygen-rich, as built by the notebook"){ style="max-height:500px;width:auto;" }
+![Si/SiO2 (001) superlattice, oxygen-rich, this tutorial](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/0-si-sio2-structure-this-notebook.webp "Si/SiO2 (001) superlattice 18+12, oxygen-rich, as built in this tutorial"){ style="max-height:500px;width:auto;" }
 
 ### 7.3. Build the SiO₂/HfO₂ superlattice with monoclinic HfO₂
 
@@ -297,10 +298,10 @@ Prodhomme et al., who stretch HfO₂ by 3.7 % along [100] and 2.1 % along [010];
 Standata lattices. The slab builder counts monoclinic (001) layers in pairs, so eight HfO₂ layers are built and one is
 removed. The block kept ends in one O against the SiO₂ O plane and in three O against the SiO₂ Si, so each interface
 carries three O and the cell stays stoichiometric. The manuscript does not give the in-plane registry of the two
-blocks; the builder's default is kept. The superlattice, 72 atoms, beside the oxygen-rich SiO₂/HfO₂ interface of
-Prodhomme et al.:
+blocks; the builder's default is kept. The interface of the 72-atom superlattice, one cell wide as in the manuscript's
+figure, beside the oxygen-rich SiO₂/HfO₂ interface of Prodhomme et al.:
 
-![SiO2/HfO2 with monoclinic HfO2: Prodhomme et al. 2011 and this work](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/1-sio2-hfo2-monoclinic-structure-comparison.webp "SiO2/HfO2 with monoclinic HfO2: Prodhomme et al. 2011, Fig. 1(a) (left), and the superlattice 10+7 as built by the notebook (right)")
+![SiO2/HfO2 with monoclinic HfO2: Prodhomme et al. 2011 and this tutorial](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/1-sio2-hfo2-monoclinic-structure-comparison.webp "SiO2/HfO2 with monoclinic HfO2: Prodhomme et al. 2011, Fig. 1(a) (left), and the interface of the superlattice 10+7 as built in this tutorial (right)")
 
 ### 7.4. Build the SiO₂/HfO₂ superlattice with cubic HfO₂
 
@@ -312,7 +313,7 @@ plane. Each interface plane then carries three O, two bonded to Si and Hf and on
 broken: the structure of Sharia et al., who remove a different O from each of two four-O interface planes. The
 interface with HfO₂ above SiO₂, beside the relaxed interface of Robertson and Wallace:
 
-![SiO2/HfO2 with cubic HfO2: Robertson and Wallace 2015 and this work](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/2-sio2-hfo2-cubic-structure-comparison.webp "SiO2/HfO2 with cubic HfO2: Robertson and Wallace 2015, Fig. 56a, the relaxed interface (left), and the interface of the superlattice 12+6 as built by the notebook (right)")
+![SiO2/HfO2 with cubic HfO2: Robertson and Wallace 2015 and this tutorial](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/2-sio2-hfo2-cubic-structure-comparison.webp "SiO2/HfO2 with cubic HfO2: Robertson and Wallace 2015, Fig. 56a, the relaxed interface (left), and the interface of the superlattice 12+6 as built in this tutorial (right)")
 
 ### 7.5. Build the HfO₂/TiN superlattice
 
@@ -323,17 +324,17 @@ each end of the HfO₂ block the outermost HfO₂ layer becomes the interfacial 
 sites and N on the O sites (nitridized); in the oxidized interface the six O facing HfO₂ stay. Six HfO₂ layers remain
 between them. TiN has six Ti planes and the five N planes between them, so that Ti faces the interfacial layer on both
 sides. The manuscript shows one interface; both interfaces of the cell are built as it. The superlattice is
-Hf₃₆O₆₆Ti₇₂N₇₄, 248 atoms. The interface with TiN above HfO₂, beside the nitridized interface of Prodhomme et al.:
+Hf₃₆O₆₆Ti₇₂N₇₄, 248 atoms. The interface with TiN above HfO₂, seen along a so that the 15.4 Å side is horizontal as in the manuscript's figure,
+beside the nitridized interface of Prodhomme et al.:
 
-![HfO2/TiN, nitridized: Prodhomme et al. 2011 and this work](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/3-hfo2-tin-structure-comparison.webp "HfO2/TiN, nitridized: Prodhomme et al. 2011, Fig. 1(c) (left), and the interface of the superlattice 6+1+6 as built by the notebook (right)")
+![HfO2/TiN, nitridized: Prodhomme et al. 2011 and this tutorial](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/3-hfo2-tin-structure-comparison.webp "HfO2/TiN, nitridized: Prodhomme et al. 2011, Fig. 1(c) (left), and the interface of the superlattice 6+1+6, seen along a, as built in this tutorial (right)")
 
 ### 7.6. Cut the bulk reference cells and save the materials
 
 Section 10 cuts the bulk cells. SiO₂ is used as is, one β-cristobalite period along [001]; it is the bulk reference of
 both SiO₂ interfaces. Si and the two HfO₂ of the SiO₂/HfO₂ superlattices are strained in plane to the 5.23 Å cell. For
 HfO₂/TiN, HfO₂ is three bulk cells with a and b in the order of the superlattice's, and TiN is one period of its (111)
-planes, strained in plane as the TiN block. Atom labels are removed from all materials, because labels break the
-Quantum ESPRESSO input. Section 12 passes the four superlattices and six bulk cells to the environment: in JupyterLite
+planes, strained in plane as the TiN block. Atom labels are removed from all materials. Section 12 passes the four superlattices and six bulk cells to the environment: in JupyterLite
 to Materials Designer, where they can be saved on the platform; in a local Jupyter session to the `uploads` folder.
 
 ## 8. Interactive JupyterLite Notebook

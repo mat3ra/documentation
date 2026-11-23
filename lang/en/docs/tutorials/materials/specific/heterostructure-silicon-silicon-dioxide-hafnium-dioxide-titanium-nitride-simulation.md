@@ -18,7 +18,7 @@ hide:
 render_macros: true
 ---
 
-# High-k Metal Gate Stack: Valence Band Offsets
+# High-k Metal Gate Stack: Si/SiO2, SiO2/HfO2 and HfO2/TiN Valence Band Offsets
 
 ## 1. Introduction
 
@@ -91,16 +91,16 @@ A dash marks a setting the publication does not give.
 |---|---|---|---|
 | Interfaces | Si/SiO₂ (oxygen-rich), SiO₂/HfO₂ with monoclinic and with cubic HfO₂, HfO₂/TiN (nitridized) | Si/SiO₂ (oxygen-rich and oxygen-poor), SiO₂/HfO₂ with monoclinic HfO₂, HfO₂/TiN (nitridized and oxidized) | SiO₂/HfO₂ with cubic HfO₂, after Sharia et al. [@Sharia2007] |
 | Code | Quantum ESPRESSO | SIESTA | — |
-| Functional | LDA: Ceperley–Alder, Perdew–Zunger parametrization | LDA: Ceperley–Alder | LDA |
+| Functional | local density approximation (LDA): Ceperley–Alder, Perdew–Zunger parametrization | LDA: Ceperley–Alder | LDA |
 | Basis and pseudopotentials | plane waves, ultrasoft, Garrity–Bennett–Rabe–Vanderbilt (GBRV) LDA library | double-zeta polarized atomic orbitals, Troullier–Martins norm-conserving | — |
 | Cutoff | 40 / 200 Ry | mesh cutoff of at least 100 Ha | — |
 | Smearing | HfO₂/TiN: Marzari–Vanderbilt, 0.01 Ry | — | — |
-| k-points | 4×4×1 for the superlattices on the 5.23 Å cell, as Sharia et al., 4×2×1 for HfO₂/TiN; 3.5 points per Å⁻¹ for the bulks | — | —; Sharia et al.: 4×4×1 for the interface, 8×8×8 for the bulks |
-| Cell | Si/SiO₂: 18 + 12 layers, 74 atoms; SiO₂/HfO₂: 10 + 7 and 12 + 6 layers, 72 atoms each; HfO₂/TiN: 6 HfO₂ layers, an interfacial layer at each interface, six Ti and five N planes of TiN, 248 atoms | Si/SiO₂: 24.3 Å of Si, 22.2 Å of SiO₂; SiO₂/HfO₂: seven HfO₂ layers, ten SiO₂ tetrahedra; HfO₂/TiN: 6 HfO₂ layers, the interfacial layer, 6 TiN layers | 4 O per HfO₂ layer, 2 per SiO₂ layer, 3 in the interface plane |
-| Lattice | the Standata structures; Si and HfO₂ strained in plane onto SiO₂, TiN onto HfO₂ and expanded by 1 % along [111] | —; Si compressed by 3 %, HfO₂ stretched by 3.7 % along [100] and 2.1 % along [010], TiN stretched by 1.8 % along [1-10], compressed by 0.5 % along [11-2] and expanded by 1 % along [111] | — |
+| k-points | 4×4×1 for the superlattices on the 5.23 Å cell, the mesh of Sharia et al., 4×2×1 for HfO₂/TiN; 3.5 points per Å⁻¹ for the bulks | — | —; Sharia et al.: 4×4×1 for their 5.19 Å interface cell, 8×8×8 for the bulks |
+| Cell | 72 to 248 atoms, periodic along the normal, as built | periodic superlattices | 4 O per HfO₂ layer, 2 per SiO₂ layer, 3 in the interface plane |
+| Lattice | the Standata structures, strained in plane onto SiO₂ (TiN onto HfO₂) | —; strained in plane onto SiO₂ (TiN onto HfO₂) | — |
 | Positions | MACE-MP-0, trained on Perdew–Burke–Ernzerhof (PBE) data, fixed cell: the superlattices of Prodhomme et al. annealed from 1000 K to 100 K in 1 ps, then all relaxed to 0.07 eV/Å; the cation layer on each side of an interface and the atoms between them move | LDA: anneal from 1000 K to 100 K in 1 ps, then conjugate gradient to 0.07 eV/Å | LDA, relaxed |
 | Offset | potential lineup: V̄ of each bulk the mean of its electrostatic potential over its cell; V̄ in the superlattice at each block's centre, over one bulk cell | potential lineup, planar average smoothed by a double convolution | local densities of states of HfO₂ and SiO₂ layers away from the interface |
-| Band-edge corrections | not computed | G0W0 corrections to the bulk band edges, listed separately in Table I | — |
+| Band-edge corrections | not computed | corrections to the bulk band edges in the first-order GW approximation (G0W0), listed separately in Table I | — |
 
 ## 5. Step-by-step instructions
 
@@ -114,7 +114,8 @@ other/materials_designer/specific_examples/heterostructure_silicon_silicon_dioxi
 
 ### 5.2. Configure parameters
 
-Cells 1.2-1.5 set the material names, the compute resources, the DFT model and k-grids, and the anneal and relaxation:
+Cells 1.2-1.5 set the material names, the compute resources, the DFT model and k-grids, and the anneal and relaxation.
+Among them:
 
 ```python
 # Names saved by heterostructure_silicon_silicon_dioxide_hafnium_dioxide_titanium_nitride.ipynb
@@ -149,7 +150,7 @@ ECUTRHO = 200  # Ry, GBRV's recommended charge-density cutoff
 SMEARING = "mv"  # Marzari-Vanderbilt, for the metal
 DEGAUSS = 0.01  # Ry
 KPOINT_DENSITY = 3.5  # points per Å⁻¹, for the bulks
-KGRID_BY_SUPERLATTICE_NAME = {  # Sharia et al.: 4 x 4 x 1 on the 5.23 Å cell; the same spacing on HfO2/TiN
+KGRID_BY_SUPERLATTICE_NAME = {  # Sharia et al.'s 4 x 4 x 1 mesh (their cell: 5.19 Å); the same spacing on HfO2/TiN
     SILICON_SUPERLATTICE_NAME: [4, 4, 1],
     MONOCLINIC_SUPERLATTICE_NAME: [4, 4, 1],
     CUBIC_SUPERLATTICE_NAME: [4, 4, 1],
@@ -204,28 +205,28 @@ figure; the other points are interfaces with dopants:
 
 Section 10.2 of the notebook draws, for each superlattice, the planar average of the electrostatic potential along the
 interface normal (black) and its macroscopic average (red), as the workflow stores them, from the bottom of the cell;
-the offset is in the title. The Si/SiO₂ superlattice, SiO₂ on the left of the plot:
+the offset is in the title. The Si/SiO₂ superlattice, SiO₂ on the left of the plot; the offset uses the red curve averaged over a window as tall as each bulk's cell, centred on its block:
 
-![Potential across the Si/SiO2 superlattice, this work](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/6-si-sio2-potential-this-notebook.webp "Electrostatic potential across the Si/SiO2 (001) superlattice, oxygen-rich, this notebook")
+![Potential across the Si/SiO2 superlattice, this tutorial](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/6-si-sio2-potential-this-notebook.webp "Electrostatic potential across the Si/SiO2 (001) superlattice, oxygen-rich, this tutorial")
 
 Fig. 1(b) of Prodhomme et al. shows the potential across their monoclinic SiO₂/HfO₂ superlattice (black) and its
 average smoothed by a double convolution (red); the arrows mark each bulk's valence band maximum against its averaged
 potential and the offset. Below it, the monoclinic superlattice of this tutorial, SiO₂ on the left as in the
 manuscript, drawn at the same length scale with both axes starting at the same point (manuscript in bohr,
-67 bohr ≈ 35.5 Å; this notebook in Å):
+67 bohr ≈ 35.5 Å; this tutorial in Å). As in the other two plots, the offset uses the red curve averaged over a window as tall as each bulk's cell, centred on its block:
 
-![Potential across the SiO2/HfO2 superlattice with monoclinic HfO2: Prodhomme et al. 2011 and this work](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/7-sio2-hfo2-monoclinic-potential-comparison.webp "Electrostatic potential across the SiO2/HfO2 superlattice with monoclinic HfO2: Prodhomme et al. 2011, Fig. 1(b) (top), and this notebook (bottom)")
+![Potential across the SiO2/HfO2 superlattice with monoclinic HfO2: Prodhomme et al. 2011 and this tutorial](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/7-sio2-hfo2-monoclinic-potential-comparison.webp "Electrostatic potential across the SiO2/HfO2 superlattice with monoclinic HfO2: Prodhomme et al. 2011, Fig. 1(b) (top), and this tutorial (bottom)")
 
-The cubic superlattice:
+The cubic superlattice; the offset uses the red curve averaged over a window as tall as each bulk's cell, centred on its block:
 
-![Potential across the SiO2/HfO2 superlattice with cubic HfO2, this work](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/8-sio2-hfo2-cubic-potential-this-notebook.webp "Electrostatic potential across the SiO2/HfO2 superlattice with cubic HfO2, this notebook")
+![Potential across the SiO2/HfO2 superlattice with cubic HfO2, this tutorial](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/8-sio2-hfo2-cubic-potential-this-notebook.webp "Electrostatic potential across the SiO2/HfO2 superlattice with cubic HfO2, this tutorial")
 
 ## 7. Customization options
 
 ### 7.1. Adjust computational resources
 
-`CLUSTER_NAME` selects the cluster by its full or partial name, from the clusters that section 5.1 of the notebook
-lists; each job runs on one node of `QUEUE_NAME`, with all the cores the queue allows per node.
+The default, `CLUSTER_NAME = None`, uses the account's first listed cluster; setting a specific name picks that cluster
+instead, and a name that is not available makes the notebook stop and list the ones that are.
 
 ## 8. Troubleshooting
 
@@ -235,11 +236,6 @@ If one of the ten names is not found, run the
 [High-k Metal Gate Stack](heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md) tutorial first.
 In JupyterLite, save the ten materials to the account from Materials Designer under those exact names; in a local
 Jupyter session, check that the `uploads` folder holds them.
-
-### 8.2. No cluster available
-
-If section 5.1 of the notebook prints an empty list of clusters, there is nothing to submit to. A cluster has to be
-available to the account before the notebook can run.
 
 ## 9. Interactive JupyterLite notebook
 
