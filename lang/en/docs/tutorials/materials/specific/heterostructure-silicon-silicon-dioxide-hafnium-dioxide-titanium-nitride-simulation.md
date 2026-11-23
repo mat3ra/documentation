@@ -205,7 +205,8 @@ figure; the other points are interfaces with dopants:
 
 Section 10.2 of the notebook draws, for each superlattice, the planar average of the electrostatic potential along the
 interface normal (black) and its macroscopic average (red), as the workflow stores them, from the bottom of the cell;
-the offset is in the title. The Si/SiO₂ superlattice, SiO₂ on the left of the plot; the offset uses the red curve averaged over a window as tall as each bulk's cell, centred on its block:
+the offset is in the title. The offset uses the red curve averaged over a window as tall as each bulk's cell, centred
+on its block. The Si/SiO₂ superlattice, SiO₂ on the left of the plot:
 
 ![Potential across the Si/SiO2 superlattice, this tutorial](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/6-si-sio2-potential-this-notebook.webp "Electrostatic potential across the Si/SiO2 (001) superlattice, oxygen-rich, this tutorial")
 
@@ -213,11 +214,11 @@ Fig. 1(b) of Prodhomme et al. shows the potential across their monoclinic SiO₂
 average smoothed by a double convolution (red); the arrows mark each bulk's valence band maximum against its averaged
 potential and the offset. Below it, the monoclinic superlattice of this tutorial, SiO₂ on the left as in the
 manuscript, drawn at the same length scale with both axes starting at the same point (manuscript in bohr,
-67 bohr ≈ 35.5 Å; this tutorial in Å). As in the other two plots, the offset uses the red curve averaged over a window as tall as each bulk's cell, centred on its block:
+67 bohr ≈ 35.5 Å; this tutorial in Å):
 
 ![Potential across the SiO2/HfO2 superlattice with monoclinic HfO2: Prodhomme et al. 2011 and this tutorial](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/7-sio2-hfo2-monoclinic-potential-comparison.webp "Electrostatic potential across the SiO2/HfO2 superlattice with monoclinic HfO2: Prodhomme et al. 2011, Fig. 1(b) (top), and this tutorial (bottom)")
 
-The cubic superlattice; the offset uses the red curve averaged over a window as tall as each bulk's cell, centred on its block:
+The cubic superlattice:
 
 ![Potential across the SiO2/HfO2 superlattice with cubic HfO2, this tutorial](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/8-sio2-hfo2-cubic-potential-this-notebook.webp "Electrostatic potential across the SiO2/HfO2 superlattice with cubic HfO2, this tutorial")
 
