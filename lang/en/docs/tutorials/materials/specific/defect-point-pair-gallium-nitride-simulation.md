@@ -102,7 +102,7 @@ The parameters cells set the material names, the energy k-grid, the compute reso
 DEFECTIVE_NAME = "GaN 3x3x2 Mg_Ga-V_N axial pair"
 GAN_REFERENCE_NAME = "GaN"                                          # Standata, mp-804 unit cell, mu_GaN
 GA_REFERENCE_NAME = "Ga-[Gallium]-ORC_[Cmce]_3D_[Bulk]-[mp-142]"    # Standata, mu_Ga at the Ga-rich limit
-N2_REFERENCE_NAME = "N2-[Nitrogen]-FCC_[P2_13]_3D_[Bulk]-[mp-154]"  # Standata, mu_N at the N-rich limit
+N2_REFERENCE_NAME = "N2-[Nitrogen]-CUB_[P2_13]_3D_[Bulk]-[mp-154]"  # Standata, mu_N at the N-rich limit
 MG3N2_REFERENCE_NAME = "Mg3N2-[Magnesium_Nitride]-BCC_[Ia-3]_3D_[Bulk]-[mp-1559]"
 
 ENERGY_KGRID = [4, 4, 3]
@@ -222,11 +222,11 @@ finished jobs.
 ### 8.4. Formation energy far from the published value
 
 Check the provenance printed in section 3 of the notebook first. The pair is 71 atoms, Ga 35 / N 35 /
-Mg 1, with three Mg-N bonds at 1.968 Å:
+Mg 1, with three Mg-N bonds at 1.949 Å:
 
 ```
-GaN 3x3x2 Mg_Ga-V_N axial pair: Ga35Mg1N35, 71 atoms, cell 9.65 x 9.65 x 10.48 Å
-Mg-N distances: 1.968, 1.968, 1.968, 3.270 Å
+GaN 3x3x2 Mg_Ga-V_N axial pair: Ga35Mg1N35, 71 atoms, cell 9.57 x 9.57 x 10.38 Å
+Mg-N distances: 1.949, 1.949, 1.949, 3.236 Å
 ```
 
 ## 9. Interactive JupyterLite notebook

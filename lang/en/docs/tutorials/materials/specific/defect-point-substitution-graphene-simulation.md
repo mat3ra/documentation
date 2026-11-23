@@ -133,7 +133,7 @@ Cell 1.2 names the materials the notebook loads:
 PRISTINE_NAME = "graphene 4x4"
 DEFECTIVE_NAME = "graphene 4x4 N3V pyridinic (C28N3)"
 # Standata's solid nitrogen -- the platform carries no free N2 molecule.
-NITROGEN_NAME = "N2, Nitrogen, FCC (P2_13) 3D (Bulk), mp-154"
+NITROGEN_NAME = "N2, Nitrogen, CUB (P2_13) 3D (Bulk), mp-154"
 ```
 
 ### 5.3. Run the notebook
