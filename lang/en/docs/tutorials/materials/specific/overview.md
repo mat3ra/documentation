@@ -27,7 +27,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 1.2.1.1. Gold Nanoclusters <span class="btn badge b-info border-50">P-0D-NPR</span>
 
 **Structure**: [Create Gold Nanocluster Structure](nanocluster-gold.md)  
-**Properties**: Calculate total energy per atom and density of states (Coming Soon)  
+**Properties**: [Calculate Energy per Atom of Gold Nanoclusters](nanocluster-gold-simulation.md), density of states (Coming Soon)  
 **DOI**: [10.1103/PhysRevB.84.245429](https://doi.org/10.1103/PhysRevB.84.245429){:target='_blank'} [@Larsen2011]
 
 ![Gold Nanoparticles](../../../images/tutorials/materials/0d_materials/nanocluster_gold/0-manuscript-image.webp "Fig. 2. Gold Nanoparticles"){ style="max-height:500px;width:auto;" }
@@ -249,6 +249,14 @@ This document provides a comprehensive catalog of materials science tutorials or
 **DOI**: [10.1209/0295-5075/85/46002](https://doi.org/10.1209/0295-5075/85/46002){:target='_blank'} [@ThompsonFlagg2009; @Fasolino2007; @Openov2010]
 
 ![Rippled Graphene](../../../images/tutorials/materials/defects/perturbation_ripple_graphene/0-figure-from-manuscript.webp "Rippled Graphene, FIG. 1."){ style="max-height:500px;width:auto;" }
+
+##### 4.1.1.2. Ferroelectric Switching of HfO2 <span class="btn badge b-info border-50">X-3D-PER</span>
+
+**Structure**: [Create the S:T Switched Structure of Pca2₁ HfO₂](perturbation-ferroelectric-switching-hafnium-dioxide.md)  
+**Properties**: [Calculate the S:T Polarization Switching Barrier of HfO₂](perturbation-ferroelectric-switching-hafnium-dioxide-simulation.md)  
+**DOI**: [10.1038/s41524-025-01633-2](https://doi.org/10.1038/s41524-025-01633-2){:target='_blank'} [@Mu2025]
+
+![Ferroelectric Switching of HfO2](../../../images/tutorials/materials/defects/perturbation_ferroelectric_switching_hafnium_dioxide/0-figure-from-manuscript.webp "Polarization reversal pathways of Pca2₁ HfO₂, Fig. 1."){ style="max-height:500px;width:auto;" }
 
 ### 4.2. 2D Structures
 

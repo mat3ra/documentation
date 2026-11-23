@@ -57,6 +57,7 @@ Simulation engines and scripting environments available on the platform.
 - [Software overview](software/overview.md) — components, classification
 - [Quantum ESPRESSO]({{ reference_url }}/software-directory/modeling/quantum-espresso/overview/)
 - [VASP]({{ reference_url }}/software-directory/modeling/vasp/overview/)
+- [Quantum 3xplorer]({{ reference_url }}/software-directory/modeling/q3/overview/)
 - [LAMMPS]({{ reference_url }}/software-directory/modeling/lammps/), [CP2K]({{ reference_url }}/software-directory/modeling/cp2k/), [Gromacs]({{ reference_url }}/software-directory/modeling/gromacs/), [NWChem]({{ reference_url }}/software-directory/modeling/nwchem/)
 - [Python]({{ reference_url }}/software-directory/scripting/python/overview/), [Shell]({{ reference_url }}/software-directory/scripting/shell/overview/), [Jupyter Lab]({{ reference_url }}/software-directory/scripting/jupyter-lab/overview/)
 - [Python ML]({{ reference_url }}/software-directory/machine-learning/python-ml/overview/), [TensorFlow]({{ reference_url }}/software-directory/machine-learning/tensorflow/)

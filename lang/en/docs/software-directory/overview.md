@@ -21,6 +21,7 @@ The platform currently offers the choice between the following software engines 
 | [VASP](modeling/vasp/overview.md)      | 5.3.5-5.4.4 | 1, 3 |
 | [LAMMPS](modeling/lammps.md)    | 11-2016, 12-2018, 1-2022  | 3 |
 | [NWChem](modeling/nwchem.md)    | 6.6, 7.0.2  | 3 |
+| [Quantum 3xplorer](modeling/q3/overview.md) | 2026.10.31-0 | 1, 3 |
 
 <!-- TODO: consider re-adding these packages in the future
 | [CP2K](modeling/cp2k.md)      | 4.1     | 3 |
