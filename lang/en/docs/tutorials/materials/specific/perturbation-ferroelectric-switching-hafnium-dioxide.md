@@ -50,8 +50,8 @@ The energy barrier between the two structures is computed in the
 
 The notebook loads Pca2₁ HfO₂ (mp-685097) from
 [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/) by its full name, so no
-input material needs to be selected. The cell is oriented as in Fig. 1: a along x, the polar axis along z, the origin
-on a Hf atom. The lattice is used as stored in Standata, a = 5.2195 Å, b = 5.0048 Å, c = 5.0327 Å; the manuscript's
+input material needs to be selected. `LATTICE_VECTOR_PERMUTATION_MATRIX` orients the cell as in Fig. 1: a along x, the
+polar axis along z. The lattice constants are Standata's, a = 5.2195 Å, b = 5.0048 Å, c = 5.0327 Å; the manuscript's
 own calculation gives a = 5.256 Å, b = 5.046 Å, c = 5.073 Å (Methods, p. 6).
 
 ### 2.2. Launch JupyterLite session
@@ -70,6 +70,7 @@ Cell 1.1 of the notebook sets the material, the atoms that move, and the names o
 ```python
 # Pca2₁ HfO₂ in the orientation of Fig. 1: a along x, the polarization along z
 MATERIAL_NAME = "HfO2, Hafnium IV Oxide, ORC (Pca2_1) 3D (Bulk), mp-685097"
+LATTICE_VECTOR_PERMUTATION_MATRIX = [[0, 0, 1], [1, 0, 0], [0, 1, 0]]
 
 # The atoms that move: O with three Hf neighbors (three-fold coordinated)
 MOVING_ELEMENT = "O"

@@ -65,6 +65,8 @@ Cell 1.1 of the notebook sets the materials, the slab thickness, and the names o
 ```python
 SUBSTRATE_NAME = "mp-2534"  # GaAs, Standata
 FILM_NAME = "mp-2172"  # AlAs, Standata
+FILM_ROTATION_AXIS = [0, 0, 1]  # puts the As of AlAs on the As sublattice of GaAs
+FILM_ROTATION_ANGLE = 90  # in degrees
 MILLER_INDICES = (1, 1, 0)
 NUMBER_OF_LAYERS = 6  # conventional (110) layers, two atomic planes each
 

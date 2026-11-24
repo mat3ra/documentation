@@ -34,7 +34,7 @@ The compared quantities are from Sec. III and Fig. 3(a) of the manuscript, for t
 
 ## 2. Prerequisites
 
-Run the [structure creation tutorial](interface-2d-3d-graphene-silicon-dioxide.md) first. Its `interface_2d_3d_graphene_silicon_dioxide.ipynb` notebook saves the interface in the 120° setting to the `uploads` folder under the name `C(001)-O2Si(001), Interface, Strain 1.875pct`, which this notebook loads. It also shifts graphene to the metastable registry and centers the slab along z. An interface from the generic ZSL notebook comes out at 60°, where the band path's K is not graphene's K.
+Run the [structure creation tutorial](interface-2d-3d-graphene-silicon-dioxide.md) first. Its `interface_2d_3d_graphene_silicon_dioxide.ipynb` notebook saves the interface in the 120° setting to the `uploads` folder under the name `C(001)-O2Si(001), Interface, Strain 0.303pct`, which this notebook loads. It also shifts graphene to the metastable registry and centers the slab along z. An interface from the generic ZSL notebook comes out at 60°, where the band path's K is not graphene's K.
 
 
 ## 3. Workflow overview
@@ -50,7 +50,7 @@ Cell 1.2 sets the material name:
 
 ```python
 # Name saved by interface_2d_3d_graphene_silicon_dioxide.ipynb.
-INTERFACE_NAME = "C(001)-O2Si(001), Interface, Strain 1.875pct"
+INTERFACE_NAME = "C(001)-O2Si(001), Interface, Strain 0.303pct"
 ```
 
 Cell 1.3 sets the organization, the cluster and the workflow names:
@@ -118,11 +118,11 @@ K_INDEX = 0  # KPATH starts at K, so the first point of the band structure's pat
 | LDA | LDA (`pz`) |
 | ultrasoft pseudopotentials, VASP, 396 eV cutoff (Sec. II) | GBRV ultrasoft, 40/200 Ry |
 | 6×6×1 k-mesh, 1×1 quartz cell (Sec. II) | `KPOINT_DENSITY = 4`, 6×6×1 |
-| 2×2 graphene on 1×1 quartz | the same, as built by the structure notebook, graphene strained +1.875 % |
+| 2×2 graphene on 1×1 quartz | the same, as built by the structure notebook, graphene strained −0.303 % |
 | 14 SiO2 bilayers, H-passivated back side | 15 Si planes (5 conventional cells; one bilayer read as one Si plane with its O), bare back side |
 | 20 Å vacuum | about 20 Å, as built by the structure notebook |
-| manuscript quartz cell | standata quartz cell, 2.3 % larger in a |
-| d = 2.58 Å, metastable geometry (Sec. III) | d = 2.58 Å, graphene shifted in-plane to the metastable registry (`REGISTRY_SHIFT` in the structure notebook); surface O at 0.354 Å and 1.095 Å from the nearest C |
+| manuscript quartz cell | standata quartz cell, 0.1 % larger in a |
+| d = 2.58 Å, metastable geometry (Sec. III) | d = 2.58 Å, graphene shifted in-plane to the metastable registry (`REGISTRY_SHIFT` in the structure notebook); surface O at 0.337 Å and 1.066 Å from the nearest C |
 
 The structure is the example as the structure notebook builds it. The bare back surface is the face the manuscript (p. 2) calls chemically inactive. The structure notebook's cell 3.6 sets the cell to the 120° hexagonal setting and types it `HEX`, so the symbolic K point of `KPATH` lies on the band path.
 
@@ -186,7 +186,7 @@ Changing `ECUTWFC`, `ECUTRHO`, `KPOINT_DENSITY`, `KPATH_STEPS`, `SMEARING_SETTIN
 
 ### 8.1. Material not found
 
-`ValueError: No material named …` means the structure notebook has not been run, or `INTERFACE_NAME` does not match. Run the [structure tutorial](interface-2d-3d-graphene-silicon-dioxide.md) first; the name must be exactly `C(001)-O2Si(001), Interface, Strain 1.875pct`.
+`ValueError: No material named …` means the structure notebook has not been run, or `INTERFACE_NAME` does not match. Run the [structure tutorial](interface-2d-3d-graphene-silicon-dioxide.md) first; the name must be exactly `C(001)-O2Si(001), Interface, Strain 0.303pct`.
 
 
 ## 9. Interactive JupyterLite notebook
