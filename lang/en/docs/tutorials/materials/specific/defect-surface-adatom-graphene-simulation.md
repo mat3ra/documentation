@@ -235,10 +235,8 @@ without a job.
 
 ### 7.2. Adjust computational resources
 
-`QUEUE_NAME`, `PPN` and `TIME_LIMIT` in cell 1.3 set the queue, the cores and the time limit of every job. The default,
-`CLUSTER_NAME = "001"`, picks the cluster whose name contains `001`; another name picks that cluster instead,
-`CLUSTER_NAME = None` uses the account's first listed cluster, and a name that is not available makes the notebook stop
-and list the ones that are.
+`CLUSTER_NAME`, `QUEUE_NAME`, `PPN` and `TIME_LIMIT` in cell 1.3 set the cluster, the queue, the cores and the time
+limit of every job.
 
 ### 7.3. Use the manuscript's settings
 
@@ -259,18 +257,14 @@ If a material of section 2 is not found in the `uploads` folder or the account's
 [structure tutorial](defect-surface-adatom-graphene.md) first; the names must match exactly.
 The Ca, Al, Ga, In, Ti, Fe and Au cells also need their rows uncommented there, as its [section 4.1](defect-surface-adatom-graphene.md#41-select-the-adatoms) shows.
 
-### 8.2. No cluster available
-
-If section 5.1 of the notebook prints an empty list of clusters, there is nothing to submit to, and section 5.2 stops.
-
-### 8.3. Residual force above the threshold
+### 8.2. Residual force above the threshold
 
 A relaxation that stops on `nstep` ends with a force component above the manuscript's 0.05 eV/Å, and Eq. 1 then uses
 the energy of its last ionic step. In order to relax further, raise `nstep` as in section 7.1 and change
 `workflow.name` in section 6 of the notebook: the name does not carry `nstep`, so under the old name the finished
 relaxation job is reused.
 
-### 8.4. Adsorption energy far from the published value
+### 8.3. Adsorption energy far from the published value
 
 Check the provenance printed in section 3.1 of the notebook first: the clean layer reads `C32` and each adatom cell
 `C32` with its adatom, such as `C32Li1`, each in a `9.86 x 9.86 x 15.00 Å` cell, and each isolated atom one atom, such
