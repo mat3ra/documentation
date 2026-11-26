@@ -200,6 +200,19 @@ The user can pass the material with substitution defects in the current Material
 
 Or the user can [save or download]({{ interface_url }}/materials-designer/header-menu/input-output/) the material in Material JSON format or POSCAR format.
 
+### 5.1. Save the one-period cell
+
+The `passivation_edge_nanowire_silicon.ipynb` notebook of section 6 also creates the cell the manuscript computes the bands on, one period of the wire along ⟨110⟩, as the lower half of the passivated two-period cell:
+
+```python
+lattice_vectors = passivated_nanowire.lattice.vector_arrays
+period = passivated_nanowire.lattice.c / 2
+one_period_nanowire = filter_by_box(passivated_nanowire, [0, 0, 0], [1, 1, 0.5])
+one_period_nanowire.set_lattice_vectors(lattice_vectors[0], lattice_vectors[1], [0.0, 0.0, period])
+```
+
+The notebook passes both materials and writes them to the `uploads` folder: `Si nanowire 110 H-passivated` (Si₃₆H₂₄, two periods, c = 7.734 Å) and `Si nanowire 110 H-passivated one period` (Si₁₈H₁₂, c = 3.867 Å). The [band gap and density of states tutorial](passivation-edge-nanowire-silicon-simulation.md) loads the one-period cell by this name.
+
 
 ## 6. Interactive JupyterLite Notebook
 

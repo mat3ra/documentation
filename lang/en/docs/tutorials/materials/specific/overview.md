@@ -277,7 +277,7 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 4.3.1.1. H-Passivated Silicon Nanowire <span class="btn badge b-info border-50">X-1D-PAS</span>
 
 **Structure**: [Create H-Passivated Si Nanowire](passivation-edge-nanowire-silicon.md)  
-**Properties**: Calculate band gap, density of states, and formation energy (Coming Soon)  
+**Properties**: [Calculate Band Gap and Density of States of the H-Passivated Si Nanowire](passivation-edge-nanowire-silicon-simulation.md)  
 **DOI**: [10.1103/PhysRevB.76.035305](https://doi.org/10.1103/PhysRevB.76.035305){:target='_blank'} [@Aradi2007]
 
 ![Passivated Silicon nanowire](../../../images/tutorials/materials/passivation/passivation_edge_nanowire_silicon/0-figure-from-manuscript.webp "Passivated Silicon nanowire, FIG. 1."){ style="max-height:500px;width:auto;" }
