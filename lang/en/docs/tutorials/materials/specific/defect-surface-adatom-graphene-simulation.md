@@ -90,7 +90,7 @@ with it:
 
 ```python
 # Names saved by defect_surface_adatom_graphene.ipynb; uncomment a line to add that adatom cell
-# The Ca, Al, Ga, In, Ti, Fe and Au cells exist only after their rows are uncommented in the structure notebook too
+# The Ca, Al, Ga, In, Ti, Fe and Au cells exist only after their rows are also uncommented in the structure notebook
 CLEAN_LAYER_NAME = "Graphene 4x4"
 ADATOM_CELL_NAMES = [
     "Li on graphene 4x4 hollow",
@@ -257,6 +257,7 @@ a cutoff for them is tested here, and the manuscript's 500 eV does not transfer.
 
 If a material of section 2 is not found in the `uploads` folder or the account's materials collection, run the
 [structure tutorial](defect-surface-adatom-graphene.md) first; the names must match exactly.
+The Ca, Al, Ga, In, Ti, Fe and Au cells also need their rows uncommented there, as its [section 4.1](defect-surface-adatom-graphene.md#41-select-the-adatoms) shows.
 
 ### 8.2. No cluster available
 
