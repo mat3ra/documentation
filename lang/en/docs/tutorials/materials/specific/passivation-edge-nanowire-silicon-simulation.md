@@ -63,7 +63,7 @@ The band gap and DOS calculation consists of the following steps:
 |---|---|---|
 | Code | Quantum ESPRESSO | DFTB+, a density functional based tight-binding (DFTB) code, for the geometry; CRYSTAL for the band gaps and the bands |
 | Geometry | PBE, variable-cell relaxation of one period: the atoms and the period along the wire | DFTB, two periods: the atoms and the length along the wire |
-| Band gaps and bands | global hybrid, PBE0 form, fraction of exact exchange fitted to bulk Si (1.16 eV) | one-parameter global hybrid, developed and tested for bulk Si (1.16 eV); fraction not stated |
+| Band gaps and bands | global hybrid, PBE0 form, exact-exchange fraction 0.10, fitted to bulk Si (1.16 eV) | one-parameter global hybrid of [Deák et al. 2005](https://doi.org/10.1088/0953-8984/17/22/001){:target='_blank'}: PBE with 12% exact exchange, its best match to bulk Si (1.16 eV) |
 | Pseudopotentials | ultrasoft (GBRV) for the relaxation; norm-conserving (PseudoDojo) for the hybrid runs | not stated |
 | Cutoff | 40 / 200 Ry for the relaxation; 72 / 288 Ry, exact exchange 100 Ry, for the hybrid runs | not stated |
 | Cell | one period, Si₁₈H₁₂, c = 3.867 Å before the relaxation (Standata Si, a = 5.468 Å); about 18 Å between wire images | DFTB: two periods, Si₃₆H₂₄, 1000 Å perpendicular to the wire; CRYSTAL: one period, periodic along the wire only; lattice constant not stated |
@@ -227,9 +227,12 @@ If section 5.1 of the notebook prints an empty list of clusters, there is nothin
 
 ### 8.3. Band gap far from the published value
 
-The manuscript's band gaps come from a one-parameter global hybrid fitted to bulk Si, this tutorial's from a global
-hybrid in the PBE0 form fitted the same way; the bulk silicon lines of section 8.1 of the notebook show
-the fit. The gap also depends on the q-point grid of the exact exchange: open the band structure and the DOS jobs of the
+The manuscript's hybrid is PBE with 12% exact exchange, which
+[Deák et al. 2005](https://doi.org/10.1088/0953-8984/17/22/001){:target='_blank'} (Table 2) found to match bulk silicon
+best, with a gap of 1.16 eV. This tutorial fits its own fraction to that gap: two bulk silicon runs at 0.10 and 0.15
+gave 1.15 and 1.41 eV, the line between them reaches 1.16 eV at 0.102, rounded to 0.10, and the bulk silicon lines of
+section 8.1 of the notebook show the check. To use the manuscript's value, set `EXX_FRACTION` to 0.12 in cell 1.3.
+The gap also depends on the q-point grid of the exact exchange: open the band structure and the DOS jobs of the
 wire, select the [Files tab]({{ interface_url }}/jobs/ui/files-tab/), and check that `pw_scf_bands_hse.in` and
 `pw_scf_hse.in` set `input_dft` to `'pbe0'`, `exx_fraction` to the value of `EXX_FRACTION`, and `nqx1`, `nqx2`,
 `nqx3` to 1, 1 and 4 with the default grids.
