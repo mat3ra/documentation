@@ -115,54 +115,97 @@ The rows of `ADATOM_PARAMETERS` for Ca, Al, Ga, In, Ti, Fe and Au are commented 
 
 For Na adatom on hollow site:
 
+```python
+{"chemical_element": "Na", "site": "hollow", "distance_z": 2.28},
+```
+
 ![Na Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-na.webp "Na Adatom on Graphene Surface")
 
 For K adatom on hollow site:
+
+```python
+{"chemical_element": "K", "site": "hollow", "distance_z": 2.60},
+```
 
 ![K Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-k.webp "K Adatom on Graphene Surface")
 
 
 For Ca adatom on hollow site:
 
+```python
+{"chemical_element": "Ca", "site": "hollow", "distance_z": 2.29},
+```
+
 ![Ca Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-ca.webp "Ca Adatom on Graphene Surface")
 
 
 For Al adatom on hollow site:
+
+```python
+{"chemical_element": "Al", "site": "hollow", "distance_z": 2.13},
+```
 
 ![Al Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-al.webp "Al Adatom on Graphene Surface")
 
 
 For Ga adatom on hollow site:
 
+```python
+{"chemical_element": "Ga", "site": "hollow", "distance_z": 2.20},
+```
+
 ![Ga Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-ga.webp "Ga Adatom on Graphene Surface")
 
 
 For In adatom on hollow site:
+
+```python
+{"chemical_element": "In", "site": "hollow", "distance_z": 2.45},
+```
 
 ![In Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-in.webp "In Adatom on Graphene Surface")
 
 
 For Sn adatom on top site:
 
+```python
+{"chemical_element": "Sn", "site": "top", "distance_z": 2.82},
+```
+
 ![Sn Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-sn.webp "Sn Adatom on Graphene Surface")
 
 
 For Ti adatom on hollow site:
 
+```python
+{"chemical_element": "Ti", "site": "hollow", "distance_z": 1.80},
+```
+
 ![Ti Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-ti.webp "Ti Adatom on Graphene Surface")
     
 For Fe adatom on hollow site:
+
+```python
+{"chemical_element": "Fe", "site": "hollow", "distance_z": 1.53},
+```
 
 ![Fe Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-fe.webp "Fe Adatom on Graphene Surface")
 
 
 For Pd adatom on bridge site:
 
+```python
+{"chemical_element": "Pd", "site": "bridge", "distance_z": 2.21},
+```
 
 ![Pd Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-pd.webp "Pd Adatom on Graphene Surface")
 
 
 For Au adatom on top site:
+
+```python
+{"chemical_element": "Au", "site": "top", "distance_z": 2.69},
+```
 
 ![Au Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-au.webp "Au Adatom on Graphene Surface")
 

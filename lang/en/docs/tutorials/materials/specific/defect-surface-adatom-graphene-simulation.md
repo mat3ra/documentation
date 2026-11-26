@@ -69,7 +69,7 @@ The adsorption energy calculation consists of the following steps:
 | Relaxation | adatom along z only, C in all directions, fixed cell, 0.05 eV/Å, at most 100 ionic steps | adatom along z only, C in all directions, fixed cell, 0.05 eV/Å |
 | Spin, clean layer | not spin-polarized | spin-polarized |
 | Spin, adatom cells | `nspin = 2`, starting magnetization 0.5 on the adatom | spin-polarized |
-| Spin, isolated atoms | `nspin = 2`, total magnetization from Table II (Li, Na, K 1; Sn 2); Pd not spin-polarized | spin-polarized |
+| Spin, isolated atoms | `nspin = 2`, total magnetization from Table II (Li, Na, K, Al, Ga, In, Au 1; Sn 2; Ti, Fe 4); Ca and Pd not spin-polarized | spin-polarized |
 | Isolated-atom box | 14 Å cube | 14 Å cube |
 
 ## 5. Step-by-step instructions
@@ -97,12 +97,22 @@ ADATOM_CELL_NAMES = [
     # "Li on graphene 4x4 top",
     # "Na on graphene 4x4 hollow",
     # "K on graphene 4x4 hollow",
+    # "Ca on graphene 4x4 hollow",
+    # "Al on graphene 4x4 hollow",
+    # "Ga on graphene 4x4 hollow",
+    # "In on graphene 4x4 hollow",
     # "Sn on graphene 4x4 top",
+    # "Ti on graphene 4x4 hollow",
+    # "Fe on graphene 4x4 hollow",
     # "Pd on graphene 4x4 bridge",
+    # "Au on graphene 4x4 top",
 ]
 ATOM_NAME = "{element} atom"
 ATOM_BOX = 14.0  # Å, edge of the cubic box around each isolated atom, as in the manuscript
 ```
+
+The Ca, Al, Ga, In, Ti, Fe and Au cells exist only after their rows of `ADATOM_PARAMETERS` are uncommented in
+the structure notebook.
 
 Cell 1.4 sets the DFT model; each comment names the manuscript's setting:
 
@@ -128,13 +138,20 @@ CARBON_CONSTRAINT = [True, True, True]
 # manuscript: spin-polarized; the clean layer is non-magnetic and runs without spin.
 # C is species 1 in the input and the adatom species 2, which starts with a magnetic moment.
 ADATOM_SPIN_SETTINGS = {"nspin": 2, "starting_magnetization(2)": 0.5}
-# Table II μ_A: total magnetization of each isolated atom in μB; Pd (μ_A = 0) runs without spin
+# Table II μ_A: total magnetization of each isolated atom in μB; Ca and Pd (μ_A = 0) run without spin
 ATOM_SPIN_SETTINGS_BY_ELEMENT = {
     "Li": {"nspin": 2, "tot_magnetization": 1},
     "Na": {"nspin": 2, "tot_magnetization": 1},
     "K": {"nspin": 2, "tot_magnetization": 1},
+    "Ca": {},
+    "Al": {"nspin": 2, "tot_magnetization": 1},
+    "Ga": {"nspin": 2, "tot_magnetization": 1},
+    "In": {"nspin": 2, "tot_magnetization": 1},
     "Sn": {"nspin": 2, "tot_magnetization": 2},
+    "Ti": {"nspin": 2, "tot_magnetization": 4},
+    "Fe": {"nspin": 2, "tot_magnetization": 4},
     "Pd": {},
+    "Au": {"nspin": 2, "tot_magnetization": 1},
 }
 MODEL_TAG = f"{FUNCTIONAL}-{PSEUDOPOTENTIAL_TYPE} {ECUTWFC}-{ECUTRHO}Ry g{SMEARING_SETTINGS['degauss']}"
 
@@ -260,7 +277,8 @@ Check the provenance printed in section 3.1 of the notebook first: the clean lay
 `C32` with its adatom, such as `C32Li1`, each in a `9.86 x 9.86 x 15.00 Å` cell, and each isolated atom one atom, such
 as `Li1`, in a `14.00 x 14.00 x 14.00 Å` cell. Then open the Total Energy job of the atom, select the
 [Files tab]({{ interface_url }}/jobs/ui/files-tab/), and check that `pw_scf.in` sets `nspin = 2` and
-`tot_magnetization` to the atom's moment in Table II: 1 for Li, Na and K, 2 for Sn. The Pd atom runs without spin.
+`tot_magnetization` to the atom's moment in Table II: 1 for Li, Na, K, Al, Ga, In and Au, 2 for Sn, 4 for Ti and
+Fe. The Ca and Pd atoms run without spin.
 
 ## 9. Interactive JupyterLite notebook
 
