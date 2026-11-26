@@ -90,6 +90,7 @@ with it:
 
 ```python
 # Names saved by defect_surface_adatom_graphene.ipynb; uncomment a line to add that adatom cell
+# The Ca, Al, Ga, In, Ti, Fe and Au cells exist only after their rows are uncommented in the structure notebook too
 CLEAN_LAYER_NAME = "Graphene 4x4"
 ADATOM_CELL_NAMES = [
     "Li on graphene 4x4 hollow",
@@ -110,9 +111,6 @@ ADATOM_CELL_NAMES = [
 ATOM_NAME = "{element} atom"
 ATOM_BOX = 14.0  # Å, edge of the cubic box around each isolated atom, as in the manuscript
 ```
-
-The Ca, Al, Ga, In, Ti, Fe and Au cells exist only after their rows of `ADATOM_PARAMETERS` are uncommented in
-the structure notebook.
 
 Cell 1.4 sets the DFT model; each comment names the manuscript's setting:
 
