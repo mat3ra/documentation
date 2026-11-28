@@ -53,7 +53,9 @@ Step-by-step recipes reproducing published work, one row per publication: the st
 | Hansen et al. (1998)[^16]         | H-passivated surface      | [Si(100)](tutorials/materials/specific/passivation-surface-silicon.md) | Diffusion, reaction and desorption barriers (Coming Soon) |
 | Larsen et al. (2011)[^17]         | Nanoclusters              | [Au](tutorials/materials/specific/nanocluster-gold.md) | [Total energy per atom](tutorials/materials/specific/nanocluster-gold-simulation.md), density of states (Coming Soon) |
 | Eglitis et al. (2008)[^18]        | Slab                      | [SrTiO3](tutorials/materials/specific/slab-strontium-titanate.md) | [Surface energy](tutorials/materials/specific/slab-strontium-titanate-simulation.md) |
-| Muller et al. (1999)[^19]         | High-k metal gate stack   | [Si/SiO2/HfO2/TiN](tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md) | Band structure, valence band offset (Coming Soon) |
+| Muller et al. (1999)[^19]         | High-k metal gate stack   | [Si/SiO2/HfO2/TiN](tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md) | Band structure (Coming Soon) |
+| Prodhomme et al. (2011)[^26]      | 3D–3D interface           | [Si / SiO2, SiO2 / HfO2, HfO2 / TiN](tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md#7-create-the-interface-superlattices) | [Valence band offset](tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride-simulation.md) |
+| Robertson and Wallace (2015)[^27] | 3D–3D interface           | [SiO2 / HfO2 (001)](tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md#7-create-the-interface-superlattices) | [Valence band offset](tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride-simulation.md) |
 | Thompson-Flagg et al. (2009)[^20] | Ripple perturbation       | [Graphene](tutorials/materials/specific/perturbation-ripples-graphene.md) | Coming Soon |
 | Mu et al. (2025)[^25]             | Ferroelectric switching   | [HfO2](tutorials/materials/specific/perturbation-ferroelectric-switching-hafnium-dioxide.md) | [Switching barrier](tutorials/materials/specific/perturbation-ferroelectric-switching-hafnium-dioxide-simulation.md) |
 | Frolov et al. (2013)[^21]         | Grain boundary (3D)       | [Cu (FCC)](tutorials/materials/specific/defect-planar-grain-boundary-3d-fcc-metals-copper.md) | Defect energy per atom (Coming Soon) |
@@ -84,6 +86,8 @@ Step-by-step recipes reproducing published work, one row per publication: the st
 [^23]: Van de Walle et al., Phys. Rev. B 34, 5621 (1986). [DOI](https://doi.org/10.1103/PhysRevB.34.5621){:target='_blank'}
 [^24]: Hinuma et al., Phys. Rev. B 90, 155405 (2014). [DOI](https://doi.org/10.1103/PhysRevB.90.155405){:target='_blank'}
 [^25]: Mu et al., npj Comput. Mater. 11, 126 (2025). [DOI](https://doi.org/10.1038/s41524-025-01633-2){:target='_blank'}
+[^26]: Prodhomme et al., Appl. Phys. Lett. 99, 022101 (2011). [DOI](https://doi.org/10.1063/1.3609869){:target='_blank'}
+[^27]: Robertson and Wallace, Mater. Sci. Eng. R 88, 1 (2015). [DOI](https://doi.org/10.1016/j.mser.2014.11.001){:target='_blank'}
 
 
 

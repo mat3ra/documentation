@@ -92,8 +92,9 @@ This document provides a comprehensive catalog of materials science tutorials or
 ##### 2.1.2.1. High-k Metal Gate Stack (Si/SiO2/HfO2/TiN) <span class="btn badge b-info border-50">C-2D-HST</span>
 
 **Structure**: [Create High-k Metal Gate Stack](heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md)  
-**Properties**: Calculate band structure and valence band offset (Coming Soon)  
-**Reference**: [QuantumATK Tutorial](https://docs.quantumatk.com/tutorials/hkmg_builder/hkmg_builder.html) [@Muller1999; @Robertson2006]
+**Properties**: [Calculate High-k Metal Gate Stack Valence Band Offsets](heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride-simulation.md), band structure (Coming Soon)  
+**Reference**: [QuantumATK Tutorial](https://docs.quantumatk.com/tutorials/hkmg_builder/hkmg_builder.html) [@Muller1999; @Robertson2006]  
+**DOI**: [10.1063/1.3609869](https://doi.org/10.1063/1.3609869){:target='_blank'} [@Prodhomme2011], [10.1016/j.mser.2014.11.001](https://doi.org/10.1016/j.mser.2014.11.001){:target='_blank'} [@Robertson2015]
 
 ![High-k Metal Gate Stack](../../../images/tutorials/materials/heterostructures/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride/original-figure.webp "High-k Metal Gate Stack"){ style="max-height:500px;width:auto;" }
 

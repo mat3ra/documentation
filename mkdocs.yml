@@ -187,6 +187,7 @@ nav:
             - GaAs/AlAs (110) Interface:                                    tutorials/materials/specific/interface-3d-3d-gallium-arsenide-aluminum-arsenide.md
             - GaAs/AlAs (110) Interface (Valence Band Offset):              tutorials/materials/specific/interface-3d-3d-gallium-arsenide-aluminum-arsenide-simulation.md
             - High-k Metal Gate Stack (Si/SiO2/HfO2/TiN):                   tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride.md
+            - High-k Metal Gate Stack (Si/SiO2, SiO2/HfO2, HfO2/TiN Valence Band Offsets): tutorials/materials/specific/heterostructure-silicon-silicon-dioxide-hafnium-dioxide-titanium-nitride-simulation.md
             - Ripple perturbation of a Graphene sheet:                      tutorials/materials/specific/perturbation-ripples-graphene.md
             - Ferroelectric Switching in HfO2:                              tutorials/materials/specific/perturbation-ferroelectric-switching-hafnium-dioxide.md
             - Ferroelectric Switching in HfO2 (S:T Energy Barrier):         tutorials/materials/specific/perturbation-ferroelectric-switching-hafnium-dioxide-simulation.md
