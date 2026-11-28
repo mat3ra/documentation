@@ -30,6 +30,10 @@ structures are created. Here, the adsorption energy is calculated using Quantum 
 layer, and printed positive for a bound adatom, as Table I lists it, for Li on the hollow, bridge and top sites. The
 adatom height h above the C plane, the nearest adatom–C distance d_AC and the total magnetization are compared with
 Tables I and II.
+The figure below shows an adatom on the hollow site of 4×4 graphene seen from above: Fig. 1 of the manuscript (left)
+and the Li hollow cell built by the structure notebook (right).
+
+![Adatom on graphene from the manuscript and the structure notebook](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/structure-comparison.webp "Top view, 2×2 cells of 4×4 graphene: Chan et al. 2008, Fig. 1 (left), and the Li hollow cell built by the structure notebook, one cell outlined (right)")
 
 ## 2. Prerequisites
 
