@@ -26,21 +26,19 @@ This tutorial demonstrates the process of creating a graphene structure with an 
 
 We use the [Materials Designer]({{ interface_url }}/materials-designer/overview/) to create a graphene structure with a metal adatom on the surface.
 
-The image shows the adatom on the graphene surface.
+The image shows an adatom on the hollow site, 2×2 cells of 4×4 graphene seen from above: Fig. 1 of the manuscript (left) and the Li hollow cell this tutorial builds, in Wave (right).
 
-![Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/me_adatom_on_hollow_graphene.webp "Fig. 1. Adatom on Graphene Surface")
+![Adatom on graphene from the manuscript and the structure notebook](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/structure-comparison.webp "Top view, 2×2 cells of 4×4 graphene: Chan et al. 2008, Fig. 1 (left), and the Li hollow cell built by the structure notebook, one cell outlined (right)")
 
-## 2. Load and preview Graphene structure
+## 2. Open Materials Designer
 
-First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/) and import the Graphene material from the [Standata]({{ interface_url }}/materials-designer/header-menu/input-output/standata-import/).
-
-![Standata Graphene Import](../../../images/tutorials/materials/defects/defect_creation_point_substitution_graphene/1-standata-graphene.webp "Standata Graphene Import")
+First, we navigate to [Materials Designer]({{ interface_url }}/materials-designer/overview/).
 
 Then we will use the [JupyterLite]({{ interface_url }}/jupyterlite/overview/) environment to create a graphene structure with an adatom on the surface.
 
-## 3. Add Li adatom
+## 3. Add the adatoms
 
-### 2.1 Launch JupyterLite Session
+### 3.1. Launch JupyterLite Session
 
 Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/materials-designer/header-menu/advanced/jupyterlite-dialog/)" menu item to launch the JupyterLite environment.
 
@@ -48,48 +46,44 @@ Select the "Advanced > [JupyterLite Transformation]({{ interface_url }}/material
 
 ### 3.2. Open and modify the notebook
 
-Next, edit `create_adatom_defect.ipynb` notebook to modify the parameters by changing values:
-
- - `CHEMICAL_ELEMENT = "Li"` - the element of the adatom
-
- - `APPROXIMATE_POSITION_ON_SURFACE = [0.5, 0.5]` - position that corresponds to the hollow site in the center of the cell
-
- - `DISTANCE_Z = 1.71` - the distance between the adatom and the graphene surface (from the Table 1 in the manuscript)
-
- - `MILLER_INDICES = (0,0,1)` - the Miller indices of the plane of Graphene
-
- - `SLAB_THICKNESS = 1` - the thickness of the Graphene monolayer slab
-
- - `SUPERCELL_MATRIX = [[4, 0, 0], [0, 4, 0], [0, 0, 1]]` - the supercell matrix
-
-Copy the content below and adjust the "1.1. Set up slab parameters" cell in the notebook:
+Next, open the `specific_examples/defect_surface_adatom_graphene.ipynb` notebook. Its "1.1. Set up defects parameters" cell holds the parameters:
 
 ```python
-# Index in the list of materials, to access as materials[MATERIAL_INDEX]
-MATERIAL_INDEX = 0
-ELEMENT = "Li"  # Chemical element of the adatom
+# Name of material to find in Standata
+# Standata graphene has a = 2.465 Å; the manuscript uses a = 2.47 Å
+MATERIAL_NAME = "Graphene"
+XY_SUPERCELL_MATRIX = [[4, 0], [0, 4]]
+VACUUM = 14.0  # in Angstrom, on top of the 1 Å left by vacuum removal: the manuscript's 15 Å cell height
 
-# Dictionaries are validated and converted to AdatomDefectDict objects below
-DEFECT_CONFIGS = [
-    {
-        "type": "adatom",
-        "coordinate_2d": [0.5, 0.5], # Crystal coordinates on the surface (x, y)
-        "distance_z": 1.71,  # Method to place the adatom
-        "element": ELEMENT,
-    }
+CLEAN_LAYER_NAME = "Graphene 4x4"
+ADATOM_CELL_NAME = "{chemical_element} on graphene 4x4 {site}"
+
+PLACEMENT_METHOD = "exact_coordinate"
+
+# hollow: hexagon centre, bridge: C–C midpoint, top: atop a C (manuscript Fig. 2), in crystal coordinates
+SITE_POSITION_BY_NAME = {"hollow": [1 / 2, 1 / 2], "bridge": [3 / 8, 1 / 2], "top": [7 / 12, 5 / 12]}
+
+# distance_z is the height h from Table I of the manuscript, where the relaxation starts.
+# Uncomment the lines to create the defect for the desired adatom.
+ADATOM_PARAMETERS = [
+    {"chemical_element": "Li", "site": "hollow", "distance_z": 1.71},
+    {"chemical_element": "Li", "site": "bridge", "distance_z": 1.88},
+    {"chemical_element": "Li", "site": "top", "distance_z": 1.89},
+    {"chemical_element": "Na", "site": "hollow", "distance_z": 2.28},
+    {"chemical_element": "K", "site": "hollow", "distance_z": 2.60},
+    # {"chemical_element": "Ca", "site": "hollow", "distance_z": 2.29},
+    # {"chemical_element": "Al", "site": "hollow", "distance_z": 2.13},
+    # {"chemical_element": "Ga", "site": "hollow", "distance_z": 2.20},
+    # {"chemical_element": "In", "site": "hollow", "distance_z": 2.45},
+    {"chemical_element": "Sn", "site": "top", "distance_z": 2.82},
+    # {"chemical_element": "Ti", "site": "hollow", "distance_z": 1.80},
+    # {"chemical_element": "Fe", "site": "hollow", "distance_z": 1.53},
+    {"chemical_element": "Pd", "site": "bridge", "distance_z": 2.21},
+    # {"chemical_element": "Au", "site": "top", "distance_z": 2.69},
 ]
-
-
-PLACEMENT_METHOD = "equidistant"  # Method to place the adatom, e.g., "new_crystal_site", "exact_coordinate", "equidistant"
-
-
-# Slab parameters
-MILLER_INDICES = (0, 0, 1)  # Miller indices of the surface
-SLAB_THICKNESS = 1  # Thickness of the slab in unit cells
-VACUUM = 6.0  # Vacuum thickness in Angstrom
-XY_SUPERCELL_MATRIX = [[4, 0], [0, 4]]  # Supercell matrix for the slab
-TERMINATION_FORMULA = None  # Stoichiometric formula of the slab termination to be used.
 ```
+
+The notebook loads graphene from Standata by `MATERIAL_NAME`. Removing the vacuum leaves a 1 Å cell height, and `VACUUM` adds 14 Å to it, so every cell is 15 Å high, as in the manuscript, with the C plane in the middle of the cell. `distance_z` in `ADATOM_PARAMETERS` is the height above the C plane from Table I of the manuscript, where the relaxation starts.
 
 ### 3.3. Run the notebook
 
@@ -99,7 +93,7 @@ Run the notebook by selecting "Run > Run All Cells" from the menu.
 
 ### 3.4. Analyze the Results
 
-After running the notebook, the Graphene structure with a Li adatom on the surface will be created.
+After running the notebook, the clean layer and the adatom cells are created, all in the same 9.86 × 9.86 × 15.00 Å cell.
 
 The user will be able to visualize the created structure and download the corresponding files.
 
@@ -107,7 +101,7 @@ The user will be able to visualize the created structure and download the corres
 
 ### 3.5. Pass the Material to the Materials Designer
 
-After reviewing the results, the user can pass the material to Materials Designer for further analysis.
+The notebook passes eight materials to Materials Designer and writes them to the `uploads` folder: `Graphene 4x4`, `Li on graphene 4x4 hollow`, `Li on graphene 4x4 bridge`, `Li on graphene 4x4 top`, `Na on graphene 4x4 hollow`, `K on graphene 4x4 hollow`, `Sn on graphene 4x4 top` and `Pd on graphene 4x4 bridge`. The [adsorption energy tutorial](defect-surface-adatom-graphene-simulation.md) loads them by these names.
 
 ![Final Material](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/wave-result-li.webp "Li Adatom on Graphene Surface")
 
@@ -115,116 +109,102 @@ Or the user can [save or download]({{ interface_url }}/materials-designer/header
 
 ## 4. Add other metal adatoms
 
-### 4.1. Repeat the steps above
+### 4.1. Select the adatoms
 
-To create a Graphene structure with other metal adatoms, repeat the steps above by changing the `CHEMICAL_ELEMENT`, `APPORXIMATE_POSITION_ON_SURFACE`, and `DISTANCE_Z` parameters according to he values in the table 1 of the manuscript.
-Notice, that some of the adatoms have more favorable position on top or bridge sites.
+The rows of `ADATOM_PARAMETERS` for Ca, Al, Ga, In, Ti, Fe and Au are commented out; uncommenting a row builds and saves that cell as well. Some adatoms favor the top or bridge site.
 
-For example, to create a Graphene structure with a Na adatom, adjust the parameters as follows:
+For Na adatom on hollow site:
 
 ```python
-CHEMICAL_ELEMENT = "Na"
-COORDINATE_2D = [0.5, 0.5]
-DISTANCE_Z = 2.28
+{"chemical_element": "Na", "site": "hollow", "distance_z": 2.28},
 ```
 
 ![Na Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-na.webp "Na Adatom on Graphene Surface")
 
 For K adatom on hollow site:
+
 ```python
-CHEMICAL_ELEMENT = "K"
-COORDINATE_2D = [0.5, 0.5]
-DISTANCE_Z = 2.60
+{"chemical_element": "K", "site": "hollow", "distance_z": 2.60},
 ```
 
 ![K Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-k.webp "K Adatom on Graphene Surface")
 
 
 For Ca adatom on hollow site:
+
 ```python
-CHEMICAL_ELEMENT = "Ca"
-COORDINATE_2D = [0.5, 0.5]
-DISTANCE_Z = 2.29
+{"chemical_element": "Ca", "site": "hollow", "distance_z": 2.29},
 ```
 
 ![Ca Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-ca.webp "Ca Adatom on Graphene Surface")
 
 
 For Al adatom on hollow site:
+
 ```python
-CHEMICAL_ELEMENT = "Al"
-COORDINATE_2D = [0.5, 0.5]
-DISTANCE_Z = 2.13
+{"chemical_element": "Al", "site": "hollow", "distance_z": 2.13},
 ```
 
 ![Al Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-al.webp "Al Adatom on Graphene Surface")
 
 
 For Ga adatom on hollow site:
+
 ```python
-CHEMICAL_ELEMENT = "Ga"
-COORDINATE_2D = [0.5, 0.5]
-DISTANCE_Z = 2.20
+{"chemical_element": "Ga", "site": "hollow", "distance_z": 2.20},
 ```
 
 ![Ga Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-ga.webp "Ga Adatom on Graphene Surface")
 
 
 For In adatom on hollow site:
+
 ```python
-CHEMICAL_ELEMENT = "In"
-COORDINATE_2D = [0.5, 0.5]
-DISTANCE_Z = 2.45
+{"chemical_element": "In", "site": "hollow", "distance_z": 2.45},
 ```
 
 ![In Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-in.webp "In Adatom on Graphene Surface")
 
 
 For Sn adatom on top site:
+
 ```python
-CHEMICAL_ELEMENT = "Sn"
-COORDINATE_2D = [7/12, 5/12]
-DISTANCE_Z = 2.82
+{"chemical_element": "Sn", "site": "top", "distance_z": 2.82},
 ```
 
 ![Sn Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-sn.webp "Sn Adatom on Graphene Surface")
 
 
 For Ti adatom on hollow site:
+
 ```python
-CHEMICAL_ELEMENT = "Ti"
-APPROXIMATE_POSITION_ON_SURFACE = [0.5, 0.5]
-DISTANCE_Z = 1.80
+{"chemical_element": "Ti", "site": "hollow", "distance_z": 1.80},
 ```
 
 ![Ti Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-ti.webp "Ti Adatom on Graphene Surface")
     
 For Fe adatom on hollow site:
+
 ```python
-CHEMICAL_ELEMENT = "Fe"
-APPROXIMATE_POSITION_ON_SURFACE = [0.5, 0.5]
-DISTANCE_Z = 1.53
+{"chemical_element": "Fe", "site": "hollow", "distance_z": 1.53},
 ```
 
 ![Fe Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-fe.webp "Fe Adatom on Graphene Surface")
 
 
 For Pd adatom on bridge site:
-```python
-CHEMICAL_ELEMENT = "Pd"
-APPROXIMATE_POSITION_ON_SURFACE = [3/8, 1/2]
-DISTANCE_Z = 2.21
-```
 
+```python
+{"chemical_element": "Pd", "site": "bridge", "distance_z": 2.21},
+```
 
 ![Pd Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-pd.webp "Pd Adatom on Graphene Surface")
 
 
 For Au adatom on top site:
+
 ```python
-CHEMICAL_ELEMENT = "Au"
-APPROXIMATE_POSITION_ON_SURFACE = [7/12, 5/12]
-DISTANCE_Z = 2.69
+{"chemical_element": "Au", "site": "top", "distance_z": 2.69},
 ```
 
 ![Au Adatom on Graphene Surface](../../../images/tutorials/materials/defects/defect-surface-adatom-graphene/jl-result-preview-au.webp "Au Adatom on Graphene Surface")
